@@ -6,7 +6,7 @@ Sample Applications can be found in [sample-apps](sample-apps/) folder
 
 ## Quickstart
 
-To obtain access OAuth2 access token run the following:
+To obtain OAuth2 access token run the following:
 
 ```python
 import hubspot
