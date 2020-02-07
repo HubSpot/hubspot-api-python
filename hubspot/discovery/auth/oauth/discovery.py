@@ -5,11 +5,7 @@ from ...discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     def default_api(self):
-        configuration = oauth.Configuration()
-        configuration.api_key = self.config["api_key"]
-        configuration.access_token = self.config["access_token"]
-
-        return oauth.DefaultApi(oauth.ApiClient(configuration))
+        return self._configure_api_client(oauth, 'DefaultApi')
 
     def exceptions(self):
         return exceptions
