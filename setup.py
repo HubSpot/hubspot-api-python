@@ -12,7 +12,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "hubspot_api"
+NAME = "hubspot"
 VERSION = "1.0.0"
 # To install the library, run the following
 #
@@ -31,6 +31,6 @@ setup(
     author='HubSpot',
     author_email='info@hubspot.com',
     install_requires=REQUIRES,
-    packages="hubspot_api",
+    packages=["hubspot"],
     include_package_data=True,
 )

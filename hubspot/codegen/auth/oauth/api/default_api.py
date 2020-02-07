@@ -17,8 +17,8 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from hubspot_api.codegen.auth.oauth.api_client import ApiClient
-from hubspot_api.codegen.auth.oauth.exceptions import (
+from hubspot.codegen.auth.oauth.api_client import ApiClient
+from hubspot.codegen.auth.oauth.exceptions import (
     ApiTypeError,
     ApiValueError
 )

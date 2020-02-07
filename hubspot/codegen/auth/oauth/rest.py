@@ -24,7 +24,7 @@ import six
 from six.moves.urllib.parse import urlencode
 import urllib3
 
-from hubspot_api.codegen.auth.oauth.exceptions import ApiException, ApiValueError
+from hubspot.codegen.auth.oauth.exceptions import ApiException, ApiValueError
 
 
 logger = logging.getLogger(__name__)

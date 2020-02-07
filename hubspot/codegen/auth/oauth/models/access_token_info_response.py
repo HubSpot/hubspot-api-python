@@ -15,7 +15,7 @@ import re  # noqa: F401
 
 import six
 
-from hubspot_api.codegen.auth.oauth.configuration import Configuration
+from hubspot.codegen.auth.oauth.configuration import Configuration
 
 
 class AccessTokenInfoResponse(object):
