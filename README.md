@@ -11,7 +11,7 @@ To obtain OAuth2 access token run the following:
 ```python
 import hubspot
 
-oauth_client = hubspot.Client.create().auth().oauth()
+oauth_client = hubspot.Client.create(api_key=None).auth().oauth()
 
 try:
     tokens = oauth_client.default_api().create_token(
