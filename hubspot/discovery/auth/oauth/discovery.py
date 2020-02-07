@@ -1,12 +1,11 @@
 import hubspot.codegen.auth.oauth as oauth
 import hubspot.codegen.auth.oauth.exceptions as exceptions
+from ...discovery_base import DiscoveryBase
 
 
-class Discovery:
+class Discovery(DiscoveryBase):
     def default_api(self):
-        configuration = oauth.Configuration()
-
-        return oauth.DefaultApi(oauth.ApiClient(configuration))
+        return self._configure_api_client(oauth, 'DefaultApi')
 
     def exceptions(self):
         return exceptions
