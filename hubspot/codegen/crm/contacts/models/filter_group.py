@@ -15,7 +15,7 @@ import re  # noqa: F401
 
 import six
 
-from openapi_client.configuration import Configuration
+from hubspot.codegen.crm.contacts.configuration import Configuration
 
 
 class FilterGroup(object):
