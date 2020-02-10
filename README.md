@@ -6,12 +6,24 @@ Sample Applications can be found in [sample-apps](sample-apps/) folder
 
 ## Quickstart
 
-To obtain OAuth2 access token run the following:
+### Configuring HubSpot client
 
 ```python
 import hubspot
 
-oauth_client = hubspot.Client.create(api_key=None).auth().oauth()
+hubspot_client = hubspot.Client.create()
+# or with api_key
+hubspot_client = huspot.Client.create(api_key='my_api_key')
+# or with access_token
+hubspot_client = huspot.Client.create(access_token='my_access_token')
+```
+
+### Requesting API endpoints
+
+#### Obtain OAuth2 access token:
+
+```python
+oauth_client = hubspot_client.auth().oauth()
 
 try:
     tokens = oauth_client.default_api().create_token(
@@ -23,4 +35,17 @@ try:
     )
 except oauth_client.exceptions().ApiException as e:
     print("Exception when calling create_token method: %s\n" % e)
+```
+
+#### Get contact by id:
+
+```python
+import hubspot
+
+contacts_client = hubspot_client.crm().contacts()
+
+try:
+    tokens = contacts_client.basic_api().get_by_id('contact_id')
+except contacts_client.exceptions().ApiException as e:
+    print("Exception when requesting contact by id: %s\n" % e)
 ```
