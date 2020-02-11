@@ -6,6 +6,18 @@ Sample Applications can be found in [sample-apps](sample-apps/) folder
 
 ## Quickstart
 
+### Dependencies
+
+Make sure you have [Python3](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+
+### Installing package locally:
+
+Clone repository and run:
+
+```bash
+pip install -e .
+```
+
 ### Configuring HubSpot client
 
 ```python
