@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<pre>
+// src/actions/oauth/authorize.php - Generate URL for OAuth
+$authUrl = HubSpot\Utils\OAuth2::getAuthUrl(
+    'ClientID',
+    'Redirect Uri',
+    ['Scopes']
+);
+</pre>
+
+<h3 class="text-center">In order to continue please authorize via OAuth</h3>
+<div class="row authorize-button">
+    <a class="button" href="/oauth/authorize">Authorize</a>
+</div>
+{% endblock %}
