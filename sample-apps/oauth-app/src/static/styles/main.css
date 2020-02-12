@@ -46,18 +46,3 @@
 .navigation .navigation-link.active {
     color: #606c76
 }
-
-.error-wrapper .result {
-    color: white;
-    background-color: red;
-}
-
-input[type=datetime-local] {
-    width: 100%;
-    height: 3.8rem;
-    padding: .6rem 1.0rem;
-}
-
-h3.alert-success {
-    text-align: center;
-}
