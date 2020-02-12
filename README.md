@@ -52,12 +52,16 @@ except oauth_client.exceptions().ApiException as e:
 #### Get contact by id:
 
 ```python
-import hubspot
-
 contacts_client = hubspot_client.crm().contacts()
 
 try:
     tokens = contacts_client.basic_api().get_by_id('contact_id')
 except contacts_client.exceptions().ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
+```
+
+### Using utils
+
+```python
+print(hubspot.utils.oauth.get_auth_url(scopes=('contacts',), client_id='client_id', redirect_uri='http://localhost'))
 ```
