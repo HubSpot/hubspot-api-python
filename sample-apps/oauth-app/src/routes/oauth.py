@@ -1,14 +1,12 @@
 from flask import Blueprint, render_template, redirect, request
-import hubspot
 from hubspot.utils.oauth import get_auth_url
 import os
-import json
-from helpers.oauth import save_tokens
+from helpers.oauth import save_tokens, get_redirect_uri
+from helpers.hubspot import create_client
 
 module = Blueprint(__name__, __name__)
 
 
-@module.route('/')
 @module.route('/oauth/login')
 def login():
     return render_template('oauth/login.html')
@@ -19,7 +17,7 @@ def authorize():
     auth_url = get_auth_url(
         scopes=('contacts',),
         client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
-        redirect_uri=request.url_root + 'oauth/callback',
+        redirect_uri=get_redirect_uri(),
     )
 
     return redirect(auth_url)
@@ -27,14 +25,14 @@ def authorize():
 
 @module.route('/oauth/callback')
 def callback():
-    tokens_response = hubspot.Client.create().auth().oauth().default_api().create_token(
+    hubspot = create_client()
+    tokens_response = hubspot.auth().oauth().default_api().create_token(
         grant_type='authorization_code',
         code=request.args.get('code'),
-        redirect_uri=request.url_root + 'oauth/callback',
+        redirect_uri=get_redirect_uri(),
         client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
         client_secret=os.environ.get('HUBSPOT_CLIENT_SECRET'),
     )
+    save_tokens(tokens_response)
 
-    tokens = save_tokens(tokens_response)
-
-    return json.dumps(tokens)
+    return redirect('/')
