@@ -7,7 +7,6 @@ module = Blueprint(__name__, __name__)
 
 
 @module.route('/')
-@module.route('/contacts')
 @oauth_required
 def contacts():
     hubspot = create_client()
