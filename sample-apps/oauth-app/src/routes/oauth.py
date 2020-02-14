@@ -7,12 +7,12 @@ from helpers.hubspot import create_client
 module = Blueprint(__name__, __name__)
 
 
-@module.route('/oauth/login')
+@module.route('/login')
 def login():
     return render_template('oauth/login.html')
 
 
-@module.route('/oauth/authorize')
+@module.route('/authorize')
 def authorize():
     auth_url = get_auth_url(
         scopes=('contacts',),
@@ -23,7 +23,7 @@ def authorize():
     return redirect(auth_url)
 
 
-@module.route('/oauth/callback')
+@module.route('/callback')
 def callback():
     hubspot = create_client()
     tokens_response = hubspot.auth().oauth().default_api().create_token(
