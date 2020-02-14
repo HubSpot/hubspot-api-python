@@ -38,6 +38,6 @@ def refresh_and_get_access_token():
             client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
             client_secret=os.environ.get('HUBSPOT_CLIENT_SECRET'),
         )
-        save_tokens(tokens)
+        tokens = save_tokens(tokens)
 
     return tokens['access_token']
