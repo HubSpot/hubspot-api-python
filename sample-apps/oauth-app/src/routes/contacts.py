@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template
 from helpers.hubspot import create_client
-from helpers.oauth import is_authenticated
+from auth import oauth_required
 
 
 module = Blueprint(__name__, __name__)
@@ -8,10 +8,8 @@ module = Blueprint(__name__, __name__)
 
 @module.route('/')
 @module.route('/contacts')
+@oauth_required
 def contacts():
-    if not is_authenticated():
-        return redirect('/oauth/login')
-
     hubspot = create_client()
     contacts_page = hubspot.crm().contacts().basic_api().get_page()
 
