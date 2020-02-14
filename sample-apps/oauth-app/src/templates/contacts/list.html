@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<pre>
+// src/routes/contacts.py
+hubspot_client = hubspot.Client.create(access_token='access_token')
+contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
+</pre>
+
 <table class="contacts-list">
     <thead>
     <tr>

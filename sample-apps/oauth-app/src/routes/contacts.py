@@ -15,5 +15,4 @@ def contacts():
     hubspot = create_client()
     contacts_page = hubspot.crm().contacts().basic_api().get_page()
 
-    print(contacts)
     return render_template('contacts/list.html', contacts=contacts_page.results)
