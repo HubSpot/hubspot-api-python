@@ -1,5 +1,5 @@
 import hubspot
-HUBSPOT_API_KEY="b27fe496-e22c-4a3b-a205-69ca339e6ff0"
+HUBSPOT_API_KEY="YOUR API KEY"
 print ("Creating client")
 hubspot_client = hubspot.Client.create(HUBSPOT_API_KEY)
 print ("Getting contacts SimplePublicObjectInput")
