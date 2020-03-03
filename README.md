@@ -55,7 +55,7 @@ except oauth_client.exceptions().ApiException as e:
 contacts_client = hubspot_client.crm().contacts()
 
 try:
-    tokens = contacts_client.basic_api().get_by_id('contact_id')
+    contact_fetched = contacts_client.basic_api().get_by_id('contact_id')
 except contacts_client.exceptions().ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
