@@ -71,7 +71,8 @@ class SimplePublicObject(object):
         self.properties = properties
         self.created_at = created_at
         self.updated_at = updated_at
-        self.associations = associations
+        if associations is not None:
+            self.associations = associations
         self.archived = archived
         if archived_at is not None:
             self.archived_at = archived_at
@@ -186,8 +187,6 @@ class SimplePublicObject(object):
         :param associations: The associations of this SimplePublicObject.  # noqa: E501
         :type: dict(str, CollectionResponseSimplePublicObjectId)
         """
-        if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
-            raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
 
         self._associations = associations
 
