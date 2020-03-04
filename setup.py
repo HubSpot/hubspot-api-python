@@ -25,12 +25,13 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 
 setup(
     name=NAME,
+    packages=find_packages(),
     version=VERSION,
     description="HubSpot API client",
     url="",
     author='HubSpot',
     author_email='info@hubspot.com',
     install_requires=REQUIRES,
-    packages=["hubspot"],
+    #packages=["hubspot",]
     include_package_data=True,
 )

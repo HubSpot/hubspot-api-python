@@ -1,4 +1,4 @@
-import hubspot.codegen.crm.contacts as api_client
+import hubspot.crm.contacts as api_client
 from ...discovery_base import DiscoveryBase
 
 
