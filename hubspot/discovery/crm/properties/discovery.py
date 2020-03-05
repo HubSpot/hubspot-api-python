@@ -12,6 +12,3 @@ class Discovery(DiscoveryBase):
     
     def groups_api(self) -> api_client.GroupsApi:
         return self._configure_api_client(api_client, 'GroupsApi')
-    
-    def exceptions(self):
-        return api_client.exceptions

@@ -14,6 +14,3 @@ class Discovery(DiscoveryBase):
 
     def batch_api(self) -> api_client.BatchApi:
         return self._configure_api_client(api_client, 'BatchApi')
-
-    def exceptions(self):
-        return api_client.exceptions
