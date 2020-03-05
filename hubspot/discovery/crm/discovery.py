@@ -43,7 +43,6 @@ class Discovery(DiscoveryBase):
     def quotes(self):
         return QuotesDiscovery(self.config)
 
-
     def owners(self):
         return OwnersDiscovery(self.config)
 

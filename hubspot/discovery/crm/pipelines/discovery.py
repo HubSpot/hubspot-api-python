@@ -9,6 +9,3 @@ class Discovery(DiscoveryBase):
    
     def pipelines_api(self) -> api_client.PipelinesApi:
         return self._configure_api_client(api_client, 'PipelinesApi')
-    
-    def exceptions(self):
-        return api_client.exceptions

@@ -35,6 +35,8 @@ hubspot_client = huspot.Client.create(access_token='my_access_token')
 #### Obtain OAuth2 access token:
 
 ```python
+from hubspot.auth.oauth import ApiException
+
 oauth_client = hubspot_client.auth().oauth()
 
 try:
@@ -45,18 +47,20 @@ try:
         client_secret='client_secret',
         code='code'
     )
-except oauth_client.exceptions().ApiException as e:
+except ApiException as e:
     print("Exception when calling create_token method: %s\n" % e)
 ```
 
 #### Get contact by id:
 
 ```python
+from hubspot.crm.contacts import ApiException
+
 contacts_client = hubspot_client.crm().contacts()
 
 try:
     contact_fetched = contacts_client.basic_api().get_by_id('contact_id')
-except contacts_client.exceptions().ApiException as e:
+except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
 
