@@ -37,7 +37,7 @@ import hubspot
 from urllib3.util.retry import Retry
 
 retries = Retry(
-    total=3
+    total=3,
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
 )
