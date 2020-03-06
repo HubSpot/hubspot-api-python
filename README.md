@@ -30,7 +30,7 @@ hubspot_client = huspot.Client.create(api_key='my_api_key')
 hubspot_client = huspot.Client.create(access_token='my_access_token')
 ```
 
-You can pass instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) to configure http client retries:
+You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) class to configure http client retries:
 
 ```python
 import hubspot
