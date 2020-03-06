@@ -11,6 +11,8 @@ class DiscoveryBase:
             configuration.api_key['hapikey'] = self.config["api_key"]
         if self.config["access_token"] is not None:
             configuration.access_token = self.config["access_token"]
+        if self.config["retries"] is not None:
+            configuration.retries = self.config["retries"]
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 
