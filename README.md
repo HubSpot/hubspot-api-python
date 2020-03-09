@@ -30,7 +30,10 @@ hubspot_client = huspot.Client.create(api_key='my_api_key')
 hubspot_client = huspot.Client.create(access_token='my_access_token')
 ```
 
-You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) class to configure http client retries:
+#### Retry middleware
+
+You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) class to configure http client retries.
+With internal error retry middleware:
 
 ```python
 import hubspot
@@ -40,6 +43,18 @@ retries = Retry(
     total=3,
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
+)
+hubspot_client = huspot.Client.create(retries=retries)
+```
+Or with rate limit retry middleware:
+
+```python
+import hubspot
+from urllib3.util.retry import Retry
+
+retries = Retry(
+    total=5,
+    status_forcelist=(429,),
 )
 hubspot_client = huspot.Client.create(retries=retries)
 ```
