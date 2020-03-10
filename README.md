@@ -106,5 +106,11 @@ Please note that pagination is used under the hood to get all results.
 ### Using utils
 
 ```python
-print(hubspot.utils.oauth.get_auth_url(scopes=('contacts',), client_id='client_id', redirect_uri='http://localhost'))
+from hubspot.utils.oauth import get_auth_url
+
+auth_url = get_auth_url(
+    scopes=('contacts',),
+    client_id='client_id',
+    redirect_uri='http://localhost'
+)
 ```
