@@ -7,11 +7,11 @@ class DiscoveryBase:
 
     def _configure_api_client(self, api_client_package, api_name):
         configuration = api_client_package.Configuration()
-        if self.config["api_key"] is not None:
+        if "api_key" in self.config:
             configuration.api_key['hapikey'] = self.config["api_key"]
-        if self.config["access_token"] is not None:
+        if "access_token" in self.config:
             configuration.access_token = self.config["access_token"]
-        if self.config["retries"] is not None:
+        if "retries" in self.config:
             configuration.retries = self.config["retries"]
 
         api_client = api_client_package.ApiClient(configuration=configuration)
