@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  web:
+    env_file:
+      - .env
+    build:
+      dockerfile: ./sample-apps/oauth-app/docker/web/Dockerfile
+      context: ../../
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src
