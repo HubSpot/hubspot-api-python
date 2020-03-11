@@ -13,11 +13,11 @@ class DiscoveryBase:
         if 'access_token' in config:
             configuration.access_token = config['access_token']
         if 'retries' in config:
-            configuration.retries = config["retries"]
+            configuration.retries = config['retries']
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 
-        package_version = pkg_resources.require("hubspot")[0].version
+        package_version = pkg_resources.require('hubspot')[0].version
         api_client.user_agent = 'hubspot-api-python; {0}'.format(package_version)
 
         return getattr(api_client_package, api_name)(api_client=api_client)
