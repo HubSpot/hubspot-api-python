@@ -7,16 +7,17 @@ class DiscoveryBase:
 
     def _configure_api_client(self, api_client_package, api_name):
         configuration = api_client_package.Configuration()
-        if "api_key" in self.config:
-            configuration.api_key['hapikey'] = self.config["api_key"]
-        if "access_token" in self.config:
-            configuration.access_token = self.config["access_token"]
-        if "retries" in self.config:
-            configuration.retries = self.config["retries"]
+        config = {k: v for k, v in self.config.items() if v is not None}
+        if 'api_key' in config:
+            configuration.api_key['hapikey'] = config['api_key']
+        if 'access_token' in config:
+            configuration.access_token = config['access_token']
+        if 'retries' in config:
+            configuration.retries = config['retries']
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 
-        package_version = pkg_resources.require("hubspot")[0].version
+        package_version = pkg_resources.require('hubspot')[0].version
         api_client.user_agent = 'hubspot-api-python; {0}'.format(package_version)
 
         return getattr(api_client_package, api_name)(api_client=api_client)
