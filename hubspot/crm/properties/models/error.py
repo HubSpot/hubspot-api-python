@@ -121,6 +121,9 @@ class Error(object):
         """
         if self.local_vars_configuration.client_side_validation and correlation_id is None:  # noqa: E501
             raise ValueError("Invalid value for `correlation_id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                correlation_id is not None and not re.search(r'[a-zA-Z0-9]{32}', correlation_id)):  # noqa: E501
+            raise ValueError(r"Invalid value for `correlation_id`, must be a follow pattern or equal to `/[a-zA-Z0-9]{32}/`")  # noqa: E501
 
         self._correlation_id = correlation_id
 

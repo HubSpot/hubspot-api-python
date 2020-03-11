@@ -33,7 +33,7 @@ class ErrorDetail(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'sub_category': 'object',
+        'sub_category': 'str',
         'message': 'str',
         'code': 'str',
         '_in': 'str',
@@ -76,7 +76,7 @@ class ErrorDetail(object):
 
 
         :return: The sub_category of this ErrorDetail.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._sub_category
 
@@ -86,7 +86,7 @@ class ErrorDetail(object):
 
 
         :param sub_category: The sub_category of this ErrorDetail.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._sub_category = sub_category

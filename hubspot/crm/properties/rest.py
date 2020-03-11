@@ -186,7 +186,6 @@ class RESTClientObject(object):
                         preload_content=_preload_content,
                         timeout=timeout,
                         headers=headers)
-                    print (method, url, post_params, headers)
                 # Pass a `string` parameter directly in the body to support
                 # other content types than Json when `body` argument is
                 # provided in serialized form

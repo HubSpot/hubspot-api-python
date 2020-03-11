@@ -97,7 +97,7 @@ class Configuration(object):
       )
     """
 
-    def __init__(self, host="https://api.hubapiqa.com/crm/v3/properties",
+    def __init__(self, host="https://api.hubapi.com/crm/v3/properties",
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  signing_info=None):
@@ -356,7 +356,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://api.hubapiqa.com/crm/v3/properties",
+                'url': "https://api.hubapi.com/crm/v3/properties",
                 'description': "No description provided",
             }
         ]
