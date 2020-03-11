@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   web:
+    container_name: python-contacts-app-web
     env_file:
       - .env
     build:
