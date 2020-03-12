@@ -19,7 +19,8 @@ def save_tokens(tokens_response):
 
 
 def is_authenticated():
-    return TOKENS_KEY in session
+    api_key = os.environ.get('HUBSPOT_API_KEY')
+    return api_key is None and TOKENS_KEY not in session
 
 
 def get_redirect_uri():
@@ -27,7 +28,7 @@ def get_redirect_uri():
 
 
 def refresh_and_get_access_token():
-    if not is_authenticated():
+    if TOKENS_KEY not in session:
         raise Exception('No refresh token is specified')
     tokens = session[TOKENS_KEY]
     if time.time() > tokens['expires_at']:

@@ -3,7 +3,7 @@ from functools import wraps
 from helpers.oauth import is_authenticated
 
 
-def oauth_required(func):
+def auth_required(func):
     @wraps(func)
     def check_authentication(*args, **kwargs):
         if not is_authenticated():
