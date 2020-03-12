@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from helpers.hubspot import create_client
-from auth import oauth_required
+from auth import auth_required
 from pprint import pprint
 from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, Filter, FilterGroup
 
@@ -8,7 +8,7 @@ module = Blueprint(__name__, __name__)
 
 
 @module.route('/')
-@oauth_required
+@auth_required
 def list():
     hubspot = create_client()
     contacts_page = hubspot.crm().contacts().basic_api().get_page()
@@ -17,7 +17,7 @@ def list():
 
 
 @module.route('/<contact_id>')
-@oauth_required
+@auth_required
 def show(contact_id):
     pprint(__name__)
     hubspot = create_client()
@@ -35,7 +35,7 @@ def show(contact_id):
 
 
 @module.route('/<contact_id>', methods=['POST'])
-@oauth_required
+@auth_required
 def update(contact_id):
     properties = SimplePublicObject(properties=request.form)
     hubspot = create_client()
@@ -44,7 +44,7 @@ def update(contact_id):
 
 
 @module.route('/search')
-@oauth_required
+@auth_required
 def search():
     hubspot = create_client()
     search = request.args.get('search')
