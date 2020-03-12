@@ -46,7 +46,7 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
 
     {% for contact in contacts %}
         <tr>
-            <td>{{ contact.id }}</td>
+            <td><a href="{{ url_for('routes.contacts.show', contact_id=contact.id) }}">{{ contact.id }}</a></td>
             <td>{{ contact.properties.email }}</td>
             <td>{{ contact.properties.firstname ~ ' ' ~ contact.properties.lastname}}</td>
         </tr>

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<pre>
+// src/routes/contacts.py
+hubspot_client.crm().contacts().basic_api().get_by_id(
+    contact_id,
+    properties=['firstname', 'lastname'],
+)
+</pre>
+
+<div class="row">
+    <div class="column">
+        <h3>Properties</h3>
+        <form method="post">
+            <fieldset>
+                {% for property_name in contact.properties %}
+                    <label for="{{ property_name }}">{{ properties_dict[property_name].label }}</label>
+                    <input type="text" id="{{ property_name }}" name="{{ property_name }}" value="{{ contact.properties[property_name] or '' }}">
+                {% endfor %}
+            </fieldset>
+<pre>
+// src/routes/contacts.py
+properties = request.form
+hubspot_client.crm().contacts().basic_api().update(
+    contact_id,
+    simple_public_object_input=properties,
+)
+</pre>
+            <input id="save" class="button-primary" type="submit" value="Save">
+        </form>
+    </div>
+    <div class="column">
+    </div>
+</div>
+
+{% endblock %}
