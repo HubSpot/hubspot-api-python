@@ -128,7 +128,7 @@ class Configuration(object):
         """Adding retries to override urllib3 default value 3
         """
         # Disable client side validation
-        self.client_side_validation = True
+        self.client_side_validation = False
 
     @property
     def logger_file(self):
