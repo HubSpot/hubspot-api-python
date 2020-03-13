@@ -31,8 +31,6 @@ def show(name):
 @module.route('/<name>', methods=['POST'])
 @auth_required
 def update(name):
-    pprint(request.form)
-    pprint(name)
     property_update = PropertyUpdate(**request.form)
     hubspot = create_client()
     hubspot.crm().properties().core_api().update('CONTACTS', name, property_update=property_update)
