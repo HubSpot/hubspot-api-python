@@ -19,19 +19,27 @@ def list():
 @module.route('/<contact_id>')
 @auth_required
 def show(contact_id):
-    pprint(__name__)
     hubspot = create_client()
     all_properties = hubspot.crm().properties().core_api().get_all('CONTACTS')
     editable_properties = []
-    for p in all_properties.results:
-        if p.type == 'string' and p.modification_metadata.read_only_value is False:
-            editable_properties.append(p)
+    for prop in all_properties.results:
+        if prop.type == 'string' and prop.modification_metadata.read_only_value is False:
+            editable_properties.append(prop)
+    editable_properties_names = [p.name for p in editable_properties]
+    editable_properties_names.append('hubspot_owner_id')
     contact = hubspot.crm().contacts().basic_api().get_by_id(
         contact_id,
-        properties=[p.name for p in editable_properties],
+        properties=editable_properties_names,
     )
     editable_properties_dict = {p.name: p for p in editable_properties}
-    return render_template('contacts/show.html', contact=contact, properties_dict=editable_properties_dict)
+    editable_properties_dict['hubspot_owner_id'] = {'label': 'Contact Owner'}
+
+    return render_template(
+        'contacts/show.html',
+        contact=contact,
+        properties_dict=editable_properties_dict,
+        owners=hubspot.crm().owners().get_all(),
+    )
 
 
 @module.route('/<contact_id>', methods=['POST'])

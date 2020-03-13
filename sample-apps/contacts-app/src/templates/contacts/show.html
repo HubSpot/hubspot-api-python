@@ -17,7 +17,26 @@ hubspot_client.crm().contacts().basic_api().get_by_id(
             <fieldset>
                 {% for property_name in contact.properties %}
                     <label for="{{ property_name }}">{{ properties_dict[property_name].label }}</label>
-                    <input type="text" id="{{ property_name }}" name="{{ property_name }}" value="{{ contact.properties[property_name] or '' }}">
+                    {% if property_name != 'hubspot_owner_id' %}
+                        <input type="text" id="{{ property_name }}" name="{{ property_name }}" value="{{ contact.properties[property_name] or '' }}">
+                    {% else %}
+<pre>
+// https://developers.hubspot.com/docs-beta/crm/owners
+$owners = $hubSpot->crm()->owners()
+                  ->defaultApi()
+                  ->getPage()
+                  ->getResults()
+</pre>
+                        <select name="{{ property_name }}">
+                            <option value="">Not assigned</option>
+                            {% for owner in owners %}
+                                <option
+                                    value="{{ owner.id }}"
+                                    {% if contact.properties[property_name] == owner.id %} selected {% endif %}
+                                >{{ owner.first_name~' '~owner.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
                 {% endfor %}
             </fieldset>
 <pre>
