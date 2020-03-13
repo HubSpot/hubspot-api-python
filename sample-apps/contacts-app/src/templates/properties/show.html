@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<pre>
+// src/routes/properties.py
+hubspot_client.crm().properties().core_api().get_by_name(property_name)
+</pre>
+
+<form method="post">
+    <fieldset>
+        <label for="name">Name</label>
+        <input disabled type="text" name="name" id="name" value="{{ property.name }}" />
+        <label for="label">Label</label>
+        <input type="text" name="label" id="label" value="{{ property.label }}" />
+        <label for="description">Description</label>
+        <textarea name="description" id="description">{{ property.description }}</textarea>
+        <label for="group-name">Group Name</label>
+        <input type="text" name="group_name" id="group-name" value="{{ property.group_name }}" />
+
+        <label for="type">Type</label>
+        <input readonly type="text" name="type" id="type" value="{{ property.type }}" />
+
+        <input readonly type="hidden" name="field_type" id="fieldType" value="{{ property.field_type }}" />
+        <input id="save" class="button-primary" type="submit" value="Save" />
+    </fieldset>
+</form>
+
+
+{% endblock %}
