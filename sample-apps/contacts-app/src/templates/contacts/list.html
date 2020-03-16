@@ -40,6 +40,7 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
         <th>ID</th>
         <th>Email</th>
         <th>Name</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -48,7 +49,14 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
         <tr>
             <td><a href="{{ url_for('routes.contacts.show', contact_id=contact.id) }}">{{ contact.id }}</a></td>
             <td>{{ contact.properties.email }}</td>
-            <td>{{ contact.properties.firstname ~ ' ' ~ contact.properties.lastname}}</td>
+            <td>{{ (contact.properties.firstname or '') ~ ' ' ~ (contact.properties.lastname or '')}}</td>
+            <td>
+                <a
+                    onclick="return confirm('Are you sure?')"
+                    href="{{ url_for('routes.contacts.delete', contact_id=contact.id) }}">
+                        <input type="button" value="Delete" title="Delete" class="button-primary"/>
+                </a>
+            </td>
         </tr>
     {% endfor %}
 

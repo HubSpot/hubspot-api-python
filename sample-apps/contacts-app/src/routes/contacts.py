@@ -10,7 +10,11 @@ module = Blueprint(__name__, __name__)
 @auth_required
 def list():
     hubspot = create_client()
-    contacts_page = hubspot.crm().contacts().basic_api().get_page()
+    search_request = PublicObjectSearchRequest(sorts=[{
+        'propertyName': 'createdate',
+        'direction': 'DESCENDING',
+    }])
+    contacts_page = hubspot.crm().contacts().search_api().do_search(public_object_search_request=search_request)
 
     return render_template('contacts/list.html', contacts=contacts_page.results)
 
@@ -92,3 +96,11 @@ def search():
     )
 
     return render_template('contacts/list.html', contacts=contacts_page.results, search=search)
+
+
+@module.route('/delete/<contact_id>')
+@auth_required
+def delete(contact_id):
+    hubspot = create_client()
+    hubspot.crm().contacts().basic_api().archive(contact_id)
+    return redirect(url_for('routes.contacts.list'), code=302)
