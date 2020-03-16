@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from pprint import pprint
 from helpers.hubspot import create_client
 from auth import auth_required
 from hubspot.crm.properties import PropertyUpdate, PropertyCreate
@@ -34,10 +33,8 @@ def new():
 @auth_required
 def create():
     property_create = PropertyCreate(**request.form)
-
     hubspot = create_client()
     property = hubspot.crm().properties().core_api().create('CONTACTS', property_create=property_create)
-    pprint(property)
     return redirect(url_for('routes.properties.show', name=property.name), code=302)
 
 
