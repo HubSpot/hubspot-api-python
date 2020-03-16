@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, url_for
 from helpers.hubspot import create_client
 from auth import auth_required
-from pprint import pprint
-from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, Filter, FilterGroup
+from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, SimplePublicObjectInput, Filter, FilterGroup
 
 module = Blueprint(__name__, __name__)
 
@@ -14,6 +13,19 @@ def list():
     contacts_page = hubspot.crm().contacts().basic_api().get_page()
 
     return render_template('contacts/list.html', contacts=contacts_page.results)
+
+
+@module.route('/new')
+@auth_required
+def new():
+    contact = SimplePublicObject(properties={
+        'email': None,
+    })
+    properties_dict = {
+        'email': {'label': 'Email'},
+    }
+
+    return render_template('contacts/show.html', contact=contact, properties_dict=properties_dict)
 
 
 @module.route('/<contact_id>')
@@ -40,6 +52,15 @@ def show(contact_id):
         properties_dict=editable_properties_dict,
         owners=hubspot.crm().owners().get_all(),
     )
+
+
+@module.route('/new', methods=['POST'])
+@auth_required
+def create():
+    properties = SimplePublicObjectInput(request.form)
+    hubspot = create_client()
+    contact = hubspot.crm().contacts().basic_api().create(simple_public_object_input=properties)
+    return redirect(url_for('routes.contacts.show', contact_id=contact.id), code=302)
 
 
 @module.route('/<contact_id>', methods=['POST'])

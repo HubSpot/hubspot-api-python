@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if contact.properties['email'] is not none %}
 <pre>
 // src/routes/contacts.py
 hubspot_client.crm().contacts().basic_api().get_by_id(
@@ -9,6 +10,7 @@ hubspot_client.crm().contacts().basic_api().get_by_id(
     properties=['firstname', 'lastname'],
 )
 </pre>
+{% endif %}
 
 <div class="row">
     <div class="column">
@@ -22,10 +24,7 @@ hubspot_client.crm().contacts().basic_api().get_by_id(
                     {% else %}
 <pre>
 // https://developers.hubspot.com/docs-beta/crm/owners
-$owners = $hubSpot->crm()->owners()
-                  ->defaultApi()
-                  ->getPage()
-                  ->getResults()
+hubspot_client.crm().owners().default_api().get_all()
 </pre>
                         <select name="{{ property_name }}">
                             <option value="">Not assigned</option>
