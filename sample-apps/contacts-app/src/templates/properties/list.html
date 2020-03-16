@@ -24,7 +24,8 @@
             <td>
                 {% if property.modification_metadata.archivable %}
                     <a id="remove-{{ property.name }}"
-                       href="">
+                       onclick="return confirm('Are you sure?')"
+                       href="{{ url_for('routes.properties.delete', name=property.name) }}">
                         <input type="button" value="Delete" title="Delete" class="button-primary"/>
                     </a>
                 {% endif %}

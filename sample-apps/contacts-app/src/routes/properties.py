@@ -63,3 +63,11 @@ def update(name):
     hubspot = create_client()
     hubspot.crm().properties().core_api().update('CONTACTS', name, property_update=property_update)
     return redirect(request.url, code=302)
+
+
+@module.route('/delete/<name>')
+@auth_required
+def delete(name):
+    hubspot = create_client()
+    hubspot.crm().properties().core_api().archive('CONTACTS', name)
+    return redirect(url_for('routes.properties.list'), code=302)
