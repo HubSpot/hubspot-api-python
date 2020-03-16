@@ -34,8 +34,14 @@ def new():
 def create():
     property_create = PropertyCreate(**request.form)
     hubspot = create_client()
-    property = hubspot.crm().properties().core_api().create('CONTACTS', property_create=property_create)
-    return redirect(url_for('routes.properties.show', name=property.name), code=302)
+    property = hubspot.crm().properties().core_api().create(
+        'CONTACTS',
+        property_create=property_create
+    )
+    return redirect(
+        url_for('routes.properties.show', name=property.name),
+        code=302
+    )
 
 
 @module.route('/<name>')
