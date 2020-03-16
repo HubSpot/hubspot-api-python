@@ -10,11 +10,12 @@ hubspot_client.crm().properties().core_api().get_by_name(property_name)
 <form method="post">
     <fieldset>
         <label for="name">Name</label>
-        <input disabled type="text" name="name" id="name" value="{{ property.name }}" />
+        <input {% if property.name is not none %} disabled {% endif %}
+               type="text" name="name" id="name" value="{{ property.name or '' }}" />
         <label for="label">Label</label>
-        <input type="text" name="label" id="label" value="{{ property.label }}" />
+        <input type="text" name="label" id="label" value="{{ property.label or '' }}" />
         <label for="description">Description</label>
-        <textarea name="description" id="description">{{ property.description }}</textarea>
+        <textarea name="description" id="description">{{ property.description or '' }}</textarea>
         <label for="group-name">Group Name</label>
         <input type="text" name="group_name" id="group-name" value="{{ property.group_name }}" />
 

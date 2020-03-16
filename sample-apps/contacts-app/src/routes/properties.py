@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template, request, redirect
-from pprint import pprint
+from flask import Blueprint, render_template, request, redirect, url_for
 from helpers.hubspot import create_client
 from auth import auth_required
-from hubspot.crm.properties import PropertyUpdate
+from hubspot.crm.properties import PropertyUpdate, PropertyCreate
 
 module = Blueprint(__name__, __name__)
 
@@ -14,6 +13,35 @@ def list():
     properties = hubspot.crm().properties().core_api().get_all('CONTACTS')
 
     return render_template('properties/list.html', properties=properties.results)
+
+
+@module.route('/new')
+@auth_required
+def new():
+    property_create = PropertyCreate(
+        type='string',
+        group_name='contactinformation',
+    )
+
+    return render_template(
+        'properties/show.html',
+        property=property_create,
+    )
+
+
+@module.route('/new', methods=['POST'])
+@auth_required
+def create():
+    property_create = PropertyCreate(**request.form)
+    hubspot = create_client()
+    property = hubspot.crm().properties().core_api().create(
+        'CONTACTS',
+        property_create=property_create
+    )
+    return redirect(
+        url_for('routes.properties.show', name=property.name),
+        code=302
+    )
 
 
 @module.route('/<name>')
