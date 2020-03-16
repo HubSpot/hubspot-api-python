@@ -55,4 +55,11 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
     </tbody>
 </table>
 
+<div>
+  <a id="contact-new" href="{{ url_for('routes.contacts.new') }}">
+    <input class="button-primary" type="button" value="New Contact">
+  </a>
+</div>
+
+
 {% endblock %}
