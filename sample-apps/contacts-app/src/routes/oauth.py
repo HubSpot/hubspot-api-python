@@ -4,7 +4,7 @@ import os
 from helpers.oauth import save_tokens, get_redirect_uri
 from helpers.hubspot import create_client
 
-module = Blueprint(__name__, __name__)
+module = Blueprint('oauth', __name__)
 
 
 @module.route('/login')

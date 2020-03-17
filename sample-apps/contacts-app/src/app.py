@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, url_for
 
 import routes
 
@@ -13,7 +13,7 @@ app.register_blueprint(routes.properties, url_prefix='/properties')
 
 @app.route('/')
 def contacts():
-    return redirect('/contacts')
+    return redirect(url_for('contacts.list'))
 
 
 if __name__ == "__main__":

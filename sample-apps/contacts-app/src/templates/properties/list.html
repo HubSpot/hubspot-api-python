@@ -16,7 +16,7 @@
     {% for property in properties %}
         <tr>
             <td>
-                <a href="{{ url_for('routes.properties.show', name=property.name) }}">{{ property.name }}</a>
+                <a href="{{ url_for('properties.show', name=property.name) }}">{{ property.name }}</a>
             </td>
             <td>{{ property.label }}</td>
             <td>{{ property.description }}</td>
@@ -25,7 +25,7 @@
                 {% if property.modification_metadata.archivable %}
                     <a id="remove-{{ property.name }}"
                        onclick="return confirm('Are you sure?')"
-                       href="{{ url_for('routes.properties.delete', name=property.name) }}">
+                       href="{{ url_for('properties.delete', name=property.name) }}">
                         <input type="button" value="Delete" title="Delete" class="button-primary"/>
                     </a>
                 {% endif %}
@@ -36,7 +36,7 @@
 </table>
 
 <div>
-    <a href="">
+    <a href="{{ url_for('properties.new') }}">
         <input class="button-primary" type="button" value="New Property">
     </a>
 </div>
