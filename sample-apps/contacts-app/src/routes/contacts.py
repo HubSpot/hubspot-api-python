@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+import io, csv
+from flask import Blueprint, render_template, request, redirect, url_for, make_response
 from helpers.hubspot import create_client
 from auth import auth_required
 from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, SimplePublicObjectInput, Filter, FilterGroup
@@ -104,3 +105,26 @@ def delete(contact_id):
     hubspot = create_client()
     hubspot.crm().contacts().basic_api().archive(contact_id)
     return redirect(url_for('routes.contacts.list'), code=302)
+
+
+@module.route('/export')
+@auth_required
+def export():
+    si = io.StringIO()
+    writer = csv.writer(si)
+    writer.writerow(['Email', 'Firstname', 'Lastname'])
+
+    hubspot = create_client()
+    contacts = hubspot.crm().contacts().get_all()
+    for contact in contacts:
+        writer.writerow([
+            contact.properties['email'],
+            contact.properties['firstname'],
+            contact.properties['lastname'],
+        ])
+
+    output = make_response(si.getvalue())
+    output.headers["Content-Disposition"] = "attachment; filename=contacts.csv"
+    output.headers["Content-type"] = "text/csv"
+    return output
+

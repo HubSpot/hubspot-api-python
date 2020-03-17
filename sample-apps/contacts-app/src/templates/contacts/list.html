@@ -64,9 +64,13 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
 </table>
 
 <div>
-  <a id="contact-new" href="{{ url_for('routes.contacts.new') }}">
+  <a href="{{ url_for('routes.contacts.new') }}">
     <input class="button-primary" type="button" value="New Contact">
   </a>
+  <a href="{{ url_for('routes.contacts.export') }}">
+    <input class="button-primary" type="button" value="Export All Contacts To CSV">
+  </a>
+
 </div>
 
 
