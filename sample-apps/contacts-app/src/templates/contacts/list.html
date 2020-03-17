@@ -47,13 +47,13 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
 
     {% for contact in contacts %}
         <tr>
-            <td><a href="{{ url_for('routes.contacts.show', contact_id=contact.id) }}">{{ contact.id }}</a></td>
+            <td><a href="{{ url_for('contacts.show', contact_id=contact.id) }}">{{ contact.id }}</a></td>
             <td>{{ contact.properties.email }}</td>
             <td>{{ (contact.properties.firstname or '') ~ ' ' ~ (contact.properties.lastname or '')}}</td>
             <td>
                 <a
                     onclick="return confirm('Are you sure?')"
-                    href="{{ url_for('routes.contacts.delete', contact_id=contact.id) }}">
+                    href="{{ url_for('contacts.delete', contact_id=contact.id) }}">
                         <input type="button" value="Delete" title="Delete" class="button-primary"/>
                 </a>
             </td>
@@ -64,10 +64,10 @@ contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
 </table>
 
 <div>
-  <a href="{{ url_for('routes.contacts.new') }}">
+  <a href="{{ url_for('contacts.new') }}">
     <input class="button-primary" type="button" value="New Contact">
   </a>
-  <a href="{{ url_for('routes.contacts.export') }}">
+  <a href="{{ url_for('contacts.export') }}">
     <input class="button-primary" type="button" value="Export All Contacts To CSV">
   </a>
 

@@ -4,7 +4,7 @@ from auth import auth_required
 from hubspot.crm.properties import PropertyUpdate, PropertyCreate
 from hubspot.crm import ObjectType
 
-module = Blueprint(__name__, __name__)
+module = Blueprint('properties', __name__)
 
 
 @module.route('/')
@@ -40,7 +40,7 @@ def create():
         property_create=property_create
     )
     return redirect(
-        url_for('routes.properties.show', name=property.name),
+        url_for('properties.show', name=property.name),
         code=302
     )
 
@@ -71,4 +71,4 @@ def update(name):
 def delete(name):
     hubspot = create_client()
     hubspot.crm().properties().core_api().archive(ObjectType.CONTACTS, name)
-    return redirect(url_for('routes.properties.list'), code=302)
+    return redirect(url_for('properties.list'), code=302)

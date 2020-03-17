@@ -5,7 +5,7 @@ from auth import auth_required
 from hubspot.crm import ObjectType
 from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, SimplePublicObjectInput, Filter, FilterGroup
 
-module = Blueprint(__name__, __name__)
+module = Blueprint('contacts', __name__)
 
 
 @module.route('/')
@@ -66,7 +66,7 @@ def create():
     properties = SimplePublicObjectInput(request.form)
     hubspot = create_client()
     contact = hubspot.crm().contacts().basic_api().create(simple_public_object_input=properties)
-    return redirect(url_for('routes.contacts.show', contact_id=contact.id), code=302)
+    return redirect(url_for('contacts.show', contact_id=contact.id))
 
 
 @module.route('/<contact_id>', methods=['POST'])
@@ -75,7 +75,7 @@ def update(contact_id):
     properties = SimplePublicObject(properties=request.form)
     hubspot = create_client()
     hubspot.crm().contacts().basic_api().update(contact_id, simple_public_object_input=properties)
-    return redirect(request.url, code=302)
+    return redirect(request.url)
 
 
 @module.route('/search')
@@ -105,7 +105,7 @@ def search():
 def delete(contact_id):
     hubspot = create_client()
     hubspot.crm().contacts().basic_api().archive(contact_id)
-    return redirect(url_for('routes.contacts.list'), code=302)
+    return redirect(url_for('contacts.list'))
 
 
 @module.route('/export')
