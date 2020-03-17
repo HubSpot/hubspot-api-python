@@ -19,8 +19,7 @@ def save_tokens(tokens_response):
 
 
 def is_authenticated():
-    api_key = os.environ.get('HUBSPOT_API_KEY')
-    return api_key is None and TOKENS_KEY not in session
+    return TOKENS_KEY in session
 
 
 def get_redirect_uri():

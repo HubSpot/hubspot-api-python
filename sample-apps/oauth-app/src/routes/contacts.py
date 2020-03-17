@@ -3,12 +3,12 @@ from helpers.hubspot import create_client
 from auth import auth_required
 
 
-module = Blueprint(__name__, __name__)
+module = Blueprint('contacts', __name__)
 
 
 @module.route('/')
 @auth_required
-def contacts():
+def list():
     hubspot = create_client()
     contacts_page = hubspot.crm().contacts().basic_api().get_page()
 
