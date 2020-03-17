@@ -2,6 +2,7 @@ import io, csv
 from flask import Blueprint, render_template, request, redirect, url_for, make_response
 from helpers.hubspot import create_client
 from auth import auth_required
+from hubspot.crm import ObjectType
 from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, SimplePublicObjectInput, Filter, FilterGroup
 
 module = Blueprint(__name__, __name__)
@@ -37,7 +38,7 @@ def new():
 @auth_required
 def show(contact_id):
     hubspot = create_client()
-    all_properties = hubspot.crm().properties().core_api().get_all('CONTACTS')
+    all_properties = hubspot.crm().properties().core_api().get_all(ObjectType.CONTACTS)
     editable_properties = []
     for prop in all_properties.results:
         if prop.type == 'string' and prop.modification_metadata.read_only_value is False:
