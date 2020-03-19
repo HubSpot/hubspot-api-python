@@ -38,7 +38,18 @@ def create():
 @module.route('/<company_id>')
 @auth_required
 def show(company_id):
-    return redirect(url_for('companies.list'))
+    hubspot = create_client()
+    company = hubspot.crm().companies().basic_api().get_by_id(company_id)
+    return render_template('companies/show.html', company=company)
+
+
+@module.route('/<company_id>', methods=['POST'])
+@auth_required
+def update(company_id):
+    properties = SimplePublicObjectInput(properties=request.form)
+    hubspot = create_client()
+    company = hubspot.crm().companies().basic_api().update(company_id, simple_public_object_input=properties)
+    return redirect(url_for('companies.show', company_id=company.id))
 
 
 @module.route('/search')
@@ -65,3 +76,12 @@ def search():
     )
 
     return render_template('companies/list.html', companies=companies_page.results, search=search)
+
+
+@module.route('/delete/<company_id>')
+@auth_required
+def delete(company_id):
+    hubspot = create_client()
+    hubspot.crm().companies().basic_api().archive(company_id)
+    return redirect(url_for('companies.list'))
+
