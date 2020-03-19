@@ -1,4 +1,5 @@
 from ..discovery_base import DiscoveryBase
+from .associations.discovery import Discovery as AssociationsDiscovery
 from .companies.discovery import Discovery as CompaniesDiscovery
 from .contacts.discovery import Discovery as ContactsDiscovery
 from .deals.discovery import Discovery as DealsDiscovery
@@ -13,6 +14,9 @@ from .tickets.discovery import Discovery as TicketsDiscovery
 
 
 class Discovery(DiscoveryBase):
+    def associations(self):
+        return AssociationsDiscovery(self.config)
+
     def contacts(self):
         return ContactsDiscovery(self.config)
 
@@ -25,9 +29,6 @@ class Discovery(DiscoveryBase):
     def cards(self):
         return ExtensionsCardsDiscovery(self.config)
         
-    def cards(self):
-        return ExtensionsCardsDiscovery(self.config)
-
     def line_items(self):
         return LineItemsDiscovery(self.config)
 

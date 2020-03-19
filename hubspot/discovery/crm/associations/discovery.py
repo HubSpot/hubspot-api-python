@@ -1,0 +1,7 @@
+import hubspot.crm.associations as api_client
+from ...discovery_base import DiscoveryBase
+
+
+class Discovery(DiscoveryBase):
+    def batch_api(self) -> api_client.BatchApi:
+        return self._configure_api_client(api_client, 'BatchApi')
