@@ -47,13 +47,13 @@ companies_page = hubspot_client.crm().companies().basic_api().get_page()
 
     {% for company in companies %}
         <tr>
-            <td><a href="">{{ company.id }}</a></td>
+            <td><a href="{{ url_for('companies.show', company_id=company.id) }}">{{ company.id }}</a></td>
             <td>{{ company.properties.name or '' }}</td>
             <td>{{ company.properties.domain or '' }}</td>
             <td>
                 <a
                     onclick="return confirm('Are you sure?')"
-                    href="">
+                    href="{{ url_for('companies.delete', company_id=company.id) }}">
                         <input type="button" value="Delete" title="Delete" class="button-primary"/>
                 </a>
             </td>
