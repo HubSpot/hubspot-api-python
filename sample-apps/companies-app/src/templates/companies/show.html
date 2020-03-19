@@ -41,6 +41,37 @@ hubspot_client.crm().companies().basic_api().create(input)
         </form>
 
     </div>
+
+    <div class="column">
+        <h3>Associated Contacts</h3>
+<pre>
+// src/routes/companies.py
+associations = hubspot.crm().associations().batch_api().read_batch(
+    ObjectType.COMPANIES,
+    ObjectType.CONTACTS,
+    batch_input_public_object_id=BatchInputPublicObjectId(inputs=[company_id])
+)
+</pre>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for contact in associated_contacts %}
+                    <tr>
+                        <td>{{ contact.id }}</td>
+                        <td>{{ contact.properties.email }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/contacts/list.php?companyId=<?php echo htmlentities($id); ?>">
+            <input id="manageContacts" class="button-primary" type="button" value="Manage Contacts">
+        </a>
+    </div>
 </div>
 
 {% endblock %}
