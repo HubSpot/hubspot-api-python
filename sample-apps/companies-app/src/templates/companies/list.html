@@ -64,7 +64,7 @@ companies_page = hubspot_client.crm().companies().basic_api().get_page()
 </table>
 
 <div>
-  <a href="">
+  <a href="{{ url_for('companies.new') }}">
     <input class="button-primary" type="button" value="New company">
   </a>
 </div>

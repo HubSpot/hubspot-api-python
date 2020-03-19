@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="column">
+        <h3>Company Properties</h3>
+
+        {% if company.id is not none %}
+<pre>
+// src/routes/companies.py
+hubspot_client.crm().companies().basic_api().get_by_id()
+</pre>
+        {% endif %}
+
+        <form method="post">
+            <fieldset>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="{{ company.properties.name }}">
+
+                <label for="domain">Domain</label>
+                <input type="text" name="domain" id="domain" value="{{ company.properties.domain }}">
+
+
+                {% if company.id is not none %}
+<pre>
+// src/routes/companies.py
+input = SimplePublicObjectInput(properties=request.form)
+hubspot_client.crm().companies().basic_api().update(company_id, input)
+</pre>
+                {% else %}
+<pre>
+// src/routes/companies.py
+input = SimplePublicObjectInput(properties=request.form)
+hubspot_client.crm().companies().basic_api().create(input)
+</pre>
+
+                {% endif %}
+                <input id="save" class="button-primary" type="submit" value="Save">
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
