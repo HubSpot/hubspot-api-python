@@ -49,7 +49,6 @@ def new(company_id):
 
     search = request.args.get('search')
     if search:
-        print(search, flush=True)
         filter = Filter(
             property_name='email',
             operator='EQ',
