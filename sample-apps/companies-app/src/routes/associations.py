@@ -46,10 +46,21 @@ def new(company_id):
         'propertyName': 'createdate',
         'direction': 'DESCENDING',
     }])
+
+    search = request.args.get('search')
+    if search:
+        filter = Filter(
+            property_name='email',
+            operator='EQ',
+            value=search,
+        )
+        search_request.filter_groups = [FilterGroup(filters=[filter])]
+
     contacts_page = hubspot.crm().contacts().search_api().do_search(public_object_search_request=search_request)
 
     return render_template(
         'associations/new.html',
+        search=search,
         company=company,
         contacts=contacts_page.results
     )
