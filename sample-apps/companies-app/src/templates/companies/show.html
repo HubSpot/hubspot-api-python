@@ -37,9 +37,12 @@ hubspot_client.crm().companies().basic_api().create(input)
 
                 {% endif %}
                 <input class="button-primary" type="submit" value="Save">
-                <a href="{{ url_for('associations.company_to_contacts', company_id=company.id) }}">
-                    <input class="button-primary" type="button" value="Manage Associations">
-                </a>
+
+                {% if company.id is not none %}
+                    <a href="{{ url_for('associations.list', company_id=company.id) }}">
+                        <input class="button-primary" type="button" value="Manage Associations">
+                    </a>
+                {% endif %}
             </fieldset>
         </form>
 
