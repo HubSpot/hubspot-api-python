@@ -25,6 +25,5 @@ def company_to_contacts(company_id):
     associated_contacts = hubspot.crm().contacts().batch_api().read_batch(
         batch_read_input_simple_public_object_id=BatchReadInputSimplePublicObjectId(inputs=inputs)
     )
-    print(associated_contacts.results, flush=True)
 
     return render_template('associations/list.html', company=company, associated_contacts=associated_contacts.results)
