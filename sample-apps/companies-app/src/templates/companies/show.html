@@ -36,7 +36,10 @@ hubspot_client.crm().companies().basic_api().create(input)
 </pre>
 
                 {% endif %}
-                <input id="save" class="button-primary" type="submit" value="Save">
+                <input class="button-primary" type="submit" value="Save">
+                <a href="{{ url_for('associations.company_to_contacts', company_id=company.id) }}">
+                    <input class="button-primary" type="button" value="Manage Associations">
+                </a>
             </fieldset>
         </form>
 

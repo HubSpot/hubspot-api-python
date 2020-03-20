@@ -8,6 +8,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.register_blueprint(routes.oauth, url_prefix='/oauth')
 app.register_blueprint(routes.companies, url_prefix='/companies')
+app.register_blueprint(routes.associations, url_prefix='/associations')
 
 
 @app.route('/')
