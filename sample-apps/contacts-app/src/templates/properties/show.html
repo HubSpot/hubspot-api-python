@@ -2,6 +2,10 @@
 
 {% block content %}
 
+{% if action_performed %}
+    <h3 class="alert-success">Successfully {{ action_performed }} Property</h3>
+{% endif %}
+
 <pre>
 // src/routes/properties.py
 hubspot_client.crm().properties().core_api().get_by_name(property_name)
@@ -26,6 +30,5 @@ hubspot_client.crm().properties().core_api().get_by_name(property_name)
         <input id="save" class="button-primary" type="submit" value="Save" />
     </fieldset>
 </form>
-
 
 {% endblock %}

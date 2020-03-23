@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<div class="row">
+    <div class="column">
+        {% if action_performed %}
+            <h3 class="alert-success">Successfully {{ action_performed }} Contact</h3>
+        {% endif %}
+
 {% if contact.properties['email'] is not none %}
 <pre>
 // src/routes/contacts.py
@@ -12,8 +18,6 @@ hubspot_client.crm().contacts().basic_api().get_by_id(
 </pre>
 {% endif %}
 
-<div class="row">
-    <div class="column">
         <h3>Properties</h3>
         <form method="post">
             <fieldset>

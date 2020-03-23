@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from helpers.hubspot import create_client
+from helpers.session import SessionKey
 from auth import auth_required
 from hubspot.crm.properties import PropertyUpdate, PropertyCreate
 from hubspot.crm import ObjectType
@@ -13,7 +14,11 @@ def list():
     hubspot = create_client()
     properties = hubspot.crm().properties().core_api().get_all(ObjectType.CONTACTS)
 
-    return render_template('properties/list.html', properties=properties.results)
+    return render_template(
+        'properties/list.html',
+        properties=properties.results,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
+    )
 
 
 @module.route('/new')
@@ -39,6 +44,7 @@ def create():
         ObjectType.CONTACTS,
         property_create=property_create
     )
+    session[SessionKey.ACTION_PERFORMED] = 'created'
     return redirect(
         url_for('properties.show', name=property.name),
         code=302
@@ -54,6 +60,7 @@ def show(name):
     return render_template(
         'properties/show.html',
         property=property,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
     )
 
 
@@ -63,6 +70,7 @@ def update(name):
     property_update = PropertyUpdate(**request.form)
     hubspot = create_client()
     hubspot.crm().properties().core_api().update(ObjectType.CONTACTS, name, property_update=property_update)
+    session[SessionKey.ACTION_PERFORMED] = 'updated'
     return redirect(request.url, code=302)
 
 
@@ -71,4 +79,5 @@ def update(name):
 def delete(name):
     hubspot = create_client()
     hubspot.crm().properties().core_api().archive(ObjectType.CONTACTS, name)
+    session[SessionKey.ACTION_PERFORMED] = 'deleted'
     return redirect(url_for('properties.list'), code=302)
