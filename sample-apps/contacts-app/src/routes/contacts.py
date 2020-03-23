@@ -1,6 +1,7 @@
 import io, csv
-from flask import Blueprint, render_template, request, redirect, url_for, make_response
+from flask import Blueprint, render_template, request, redirect, url_for, make_response, session
 from helpers.hubspot import create_client
+from helpers.session import SessionKey
 from auth import auth_required
 from hubspot.crm import ObjectType
 from hubspot.crm.contacts import PublicObjectSearchRequest, SimplePublicObject, SimplePublicObjectInput, Filter, FilterGroup
@@ -18,7 +19,11 @@ def list():
     }])
     contacts_page = hubspot.crm().contacts().search_api().do_search(public_object_search_request=search_request)
 
-    return render_template('contacts/list.html', contacts=contacts_page.results)
+    return render_template(
+        'contacts/list.html',
+        contacts=contacts_page.results,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
+    )
 
 
 @module.route('/new')
@@ -57,6 +62,7 @@ def show(contact_id):
         contact=contact,
         properties_dict=editable_properties_dict,
         owners=hubspot.crm().owners().get_all(),
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
     )
 
 
@@ -66,6 +72,7 @@ def create():
     properties = SimplePublicObjectInput(request.form)
     hubspot = create_client()
     contact = hubspot.crm().contacts().basic_api().create(simple_public_object_input=properties)
+    session[SessionKey.ACTION_PERFORMED] = 'created'
     return redirect(url_for('contacts.show', contact_id=contact.id))
 
 
@@ -75,6 +82,7 @@ def update(contact_id):
     properties = SimplePublicObject(properties=request.form)
     hubspot = create_client()
     hubspot.crm().contacts().basic_api().update(contact_id, simple_public_object_input=properties)
+    session[SessionKey.ACTION_PERFORMED] = 'updated'
     return redirect(request.url)
 
 
@@ -105,6 +113,7 @@ def search():
 def delete(contact_id):
     hubspot = create_client()
     hubspot.crm().contacts().basic_api().archive(contact_id)
+    session[SessionKey.ACTION_PERFORMED] = 'deleted'
     return redirect(url_for('contacts.list'))
 
 
