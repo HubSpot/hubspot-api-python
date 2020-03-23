@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="column">
+        <h3>Choose contacts to associate</h3>
+
+        <form>
+            <fieldset>
+                <input type="text" name="search" placeholder="Search by email.." value="{{ search }}">
+            </fieldset>
+        </form>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.id }}</td>
+                        <td>{{ contact.properties.email }}</td>
+                        <td>
+                            <a
+                                href="{{ url_for('associations.create', company_id=company.id, contact_id=contact.id) }}">
+                                    <input type="button" value="Associate" class="button-primary"/>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
