@@ -1,9 +1,7 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from hubspot.crm.companies import PublicObjectSearchRequest, Filter, FilterGroup, SimplePublicObject, SimplePublicObjectInput
-from hubspot.crm.associations import BatchInputPublicObjectId
-from hubspot.crm.contacts import BatchReadInputSimplePublicObjectId, SimplePublicObjectId
-from hubspot.crm import ObjectType
 from helpers.hubspot import create_client
+from helpers.session import SessionKey
 from auth import auth_required
 
 
@@ -20,7 +18,11 @@ def list():
     }])
     companies_page = hubspot.crm().companies().search_api().do_search(public_object_search_request=search_request)
 
-    return render_template('companies/list.html', companies=companies_page.results)
+    return render_template(
+        'companies/list.html',
+        companies=companies_page.results,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
+    )
 
 
 @module.route('/new')
@@ -35,6 +37,7 @@ def create():
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
     company = hubspot.crm().companies().basic_api().create(simple_public_object_input=properties)
+    session[SessionKey.ACTION_PERFORMED] = 'created'
     return redirect(url_for('companies.show', company_id=company.id))
 
 
@@ -44,7 +47,11 @@ def show(company_id):
     hubspot = create_client()
     company = hubspot.crm().companies().basic_api().get_by_id(company_id)
 
-    return render_template('companies/show.html', company=company)
+    return render_template(
+        'companies/show.html',
+        company=company,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
+    )
 
 
 @module.route('/<company_id>', methods=['POST'])
@@ -53,6 +60,7 @@ def update(company_id):
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
     company = hubspot.crm().companies().basic_api().update(company_id, simple_public_object_input=properties)
+    session[SessionKey.ACTION_PERFORMED] = 'updated'
     return redirect(url_for('companies.show', company_id=company.id))
 
 
@@ -61,10 +69,6 @@ def update(company_id):
 def search():
     hubspot = create_client()
     search = request.args.get('search')
-
-    from pprint import pprint
-
-    pprint(search)
 
     filter = Filter(
         property_name='domain',
@@ -87,5 +91,6 @@ def search():
 def delete(company_id):
     hubspot = create_client()
     hubspot.crm().companies().basic_api().archive(company_id)
+    session[SessionKey.ACTION_PERFORMED] = 'deleted'
     return redirect(url_for('companies.list'))
 

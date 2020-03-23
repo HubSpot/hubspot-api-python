@@ -4,6 +4,11 @@
 
 <div class="row">
     <div class="column">
+
+        {% if action_performed %}
+            <h3 class="alert-success">Successfully {{ action_performed }} Association</h3>
+        {% endif %}
+
         <h3>Associated Contacts</h3>
 <pre>
 // src/routes/companies.py

@@ -4,6 +4,11 @@
 
 <div class="row">
     <div class="column">
+
+        {% if action_performed %}
+            <h3 class="alert-success">Successfully {{ action_performed }} Company</h3>
+        {% endif %}
+
         <h3>Company Properties</h3>
 
         {% if company.id is not none %}

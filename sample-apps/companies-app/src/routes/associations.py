@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for
-from hubspot.crm.contacts import PublicObjectSearchRequest, Filter, FilterGroup, SimplePublicObject, SimplePublicObjectInput
+from flask import Blueprint, render_template, request, redirect, url_for, session
+from hubspot.crm.contacts import PublicObjectSearchRequest, Filter, FilterGroup
 from hubspot.crm.associations import BatchInputPublicObjectId, BatchInputPublicAssociation, PublicAssociation
 from hubspot.crm.contacts import BatchReadInputSimplePublicObjectId, SimplePublicObjectId
 from hubspot.crm import ObjectType
 from helpers.hubspot import create_client
+from helpers.session import SessionKey
 from auth import auth_required
 
 
@@ -31,7 +32,8 @@ def list(company_id):
     return render_template(
         'associations/list.html',
         company=company,
-        associated_contacts=associated_contacts.results
+        associated_contacts=associated_contacts.results,
+        action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
     )
 
 
@@ -82,6 +84,7 @@ def create(company_id, contact_id):
         ObjectType.CONTACTS,
         batch_input_public_association=batch_input_public_association,
     )
+    session[SessionKey.ACTION_PERFORMED] = 'created'
 
     return redirect(url_for('associations.list', company_id=company_id))
 
@@ -102,5 +105,6 @@ def delete(company_id, contact_id):
         ObjectType.CONTACTS,
         batch_input_public_association=batch_input_public_association,
     )
+    session[SessionKey.ACTION_PERFORMED] = 'deleted'
 
     return redirect(url_for('associations.list', company_id=company_id))
