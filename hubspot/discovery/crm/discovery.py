@@ -11,6 +11,7 @@ from .properties.discovery import Discovery as PropertiesDiscovery
 from .quotes.discovery import Discovery as QuotesDiscovery
 from .owners.discovery import Discovery as OwnersDiscovery
 from .tickets.discovery import Discovery as TicketsDiscovery
+from .timeline.discovery import Discovery as TimelineDiscovery
 
 
 class Discovery(DiscoveryBase):
@@ -49,3 +50,7 @@ class Discovery(DiscoveryBase):
 
     def tickets(self):
         return TicketsDiscovery(self.config)
+
+    def timeline(self):
+        return TimelineDiscovery(self.config)
+
