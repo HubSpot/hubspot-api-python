@@ -145,7 +145,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages/{stageId}', 'DELETE',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -269,7 +269,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages', 'POST',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages', 'POST',
             path_params,
             query_params,
             header_params,
@@ -389,7 +389,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages', 'GET',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages', 'GET',
             path_params,
             query_params,
             header_params,
@@ -517,7 +517,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages/{stageId}', 'GET',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -649,7 +649,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages/{stageId}', 'PUT',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -785,7 +785,7 @@ class PipelineStagesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}/stages/{stageId}', 'PATCH',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}', 'PATCH',
             path_params,
             query_params,
             header_params,

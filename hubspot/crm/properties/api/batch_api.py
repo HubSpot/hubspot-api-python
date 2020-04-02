@@ -137,7 +137,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/batch/archive', 'POST',
+            '/crm/v3/properties/{objectType}/batch/archive', 'POST',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/batch/create', 'POST',
+            '/crm/v3/properties/{objectType}/batch/create', 'POST',
             path_params,
             query_params,
             header_params,
@@ -369,7 +369,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/batch/read', 'POST',
+            '/crm/v3/properties/{objectType}/batch/read', 'POST',
             path_params,
             query_params,
             header_params,

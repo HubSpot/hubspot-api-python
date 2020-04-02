@@ -127,7 +127,7 @@ class DefaultApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/refresh-tokens/{token}', 'DELETE',
+            '/oauth/v1/refresh-tokens/{token}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class DefaultApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/token', 'POST',
+            '/oauth/v1/token', 'POST',
             path_params,
             query_params,
             header_params,
@@ -359,7 +359,7 @@ class DefaultApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/access-tokens/{token}', 'GET',
+            '/oauth/v1/access-tokens/{token}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -465,7 +465,7 @@ class DefaultApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/v1/refresh-tokens/{token}', 'GET',
+            '/oauth/v1/refresh-tokens/{token}', 'GET',
             path_params,
             query_params,
             header_params,

@@ -137,7 +137,7 @@ class CoreApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{propertyName}', 'DELETE',
+            '/crm/v3/properties/{objectType}/{propertyName}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class CoreApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}', 'POST',
+            '/crm/v3/properties/{objectType}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -365,7 +365,7 @@ class CoreApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}', 'GET',
+            '/crm/v3/properties/{objectType}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -485,7 +485,7 @@ class CoreApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{propertyName}', 'GET',
+            '/crm/v3/properties/{objectType}/{propertyName}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -609,7 +609,7 @@ class CoreApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{propertyName}', 'PATCH',
+            '/crm/v3/properties/{objectType}/{propertyName}', 'PATCH',
             path_params,
             query_params,
             header_params,

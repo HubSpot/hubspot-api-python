@@ -113,6 +113,8 @@ class PublicObjectSearchRequest(object):
         :param sorts: The sorts of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
+        if self.local_vars_configuration.client_side_validation and sorts is None:  # noqa: E501
+            raise ValueError("Invalid value for `sorts`, must not be `None`")  # noqa: E501
 
         self._sorts = sorts
 
@@ -155,6 +157,8 @@ class PublicObjectSearchRequest(object):
         :param properties: The properties of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -176,6 +180,8 @@ class PublicObjectSearchRequest(object):
         :param limit: The limit of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
+        if self.local_vars_configuration.client_side_validation and limit is None:  # noqa: E501
+            raise ValueError("Invalid value for `limit`, must not be `None`")  # noqa: E501
 
         self._limit = limit
 
@@ -197,6 +203,8 @@ class PublicObjectSearchRequest(object):
         :param after: The after of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
+        if self.local_vars_configuration.client_side_validation and after is None:  # noqa: E501
+            raise ValueError("Invalid value for `after`, must not be `None`")  # noqa: E501
 
         self._after = after
 

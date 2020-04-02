@@ -131,7 +131,7 @@ class DefaultApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{ownerId}', 'GET',
+            '/crm/v3/owners/{ownerId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -241,7 +241,7 @@ class DefaultApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/', 'GET',
+            '/crm/v3/owners/', 'GET',
             path_params,
             query_params,
             header_params,

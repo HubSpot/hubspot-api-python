@@ -37,9 +37,9 @@ class BatchResponsePublicAssociationMulti(object):
         'num_errors': 'int',
         'errors': 'list[Error]',
         'status': 'str',
-        'requested_at': 'str',
-        'started_at': 'str',
-        'completed_at': 'str'
+        'requested_at': 'datetime',
+        'started_at': 'datetime',
+        'completed_at': 'datetime'
     }
 
     attribute_map = {
@@ -70,7 +70,8 @@ class BatchResponsePublicAssociationMulti(object):
         self.results = results
         if num_errors is not None:
             self.num_errors = num_errors
-        self.errors = errors
+        if errors is not None:
+            self.errors = errors
         self.status = status
         if requested_at is not None:
             self.requested_at = requested_at
@@ -139,8 +140,6 @@ class BatchResponsePublicAssociationMulti(object):
         :param errors: The errors of this BatchResponsePublicAssociationMulti.  # noqa: E501
         :type: list[Error]
         """
-        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
-            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
 
         self._errors = errors
 
@@ -179,7 +178,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :return: The requested_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._requested_at
 
@@ -189,7 +188,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :param requested_at: The requested_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._requested_at = requested_at
@@ -200,7 +199,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :return: The started_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._started_at
 
@@ -210,7 +209,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :param started_at: The started_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
             raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
@@ -223,7 +222,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :return: The completed_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._completed_at
 
@@ -233,7 +232,7 @@ class BatchResponsePublicAssociationMulti(object):
 
 
         :param completed_at: The completed_at of this BatchResponsePublicAssociationMulti.  # noqa: E501
-        :type: str
+        :type: datetime
         """
         if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
             raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501

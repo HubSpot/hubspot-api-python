@@ -36,6 +36,7 @@ class Error(object):
         'message': 'str',
         'correlation_id': 'str',
         'category': 'str',
+        'sub_category': 'str',
         'errors': 'list[ErrorDetail]',
         'context': 'dict(str, list[str])',
         'links': 'dict(str, str)'
@@ -45,12 +46,13 @@ class Error(object):
         'message': 'message',
         'correlation_id': 'correlationId',
         'category': 'category',
+        'sub_category': 'subCategory',
         'errors': 'errors',
         'context': 'context',
         'links': 'links'
     }
 
-    def __init__(self, message=None, correlation_id=None, category=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, message=None, correlation_id=None, category=None, sub_category=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """Error - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class Error(object):
         self._message = None
         self._correlation_id = None
         self._category = None
+        self._sub_category = None
         self._errors = None
         self._context = None
         self._links = None
@@ -67,6 +70,8 @@ class Error(object):
         self.message = message
         self.correlation_id = correlation_id
         self.category = category
+        if sub_category is not None:
+            self.sub_category = sub_category
         if errors is not None:
             self.errors = errors
         if context is not None:
@@ -148,6 +153,29 @@ class Error(object):
             raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
 
         self._category = category
+
+    @property
+    def sub_category(self):
+        """Gets the sub_category of this Error.  # noqa: E501
+
+        A specific category that contains more specific detail about the error  # noqa: E501
+
+        :return: The sub_category of this Error.  # noqa: E501
+        :rtype: str
+        """
+        return self._sub_category
+
+    @sub_category.setter
+    def sub_category(self, sub_category):
+        """Sets the sub_category of this Error.
+
+        A specific category that contains more specific detail about the error  # noqa: E501
+
+        :param sub_category: The sub_category of this Error.  # noqa: E501
+        :type: str
+        """
+
+        self._sub_category = sub_category
 
     @property
     def errors(self):

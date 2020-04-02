@@ -70,7 +70,8 @@ class BatchResponseSimplePublicObject(object):
         self.results = results
         if num_errors is not None:
             self.num_errors = num_errors
-        self.errors = errors
+        if errors is not None:
+            self.errors = errors
         self.status = status
         if requested_at is not None:
             self.requested_at = requested_at
@@ -139,8 +140,6 @@ class BatchResponseSimplePublicObject(object):
         :param errors: The errors of this BatchResponseSimplePublicObject.  # noqa: E501
         :type: list[Error]
         """
-        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
-            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
 
         self._errors = errors
 

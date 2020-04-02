@@ -97,7 +97,7 @@ class Configuration(object):
       )
     """
 
-    def __init__(self, host="https://api.hubapi.com/crm/v3/pipelines",
+    def __init__(self, host="https://api.hubapi.com",
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  signing_info=None):
@@ -197,7 +197,7 @@ class Configuration(object):
         """Adding retries to override urllib3 default value 3
         """
         # Disable client side validation
-        self.client_side_validation = True
+        self.client_side_validation = False
 
     @property
     def logger_file(self):
@@ -356,7 +356,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://api.hubapi.com/crm/v3/pipelines",
+                'url': "https://api.hubapi.com/",
                 'description': "No description provided",
             }
         ]
