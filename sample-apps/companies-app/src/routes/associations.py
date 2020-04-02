@@ -68,13 +68,14 @@ def new(company_id):
     )
 
 
-@module.route('/company/<company_id>/contacts/<contact_id>/create')
+@module.route('/company/<company_id>/contact/<contact_id>/create')
 @auth_required
 def create(company_id, contact_id):
     hubspot = create_client()
     association = PublicAssociation(
         _from=company_id,
         to=contact_id,
+        type='contact_to_company',
     )
     batch_input_public_association = BatchInputPublicAssociation(
         inputs=[association]
@@ -96,6 +97,7 @@ def delete(company_id, contact_id):
     association = PublicAssociation(
         _from=company_id,
         to=contact_id,
+        type='contact_to_company',
     )
     batch_input_public_association = BatchInputPublicAssociation(
         inputs=[association]
