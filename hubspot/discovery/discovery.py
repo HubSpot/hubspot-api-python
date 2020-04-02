@@ -1,6 +1,7 @@
 from .discovery_base import DiscoveryBase
 from .auth.discovery import Discovery as AuthDiscovery
 from .crm.discovery import Discovery as CrmDiscovery
+from .webhooks.discovery import Discovery as WebhooksDiscovery
 
 
 class Discovery(DiscoveryBase):
@@ -9,3 +10,6 @@ class Discovery(DiscoveryBase):
 
     def crm(self):
         return CrmDiscovery(self.config)
+
+    def webhooks(self):
+        return WebhooksDiscovery(self.config)
