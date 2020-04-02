@@ -34,15 +34,17 @@ class PublicAssociation(object):
     """
     openapi_types = {
         '_from': 'PublicObjectId',
-        'to': 'PublicObjectId'
+        'to': 'PublicObjectId',
+        'type': 'str'
     }
 
     attribute_map = {
         '_from': 'from',
-        'to': 'to'
+        'to': 'to',
+        'type': 'type'
     }
 
-    def __init__(self, _from=None, to=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, _from=None, to=None, type=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -50,10 +52,12 @@ class PublicAssociation(object):
 
         self.__from = None
         self._to = None
+        self._type = None
         self.discriminator = None
 
         self._from = _from
         self.to = to
+        self.type = type
 
     @property
     def _from(self):
@@ -100,6 +104,29 @@ class PublicAssociation(object):
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
+
+    @property
+    def type(self):
+        """Gets the type of this PublicAssociation.  # noqa: E501
+
+
+        :return: The type of this PublicAssociation.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this PublicAssociation.
+
+
+        :param type: The type of this PublicAssociation.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

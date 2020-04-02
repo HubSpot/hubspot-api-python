@@ -85,7 +85,8 @@ class PublicOwner(object):
         self.created_at = created_at
         self.updated_at = updated_at
         self.archived = archived
-        self.teams = teams
+        if teams is not None:
+            self.teams = teams
 
     @property
     def id(self):
@@ -281,8 +282,6 @@ class PublicOwner(object):
         :param teams: The teams of this PublicOwner.  # noqa: E501
         :type: list[PublicTeam]
         """
-        if self.local_vars_configuration.client_side_validation and teams is None:  # noqa: E501
-            raise ValueError("Invalid value for `teams`, must not be `None`")  # noqa: E501
 
         self._teams = teams
 

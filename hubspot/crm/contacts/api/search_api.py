@@ -129,7 +129,7 @@ class SearchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/contacts/search', 'POST',
+            '/crm/v3/objects/contacts/search', 'POST',
             path_params,
             query_params,
             header_params,

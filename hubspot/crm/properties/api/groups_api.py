@@ -137,7 +137,7 @@ class GroupsApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/groups/{groupName}', 'DELETE',
+            '/crm/v3/properties/{objectType}/groups/{groupName}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class GroupsApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/groups', 'POST',
+            '/crm/v3/properties/{objectType}/groups', 'POST',
             path_params,
             query_params,
             header_params,
@@ -361,7 +361,7 @@ class GroupsApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/groups', 'GET',
+            '/crm/v3/properties/{objectType}/groups', 'GET',
             path_params,
             query_params,
             header_params,
@@ -477,7 +477,7 @@ class GroupsApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/groups/{groupName}', 'GET',
+            '/crm/v3/properties/{objectType}/groups/{groupName}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -601,7 +601,7 @@ class GroupsApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/groups/{groupName}', 'PATCH',
+            '/crm/v3/properties/{objectType}/groups/{groupName}', 'PATCH',
             path_params,
             query_params,
             header_params,

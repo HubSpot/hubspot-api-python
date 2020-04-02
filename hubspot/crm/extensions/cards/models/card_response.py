@@ -81,7 +81,7 @@ class CardResponse(object):
     def id(self):
         """Gets the id of this CardResponse.  # noqa: E501
 
-        Generated unique ID for card  # noqa: E501
+        Generated unique ID for card.  # noqa: E501
 
         :return: The id of this CardResponse.  # noqa: E501
         :rtype: str
@@ -92,7 +92,7 @@ class CardResponse(object):
     def id(self, id):
         """Sets the id of this CardResponse.
 
-        Generated unique ID for card  # noqa: E501
+        Generated unique ID for card.  # noqa: E501
 
         :param id: The id of this CardResponse.  # noqa: E501
         :type: str
@@ -106,7 +106,7 @@ class CardResponse(object):
     def created_at(self):
         """Gets the created_at of this CardResponse.  # noqa: E501
 
-        When this card was created  # noqa: E501
+        When this card was created.  # noqa: E501
 
         :return: The created_at of this CardResponse.  # noqa: E501
         :rtype: datetime
@@ -117,7 +117,7 @@ class CardResponse(object):
     def created_at(self, created_at):
         """Sets the created_at of this CardResponse.
 
-        When this card was created  # noqa: E501
+        When this card was created.  # noqa: E501
 
         :param created_at: The created_at of this CardResponse.  # noqa: E501
         :type: datetime
@@ -129,7 +129,7 @@ class CardResponse(object):
     def updated_at(self):
         """Gets the updated_at of this CardResponse.  # noqa: E501
 
-        Last time this card was updated  # noqa: E501
+        The last time this card was updated.  # noqa: E501
 
         :return: The updated_at of this CardResponse.  # noqa: E501
         :rtype: datetime
@@ -140,7 +140,7 @@ class CardResponse(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this CardResponse.
 
-        Last time this card was updated  # noqa: E501
+        The last time this card was updated.  # noqa: E501
 
         :param updated_at: The updated_at of this CardResponse.  # noqa: E501
         :type: datetime
@@ -152,7 +152,7 @@ class CardResponse(object):
     def title(self):
         """Gets the title of this CardResponse.  # noqa: E501
 
-        Displayed title of this Crm Card  # noqa: E501
+        Displayed title of this card.  # noqa: E501
 
         :return: The title of this CardResponse.  # noqa: E501
         :rtype: str
@@ -163,7 +163,7 @@ class CardResponse(object):
     def title(self, title):
         """Sets the title of this CardResponse.
 
-        Displayed title of this Crm Card  # noqa: E501
+        Displayed title of this card.  # noqa: E501
 
         :param title: The title of this CardResponse.  # noqa: E501
         :type: str

@@ -63,7 +63,7 @@ class DisplayOption(object):
     def name(self):
         """Gets the name of this DisplayOption.  # noqa: E501
 
-        Json friendly unique name for option  # noqa: E501
+        JSON-friendly unique name for option.  # noqa: E501
 
         :return: The name of this DisplayOption.  # noqa: E501
         :rtype: str
@@ -74,7 +74,7 @@ class DisplayOption(object):
     def name(self, name):
         """Sets the name of this DisplayOption.
 
-        Json friendly unique name for option  # noqa: E501
+        JSON-friendly unique name for option.  # noqa: E501
 
         :param name: The name of this DisplayOption.  # noqa: E501
         :type: str
@@ -88,7 +88,7 @@ class DisplayOption(object):
     def label(self):
         """Gets the label of this DisplayOption.  # noqa: E501
 
-        Displayed text for option  # noqa: E501
+        The text that will be displayed to users for this option.  # noqa: E501
 
         :return: The label of this DisplayOption.  # noqa: E501
         :rtype: str
@@ -99,7 +99,7 @@ class DisplayOption(object):
     def label(self, label):
         """Sets the label of this DisplayOption.
 
-        Displayed text for option  # noqa: E501
+        The text that will be displayed to users for this option.  # noqa: E501
 
         :param label: The label of this DisplayOption.  # noqa: E501
         :type: str
@@ -113,7 +113,7 @@ class DisplayOption(object):
     def type(self):
         """Gets the type of this DisplayOption.  # noqa: E501
 
-        Type of option  # noqa: E501
+        The type of status.  # noqa: E501
 
         :return: The type of this DisplayOption.  # noqa: E501
         :rtype: str
@@ -124,7 +124,7 @@ class DisplayOption(object):
     def type(self, type):
         """Sets the type of this DisplayOption.
 
-        Type of option  # noqa: E501
+        The type of status.  # noqa: E501
 
         :param type: The type of this DisplayOption.  # noqa: E501
         :type: str

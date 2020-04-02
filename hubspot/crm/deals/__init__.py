@@ -31,13 +31,14 @@ from hubspot.crm.deals.exceptions import ApiValueError
 from hubspot.crm.deals.exceptions import ApiKeyError
 from hubspot.crm.deals.exceptions import ApiException
 # import models into sdk package
+from hubspot.crm.deals.models.associated_id import AssociatedId
 from hubspot.crm.deals.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
 from hubspot.crm.deals.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
 from hubspot.crm.deals.models.batch_input_simple_public_object_input import BatchInputSimplePublicObjectInput
 from hubspot.crm.deals.models.batch_read_input_simple_public_object_id import BatchReadInputSimplePublicObjectId
 from hubspot.crm.deals.models.batch_response_simple_public_object import BatchResponseSimplePublicObject
+from hubspot.crm.deals.models.collection_response_associated_id import CollectionResponseAssociatedId
 from hubspot.crm.deals.models.collection_response_simple_public_object import CollectionResponseSimplePublicObject
-from hubspot.crm.deals.models.collection_response_simple_public_object_id import CollectionResponseSimplePublicObjectId
 from hubspot.crm.deals.models.collection_response_with_total_simple_public_object import CollectionResponseWithTotalSimplePublicObject
 from hubspot.crm.deals.models.error import Error
 from hubspot.crm.deals.models.error_detail import ErrorDetail

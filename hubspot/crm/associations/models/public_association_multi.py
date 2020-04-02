@@ -34,7 +34,7 @@ class PublicAssociationMulti(object):
     """
     openapi_types = {
         '_from': 'PublicObjectId',
-        'to': 'list[PublicObjectId]'
+        'to': 'list[AssociatedId]'
     }
 
     attribute_map = {
@@ -85,7 +85,7 @@ class PublicAssociationMulti(object):
         The IDs of objects that are associated with the object identified by the ID in 'from'.  # noqa: E501
 
         :return: The to of this PublicAssociationMulti.  # noqa: E501
-        :rtype: list[PublicObjectId]
+        :rtype: list[AssociatedId]
         """
         return self._to
 
@@ -96,7 +96,7 @@ class PublicAssociationMulti(object):
         The IDs of objects that are associated with the object identified by the ID in 'from'.  # noqa: E501
 
         :param to: The to of this PublicAssociationMulti.  # noqa: E501
-        :type: list[PublicObjectId]
+        :type: list[AssociatedId]
         """
         if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501

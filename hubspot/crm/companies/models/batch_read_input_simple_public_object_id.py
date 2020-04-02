@@ -34,25 +34,30 @@ class BatchReadInputSimplePublicObjectId(object):
     """
     openapi_types = {
         'properties': 'list[str]',
+        'id_property': 'str',
         'inputs': 'list[SimplePublicObjectId]'
     }
 
     attribute_map = {
         'properties': 'properties',
+        'id_property': 'idProperty',
         'inputs': 'inputs'
     }
 
-    def __init__(self, properties=None, inputs=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, properties=None, id_property=None, inputs=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputSimplePublicObjectId - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._properties = None
+        self._id_property = None
         self._inputs = None
         self.discriminator = None
 
         self.properties = properties
+        if id_property is not None:
+            self.id_property = id_property
         self.inputs = inputs
 
     @property
@@ -77,6 +82,27 @@ class BatchReadInputSimplePublicObjectId(object):
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
+
+    @property
+    def id_property(self):
+        """Gets the id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+
+
+        :return: The id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_property
+
+    @id_property.setter
+    def id_property(self, id_property):
+        """Sets the id_property of this BatchReadInputSimplePublicObjectId.
+
+
+        :param id_property: The id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :type: str
+        """
+
+        self._id_property = id_property
 
     @property
     def inputs(self):

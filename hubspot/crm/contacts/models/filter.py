@@ -103,7 +103,7 @@ class Filter(object):
         """
         if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
             raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "ROLLING_DATE_RANGE", "TIME_UNIT_TO_DATE", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
+        allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501

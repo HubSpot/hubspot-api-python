@@ -37,7 +37,7 @@ class SimplePublicObject(object):
         'properties': 'dict(str, str)',
         'created_at': 'datetime',
         'updated_at': 'datetime',
-        'associations': 'dict(str, CollectionResponseSimplePublicObjectId)',
+        'associations': 'dict(str, CollectionResponseAssociatedId)',
         'archived': 'bool',
         'archived_at': 'datetime'
     }
@@ -71,8 +71,10 @@ class SimplePublicObject(object):
         self.properties = properties
         self.created_at = created_at
         self.updated_at = updated_at
-        self.associations = associations
-        self.archived = archived
+        if associations is not None:
+            self.associations = associations
+        if archived is not None:
+            self.archived = archived
         if archived_at is not None:
             self.archived_at = archived_at
 
@@ -174,7 +176,7 @@ class SimplePublicObject(object):
 
 
         :return: The associations of this SimplePublicObject.  # noqa: E501
-        :rtype: dict(str, CollectionResponseSimplePublicObjectId)
+        :rtype: dict(str, CollectionResponseAssociatedId)
         """
         return self._associations
 
@@ -184,10 +186,8 @@ class SimplePublicObject(object):
 
 
         :param associations: The associations of this SimplePublicObject.  # noqa: E501
-        :type: dict(str, CollectionResponseSimplePublicObjectId)
+        :type: dict(str, CollectionResponseAssociatedId)
         """
-        #if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
-        #   raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
 
         self._associations = associations
 
@@ -209,8 +209,6 @@ class SimplePublicObject(object):
         :param archived: The archived of this SimplePublicObject.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
 

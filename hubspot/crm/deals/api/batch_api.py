@@ -129,7 +129,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/deals/batch/archive', 'POST',
+            '/crm/v3/objects/deals/batch/archive', 'POST',
             path_params,
             query_params,
             header_params,
@@ -237,7 +237,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/deals/batch/create', 'POST',
+            '/crm/v3/objects/deals/batch/create', 'POST',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class BatchApi(object):
             collection_formats=collection_formats)
 
     def read_batch(self, **kwargs):  # noqa: E501
-        """Read a batch of deals by ID  # noqa: E501
+        """Read a batch of deals by internal ID, or unique property values  # noqa: E501
 
         Read a list of deals given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -279,7 +279,7 @@ class BatchApi(object):
         return self.read_batch_with_http_info(**kwargs)  # noqa: E501
 
     def read_batch_with_http_info(self, **kwargs):  # noqa: E501
-        """Read a batch of deals by ID  # noqa: E501
+        """Read a batch of deals by internal ID, or unique property values  # noqa: E501
 
         Read a list of deals given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -349,7 +349,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/deals/batch/read', 'POST',
+            '/crm/v3/objects/deals/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
@@ -457,7 +457,7 @@ class BatchApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/deals/batch/update', 'POST',
+            '/crm/v3/objects/deals/batch/update', 'POST',
             path_params,
             query_params,
             header_params,

@@ -137,7 +137,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}', 'DELETE',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -253,7 +253,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}', 'POST',
+            '/crm/v3/pipelines/{objectType}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -365,7 +365,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}', 'GET',
+            '/crm/v3/pipelines/{objectType}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -485,7 +485,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}', 'GET',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -609,7 +609,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}', 'PUT',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -737,7 +737,7 @@ class PipelinesApi(object):
         auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{objectType}/{pipelineId}', 'PATCH',
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'PATCH',
             path_params,
             query_params,
             header_params,
