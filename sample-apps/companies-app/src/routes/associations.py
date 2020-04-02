@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from hubspot.crm.contacts import PublicObjectSearchRequest, Filter, FilterGroup
-from hubspot.crm.associations import BatchInputPublicObjectId, BatchInputPublicAssociation, PublicAssociation
+from hubspot.crm.associations import (
+    BatchInputPublicObjectId, BatchInputPublicAssociation, PublicAssociation, PublicObjectId,
+)
 from hubspot.crm.contacts import BatchReadInputSimplePublicObjectId, SimplePublicObjectId
-from hubspot.crm import ObjectType
+from hubspot.crm import ObjectType, AssociationType
 from helpers.hubspot import create_client
 from helpers.session import SessionKey
 from auth import auth_required
@@ -73,9 +75,9 @@ def new(company_id):
 def create(company_id, contact_id):
     hubspot = create_client()
     association = PublicAssociation(
-        _from=company_id,
-        to=contact_id,
-        type='contact_to_company',
+        _from=PublicObjectId(id=company_id),
+        to=PublicObjectId(id=contact_id),
+        type=AssociationType.COMPANY_TO_CONTACT,
     )
     batch_input_public_association = BatchInputPublicAssociation(
         inputs=[association]
@@ -90,14 +92,14 @@ def create(company_id, contact_id):
     return redirect(url_for('associations.list', company_id=company_id))
 
 
-@module.route('/company/<company_id>/contacts/<contact_id>/delete')
+@module.route('/company/<company_id>/contact/<contact_id>/delete')
 @auth_required
 def delete(company_id, contact_id):
     hubspot = create_client()
     association = PublicAssociation(
-        _from=company_id,
-        to=contact_id,
-        type='contact_to_company',
+        _from=PublicObjectId(id=company_id),
+        to=PublicObjectId(id=contact_id),
+        type=AssociationType.COMPANY_TO_CONTACT,
     )
     batch_input_public_association = BatchInputPublicAssociation(
         inputs=[association]
