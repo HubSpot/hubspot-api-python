@@ -57,6 +57,8 @@ def show(contact_id):
     editable_properties_dict = {p.name: p for p in editable_properties}
     editable_properties_dict['hubspot_owner_id'] = {'label': 'Contact Owner'}
 
+    contact.properties = {name: prop for name, prop in contact.properties.items() if name in editable_properties_dict}
+
     return render_template(
         'contacts/show.html',
         contact=contact,
