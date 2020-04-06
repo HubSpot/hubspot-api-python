@@ -25,9 +25,9 @@ import hubspot
 
 hubspot_client = hubspot.Client.create()
 # or with api_key
-hubspot_client = huspot.Client.create(api_key='my_api_key')
+hubspot_client = hubspot.Client.create(api_key='my_api_key')
 # or with access_token
-hubspot_client = huspot.Client.create(access_token='my_access_token')
+hubspot_client = hubspot.Client.create(access_token='my_access_token')
 ```
 
 #### Retry middleware
