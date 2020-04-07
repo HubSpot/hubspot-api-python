@@ -3,7 +3,7 @@ from .associations.discovery import Discovery as AssociationsDiscovery
 from .companies.discovery import Discovery as CompaniesDiscovery
 from .contacts.discovery import Discovery as ContactsDiscovery
 from .deals.discovery import Discovery as DealsDiscovery
-from .extensions.cards.discovery import Discovery as ExtensionsCardsDiscovery
+from .extensions.discovery import Discovery as ExtensionsDiscovery
 from .line_items.discovery import Discovery as LineItemsDiscovery
 from .pipelines.discovery import Discovery as PipelinesDiscovery
 from .products.discovery import Discovery as ProductsDiscovery
@@ -27,8 +27,8 @@ class Discovery(DiscoveryBase):
     def deals(self):
         return DealsDiscovery(self.config)
 
-    def cards(self):
-        return ExtensionsCardsDiscovery(self.config)
+    def extensions(self):
+        return ExtensionsDiscovery(self.config)
         
     def line_items(self):
         return LineItemsDiscovery(self.config)
