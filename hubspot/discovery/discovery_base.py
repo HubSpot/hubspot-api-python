@@ -12,8 +12,8 @@ class DiscoveryBase:
             configuration.api_key['hapikey'] = config['api_key']
         if 'access_token' in config:
             configuration.access_token = config['access_token']
-        if 'retries' in config:
-            configuration.retries = config['retries']
+        if 'retry' in config:
+            configuration.retries = config['retry']
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 

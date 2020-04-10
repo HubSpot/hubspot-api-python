@@ -25,9 +25,10 @@ import hubspot
 
 hubspot_client = hubspot.Client.create()
 # or with api_key
-hubspot_client = huspot.Client.create(api_key='my_api_key')
+hubspot_client = huspot.Client.create(api_key='your_api_key')
 # or with access_token
-hubspot_client = huspot.Client.create(access_token='my_access_token')
+hubspot_client = huspot.Client.create()
+hubspot_client.access_token = 'your_access_token'
 ```
 
 #### Retry middleware
@@ -39,12 +40,12 @@ With internal error retry middleware:
 import hubspot
 from urllib3.util.retry import Retry
 
-retries = Retry(
+retry = Retry(
     total=3,
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
 )
-hubspot_client = huspot.Client.create(retries=retries)
+hubspot_client = hubspot.Client.create(retry=retry)
 ```
 Or with rate limit retry middleware:
 
