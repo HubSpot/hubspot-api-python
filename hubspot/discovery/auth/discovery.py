@@ -3,5 +3,6 @@ from ..discovery_base import DiscoveryBase
 
 
 class Discovery(DiscoveryBase):
+    @property
     def oauth(self):
         return OAuthDiscovery(self.config)

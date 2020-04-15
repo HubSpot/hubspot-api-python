@@ -39,11 +39,14 @@ class Client:
     def api_key(self, value):
         self.config['api_key'] = value
 
+    @property
     def auth(self):
         return AuthDiscovery(self.config)
 
+    @property
     def crm(self):
         return CrmDiscovery(self.config)
 
+    @property
     def webhooks(self):
         return WebhooksDiscovery(self.config)

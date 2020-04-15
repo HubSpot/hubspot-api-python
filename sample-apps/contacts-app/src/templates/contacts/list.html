@@ -19,7 +19,7 @@ filter_group = FilterGroup(filters=[filter])
 public_object_search_request = PublicObjectSearchRequest(
     filter_groups=[filter_group],
 )
-hubspot.crm().contacts().search_api().do_search(
+hubspot.crm.contacts.search_api.do_search(
     public_object_search_request=public_object_search_request
 )
 </pre>
@@ -34,8 +34,8 @@ hubspot.crm().contacts().search_api().do_search(
 {% if search is not defined %}
 <pre>
 // src/routes/contacts.py
-hubspot_client = hubspot.Client.create(access_token='access_token')
-contacts_page = hubspot_client.crm().contacts().basic_api().get_page()
+client = hubspot.Client.create(access_token='access_token')
+contacts_page = client.crm.contacts.basic_api.get_page()
 </pre>
 {% endif %}
 

@@ -18,7 +18,7 @@ filter_group = FilterGroup(filters=[filter])
 public_object_search_request = PublicObjectSearchRequest(
     filter_groups=[filter_group],
 )
-hubspot.crm().companies().search_api().do_search(
+hubspot.crm.companies.search_api.do_search(
     public_object_search_request=public_object_search_request
 )
 </pre>
@@ -33,8 +33,8 @@ hubspot.crm().companies().search_api().do_search(
 {% if search is not defined %}
 <pre>
 // src/routes/companies.py
-hubspot_client = hubspot.Client.create(access_token='access_token')
-companies_page = hubspot_client.crm().companies().basic_api().get_page()
+client = hubspot.Client.create(access_token='access_token')
+companies_page = client.crm.companies.basic_api.get_page()
 </pre>
 {% endif %}
 

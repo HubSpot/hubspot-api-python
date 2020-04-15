@@ -12,7 +12,7 @@ module = Blueprint('properties', __name__)
 @auth_required
 def list():
     hubspot = create_client()
-    properties = hubspot.crm().properties().core_api().get_all(ObjectType.CONTACTS)
+    properties = hubspot.crm.properties.core_api.get_all(ObjectType.CONTACTS)
 
     return render_template(
         'properties/list.html',
@@ -40,7 +40,7 @@ def new():
 def create():
     property_create = PropertyCreate(**request.form)
     hubspot = create_client()
-    property = hubspot.crm().properties().core_api().create(
+    property = hubspot.crm.properties.core_api.create(
         ObjectType.CONTACTS,
         property_create=property_create
     )
@@ -55,7 +55,7 @@ def create():
 @auth_required
 def show(name):
     hubspot = create_client()
-    property = hubspot.crm().properties().core_api().get_by_name(ObjectType.CONTACTS, name)
+    property = hubspot.crm.properties.core_api.get_by_name(ObjectType.CONTACTS, name)
 
     return render_template(
         'properties/show.html',
@@ -69,7 +69,7 @@ def show(name):
 def update(name):
     property_update = PropertyUpdate(**request.form)
     hubspot = create_client()
-    hubspot.crm().properties().core_api().update(ObjectType.CONTACTS, name, property_update=property_update)
+    hubspot.crm.properties.core_api.update(ObjectType.CONTACTS, name, property_update=property_update)
     session[SessionKey.ACTION_PERFORMED] = 'updated'
     return redirect(request.url, code=302)
 
@@ -78,6 +78,6 @@ def update(name):
 @auth_required
 def delete(name):
     hubspot = create_client()
-    hubspot.crm().properties().core_api().archive(ObjectType.CONTACTS, name)
+    hubspot.crm.properties.core_api.archive(ObjectType.CONTACTS, name)
     session[SessionKey.ACTION_PERFORMED] = 'deleted'
     return redirect(url_for('properties.list'), code=302)

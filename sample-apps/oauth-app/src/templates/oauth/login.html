@@ -3,7 +3,8 @@
 {% block content %}
 <pre>
 // src/routes/oauth.py - Generate URL for OAuth
-auth_url = hubspot.utils.oauth.get_auth_url(
+from hubspot.utils.oauth import get_auth_url
+auth_url = get_auth_url(
     scopes=('contacts',),
     client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
     redirect_uri=get_redirect_uri(),

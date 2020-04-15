@@ -67,10 +67,10 @@ hubspot_client = huspot.Client.create(retries=retries)
 ```python
 from hubspot.auth.oauth import ApiException
 
-oauth_client = hubspot_client.auth().oauth()
+oauth_client = hubspot_client.auth.oauth
 
 try:
-    tokens = oauth_client.default_api().create_token(
+    tokens = oauth_client.default_api.create_token(
         grant_type="authorization_code",
         redirect_uri='http://localhost',
         client_id='client_id',
@@ -86,10 +86,10 @@ except ApiException as e:
 ```python
 from hubspot.crm.contacts import ApiException
 
-contacts_client = hubspot_client.crm().contacts()
+contacts_client = hubspot_client.crm.contacts
 
 try:
-    contact_fetched = contacts_client.basic_api().get_by_id('contact_id')
+    contact_fetched = contacts_client.basic_api.get_by_id('contact_id')
 except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
@@ -99,7 +99,7 @@ except ApiException as e:
 get_all method is available for all major objects and works like
 
 ```python
-all_contacts = contacts_client = hubspot_client.crm().contacts().get_all()
+all_contacts = contacts_client = hubspot_client.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
