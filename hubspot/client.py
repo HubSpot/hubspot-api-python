@@ -5,8 +5,9 @@ from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
 
 
 class Client:
-    @staticmethod
+    @classmethod
     def create(
+        cls,
         api_key: str = None,
         access_token: str = None,
         retry: Retry = None,
@@ -17,7 +18,7 @@ class Client:
             'access_token': access_token,
             'retry': retry,
         }, **kwargs)
-        return Client(config)
+        return cls(config)
 
     def __init__(self, config):
         self.config = config
