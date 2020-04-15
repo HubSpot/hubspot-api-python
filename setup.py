@@ -12,8 +12,8 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "hubspot"
-VERSION = "1.0.0"
+NAME = "hubspot-api-client"
+VERSION = "1.0.0-beta"
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,10 +28,10 @@ setup(
     packages=find_packages(),
     version=VERSION,
     description="HubSpot API client",
-    url="",
+    url="https://github.com/HubSpot/hubspot-api-python",
     author='HubSpot',
-    author_email='info@hubspot.com',
+    author_email='support@hubspot.com',
     install_requires=REQUIRES,
-    #packages=["hubspot",]
+    python_requires=">=3.4",
     include_package_data=True,
 )
