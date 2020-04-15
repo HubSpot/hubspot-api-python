@@ -36,13 +36,13 @@ class TypesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_types(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def get_all(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
         """List association types  # noqa: E501
 
         List all the valid association types available between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_types(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.get_all(from_object_type, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -60,15 +60,15 @@ class TypesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_types_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
+        return self.get_all_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
 
-    def get_types_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def get_all_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
         """List association types  # noqa: E501
 
         List all the valid association types available between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_types_with_http_info(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.get_all_with_http_info(from_object_type, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -100,18 +100,18 @@ class TypesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_types" % key
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'from_object_type' is set
         if self.api_client.client_side_validation and ('from_object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['from_object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `from_object_type` when calling `get_types`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `from_object_type` when calling `get_all`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ('to_object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_types`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 

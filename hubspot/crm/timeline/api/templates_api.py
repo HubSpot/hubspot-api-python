@@ -36,13 +36,13 @@ class TemplatesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_event_template(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def archive(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Deletes an event template for the app  # noqa: E501
 
         This will delete the event template. All events associated with it will be removed from search and the timeline UI.  There is no recovery from this option, so it's highly recommended that you stop using any events for a template before deleting it.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_event_template(event_template_id, app_id, async_req=True)
+        >>> thread = api.archive(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -60,15 +60,15 @@ class TemplatesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_event_template_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
 
-    def archive_event_template_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Deletes an event template for the app  # noqa: E501
 
         This will delete the event template. All events associated with it will be removed from search and the timeline UI.  There is no recovery from this option, so it's highly recommended that you stop using any events for a template before deleting it.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_event_template_with_http_info(event_template_id, app_id, async_req=True)
+        >>> thread = api.archive_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -100,18 +100,18 @@ class TemplatesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_event_template" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive_event_template`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `archive_event_template`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -152,13 +152,13 @@ class TemplatesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_event_template(self, app_id, **kwargs):  # noqa: E501
+    def create(self, app_id, **kwargs):  # noqa: E501
         """Create an event template for your app  # noqa: E501
 
         Event templates define the general structure for a custom timeline event. This includes formatted copy for its heading and details, as well as any custom property definitions. The event could be something like viewing a video, registering for a webinar, or filling out a survey. A single app can define multiple event templates.  Event templates will be created for contacts by default, but they can be created for companies and deals as well.   Each event template contains its own set of tokens and `Markdown` templates. These tokens can be associated with any CRM object properties via the `objectPropertyName` field to fully build out CRM objects.  You must create an event template before you can create events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_event_template(app_id, async_req=True)
+        >>> thread = api.create(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -176,15 +176,15 @@ class TemplatesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_event_template_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.create_with_http_info(app_id, **kwargs)  # noqa: E501
 
-    def create_event_template_with_http_info(self, app_id, **kwargs):  # noqa: E501
+    def create_with_http_info(self, app_id, **kwargs):  # noqa: E501
         """Create an event template for your app  # noqa: E501
 
         Event templates define the general structure for a custom timeline event. This includes formatted copy for its heading and details, as well as any custom property definitions. The event could be something like viewing a video, registering for a webinar, or filling out a survey. A single app can define multiple event templates.  Event templates will be created for contacts by default, but they can be created for companies and deals as well.   Each event template contains its own set of tokens and `Markdown` templates. These tokens can be associated with any CRM object properties via the `objectPropertyName` field to fully build out CRM objects.  You must create an event template before you can create events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_event_template_with_http_info(app_id, async_req=True)
+        >>> thread = api.create_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -216,14 +216,14 @@ class TemplatesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_event_template" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `create_event_template`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -268,13 +268,13 @@ class TemplatesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_all_event_templates(self, app_id, **kwargs):  # noqa: E501
+    def get_all(self, app_id, **kwargs):  # noqa: E501
         """List all event templates for your app  # noqa: E501
 
         Use this to list all event templates owned by your app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_all_event_templates(app_id, async_req=True)
+        >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -291,15 +291,15 @@ class TemplatesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_all_event_templates_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
-    def get_all_event_templates_with_http_info(self, app_id, **kwargs):  # noqa: E501
+    def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
         """List all event templates for your app  # noqa: E501
 
         Use this to list all event templates owned by your app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_all_event_templates_with_http_info(app_id, async_req=True)
+        >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -330,14 +330,14 @@ class TemplatesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_all_event_templates" % key
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all_event_templates`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
@@ -376,13 +376,13 @@ class TemplatesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_event_template_by_id(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def get_by_id(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Gets a specific event template for your app  # noqa: E501
 
         View the current state of a specific template and its tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_event_template_by_id(event_template_id, app_id, async_req=True)
+        >>> thread = api.get_by_id(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -400,15 +400,15 @@ class TemplatesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_event_template_by_id_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
+        return self.get_by_id_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
 
-    def get_event_template_by_id_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def get_by_id_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Gets a specific event template for your app  # noqa: E501
 
         View the current state of a specific template and its tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_event_template_by_id_with_http_info(event_template_id, app_id, async_req=True)
+        >>> thread = api.get_by_id_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -440,18 +440,18 @@ class TemplatesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_event_template_by_id" % key
+                    " to method get_by_id" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_event_template_by_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_event_template_by_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
@@ -492,13 +492,13 @@ class TemplatesApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_event_template(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def update(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Update an existing event template  # noqa: E501
 
         Updates an existing template and its tokens. This is primarily used to update the headerTemplate/detailTemplate, and those changes will take effect for existing events.  You can also update or replace all the tokens in the template here instead of doing individual API calls on the `/tokens` endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event_template(event_template_id, app_id, async_req=True)
+        >>> thread = api.update(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -517,15 +517,15 @@ class TemplatesApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_event_template_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
+        return self.update_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
 
-    def update_event_template_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def update_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Update an existing event template  # noqa: E501
 
         Updates an existing template and its tokens. This is primarily used to update the headerTemplate/detailTemplate, and those changes will take effect for existing events.  You can also update or replace all the tokens in the template here instead of doing individual API calls on the `/tokens` endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event_template_with_http_info(event_template_id, app_id, async_req=True)
+        >>> thread = api.update_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -558,18 +558,18 @@ class TemplatesApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_event_template" % key
+                    " to method update" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `update_event_template`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `update_event_template`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 

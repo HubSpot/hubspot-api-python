@@ -36,12 +36,12 @@ class AssociationsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_association(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
+    def archive(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
         """Remove an association between two contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_association(contact_id, to_object_type, to_object_id, association_type, async_req=True)
+        >>> thread = api.archive(contact_id, to_object_type, to_object_id, association_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -61,14 +61,14 @@ class AssociationsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_association_with_http_info(contact_id, to_object_type, to_object_id, association_type, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(contact_id, to_object_type, to_object_id, association_type, **kwargs)  # noqa: E501
 
-    def archive_association_with_http_info(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
         """Remove an association between two contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_association_with_http_info(contact_id, to_object_type, to_object_id, association_type, async_req=True)
+        >>> thread = api.archive_with_http_info(contact_id, to_object_type, to_object_id, association_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -102,26 +102,26 @@ class AssociationsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_association" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'contact_id' is set
         if self.api_client.client_side_validation and ('contact_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['contact_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `contact_id` when calling `archive_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `contact_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ('to_object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `archive_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `archive`")  # noqa: E501
         # verify the required parameter 'to_object_id' is set
         if self.api_client.client_side_validation and ('to_object_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_id` when calling `archive_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'association_type' is set
         if self.api_client.client_side_validation and ('association_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['association_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `association_type` when calling `archive_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `association_type` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -166,12 +166,12 @@ class AssociationsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_association(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
+    def create(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
         """Associate two contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_association(contact_id, to_object_type, to_object_id, association_type, async_req=True)
+        >>> thread = api.create(contact_id, to_object_type, to_object_id, association_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -191,14 +191,14 @@ class AssociationsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_association_with_http_info(contact_id, to_object_type, to_object_id, association_type, **kwargs)  # noqa: E501
+        return self.create_with_http_info(contact_id, to_object_type, to_object_id, association_type, **kwargs)  # noqa: E501
 
-    def create_association_with_http_info(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
+    def create_with_http_info(self, contact_id, to_object_type, to_object_id, association_type, **kwargs):  # noqa: E501
         """Associate two contacts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_association_with_http_info(contact_id, to_object_type, to_object_id, association_type, async_req=True)
+        >>> thread = api.create_with_http_info(contact_id, to_object_type, to_object_id, association_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -232,26 +232,26 @@ class AssociationsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_association" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'contact_id' is set
         if self.api_client.client_side_validation and ('contact_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['contact_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `contact_id` when calling `create_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `contact_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ('to_object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `create_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `create`")  # noqa: E501
         # verify the required parameter 'to_object_id' is set
         if self.api_client.client_side_validation and ('to_object_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_id` when calling `create_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'association_type' is set
         if self.api_client.client_side_validation and ('association_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['association_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `association_type` when calling `create_association`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `association_type` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -296,12 +296,12 @@ class AssociationsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_associations(self, contact_id, to_object_type, **kwargs):  # noqa: E501
+    def get_all(self, contact_id, to_object_type, **kwargs):  # noqa: E501
         """List associations of a contact by type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_associations(contact_id, to_object_type, async_req=True)
+        >>> thread = api.get_all(contact_id, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -319,14 +319,14 @@ class AssociationsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_associations_with_http_info(contact_id, to_object_type, **kwargs)  # noqa: E501
+        return self.get_all_with_http_info(contact_id, to_object_type, **kwargs)  # noqa: E501
 
-    def get_associations_with_http_info(self, contact_id, to_object_type, **kwargs):  # noqa: E501
+    def get_all_with_http_info(self, contact_id, to_object_type, **kwargs):  # noqa: E501
         """List associations of a contact by type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_associations_with_http_info(contact_id, to_object_type, async_req=True)
+        >>> thread = api.get_all_with_http_info(contact_id, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -358,18 +358,18 @@ class AssociationsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_associations" % key
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'contact_id' is set
         if self.api_client.client_side_validation and ('contact_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['contact_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `contact_id` when calling `get_associations`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `contact_id` when calling `get_all`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ('to_object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['to_object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_associations`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 

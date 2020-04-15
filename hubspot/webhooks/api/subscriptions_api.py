@@ -36,134 +36,18 @@ class SubscriptionsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def delete_subscription(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """Delete a subscription  # noqa: E501
+    def create(self, app_id, subscription_create_request, **kwargs):  # noqa: E501
+        """Subscribe to an event  # noqa: E501
 
-        Permanently deletes a subscription. This cannot be undone.  # noqa: E501
+        Creates a new webhook subscription for the given app. Each subscription in an app must be unique.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_subscription(subscription_id, app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int subscription_id: The ID of subscription to delete. (required)
-        :param int app_id: The ID of the target app. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.delete_subscription_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
-
-    def delete_subscription_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """Delete a subscription  # noqa: E501
-
-        Permanently deletes a subscription. This cannot be undone.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_subscription_with_http_info(subscription_id, app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int subscription_id: The ID of subscription to delete. (required)
-        :param int app_id: The ID of the target app. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['subscription_id', 'app_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_subscription" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscription_id` when calling `delete_subscription`")  # noqa: E501
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `delete_subscription`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'subscription_id' in local_var_params:
-            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
-        if 'app_id' in local_var_params:
-            path_params['appId'] = local_var_params['app_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/webhooks/v3/{appId}/subscriptions/{subscriptionId}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_subscription(self, app_id, subscription_id, **kwargs):  # noqa: E501
-        """Get subscription  # noqa: E501
-
-        Returns details about a subscription.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_subscription(app_id, subscription_id, async_req=True)
+        >>> thread = api.create(app_id, subscription_create_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param int app_id: The ID of the target app. (required)
-        :param int subscription_id: The ID of the target subscription. (required)
+        :param SubscriptionCreateRequest subscription_create_request: Details about the new subscription. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -176,244 +60,20 @@ class SubscriptionsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_subscription_with_http_info(app_id, subscription_id, **kwargs)  # noqa: E501
+        return self.create_with_http_info(app_id, subscription_create_request, **kwargs)  # noqa: E501
 
-    def get_subscription_with_http_info(self, app_id, subscription_id, **kwargs):  # noqa: E501
-        """Get subscription  # noqa: E501
-
-        Returns details about a subscription.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_subscription_with_http_info(app_id, subscription_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param int subscription_id: The ID of the target subscription. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SubscriptionResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['app_id', 'subscription_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_subscription" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_subscription`")  # noqa: E501
-        # verify the required parameter 'subscription_id' is set
-        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscription_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscription_id` when calling `get_subscription`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'app_id' in local_var_params:
-            path_params['appId'] = local_var_params['app_id']  # noqa: E501
-        if 'subscription_id' in local_var_params:
-            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/webhooks/v3/{appId}/subscriptions/{subscriptionId}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SubscriptionResponse',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_subscriptions(self, app_id, **kwargs):  # noqa: E501
-        """Get subscription details  # noqa: E501
-
-        Returns full details for all existing subscriptions for the given app.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_subscriptions(app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SubscriptionListResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_subscriptions_with_http_info(app_id, **kwargs)  # noqa: E501
-
-    def get_subscriptions_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Get subscription details  # noqa: E501
-
-        Returns full details for all existing subscriptions for the given app.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_subscriptions_with_http_info(app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SubscriptionListResponse, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['app_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_subscriptions" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_subscriptions`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'app_id' in local_var_params:
-            path_params['appId'] = local_var_params['app_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/webhooks/v3/{appId}/subscriptions', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SubscriptionListResponse',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def subscribe(self, app_id, **kwargs):  # noqa: E501
+    def create_with_http_info(self, app_id, subscription_create_request, **kwargs):  # noqa: E501
         """Subscribe to an event  # noqa: E501
 
         Creates a new webhook subscription for the given app. Each subscription in an app must be unique.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.subscribe(app_id, async_req=True)
+        >>> thread = api.create_with_http_info(app_id, subscription_create_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param int app_id: The ID of the target app. (required)
-        :param SubscriptionCreateRequest subscription_create_request: Details about the new subscription.
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SubscriptionResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.subscribe_with_http_info(app_id, **kwargs)  # noqa: E501
-
-    def subscribe_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Subscribe to an event  # noqa: E501
-
-        Creates a new webhook subscription for the given app. Each subscription in an app must be unique.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.subscribe_with_http_info(app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param SubscriptionCreateRequest subscription_create_request: Details about the new subscription.
+        :param SubscriptionCreateRequest subscription_create_request: Details about the new subscription. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -440,14 +100,18 @@ class SubscriptionsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method subscribe" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `subscribe`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
+        # verify the required parameter 'subscription_create_request' is set
+        if self.api_client.client_side_validation and ('subscription_create_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_create_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_create_request` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -492,13 +156,353 @@ class SubscriptionsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_subscription(self, subscription_id, app_id, **kwargs):  # noqa: E501
+    def delete(self, subscription_id, app_id, **kwargs):  # noqa: E501
+        """Delete a subscription  # noqa: E501
+
+        Permanently deletes a subscription. This cannot be undone.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete(subscription_id, app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int subscription_id: The ID of subscription to delete. (required)
+        :param int app_id: The ID of the target app. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.delete_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
+
+    def delete_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
+        """Delete a subscription  # noqa: E501
+
+        Permanently deletes a subscription. This cannot be undone.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_with_http_info(subscription_id, app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int subscription_id: The ID of subscription to delete. (required)
+        :param int app_id: The ID of the target app. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['subscription_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `delete`")  # noqa: E501
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `delete`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['hapikey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/webhooks/v3/{appId}/subscriptions/{subscriptionId}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_all(self, app_id, **kwargs):  # noqa: E501
+        """Get subscription details  # noqa: E501
+
+        Returns full details for all existing subscriptions for the given app.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_all(app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int app_id: The ID of the target app. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: SubscriptionListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
+
+    def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
+        """Get subscription details  # noqa: E501
+
+        Returns full details for all existing subscriptions for the given app.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_all_with_http_info(app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int app_id: The ID of the target app. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(SubscriptionListResponse, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['hapikey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/webhooks/v3/{appId}/subscriptions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SubscriptionListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_by_id(self, app_id, subscription_id, **kwargs):  # noqa: E501
+        """Get subscription  # noqa: E501
+
+        Returns details about a subscription.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_by_id(app_id, subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int app_id: The ID of the target app. (required)
+        :param int subscription_id: The ID of the target subscription. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: SubscriptionResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_by_id_with_http_info(app_id, subscription_id, **kwargs)  # noqa: E501
+
+    def get_by_id_with_http_info(self, app_id, subscription_id, **kwargs):  # noqa: E501
+        """Get subscription  # noqa: E501
+
+        Returns details about a subscription.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_by_id_with_http_info(app_id, subscription_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int app_id: The ID of the target app. (required)
+        :param int subscription_id: The ID of the target subscription. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(SubscriptionResponse, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['app_id', 'subscription_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_id" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
+        # verify the required parameter 'subscription_id' is set
+        if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['subscription_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `get_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
+        if 'subscription_id' in local_var_params:
+            path_params['subscriptionId'] = local_var_params['subscription_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['hapikey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/webhooks/v3/{appId}/subscriptions/{subscriptionId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SubscriptionResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update(self, subscription_id, app_id, **kwargs):  # noqa: E501
         """Update a subscription  # noqa: E501
 
         Updates the details for an existing subscription.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_subscription(subscription_id, app_id, async_req=True)
+        >>> thread = api.update(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -517,15 +521,15 @@ class SubscriptionsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_subscription_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
+        return self.update_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
 
-    def update_subscription_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
+    def update_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
         """Update a subscription  # noqa: E501
 
         Updates the details for an existing subscription.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_subscription_with_http_info(subscription_id, app_id, async_req=True)
+        >>> thread = api.update_with_http_info(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -558,18 +562,18 @@ class SubscriptionsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_subscription" % key
+                    " to method update" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'subscription_id' is set
         if self.api_client.client_side_validation and ('subscription_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['subscription_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscription_id` when calling `update_subscription`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscription_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `update_subscription`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 

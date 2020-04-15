@@ -36,13 +36,13 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_batch(self, object_type, **kwargs):  # noqa: E501
+    def archive(self, object_type, **kwargs):  # noqa: E501
         """Archive a batch of properties  # noqa: E501
 
         Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_batch(object_type, async_req=True)
+        >>> thread = api.archive(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -60,15 +60,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_batch_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(object_type, **kwargs)  # noqa: E501
 
-    def archive_batch_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, object_type, **kwargs):  # noqa: E501
         """Archive a batch of properties  # noqa: E501
 
         Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_batch_with_http_info(object_type, async_req=True)
+        >>> thread = api.archive_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -100,14 +100,14 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_batch" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `archive_batch`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -152,13 +152,13 @@ class BatchApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_batch(self, object_type, **kwargs):  # noqa: E501
+    def create(self, object_type, **kwargs):  # noqa: E501
         """Create a batch of properties  # noqa: E501
 
         Create a batch of properties using the same rules as when creating an individual property.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_batch(object_type, async_req=True)
+        >>> thread = api.create(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -176,15 +176,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_batch_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.create_with_http_info(object_type, **kwargs)  # noqa: E501
 
-    def create_batch_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def create_with_http_info(self, object_type, **kwargs):  # noqa: E501
         """Create a batch of properties  # noqa: E501
 
         Create a batch of properties using the same rules as when creating an individual property.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_batch_with_http_info(object_type, async_req=True)
+        >>> thread = api.create_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -216,14 +216,14 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_batch" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `create_batch`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -268,13 +268,13 @@ class BatchApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def read_batch(self, object_type, **kwargs):  # noqa: E501
+    def read(self, object_type, **kwargs):  # noqa: E501
         """Read a batch of properties  # noqa: E501
 
         Read a provided list of properties.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_batch(object_type, async_req=True)
+        >>> thread = api.read(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -292,15 +292,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.read_batch_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.read_with_http_info(object_type, **kwargs)  # noqa: E501
 
-    def read_batch_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def read_with_http_info(self, object_type, **kwargs):  # noqa: E501
         """Read a batch of properties  # noqa: E501
 
         Read a provided list of properties.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_batch_with_http_info(object_type, async_req=True)
+        >>> thread = api.read_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -332,14 +332,14 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method read_batch" % key
+                    " to method read" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `read_batch`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `read`")  # noqa: E501
 
         collection_formats = {}
 

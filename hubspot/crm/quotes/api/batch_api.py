@@ -36,13 +36,13 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_batch(self, **kwargs):  # noqa: E501
+    def archive(self, **kwargs):  # noqa: E501
         """Archive a batch of quotes by ID  # noqa: E501
 
         Archive a list of quotes given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_batch(async_req=True)
+        >>> thread = api.archive(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -59,15 +59,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_batch_with_http_info(**kwargs)  # noqa: E501
+        return self.archive_with_http_info(**kwargs)  # noqa: E501
 
-    def archive_batch_with_http_info(self, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, **kwargs):  # noqa: E501
         """Archive a batch of quotes by ID  # noqa: E501
 
         Archive a list of quotes given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_batch_with_http_info(async_req=True)
+        >>> thread = api.archive_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -98,7 +98,7 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_batch" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -144,13 +144,13 @@ class BatchApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_batch(self, **kwargs):  # noqa: E501
+    def create(self, **kwargs):  # noqa: E501
         """Create a batch of quotes  # noqa: E501
 
         Create a batch of quotes. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_batch(async_req=True)
+        >>> thread = api.create(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -167,15 +167,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_batch_with_http_info(**kwargs)  # noqa: E501
+        return self.create_with_http_info(**kwargs)  # noqa: E501
 
-    def create_batch_with_http_info(self, **kwargs):  # noqa: E501
+    def create_with_http_info(self, **kwargs):  # noqa: E501
         """Create a batch of quotes  # noqa: E501
 
         Create a batch of quotes. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_batch_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -206,7 +206,7 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_batch" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -252,13 +252,13 @@ class BatchApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def read_batch(self, **kwargs):  # noqa: E501
+    def read(self, **kwargs):  # noqa: E501
         """Read a batch of quotes by internal ID, or unique property values  # noqa: E501
 
         Read a list of quotes given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_batch(async_req=True)
+        >>> thread = api.read(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -276,15 +276,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.read_batch_with_http_info(**kwargs)  # noqa: E501
+        return self.read_with_http_info(**kwargs)  # noqa: E501
 
-    def read_batch_with_http_info(self, **kwargs):  # noqa: E501
+    def read_with_http_info(self, **kwargs):  # noqa: E501
         """Read a batch of quotes by internal ID, or unique property values  # noqa: E501
 
         Read a list of quotes given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_batch_with_http_info(async_req=True)
+        >>> thread = api.read_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -316,7 +316,7 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method read_batch" % key
+                    " to method read" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -364,13 +364,13 @@ class BatchApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_batch(self, **kwargs):  # noqa: E501
+    def update(self, **kwargs):  # noqa: E501
         """Update a batch of quotes  # noqa: E501
 
         Perform a partial upate on a batch of quotes. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_batch(async_req=True)
+        >>> thread = api.update(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -387,15 +387,15 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_batch_with_http_info(**kwargs)  # noqa: E501
+        return self.update_with_http_info(**kwargs)  # noqa: E501
 
-    def update_batch_with_http_info(self, **kwargs):  # noqa: E501
+    def update_with_http_info(self, **kwargs):  # noqa: E501
         """Update a batch of quotes  # noqa: E501
 
         Perform a partial upate on a batch of quotes. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_batch_with_http_info(async_req=True)
+        >>> thread = api.update_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -426,7 +426,7 @@ class BatchApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_batch" % key
+                    " to method update" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
