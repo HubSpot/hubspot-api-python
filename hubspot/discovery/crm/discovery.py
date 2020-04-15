@@ -4,6 +4,7 @@ from .companies.discovery import Discovery as CompaniesDiscovery
 from .contacts.discovery import Discovery as ContactsDiscovery
 from .deals.discovery import Discovery as DealsDiscovery
 from .extensions.discovery import Discovery as ExtensionsDiscovery
+from .imports.discovery import Discovery as ImportsDiscovery
 from .line_items.discovery import Discovery as LineItemsDiscovery
 from .pipelines.discovery import Discovery as PipelinesDiscovery
 from .products.discovery import Discovery as ProductsDiscovery
@@ -29,7 +30,10 @@ class Discovery(DiscoveryBase):
 
     def extensions(self):
         return ExtensionsDiscovery(self.config)
-        
+
+    def imports(self):
+        return ImportsDiscovery(self.config)
+
     def line_items(self):
         return LineItemsDiscovery(self.config)
 
