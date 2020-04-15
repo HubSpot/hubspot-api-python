@@ -35,7 +35,7 @@ class TopLevelActions(object):
     openapi_types = {
         'settings': 'IFrameActionBody',
         'primary': 'OneOfActionHookActionBodyIFrameActionBody',
-        'secondary': 'list[AnyOfActionHookActionBodyIFrameActionBody]'
+        'secondary': 'list[OneOfActionHookActionBodyIFrameActionBody]'
     }
 
     attribute_map = {
@@ -109,7 +109,7 @@ class TopLevelActions(object):
 
 
         :return: The secondary of this TopLevelActions.  # noqa: E501
-        :rtype: list[AnyOfActionHookActionBodyIFrameActionBody]
+        :rtype: list[OneOfActionHookActionBodyIFrameActionBody]
         """
         return self._secondary
 
@@ -119,7 +119,7 @@ class TopLevelActions(object):
 
 
         :param secondary: The secondary of this TopLevelActions.  # noqa: E501
-        :type: list[AnyOfActionHookActionBodyIFrameActionBody]
+        :type: list[OneOfActionHookActionBodyIFrameActionBody]
         """
         if self.local_vars_configuration.client_side_validation and secondary is None:  # noqa: E501
             raise ValueError("Invalid value for `secondary`, must not be `None`")  # noqa: E501

@@ -36,13 +36,13 @@ class TokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_event_template_token(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
+    def archive(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
         """Removes a token from the event template  # noqa: E501
 
         This will remove the token from an existing template. Existing events and CRM objects will still retain the token and its mapped object properties, but new ones will not.  The timeline will still display this property for older CRM objects if it's still referenced in the template `Markdown`. New events will not.  Any lists or reports referencing deleted tokens will no longer return new contacts, but old ones will still exist in the lists.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_event_template_token(event_template_id, token_name, app_id, async_req=True)
+        >>> thread = api.archive(event_template_id, token_name, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -61,15 +61,15 @@ class TokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_event_template_token_with_http_info(event_template_id, token_name, app_id, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(event_template_id, token_name, app_id, **kwargs)  # noqa: E501
 
-    def archive_event_template_token_with_http_info(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
         """Removes a token from the event template  # noqa: E501
 
         This will remove the token from an existing template. Existing events and CRM objects will still retain the token and its mapped object properties, but new ones will not.  The timeline will still display this property for older CRM objects if it's still referenced in the template `Markdown`. New events will not.  Any lists or reports referencing deleted tokens will no longer return new contacts, but old ones will still exist in the lists.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_event_template_token_with_http_info(event_template_id, token_name, app_id, async_req=True)
+        >>> thread = api.archive_with_http_info(event_template_id, token_name, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -102,22 +102,22 @@ class TokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_event_template_token" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'token_name' is set
         if self.api_client.client_side_validation and ('token_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['token_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token_name` when calling `archive_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token_name` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `archive_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -160,13 +160,13 @@ class TokensApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_event_template_token(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def create(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Adds a token to an existing event template  # noqa: E501
 
         Once you've defined an event template, it's likely that you'll want to define tokens for it as well. You can do this on the event template itself or update individual tokens here.  Event type tokens allow you to attach custom data to events displayed in a timeline or used for list segmentation.  You can also use `objectPropertyName` to associate any CRM object properties. This will allow you to fully build out CRM objects.  Token names should be unique across the template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_event_template_token(event_template_id, app_id, async_req=True)
+        >>> thread = api.create(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -185,15 +185,15 @@ class TokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_event_template_token_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
+        return self.create_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
 
-    def create_event_template_token_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
+    def create_with_http_info(self, event_template_id, app_id, **kwargs):  # noqa: E501
         """Adds a token to an existing event template  # noqa: E501
 
         Once you've defined an event template, it's likely that you'll want to define tokens for it as well. You can do this on the event template itself or update individual tokens here.  Event type tokens allow you to attach custom data to events displayed in a timeline or used for list segmentation.  You can also use `objectPropertyName` to associate any CRM object properties. This will allow you to fully build out CRM objects.  Token names should be unique across the template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_event_template_token_with_http_info(event_template_id, app_id, async_req=True)
+        >>> thread = api.create_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -226,18 +226,18 @@ class TokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_event_template_token" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `create_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `create_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -284,13 +284,13 @@ class TokensApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_event_template_token(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
+    def update(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
         """Updates an existing token on an event template  # noqa: E501
 
         This will update the existing token on an event template. Name and type can't be changed on existing tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event_template_token(event_template_id, token_name, app_id, async_req=True)
+        >>> thread = api.update(event_template_id, token_name, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -310,15 +310,15 @@ class TokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_event_template_token_with_http_info(event_template_id, token_name, app_id, **kwargs)  # noqa: E501
+        return self.update_with_http_info(event_template_id, token_name, app_id, **kwargs)  # noqa: E501
 
-    def update_event_template_token_with_http_info(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
+    def update_with_http_info(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
         """Updates an existing token on an event template  # noqa: E501
 
         This will update the existing token on an event template. Name and type can't be changed on existing tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event_template_token_with_http_info(event_template_id, token_name, app_id, async_req=True)
+        >>> thread = api.update_with_http_info(event_template_id, token_name, app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -352,22 +352,22 @@ class TokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_event_template_token" % key
+                    " to method update" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
         if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['event_template_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `event_template_id` when calling `update_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'token_name' is set
         if self.api_client.client_side_validation and ('token_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['token_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token_name` when calling `update_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token_name` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `update_event_template_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 

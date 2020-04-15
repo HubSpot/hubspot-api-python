@@ -37,7 +37,7 @@ class IntegratorObjectResult(object):
         'title': 'str',
         'link_url': 'str',
         'tokens': 'list[ObjectToken]',
-        'actions': 'list[AnyOfActionHookActionBodyIFrameActionBody]'
+        'actions': 'list[OneOfActionHookActionBodyIFrameActionBody]'
     }
 
     attribute_map = {
@@ -164,7 +164,7 @@ class IntegratorObjectResult(object):
 
 
         :return: The actions of this IntegratorObjectResult.  # noqa: E501
-        :rtype: list[AnyOfActionHookActionBodyIFrameActionBody]
+        :rtype: list[OneOfActionHookActionBodyIFrameActionBody]
         """
         return self._actions
 
@@ -174,7 +174,7 @@ class IntegratorObjectResult(object):
 
 
         :param actions: The actions of this IntegratorObjectResult.  # noqa: E501
-        :type: list[AnyOfActionHookActionBodyIFrameActionBody]
+        :type: list[OneOfActionHookActionBodyIFrameActionBody]
         """
         if self.local_vars_configuration.client_side_validation and actions is None:  # noqa: E501
             raise ValueError("Invalid value for `actions`, must not be `None`")  # noqa: E501

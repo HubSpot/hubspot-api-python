@@ -36,13 +36,13 @@ class SettingsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def clear_settings(self, app_id, **kwargs):  # noqa: E501
+    def clear(self, app_id, **kwargs):  # noqa: E501
         """Clear webhook settings  # noqa: E501
 
         Resets webhook target URL to empty, and max concurrency limit to `0` for the given app. This will effectively pause all webhook subscriptions until new settings are provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.clear_settings(app_id, async_req=True)
+        >>> thread = api.clear(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -59,15 +59,15 @@ class SettingsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.clear_settings_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.clear_with_http_info(app_id, **kwargs)  # noqa: E501
 
-    def clear_settings_with_http_info(self, app_id, **kwargs):  # noqa: E501
+    def clear_with_http_info(self, app_id, **kwargs):  # noqa: E501
         """Clear webhook settings  # noqa: E501
 
         Resets webhook target URL to empty, and max concurrency limit to `0` for the given app. This will effectively pause all webhook subscriptions until new settings are provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.clear_settings_with_http_info(app_id, async_req=True)
+        >>> thread = api.clear_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -98,14 +98,14 @@ class SettingsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method clear_settings" % key
+                    " to method clear" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `clear_settings`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `clear`")  # noqa: E501
 
         collection_formats = {}
 
@@ -144,18 +144,18 @@ class SettingsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def configure_settings(self, app_id, **kwargs):  # noqa: E501
+    def configure(self, app_id, settings_change_request, **kwargs):  # noqa: E501
         """Configure webhook settings  # noqa: E501
 
         Used to set the webhook target URL and max concurrency limit for the given app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.configure_settings(app_id, async_req=True)
+        >>> thread = api.configure(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param int app_id: The ID of the target app. (required)
-        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with.
+        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -168,20 +168,20 @@ class SettingsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.configure_settings_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.configure_with_http_info(app_id, settings_change_request, **kwargs)  # noqa: E501
 
-    def configure_settings_with_http_info(self, app_id, **kwargs):  # noqa: E501
+    def configure_with_http_info(self, app_id, settings_change_request, **kwargs):  # noqa: E501
         """Configure webhook settings  # noqa: E501
 
         Used to set the webhook target URL and max concurrency limit for the given app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.configure_settings_with_http_info(app_id, async_req=True)
+        >>> thread = api.configure_with_http_info(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param int app_id: The ID of the target app. (required)
-        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with.
+        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -208,14 +208,18 @@ class SettingsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method configure_settings" % key
+                    " to method configure" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `configure_settings`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `configure`")  # noqa: E501
+        # verify the required parameter 'settings_change_request' is set
+        if self.api_client.client_side_validation and ('settings_change_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['settings_change_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `settings_change_request` when calling `configure`")  # noqa: E501
 
         collection_formats = {}
 
@@ -260,13 +264,13 @@ class SettingsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_settings(self, app_id, **kwargs):  # noqa: E501
+    def get_all(self, app_id, **kwargs):  # noqa: E501
         """Get webhook settings  # noqa: E501
 
         Returns the current state of webhook settings for the given app. These settings include the app's configured target URL and max concurrency limit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_settings(app_id, async_req=True)
+        >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -283,15 +287,15 @@ class SettingsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_settings_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
-    def get_settings_with_http_info(self, app_id, **kwargs):  # noqa: E501
+    def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
         """Get webhook settings  # noqa: E501
 
         Returns the current state of webhook settings for the given app. These settings include the app's configured target URL and max concurrency limit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_settings_with_http_info(app_id, async_req=True)
+        >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -322,14 +326,14 @@ class SettingsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_settings" % key
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['app_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_settings`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
