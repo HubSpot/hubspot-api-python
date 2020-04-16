@@ -16,7 +16,7 @@ def list():
         'propertyName': 'createdate',
         'direction': 'DESCENDING',
     }])
-    companies_page = hubspot.crm().companies().search_api().do_search(public_object_search_request=search_request)
+    companies_page = hubspot.crm.companies.search_api.do_search(public_object_search_request=search_request)
 
     return render_template(
         'companies/list.html',
@@ -36,7 +36,7 @@ def new():
 def create():
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
-    company = hubspot.crm().companies().basic_api().create(simple_public_object_input=properties)
+    company = hubspot.crm.companies.basic_api.create(simple_public_object_input=properties)
     session[SessionKey.ACTION_PERFORMED] = 'created'
     return redirect(url_for('companies.show', company_id=company.id))
 
@@ -45,7 +45,7 @@ def create():
 @auth_required
 def show(company_id):
     hubspot = create_client()
-    company = hubspot.crm().companies().basic_api().get_by_id(company_id)
+    company = hubspot.crm.companies.basic_api.get_by_id(company_id)
 
     return render_template(
         'companies/show.html',
@@ -59,7 +59,7 @@ def show(company_id):
 def update(company_id):
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
-    company = hubspot.crm().companies().basic_api().update(company_id, simple_public_object_input=properties)
+    company = hubspot.crm.companies.basic_api.update(company_id, simple_public_object_input=properties)
     session[SessionKey.ACTION_PERFORMED] = 'updated'
     return redirect(url_for('companies.show', company_id=company.id))
 
@@ -79,7 +79,7 @@ def search():
     public_object_search_request = PublicObjectSearchRequest(
         filter_groups=[filter_group],
     )
-    companies_page = hubspot.crm().companies().search_api().do_search(
+    companies_page = hubspot.crm.companies.search_api.do_search(
         public_object_search_request=public_object_search_request
     )
 
@@ -90,7 +90,7 @@ def search():
 @auth_required
 def delete(company_id):
     hubspot = create_client()
-    hubspot.crm().companies().basic_api().archive(company_id)
+    hubspot.crm.companies.basic_api.archive(company_id)
     session[SessionKey.ACTION_PERFORMED] = 'deleted'
     return redirect(url_for('companies.list'))
 

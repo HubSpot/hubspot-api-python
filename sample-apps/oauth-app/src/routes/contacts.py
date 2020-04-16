@@ -10,6 +10,6 @@ module = Blueprint('contacts', __name__)
 @auth_required
 def list():
     hubspot = create_client()
-    contacts_page = hubspot.crm().contacts().basic_api().get_page()
+    contacts_page = hubspot.crm.contacts.basic_api.get_page()
 
     return render_template('contacts/list.html', contacts=contacts_page.results)

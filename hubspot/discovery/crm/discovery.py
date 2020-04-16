@@ -16,45 +16,58 @@ from .timeline.discovery import Discovery as TimelineDiscovery
 
 
 class Discovery(DiscoveryBase):
+    @property
     def associations(self):
         return AssociationsDiscovery(self.config)
 
+    @property
     def contacts(self):
         return ContactsDiscovery(self.config)
 
+    @property
     def companies(self):
         return CompaniesDiscovery(self.config)
 
+    @property
     def deals(self):
         return DealsDiscovery(self.config)
 
+    @property
     def extensions(self):
         return ExtensionsDiscovery(self.config)
 
+    @property
     def imports(self):
         return ImportsDiscovery(self.config)
 
+    @property
     def line_items(self):
         return LineItemsDiscovery(self.config)
 
+    @property
     def pipelines(self):
         return PipelinesDiscovery(self.config)
-   
+
+    @property
     def products(self):
         return ProductsDiscovery(self.config)
 
+    @property
     def properties(self):
         return PropertiesDiscovery(self.config)
 
+    @property
     def quotes(self):
         return QuotesDiscovery(self.config)
 
+    @property
     def owners(self):
         return OwnersDiscovery(self.config)
 
+    @property
     def tickets(self):
         return TicketsDiscovery(self.config)
 
+    @property
     def timeline(self):
         return TimelineDiscovery(self.config)
-

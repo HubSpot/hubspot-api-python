@@ -14,7 +14,7 @@
         {% if company.id is not none %}
 <pre>
 // src/routes/companies.py
-hubspot_client.crm().companies().basic_api().get_by_id()
+hubspot_client.crm.companies.basic_api.get_by_id()
 </pre>
         {% endif %}
 
@@ -31,13 +31,13 @@ hubspot_client.crm().companies().basic_api().get_by_id()
 <pre>
 // src/routes/companies.py
 input = SimplePublicObjectInput(properties=request.form)
-hubspot_client.crm().companies().basic_api().update(company_id, input)
+hubspot_client.crm.companies.basic_api.update(company_id, input)
 </pre>
                 {% else %}
 <pre>
 // src/routes/companies.py
 input = SimplePublicObjectInput(properties=request.form)
-hubspot_client.crm().companies().basic_api().create(input)
+hubspot_client.crm.companies.basic_api.create(input)
 </pre>
 
                 {% endif %}

@@ -26,7 +26,7 @@ def authorize():
 @module.route('/callback')
 def callback():
     hubspot = create_client()
-    tokens_response = hubspot.auth().oauth().default_api().create_token(
+    tokens_response = hubspot.auth.oauth.default_api.create_token(
         grant_type='authorization_code',
         code=request.args.get('code'),
         redirect_uri=get_redirect_uri(),

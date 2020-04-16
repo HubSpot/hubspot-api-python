@@ -11,7 +11,7 @@
 {% if contact.properties['email'] is not none %}
 <pre>
 // src/routes/contacts.py
-hubspot_client.crm().contacts().basic_api().get_by_id(
+hubspot_client.crm.contacts.basic_api.get_by_id(
     contact_id,
     properties=['firstname', 'lastname'],
 )
@@ -28,7 +28,7 @@ hubspot_client.crm().contacts().basic_api().get_by_id(
                     {% else %}
 <pre>
 // https://developers.hubspot.com/docs-beta/crm/owners
-hubspot_client.crm().owners().default_api().get_all()
+hubspot_client.crm.owners.default_api.get_all()
 </pre>
                         <select name="{{ property_name }}">
                             <option value="">Not assigned</option>
@@ -45,7 +45,7 @@ hubspot_client.crm().owners().default_api().get_all()
 <pre>
 // src/routes/contacts.py
 properties = request.form
-hubspot_client.crm().contacts().basic_api().update(
+hubspot_client.crm.contacts.basic_api.update(
     contact_id,
     simple_public_object_input=properties,
 )
