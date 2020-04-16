@@ -4,19 +4,25 @@ Python [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3 SDK(C
 
 Sample Applications can be found in [sample-apps](sample-apps/) folder
 
-## Quickstart
+## Documentation
 
-### Dependencies
+See the [API docs](https://developers.hubspot.com/docs-beta/overview).
 
-Make sure you have [Python3](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+## Installation
 
-### Installing package locally:
-
-Clone repository and run:
+If you just want to use the package, run:
 
 ```bash
-pip install -e .
+pip install --upgrade hubspot-api-client
 ```
+
+### Requirements
+
+Make sure you have [Python 3.4+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+
+
+## Quickstart
+
 
 ### Configuring HubSpot client
 
@@ -29,35 +35,6 @@ client = huspot.Client.create(api_key='your_api_key')
 # or with access_token
 client = huspot.Client.create()
 client.access_token = 'your_access_token'
-```
-
-#### Retry middleware
-
-You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) class to configure http client retries.
-With internal error retry middleware:
-
-```python
-import hubspot
-from urllib3.util.retry import Retry
-
-retry = Retry(
-    total=3,
-    backoff_factor=0.3,
-    status_forcelist=(500, 502, 504),
-)
-client = hubspot.Client.create(retry=retry)
-```
-Or with rate limit retry middleware:
-
-```python
-import hubspot
-from urllib3.util.retry import Retry
-
-retries = Retry(
-    total=5,
-    status_forcelist=(429,),
-)
-client = huspot.Client.create(retries=retries)
 ```
 
 ### Requesting API endpoints
@@ -114,4 +91,44 @@ auth_url = get_auth_url(
     client_id='client_id',
     redirect_uri='http://localhost'
 )
+```
+
+
+### Retry middleware
+
+You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedocs.io/en/latest/reference/urllib3.util.html) class to configure http client retries.
+With internal error retry middleware:
+
+```python
+import hubspot
+from urllib3.util.retry import Retry
+
+retry = Retry(
+    total=3,
+    backoff_factor=0.3,
+    status_forcelist=(500, 502, 504),
+)
+client = hubspot.Client.create(retry=retry)
+```
+Or with rate limit retry middleware:
+
+```python
+import hubspot
+from urllib3.util.retry import Retry
+
+retries = Retry(
+    total=5,
+    status_forcelist=(429,),
+)
+client = huspot.Client.create(retries=retries)
+```
+
+## Contributing
+
+### Installing package locally:
+
+Clone repository and run:
+
+```bash
+pip install -e .
 ```
