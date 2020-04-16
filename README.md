@@ -31,9 +31,9 @@ import hubspot
 
 client = hubspot.Client.create()
 # or with api_key
-client = huspot.Client.create(api_key='your_api_key')
+client = hubspot.Client.create(api_key='your_api_key')
 # or with access_token
-client = huspot.Client.create()
+client = hubspot.Client.create()
 client.access_token = 'your_access_token'
 ```
 
@@ -120,7 +120,7 @@ retries = Retry(
     total=5,
     status_forcelist=(429,),
 )
-client = huspot.Client.create(retries=retries)
+client = hubspot.Client.create(retries=retries)
 ```
 
 ## Contributing
