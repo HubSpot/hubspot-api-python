@@ -23,12 +23,12 @@ pip install -e .
 ```python
 import hubspot
 
-hubspot_client = hubspot.Client.create()
+client = hubspot.Client.create()
 # or with api_key
-hubspot_client = huspot.Client.create(api_key='your_api_key')
+client = huspot.Client.create(api_key='your_api_key')
 # or with access_token
-hubspot_client = huspot.Client.create()
-hubspot_client.access_token = 'your_access_token'
+client = huspot.Client.create()
+client.access_token = 'your_access_token'
 ```
 
 #### Retry middleware
@@ -45,7 +45,7 @@ retry = Retry(
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
 )
-hubspot_client = hubspot.Client.create(retry=retry)
+client = hubspot.Client.create(retry=retry)
 ```
 Or with rate limit retry middleware:
 
@@ -57,7 +57,7 @@ retries = Retry(
     total=5,
     status_forcelist=(429,),
 )
-hubspot_client = huspot.Client.create(retries=retries)
+client = huspot.Client.create(retries=retries)
 ```
 
 ### Requesting API endpoints
@@ -67,7 +67,7 @@ hubspot_client = huspot.Client.create(retries=retries)
 ```python
 from hubspot.auth.oauth import ApiException
 
-oauth_client = hubspot_client.auth.oauth
+oauth_client = client.auth.oauth
 
 try:
     tokens = oauth_client.default_api.create_token(
@@ -86,7 +86,7 @@ except ApiException as e:
 ```python
 from hubspot.crm.contacts import ApiException
 
-contacts_client = hubspot_client.crm.contacts
+contacts_client = client.crm.contacts
 
 try:
     contact_fetched = contacts_client.basic_api.get_by_id('contact_id')
@@ -99,7 +99,7 @@ except ApiException as e:
 get_all method is available for all major objects and works like
 
 ```python
-all_contacts = contacts_client = hubspot_client.crm.contacts.get_all()
+all_contacts = contacts_client = client.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
