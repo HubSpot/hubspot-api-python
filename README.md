@@ -125,10 +125,19 @@ client = hubspot.Client.create(retries=retries)
 
 ## Contributing
 
-### Installing package locally:
+Install the package locally:
 
-Clone repository and run:
-
-```bash
+```
 pip install -e .
+```
+
+Set up the development virtualenv:
+
+```
+make
+```
+
+Run tests:
+```
+make test
 ```
