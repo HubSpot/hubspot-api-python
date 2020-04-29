@@ -22,7 +22,7 @@ VERSION = "1.0.0-beta"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
-TESTS_REQUIRE = ["pytest"]
+TEST_REQUIRES = ["pytest"]
 
 setup(
     name=NAME,
@@ -33,7 +33,7 @@ setup(
     author='HubSpot',
     author_email='support@hubspot.com',
     install_requires=REQUIRES,
-    extras_require={'test': TESTS_REQUIRE},
+    extras_require={'test': TEST_REQUIRES},
     python_requires=">=3.4",
     include_package_data=True,
 )
