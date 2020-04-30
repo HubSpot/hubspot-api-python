@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - This CHANGELOG.md file.
+- Batch API client for webhooks
+- [Pytest](https://docs.pytest.org/en/latest/) support
+
+### Fixed
+
+- Typos in README
+
+### Incompatible Changes
+
+- Dropped support for Python 3.4
+- Renamed webhooks `delete` method to `archive`
 
 ## [1.0.0-beta] - 2020-04-16
 

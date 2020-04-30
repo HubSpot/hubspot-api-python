@@ -34,6 +34,6 @@ setup(
     author_email='support@hubspot.com',
     install_requires=REQUIRES,
     extras_require={'test': TEST_REQUIRES},
-    python_requires=">=3.4",
+    python_requires=">=3.5",
     include_package_data=True,
 )
