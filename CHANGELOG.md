@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2020-04-30
+
 ### Added
 
 - This CHANGELOG.md file.
 - Batch API client for webhooks
-- [Pytest](https://docs.pytest.org/en/latest/) support
+- [PyTest](https://docs.pytest.org/en/latest/) support
 
 ### Fixed
 
@@ -24,5 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0-beta] - 2020-04-16
 
-[unreleased]: https://github.com/HubSpot/hubspot-api-python/compare/v1.0.0-beta...HEAD
+[unreleased]: https://github.com/HubSpot/hubspot-api-python/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/HubSpot/hubspot-api-python/compare/v1.0.0-beta...v1.0.0
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-python/releases/tag/v1.0.0-beta
