@@ -1,12 +1,12 @@
 # hubspot-api-python
 
-Python [HubSpot API](https://developers.hubspot.com/docs-beta/overview) v3 SDK(Client) files and sample apps
+Python [HubSpot API](https://developers.hubspot.com/docs/overview) v3 SDK(Client) files and sample apps
 
 Sample Applications can be found in [sample-apps](sample-apps/) folder
 
 ## Documentation
 
-See the [API docs](https://developers.hubspot.com/docs-beta/overview).
+See the [API docs](https://developers.hubspot.com/docs/overview).
 
 ## Installation
 
@@ -18,7 +18,7 @@ pip install --upgrade hubspot-api-client
 
 ### Requirements
 
-Make sure you have [Python 3.4+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
 
 
 ## Quickstart
