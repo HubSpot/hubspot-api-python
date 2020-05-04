@@ -141,3 +141,8 @@ Run tests:
 ```
 make test
 ```
+
+Run [Black](https://github.com/psf/black) for code formatting:
+```
+make fmt
+```
