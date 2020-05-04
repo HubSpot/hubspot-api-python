@@ -32,19 +32,13 @@ class PublicTeam(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'membership': 'str'
-    }
+    openapi_types = {"id": "str", "name": "str", "membership": "str"}
 
-    attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'membership': 'membership'
-    }
+    attribute_map = {"id": "id", "name": "name", "membership": "membership"}
 
-    def __init__(self, id=None, name=None, membership=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, id=None, name=None, membership=None, local_vars_configuration=None
+    ):  # noqa: E501
         """PublicTeam - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,7 +72,9 @@ class PublicTeam(object):
         :param id: The id of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -101,8 +97,12 @@ class PublicTeam(object):
         :param name: The name of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -125,10 +125,14 @@ class PublicTeam(object):
         :type: str
         """
         allowed_values = ["PRIMARY", "SECONDARY", "CHILD"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and membership not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and membership not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `membership` ({0}), must be one of {1}"  # noqa: E501
-                .format(membership, allowed_values)
+                "Invalid value for `membership` ({0}), must be one of {1}".format(  # noqa: E501
+                    membership, allowed_values
+                )
             )
 
         self._membership = membership
@@ -140,18 +144,20 @@ class PublicTeam(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

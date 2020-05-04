@@ -1,80 +1,87 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from hubspot.crm.companies import PublicObjectSearchRequest, Filter, FilterGroup, SimplePublicObject, SimplePublicObjectInput
+from hubspot.crm.companies import (
+    PublicObjectSearchRequest,
+    Filter,
+    FilterGroup,
+    SimplePublicObject,
+    SimplePublicObjectInput,
+)
 from helpers.hubspot import create_client
 from helpers.session import SessionKey
 from auth import auth_required
 
 
-module = Blueprint('companies', __name__)
+module = Blueprint("companies", __name__)
 
 
-@module.route('/')
+@module.route("/")
 @auth_required
 def list():
     hubspot = create_client()
-    search_request = PublicObjectSearchRequest(sorts=[{
-        'propertyName': 'createdate',
-        'direction': 'DESCENDING',
-    }])
-    companies_page = hubspot.crm.companies.search_api.do_search(public_object_search_request=search_request)
+    search_request = PublicObjectSearchRequest(
+        sorts=[{"propertyName": "createdate", "direction": "DESCENDING",}]
+    )
+    companies_page = hubspot.crm.companies.search_api.do_search(
+        public_object_search_request=search_request
+    )
 
     return render_template(
-        'companies/list.html',
+        "companies/list.html",
         companies=companies_page.results,
         action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
     )
 
 
-@module.route('/new')
+@module.route("/new")
 @auth_required
 def new():
-    return render_template('companies/show.html', company=SimplePublicObject())
+    return render_template("companies/show.html", company=SimplePublicObject())
 
 
-@module.route('/new', methods=['POST'])
+@module.route("/new", methods=["POST"])
 @auth_required
 def create():
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
-    company = hubspot.crm.companies.basic_api.create(simple_public_object_input=properties)
-    session[SessionKey.ACTION_PERFORMED] = 'created'
-    return redirect(url_for('companies.show', company_id=company.id))
+    company = hubspot.crm.companies.basic_api.create(
+        simple_public_object_input=properties
+    )
+    session[SessionKey.ACTION_PERFORMED] = "created"
+    return redirect(url_for("companies.show", company_id=company.id))
 
 
-@module.route('/<company_id>')
+@module.route("/<company_id>")
 @auth_required
 def show(company_id):
     hubspot = create_client()
     company = hubspot.crm.companies.basic_api.get_by_id(company_id)
 
     return render_template(
-        'companies/show.html',
+        "companies/show.html",
         company=company,
         action_performed=session.pop(SessionKey.ACTION_PERFORMED, None),
     )
 
 
-@module.route('/<company_id>', methods=['POST'])
+@module.route("/<company_id>", methods=["POST"])
 @auth_required
 def update(company_id):
     properties = SimplePublicObjectInput(properties=request.form)
     hubspot = create_client()
-    company = hubspot.crm.companies.basic_api.update(company_id, simple_public_object_input=properties)
-    session[SessionKey.ACTION_PERFORMED] = 'updated'
-    return redirect(url_for('companies.show', company_id=company.id))
+    company = hubspot.crm.companies.basic_api.update(
+        company_id, simple_public_object_input=properties
+    )
+    session[SessionKey.ACTION_PERFORMED] = "updated"
+    return redirect(url_for("companies.show", company_id=company.id))
 
 
-@module.route('/search')
+@module.route("/search")
 @auth_required
 def search():
     hubspot = create_client()
-    search = request.args.get('search')
+    search = request.args.get("search")
 
-    filter = Filter(
-        property_name='domain',
-        operator='EQ',
-        value=search,
-    )
+    filter = Filter(property_name="domain", operator="EQ", value=search,)
     filter_group = FilterGroup(filters=[filter])
     public_object_search_request = PublicObjectSearchRequest(
         filter_groups=[filter_group],
@@ -83,14 +90,15 @@ def search():
         public_object_search_request=public_object_search_request
     )
 
-    return render_template('companies/list.html', companies=companies_page.results, search=search)
+    return render_template(
+        "companies/list.html", companies=companies_page.results, search=search
+    )
 
 
-@module.route('/delete/<company_id>')
+@module.route("/delete/<company_id>")
 @auth_required
 def delete(company_id):
     hubspot = create_client()
     hubspot.crm.companies.basic_api.archive(company_id)
-    session[SessionKey.ACTION_PERFORMED] = 'deleted'
-    return redirect(url_for('companies.list'))
-
+    session[SessionKey.ACTION_PERFORMED] = "deleted"
+    return redirect(url_for("companies.list"))

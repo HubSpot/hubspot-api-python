@@ -6,4 +6,3 @@ class Discovery(DiscoveryBase):
     @property
     def cards(self):
         return CardsDiscovery(self.config)
-

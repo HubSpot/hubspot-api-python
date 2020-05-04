@@ -33,22 +33,30 @@ class TimelineEventTemplateUpdateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'header_template': 'str',
-        'detail_template': 'str',
-        'tokens': 'list[TimelineEventTemplateToken]'
+        "id": "str",
+        "name": "str",
+        "header_template": "str",
+        "detail_template": "str",
+        "tokens": "list[TimelineEventTemplateToken]",
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'header_template': 'headerTemplate',
-        'detail_template': 'detailTemplate',
-        'tokens': 'tokens'
+        "id": "id",
+        "name": "name",
+        "header_template": "headerTemplate",
+        "detail_template": "detailTemplate",
+        "tokens": "tokens",
     }
 
-    def __init__(self, id=None, name=None, header_template=None, detail_template=None, tokens=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        name=None,
+        header_template=None,
+        detail_template=None,
+        tokens=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """TimelineEventTemplateUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -89,7 +97,9 @@ class TimelineEventTemplateUpdateRequest(object):
         :param id: The id of this TimelineEventTemplateUpdateRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -114,8 +124,12 @@ class TimelineEventTemplateUpdateRequest(object):
         :param name: The name of this TimelineEventTemplateUpdateRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -185,8 +199,12 @@ class TimelineEventTemplateUpdateRequest(object):
         :param tokens: The tokens of this TimelineEventTemplateUpdateRequest.  # noqa: E501
         :type: list[TimelineEventTemplateToken]
         """
-        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
-            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and tokens is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `tokens`, must not be `None`"
+            )  # noqa: E501
 
         self._tokens = tokens
 
@@ -197,18 +215,20 @@ class TimelineEventTemplateUpdateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

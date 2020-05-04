@@ -33,26 +33,36 @@ class BatchResponsePublicAssociation(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'results': 'list[PublicAssociation]',
-        'num_errors': 'int',
-        'errors': 'list[Error]',
-        'status': 'str',
-        'requested_at': 'datetime',
-        'started_at': 'datetime',
-        'completed_at': 'datetime'
+        "results": "list[PublicAssociation]",
+        "num_errors": "int",
+        "errors": "list[Error]",
+        "status": "str",
+        "requested_at": "datetime",
+        "started_at": "datetime",
+        "completed_at": "datetime",
     }
 
     attribute_map = {
-        'results': 'results',
-        'num_errors': 'numErrors',
-        'errors': 'errors',
-        'status': 'status',
-        'requested_at': 'requestedAt',
-        'started_at': 'startedAt',
-        'completed_at': 'completedAt'
+        "results": "results",
+        "num_errors": "numErrors",
+        "errors": "errors",
+        "status": "status",
+        "requested_at": "requestedAt",
+        "started_at": "startedAt",
+        "completed_at": "completedAt",
     }
 
-    def __init__(self, results=None, num_errors=None, errors=None, status=None, requested_at=None, started_at=None, completed_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        results=None,
+        num_errors=None,
+        errors=None,
+        status=None,
+        requested_at=None,
+        started_at=None,
+        completed_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """BatchResponsePublicAssociation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -96,8 +106,12 @@ class BatchResponsePublicAssociation(object):
         :param results: The results of this BatchResponsePublicAssociation.  # noqa: E501
         :type: list[PublicAssociation]
         """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and results is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `results`, must not be `None`"
+            )  # noqa: E501
 
         self._results = results
 
@@ -161,13 +175,21 @@ class BatchResponsePublicAssociation(object):
         :param status: The status of this BatchResponsePublicAssociation.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and status is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
+                "Invalid value for `status`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and status not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}".format(  # noqa: E501
+                    status, allowed_values
+                )
             )
 
         self._status = status
@@ -211,8 +233,12 @@ class BatchResponsePublicAssociation(object):
         :param started_at: The started_at of this BatchResponsePublicAssociation.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and started_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `started_at`, must not be `None`"
+            )  # noqa: E501
 
         self._started_at = started_at
 
@@ -234,8 +260,13 @@ class BatchResponsePublicAssociation(object):
         :param completed_at: The completed_at of this BatchResponsePublicAssociation.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and completed_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `completed_at`, must not be `None`"
+            )  # noqa: E501
 
         self._completed_at = completed_at
 
@@ -246,18 +277,20 @@ class BatchResponsePublicAssociation(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -7,7 +7,7 @@ def auth_required(func):
     @wraps(func)
     def check_authentication(*args, **kwargs):
         if not is_authenticated():
-            return redirect(url_for('oauth.login'))
+            return redirect(url_for("oauth.login"))
 
         return func(*args, **kwargs)
 

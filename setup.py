@@ -22,7 +22,7 @@ VERSION = "1.0.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
-TEST_REQUIRES = ["pytest"]
+DEV_REQUIRES = ["pytest", "black"]
 
 setup(
     name=NAME,
@@ -30,10 +30,10 @@ setup(
     version=VERSION,
     description="HubSpot API client",
     url="https://github.com/HubSpot/hubspot-api-python",
-    author='HubSpot',
-    author_email='support@hubspot.com',
+    author="HubSpot",
+    author_email="support@hubspot.com",
     install_requires=REQUIRES,
-    extras_require={'test': TEST_REQUIRES},
+    extras_require={"dev": DEV_REQUIRES},
     python_requires=">=3.5",
     include_package_data=True,
 )

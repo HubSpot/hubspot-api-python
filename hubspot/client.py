@@ -13,11 +13,9 @@ class Client:
         retry: Retry = None,
         **kwargs
     ):
-        config = dict({
-            'api_key': api_key,
-            'access_token': access_token,
-            'retry': retry,
-        }, **kwargs)
+        config = dict(
+            {"api_key": api_key, "access_token": access_token, "retry": retry}, **kwargs
+        )
         return cls(config)
 
     def __init__(self, config):
@@ -25,19 +23,19 @@ class Client:
 
     @property
     def access_token(self):
-        return self.config['access_token']
+        return self.config["access_token"]
 
     @access_token.setter
     def access_token(self, value):
-        self.config['access_token'] = value
+        self.config["access_token"] = value
 
     @property
     def api_key(self):
-        return self.config['api_key']
+        return self.config["api_key"]
 
     @api_key.setter
     def api_key(self, value):
-        self.config['api_key'] = value
+        self.config["api_key"] = value
 
     @property
     def auth(self):

@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.properties.api_client import ApiClient
-from hubspot.crm.properties.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.crm.properties.exceptions import ApiTypeError, ApiValueError
 
 
 class GroupsApi(object):
@@ -59,8 +56,10 @@ class GroupsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.archive_with_http_info(object_type, group_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.archive_with_http_info(
+            object_type, group_name, **kwargs
+        )  # noqa: E501
 
     def archive_with_http_info(self, object_type, group_name, **kwargs):  # noqa: E501
         """Archive a property group  # noqa: E501
@@ -90,36 +89,43 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type', 'group_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["object_type", "group_name"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive" % key
+                    "Got an unexpected keyword argument '%s'" " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `archive`"
+            )  # noqa: E501
         # verify the required parameter 'group_name' is set
-        if self.api_client.client_side_validation and ('group_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_name` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_name" not in local_var_params
+            or local_var_params["group_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_name` when calling `archive`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
-        if 'group_name' in local_var_params:
-            path_params['groupName'] = local_var_params['group_name']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if "group_name" in local_var_params:
+            path_params["groupName"] = local_var_params["group_name"]  # noqa: E501
 
         query_params = []
 
@@ -130,14 +136,16 @@ class GroupsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/properties/{objectType}/groups/{groupName}', 'DELETE',
+            "/crm/v3/properties/{objectType}/groups/{groupName}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -146,11 +154,14 @@ class GroupsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create(self, object_type, **kwargs):  # noqa: E501
         """Create a property group  # noqa: E501
@@ -175,7 +186,7 @@ class GroupsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(object_type, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, object_type, **kwargs):  # noqa: E501
@@ -206,30 +217,33 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type', 'property_group_create']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["object_type", "property_group_create"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    "Got an unexpected keyword argument '%s'" " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `create`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
 
@@ -239,34 +253,42 @@ class GroupsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'property_group_create' in local_var_params:
-            body_params = local_var_params['property_group_create']
+        if "property_group_create" in local_var_params:
+            body_params = local_var_params["property_group_create"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/properties/{objectType}/groups', 'POST',
+            "/crm/v3/properties/{objectType}/groups",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PropertyGroup',  # noqa: E501
+            response_type="PropertyGroup",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_all(self, object_type, **kwargs):  # noqa: E501
         """Read all property groups  # noqa: E501
@@ -290,7 +312,7 @@ class GroupsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_all_with_http_info(object_type, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, object_type, **kwargs):  # noqa: E501
@@ -320,30 +342,33 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["object_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_all" % key
+                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `get_all`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `get_all`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
 
@@ -354,27 +379,32 @@ class GroupsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/properties/{objectType}/groups', 'GET',
+            "/crm/v3/properties/{objectType}/groups",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponsePropertyGroup',  # noqa: E501
+            response_type="CollectionResponsePropertyGroup",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_by_name(self, object_type, group_name, **kwargs):  # noqa: E501
         """Read a property group  # noqa: E501
@@ -399,10 +429,14 @@ class GroupsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_by_name_with_http_info(object_type, group_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_by_name_with_http_info(
+            object_type, group_name, **kwargs
+        )  # noqa: E501
 
-    def get_by_name_with_http_info(self, object_type, group_name, **kwargs):  # noqa: E501
+    def get_by_name_with_http_info(
+        self, object_type, group_name, **kwargs
+    ):  # noqa: E501
         """Read a property group  # noqa: E501
 
         Read a property group identified by {groupName}.  # noqa: E501
@@ -430,36 +464,44 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type', 'group_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["object_type", "group_name"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_name" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_name`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `get_by_name`"
+            )  # noqa: E501
         # verify the required parameter 'group_name' is set
-        if self.api_client.client_side_validation and ('group_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_name` when calling `get_by_name`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_name" not in local_var_params
+            or local_var_params["group_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_name` when calling `get_by_name`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
-        if 'group_name' in local_var_params:
-            path_params['groupName'] = local_var_params['group_name']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if "group_name" in local_var_params:
+            path_params["groupName"] = local_var_params["group_name"]  # noqa: E501
 
         query_params = []
 
@@ -470,27 +512,32 @@ class GroupsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/properties/{objectType}/groups/{groupName}', 'GET',
+            "/crm/v3/properties/{objectType}/groups/{groupName}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PropertyGroup',  # noqa: E501
+            response_type="PropertyGroup",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def update(self, object_type, group_name, **kwargs):  # noqa: E501
         """Update a property group  # noqa: E501
@@ -516,8 +563,10 @@ class GroupsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.update_with_http_info(object_type, group_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.update_with_http_info(
+            object_type, group_name, **kwargs
+        )  # noqa: E501
 
     def update_with_http_info(self, object_type, group_name, **kwargs):  # noqa: E501
         """Update a property group  # noqa: E501
@@ -548,36 +597,47 @@ class GroupsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type', 'group_name', 'property_group_update']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "object_type",
+            "group_name",
+            "property_group_update",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    "Got an unexpected keyword argument '%s'" " to method update" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `update`"
+            )  # noqa: E501
         # verify the required parameter 'group_name' is set
-        if self.api_client.client_side_validation and ('group_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['group_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `group_name` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "group_name" not in local_var_params
+            or local_var_params["group_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `group_name` when calling `update`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
-        if 'group_name' in local_var_params:
-            path_params['groupName'] = local_var_params['group_name']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if "group_name" in local_var_params:
+            path_params["groupName"] = local_var_params["group_name"]  # noqa: E501
 
         query_params = []
 
@@ -587,31 +647,39 @@ class GroupsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'property_group_update' in local_var_params:
-            body_params = local_var_params['property_group_update']
+        if "property_group_update" in local_var_params:
+            body_params = local_var_params["property_group_update"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/properties/{objectType}/groups/{groupName}', 'PATCH',
+            "/crm/v3/properties/{objectType}/groups/{groupName}",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PropertyGroup',  # noqa: E501
+            response_type="PropertyGroup",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

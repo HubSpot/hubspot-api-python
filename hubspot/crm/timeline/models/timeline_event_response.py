@@ -33,36 +33,51 @@ class TimelineEventResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'object_type': 'str',
-        'created_at': 'datetime',
-        'id': 'str',
-        'event_template_id': 'str',
-        'email': 'str',
-        'object_id': 'str',
-        'utk': 'str',
-        'domain': 'str',
-        'timestamp': 'datetime',
-        'tokens': 'dict(str, str)',
-        'extra_data': 'object',
-        'timeline_i_frame': 'TimelineEventIFrame'
+        "object_type": "str",
+        "created_at": "datetime",
+        "id": "str",
+        "event_template_id": "str",
+        "email": "str",
+        "object_id": "str",
+        "utk": "str",
+        "domain": "str",
+        "timestamp": "datetime",
+        "tokens": "dict(str, str)",
+        "extra_data": "object",
+        "timeline_i_frame": "TimelineEventIFrame",
     }
 
     attribute_map = {
-        'object_type': 'objectType',
-        'created_at': 'createdAt',
-        'id': 'id',
-        'event_template_id': 'eventTemplateId',
-        'email': 'email',
-        'object_id': 'objectId',
-        'utk': 'utk',
-        'domain': 'domain',
-        'timestamp': 'timestamp',
-        'tokens': 'tokens',
-        'extra_data': 'extraData',
-        'timeline_i_frame': 'timelineIFrame'
+        "object_type": "objectType",
+        "created_at": "createdAt",
+        "id": "id",
+        "event_template_id": "eventTemplateId",
+        "email": "email",
+        "object_id": "objectId",
+        "utk": "utk",
+        "domain": "domain",
+        "timestamp": "timestamp",
+        "tokens": "tokens",
+        "extra_data": "extraData",
+        "timeline_i_frame": "timelineIFrame",
     }
 
-    def __init__(self, object_type=None, created_at=None, id=None, event_template_id=None, email=None, object_id=None, utk=None, domain=None, timestamp=None, tokens=None, extra_data=None, timeline_i_frame=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        object_type=None,
+        created_at=None,
+        id=None,
+        event_template_id=None,
+        email=None,
+        object_id=None,
+        utk=None,
+        domain=None,
+        timestamp=None,
+        tokens=None,
+        extra_data=None,
+        timeline_i_frame=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """TimelineEventResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -123,8 +138,12 @@ class TimelineEventResponse(object):
         :param object_type: The object_type of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type`, must not be `None`"
+            )  # noqa: E501
 
         self._object_type = object_type
 
@@ -169,7 +188,9 @@ class TimelineEventResponse(object):
         :param id: The id of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -194,8 +215,13 @@ class TimelineEventResponse(object):
         :param event_template_id: The event_template_id of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and event_template_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `event_template_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and event_template_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event_template_id`, must not be `None`"
+            )  # noqa: E501
 
         self._event_template_id = event_template_id
 
@@ -334,8 +360,12 @@ class TimelineEventResponse(object):
         :param tokens: The tokens of this TimelineEventResponse.  # noqa: E501
         :type: dict(str, str)
         """
-        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
-            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and tokens is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `tokens`, must not be `None`"
+            )  # noqa: E501
 
         self._tokens = tokens
 
@@ -390,18 +420,20 @@ class TimelineEventResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
