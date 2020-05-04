@@ -33,22 +33,30 @@ class BeginsWith(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'operator': 'str',
-        'value': 'bool',
-        'inputs': 'list[AnyOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply]',
-        'string_to_check': 'OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply',
-        'property_name': 'str'
+        "operator": "str",
+        "value": "bool",
+        "inputs": "list[AnyOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply]",
+        "string_to_check": "OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply",
+        "property_name": "str",
     }
 
     attribute_map = {
-        'operator': 'operator',
-        'value': 'value',
-        'inputs': 'inputs',
-        'string_to_check': 'stringToCheck',
-        'property_name': 'propertyName'
+        "operator": "operator",
+        "value": "value",
+        "inputs": "inputs",
+        "string_to_check": "stringToCheck",
+        "property_name": "propertyName",
     }
 
-    def __init__(self, operator='BEGINS_WITH', value=None, inputs=None, string_to_check=None, property_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        operator="BEGINS_WITH",
+        value=None,
+        inputs=None,
+        string_to_check=None,
+        property_name=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """BeginsWith - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -88,13 +96,21 @@ class BeginsWith(object):
         :param operator: The operator of this BeginsWith.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
-            raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["BEGINS_WITH"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and operator is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
-                .format(operator, allowed_values)
+                "Invalid value for `operator`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["BEGINS_WITH"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and operator not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `operator` ({0}), must be one of {1}".format(  # noqa: E501
+                    operator, allowed_values
+                )
             )
 
         self._operator = operator
@@ -159,8 +175,13 @@ class BeginsWith(object):
         :param string_to_check: The string_to_check of this BeginsWith.  # noqa: E501
         :type: OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply
         """
-        if self.local_vars_configuration.client_side_validation and string_to_check is None:  # noqa: E501
-            raise ValueError("Invalid value for `string_to_check`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and string_to_check is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `string_to_check`, must not be `None`"
+            )  # noqa: E501
 
         self._string_to_check = string_to_check
 
@@ -192,18 +213,20 @@ class BeginsWith(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -6,7 +6,7 @@ from .oauth import refresh_and_get_access_token, is_authenticated
 def create_client():
     if is_authenticated():
         return hubspot.Client.create(access_token=refresh_and_get_access_token())
-    api_key = os.environ.get('HUBSPOT_API_KEY')
+    api_key = os.environ.get("HUBSPOT_API_KEY")
     if api_key is not None:
         return hubspot.Client.create(api_key=api_key)
 

@@ -33,22 +33,30 @@ class IsPresent(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'operator': 'str',
-        'value': 'bool',
-        'inputs': 'list[AnyOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply]',
-        'expression_to_evaluate': 'OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply',
-        'property_name': 'str'
+        "operator": "str",
+        "value": "bool",
+        "inputs": "list[AnyOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply]",
+        "expression_to_evaluate": "OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply",
+        "property_name": "str",
     }
 
     attribute_map = {
-        'operator': 'operator',
-        'value': 'value',
-        'inputs': 'inputs',
-        'expression_to_evaluate': 'expressionToEvaluate',
-        'property_name': 'propertyName'
+        "operator": "operator",
+        "value": "value",
+        "inputs": "inputs",
+        "expression_to_evaluate": "expressionToEvaluate",
+        "property_name": "propertyName",
     }
 
-    def __init__(self, operator='IS_PRESENT', value=None, inputs=None, expression_to_evaluate=None, property_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        operator="IS_PRESENT",
+        value=None,
+        inputs=None,
+        expression_to_evaluate=None,
+        property_name=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """IsPresent - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -88,13 +96,21 @@ class IsPresent(object):
         :param operator: The operator of this IsPresent.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
-            raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["IS_PRESENT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and operator is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
-                .format(operator, allowed_values)
+                "Invalid value for `operator`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["IS_PRESENT"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and operator not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `operator` ({0}), must be one of {1}".format(  # noqa: E501
+                    operator, allowed_values
+                )
             )
 
         self._operator = operator
@@ -159,8 +175,13 @@ class IsPresent(object):
         :param expression_to_evaluate: The expression_to_evaluate of this IsPresent.  # noqa: E501
         :type: OneOfConstantBooleanConstantNumberConstantStringBooleanPropertyVariableStringPropertyVariableNumberPropertyVariableAddNumbersSubtractNumbersMultiplyNumbersDivideNumbersRoundDownNumbersRoundUpNumbersUpperCaseLowerCaseConcatStringsContainsBeginsWithNumberToStringParseNumberFetchExchangeRatePipelineProbabilityMaxNumbersMinNumbersLessThanLessThanOrEqualMoreThanMoreThanOrEqualNumberEqualsStringEqualsNotDateMonthYearNowTimeBetweenPeriodToMonthsAndOrXorIfStringIfNumberIfBooleanIsPresentHasEmailReplyHasPlainTextEmailReplyExtractMostRecentEmailReplyHtmlExtractMostRecentEmailReplyTextExtractMostRecentPlainTextEmailReply
         """
-        if self.local_vars_configuration.client_side_validation and expression_to_evaluate is None:  # noqa: E501
-            raise ValueError("Invalid value for `expression_to_evaluate`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and expression_to_evaluate is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `expression_to_evaluate`, must not be `None`"
+            )  # noqa: E501
 
         self._expression_to_evaluate = expression_to_evaluate
 
@@ -192,18 +213,20 @@ class IsPresent(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

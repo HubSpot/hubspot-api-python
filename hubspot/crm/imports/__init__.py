@@ -27,9 +27,12 @@ from hubspot.crm.imports.exceptions import ApiTypeError
 from hubspot.crm.imports.exceptions import ApiValueError
 from hubspot.crm.imports.exceptions import ApiKeyError
 from hubspot.crm.imports.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.imports.models.action_response import ActionResponse
-from hubspot.crm.imports.models.collection_response_public_import_response import CollectionResponsePublicImportResponse
+from hubspot.crm.imports.models.collection_response_public_import_response import (
+    CollectionResponsePublicImportResponse,
+)
 from hubspot.crm.imports.models.error import Error
 from hubspot.crm.imports.models.error_detail import ErrorDetail
 from hubspot.crm.imports.models.next_page import NextPage
@@ -37,4 +40,3 @@ from hubspot.crm.imports.models.paging import Paging
 from hubspot.crm.imports.models.public_import_metadata import PublicImportMetadata
 from hubspot.crm.imports.models.public_import_response import PublicImportResponse
 from hubspot.crm.imports.models.public_object_list_record import PublicObjectListRecord
-

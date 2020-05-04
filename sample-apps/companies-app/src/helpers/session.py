@@ -1,2 +1,2 @@
 class SessionKey:
-    ACTION_PERFORMED = 'action_performed'
+    ACTION_PERFORMED = "action_performed"

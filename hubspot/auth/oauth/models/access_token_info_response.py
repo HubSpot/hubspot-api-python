@@ -33,30 +33,42 @@ class AccessTokenInfoResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'token': 'str',
-        'user': 'str',
-        'hub_domain': 'str',
-        'scopes': 'list[str]',
-        'hub_id': 'int',
-        'app_id': 'int',
-        'expires_in': 'int',
-        'user_id': 'int',
-        'token_type': 'str'
+        "token": "str",
+        "user": "str",
+        "hub_domain": "str",
+        "scopes": "list[str]",
+        "hub_id": "int",
+        "app_id": "int",
+        "expires_in": "int",
+        "user_id": "int",
+        "token_type": "str",
     }
 
     attribute_map = {
-        'token': 'token',
-        'user': 'user',
-        'hub_domain': 'hub_domain',
-        'scopes': 'scopes',
-        'hub_id': 'hub_id',
-        'app_id': 'app_id',
-        'expires_in': 'expires_in',
-        'user_id': 'user_id',
-        'token_type': 'token_type'
+        "token": "token",
+        "user": "user",
+        "hub_domain": "hub_domain",
+        "scopes": "scopes",
+        "hub_id": "hub_id",
+        "app_id": "app_id",
+        "expires_in": "expires_in",
+        "user_id": "user_id",
+        "token_type": "token_type",
     }
 
-    def __init__(self, token=None, user=None, hub_domain=None, scopes=None, hub_id=None, app_id=None, expires_in=None, user_id=None, token_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        token=None,
+        user=None,
+        hub_domain=None,
+        scopes=None,
+        hub_id=None,
+        app_id=None,
+        expires_in=None,
+        user_id=None,
+        token_type=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """AccessTokenInfoResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -103,8 +115,12 @@ class AccessTokenInfoResponse(object):
         :param token: The token of this AccessTokenInfoResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
-            raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and token is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `token`, must not be `None`"
+            )  # noqa: E501
 
         self._token = token
 
@@ -168,8 +184,12 @@ class AccessTokenInfoResponse(object):
         :param scopes: The scopes of this AccessTokenInfoResponse.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and scopes is None:  # noqa: E501
-            raise ValueError("Invalid value for `scopes`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and scopes is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `scopes`, must not be `None`"
+            )  # noqa: E501
 
         self._scopes = scopes
 
@@ -191,8 +211,12 @@ class AccessTokenInfoResponse(object):
         :param hub_id: The hub_id of this AccessTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and hub_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `hub_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and hub_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `hub_id`, must not be `None`"
+            )  # noqa: E501
 
         self._hub_id = hub_id
 
@@ -214,8 +238,12 @@ class AccessTokenInfoResponse(object):
         :param app_id: The app_id of this AccessTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and app_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `app_id`, must not be `None`"
+            )  # noqa: E501
 
         self._app_id = app_id
 
@@ -237,8 +265,12 @@ class AccessTokenInfoResponse(object):
         :param expires_in: The expires_in of this AccessTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and expires_in is None:  # noqa: E501
-            raise ValueError("Invalid value for `expires_in`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and expires_in is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `expires_in`, must not be `None`"
+            )  # noqa: E501
 
         self._expires_in = expires_in
 
@@ -260,8 +292,12 @@ class AccessTokenInfoResponse(object):
         :param user_id: The user_id of this AccessTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and user_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `user_id`, must not be `None`"
+            )  # noqa: E501
 
         self._user_id = user_id
 
@@ -283,8 +319,12 @@ class AccessTokenInfoResponse(object):
         :param token_type: The token_type of this AccessTokenInfoResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and token_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `token_type`, must not be `None`"
+            )  # noqa: E501
 
         self._token_type = token_type
 
@@ -295,18 +335,20 @@ class AccessTokenInfoResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

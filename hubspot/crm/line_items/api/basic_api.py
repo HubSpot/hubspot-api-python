@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.line_items.api_client import ApiClient
-from hubspot.crm.line_items.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.crm.line_items.exceptions import ApiTypeError, ApiValueError
 
 
 class BasicApi(object):
@@ -58,7 +55,7 @@ class BasicApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(line_item_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, line_item_id, **kwargs):  # noqa: E501
@@ -88,30 +85,33 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['line_item_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["line_item_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive" % key
+                    "Got an unexpected keyword argument '%s'" " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'line_item_id' is set
-        if self.api_client.client_side_validation and ('line_item_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['line_item_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `line_item_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "line_item_id" not in local_var_params
+            or local_var_params["line_item_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `line_item_id` when calling `archive`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'line_item_id' in local_var_params:
-            path_params['lineItemId'] = local_var_params['line_item_id']  # noqa: E501
+        if "line_item_id" in local_var_params:
+            path_params["lineItemId"] = local_var_params["line_item_id"]  # noqa: E501
 
         query_params = []
 
@@ -122,14 +122,16 @@ class BasicApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/line_items/{lineItemId}', 'DELETE',
+            "/crm/v3/objects/line_items/{lineItemId}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -138,11 +140,14 @@ class BasicApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create(self, **kwargs):  # noqa: E501
         """Create  # noqa: E501
@@ -166,7 +171,7 @@ class BasicApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(**kwargs)  # noqa: E501
 
     def create_with_http_info(self, **kwargs):  # noqa: E501
@@ -196,20 +201,19 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['simple_public_object_input']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["simple_public_object_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    "Got an unexpected keyword argument '%s'" " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
@@ -223,34 +227,42 @@ class BasicApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'simple_public_object_input' in local_var_params:
-            body_params = local_var_params['simple_public_object_input']
+        if "simple_public_object_input" in local_var_params:
+            body_params = local_var_params["simple_public_object_input"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/line_items', 'POST',
+            "/crm/v3/objects/line_items",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SimplePublicObject',  # noqa: E501
+            response_type="SimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_by_id(self, line_item_id, **kwargs):  # noqa: E501
         """Read  # noqa: E501
@@ -278,7 +290,7 @@ class BasicApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(line_item_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, line_item_id, **kwargs):  # noqa: E501
@@ -312,42 +324,71 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['line_item_id', 'properties', 'associations', 'archived', 'id_property']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "line_item_id",
+            "properties",
+            "associations",
+            "archived",
+            "id_property",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'line_item_id' is set
-        if self.api_client.client_side_validation and ('line_item_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['line_item_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `line_item_id` when calling `get_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "line_item_id" not in local_var_params
+            or local_var_params["line_item_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `line_item_id` when calling `get_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'line_item_id' in local_var_params:
-            path_params['lineItemId'] = local_var_params['line_item_id']  # noqa: E501
+        if "line_item_id" in local_var_params:
+            path_params["lineItemId"] = local_var_params["line_item_id"]  # noqa: E501
 
         query_params = []
-        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
-            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
-            collection_formats['properties'] = 'multi'  # noqa: E501
-        if 'associations' in local_var_params and local_var_params['associations'] is not None:  # noqa: E501
-            query_params.append(('associations', local_var_params['associations']))  # noqa: E501
-            collection_formats['associations'] = 'multi'  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
-        if 'id_property' in local_var_params and local_var_params['id_property'] is not None:  # noqa: E501
-            query_params.append(('idProperty', local_var_params['id_property']))  # noqa: E501
+        if (
+            "properties" in local_var_params
+            and local_var_params["properties"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("properties", local_var_params["properties"])
+            )  # noqa: E501
+            collection_formats["properties"] = "multi"  # noqa: E501
+        if (
+            "associations" in local_var_params
+            and local_var_params["associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("associations", local_var_params["associations"])
+            )  # noqa: E501
+            collection_formats["associations"] = "multi"  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
+        if (
+            "id_property" in local_var_params
+            and local_var_params["id_property"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("idProperty", local_var_params["id_property"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -356,27 +397,32 @@ class BasicApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/line_items/{lineItemId}', 'GET',
+            "/crm/v3/objects/line_items/{lineItemId}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SimplePublicObject',  # noqa: E501
+            response_type="SimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_page(self, **kwargs):  # noqa: E501
         """List  # noqa: E501
@@ -404,7 +450,7 @@ class BasicApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -438,38 +484,62 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['limit', 'after', 'properties', 'associations', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "limit",
+            "after",
+            "properties",
+            "associations",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_page" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
-            query_params.append(('after', local_var_params['after']))  # noqa: E501
-        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
-            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
-            collection_formats['properties'] = 'multi'  # noqa: E501
-        if 'associations' in local_var_params and local_var_params['associations'] is not None:  # noqa: E501
-            query_params.append(('associations', local_var_params['associations']))  # noqa: E501
-            collection_formats['associations'] = 'multi'  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "properties" in local_var_params
+            and local_var_params["properties"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("properties", local_var_params["properties"])
+            )  # noqa: E501
+            collection_formats["properties"] = "multi"  # noqa: E501
+        if (
+            "associations" in local_var_params
+            and local_var_params["associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("associations", local_var_params["associations"])
+            )  # noqa: E501
+            collection_formats["associations"] = "multi"  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -478,27 +548,32 @@ class BasicApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/line_items', 'GET',
+            "/crm/v3/objects/line_items",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponseSimplePublicObject',  # noqa: E501
+            response_type="CollectionResponseSimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def update(self, line_item_id, **kwargs):  # noqa: E501
         """Update  # noqa: E501
@@ -523,7 +598,7 @@ class BasicApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(line_item_id, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, line_item_id, **kwargs):  # noqa: E501
@@ -554,30 +629,33 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ['line_item_id', 'simple_public_object_input']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["line_item_id", "simple_public_object_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    "Got an unexpected keyword argument '%s'" " to method update" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'line_item_id' is set
-        if self.api_client.client_side_validation and ('line_item_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['line_item_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `line_item_id` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "line_item_id" not in local_var_params
+            or local_var_params["line_item_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `line_item_id` when calling `update`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'line_item_id' in local_var_params:
-            path_params['lineItemId'] = local_var_params['line_item_id']  # noqa: E501
+        if "line_item_id" in local_var_params:
+            path_params["lineItemId"] = local_var_params["line_item_id"]  # noqa: E501
 
         query_params = []
 
@@ -587,31 +665,39 @@ class BasicApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'simple_public_object_input' in local_var_params:
-            body_params = local_var_params['simple_public_object_input']
+        if "simple_public_object_input" in local_var_params:
+            body_params = local_var_params["simple_public_object_input"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/line_items/{lineItemId}', 'PATCH',
+            "/crm/v3/objects/line_items/{lineItemId}",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SimplePublicObject',  # noqa: E501
+            response_type="SimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

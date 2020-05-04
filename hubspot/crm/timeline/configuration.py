@@ -97,10 +97,15 @@ class Configuration(object):
       )
     """
 
-    def __init__(self, host="https://api.hubapi.com",
-                 api_key=None, api_key_prefix=None,
-                 username=None, password=None,
-                 signing_info=None):
+    def __init__(
+        self,
+        host="https://api.hubapi.com",
+        api_key=None,
+        api_key_prefix=None,
+        username=None,
+        password=None,
+        signing_info=None,
+    ):
         """Constructor
         """
         self.host = host
@@ -142,7 +147,7 @@ class Configuration(object):
         """
         self.logger["package_logger"] = logging.getLogger("hubspot.crm.timeline")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
-        self.logger_format = '%(asctime)s %(levelname)s %(message)s'
+        self.logger_format = "%(asctime)s %(levelname)s %(message)s"
         """Log format
         """
         self.logger_stream_handler = None
@@ -190,7 +195,7 @@ class Configuration(object):
         self.proxy_headers = None
         """Proxy headers
         """
-        self.safe_chars_for_path_param = ''
+        self.safe_chars_for_path_param = ""
         """Safe chars for path_param
         """
         self.retries = None
@@ -311,9 +316,9 @@ class Configuration(object):
         password = ""
         if self.password is not None:
             password = self.password
-        return urllib3.util.make_headers(
-            basic_auth=username + ':' + password
-        ).get('authorization')
+        return urllib3.util.make_headers(basic_auth=username + ":" + password).get(
+            "authorization"
+        )
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -321,19 +326,19 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if 'hapikey' in self.api_key:
-            auth['hapikey'] = {
-                'type': 'api_key',
-                'in': 'query',
-                'key': 'hapikey',
-                'value': self.get_api_key_with_prefix('hapikey')
+        if "hapikey" in self.api_key:
+            auth["hapikey"] = {
+                "type": "api_key",
+                "in": "query",
+                "key": "hapikey",
+                "value": self.get_api_key_with_prefix("hapikey"),
             }
         if self.access_token is not None:
-            auth['oauth2'] = {
-                'type': 'oauth2',
-                'in': 'header',
-                'key': 'Authorization',
-                'value': 'Bearer ' + self.access_token
+            auth["oauth2"] = {
+                "type": "oauth2",
+                "in": "header",
+                "key": "Authorization",
+                "value": "Bearer " + self.access_token,
             }
         return auth
 
@@ -342,12 +347,13 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        return "Python SDK Debug Report:\n"\
-               "OS: {env}\n"\
-               "Python Version: {pyversion}\n"\
-               "Version of the API: v3\n"\
-               "SDK Package Version: 1.0.0".\
-               format(env=sys.platform, pyversion=sys.version)
+        return (
+            "Python SDK Debug Report:\n"
+            "OS: {env}\n"
+            "Python Version: {pyversion}\n"
+            "Version of the API: v3\n"
+            "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
+        )
 
     def get_host_settings(self):
         """Gets an array of host settings
@@ -356,8 +362,8 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://api.hubapi.com/",
-                'description': "No description provided",
+                "url": "https://api.hubapi.com/",
+                "description": "No description provided",
             }
         ]
 
@@ -375,22 +381,22 @@ class Configuration(object):
         except IndexError:
             raise ValueError(
                 "Invalid index {0} when selecting the host settings. "
-                "Must be less than {1}".format(index, len(servers)))
+                "Must be less than {1}".format(index, len(servers))
+            )
 
-        url = server['url']
+        url = server["url"]
 
         # go through variables and replace placeholders
-        for variable_name, variable in server['variables'].items():
-            used_value = variables.get(
-                variable_name, variable['default_value'])
+        for variable_name, variable in server["variables"].items():
+            used_value = variables.get(variable_name, variable["default_value"])
 
-            if 'enum_values' in variable \
-                    and used_value not in variable['enum_values']:
+            if "enum_values" in variable and used_value not in variable["enum_values"]:
                 raise ValueError(
                     "The variable `{0}` in the host URL has invalid value "
                     "{1}. Must be {2}.".format(
-                        variable_name, variables[variable_name],
-                        variable['enum_values']))
+                        variable_name, variables[variable_name], variable["enum_values"]
+                    )
+                )
 
             url = url.replace("{" + variable_name + "}", used_value)
 

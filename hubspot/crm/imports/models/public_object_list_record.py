@@ -32,17 +32,13 @@ class PublicObjectListRecord(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'list_id': 'str',
-        'object_type': 'str'
-    }
+    openapi_types = {"list_id": "str", "object_type": "str"}
 
-    attribute_map = {
-        'list_id': 'listId',
-        'object_type': 'objectType'
-    }
+    attribute_map = {"list_id": "listId", "object_type": "objectType"}
 
-    def __init__(self, list_id=None, object_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, list_id=None, object_type=None, local_vars_configuration=None
+    ):  # noqa: E501
         """PublicObjectListRecord - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,8 +71,12 @@ class PublicObjectListRecord(object):
         :param list_id: The list_id of this PublicObjectListRecord.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and list_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `list_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and list_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `list_id`, must not be `None`"
+            )  # noqa: E501
 
         self._list_id = list_id
 
@@ -100,8 +100,12 @@ class PublicObjectListRecord(object):
         :param object_type: The object_type of this PublicObjectListRecord.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type`, must not be `None`"
+            )  # noqa: E501
 
         self._object_type = object_type
 
@@ -112,18 +116,20 @@ class PublicObjectListRecord(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
