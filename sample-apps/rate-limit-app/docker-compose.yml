@@ -5,6 +5,8 @@ services:
     container_name: python-rate-limit-app-web
     env_file:
       - .env
+    environment:
+      REDIS_URL: 'redis://redis:6379/0'
     build:
       dockerfile: ./sample-apps/rate-limit-app/docker/web/Dockerfile
       context: ../../
@@ -12,3 +14,6 @@ services:
       - 5000:5000
     volumes:
       - ./src:/app/src
+
+  redis:
+    image: redis:latest
