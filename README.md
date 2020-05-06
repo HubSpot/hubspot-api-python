@@ -116,11 +116,11 @@ Or with rate limit retry middleware:
 import hubspot
 from urllib3.util.retry import Retry
 
-retries = Retry(
+retry = Retry(
     total=5,
     status_forcelist=(429,),
 )
-client = hubspot.Client.create(retries=retries)
+client = hubspot.Client.create(retry=retry)
 ```
 
 ## Contributing
