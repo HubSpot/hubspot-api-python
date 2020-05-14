@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<pre>
+// src/routes/oauth.py - Generate URL for OAuth
+from hubspot.utils.oauth import get_auth_url
+auth_url = get_auth_url(
+    scopes=('contacts',),
+    client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
+    redirect_uri=get_redirect_uri(),
+)
+</pre>
+
+<h3 class="text-center">In order to continue please authorize via OAuth</h3>
+<div class="row authorize-button">
+    <a class="button" href="{{ url_for('oauth.authorize') }}">Authorize</a>
+</div>
+{% endblock %}
