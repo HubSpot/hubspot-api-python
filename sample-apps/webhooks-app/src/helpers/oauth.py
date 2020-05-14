@@ -23,6 +23,7 @@ def is_authenticated():
 
 
 def get_redirect_uri():
+    print(request.url_root, flush=True)
     return request.url_root + "oauth/callback"
 
 
