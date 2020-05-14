@@ -1,8 +1,10 @@
 from flask import Flask, redirect, url_for
-
 import routes
+from helpers.reverse_proxied import ReverseProxied
+
 
 app = Flask(__name__)
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 

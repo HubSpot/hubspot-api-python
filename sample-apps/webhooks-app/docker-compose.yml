@@ -8,7 +8,14 @@ services:
     build:
       dockerfile: ./sample-apps/webhooks-app/docker/web/Dockerfile
       context: ../../
-    ports:
-      - 5000:5000
     volumes:
       - ./src:/app/src
+  ngrok:
+    image: gtriggiano/ngrok-tunnel
+    ports:
+      - 4040:4040
+    environment:
+      TARGET_HOST: web
+      TARGET_PORT: 5000
+    depends_on:
+      - web
