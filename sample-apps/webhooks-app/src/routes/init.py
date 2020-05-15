@@ -10,7 +10,8 @@ module = Blueprint("init", __name__)
 @module.route("/")
 @auth_required
 def readme():
-    return render_template("init/step_1.html")
+    target_url = url_for("webhooks.handle", _external=True)
+    return render_template("init/readme.html", target_url=target_url)
 
 
 @module.route("/", methods=["POST"])
