@@ -10,11 +10,13 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.register_blueprint(routes.oauth, url_prefix="/oauth")
 app.register_blueprint(routes.init, url_prefix="/init")
+app.register_blueprint(routes.webhooks, url_prefix="/webhooks")
+app.register_blueprint(routes.events, url_prefix="/events")
 
 
 @app.route("/")
 def init():
-    return redirect(url_for("init.start"))
+    return redirect(url_for("init.readme"))
 
 
 if __name__ == "__main__":
