@@ -3,11 +3,22 @@ version: '3.5'
 services:
   web:
     container_name: python-webhooks-app-web
+    ports:
+      - 5000:5000
     env_file:
       - .env
+    environment:
+      KAFKA_BROKER_LIST: kafka:9092
+      KAFKA_REFRESH_INTERVAL_MS: 1000
+      KAFKA_BROKER_VERSION: 1.0.0
+      KAFKA_PRODUCE_INTERVAL: 500
+      KAFKA_GROUP_ID: events
+      EVENTS_TOPIC: events
     build:
       dockerfile: ./sample-apps/webhooks-app/docker/web/Dockerfile
       context: ../../
+    depends_on:
+      - kafka
     volumes:
       - ./src:/app/src
   ngrok:
@@ -19,3 +30,24 @@ services:
       TARGET_PORT: 5000
     depends_on:
       - web
+  zookeeper:
+    image: zookeeper:3.5
+    ports:
+      - "2181:2181"
+    logging:
+      driver: none
+    tmpfs: "/datalog"
+  kafka:
+    image: wurstmeister/kafka:2.12-2.3.0
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    logging:
+      driver: none
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_CREATE_TOPICS: "events:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
