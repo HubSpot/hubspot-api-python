@@ -1,5 +1,7 @@
 FROM python:3.8
 
+RUN apt-get update && apt-get install -y supervisor
+
 RUN mkdir -p /sdk
 ADD ./hubspot /sdk/hubspot
 ADD ./setup.py /sdk
@@ -12,4 +14,8 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 WORKDIR /app/src
-CMD python app.py
+
+COPY ./sample-apps/webhooks-app/docker/web/supervisor.conf /etc/supervisor/conf.d/apache.conf
+
+CMD ["/usr/bin/supervisord"]
+#CMD ["python", "app.py"]

@@ -1,1 +1,2 @@
 Flask==1.1.2
+kafka-python==2.0.1
