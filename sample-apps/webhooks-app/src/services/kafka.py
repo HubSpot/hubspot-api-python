@@ -24,6 +24,7 @@ def get_consumer():
             bootstrap_servers=os.getenv("KAFKA_BROKER_LIST"),
             auto_offset_reset='earliest',
             enable_auto_commit=True,
+            group_id='events-group',
             value_deserializer=lambda x: json.loads(x.decode('utf-8')),
         )
     return _consumer
