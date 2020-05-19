@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for
 import routes
 from helpers.reverse_proxied import ReverseProxied
-
+from services.db import create_db_schema
 
 app = Flask(__name__)
 app.wsgi_app = ReverseProxied(app.wsgi_app)
@@ -12,6 +12,8 @@ app.register_blueprint(routes.oauth, url_prefix="/oauth")
 app.register_blueprint(routes.init, url_prefix="/init")
 app.register_blueprint(routes.webhooks, url_prefix="/webhooks")
 app.register_blueprint(routes.events, url_prefix="/events")
+
+create_db_schema()
 
 
 @app.route("/")

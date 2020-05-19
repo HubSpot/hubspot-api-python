@@ -12,10 +12,13 @@ RUN mkdir -p /app
 ADD ./sample-apps/webhooks-app/requirements.txt /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-
-WORKDIR /app/src
+RUN pip install watchdog pyyaml argh
 
 COPY ./sample-apps/webhooks-app/docker/web/supervisor.conf /etc/supervisor/conf.d/apache.conf
 
-CMD ["/usr/bin/supervisord"]
-#CMD ["python", "app.py"]
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+WORKDIR /app/src
