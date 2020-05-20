@@ -10,25 +10,29 @@
     <div class="column">
       <h3 id="updates-alert" class="hidden" data-now="{{ now }}">New webhooks are here. <a
               href="{{ url_for('events.list') }}">Reload</a> page to see updates</h3>
-      <table>
-        <thead>
-        <tr>
-          <th>Contact ID</th>
-          <th>Contact Name</th>
-          <th>Event</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-          {% set contact = contacts_dict[event.object_id] %}
+      {% if events | length > 0 %}
+        <table>
+          <thead>
           <tr>
-            <td>{{ event.object_id }}</td>
-            <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
-            <td>{{ event.event_type }}</td>
+            <th>Contact ID</th>
+            <th>Contact Name</th>
+            <th>Event</th>
           </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          {% for event in events %}
+            {% set contact = contacts_dict[event.object_id] %}
+            <tr>
+              <td>{{ event.object_id }}</td>
+              <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
+              <td>{{ event.event_type }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <h3 id="no-webhooks-alert">No webhooks have been received so far.</h3>
+      {% endif %}
     </div>
   </div>
 

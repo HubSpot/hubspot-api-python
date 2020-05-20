@@ -10,7 +10,7 @@ function requestNotShownEventsCount() {
 async function displayNotShownEventsAlertIfNeed() {
     const updatesCount = await requestNotShownEventsCount();
     if (updatesCount > 0) {
-        $('#empty-message').hide();
+        $('#no-webhooks-alert').hide();
         $('#updates-alert').show();
     }
 }
