@@ -1,29 +1,35 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block static %}
+  <script type="application/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
 
-    <div class="row">
-        <div class="column">
-            <table>
-                <thead>
-                <tr>
-                    <th>Contact ID</th>
-                    <th>Contact Name</th>
-                    <th>Event</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for event in events %}
-                    {% set contact = contacts_dict[event.object_id] %}
-                    <tr>
-                        <td>{{ event.object_id }}</td>
-                        <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
-                        <td>{{ event.event_type }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+{% block content %}
+  <div class="row">
+    <div class="column">
+      <h3 id="updates-alert" class="hidden" data-now="{{ now }}">New webhooks are here. <a
+              href="{{ url_for('events.list') }}">Reload</a> page to see updates</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>Contact ID</th>
+          <th>Contact Name</th>
+          <th>Event</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+          {% set contact = contacts_dict[event.object_id] %}
+          <tr>
+            <td>{{ event.object_id }}</td>
+            <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
+            <td>{{ event.event_type }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 
 {% endblock %}

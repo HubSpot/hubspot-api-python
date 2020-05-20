@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+import datetime
+from flask import Blueprint, render_template, request, jsonify
 from auth import auth_required
 from services.db import session, Event
 from helpers.hubspot import create_client
@@ -22,6 +23,17 @@ def list():
     ).results
     contacts_dict = {int(contact.id): contact for contact in contacts}
 
-    print(contacts_dict, flush=True)
+    return render_template(
+        "events/list.html",
+        events=events,
+        contacts_dict=contacts_dict,
+        now=datetime.datetime.now()
+    )
 
-    return render_template("events/list.html", events=events, contacts_dict=contacts_dict)
+
+@module.route("/updates")
+def updates():
+    after = datetime.datetime.fromisoformat(request.args.get('after'))
+    updates_count = session.query(Event).filter(Event.created_at > after).count()
+
+    return jsonify({"updatesCount": updates_count})

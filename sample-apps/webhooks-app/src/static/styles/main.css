@@ -46,3 +46,7 @@
 .navigation .navigation-link.active {
     color: #606c76
 }
+
+.hidden {
+    display: none;
+}
