@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="column">
+            <table>
+                <thead>
+                <tr>
+                    <th>Contact ID</th>
+                    <th>Contact Name</th>
+                    <th>Event</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    {% set contact = contacts_dict[event.object_id] %}
+                    <tr>
+                        <td>{{ event.object_id }}</td>
+                        <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
+                        <td>{{ event.event_type }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
