@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 engine = create_engine(os.getenv("DB_URL"))
-Session = sessionmaker(engine)
+Session = sessionmaker(bind=engine, autocommit=True)
 session = Session()
 
 Base = declarative_base()

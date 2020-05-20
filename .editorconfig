@@ -10,7 +10,7 @@ trim_trailing_whitespace = true
 end_of_line = lf
 charset = utf-8
 
-[*.{cfg,ini,json,toml,yml}]
+[*.{cfg,ini,json,toml,yml,html}]
 indent_size = 2
 
 [Makefile]
