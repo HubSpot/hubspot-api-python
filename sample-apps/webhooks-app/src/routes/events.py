@@ -12,6 +12,7 @@ module = Blueprint("events", __name__)
 @auth_required
 def list():
     events = session.query(Event).order_by(Event.occurred_at.desc()).limit(50).all()
+    session.commit()
     hubspot = create_client()
 
     inputs = [SimplePublicObjectId(id=e.object_id) for e in events]
@@ -34,8 +35,9 @@ def list():
 @module.route("/updates")
 def updates():
     after = datetime.datetime.fromisoformat(request.args.get('after'))
-    query = session.query(Event).filter(Event.created_at > after)
+    updates_count = session.query(Event).filter(Event.created_at > after).count()
+    session.commit()
 
     return jsonify({
-        "updatesCount": query.count(),
+        "updatesCount": updates_count,
     })
