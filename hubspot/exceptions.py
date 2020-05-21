@@ -1,4 +1,3 @@
-
 class InvalidSignatureError(Exception):
     def __init__(self, msg=None, signature=None, signature_version=None, hash_result=None):
         self.signature = signature
