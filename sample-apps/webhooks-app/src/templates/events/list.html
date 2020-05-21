@@ -17,6 +17,7 @@
             <th>Contact ID</th>
             <th>Contact Name</th>
             <th>Event</th>
+            <th>Occurred At</th>
           </tr>
           </thead>
           <tbody>
@@ -33,6 +34,9 @@
                 {% if event.property_name %}
                   <span>({{ event.property_name }} to "{{ event.property_value }}")</span>
                 {% endif %}
+              </td>
+              <td>
+                {{ event.occurred_at }}
               </td>
             </tr>
           {% endfor %}
