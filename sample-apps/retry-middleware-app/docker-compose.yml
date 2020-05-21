@@ -16,4 +16,5 @@ services:
       - ./src:/app/src
 
   redis:
+    container_name: python-retry-middleware-app_redis
     image: redis:latest
