@@ -21,11 +21,19 @@
           </thead>
           <tbody>
           {% for event in events %}
-            {% set contact = contacts_dict[event.object_id] %}
             <tr>
               <td>{{ event.object_id }}</td>
-              <td>{{ (contact.properties.firstname or '')~' '~(contact.properties.lastname or '') }}</td>
-              <td>{{ event.event_type }}</td>
+              <td>
+                {% if event.object_id in contacts_dict %}
+                  {{ contacts_dict[event.object_id].fullname}}
+                {% endif %}
+              </td>
+              <td>
+                <span class="event {{ event.event_type.split('.')[1] }}">{{ event.event_type }}</span>
+                {% if event.property_name %}
+                  <span>({{ event.property_name }} to "{{ event.property_value }}")</span>
+                {% endif %}
+              </td>
             </tr>
           {% endfor %}
           </tbody>

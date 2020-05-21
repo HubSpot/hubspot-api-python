@@ -22,7 +22,9 @@ def list():
     contacts = hubspot.crm.contacts.batch_api.read(
         batch_read_input_simple_public_object_id=batch_read_input_simple_public_object_id,
     ).results
-    contacts_dict = {int(contact.id): contact for contact in contacts}
+    contacts_dict = {int(contact.id): {
+        "fullname": (contact.properties["firstname"] or "") + " " + (contact.properties["lastname"] or "")
+    } for contact in contacts}
 
     return render_template(
         "events/list.html",
