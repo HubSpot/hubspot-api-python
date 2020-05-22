@@ -4,6 +4,8 @@ from services.logger import logger
 from hubspot.crm.contacts import ApiException
 from multiprocessing import Process
 import os
+import time
+import sys
 
 
 def call_api():
@@ -19,7 +21,21 @@ def call_api():
 
 def circle():
     for i in range(100):
-        call_api()
+        try:
+            call_api()
+        except KeyboardInterrupt:
+            sys.exit(0)
+
+if not is_authenticated():
+    print('In order to continue please go to http://localhost:5000 and authorize via OAuth.')
+    print('Then return back')
+
+    while True:
+        if not is_authenticated():
+            time.sleep(3)
+        else:
+            break
+
 
 for i in range(int(os.environ.get("PROCESS_COUNT"))):
     process = Process(target=circle).start()
