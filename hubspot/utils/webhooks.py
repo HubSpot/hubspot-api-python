@@ -15,7 +15,7 @@ def validate_signature(
     else:
         source_string = client_secret + http_method + http_uri + request_body
 
-    hash_result = hashlib.sha256(source_string.encode('utf-8')).hexdigest()
+    hash_result = hashlib.sha256(source_string.encode("utf-8")).hexdigest()
 
     if hash_result != signature:
         raise InvalidSignatureError(

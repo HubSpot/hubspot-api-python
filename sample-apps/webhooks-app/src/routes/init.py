@@ -2,7 +2,11 @@ import os
 from flask import Blueprint, render_template, redirect, url_for, request
 from auth import auth_required
 from helpers.hubspot import create_client_with_developer_api_key
-from helpers.webhooks import create_or_activate_subscription, configure_target_url, pause_active_subscriptions
+from helpers.webhooks import (
+    create_or_activate_subscription,
+    configure_target_url,
+    pause_active_subscriptions,
+)
 
 module = Blueprint("init", __name__)
 
@@ -31,6 +35,8 @@ def start():
         {"event_type": "contact.deletion"},
     ]
     for subscription in subscriptions:
-        create_or_activate_subscription(hubspot_client=hubspot, app_id=app_id, **subscription)
+        create_or_activate_subscription(
+            hubspot_client=hubspot, app_id=app_id, **subscription
+        )
 
     return redirect(url_for("events.list"))

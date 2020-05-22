@@ -11,7 +11,7 @@ def get_producer():
     if _producer is None:
         _producer = KafkaProducer(
             bootstrap_servers=os.getenv("KAFKA_BROKER_LIST"),
-            value_serializer=lambda x: json.dumps(x).encode('utf-8'),
+            value_serializer=lambda x: json.dumps(x).encode("utf-8"),
         )
     return _producer
 
@@ -22,9 +22,9 @@ def get_consumer():
         _consumer = KafkaConsumer(
             os.getenv("EVENTS_TOPIC"),
             bootstrap_servers=os.getenv("KAFKA_BROKER_LIST"),
-            auto_offset_reset='earliest',
+            auto_offset_reset="earliest",
             enable_auto_commit=True,
-            group_id='events-group',
-            value_deserializer=lambda x: json.loads(x.decode('utf-8')),
+            group_id="events-group",
+            value_deserializer=lambda x: json.loads(x.decode("utf-8")),
         )
     return _consumer
