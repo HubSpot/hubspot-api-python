@@ -25,7 +25,10 @@ def is_authenticated():
 
 
 def get_redirect_uri():
-    return request.url_root + "oauth/callback"
+    if request:
+        return request.url_root + "oauth/callback"
+    else:
+        return
 
 
 def refresh_and_get_access_token():

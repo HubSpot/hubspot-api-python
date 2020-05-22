@@ -9,4 +9,6 @@ module = Blueprint("readme", __name__)
 @module.route("/")
 @auth_required
 def readme():
+    hubspot = create_client()
+    hubspot.crm.contacts.basic_api.get_page()
     return render_template("readme/readme.html")
