@@ -9,8 +9,8 @@ import sys
 
 
 def call_api():
-    #Pay attention on create_client.
-    #It generates a client with reties middlewares.
+    # Pay attention on create_client.
+    # It generates a client with reties middlewares.
     hubspot = create_client()
     try:
         page = hubspot.crm.contacts.basic_api.get_page()
@@ -19,6 +19,7 @@ def call_api():
     except ApiException as e:
         logger.error("Exception occurred, status code: ".format(e.status))
 
+
 def circle():
     for i in range(100):
         try:
@@ -26,9 +27,12 @@ def circle():
         except KeyboardInterrupt:
             sys.exit(0)
 
+
 if not is_authenticated():
-    print('In order to continue please go to http://localhost:5000 and authorize via OAuth.')
-    print('Then return back')
+    print(
+        "In order to continue please go to http://localhost:5000 and authorize via OAuth."
+    )
+    print("Then return back")
 
     while True:
         if not is_authenticated():
