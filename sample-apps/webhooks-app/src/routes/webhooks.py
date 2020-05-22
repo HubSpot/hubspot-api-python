@@ -13,8 +13,8 @@ module = Blueprint("webhooks", __name__)
 def handle():
     try:
         validate_signature(
-            signature=request.headers['X-HubSpot-Signature'],
-            signature_version=request.headers['X-HubSpot-Signature-Version'],
+            signature=request.headers["X-HubSpot-Signature"],
+            signature_version=request.headers["X-HubSpot-Signature-Version"],
             http_uri=request.base_url,
             request_body=request.data.decode("utf-8"),
             client_secret=os.getenv("HUBSPOT_CLIENT_SECRET"),

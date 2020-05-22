@@ -11,6 +11,4 @@ def create_client():
 
 
 def create_client_with_developer_api_key():
-    return hubspot.Client.create(
-        api_key=os.getenv("HUBSPOT_DEVELOPER_API_KEY")
-    )
+    return hubspot.Client.create(api_key=os.getenv("HUBSPOT_DEVELOPER_API_KEY"))

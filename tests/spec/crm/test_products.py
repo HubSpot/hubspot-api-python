@@ -8,4 +8,4 @@ def test_is_discoverable():
     assert isinstance(apis.associations_api, AssociationsApi)
     assert isinstance(apis.batch_api, BatchApi)
     assert isinstance(apis.search_api, SearchApi)
-    assert hasattr(apis, 'get_all')
+    assert hasattr(apis, "get_all")
