@@ -30,7 +30,7 @@ class Event(Base):
     property_name = Column(VARCHAR(length=255))
     property_value = Column(VARCHAR(length=255))
 
-    occurred_at = Column(DateTime, default=func.now())
+    occurred_at = Column(DateTime)
     created_at = Column(DateTime, default=func.now())
 
 
