@@ -23,7 +23,7 @@ def circle():
         call_api()
 
 if not is_authenticated():
-    print('In order to continue please go to http://localhost:8999 and authorize via OAuth.')
+    print('In order to continue please go to http://localhost:5000 and authorize via OAuth.')
     print('Then return back')
 
     while True:

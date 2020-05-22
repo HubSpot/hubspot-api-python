@@ -25,10 +25,7 @@ def is_authenticated():
 
 
 def get_redirect_uri():
-    if request:
-        return request.url_root + "oauth/callback"
-    else:
-        return
+    return request.url_root + "oauth/callback"
 
 
 def refresh_and_get_access_token():
@@ -38,7 +35,6 @@ def refresh_and_get_access_token():
     if time.time() > tokens["expires_at"]:
         tokens = hubspot.Client.create().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
-            redirect_uri=get_redirect_uri(),
             refresh_token=tokens["refresh_token"],
             client_id=os.environ.get("HUBSPOT_CLIENT_ID"),
             client_secret=os.environ.get("HUBSPOT_CLIENT_SECRET"),
