@@ -83,7 +83,7 @@ Please note that pagination is used under the hood to get all results.
 
 ### Using utils
 
-#### Get oauth authentication url:
+#### Get OAuth url:
 
 ```python
 from hubspot.utils.oauth import get_auth_url
