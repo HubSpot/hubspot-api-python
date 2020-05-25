@@ -83,6 +83,8 @@ Please note that pagination is used under the hood to get all results.
 
 ### Using utils
 
+#### Get OAuth url:
+
 ```python
 from hubspot.utils.oauth import get_auth_url
 
@@ -93,6 +95,28 @@ auth_url = get_auth_url(
 )
 ```
 
+#### Validate HubSpot request signature
+
+[Example](./sample-apps/webhooks-app/src/routes/webhooks.py) of usage from [Webhooks Sample App](./sample-apps/webhooks-app):
+
+```python
+import os
+from flask import request
+from hubspot.utils.webhooks import validate_signature
+from hubspot.exceptions import InvalidSignatureError
+
+try:
+    validate_signature(
+        signature=request.headers["X-HubSpot-Signature"],
+        signature_version=request.headers["X-HubSpot-Signature-Version"],
+        http_uri=request.base_url,
+        request_body=request.data.decode("utf-8"),
+        client_secret=os.getenv("HUBSPOT_CLIENT_SECRET"),
+    )
+except InvalidSignatureError:
+    print("Request signature is not valid")
+
+```
 
 ### Retry middleware
 
