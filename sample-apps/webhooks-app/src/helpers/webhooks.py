@@ -14,17 +14,18 @@ def pause_active_subscriptions(hubspot_client: Client, app_id: str):
     subscriptions = hubspot_client.webhooks.subscriptions_api.get_all(app_id=app_id)
     active_subscriptions = [s for s in subscriptions.results if s.active]
 
-    inputs = [
-        SubscriptionBatchUpdateRequest(id=s.id, active=False)
-        for s in active_subscriptions
-    ]
-    batch_input_subscription_batch_update_request = BatchInputSubscriptionBatchUpdateRequest(
-        inputs=inputs,
-    )
-    hubspot_client.webhooks.subscriptions_api.update_batch(
-        app_id=app_id,
-        batch_input_subscription_batch_update_request=batch_input_subscription_batch_update_request,
-    )
+    if len(active_subscriptions) > 0:
+        inputs = [
+            SubscriptionBatchUpdateRequest(id=s.id, active=False)
+            for s in active_subscriptions
+        ]
+        batch_input_subscription_batch_update_request = BatchInputSubscriptionBatchUpdateRequest(
+            inputs=inputs,
+        )
+        hubspot_client.webhooks.subscriptions_api.update_batch(
+            app_id=app_id,
+            batch_input_subscription_batch_update_request=batch_input_subscription_batch_update_request,
+        )
 
 
 def configure_target_url(hubspot_client: Client, app_id: str, target_url: str):
