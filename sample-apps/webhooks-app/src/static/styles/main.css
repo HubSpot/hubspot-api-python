@@ -66,3 +66,11 @@
     color: #ffffff;
 }
 
+.authorize-button {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
