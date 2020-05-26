@@ -15,7 +15,9 @@ def validate_signature(
     elif signature_version == "v2":
         source_string = client_secret + http_method + http_uri + request_body
     else:
-        raise ValueError("Not supported signature version: {}".format(signature_version))
+        raise ValueError(
+            "Not supported signature version: {}".format(signature_version)
+        )
 
     hash_result = hashlib.sha256(source_string.encode("utf-8")).hexdigest()
 
