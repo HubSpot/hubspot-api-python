@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y supervisor
 
 RUN mkdir -p /sdk
 ADD ./hubspot /sdk/hubspot
-ADD ./setup.py /sdk
+ADD ./setup.py VERSION /sdk/
 WORKDIR /sdk
 RUN pip install -e .
 

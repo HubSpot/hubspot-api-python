@@ -2,7 +2,7 @@ FROM python:3.8
 
 RUN mkdir -p /sdk
 ADD ./hubspot /sdk/hubspot
-ADD ./setup.py /sdk
+ADD ./setup.py VERSION /sdk/
 WORKDIR /sdk
 RUN pip install -e .
 
