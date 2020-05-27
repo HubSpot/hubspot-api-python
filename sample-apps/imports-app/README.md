@@ -1,19 +1,13 @@
-# HubSpot-python sample OAuth 2.0 app
+# HubSpot-python sample imports app
 
-This is a sample app for the [hubspot-python SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [OAuth API](https://developers.hubspot.com/docs-beta/working-with-oauth) endpoints and their related actions.
+This is a sample app for the [hubspot-python SDK](../../../../).
+Currently, this app focuses on demonstrating the functionality of [Imports API](https://developers.hubspot.com/docs/api/crm/imports) endpoints and their related actions.
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
-  - [Initiate an Integration with OAuth 2.0](https://developers.hubspot.com/docs/methods/oauth2/initiate-oauth-integration)
-  - [Get OAuth 2.0 Access Token and Refresh Tokens](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)
-  - [Refresh OAuth 2.0 Access Token](https://developers.hubspot.com/docs/methods/oauth2/refresh-access-token)
-  - [Search contacts](https://developers.hubspot.com/docs-beta/crm/search)
-    
-### Note on Application Scopes
-HubSpot provides a way to restrict application users access to the system to certain scopes. In order to do that it is a good practice to make a set of scopes required by your applicatuion.
-Please refer to [Initiate an Integration with OAuth 2.0](https://developers.hubspot.com/docs/methods/oauth2/initiate-oauth-integration) for documentation on the scope parameter passed to https://app.hubspot.com/oauth/authorize to make a set of scopes required. [Scopes](https://developers.hubspot.com/docs/methods/oauth2/initiate-oauth-integration#scopes) explains how to make optional scopes and talks about scopes available in HubSpot system
+- [Imports](https://developers.hubspot.com/docs/api/crm/imports)
 
 ### Setup App
 
