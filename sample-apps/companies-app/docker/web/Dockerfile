@@ -7,7 +7,7 @@ WORKDIR /sdk
 RUN pip install -e .
 
 RUN mkdir -p /app
-ADD ./sample-apps/imports-app/requirements.txt /app
+ADD ./sample-apps/companies-app/requirements.txt /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
