@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h3>Import result</h3>
+  <div>
+    <table>
+      <tbody>
+      <tr>
+        <td>Import Id</td>
+        <td>{{ response.id }}</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>{{ response.state }}</td>
+      </tr>
+      <tr>
+        <td>Created At</td>
+        <td>{{ response.created_at }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="{{ url_for("imports.readme") }}">New Import</a>
+
+{% endblock %}
