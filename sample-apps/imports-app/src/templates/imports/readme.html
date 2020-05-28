@@ -1,4 +1,46 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+  <h3>Select File</h3>
+  <p>Sample csv file is <a href="{{ url_for('static', filename='data/example.csv') }}">here</a>.</p>
+  <div>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('imports.start') }}">
+      <fieldset>
+        <input type="file" required name="file" accept='text/*,.csv'>
+        <input type="submit" class="button-primary" value="Upload" name="submit">
+      </fieldset>
+    </form>
+  </div>
+
+<pre>
+import_request = {
+    "name": "Import '{}'".format(file.filename),
+    "files": [
+        {
+            "fileName": os.path.basename(filepath),
+            "fileImportPage": {
+                "hasHeader": True,
+                "columnMappings": [
+                    {
+                        "columnName": "First Name",
+                        "propertyName": "firstname",
+                        "columnObjectType": "CONTACT",
+                    },
+                    {
+                        "columnName": "Email",
+                        "propertyName": "email",
+                        "columnObjectType": "CONTACT",
+                    },
+                ],
+            },
+        }
+    ]
+}
+hubspot.crm.imports.core_api.create(
+    files=filepath,
+    import_request=json.dumps(import_request)
+)
+</pre>
+
 {% endblock %}
