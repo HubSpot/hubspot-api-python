@@ -46,11 +46,12 @@ def start():
                     ],
                 },
             }
-        ]
+        ],
     }
     hubspot = create_client()
-    response = hubspot.crm.imports.core_api.create(files=filepath, import_request=json.dumps(import_request))
+    response = hubspot.crm.imports.core_api.create(
+        files=filepath, import_request=json.dumps(import_request)
+    )
 
     os.unlink(filepath)
     return render_template("imports/result.html", response=response)
-
