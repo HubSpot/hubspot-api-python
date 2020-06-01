@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  web:
+    container_name: python-search-results-paging-app-web
+    env_file:
+      - .env
+    build:
+      dockerfile: ./sample-apps/search-results-paging-app/docker/web/Dockerfile
+      context: ../../
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src
