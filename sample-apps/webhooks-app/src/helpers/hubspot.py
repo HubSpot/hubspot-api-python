@@ -8,7 +8,3 @@ def create_client():
         return hubspot.Client.create(access_token=refresh_and_get_access_token())
 
     return hubspot.Client.create()
-
-
-def create_client_with_developer_api_key():
-    return hubspot.Client.create(api_key=os.getenv("HUBSPOT_DEVELOPER_API_KEY"))
