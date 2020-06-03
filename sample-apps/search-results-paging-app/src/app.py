@@ -7,12 +7,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 app.register_blueprint(routes.oauth, url_prefix="/oauth")
-app.register_blueprint(routes.contacts, url_prefix="/contacts")
-
-
-@app.route("/")
-def contacts():
-    return redirect(url_for("contacts.list"))
+app.register_blueprint(routes.readme, url_prefix="/")
 
 
 if __name__ == "__main__":
