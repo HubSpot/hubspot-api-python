@@ -1,7 +1,9 @@
 import time
 import os
-from flask import session, request
+import json
+from flask import request
 import hubspot
+from services.redis import redis
 
 TOKENS_KEY = "tokens"
 
@@ -13,13 +15,13 @@ def save_tokens(tokens_response):
         "expires_in": tokens_response.expires_in,
         "expires_at": time.time() + tokens_response.expires_in * 0.95,
     }
-    session[TOKENS_KEY] = tokens
+    redis.set(TOKENS_KEY, json.dumps(tokens))
 
     return tokens
 
 
 def is_authenticated():
-    return TOKENS_KEY in session
+    return redis.exists(TOKENS_KEY)
 
 
 def get_redirect_uri():
@@ -27,13 +29,12 @@ def get_redirect_uri():
 
 
 def refresh_and_get_access_token():
-    if TOKENS_KEY not in session:
+    if not is_authenticated():
         raise Exception("No refresh token is specified")
-    tokens = session[TOKENS_KEY]
+    tokens = json.loads(redis.get(TOKENS_KEY))
     if time.time() > tokens["expires_at"]:
         tokens = hubspot.Client.create().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
-            redirect_uri=get_redirect_uri(),
             refresh_token=tokens["refresh_token"],
             client_id=os.environ.get("HUBSPOT_CLIENT_ID"),
             client_secret=os.environ.get("HUBSPOT_CLIENT_SECRET"),
