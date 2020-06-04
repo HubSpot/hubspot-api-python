@@ -1,30 +1,27 @@
-import time
-
+import os
 from services.logger import logger
-from helpers.worker import get_next_contacts_batch, update_contacts_batch
+from helpers.search import search_next_contacts_batch
 
 
 def iterate_via_search_results(search_query, process_contact_func):
-    search_started_at = int(time.time())
+    after = 0
     while True:
-        contacts = get_next_contacts_batch(search_started_at=search_started_at, limit=6, search_query=search_query)
+        contacts = search_next_contacts_batch(
+            search_query=search_query,
+            after=after,
+            limit=os.getenv("SEARCH_BATCH_SIZE")
+        )
         if len(contacts) == 0:
             break
 
         for contact in contacts:
             process_contact_func(contact)
 
-        update_contacts_batch(
-            contacts=contacts,
-            properties={"searched_at": search_started_at},
-        )
-
-        logger.info("Delay: {} seconds..".format(5))
-        time.sleep(5)
+        after = contacts[-1].id
 
 
 if __name__ == "__main__":
     iterate_via_search_results(
-        search_query="a",
+        search_query=os.getenv("SEARCH_QUERY"),
         process_contact_func=lambda contact: logger.info("Processing contact_id={}".format(contact.id))
     )
