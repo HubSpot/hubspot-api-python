@@ -9,6 +9,7 @@ from services.logger import logger
 from hubspot.crm.contacts import ApiException
 from helpers.oauth import is_authenticated
 
+
 @ratelimit(
     rate=os.getenv("RATE_LIMIT"), key="api_call", redis_url=os.getenv("REDIS_URL")
 )
@@ -19,6 +20,7 @@ def call_api():
         logger.info("Requesting get_page: success")
     except ApiException as e:
         logger.error("Exception occurred, status code: ".format(e.status))
+
 
 if not is_authenticated():
     print(

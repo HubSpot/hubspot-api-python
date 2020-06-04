@@ -1,7 +1,4 @@
-from hubspot.crm.contacts import (
-    PublicObjectSearchRequest,
-    Filter, FilterGroup
-)
+from hubspot.crm.contacts import PublicObjectSearchRequest, Filter, FilterGroup
 from helpers.hubspot import create_client
 
 hubspot = create_client()
@@ -14,7 +11,7 @@ def search_next_contacts_batch(after, limit, search_query):
         query=search_query,
         limit=limit,
         filter_groups=filter_groups,
-        sorts=[{"propertyName": "hs_object_id", "direction": "ASCENDING"}]
+        sorts=[{"propertyName": "hs_object_id", "direction": "ASCENDING"}],
     )
     response = hubspot.crm.contacts.search_api.do_search(
         public_object_search_request=public_object_search_request,
