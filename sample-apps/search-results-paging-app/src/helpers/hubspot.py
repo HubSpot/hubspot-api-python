@@ -1,5 +1,4 @@
 import hubspot
-import os
 from .oauth import refresh_and_get_access_token, is_authenticated
 
 

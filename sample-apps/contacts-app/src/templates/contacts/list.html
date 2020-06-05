@@ -25,7 +25,7 @@ hubspot.crm.contacts.search_api.do_search(
 </pre>
 {% endif %}
 
-<form action="/contacts/search">
+<form action="{{ url_for('contacts.search') }}">
     <fieldset>
         <input type="text" name="search" placeholder="Search by email.." value="{{ search }}">
     </fieldset>
