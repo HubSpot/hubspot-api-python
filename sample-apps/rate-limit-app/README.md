@@ -5,12 +5,12 @@ This is a sample app for the [hubspot-python SDK](../../../..). Currently, this 
 The application uses https://pypi.org/project/redis-ratelimit/ package.
 Please check [worker.py](./src/worker.py) on how to specify rate limit in in your application to avoid 429 http errors.
 
-Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 
 ### HubSpot Public API endpoints used in this application
 
-  - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
-  - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
+  - [Contacts](https://developers.hubspot.com/docs/crm/contacts)
+  - [OAuth](https://developers.hubspot.com/docs/working-with-oauth)
 
 ### Setup App
 
