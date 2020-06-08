@@ -3,7 +3,7 @@
 This is a sample app for the [hubspot-python SDK](../../../../).
 Currently, this app focuses on demonstrating the functionality of [Imports API](https://developers.hubspot.com/docs/api/crm/imports) endpoints and their related actions.
 
-Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
