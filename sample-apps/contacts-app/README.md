@@ -1,14 +1,14 @@
 # HubSpot-python sample Contacts app
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs-beta/crm/contacts) endpoints and their related actions.
+This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/crm/contacts) endpoints and their related actions.
 
-Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 
 ### HubSpot Public API endpoints used in this application
 
-  - [Contacts](https://developers.hubspot.com/docs-beta/crm/contacts)
-  - [Owners](https://developers.hubspot.com/docs-beta/crm/owners)
-  - [OAuth](https://developers.hubspot.com/docs-beta/working-with-oauth)
+  - [Contacts](https://developers.hubspot.com/docs/crm/contacts)
+  - [Owners](https://developers.hubspot.com/docs/crm/owners)
+  - [OAuth](https://developers.hubspot.com/docs/working-with-oauth)
 
 ### Note on Application Scopes
 
@@ -23,11 +23,11 @@ Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
 
 1. Copy .env.template to .env
 2. Specify authorization data in .env:
-    
+
     - Paste your HubSpot API Key as the value for HUBSPOT_API_KEY
-    
+
     or
-    
+
     - Paste HUBSPOT_CLIENT_ID and HUBSPOT_CLIENT_SECRET for OAuth
 
 ### Running

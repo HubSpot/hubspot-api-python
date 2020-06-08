@@ -5,11 +5,11 @@ Currently, this app focuses on demonstrating the functionality of
 [Search the CRM API](https://developers.hubspot.com/docs/api/crm/search) endpoints
 and their related actions.
 
-Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
-  - [Search contacts](https://developers.hubspot.com/docs-beta/crm/search)
+  - [Search contacts](https://developers.hubspot.com/docs/crm/search)
 
 ### Note on Application Scopes
 HubSpot provides a way to restrict application users access to the system to certain scopes. In order to do that it is a good practice to make a set of scopes required by your applicatuion.

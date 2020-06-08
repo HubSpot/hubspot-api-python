@@ -1,7 +1,7 @@
 # HubSpot-python sample Webhooks app
 
 This is a sample app for the [hubspot-python SDK](../../../..).
-Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs-beta/crm/extensions), contact creation/deletion in particular.
+Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/crm/extensions), contact creation/deletion in particular.
 
 Please note that the Webhooks events are not sent in chronological order with respect to the creation time. Events might be sent in large numbers, for example when the user imports large number of contacts or deletes a large list of contacts.
 The application demonstrates the use of Queues (Kafka in case of this application - see KafkaHelper.php) to process webhooks events.
@@ -12,11 +12,11 @@ Common webhook processing practice consists of few steps:
    - This application uses MySQL, [SQLAlchemy](https://www.sqlalchemy.org/) ORM
 4. Other services/objects fetch the events data from the database sorted by timestamp of the event
 
-Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs-beta/creating-an-app)
+Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 
 ### HubSpot Public API links used in this application
 
-  - [Read a batch of contact objects by ID](https://developers.hubspot.com/docs-beta/crm/contacts)
+  - [Read a batch of contact objects by ID](https://developers.hubspot.com/docs/crm/contacts)
 ### Note on the Data Base
 This application uses MySQL database to store the events coming from Webhooks. There is a single events table:
 ```
