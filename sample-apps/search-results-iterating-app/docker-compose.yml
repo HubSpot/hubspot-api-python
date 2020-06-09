@@ -10,6 +10,8 @@ services:
     build:
       dockerfile: ./sample-apps/search-results-iterating-app/docker/web/Dockerfile
       context: ../../
+    depends_on:
+      - redis
     ports:
       - 5000:5000
     volumes:
