@@ -37,7 +37,7 @@ client = hubspot.Client.create()
 client.access_token = 'your_access_token'
 ```
 
-### Requesting API endpoints
+### OAuth API
 
 #### Obtain OAuth2 access token:
 
@@ -58,15 +58,15 @@ except ApiException as e:
     print("Exception when calling create_token method: %s\n" % e)
 ```
 
+### CRM API
+
 #### Get contact by id:
 
 ```python
 from hubspot.crm.contacts import ApiException
 
-contacts_client = client.crm.contacts
-
 try:
-    contact_fetched = contacts_client.basic_api.get_by_id('contact_id')
+    contact_fetched = client.crm.contacts.basic_api.get_by_id('contact_id')
 except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
@@ -80,6 +80,19 @@ all_contacts = contacts_client = client.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
+
+### CMS API
+
+#### Get audit logs:
+
+```python
+from hubspot.cms.audit_logs.exceptions import ApiException
+
+try:
+    audit_logs_page = client.cms.audit_logs.default_api.get_page()
+except ApiException as e:
+    print("Exception when calling cards_api->create: %s\n" % e)
+```
 
 ### Using utils
 
