@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `cms.audit_logs` API client
+- `cms.domains` API client
+- `cms.performance` API client
+- `cms.site_search` API client
+- `cms.url_redirects` API client
+
 ## [1.1.0] - 2020-05-26
 
 ### Added
