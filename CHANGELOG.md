@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-06-12
+
 ### Added
 
 - `cms.audit_logs` API client
@@ -40,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0-beta] - 2020-04-16
 
-[unreleased]: https://github.com/HubSpot/hubspot-api-python/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/HubSpot/hubspot-api-python/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/HubSpot/hubspot-api-python/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/HubSpot/hubspot-api-python/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/HubSpot/hubspot-api-python/compare/v1.0.0-beta...v1.0.0
 [1.0.0-beta]: https://github.com/HubSpot/hubspot-api-python/releases/tag/v1.0.0-beta
