@@ -11,8 +11,8 @@ app.register_blueprint(routes.imports, url_prefix="/imports")
 
 
 @app.route("/")
-def contacts():
-    return redirect(url_for("imports.readme"))
+def main():
+    return redirect(url_for("imports.new"))
 
 
 if __name__ == "__main__":
