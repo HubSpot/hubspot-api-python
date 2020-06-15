@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<pre>
+// src/routes/imports.py
+client = hubspot.Client.create(access_token='access_token')
+import_data = client.crm.imports.core_api.get_by_id(import_id)
+</pre>
+
+  <table>
+    <tbody>
+    <tr>
+      <td>ID</td>
+      <td>{{ import_data.id }}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{ import_data.import_request_json["importName"] }}</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>{{ import_data.state }}</td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td>{{ import_data.created_at }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

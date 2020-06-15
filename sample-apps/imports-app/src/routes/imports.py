@@ -1,8 +1,7 @@
 import json
 import tempfile
 import os
-from flask import Blueprint, render_template, request
-from werkzeug.utils import secure_filename
+from flask import Blueprint, render_template, request, redirect, url_for
 from auth import auth_required
 from helpers.hubspot import create_client
 
@@ -12,8 +11,24 @@ module = Blueprint("imports", __name__)
 
 @module.route("/")
 @auth_required
-def readme():
-    return render_template("imports/readme.html")
+def list():
+    hubspot = create_client()
+    imports_page = hubspot.crm.imports.core_api.get_page()
+    return render_template("imports/list.html", imports=imports_page.results)
+
+
+@module.route("/<import_id>")
+@auth_required
+def show(import_id):
+    hubspot = create_client()
+    import_data = hubspot.crm.imports.core_api.get_by_id(import_id)
+    return render_template("imports/show.html", import_data=import_data)
+
+
+@module.route("/new")
+@auth_required
+def new():
+    return render_template("imports/new.html")
 
 
 @module.route("/start", methods=["POST"])
@@ -49,9 +64,10 @@ def start():
         ],
     }
     hubspot = create_client()
-    response = hubspot.crm.imports.core_api.create(
+    import_data = hubspot.crm.imports.core_api.create(
         files=filepath, import_request=json.dumps(import_request)
     )
 
     os.unlink(filepath)
-    return render_template("imports/result.html", response=response)
+
+    return redirect(url_for("imports.show", import_id=import_data.id))
