@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  web:
+    container_name: python-trello-app-web
+    env_file:
+      - .env
+    build:
+      dockerfile: ./sample-apps/trello-app/docker/web/Dockerfile
+      context: ../../
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src

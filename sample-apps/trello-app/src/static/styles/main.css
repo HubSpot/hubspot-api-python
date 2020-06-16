@@ -1,0 +1,60 @@
+.wrapper .container {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.navigation {
+    background: #f4f5f6;
+    border-bottom: .1rem solid #d1d1d1;
+    display: block;
+    height: 5.2rem;
+    left: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.navigation .container {
+    padding-bottom: 0;
+    padding-top: 0
+}
+
+.navigation .navigation-list {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.navigation .navigation-item {
+    float: left;
+    margin-bottom: 0;
+    margin-left: 2.5rem;
+    position: relative
+}
+
+.navigation .navigation-title, .navigation .title {
+    color: #606c76;
+    position: relative
+}
+
+.navigation .navigation-link, .navigation .navigation-title, .navigation .title {
+    display: inline;
+    font-size: 1.6rem;
+    line-height: 5.2rem;
+    padding: 0;
+    text-decoration: none
+}
+
+.navigation .navigation-link.active {
+    color: #606c76
+}
+
+pre {
+    padding-left: 1rem;
+}
+
+.authorize-button {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
