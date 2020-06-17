@@ -14,7 +14,14 @@ auth_url = get_auth_url(
     return_url=url_for("trello.callback", _external=True),
 )
 </pre>
-      <a class="button" href="{{ url_for('trello.authorize') }}">Authorize</a>
+      <ol>
+        <li>
+          Follow <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> <br/>
+        </li>
+        <li>Add {{ url_root }} to "Allowed Resources" section</li>
+        <li>Continue with <a class="button" href="{{ url_for('trello.authorize') }}">Authorize</a></li>
+      </ol>
+
       {% if trello_authorized %}
         <h4>Status: <span class="green">authorized</span></h4>
       {% else %}
