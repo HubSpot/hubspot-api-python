@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request
+from flask import Blueprint, render_template, redirect, request, url_for
 from hubspot.utils.oauth import get_auth_url
 import os
 from helpers.oauth import save_tokens, get_redirect_uri, is_authorized
@@ -14,6 +14,7 @@ def login():
         "oauth/login.html",
         hubspot_authorized=is_authorized(),
         trello_authorized=is_trello_authorized(),
+        url_root=request.url_root
     )
 
 
@@ -40,4 +41,4 @@ def callback():
     )
     save_tokens(tokens_response)
 
-    return redirect("/")
+    return redirect(url_for("home"))

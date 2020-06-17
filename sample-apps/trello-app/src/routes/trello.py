@@ -9,7 +9,7 @@ module = Blueprint("trello", __name__)
 def authorize():
     auth_url = get_auth_url(
         key=os.environ.get("TRELLO_API_KEY"),
-        return_url=url_for("trello.callback", response="", _external=True),
+        return_url=url_for("trello.callback", response="callback", _external=True),
     )
 
     return redirect(auth_url)
@@ -24,8 +24,8 @@ def set_token(token):
 
 @module.route('/<response>', methods=['GET'])
 def callback(response):
-    return '''  <script type="text/javascript">
+    return '''<script type="text/javascript">
                 var token = window.location.href.split("token=")[1];
                 window.location = "/trello/token/" + token;
-            </script> '''
+            </script>'''
 
