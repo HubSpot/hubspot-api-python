@@ -1,4 +1,4 @@
-from flask import session
+from services.redis import redis
 
 TOKEN_KEY = "trello_token"
 
@@ -10,14 +10,14 @@ def get_auth_url(key: str, return_url: str, name="HubSpot", expiration="30days",
 
 
 def save_token(token):
-    session[TOKEN_KEY] = token
+    redis.set(TOKEN_KEY, token)
 
     return token
 
 
 def is_authorized():
-    return TOKEN_KEY in session
+    return redis.exists(TOKEN_KEY)
 
 
 def get_token():
-    return session[TOKEN_KEY]
+    return redis.get(TOKEN_KEY)
