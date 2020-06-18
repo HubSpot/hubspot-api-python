@@ -30,3 +30,20 @@ def get_client():
         api_key=os.getenv("TRELLO_API_KEY"),
         token=get_token(),
     )
+
+
+def fetch_cards(board_name: str, limit=3):
+    client = get_client()
+    all_boards = client.list_boards()
+    board = next((board for board in all_boards if board.name.lower() == board_name.lower()), None)
+
+    cards = []
+    for list in board.list_lists():
+        if len(cards) >= limit:
+            break
+        for card in list.list_cards():
+            cards.append(card)
+            if len(cards) >= limit:
+                break
+
+    return cards
