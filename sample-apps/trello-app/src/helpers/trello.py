@@ -1,3 +1,5 @@
+import os
+from trello import TrelloClient
 from services.redis import redis
 
 TOKEN_KEY = "trello_token"
@@ -21,3 +23,10 @@ def is_authorized():
 
 def get_token():
     return redis.get(TOKEN_KEY)
+
+
+def get_client():
+    return TrelloClient(
+        api_key=os.getenv("TRELLO_API_KEY"),
+        token=get_token(),
+    )
