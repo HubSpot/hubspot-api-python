@@ -4,7 +4,6 @@ from routes.oauth import module as routes_oauth
 from routes.trello.auth import module as routes_trello_auth
 from routes.trello.cards import module as routes_trello_cards
 
-
 app = Flask(__name__)
 app.wsgi_app = ReverseProxied(app.wsgi_app)
 
