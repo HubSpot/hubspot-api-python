@@ -187,7 +187,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/audit-logs/",
