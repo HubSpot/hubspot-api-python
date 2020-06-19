@@ -1,3 +1,5 @@
+import os
+from trello import TrelloClient
 from services.redis import redis
 
 TOKEN_KEY = "trello_token"
@@ -21,3 +23,27 @@ def is_authorized():
 
 def get_token():
     return redis.get(TOKEN_KEY)
+
+
+def get_client():
+    return TrelloClient(
+        api_key=os.getenv("TRELLO_API_KEY"),
+        token=get_token(),
+    )
+
+
+def fetch_cards(board_name: str, limit=3):
+    client = get_client()
+    all_boards = client.list_boards()
+    board = next((board for board in all_boards if board.name.lower() == board_name.lower()), None)
+
+    cards = []
+    for list in board.list_lists():
+        if len(cards) >= limit:
+            break
+        for card in list.list_cards():
+            cards.append(card)
+            if len(cards) >= limit:
+                break
+
+    return cards
