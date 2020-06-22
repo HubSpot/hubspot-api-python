@@ -19,3 +19,6 @@ services:
 
   redis:
     image: redis:6.0
+    command: redis-server --appendonly yes
+    volumes:
+      - ./db/redis:/data
