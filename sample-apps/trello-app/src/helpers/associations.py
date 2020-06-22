@@ -13,9 +13,9 @@ def get_deal_association(deal_id):
     return redis.get(_format_deal_association_key(deal_id)).decode()
 
 
-def associate_deal(deal_id, card_id):
+def create_deal_association(deal_id, card_id):
     redis.set(_format_deal_association_key(deal_id), card_id)
 
 
-def remove_deal_association(deal_id):
+def delete_deal_association(deal_id):
     redis.delete(_format_deal_association_key(deal_id))
