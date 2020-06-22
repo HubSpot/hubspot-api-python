@@ -21,7 +21,7 @@ def login():
 @module.route("/authorize")
 def authorize():
     auth_url = get_auth_url(
-        scopes=("contacts", "content"),
+        scopes=("content",),
         client_id=os.environ.get("HUBSPOT_CLIENT_ID"),
         redirect_uri=get_redirect_uri(),
     )
