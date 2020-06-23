@@ -14,7 +14,7 @@ def format_card_extension_data_response(deal_associated, cards):
             result["actions"] = [
                 {
                     "type": "ACTION_HOOK",
-                    "httpMethod": "GET",
+                    "httpMethod": "POST",
                     "associatedObjectProperties": [
                         "hs_object_id", "dealname", "dealstage"
                     ],
