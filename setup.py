@@ -10,13 +10,13 @@
 """
 
 
-import os
+from os.path import dirname, abspath
 from setuptools import setup, find_packages  # noqa: H301
 
 
 NAME = "hubspot-api-client"
 
-VERSION_FILE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/VERSION"
+VERSION_FILE_PATH = dirname(abspath(__file__)) + "/VERSION"
 with open(VERSION_FILE_PATH, "r", encoding="utf-8") as f:
     VERSION = f.readline().strip()
 
