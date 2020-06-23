@@ -11,9 +11,9 @@ from formatters.trello.cards import format_card_extension_data_response
 module = Blueprint("trello.cards", __name__)
 
 
-@module.route("/<card_id>/association", methods=["GET", "POST"])
+@module.route("/<card_id>/association", methods=["POST"])
 def create_association(card_id):
-    deal_id = request.args.get("hs_object_id")
+    deal_id = request.form.get("hs_object_id")
     create_deal_association(deal_id, card_id)
     return "", http.HTTPStatus.NO_CONTENT
 
