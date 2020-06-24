@@ -20,4 +20,5 @@ The best way to run this project (with the least configuration), is using docker
 ```bash
 docker-compose up --build
 ```
-You should now be able to navigate to [http://localhost:5000](http://localhost:5000) and use the application.
+
+Copy Ngrok url from console. Now you should now be able to navigate to that url and use the application.
