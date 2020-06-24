@@ -15,9 +15,7 @@ auth_url = get_auth_url(
 )
 </pre>
       <ol>
-        <li>
-          Follow <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> <br/>
-        </li>
+        <li>Go to <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> page</li>
         <li>Add {{ url_root }} to "Allowed Resources" section</li>
         <li>Continue with <a class="button" href="{{ url_for('trello.auth.authorize') }}">Authorize</a></li>
       </ol>
