@@ -1,7 +1,7 @@
 import os
 import http
-from flask import Blueprint, jsonify, request
-from helpers.trello import fetch_cards, get_client
+from flask import Blueprint, jsonify, request, render_template, redirect, url_for
+from helpers.trello import search_cards, get_client, get_search_query, save_search_query
 from helpers.associations import (
     is_deal_associated, create_deal_association, get_deal_association, delete_deal_association
 )
@@ -9,6 +9,20 @@ from formatters.trello.cards import format_card_extension_data_response
 
 
 module = Blueprint("trello.cards", __name__)
+
+
+@module.route("/search_query", methods=["GET"])
+def search_query():
+    query = get_search_query()
+    return render_template("trello/cards/search_query.html", search_query=query)
+
+
+@module.route("/search_query", methods=["POST"])
+def update_search_query():
+    print(request.form, flush=True)
+    query = request.form.get("search_query")
+    save_search_query(query)
+    return redirect(url_for("trello.cards.search_query"))
 
 
 @module.route("/<card_id>/association", methods=["POST"])
@@ -30,9 +44,8 @@ def card_extension_data():
     deal_id = request.args["hs_object_id"]
     deal_associated = is_deal_associated(deal_id)
     if not deal_associated:
-        board_name = os.getenv("TRELLO_BOARD_NAME")
-        cards_limit = int(os.getenv("TRELLO_CARDS_LIMIT"))
-        cards = fetch_cards(board_name, cards_limit)
+        query = get_search_query()
+        cards = search_cards(search_query=query)
     else:
         card_id = get_deal_association(deal_id)
         trello = get_client()

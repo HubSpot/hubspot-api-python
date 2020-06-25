@@ -37,5 +37,13 @@ def format_card_extension_data_response(deal_associated, cards):
             "uri": url_for("trello.cards.delete_association", _external=True),
             "label": "Remove Association",
         }
+    else:
+        response["primaryAction"] = {
+            "type": "IFRAME",
+            "width": 550,
+            "height": 150,
+            "uri": url_for("trello.cards.search_query", _external=True),
+            "label": "Search query"
+        }
 
     return response
