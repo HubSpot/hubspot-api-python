@@ -33,10 +33,10 @@ def get_client():
     )
 
 
-def search_cards(search_query=None):
+def search_cards(query=None):
     client = get_client()
-    if search_query is not None and len(search_query) > 0:
-        return client.search(query=search_query)
+    if query is not None and len(query) > 0:
+        return client.search(query=query)
     else:
         return []
 

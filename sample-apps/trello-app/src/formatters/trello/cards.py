@@ -10,20 +10,7 @@ def format_card_extension_data_response(deal_associated, cards):
             "link": card.short_url,
 
         }
-        if not deal_associated:
-            result["actions"] = [
-                {
-                    "type": "ACTION_HOOK",
-                    "httpMethod": "POST",
-                    "associatedObjectProperties": [
-                        "hs_object_id", "dealname", "dealstage"
-                    ],
-                    "uri": url_for("trello.cards.create_association", card_id=card.id, _external=True),
-                    "label": "Assign To Deal",
-                },
-            ]
         results.append(result)
-
     response = {
         "results": results
     }
@@ -35,15 +22,18 @@ def format_card_extension_data_response(deal_associated, cards):
                 "hs_object_id", "label",
             ],
             "uri": url_for("trello.cards.delete_association", _external=True),
-            "label": "Remove Association",
+            "label": "Remove association",
         }
     else:
         response["primaryAction"] = {
             "type": "IFRAME",
             "width": 550,
-            "height": 150,
-            "uri": url_for("trello.cards.search_query", _external=True),
-            "label": "Search query"
+            "height": 300,
+            "uri": url_for("trello.cards.search_frame", _external=True),
+            "label": "Associate",
+            "associatedObjectProperties": [
+                "hs_object_id", "label",
+            ],
         }
 
     return response
