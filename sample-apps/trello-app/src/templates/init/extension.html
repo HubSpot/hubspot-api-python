@@ -5,7 +5,7 @@
   <ol>
     {% set data_fetch_url = url_for('trello.cards.card_extension_data', _external=True) %}
     <li>Update "Data fetch URL" with <a href="{{ data_fetch_url }}">{{ data_fetch_url }}</a></li>
-    <li>Activate "deals" in "Target record types" section with "hs_object_id" property sent form HubSpot</li>
+    <li>Activate "deals" in "Target record types" section with "hs_object_id", "dealname" properties sent form HubSpot</li>
     {% set base_url = url_for('home', _external=True) %}
     <li>Add <a href="{{ base_url }}">{{ base_url }}</a> to "Custom actions"->"Base URL" section</li>
   </ol>
