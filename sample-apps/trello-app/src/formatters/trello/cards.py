@@ -19,20 +19,20 @@ def format_card_extension_data_response(deal_associated, cards):
             "type": "ACTION_HOOK",
             "httpMethod": "DELETE",
             "associatedObjectProperties": [
-                "hs_object_id", "label",
+                "hs_object_id",
             ],
             "uri": url_for("trello.cards.delete_association", _external=True),
-            "label": "Remove association",
+            "label": "Remove the association",
         }
     else:
         response["primaryAction"] = {
             "type": "IFRAME",
-            "width": 550,
-            "height": 250,
+            "width": 650,
+            "height": 350,
             "uri": url_for("trello.cards.search_frame", _external=True),
-            "label": "Associate",
+            "label": "Associate Trello card",
             "associatedObjectProperties": [
-                "hs_object_id", "label",
+                "hs_object_id", "dealname",
             ],
         }
 

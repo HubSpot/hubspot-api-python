@@ -24,7 +24,8 @@ def search():
 
 @module.route("/search_frame", methods=["GET"])
 def search_frame():
-    return render_template("trello/cards/search_frame.html")
+    deal_name = request.args.get("dealname")
+    return render_template("trello/cards/search_frame.html", deal_name=deal_name)
 
 
 @module.route("/search_frame", methods=["POST"])
