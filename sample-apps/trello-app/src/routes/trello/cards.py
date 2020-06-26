@@ -1,7 +1,6 @@
-import os
 import http
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
-from helpers.trello import search_cards, get_client, get_search_query, save_search_query
+from helpers.trello import search_cards, get_client
 from helpers.associations import (
     is_deal_associated, create_deal_association, get_deal_association, delete_deal_association
 )
@@ -25,8 +24,7 @@ def search():
 
 @module.route("/search_frame", methods=["GET"])
 def search_frame():
-    query = get_search_query()
-    return render_template("trello/cards/search_frame.html", search_query=query)
+    return render_template("trello/cards/search_frame.html")
 
 
 @module.route("/search_frame", methods=["POST"])

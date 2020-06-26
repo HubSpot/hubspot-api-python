@@ -28,7 +28,7 @@ def format_card_extension_data_response(deal_associated, cards):
         response["primaryAction"] = {
             "type": "IFRAME",
             "width": 550,
-            "height": 300,
+            "height": 250,
             "uri": url_for("trello.cards.search_frame", _external=True),
             "label": "Associate",
             "associatedObjectProperties": [
