@@ -6,7 +6,10 @@ def _format_deal_association_key(deal_id):
 
 
 def is_deal_associated(deal_id):
-    return redis.exists(_format_deal_association_key(deal_id))
+    if not redis.exists(_format_deal_association_key(deal_id)):
+        return False
+    card_id = get_deal_association(deal_id)
+    return card_id is not None and len(card_id) > 0
 
 
 def get_deal_association(deal_id):

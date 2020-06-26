@@ -52,14 +52,14 @@ def delete_association():
 def card_extension_data():
     deal_id = request.args["hs_object_id"]
     deal_associated = is_deal_associated(deal_id)
-    cards = []
+    card = None
     if deal_associated:
         card_id = get_deal_association(deal_id)
         trello = get_client()
-        cards = [trello.get_card(card_id=card_id)]
+        card = trello.get_card(card_id=card_id)
     response = format_card_extension_data_response(
         deal_associated=deal_associated,
-        cards=cards
+        card=card
     )
 
     return jsonify(response)

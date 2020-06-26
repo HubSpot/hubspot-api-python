@@ -1,21 +1,14 @@
 from flask import url_for
 
 
-def format_card_extension_data_response(deal_associated, cards):
-    results = []
-    for card in cards:
-        result = {
+def format_card_extension_data_response(deal_associated, card=None):
+    if deal_associated:
+        results = [{
             "objectId": card.short_id,
             "title": card.name,
             "link": card.short_url,
-
-        }
-        results.append(result)
-    response = {
-        "results": results
-    }
-    if deal_associated:
-        response["primaryAction"] = {
+        }]
+        primary_action = {
             "type": "ACTION_HOOK",
             "httpMethod": "DELETE",
             "associatedObjectProperties": [
@@ -25,7 +18,8 @@ def format_card_extension_data_response(deal_associated, cards):
             "label": "Remove the association",
         }
     else:
-        response["primaryAction"] = {
+        results = []
+        primary_action = {
             "type": "IFRAME",
             "width": 650,
             "height": 350,
@@ -36,4 +30,7 @@ def format_card_extension_data_response(deal_associated, cards):
             ],
         }
 
-    return response
+    return {
+        "results": results,
+        "primaryAction": primary_action,
+    }
