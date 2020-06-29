@@ -5,6 +5,7 @@ from helpers.associations import (
     is_deal_associated, create_deal_association, get_deal_association, delete_deal_association
 )
 from formatters.trello.cards import format_card_extension_data_response
+from auth import hubspot_signature_required
 
 
 module = Blueprint("trello.cards", __name__)
@@ -42,6 +43,7 @@ def search_frame_success():
 
 
 @module.route("/association", methods=["DELETE"])
+@hubspot_signature_required
 def delete_association():
     deal_id = request.args.get("hs_object_id")
     delete_deal_association(deal_id)
@@ -49,6 +51,7 @@ def delete_association():
 
 
 @module.route("/")
+@hubspot_signature_required
 def card_extension_data():
     deal_id = request.args["hs_object_id"]
     deal_associated = is_deal_associated(deal_id)
