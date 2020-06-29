@@ -3,11 +3,20 @@ from flask import url_for
 
 def format_card_extension_data_response(deal_associated, card=None):
     if deal_associated:
-        results = [{
+        result = {
             "objectId": card.short_id,
             "title": card.name,
             "link": card.short_url,
-        }]
+        }
+        if len(card.members) > 0:
+            result["properties"] = [
+                {
+                    "label": "Members",
+                    "dataType": "STRING",
+                    "value": ", ".join([member.username for member in card.members])
+                }
+            ]
+        results = [result]
         primary_action = {
             "type": "ACTION_HOOK",
             "httpMethod": "DELETE",
