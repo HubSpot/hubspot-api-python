@@ -60,6 +60,7 @@ def card_extension_data():
         card_id = get_deal_association(deal_id)
         trello = get_client()
         card = trello.get_card(card_id=card_id)
+        card.members = [trello.get_member(m) for m in card.idMembers]
     response = format_card_extension_data_response(
         deal_associated=deal_associated,
         card=card
