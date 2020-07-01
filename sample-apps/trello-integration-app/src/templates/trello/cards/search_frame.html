@@ -33,6 +33,7 @@
         wildcard: '%QUERY'
       }
     });
+    // https://twitter.github.io/typeahead.js/examples/
     $('.typeahead').typeahead({
       hint: true,
       highlight: true,
@@ -48,9 +49,6 @@
           '</div>'
         ].join('\n'),
       },
-      updater: (card) => {
-        console.log(card)
-      }
     }).on("typeahead:selected typeahead:autocompleted", (e, card) => {
       $("#cardId").val(card.id);
     });
