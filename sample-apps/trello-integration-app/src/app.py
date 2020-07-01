@@ -15,7 +15,7 @@ app.register_blueprint(routes_init, url_prefix="/init")
 app.register_blueprint(routes_trello_auth, url_prefix="/trello/auth")
 app.register_blueprint(routes_trello_cards, url_prefix="/trello/cards")
 
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
 
 @app.route("/")

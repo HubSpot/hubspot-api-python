@@ -13,4 +13,3 @@ def auth_required(func):
         return func(*args, **kwargs)
 
     return check_authentication
-

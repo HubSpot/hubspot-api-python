@@ -15,17 +15,16 @@ def authorize():
     return redirect(auth_url)
 
 
-@module.route('/token/<token>/', methods=['GET'])
+@module.route("/token/<token>/", methods=["GET"])
 def set_token(token):
     save_token(token)
 
     return redirect(url_for("home"))
 
 
-@module.route('/<response>', methods=['GET'])
+@module.route("/<response>", methods=["GET"])
 def callback(response):
-    return '''<script type="text/javascript">
+    return """<script type="text/javascript">
                 var token = window.location.href.split("token=")[1];
                 window.location = "/trello/auth/token/" + token;
-            </script>'''
-
+            </script>"""

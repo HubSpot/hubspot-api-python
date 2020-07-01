@@ -14,7 +14,7 @@ def login():
         "oauth/login.html",
         hubspot_authorized=is_authorized(),
         trello_authorized=is_trello_authorized(),
-        url_root=request.url_root
+        url_root=request.url_root,
     )
 
 

@@ -13,16 +13,14 @@ def format_card_extension_data_response(deal_associated, card=None):
                 {
                     "label": "Members",
                     "dataType": "STRING",
-                    "value": ", ".join([member.username for member in card.members])
+                    "value": ", ".join([member.username for member in card.members]),
                 }
             ]
         results = [result]
         primary_action = {
             "type": "ACTION_HOOK",
             "httpMethod": "DELETE",
-            "associatedObjectProperties": [
-                "hs_object_id",
-            ],
+            "associatedObjectProperties": ["hs_object_id",],
             "uri": url_for("trello.cards.delete_association", _external=True),
             "label": "Remove the association",
         }
@@ -34,9 +32,7 @@ def format_card_extension_data_response(deal_associated, card=None):
             "height": 350,
             "uri": url_for("trello.cards.search_frame", _external=True),
             "label": "Associate Trello card",
-            "associatedObjectProperties": [
-                "hs_object_id", "dealname",
-            ],
+            "associatedObjectProperties": ["hs_object_id", "dealname",],
         }
 
     return {
