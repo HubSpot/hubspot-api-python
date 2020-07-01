@@ -1,4 +1,4 @@
-# HubSpot-python sample Trello app
+# HubSpot-python sample Trello integration app
 
 This is a sample app for the hubspot-python SDK. Currently, this app focuses on demonstrating
 of Trello integration, Trello cards and HubSpot deals in particular.

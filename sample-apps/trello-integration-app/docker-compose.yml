@@ -2,13 +2,13 @@ version: '3.5'
 
 services:
   web:
-    container_name: python-trello-app-web
+    container_name: python-trello-integration-app-web
     env_file:
       - .env
     environment:
       REDIS_URL: 'redis://redis:6379/0'
     build:
-      dockerfile: ./sample-apps/trello-app/docker/web/Dockerfile
+      dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
       context: ../../
     depends_on:
       - redis
