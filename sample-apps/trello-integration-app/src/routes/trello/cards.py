@@ -2,7 +2,10 @@ import http
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
 from helpers.trello import search_cards, get_client
 from helpers.associations import (
-    is_deal_associated, create_deal_association, get_deal_association, delete_deal_association
+    is_deal_associated,
+    create_deal_association,
+    get_deal_association,
+    delete_deal_association,
 )
 from formatters.trello.cards import format_card_extension_data_response
 from auth import hubspot_signature_required
@@ -15,10 +18,7 @@ module = Blueprint("trello.cards", __name__)
 def search():
     query = request.args.get("q")
     cards = search_cards(query=query)
-    response = [{
-        "name": card.name,
-        "id": card.id,
-    } for card in cards]
+    response = [{"name": card.name, "id": card.id,} for card in cards]
 
     return jsonify(response)
 
@@ -62,8 +62,7 @@ def card_extension_data():
         card = trello.get_card(card_id=card_id)
         card.members = [trello.get_member(m) for m in card.idMembers]
     response = format_card_extension_data_response(
-        deal_associated=deal_associated,
-        card=card
+        deal_associated=deal_associated, card=card
     )
 
     return jsonify(response)
