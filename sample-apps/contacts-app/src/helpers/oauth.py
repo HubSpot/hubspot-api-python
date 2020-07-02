@@ -18,7 +18,7 @@ def save_tokens(tokens_response):
     return tokens
 
 
-def is_authenticated():
+def is_authorized():
     return TOKENS_KEY in session
 
 
@@ -27,7 +27,7 @@ def get_redirect_uri():
 
 
 def refresh_and_get_access_token():
-    if not is_authenticated():
+    if not is_authorized():
         raise Exception("No refresh token is specified")
     tokens = session[TOKENS_KEY]
     if time.time() > tokens["expires_at"]:
