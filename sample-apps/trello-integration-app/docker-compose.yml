@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  web:
+    container_name: python-trello-integration-app-web
+    env_file:
+      - .env
+    environment:
+      REDIS_URL: 'redis://redis:6379/0'
+    build:
+      dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
+      context: ../../
+    depends_on:
+      - redis
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src
+  redis:
+    image: redis:6.0
+    command: redis-server --appendonly yes
+    volumes:
+      - ./db/redis:/data
+  ngrok:
+    image: gtriggiano/ngrok-tunnel
+    ports:
+      - 4040:4040
+    environment:
+      TARGET_HOST: web
+      TARGET_PORT: 5000
+    depends_on:
+      - web

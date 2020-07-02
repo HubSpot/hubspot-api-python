@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="column">
+        <h3>CRM extension card initialization {% if card_id %}(card_id={{ card_id }}){% endif %}:</h3>
+        <ol>
+          {% if card_id is none %}
+            <li>New CRM extension card will be created (with "{{ card_title }}" title)</li>
+          {% endif %}
+          {% set data_fetch_url = url_for('trello.cards.card_extension_data', _external=True) %}
+          <li>"Data fetch URL" will be updated to <a href="{{ data_fetch_url }}">{{ data_fetch_url }}</a></li>
+          <li>"Deals" in "Target record types" section will be activated with "hs_object_id", "dealname" properties sent form HubSpot</li>
+          {% set base_url = url_for('home', _external=True) %}
+          <li>"Custom actions"->"Base URL" section will be updated with <a href="{{ base_url }}">{{ base_url }}</a></li>
+        </ol>
+    </div>
+  </div>
+
+  <form method="post" class="text-center">
+      <button type="submit">Continue</button>
+  </form>
+
+{% endblock %}
