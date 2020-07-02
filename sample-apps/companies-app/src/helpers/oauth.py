@@ -18,7 +18,7 @@ def save_tokens(tokens_response):
     return tokens
 
 
-def is_authenticated():
+def is_authorized():
     return TOKENS_KEY in session
 
 
