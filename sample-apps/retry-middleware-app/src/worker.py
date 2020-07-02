@@ -1,5 +1,5 @@
 from helpers.hubspot import create_client
-from helpers.oauth import is_authenticated
+from helpers.oauth import is_authorized
 from services.logger import logger
 from hubspot.crm.contacts import ApiException
 from multiprocessing import Process
@@ -28,14 +28,14 @@ def circle():
             sys.exit(0)
 
 
-if not is_authenticated():
+if not is_authorized():
     print(
         "In order to continue please go to http://localhost:5000 and authorize via OAuth."
     )
     print("Then return back")
 
     while True:
-        if not is_authenticated():
+        if not is_authorized():
             time.sleep(3)
         else:
             break
