@@ -7,7 +7,6 @@ of Trello integration, Trello cards and HubSpot deals in particular.
 
 - [CRM Custom Cards](https://developers.hubspot.com/docs/api/crm/extensions/custom-cards)
 
-
 ### Setup App
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
