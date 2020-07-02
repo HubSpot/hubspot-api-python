@@ -3,6 +3,11 @@
 This is a sample app for the hubspot-python SDK. Currently, this app focuses on demonstrating
 of Trello integration, Trello cards and HubSpot deals in particular.
 
+### HubSpot Public API links used in this application
+
+- [CRM Custom Cards](https://developers.hubspot.com/docs/api/crm/extensions/custom-cards)
+
+
 ### Setup App
 
 Make sure you have [Docker Compose](https://docs.docker.com/compose/) installed.
