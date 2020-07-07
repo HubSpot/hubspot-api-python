@@ -4,6 +4,7 @@ from routes.oauth import module as routes_oauth
 from routes.init import module as routes_init
 from routes.trello.auth import module as routes_trello_auth
 from routes.trello.cards import module as routes_trello_cards
+from routes.associations import module as routes_associations
 
 app = Flask(__name__)
 app.wsgi_app = ReverseProxied(app.wsgi_app)
@@ -14,6 +15,7 @@ app.register_blueprint(routes_oauth, url_prefix="/oauth")
 app.register_blueprint(routes_init, url_prefix="/init")
 app.register_blueprint(routes_trello_auth, url_prefix="/trello/auth")
 app.register_blueprint(routes_trello_cards, url_prefix="/trello/cards")
+app.register_blueprint(routes_associations, url_prefix="/associations")
 
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
