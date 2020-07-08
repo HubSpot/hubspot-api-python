@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h3>Select Trello board</h3>
+  <table>
+    <tbody>
+      {% for board in trello_boards %}
+        <tr>
+          <td>
+            <a href="{{ url_for("mappings.pipelines_list", board_id=board.id) }}">{{ board.name }}</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

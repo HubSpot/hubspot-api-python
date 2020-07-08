@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h3>Map board lists with pipelines stages</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>"{{ board.name }}" board lists</th>
+        <th>"{{ pipeline.label }}" stages</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <select>
+            <option disabled selected value>-- select trello list --</option>
+            {% for list in board_lists %}
+              <option value="{{ list.id }}">{{ list.name }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td>
+          <select>
+            <option disabled selected value>-- select pipeline stage --</option>
+            {% for stage in pipeline.stages %}
+              <option value="{{ stage.id }}">{{ stage.label }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td>
+          <button type="button">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button">Save</button>
+  <button type="button">Add row</button>
+{% endblock %}
