@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for
 from helpers.reverse_proxied import ReverseProxied
+from services.db import create_db_schema
 from routes.oauth import module as routes_oauth
 from routes.init import module as routes_init
 from routes.trello.auth import module as routes_trello_auth
@@ -10,6 +11,8 @@ app = Flask(__name__)
 app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+create_db_schema()
 
 app.register_blueprint(routes_oauth, url_prefix="/oauth")
 app.register_blueprint(routes_init, url_prefix="/init")
