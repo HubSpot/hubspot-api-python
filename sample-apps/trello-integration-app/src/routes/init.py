@@ -54,10 +54,4 @@ def create_card():
             app_id=app_id, card_id=card_id, card_patch_request=card_patch_request
         )
 
-    return redirect(url_for("init.done"))
-
-
-@module.route("/done", methods=["GET"])
-@auth_required
-def done():
-    return render_template("init/done.html", card_id=get_card_id(),)
+    return redirect(url_for("mappings.home"))
