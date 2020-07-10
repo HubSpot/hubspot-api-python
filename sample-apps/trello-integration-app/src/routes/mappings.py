@@ -9,6 +9,12 @@ module = Blueprint("mappings", __name__)
 
 @module.route("/", methods=["GET"])
 @auth_required
+def home():
+    return redirect(url_for("mappings.boards_list"))
+
+
+@module.route("/boards", methods=["GET"])
+@auth_required
 def boards_list():
     trello = get_client()
     trello_boards = trello.list_boards()
@@ -19,7 +25,7 @@ def boards_list():
     )
 
 
-@module.route("/board/<board_id>", methods=["GET"])
+@module.route("/boards/<board_id>/pipelines", methods=["GET"])
 @auth_required
 def pipelines_list(board_id):
     hubspot = create_client()
@@ -32,7 +38,7 @@ def pipelines_list(board_id):
     )
 
 
-@module.route("/board/<board_id>/pipeline/<pipeline_id>", methods=["GET"])
+@module.route("/boards/<board_id>/pipelines/<pipeline_id>", methods=["GET"])
 @auth_required
 def list(board_id, pipeline_id):
     trello = get_client()
@@ -57,7 +63,7 @@ def list(board_id, pipeline_id):
     )
 
 
-@module.route("/board/<board_id>/pipeline/<pipeline_id>", methods=["POST"])
+@module.route("/boards/<board_id>/pipelines/<pipeline_id>", methods=["POST"])
 @auth_required
 def save(board_id, pipeline_id):
     mappings_fields = {
@@ -74,20 +80,19 @@ def save(board_id, pipeline_id):
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
 
 
-@module.route("/board/<board_id>/pipeline/<pipeline_id>/add-row", methods=["GET"])
+@module.route("/boards/<board_id>/pipelines/<pipeline_id>/add-row", methods=["GET"])
 @auth_required
 def add_row(board_id, pipeline_id):
     mapping = Mapping()
     mapping.board_id = board_id
     mapping.pipeline_id = pipeline_id
     session.add(mapping)
-    print(mapping, flush=True)
     session.commit()
 
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
 
 
-@module.route("/board/<board_id>/pipeline/<pipeline_id>/delete/<mapping_id>", methods=["GET"])
+@module.route("/boards/<board_id>/pipelines/<pipeline_id>/delete/<mapping_id>", methods=["GET"])
 @auth_required
 def delete_row(board_id, pipeline_id, mapping_id):
     mapping = session.query(Mapping).get(mapping_id)
