@@ -33,8 +33,8 @@
 }
 
 .tt-menu {
-    width: 422px;
-    padding: 8px 0;
+    width: 460px;
+    padding: 8px 8px;
     background-color: #fff;
     border: 1px solid #ccc;
     -webkit-border-radius: 8px;
@@ -68,7 +68,6 @@
 }
 
 .typeahead .empty-message {
-    padding: 5px 10px;
     text-align: center;
 }
 

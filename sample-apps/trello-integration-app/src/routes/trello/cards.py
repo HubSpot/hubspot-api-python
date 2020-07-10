@@ -18,7 +18,7 @@ module = Blueprint("trello.cards", __name__)
 def search():
     query = request.args.get("q")
     cards = search_cards(query=query)
-    response = [{"name": card.name, "id": card.id,} for card in cards]
+    response = [{"name": card.name, "id": card.id} for card in cards]
 
     return jsonify(response)
 

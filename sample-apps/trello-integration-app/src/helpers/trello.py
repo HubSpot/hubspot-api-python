@@ -39,6 +39,6 @@ def get_client():
 def search_cards(query=None):
     client = get_client()
     if query is not None and len(query) > 0:
-        return client.search(query=query)
+        return client.search(query=query, partial_match=True, models=["cards"])
     else:
         return []
