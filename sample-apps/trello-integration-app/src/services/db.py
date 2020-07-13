@@ -19,7 +19,7 @@ Base = declarative_base()
 
 
 class Mapping(Base):
-    __tablename__ = "events"
+    __tablename__ = "mappings"
 
     id = Column(Integer, primary_key=True)
 
