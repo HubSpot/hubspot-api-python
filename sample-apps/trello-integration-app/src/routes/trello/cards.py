@@ -1,6 +1,6 @@
 import http
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
-from helpers.trello import search_cards, get_client
+from helpers.trello import search_cards, get_client, create_webhook
 from helpers.associations import (
     is_deal_associated,
     create_deal_association,
@@ -34,6 +34,9 @@ def create_association():
     deal_id = request.args.get("hs_object_id")
     card_id = request.form.get("card_id")
     create_deal_association(deal_id, card_id)
+
+    create_webhook(callback_url=url_for("trello.webhooks.handle", card_id=card_id))
+
     return redirect(url_for("trello.cards.search_frame_success"))
 
 
