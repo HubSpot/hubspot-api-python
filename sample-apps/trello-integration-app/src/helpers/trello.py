@@ -46,7 +46,7 @@ def search_cards(query=None):
 
 def create_webhook(callback_url, card_id, description=None):
     client = get_client()
-    # standard webhook creating method is not working correctly
+    # standard webhook creation method is not correct
     # prepare data manually
     data = {
         'callbackURL': callback_url,

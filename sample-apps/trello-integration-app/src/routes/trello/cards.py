@@ -1,4 +1,4 @@
-import http, os
+import http
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
 from helpers.trello import search_cards, get_client, create_webhook
 from helpers.associations import (
