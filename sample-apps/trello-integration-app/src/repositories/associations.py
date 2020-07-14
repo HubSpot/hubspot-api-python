@@ -32,6 +32,6 @@ def create_association(deal_id, card_id):
     return association
 
 
-def delete_association_by_deal_id(deal_id):
+def delete_associations_by_deal_id(deal_id):
     session.query(Association).filter_by(deal_id=deal_id).delete()
     session.commit()
