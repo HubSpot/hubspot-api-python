@@ -35,7 +35,7 @@ def create_association():
     card_id = request.form.get("card_id")
     create_deal_association(deal_id, card_id)
 
-    create_webhook(callback_url=url_for("trello.webhooks.handle", card_id=card_id))
+    create_webhook(callback_url=url_for("trello.webhooks.handle"), card_id=card_id)
 
     return redirect(url_for("trello.cards.search_frame_success"))
 
