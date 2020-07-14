@@ -45,7 +45,7 @@ def create_card():
         card_create_request = CardCreateRequest(
             title=CARD_TITLE, fetch=fetch, actions=actions, display=CardDisplayBody()
         )
-        response = hubspot.crm.extensions.cards.cards_api.create(
+        response = hubspot.crm.extensions.cards.cards_api.create_association(
             app_id=app_id, card_create_request=card_create_request,
         )
         save_card_id(response.id)

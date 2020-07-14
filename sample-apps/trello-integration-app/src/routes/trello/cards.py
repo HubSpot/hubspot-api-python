@@ -28,7 +28,7 @@ def search_frame():
 def create_association():
     deal_id = request.args.get("hs_object_id")
     card_id = request.form.get("card_id")
-    associations.create(deal_id, card_id)
+    associations.create_association(deal_id, card_id)
     create_webhook(callback_url=url_for("trello.webhooks.handle"), card_id=card_id)
 
     return redirect(url_for("trello.cards.search_frame_success"))
@@ -43,7 +43,7 @@ def search_frame_success():
 @hubspot_signature_required
 def delete_association():
     deal_id = request.args.get("hs_object_id")
-    associations.delete_by_deal_id(deal_id)
+    associations.delete_association_by_deal_id(deal_id)
     return "", http.HTTPStatus.NO_CONTENT
 
 
@@ -54,7 +54,7 @@ def card_extension_data():
     deal_associated = associations.is_deal_associated(deal_id)
     card = None
     if deal_associated:
-        association = associations.find_one_by_deal_id(deal_id)
+        association = associations.find_association_by_deal_id(deal_id)
         trello = get_client()
         card = trello.get_card(card_id=association.card_id)
         card.members = [trello.get_member(m) for m in card.idMembers]
