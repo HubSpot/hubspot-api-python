@@ -18,6 +18,17 @@ session = Session()
 Base = declarative_base()
 
 
+class Association(Base):
+    __tablename__ = "associations"
+
+    id = Column(Integer, primary_key=True)
+
+    deal_id = Column(VARCHAR(length=255))
+    card_id = Column(VARCHAR(length=255))
+
+    created_at = Column(DateTime, default=func.now())
+
+
 class Mapping(Base):
     __tablename__ = "mappings"
 
@@ -33,4 +44,4 @@ class Mapping(Base):
 
 
 def create_db_schema():
-    Base.metadata.create_all(engine, tables=[Mapping.__table__])
+    Base.metadata.create_all(engine, tables=[Association.__table__, Mapping.__table__])
