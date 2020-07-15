@@ -10,7 +10,6 @@ from hubspot.crm.extensions.cards import (
 )
 from auth import auth_required
 from helpers.hubspot import create_client_with_developer_api_key
-from helpers.trello import get_client
 from helpers.extensions_cards import get_card_id, save_card_id, CARD_TITLE
 
 module = Blueprint("init", __name__)

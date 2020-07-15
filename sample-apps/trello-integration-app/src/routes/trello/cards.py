@@ -1,14 +1,14 @@
 import http
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
 from helpers.trello import search_cards, get_client, create_webhook
-from repositories.associations import (
-    is_deal_associated,
-    find_association_by_deal_id,
-    delete_associations_by_deal_id,
-)
 from formatters.trello.cards import format_card_extension_data_response
 from auth import hubspot_signature_required
-from repositories.associations import create_association
+from repositories.associations import (
+    create_association,
+    delete_associations_by_deal_id,
+    is_deal_associated,
+    find_association_by_deal_id,
+)
 
 
 module = Blueprint("trello.cards", __name__)

@@ -15,6 +15,13 @@ def find_association_by_deal_id(deal_id):
     return association
 
 
+def find_associations_by_card_id(card_id):
+    associations = session.query(Association).filter_by(card_id=card_id).all()
+    session.commit()
+
+    return associations
+
+
 def create_association(deal_id, card_id):
     association = Association()
     association.deal_id = deal_id
