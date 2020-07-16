@@ -2,7 +2,7 @@ import json
 from http import HTTPStatus
 from flask import Blueprint, request
 from hubspot.crm.deals import SimplePublicObjectInput
-from repositories.associations import find_associations_by_card_id
+from repositories import AssociationsRepository
 from helpers.hubspot import create_client
 from services.db import session, Mapping
 
@@ -17,7 +17,7 @@ def handle():
     if "listAfter" in data['action']['data']:
         board_list_id = data['action']['data']['listAfter']['id']
         card_id = data['model']['id']
-        associations = find_associations_by_card_id(card_id)
+        associations = AssociationsRepository.find_by_card_id(card_id)
         hubspot = create_client()
         for association in associations:
             deal_id = association.deal_id

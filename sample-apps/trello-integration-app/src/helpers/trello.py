@@ -1,6 +1,6 @@
 import os
 from trello import TrelloClient
-from repositories.settings import save_trello_token, find_settings
+from repositories import SettingsRepository
 
 
 def get_auth_url(
@@ -17,17 +17,17 @@ def get_auth_url(
 
 
 def save_token(token):
-    save_trello_token(token)
+    SettingsRepository.save_trello_token(token)
     return token
 
 
 def is_authorized():
-    settings = find_settings()
+    settings = SettingsRepository.find_one()
     return settings.trello_token is not None
 
 
 def get_token():
-    settings = find_settings()
+    settings = SettingsRepository.find_one()
     return settings.trello_token
 
 

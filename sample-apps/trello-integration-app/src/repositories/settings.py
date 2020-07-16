@@ -1,42 +1,44 @@
 from services.db import session, Settings
 
 
-def find_settings():
-    settings = session.query(Settings).first()
-    if settings is None:
-        settings = Settings()
+class SettingsRepository:
+    @classmethod
+    def find_one(cls):
+        settings = session.query(Settings).first()
+        if settings is None:
+            settings = Settings()
+            session.add(settings)
+        session.commit()
+
+        return settings
+
+    @classmethod
+    def save(cls, settings):
         session.add(settings)
         session.commit()
 
-    return settings
+        return settings
 
+    @classmethod
+    def save_tokens(cls, access_token, refresh_token, expires_in, expires_at):
+        settings = cls.find_one()
+        settings.access_token = access_token
+        settings.refresh_token = refresh_token
+        settings.token_expires_in = expires_in
+        settings.token_expires_at = expires_at
 
-def save_settings(settings):
-    session.add(settings)
-    session.commit()
+        return cls.save(settings)
 
-    return settings
+    @classmethod
+    def save_extension_card_id(cls, extension_card_id):
+        settings = cls.find_one()
+        settings.extension_card_id = extension_card_id
 
+        return cls.save(settings)
 
-def save_tokens(access_token, refresh_token, expires_in, expires_at):
-    settings = find_settings()
-    settings.access_token = access_token
-    settings.refresh_token = refresh_token
-    settings.expires_in = expires_in
-    settings.expires_at = expires_at
+    @classmethod
+    def save_trello_token(cls, trello_token):
+        settings = cls.find_one()
+        settings.trello_token = trello_token
 
-    return save_settings(settings)
-
-
-def save_extension_card_id(extension_card_id):
-    settings = find_settings()
-    settings.extension_card_id = extension_card_id
-
-    return save_settings(settings)
-
-
-def save_trello_token(trello_token):
-    settings = find_settings()
-    settings.trello_token = trello_token
-
-    return save_settings(settings)
+        return cls.save(settings)
