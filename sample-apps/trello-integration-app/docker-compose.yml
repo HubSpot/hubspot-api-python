@@ -6,7 +6,6 @@ services:
     env_file:
       - .env
     environment:
-      REDIS_URL: 'redis://redis:6379/0'
       DB_URL: "mysql+pymysql://mappings:mappings@db/mappings"
     build:
       dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile

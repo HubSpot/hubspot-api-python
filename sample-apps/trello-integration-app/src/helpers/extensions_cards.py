@@ -1,14 +1,13 @@
-from services.redis import redis
+from repositories.settings import find_settings, save_extension_card_id
 
 CARD_ID_KEY = "extension_card_id"
 CARD_TITLE = "Trello Integration Test Card"
 
 
 def get_card_id():
-    if redis.exists(CARD_ID_KEY):
-        return redis.get(CARD_ID_KEY).decode()
-    return None
+    settings = find_settings()
+    return settings.extension_card_id
 
 
 def save_card_id(card_id):
-    return redis.set(CARD_ID_KEY, card_id)
+    return save_extension_card_id(card_id)

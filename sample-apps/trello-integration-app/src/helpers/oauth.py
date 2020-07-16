@@ -2,11 +2,11 @@ from os import getenv
 import hubspot
 from datetime import datetime, timedelta
 from flask import request
-from repositories.tokens import save_token, get_token
+from repositories.settings import save_tokens, find_settings
 
 
-def save_token_response(tokens_response):
-    return save_token(
+def save_tokens_response(tokens_response):
+    return save_tokens(
         access_token=tokens_response.access_token,
         refresh_token=tokens_response.refresh_token,
         expires_in=tokens_response.expires_in,
@@ -17,8 +17,8 @@ def save_token_response(tokens_response):
 
 
 def is_authorized():
-    token = get_token()
-    return token is not None
+    settings = find_settings()
+    return settings.refresh_token is not None
 
 
 def get_redirect_uri():
@@ -28,14 +28,14 @@ def get_redirect_uri():
 def refresh_and_get_access_token():
     if not is_authorized():
         raise Exception("No refresh token is specified")
-    token = get_token()
-    if datetime.now() > token.expires_at:
-        token_response = hubspot.Client.create().auth.oauth.default_api.create_token(
+    settings = find_settings()
+    if datetime.now() > settings.token_expires_at:
+        tokens_response = hubspot.Client.create().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
-            refresh_token=token.refresh_token,
+            refresh_token=settings.refresh_token,
             client_id=getenv("HUBSPOT_CLIENT_ID"),
             client_secret=getenv("HUBSPOT_CLIENT_SECRET"),
         )
-        token = save_token_response(token_response)
+        settings = save_tokens_response(tokens_response)
 
-    return token.access_token
+    return settings.access_token

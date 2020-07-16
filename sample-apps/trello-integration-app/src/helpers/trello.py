@@ -1,8 +1,6 @@
 import os
 from trello import TrelloClient
-from services.redis import redis
-
-TOKEN_KEY = "trello_token"
+from repositories.settings import save_trello_token, find_settings
 
 
 def get_auth_url(
@@ -19,17 +17,18 @@ def get_auth_url(
 
 
 def save_token(token):
-    redis.set(TOKEN_KEY, token)
-
+    save_trello_token(token)
     return token
 
 
 def is_authorized():
-    return redis.exists(TOKEN_KEY)
+    settings = find_settings()
+    return settings.trello_token is not None
 
 
 def get_token():
-    return redis.get(TOKEN_KEY).decode()
+    settings = find_settings()
+    return settings.trello_token
 
 
 def get_client():
