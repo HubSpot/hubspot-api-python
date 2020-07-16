@@ -32,13 +32,13 @@ def authorize():
 @module.route("/callback")
 def callback():
     hubspot = create_client()
-    token_response = hubspot.auth.oauth.default_api.create_token(
+    tokens_response = hubspot.auth.oauth.default_api.create_token(
         grant_type="authorization_code",
         code=request.args.get("code"),
         redirect_uri=get_redirect_uri(),
         client_id=os.environ.get("HUBSPOT_CLIENT_ID"),
         client_secret=os.environ.get("HUBSPOT_CLIENT_SECRET"),
     )
-    save_tokens_response(token_response)
+    save_tokens_response(tokens_response)
 
     return redirect(url_for("home"))
