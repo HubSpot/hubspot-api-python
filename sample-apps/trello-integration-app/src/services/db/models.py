@@ -1,7 +1,4 @@
-import os
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (
-    create_engine,
     Column,
     Integer,
     DateTime,
@@ -10,12 +7,23 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base
 
-
-engine = create_engine(os.getenv("DB_URL"))
-Session = sessionmaker(bind=engine)
-session = Session()
-
 Base = declarative_base()
+
+
+class Settings(Base):
+    __tablename__ = "settings"
+
+    id = Column(Integer, primary_key=True)
+
+    access_token = Column(VARCHAR(length=255))
+    refresh_token = Column(VARCHAR(length=255))
+    token_expires_in = Column(Integer)
+    token_expires_at = Column(DateTime)
+
+    extension_card_id = Column(VARCHAR(length=255))
+    trello_token = Column(VARCHAR(length=255))
+
+    created_at = Column(DateTime, default=func.now())
 
 
 class Association(Base):
@@ -42,6 +50,3 @@ class Mapping(Base):
 
     created_at = Column(DateTime, default=func.now())
 
-
-def create_db_schema():
-    Base.metadata.create_all(engine, tables=[Association.__table__, Mapping.__table__])

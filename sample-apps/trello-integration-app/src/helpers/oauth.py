@@ -1,27 +1,24 @@
-import time
-import os
-import json
-from flask import request
+from os import getenv
 import hubspot
-from services.redis import redis
+from datetime import datetime, timedelta
+from flask import request
+from repositories.settings import save_tokens, find_settings
 
-TOKENS_KEY = "tokens"
 
-
-def save_tokens(tokens_response):
-    tokens = {
-        "access_token": tokens_response.access_token,
-        "refresh_token": tokens_response.refresh_token,
-        "expires_in": tokens_response.expires_in,
-        "expires_at": time.time() + tokens_response.expires_in * 0.95,
-    }
-    redis.set(TOKENS_KEY, json.dumps(tokens))
-
-    return tokens
+def save_tokens_response(tokens_response):
+    return save_tokens(
+        access_token=tokens_response.access_token,
+        refresh_token=tokens_response.refresh_token,
+        expires_in=tokens_response.expires_in,
+        expires_at=datetime.now() + timedelta(
+            seconds=tokens_response.expires_in * 0.95
+        ),
+    )
 
 
 def is_authorized():
-    return redis.exists(TOKENS_KEY)
+    settings = find_settings()
+    return settings.refresh_token is not None
 
 
 def get_redirect_uri():
@@ -31,14 +28,14 @@ def get_redirect_uri():
 def refresh_and_get_access_token():
     if not is_authorized():
         raise Exception("No refresh token is specified")
-    tokens = json.loads(redis.get(TOKENS_KEY))
-    if time.time() > tokens["expires_at"]:
-        tokens = hubspot.Client.create().auth.oauth.default_api.create_token(
+    settings = find_settings()
+    if datetime.now() > settings.token_expires_at:
+        tokens_response = hubspot.Client.create().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
-            refresh_token=tokens["refresh_token"],
-            client_id=os.environ.get("HUBSPOT_CLIENT_ID"),
-            client_secret=os.environ.get("HUBSPOT_CLIENT_SECRET"),
+            refresh_token=settings.refresh_token,
+            client_id=getenv("HUBSPOT_CLIENT_ID"),
+            client_secret=getenv("HUBSPOT_CLIENT_SECRET"),
         )
-        tokens = save_tokens(tokens)
+        settings = save_tokens_response(tokens_response)
 
-    return tokens["access_token"]
+    return settings.access_token

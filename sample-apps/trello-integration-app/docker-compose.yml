@@ -6,24 +6,17 @@ services:
     env_file:
       - .env
     environment:
-      REDIS_URL: 'redis://redis:6379/0'
       DB_URL: "mysql+pymysql://mappings:mappings@db/mappings"
     build:
       dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
       context: ../../
     depends_on:
       - db
-      - redis
     ports:
       - 5000:5000
     volumes:
       - ./src:/app/src
     command: dockerize -wait-retry-interval 5s -timeout 30s -wait tcp://db:3306 python app.py
-  redis:
-    image: redis:6.0
-    command: redis-server --appendonly yes
-    volumes:
-      - ./db/redis:/data
   db:
     image: mysql:8.0
     command: mysqld --default-authentication-plugin=mysql_native_password
