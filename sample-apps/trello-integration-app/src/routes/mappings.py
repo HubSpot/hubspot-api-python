@@ -2,7 +2,8 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from auth import auth_required
 from helpers.trello import get_client
 from helpers.hubspot import create_client
-from services.db import session, Mapping
+from services.db import Mapping
+from repositories import MappingsRepository
 
 module = Blueprint("mappings", __name__)
 
@@ -48,11 +49,10 @@ def list(board_id, pipeline_id):
     hubspot = create_client()
     pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
 
-    mappings = session.query(Mapping).filter_by(
+    mappings = MappingsRepository.find_by(
         board_id=board_id,
         pipeline_id=pipeline_id,
-    ).all()
-    session.commit()
+    )
 
     return render_template(
         "mappings/list.html",
@@ -73,9 +73,9 @@ def save(board_id, pipeline_id):
     for field_name, fields in mappings_fields.items():
         for field_encoded in fields:
             mapping_id, field_value = field_encoded.split("_")
-            mapping = session.query(Mapping).get(mapping_id)
+            mapping = MappingsRepository.get(mapping_id)
             setattr(mapping, field_name, field_value)
-    session.commit()
+            MappingsRepository.save(mapping)
 
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
 
@@ -86,8 +86,7 @@ def add_row(board_id, pipeline_id):
     mapping = Mapping()
     mapping.board_id = board_id
     mapping.pipeline_id = pipeline_id
-    session.add(mapping)
-    session.commit()
+    MappingsRepository.save(mapping)
 
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
 
@@ -95,8 +94,6 @@ def add_row(board_id, pipeline_id):
 @module.route("/boards/<board_id>/pipelines/<pipeline_id>/delete/<mapping_id>", methods=["GET"])
 @auth_required
 def delete_row(board_id, pipeline_id, mapping_id):
-    mapping = session.query(Mapping).get(mapping_id)
-    session.delete(mapping)
-    session.commit()
+    MappingsRepository.delete_by_id(mapping_id)
 
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
