@@ -1,22 +1,21 @@
-from services.db import session, Settings
+from services.db import session, Settings, transactional
 
 
 class SettingsRepository:
     @classmethod
+    @transactional
     def find_one(cls):
         settings = session.query(Settings).first()
         if settings is None:
             settings = Settings()
             session.add(settings)
-        session.commit()
 
         return settings
 
     @classmethod
+    @transactional
     def save(cls, settings):
         session.add(settings)
-        session.commit()
-
         return settings
 
     @classmethod

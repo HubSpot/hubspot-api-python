@@ -6,7 +6,6 @@ from repositories import SettingsRepository
 
 
 def save_tokens_response(tokens_response):
-    print(tokens_response, flush=True)
     return SettingsRepository.save_tokens(
         access_token=tokens_response.access_token,
         refresh_token=tokens_response.refresh_token,
