@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  web:
+    container_name: python-trello-integration-app-web
+    env_file:
+      - .env
+    environment:
+      DB_URL: "mysql+pymysql://mappings:mappings@db/mappings"
+    build:
+      dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
+      context: ../../
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/app/src
+    command: dockerize -wait-retry-interval 5s -timeout 30s -wait tcp://db:3306 python app.py
+  db:
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    logging:
+      driver: none
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mappings
+      MYSQL_USER: mappings
+      MYSQL_PASSWORD: mappings
+  ngrok:
+    image: gtriggiano/ngrok-tunnel
+    ports:
+      - 4040:4040
+    environment:
+      TARGET_HOST: web
+      TARGET_PORT: 5000
+    depends_on:
+      - web

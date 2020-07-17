@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h3>Map board lists with pipelines stages</h3>
+  <form method="post">
+    <table>
+      <thead>
+        <tr>
+          <th>"{{ board.name }}" board lists</th>
+          <th>"{{ pipeline.label }}" stages</th>
+         <th>
+           <a href="{{ url_for("mappings.add_row", board_id=board.id, pipeline_id=pipeline.id) }}">
+             <button class="float-right" type="button">Add row</button>
+           </a>
+         </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for mapping in mappings %}
+          <tr>
+            <td>
+              <select name="board_list_ids[]">
+                <option disabled {% if mapping.board_list_id is none %} selected {% endif %} value>-- select trello list --</option>
+                {% for list in board_lists %}
+                  <option
+                          value="{{ mapping.id~"_"~list.id }}"
+                          {% if list.id == mapping.board_list_id %} selected {% endif %}>
+                    {{ list.name }}
+                  </option>
+                {% endfor %}
+              </select>
+            </td>
+            <td>
+              <select name="pipeline_stage_id[]">
+                <option disabled {% if mapping.pipeline_stage_id is none %} selected {% endif %} value>-- select pipeline stage --</option>
+                {% for stage in pipeline.stages %}
+                  <option
+                          value="{{ mapping.id~"_"~stage.id }}"
+                          {% if stage.id == mapping.pipeline_stage_id %} selected {% endif %}>
+                    {{ stage.label }}
+                  </option>
+                {% endfor %}
+              </select>
+            </td>
+            <td>
+              <a href="{{ url_for("mappings.delete_row", board_id=board.id, pipeline_id=pipeline.id, mapping_id=mapping.id) }}">
+                <button type="button">Remove</button>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

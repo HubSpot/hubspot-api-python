@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="row">
+
+    <div class="column">
+      <h3>Authorize via Trello</h3>
+<pre>
+// src/routes/trello.py - Generate URL for OAuth
+from helpers.trello import get_auth_url
+auth_url = get_auth_url(
+    key=os.environ.get("TRELLO_API_KEY"),
+    return_url=url_for("trello.callback", _external=True),
+)
+</pre>
+      <ol>
+        <li>Go to <a href="https://trello.com/app-key" target="_blank">https://trello.com/app-key</a> page</li>
+        <li>Add {{ url_root }} to "Allowed Resources" section</li>
+        <li>Continue with <a class="button" href="{{ url_for('trello.auth.authorize') }}">Authorize</a></li>
+      </ol>
+
+      {% if trello_authorized %}
+        <h4>Status: <span class="green">authorized</span></h4>
+      {% else %}
+        <h4>Status: not authorized</h4>
+      {% endif %}
+    </div>
+
+    <div class="column">
+      <h3>Authorize via HubSpot</h3>
+<pre>
+// src/routes/oauth.py - Generate URL for OAuth
+from hubspot.utils.oauth import get_auth_url
+auth_url = get_auth_url(
+    scopes=('contacts',),
+    client_id=os.environ.get('HUBSPOT_CLIENT_ID'),
+    redirect_uri=get_redirect_uri(),
+)
+</pre>
+      <a class="button" href="{{ url_for('oauth.authorize') }}">Authorize</a>
+      {% if hubspot_authorized %}
+        <h4>Status: <span class="green">authorized</span></h4>
+      {% else %}
+        <h4>Status: not authorized</h4>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
