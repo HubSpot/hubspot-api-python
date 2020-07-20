@@ -55,6 +55,11 @@ def list(board_id, pipeline_id):
         board_id=board_id,
         pipeline_id=pipeline_id,
     )
+    mappings.append({
+        "id": None,
+        "board_list_id": None,
+        "pipeline_stage_id": None,
+    })
 
     return render_template(
         "mappings/list.html",
@@ -73,23 +78,21 @@ def save(board_id, pipeline_id):
         "board_list_id": request.form.getlist("board_list_ids[]"),
         "pipeline_stage_id": request.form.getlist("pipeline_stage_id[]")
     }
+    new_mapping = Mapping()
+    new_mapping.board_id = board_id
+    new_mapping.pipeline_id = pipeline_id
     for field_name, fields in mappings_fields.items():
         for field_encoded in fields:
             mapping_id, field_value = field_encoded.split(JOIN_SEPARATOR)
-            mapping = MappingsRepository.get(mapping_id)
-            setattr(mapping, field_name, field_value)
-            MappingsRepository.save(mapping)
+            if mapping_id == "None":
+                setattr(new_mapping, field_name, field_value)
+            else:
+                mapping = MappingsRepository.get(mapping_id)
+                setattr(mapping, field_name, field_value)
+                MappingsRepository.save(mapping)
 
-    return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
-
-
-@module.route("/boards/<board_id>/pipelines/<pipeline_id>/add-row", methods=["GET"])
-@auth_required
-def add_row(board_id, pipeline_id):
-    mapping = Mapping()
-    mapping.board_id = board_id
-    mapping.pipeline_id = pipeline_id
-    MappingsRepository.save(mapping)
+    if new_mapping.board_list_id is not None or new_mapping.pipeline_stage_id is not None:
+        MappingsRepository.save(new_mapping)
 
     return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
 

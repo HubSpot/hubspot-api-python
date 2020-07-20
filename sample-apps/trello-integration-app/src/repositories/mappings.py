@@ -23,4 +23,4 @@ class MappingsRepository:
     @classmethod
     @transactional
     def delete_by_id(cls, mapping_id):
-        session.query(Mapping).filter_by(id=mapping_id).delete()
+        session.delete(session.query(Mapping).get(mapping_id))
