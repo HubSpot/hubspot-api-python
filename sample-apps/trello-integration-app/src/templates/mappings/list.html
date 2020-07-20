@@ -8,11 +8,7 @@
         <tr>
           <th>"{{ board.name }}" board lists</th>
           <th>"{{ pipeline.label }}" stages</th>
-         <th>
-           <a href="{{ url_for("mappings.add_row", board_id=board.id, pipeline_id=pipeline.id) }}">
-             <button class="float-right" type="button">Add row</button>
-           </a>
-         </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -43,9 +39,11 @@
               </select>
             </td>
             <td>
-              <a href="{{ url_for("mappings.delete_row", board_id=board.id, pipeline_id=pipeline.id, mapping_id=mapping.id) }}">
-                <button type="button">Remove</button>
-              </a>
+              {% if mapping.id %}
+                <a href="{{ url_for("mappings.delete_row", board_id=board.id, pipeline_id=pipeline.id, mapping_id=mapping.id) }}">
+                  <button type="button">Remove</button>
+                </a>
+              {% endif %}
             </td>
           </tr>
         {% endfor %}
