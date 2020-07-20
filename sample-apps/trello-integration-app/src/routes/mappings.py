@@ -7,6 +7,8 @@ from repositories import MappingsRepository
 
 module = Blueprint("mappings", __name__)
 
+JOIN_SEPARATOR = "#"
+
 
 @module.route("/", methods=["GET"])
 @auth_required
@@ -60,6 +62,7 @@ def list(board_id, pipeline_id):
         board=board,
         board_lists=board_lists,
         pipeline=pipeline,
+        JOIN_SEPARATOR=JOIN_SEPARATOR,
     )
 
 
@@ -72,7 +75,7 @@ def save(board_id, pipeline_id):
     }
     for field_name, fields in mappings_fields.items():
         for field_encoded in fields:
-            mapping_id, field_value = field_encoded.split("_")
+            mapping_id, field_value = field_encoded.split(JOIN_SEPARATOR)
             mapping = MappingsRepository.get(mapping_id)
             setattr(mapping, field_name, field_value)
             MappingsRepository.save(mapping)
