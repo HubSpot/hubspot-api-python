@@ -54,5 +54,20 @@ def create_webhook(callback_url, card_id, description=None):
         'key': os.getenv("TRELLO_API_KEY"),
     }
     url = "https://trello.com/1/tokens/{}/webhooks/".format(get_token())
+    response = client.http_service.post(
+        url, data=data, auth=client.oauth, proxies=client.proxies
+    )
+    return response.json()
 
-    return client.http_service.post(url, data=data, auth=client.oauth, proxies=client.proxies)
+
+def update_webhook(webhook_id, callback_url):
+    client = get_client()
+    data = {
+        'callbackURL': callback_url,
+        'active': 'true',
+    }
+    url = "https://trello.com/1/webhooks/{}".format(webhook_id)
+    response = client.http_service.put(
+        url, data=data, auth=client.oauth, proxies=client.proxies
+    )
+    return response.json()
