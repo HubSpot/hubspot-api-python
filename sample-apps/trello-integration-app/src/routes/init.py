@@ -35,7 +35,7 @@ def create_card():
         name="deals", properties_to_send=["hs_object_id", "dealname"],
     )
     fetch = CardFetchBodyPatch(
-        target_url=url_for("trello.cards.card_extension_data", _external=True),
+        target_url=url_for("trello.associations.card_extension_data", _external=True),
         object_types=[deal_object_type],
     )
     actions = CardActions(base_urls=[url_for("home", _external=True)])

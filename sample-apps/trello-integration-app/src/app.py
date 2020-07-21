@@ -4,7 +4,7 @@ from services.db import create_db_schema
 from routes.oauth import module as routes_oauth
 from routes.init import module as routes_init
 from routes.trello.auth import module as routes_trello_auth
-from routes.trello.cards import module as routes_trello_cards
+from routes.trello.associations import module as routes_trello_cards
 from routes.trello.webhooks import module as routes_trello_webhooks
 from routes.mappings import module as routes_mappings
 

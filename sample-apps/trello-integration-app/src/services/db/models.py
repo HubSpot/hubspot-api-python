@@ -50,3 +50,13 @@ class Mapping(Base):
 
     created_at = Column(DateTime, default=func.now())
 
+
+class Webhook(Base):
+    __tablename__ = "webhooks"
+
+    webhook_id = Column(VARCHAR(length=255), primary_key=True)
+    card_id = Column(VARCHAR(length=255))
+    url = Column(VARCHAR(length=255))
+
+    created_at = Column(DateTime, default=func.now())
+

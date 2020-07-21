@@ -6,7 +6,7 @@ from auth import hubspot_signature_required
 from repositories import AssociationsRepository
 
 
-module = Blueprint("trello.cards", __name__)
+module = Blueprint("trello.associations", __name__)
 
 
 @module.route("/search")
@@ -31,7 +31,7 @@ def create_association():
     AssociationsRepository.create(deal_id, card_id)
     create_webhook(callback_url=url_for("trello.webhooks.handle"), card_id=card_id)
 
-    return redirect(url_for("trello.cards.search_frame_success"))
+    return redirect(url_for("trello.associations.search_frame_success"))
 
 
 @module.route("/search_frame_success", methods=["GET"])
