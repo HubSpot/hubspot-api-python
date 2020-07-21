@@ -10,7 +10,8 @@ from hubspot.crm.extensions.cards import (
 )
 from auth import auth_required
 from helpers.hubspot import create_client_with_developer_api_key
-from repositories import SettingsRepository
+from helpers.trello import update_webhook
+from repositories import SettingsRepository, WebhooksRepository
 
 module = Blueprint("init", __name__)
 
@@ -35,7 +36,7 @@ def create_card():
         name="deals", properties_to_send=["hs_object_id", "dealname"],
     )
     fetch = CardFetchBodyPatch(
-        target_url=url_for("trello.cards.card_extension_data", _external=True),
+        target_url=url_for("trello.associations.card_extension_data", _external=True),
         object_types=[deal_object_type],
     )
     actions = CardActions(base_urls=[url_for("home", _external=True)])
@@ -54,5 +55,14 @@ def create_card():
         hubspot.crm.extensions.cards.cards_api.update(
             app_id=app_id, card_id=card_id, card_patch_request=card_patch_request
         )
+
+    callback_url = url_for("trello.webhooks.handle", _external=True)
+    webhooks = WebhooksRepository.find_outdated(
+        url=callback_url
+    )
+    for webhook in webhooks:
+        update_webhook(webhook.webhook_id, callback_url=callback_url)
+        webhook.url = callback_url
+        WebhooksRepository.save(webhook)
 
     return redirect(url_for("mappings.home"))

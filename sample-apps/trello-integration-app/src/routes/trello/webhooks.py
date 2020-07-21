@@ -10,7 +10,12 @@ from services.db import session, Mapping
 module = Blueprint("trello.webhooks", __name__)
 
 
-@module.route("/handle", methods=["POST", "GET"])
+@module.route("/handle", methods=["GET"])
+def head():
+    return "", HTTPStatus.OK
+
+
+@module.route("/handle", methods=["POST"])
 def handle():
     data = json.loads(request.data)
     # handle only "list" change event

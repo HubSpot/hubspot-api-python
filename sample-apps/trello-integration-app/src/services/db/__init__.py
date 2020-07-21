@@ -30,5 +30,6 @@ def create_db_schema():
             Settings.__table__,
             Association.__table__,
             Mapping.__table__,
+            Webhook.__table__,
         ]
     )

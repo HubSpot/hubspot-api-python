@@ -29,7 +29,7 @@
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
-        url: "{{ url_for('trello.cards.search') }}?q=%QUERY",
+        url: "{{ url_for('trello.associations.search') }}?q=%QUERY",
         wildcard: '%QUERY'
       }
     });
