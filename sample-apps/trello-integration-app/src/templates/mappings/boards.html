@@ -2,6 +2,13 @@
 
 {% block content %}
   <h3>Select Trello board</h3>
+
+<pre>
+// src/routes/mappings.py
+trello = get_client()
+trello_boards = trello.list_boards()
+</pre>
+
   <table>
     <tbody>
       {% for board in trello_boards %}

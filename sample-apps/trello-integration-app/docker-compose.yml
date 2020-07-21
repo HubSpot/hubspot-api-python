@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     environment:
-      DB_URL: "mysql+pymysql://mappings:mappings@db/mappings"
+      DB_URL: "mysql+pymysql://trello:trello@db/trello"
     build:
       dockerfile: ./sample-apps/trello-integration-app/docker/web/Dockerfile
       context: ../../
@@ -28,9 +28,9 @@ services:
       driver: none
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mappings
-      MYSQL_USER: mappings
-      MYSQL_PASSWORD: mappings
+      MYSQL_DATABASE: trello
+      MYSQL_USER: trello
+      MYSQL_PASSWORD: trello
   ngrok:
     image: gtriggiano/ngrok-tunnel
     ports:

@@ -2,6 +2,14 @@
 
 {% block content %}
   <h3>Map board lists with pipelines stages</h3>
+
+<pre>
+// src/routes/mappings.py
+pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
+</pre>
+
+<pre>Note: selected Trello board list and Pipeline stage must be unique for all rows</pre>
+
   <form method="post">
     <table>
       <thead>
