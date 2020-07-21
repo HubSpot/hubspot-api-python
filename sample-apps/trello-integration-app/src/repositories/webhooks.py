@@ -29,3 +29,11 @@ class WebhooksRepository:
         return session.query(Webhook).filter_by(
             **kwargs
         ).all()
+
+    @classmethod
+    @transactional
+    def find_outdated(cls, url):
+        print(url, flush=True)
+        return session.query(Webhook).filter(
+            Webhook.url != url
+        ).all()

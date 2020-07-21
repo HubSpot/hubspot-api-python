@@ -59,5 +59,4 @@ class Webhook(Base):
     url = Column(VARCHAR(length=255))
 
     created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
