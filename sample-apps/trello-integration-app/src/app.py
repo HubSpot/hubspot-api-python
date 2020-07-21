@@ -22,8 +22,6 @@ app.register_blueprint(routes_trello_cards, url_prefix="/trello/cards")
 app.register_blueprint(routes_trello_webhooks, url_prefix="/trello/webhooks")
 app.register_blueprint(routes_mappings, url_prefix="/mappings")
 
-app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
-
 
 @app.route("/")
 def home():
