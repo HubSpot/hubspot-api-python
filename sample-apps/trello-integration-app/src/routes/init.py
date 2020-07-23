@@ -65,4 +65,12 @@ def create_card():
         webhook.url = callback_url
         WebhooksRepository.save(webhook)
 
-    return redirect(url_for("mappings.home"))
+    return redirect(url_for("init.done"))
+
+
+@module.route("/done", methods=["GET"])
+@auth_required
+def done():
+    return render_template(
+        "init/done.html",
+    )
