@@ -22,10 +22,7 @@ def boards_list():
     trello = get_client()
     trello_boards = trello.list_boards()
 
-    return render_template(
-        "mappings/boards.html",
-        trello_boards=trello_boards,
-    )
+    return render_template("mappings/boards.html", trello_boards=trello_boards,)
 
 
 @module.route("/boards/<board_id>/pipelines", methods=["GET"])
@@ -35,9 +32,7 @@ def pipelines_list(board_id):
     pipelines = hubspot.crm.pipelines.pipelines_api.get_all("deals")
 
     return render_template(
-        "mappings/pipelines.html",
-        board_id=board_id,
-        pipelines=pipelines.results
+        "mappings/pipelines.html", board_id=board_id, pipelines=pipelines.results
     )
 
 
@@ -51,15 +46,10 @@ def list(board_id, pipeline_id):
     hubspot = create_client()
     pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
 
-    mappings = MappingsRepository.find_by(
-        board_id=board_id,
-        pipeline_id=pipeline_id,
+    mappings = MappingsRepository.find_by(board_id=board_id, pipeline_id=pipeline_id,)
+    mappings.append(
+        {"id": None, "board_list_id": None, "pipeline_stage_id": None,}
     )
-    mappings.append({
-        "id": None,
-        "board_list_id": None,
-        "pipeline_stage_id": None,
-    })
 
     return render_template(
         "mappings/list.html",
@@ -76,7 +66,7 @@ def list(board_id, pipeline_id):
 def save(board_id, pipeline_id):
     mappings_fields = {
         "board_list_id": request.form.getlist("board_list_ids[]"),
-        "pipeline_stage_id": request.form.getlist("pipeline_stage_id[]")
+        "pipeline_stage_id": request.form.getlist("pipeline_stage_id[]"),
     }
     new_mapping = Mapping()
     new_mapping.board_id = board_id
@@ -91,15 +81,24 @@ def save(board_id, pipeline_id):
                 setattr(mapping, field_name, field_value)
                 MappingsRepository.save(mapping)
 
-    if new_mapping.board_list_id is not None or new_mapping.pipeline_stage_id is not None:
+    if (
+        new_mapping.board_list_id is not None
+        or new_mapping.pipeline_stage_id is not None
+    ):
         MappingsRepository.save(new_mapping)
 
-    return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
+    return redirect(
+        url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id)
+    )
 
 
-@module.route("/boards/<board_id>/pipelines/<pipeline_id>/delete/<mapping_id>", methods=["GET"])
+@module.route(
+    "/boards/<board_id>/pipelines/<pipeline_id>/delete/<mapping_id>", methods=["GET"]
+)
 @auth_required
 def delete_row(board_id, pipeline_id, mapping_id):
     MappingsRepository.delete_by_id(mapping_id)
 
-    return redirect(url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id))
+    return redirect(
+        url_for("mappings.list", board_id=board_id, pipeline_id=pipeline_id)
+    )

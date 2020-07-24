@@ -11,9 +11,7 @@ class MappingsRepository:
     @classmethod
     @transactional
     def find_by(cls, **kwargs):
-        return session.query(Mapping).filter_by(
-            **kwargs
-        ).all()
+        return session.query(Mapping).filter_by(**kwargs).all()
 
     @classmethod
     @transactional

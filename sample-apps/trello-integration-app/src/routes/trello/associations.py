@@ -39,7 +39,7 @@ def create_association():
     else:
         webhook_data = create_webhook(callback_url=callback_url, card_id=card_id)
         WebhooksRepository.create(
-            webhook_id=webhook_data['id'], card_id=card_id, url=callback_url,
+            webhook_id=webhook_data["id"], card_id=card_id, url=callback_url,
         )
 
     return redirect(url_for("trello.associations.search_frame_success"))
