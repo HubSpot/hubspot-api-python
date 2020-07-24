@@ -57,9 +57,7 @@ def create_card():
         )
 
     callback_url = url_for("trello.webhooks.handle", _external=True)
-    webhooks = WebhooksRepository.find_outdated(
-        url=callback_url
-    )
+    webhooks = WebhooksRepository.find_outdated(url=callback_url)
     for webhook in webhooks:
         update_webhook(webhook.webhook_id, callback_url=callback_url)
         webhook.url = callback_url
@@ -71,6 +69,4 @@ def create_card():
 @module.route("/done", methods=["GET"])
 @auth_required
 def done():
-    return render_template(
-        "init/done.html",
-    )
+    return render_template("init/done.html",)

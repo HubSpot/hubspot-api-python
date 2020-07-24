@@ -10,9 +10,8 @@ def save_tokens_response(tokens_response):
         access_token=tokens_response.access_token,
         refresh_token=tokens_response.refresh_token,
         expires_in=tokens_response.expires_in,
-        expires_at=datetime.now() + timedelta(
-            seconds=tokens_response.expires_in * 0.95
-        ),
+        expires_at=datetime.now()
+        + timedelta(seconds=tokens_response.expires_in * 0.95),
     )
 
 

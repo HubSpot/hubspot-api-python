@@ -48,10 +48,10 @@ def create_webhook(callback_url, card_id, description=None):
     # standard webhook creation method is not correct
     # prepare data manually
     data = {
-        'callbackURL': callback_url,
-        'idModel': card_id,
-        'description': description,
-        'key': os.getenv("TRELLO_API_KEY"),
+        "callbackURL": callback_url,
+        "idModel": card_id,
+        "description": description,
+        "key": os.getenv("TRELLO_API_KEY"),
     }
     url = "https://trello.com/1/tokens/{}/webhooks/".format(get_token())
     response = client.http_service.post(
@@ -63,8 +63,8 @@ def create_webhook(callback_url, card_id, description=None):
 def update_webhook(webhook_id, callback_url):
     client = get_client()
     data = {
-        'callbackURL': callback_url,
-        'active': 'true',
+        "callbackURL": callback_url,
+        "active": "true",
     }
     url = "https://trello.com/1/webhooks/{}".format(webhook_id)
     response = client.http_service.put(

@@ -52,8 +52,10 @@ class Mapping(Base):
     created_at = Column(DateTime, default=func.now())
 
     __table_args__ = (
-        UniqueConstraint('board_id', 'board_list_id', 'pipeline_id', name='_unique_1'),
-        UniqueConstraint('pipeline_id', 'pipeline_stage_id', 'board_id', name='_unique_2'),
+        UniqueConstraint("board_id", "board_list_id", "pipeline_id", name="_unique_1"),
+        UniqueConstraint(
+            "pipeline_id", "pipeline_stage_id", "board_id", name="_unique_2"
+        ),
     )
 
 
@@ -67,7 +69,4 @@ class Webhook(Base):
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
-    __table_args__ = (
-        UniqueConstraint('card_id', name='_unique_1'),
-    )
-
+    __table_args__ = (UniqueConstraint("card_id", name="_unique_1"),)

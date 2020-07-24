@@ -31,5 +31,5 @@ def create_db_schema():
             Association.__table__,
             Mapping.__table__,
             Webhook.__table__,
-        ]
+        ],
     )
