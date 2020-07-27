@@ -201,7 +201,7 @@ class AssociationsApi(object):
     def create(
         self, company_id, to_object_type, to_object_id, association_type, **kwargs
     ):  # noqa: E501
-        """Associate two companies  # noqa: E501
+        """Associate a company with another object  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -232,7 +232,7 @@ class AssociationsApi(object):
     def create_with_http_info(
         self, company_id, to_object_type, to_object_id, association_type, **kwargs
     ):  # noqa: E501
-        """Associate two companies  # noqa: E501
+        """Associate a company with another object  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

@@ -33,17 +33,17 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, **kwargs):  # noqa: E501
+    def archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Archive a batch of products by ID  # noqa: E501
 
         Archive a list of products given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(async_req=True)
+        >>> thread = api.archive(batch_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectId batch_input_simple_public_object_id:
+        :param BatchInputSimplePublicObjectId batch_input_simple_public_object_id: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -56,19 +56,23 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(**kwargs)  # noqa: E501
+        return self.archive_with_http_info(
+            batch_input_simple_public_object_id, **kwargs
+        )  # noqa: E501
 
-    def archive_with_http_info(self, **kwargs):  # noqa: E501
+    def archive_with_http_info(
+        self, batch_input_simple_public_object_id, **kwargs
+    ):  # noqa: E501
         """Archive a batch of products by ID  # noqa: E501
 
         Archive a list of products given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(async_req=True)
+        >>> thread = api.archive_with_http_info(batch_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectId batch_input_simple_public_object_id:
+        :param BatchInputSimplePublicObjectId batch_input_simple_public_object_id: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -98,6 +102,15 @@ class BatchApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'batch_input_simple_public_object_id' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_id" not in local_var_params
+            or local_var_params["batch_input_simple_public_object_id"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_simple_public_object_id` when calling `archive`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -148,17 +161,17 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, **kwargs):  # noqa: E501
+    def create(self, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
         """Create a batch of products  # noqa: E501
 
         Create a batch of products. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(async_req=True)
+        >>> thread = api.create(batch_input_simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input:
+        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -171,19 +184,23 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(**kwargs)  # noqa: E501
+        return self.create_with_http_info(
+            batch_input_simple_public_object_input, **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, **kwargs):  # noqa: E501
+    def create_with_http_info(
+        self, batch_input_simple_public_object_input, **kwargs
+    ):  # noqa: E501
         """Create a batch of products  # noqa: E501
 
         Create a batch of products. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(batch_input_simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input:
+        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -213,6 +230,15 @@ class BatchApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'batch_input_simple_public_object_input' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_input" not in local_var_params
+            or local_var_params["batch_input_simple_public_object_input"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_simple_public_object_input` when calling `create`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -263,18 +289,18 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def read(self, **kwargs):  # noqa: E501
+    def read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of products by internal ID, or unique property values  # noqa: E501
 
         Read a list of products given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read(async_req=True)
+        >>> thread = api.read(batch_read_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param BatchReadInputSimplePublicObjectId batch_read_input_simple_public_object_id: (required)
         :param bool archived: Whether to return only results that have been archived.
-        :param BatchReadInputSimplePublicObjectId batch_read_input_simple_public_object_id:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -287,20 +313,24 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(**kwargs)  # noqa: E501
+        return self.read_with_http_info(
+            batch_read_input_simple_public_object_id, **kwargs
+        )  # noqa: E501
 
-    def read_with_http_info(self, **kwargs):  # noqa: E501
+    def read_with_http_info(
+        self, batch_read_input_simple_public_object_id, **kwargs
+    ):  # noqa: E501
         """Read a batch of products by internal ID, or unique property values  # noqa: E501
 
         Read a list of products given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_with_http_info(async_req=True)
+        >>> thread = api.read_with_http_info(batch_read_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param BatchReadInputSimplePublicObjectId batch_read_input_simple_public_object_id: (required)
         :param bool archived: Whether to return only results that have been archived.
-        :param BatchReadInputSimplePublicObjectId batch_read_input_simple_public_object_id:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -318,8 +348,8 @@ class BatchApi(object):
         local_var_params = locals()
 
         all_params = [
-            "archived",
             "batch_read_input_simple_public_object_id",
+            "archived",
         ]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
@@ -333,6 +363,17 @@ class BatchApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'batch_read_input_simple_public_object_id' is set
+        if self.api_client.client_side_validation and (
+            "batch_read_input_simple_public_object_id" not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_read_input_simple_public_object_id"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_read_input_simple_public_object_id` when calling `read`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -389,17 +430,19 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def update(self, **kwargs):  # noqa: E501
+    def update(
+        self, batch_input_simple_public_object_batch_input, **kwargs
+    ):  # noqa: E501
         """Update a batch of products  # noqa: E501
 
         Perform a partial upate on a batch of products. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(async_req=True)
+        >>> thread = api.update(batch_input_simple_public_object_batch_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectBatchInput batch_input_simple_public_object_batch_input:
+        :param BatchInputSimplePublicObjectBatchInput batch_input_simple_public_object_batch_input: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -412,19 +455,23 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(**kwargs)  # noqa: E501
+        return self.update_with_http_info(
+            batch_input_simple_public_object_batch_input, **kwargs
+        )  # noqa: E501
 
-    def update_with_http_info(self, **kwargs):  # noqa: E501
+    def update_with_http_info(
+        self, batch_input_simple_public_object_batch_input, **kwargs
+    ):  # noqa: E501
         """Update a batch of products  # noqa: E501
 
         Perform a partial upate on a batch of products. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(async_req=True)
+        >>> thread = api.update_with_http_info(batch_input_simple_public_object_batch_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectBatchInput batch_input_simple_public_object_batch_input:
+        :param BatchInputSimplePublicObjectBatchInput batch_input_simple_public_object_batch_input: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -454,6 +501,17 @@ class BatchApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'batch_input_simple_public_object_batch_input' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_batch_input" not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_input_simple_public_object_batch_input"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_simple_public_object_batch_input` when calling `update`"
+            )  # noqa: E501
 
         collection_formats = {}
 

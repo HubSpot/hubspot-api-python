@@ -33,34 +33,31 @@ class BatchResponseSimplePublicObject(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "results": "list[SimplePublicObject]",
-        "num_errors": "int",
-        "errors": "list[Error]",
         "status": "str",
+        "results": "list[SimplePublicObject]",
         "requested_at": "datetime",
         "started_at": "datetime",
         "completed_at": "datetime",
+        "links": "dict(str, str)",
     }
 
     attribute_map = {
-        "results": "results",
-        "num_errors": "numErrors",
-        "errors": "errors",
         "status": "status",
+        "results": "results",
         "requested_at": "requestedAt",
         "started_at": "startedAt",
         "completed_at": "completedAt",
+        "links": "links",
     }
 
     def __init__(
         self,
-        results=None,
-        num_errors=None,
-        errors=None,
         status=None,
+        results=None,
         requested_at=None,
         started_at=None,
         completed_at=None,
+        links=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """BatchResponseSimplePublicObject - a model defined in OpenAPI"""  # noqa: E501
@@ -68,94 +65,22 @@ class BatchResponseSimplePublicObject(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._results = None
-        self._num_errors = None
-        self._errors = None
         self._status = None
+        self._results = None
         self._requested_at = None
         self._started_at = None
         self._completed_at = None
+        self._links = None
         self.discriminator = None
 
-        self.results = results
-        if num_errors is not None:
-            self.num_errors = num_errors
-        if errors is not None:
-            self.errors = errors
         self.status = status
+        self.results = results
         if requested_at is not None:
             self.requested_at = requested_at
         self.started_at = started_at
         self.completed_at = completed_at
-
-    @property
-    def results(self):
-        """Gets the results of this BatchResponseSimplePublicObject.  # noqa: E501
-
-
-        :return: The results of this BatchResponseSimplePublicObject.  # noqa: E501
-        :rtype: list[SimplePublicObject]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this BatchResponseSimplePublicObject.
-
-
-        :param results: The results of this BatchResponseSimplePublicObject.  # noqa: E501
-        :type: list[SimplePublicObject]
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and results is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `results`, must not be `None`"
-            )  # noqa: E501
-
-        self._results = results
-
-    @property
-    def num_errors(self):
-        """Gets the num_errors of this BatchResponseSimplePublicObject.  # noqa: E501
-
-
-        :return: The num_errors of this BatchResponseSimplePublicObject.  # noqa: E501
-        :rtype: int
-        """
-        return self._num_errors
-
-    @num_errors.setter
-    def num_errors(self, num_errors):
-        """Sets the num_errors of this BatchResponseSimplePublicObject.
-
-
-        :param num_errors: The num_errors of this BatchResponseSimplePublicObject.  # noqa: E501
-        :type: int
-        """
-
-        self._num_errors = num_errors
-
-    @property
-    def errors(self):
-        """Gets the errors of this BatchResponseSimplePublicObject.  # noqa: E501
-
-
-        :return: The errors of this BatchResponseSimplePublicObject.  # noqa: E501
-        :rtype: list[Error]
-        """
-        return self._errors
-
-    @errors.setter
-    def errors(self, errors):
-        """Sets the errors of this BatchResponseSimplePublicObject.
-
-
-        :param errors: The errors of this BatchResponseSimplePublicObject.  # noqa: E501
-        :type: list[Error]
-        """
-
-        self._errors = errors
+        if links is not None:
+            self.links = links
 
     @property
     def status(self):
@@ -193,6 +118,33 @@ class BatchResponseSimplePublicObject(object):
             )
 
         self._status = status
+
+    @property
+    def results(self):
+        """Gets the results of this BatchResponseSimplePublicObject.  # noqa: E501
+
+
+        :return: The results of this BatchResponseSimplePublicObject.  # noqa: E501
+        :rtype: list[SimplePublicObject]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this BatchResponseSimplePublicObject.
+
+
+        :param results: The results of this BatchResponseSimplePublicObject.  # noqa: E501
+        :type: list[SimplePublicObject]
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and results is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `results`, must not be `None`"
+            )  # noqa: E501
+
+        self._results = results
 
     @property
     def requested_at(self):
@@ -269,6 +221,27 @@ class BatchResponseSimplePublicObject(object):
             )  # noqa: E501
 
         self._completed_at = completed_at
+
+    @property
+    def links(self):
+        """Gets the links of this BatchResponseSimplePublicObject.  # noqa: E501
+
+
+        :return: The links of this BatchResponseSimplePublicObject.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this BatchResponseSimplePublicObject.
+
+
+        :param links: The links of this BatchResponseSimplePublicObject.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._links = links
 
     def to_dict(self):
         """Returns the model properties as a dict"""

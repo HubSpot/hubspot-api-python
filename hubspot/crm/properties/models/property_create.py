@@ -43,6 +43,7 @@ class PropertyCreate(object):
         "display_order": "int",
         "has_unique_value": "bool",
         "hidden": "bool",
+        "form_field": "bool",
     }
 
     attribute_map = {
@@ -56,6 +57,7 @@ class PropertyCreate(object):
         "display_order": "displayOrder",
         "has_unique_value": "hasUniqueValue",
         "hidden": "hidden",
+        "form_field": "formField",
     }
 
     def __init__(
@@ -70,6 +72,7 @@ class PropertyCreate(object):
         display_order=None,
         has_unique_value=None,
         hidden=None,
+        form_field=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PropertyCreate - a model defined in OpenAPI"""  # noqa: E501
@@ -87,6 +90,7 @@ class PropertyCreate(object):
         self._display_order = None
         self._has_unique_value = None
         self._hidden = None
+        self._form_field = None
         self.discriminator = None
 
         self.name = name
@@ -104,6 +108,8 @@ class PropertyCreate(object):
             self.has_unique_value = has_unique_value
         if hidden is not None:
             self.hidden = hidden
+        if form_field is not None:
+            self.form_field = form_field
 
     @property
     def name(self):
@@ -400,6 +406,29 @@ class PropertyCreate(object):
         """
 
         self._hidden = hidden
+
+    @property
+    def form_field(self):
+        """Gets the form_field of this PropertyCreate.  # noqa: E501
+
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
+
+        :return: The form_field of this PropertyCreate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._form_field
+
+    @form_field.setter
+    def form_field(self, form_field):
+        """Sets the form_field of this PropertyCreate.
+
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
+
+        :param form_field: The form_field of this PropertyCreate.  # noqa: E501
+        :type: bool
+        """
+
+        self._form_field = form_field
 
     def to_dict(self):
         """Returns the model properties as a dict"""

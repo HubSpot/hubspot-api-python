@@ -41,6 +41,7 @@ class PropertyUpdate(object):
         "options": "list[OptionInput]",
         "display_order": "int",
         "hidden": "bool",
+        "form_field": "bool",
     }
 
     attribute_map = {
@@ -52,6 +53,7 @@ class PropertyUpdate(object):
         "options": "options",
         "display_order": "displayOrder",
         "hidden": "hidden",
+        "form_field": "formField",
     }
 
     def __init__(
@@ -64,6 +66,7 @@ class PropertyUpdate(object):
         options=None,
         display_order=None,
         hidden=None,
+        form_field=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PropertyUpdate - a model defined in OpenAPI"""  # noqa: E501
@@ -79,6 +82,7 @@ class PropertyUpdate(object):
         self._options = None
         self._display_order = None
         self._hidden = None
+        self._form_field = None
         self.discriminator = None
 
         if label is not None:
@@ -97,6 +101,8 @@ class PropertyUpdate(object):
             self.display_order = display_order
         if hidden is not None:
             self.hidden = hidden
+        if form_field is not None:
+            self.form_field = form_field
 
     @property
     def label(self):
@@ -317,6 +323,29 @@ class PropertyUpdate(object):
         """
 
         self._hidden = hidden
+
+    @property
+    def form_field(self):
+        """Gets the form_field of this PropertyUpdate.  # noqa: E501
+
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
+
+        :return: The form_field of this PropertyUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._form_field
+
+    @form_field.setter
+    def form_field(self, form_field):
+        """Sets the form_field of this PropertyUpdate.
+
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
+
+        :param form_field: The form_field of this PropertyUpdate.  # noqa: E501
+        :type: bool
+        """
+
+        self._form_field = form_field
 
     def to_dict(self):
         """Returns the model properties as a dict"""

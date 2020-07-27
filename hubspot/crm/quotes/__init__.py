@@ -21,6 +21,7 @@ from hubspot.crm.quotes.api.associations_api import AssociationsApi
 from hubspot.crm.quotes.api.basic_api import BasicApi
 from hubspot.crm.quotes.api.batch_api import BatchApi
 from hubspot.crm.quotes.api.search_api import SearchApi
+from hubspot.crm.quotes.api.default_api import DefaultApi
 
 # import ApiClient
 from hubspot.crm.quotes.api_client import ApiClient
@@ -47,6 +48,9 @@ from hubspot.crm.quotes.models.batch_read_input_simple_public_object_id import (
 )
 from hubspot.crm.quotes.models.batch_response_simple_public_object import (
     BatchResponseSimplePublicObject,
+)
+from hubspot.crm.quotes.models.batch_response_simple_public_object_with_errors import (
+    BatchResponseSimplePublicObjectWithErrors,
 )
 from hubspot.crm.quotes.models.collection_response_associated_id import (
     CollectionResponseAssociatedId,

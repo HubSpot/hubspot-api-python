@@ -329,6 +329,13 @@ class Configuration(object):
         """
         auth = {}
         if "hapikey" in self.api_key:
+            auth["developer-hapikey"] = {
+                "type": "api_key",
+                "in": "query",
+                "key": "hapikey",
+                "value": self.get_api_key_with_prefix("hapikey"),
+            }
+        if "hapikey" in self.api_key:
             auth["hapikey"] = {
                 "type": "api_key",
                 "in": "query",
