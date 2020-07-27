@@ -33,31 +33,31 @@ class SubscriptionResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "created_at": "datetime",
-        "updated_at": "datetime",
         "event_type": "str",
         "property_name": "str",
         "active": "bool",
+        "id": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        "id": "id",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
         "event_type": "eventType",
         "property_name": "propertyName",
         "active": "active",
+        "id": "id",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
     def __init__(
         self,
-        id=None,
-        created_at=None,
-        updated_at=None,
         event_type=None,
         property_name=None,
         active=None,
+        id=None,
+        created_at=None,
+        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """SubscriptionResponse - a model defined in OpenAPI"""  # noqa: E501
@@ -65,23 +65,124 @@ class SubscriptionResponse(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._created_at = None
-        self._updated_at = None
         self._event_type = None
         self._property_name = None
         self._active = None
+        self._id = None
+        self._created_at = None
+        self._updated_at = None
         self.discriminator = None
 
+        self.event_type = event_type
+        if property_name is not None:
+            self.property_name = property_name
+        self.active = active
         self.id = id
         self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        self.event_type = event_type
-        if property_name is not None:
-            self.property_name = property_name
-        if active is not None:
-            self.active = active
+
+    @property
+    def event_type(self):
+        """Gets the event_type of this SubscriptionResponse.  # noqa: E501
+
+        Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.  # noqa: E501
+
+        :return: The event_type of this SubscriptionResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_type
+
+    @event_type.setter
+    def event_type(self, event_type):
+        """Sets the event_type of this SubscriptionResponse.
+
+        Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.  # noqa: E501
+
+        :param event_type: The event_type of this SubscriptionResponse.  # noqa: E501
+        :type: str
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and event_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event_type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "contact.propertyChange",
+            "company.propertyChange",
+            "deal.propertyChange",
+            "contact.creation",
+            "contact.deletion",
+            "contact.privacyDeletion",
+            "company.creation",
+            "company.deletion",
+            "deal.creation",
+            "deal.deletion",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and event_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    event_type, allowed_values
+                )
+            )
+
+        self._event_type = event_type
+
+    @property
+    def property_name(self):
+        """Gets the property_name of this SubscriptionResponse.  # noqa: E501
+
+        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :return: The property_name of this SubscriptionResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._property_name
+
+    @property_name.setter
+    def property_name(self, property_name):
+        """Sets the property_name of this SubscriptionResponse.
+
+        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :param property_name: The property_name of this SubscriptionResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._property_name = property_name
+
+    @property
+    def active(self):
+        """Gets the active of this SubscriptionResponse.  # noqa: E501
+
+        Determines if the subscription is active or paused.  # noqa: E501
+
+        :return: The active of this SubscriptionResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._active
+
+    @active.setter
+    def active(self, active):
+        """Sets the active of this SubscriptionResponse.
+
+        Determines if the subscription is active or paused.  # noqa: E501
+
+        :param active: The active of this SubscriptionResponse.  # noqa: E501
+        :type: bool
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and active is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `active`, must not be `None`"
+            )  # noqa: E501
+
+        self._active = active
 
     @property
     def id(self):
@@ -161,100 +262,6 @@ class SubscriptionResponse(object):
         """
 
         self._updated_at = updated_at
-
-    @property
-    def event_type(self):
-        """Gets the event_type of this SubscriptionResponse.  # noqa: E501
-
-        Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.  # noqa: E501
-
-        :return: The event_type of this SubscriptionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_type
-
-    @event_type.setter
-    def event_type(self, event_type):
-        """Sets the event_type of this SubscriptionResponse.
-
-        Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.  # noqa: E501
-
-        :param event_type: The event_type of this SubscriptionResponse.  # noqa: E501
-        :type: str
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and event_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `event_type`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "contact.propertyChange",
-            "company.propertyChange",
-            "deal.propertyChange",
-            "contact.creation",
-            "contact.deletion",
-            "contact.privacyDeletion",
-            "company.creation",
-            "company.deletion",
-            "deal.creation",
-            "deal.deletion",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and event_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `event_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    event_type, allowed_values
-                )
-            )
-
-        self._event_type = event_type
-
-    @property
-    def property_name(self):
-        """Gets the property_name of this SubscriptionResponse.  # noqa: E501
-
-        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :return: The property_name of this SubscriptionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._property_name
-
-    @property_name.setter
-    def property_name(self, property_name):
-        """Sets the property_name of this SubscriptionResponse.
-
-        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :param property_name: The property_name of this SubscriptionResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._property_name = property_name
-
-    @property
-    def active(self):
-        """Gets the active of this SubscriptionResponse.  # noqa: E501
-
-
-        :return: The active of this SubscriptionResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._active
-
-    @active.setter
-    def active(self, active):
-        """Sets the active of this SubscriptionResponse.
-
-
-        :param active: The active of this SubscriptionResponse.  # noqa: E501
-        :type: bool
-        """
-
-        self._active = active
 
     def to_dict(self):
         """Returns the model properties as a dict"""
