@@ -76,7 +76,7 @@ except ApiException as e:
 get_all method is available for all major objects and works like
 
 ```python
-all_contacts = contacts_client = client.crm.contacts.get_all()
+all_contacts = client.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
