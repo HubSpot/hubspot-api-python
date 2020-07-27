@@ -33,17 +33,17 @@ class SearchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def do_search(self, **kwargs):  # noqa: E501
+    def do_search(self, public_object_search_request, **kwargs):  # noqa: E501
         """Filter, Sort, and Search CRM Objects  # noqa: E501
 
         Filter, Sort, and Search CRM Objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.do_search(async_req=True)
+        >>> thread = api.do_search(public_object_search_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param PublicObjectSearchRequest public_object_search_request:
+        :param PublicObjectSearchRequest public_object_search_request: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -56,19 +56,23 @@ class SearchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.do_search_with_http_info(**kwargs)  # noqa: E501
+        return self.do_search_with_http_info(
+            public_object_search_request, **kwargs
+        )  # noqa: E501
 
-    def do_search_with_http_info(self, **kwargs):  # noqa: E501
+    def do_search_with_http_info(
+        self, public_object_search_request, **kwargs
+    ):  # noqa: E501
         """Filter, Sort, and Search CRM Objects  # noqa: E501
 
         Filter, Sort, and Search CRM Objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.do_search_with_http_info(async_req=True)
+        >>> thread = api.do_search_with_http_info(public_object_search_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param PublicObjectSearchRequest public_object_search_request:
+        :param PublicObjectSearchRequest public_object_search_request: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -99,6 +103,14 @@ class SearchApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'public_object_search_request' is set
+        if self.api_client.client_side_validation and (
+            "public_object_search_request" not in local_var_params
+            or local_var_params["public_object_search_request"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `public_object_search_request` when calling `do_search`"
+            )  # noqa: E501
 
         collection_formats = {}
 

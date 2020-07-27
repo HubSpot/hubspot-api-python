@@ -149,17 +149,17 @@ class BasicApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, **kwargs):  # noqa: E501
+    def create(self, simple_public_object_input, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
         Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating native contacts is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(async_req=True)
+        >>> thread = api.create(simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SimplePublicObjectInput simple_public_object_input:
+        :param SimplePublicObjectInput simple_public_object_input: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -172,19 +172,21 @@ class BasicApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(**kwargs)  # noqa: E501
+        return self.create_with_http_info(
+            simple_public_object_input, **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, **kwargs):  # noqa: E501
+    def create_with_http_info(self, simple_public_object_input, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
         Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating native contacts is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SimplePublicObjectInput simple_public_object_input:
+        :param SimplePublicObjectInput simple_public_object_input: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -214,6 +216,14 @@ class BasicApi(object):
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'simple_public_object_input' is set
+        if self.api_client.client_side_validation and (
+            "simple_public_object_input" not in local_var_params
+            or local_var_params["simple_public_object_input"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `simple_public_object_input` when calling `create`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -575,18 +585,18 @@ class BasicApi(object):
             collection_formats=collection_formats,
         )
 
-    def update(self, contact_id, **kwargs):  # noqa: E501
+    def update(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
         Perform a partial update of an Object identified by `{contactId}`. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(contact_id, async_req=True)
+        >>> thread = api.update(contact_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
-        :param SimplePublicObjectInput simple_public_object_input:
+        :param SimplePublicObjectInput simple_public_object_input: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -599,20 +609,24 @@ class BasicApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(contact_id, **kwargs)  # noqa: E501
+        return self.update_with_http_info(
+            contact_id, simple_public_object_input, **kwargs
+        )  # noqa: E501
 
-    def update_with_http_info(self, contact_id, **kwargs):  # noqa: E501
+    def update_with_http_info(
+        self, contact_id, simple_public_object_input, **kwargs
+    ):  # noqa: E501
         """Update  # noqa: E501
 
         Perform a partial update of an Object identified by `{contactId}`. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(contact_id, async_req=True)
+        >>> thread = api.update_with_http_info(contact_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
-        :param SimplePublicObjectInput simple_public_object_input:
+        :param SimplePublicObjectInput simple_public_object_input: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -649,6 +663,14 @@ class BasicApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `contact_id` when calling `update`"
+            )  # noqa: E501
+        # verify the required parameter 'simple_public_object_input' is set
+        if self.api_client.client_side_validation and (
+            "simple_public_object_input" not in local_var_params
+            or local_var_params["simple_public_object_input"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `simple_public_object_input` when calling `update`"
             )  # noqa: E501
 
         collection_formats = {}

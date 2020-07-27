@@ -32,19 +32,19 @@ class Filter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"property_name": "str", "operator": "str", "value": "str"}
+    openapi_types = {"value": "str", "property_name": "str", "operator": "str"}
 
     attribute_map = {
+        "value": "value",
         "property_name": "propertyName",
         "operator": "operator",
-        "value": "value",
     }
 
     def __init__(
         self,
+        value=None,
         property_name=None,
         operator=None,
-        value=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Filter - a model defined in OpenAPI"""  # noqa: E501
@@ -52,15 +52,36 @@ class Filter(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._value = None
         self._property_name = None
         self._operator = None
-        self._value = None
         self.discriminator = None
 
-        self.property_name = property_name
-        self.operator = operator
         if value is not None:
             self.value = value
+        self.property_name = property_name
+        self.operator = operator
+
+    @property
+    def value(self):
+        """Gets the value of this Filter.  # noqa: E501
+
+
+        :return: The value of this Filter.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this Filter.
+
+
+        :param value: The value of this Filter.  # noqa: E501
+        :type: str
+        """
+
+        self._value = value
 
     @property
     def property_name(self):
@@ -121,9 +142,6 @@ class Filter(object):
             "LTE",
             "GT",
             "GTE",
-            "BETWEEN",
-            "IN",
-            "NOT_IN",
             "HAS_PROPERTY",
             "NOT_HAS_PROPERTY",
             "CONTAINS_TOKEN",
@@ -140,27 +158,6 @@ class Filter(object):
             )
 
         self._operator = operator
-
-    @property
-    def value(self):
-        """Gets the value of this Filter.  # noqa: E501
-
-
-        :return: The value of this Filter.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this Filter.
-
-
-        :param value: The value of this Filter.  # noqa: E501
-        :type: str
-        """
-
-        self._value = value
 
     def to_dict(self):
         """Returns the model properties as a dict"""

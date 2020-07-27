@@ -33,18 +33,18 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, object_type, **kwargs):  # noqa: E501
+    def archive(self, object_type, batch_input_property_name, **kwargs):  # noqa: E501
         """Archive a batch of properties  # noqa: E501
 
         Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(object_type, async_req=True)
+        >>> thread = api.archive(object_type, batch_input_property_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputPropertyName batch_input_property_name:
+        :param BatchInputPropertyName batch_input_property_name: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -57,20 +57,24 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(
+            object_type, batch_input_property_name, **kwargs
+        )  # noqa: E501
 
-    def archive_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def archive_with_http_info(
+        self, object_type, batch_input_property_name, **kwargs
+    ):  # noqa: E501
         """Archive a batch of properties  # noqa: E501
 
         Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(object_type, async_req=True)
+        >>> thread = api.archive_with_http_info(object_type, batch_input_property_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputPropertyName batch_input_property_name:
+        :param BatchInputPropertyName batch_input_property_name: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -107,6 +111,14 @@ class BatchApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `object_type` when calling `archive`"
+            )  # noqa: E501
+        # verify the required parameter 'batch_input_property_name' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_property_name" not in local_var_params
+            or local_var_params["batch_input_property_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_property_name` when calling `archive`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -160,18 +172,18 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, object_type, **kwargs):  # noqa: E501
+    def create(self, object_type, batch_input_property_create, **kwargs):  # noqa: E501
         """Create a batch of properties  # noqa: E501
 
         Create a batch of properties using the same rules as when creating an individual property.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(object_type, async_req=True)
+        >>> thread = api.create(object_type, batch_input_property_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputPropertyCreate batch_input_property_create:
+        :param BatchInputPropertyCreate batch_input_property_create: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -184,20 +196,24 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.create_with_http_info(
+            object_type, batch_input_property_create, **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def create_with_http_info(
+        self, object_type, batch_input_property_create, **kwargs
+    ):  # noqa: E501
         """Create a batch of properties  # noqa: E501
 
         Create a batch of properties using the same rules as when creating an individual property.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(object_type, async_req=True)
+        >>> thread = api.create_with_http_info(object_type, batch_input_property_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputPropertyCreate batch_input_property_create:
+        :param BatchInputPropertyCreate batch_input_property_create: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -234,6 +250,14 @@ class BatchApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `object_type` when calling `create`"
+            )  # noqa: E501
+        # verify the required parameter 'batch_input_property_create' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_property_create" not in local_var_params
+            or local_var_params["batch_input_property_create"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_property_create` when calling `create`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -287,18 +311,18 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def read(self, object_type, **kwargs):  # noqa: E501
+    def read(self, object_type, batch_read_input_property_name, **kwargs):  # noqa: E501
         """Read a batch of properties  # noqa: E501
 
         Read a provided list of properties.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read(object_type, async_req=True)
+        >>> thread = api.read(object_type, batch_read_input_property_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchReadInputPropertyName batch_read_input_property_name:
+        :param BatchReadInputPropertyName batch_read_input_property_name: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -311,20 +335,24 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.read_with_http_info(
+            object_type, batch_read_input_property_name, **kwargs
+        )  # noqa: E501
 
-    def read_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def read_with_http_info(
+        self, object_type, batch_read_input_property_name, **kwargs
+    ):  # noqa: E501
         """Read a batch of properties  # noqa: E501
 
         Read a provided list of properties.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_with_http_info(object_type, async_req=True)
+        >>> thread = api.read_with_http_info(object_type, batch_read_input_property_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchReadInputPropertyName batch_read_input_property_name:
+        :param BatchReadInputPropertyName batch_read_input_property_name: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -361,6 +389,14 @@ class BatchApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `object_type` when calling `read`"
+            )  # noqa: E501
+        # verify the required parameter 'batch_read_input_property_name' is set
+        if self.api_client.client_side_validation and (
+            "batch_read_input_property_name" not in local_var_params
+            or local_var_params["batch_read_input_property_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_read_input_property_name` when calling `read`"
             )  # noqa: E501
 
         collection_formats = {}

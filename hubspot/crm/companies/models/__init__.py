@@ -30,6 +30,9 @@ from hubspot.crm.companies.models.batch_read_input_simple_public_object_id impor
 from hubspot.crm.companies.models.batch_response_simple_public_object import (
     BatchResponseSimplePublicObject,
 )
+from hubspot.crm.companies.models.batch_response_simple_public_object_with_errors import (
+    BatchResponseSimplePublicObjectWithErrors,
+)
 from hubspot.crm.companies.models.collection_response_associated_id import (
     CollectionResponseAssociatedId,
 )

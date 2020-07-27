@@ -167,18 +167,18 @@ class CoreApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, object_type, **kwargs):  # noqa: E501
+    def create(self, object_type, property_create, **kwargs):  # noqa: E501
         """Create a property  # noqa: E501
 
         Create and return a copy of a new property for the specified object type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(object_type, async_req=True)
+        >>> thread = api.create(object_type, property_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param PropertyCreate property_create:
+        :param PropertyCreate property_create: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -191,20 +191,24 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.create_with_http_info(
+            object_type, property_create, **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, object_type, **kwargs):  # noqa: E501
+    def create_with_http_info(
+        self, object_type, property_create, **kwargs
+    ):  # noqa: E501
         """Create a property  # noqa: E501
 
         Create and return a copy of a new property for the specified object type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(object_type, async_req=True)
+        >>> thread = api.create_with_http_info(object_type, property_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param PropertyCreate property_create:
+        :param PropertyCreate property_create: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -241,6 +245,14 @@ class CoreApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `object_type` when calling `create`"
+            )  # noqa: E501
+        # verify the required parameter 'property_create' is set
+        if self.api_client.client_side_validation and (
+            "property_create" not in local_var_params
+            or local_var_params["property_create"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `property_create` when calling `create`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -561,19 +573,21 @@ class CoreApi(object):
             collection_formats=collection_formats,
         )
 
-    def update(self, object_type, property_name, **kwargs):  # noqa: E501
+    def update(
+        self, object_type, property_name, property_update, **kwargs
+    ):  # noqa: E501
         """Update a property  # noqa: E501
 
         Perform a partial update of a property identified by {propertyName}. Provided fields will be overwritten.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(object_type, property_name, async_req=True)
+        >>> thread = api.update(object_type, property_name, property_update, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
         :param str property_name: (required)
-        :param PropertyUpdate property_update:
+        :param PropertyUpdate property_update: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -587,22 +601,24 @@ class CoreApi(object):
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(
-            object_type, property_name, **kwargs
+            object_type, property_name, property_update, **kwargs
         )  # noqa: E501
 
-    def update_with_http_info(self, object_type, property_name, **kwargs):  # noqa: E501
+    def update_with_http_info(
+        self, object_type, property_name, property_update, **kwargs
+    ):  # noqa: E501
         """Update a property  # noqa: E501
 
         Perform a partial update of a property identified by {propertyName}. Provided fields will be overwritten.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(object_type, property_name, async_req=True)
+        >>> thread = api.update_with_http_info(object_type, property_name, property_update, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
         :param str property_name: (required)
-        :param PropertyUpdate property_update:
+        :param PropertyUpdate property_update: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -647,6 +663,14 @@ class CoreApi(object):
         ):  # noqa: E501
             raise ApiValueError(
                 "Missing the required parameter `property_name` when calling `update`"
+            )  # noqa: E501
+        # verify the required parameter 'property_update' is set
+        if self.api_client.client_side_validation and (
+            "property_update" not in local_var_params
+            or local_var_params["property_update"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `property_update` when calling `update`"
             )  # noqa: E501
 
         collection_formats = {}
