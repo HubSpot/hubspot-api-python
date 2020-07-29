@@ -6,21 +6,23 @@ from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
 
 
 class Client:
-    @classmethod
-    def create(
-        cls,
+    def __init__(
+        self,
         api_key: str = None,
         access_token: str = None,
         retry: Retry = None,
         **kwargs
     ):
-        config = dict(
+        self.config = dict(
             {"api_key": api_key, "access_token": access_token, "retry": retry}, **kwargs
         )
-        return cls(config)
 
-    def __init__(self, config):
-        self.config = config
+    @classmethod
+    def create(
+        cls,
+        **kwargs
+    ):
+        return cls(**kwargs)
 
     @property
     def access_token(self):

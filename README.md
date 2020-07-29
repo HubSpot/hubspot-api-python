@@ -27,14 +27,14 @@ Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://p
 ### Configuring HubSpot client
 
 ```python
-import hubspot
+from hubspot import HubSpot
 
-client = hubspot.Client.create()
+hubspot = HubSpot()
 # or with api_key
-client = hubspot.Client.create(api_key='your_api_key')
+hubspot = HubSpot(api_key='your_api_key')
 # or with access_token
-client = hubspot.Client.create()
-client.access_token = 'your_access_token'
+hubspot = HubSpot()
+hubspot.access_token = 'your_access_token'
 ```
 
 ### OAuth API
@@ -44,10 +44,8 @@ client.access_token = 'your_access_token'
 ```python
 from hubspot.auth.oauth import ApiException
 
-oauth_client = client.auth.oauth
-
 try:
-    tokens = oauth_client.default_api.create_token(
+    tokens = hubspot.auth.oauth.default_api.create_token(
         grant_type="authorization_code",
         redirect_uri='http://localhost',
         client_id='client_id',
@@ -66,7 +64,7 @@ except ApiException as e:
 from hubspot.crm.contacts import ApiException
 
 try:
-    contact_fetched = client.crm.contacts.basic_api.get_by_id('contact_id')
+    contact_fetched = hubspot.crm.contacts.basic_api.get_by_id('contact_id')
 except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
@@ -76,7 +74,7 @@ except ApiException as e:
 get_all method is available for all major objects and works like
 
 ```python
-all_contacts = client.crm.contacts.get_all()
+all_contacts = hubspot.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
@@ -86,10 +84,10 @@ Please note that pagination is used under the hood to get all results.
 #### Get audit logs:
 
 ```python
-from hubspot.cms.audit_logs.exceptions import ApiException
+from hubspot.cms.audit_logs import ApiException
 
 try:
-    audit_logs_page = client.cms.audit_logs.default_api.get_page()
+    audit_logs_page = hubspot.cms.audit_logs.default_api.get_page()
 except ApiException as e:
     print("Exception when calling cards_api->create: %s\n" % e)
 ```
@@ -137,7 +135,7 @@ You can pass an instance of [urllib3.util.retry.Retry](https://urllib3.readthedo
 With internal error retry middleware:
 
 ```python
-import hubspot
+from hubspot import HubSpot
 from urllib3.util.retry import Retry
 
 retry = Retry(
@@ -145,19 +143,19 @@ retry = Retry(
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
 )
-client = hubspot.Client.create(retry=retry)
+client = HubSpot(retry=retry)
 ```
 Or with rate limit retry middleware:
 
 ```python
-import hubspot
+from hubspot import HubSpot
 from urllib3.util.retry import Retry
 
 retry = Retry(
     total=5,
     status_forcelist=(429,),
 )
-client = hubspot.Client.create(retry=retry)
+client = HubSpot(retry=retry)
 ```
 
 ## Contributing
