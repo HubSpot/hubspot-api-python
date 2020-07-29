@@ -1,13 +1,13 @@
 import os
-import hubspot
+from hubspot import HubSpot
 from .oauth import refresh_and_get_access_token, is_authorized
 
 
 def create_client():
     if is_authorized():
-        return hubspot.Client.create(access_token=refresh_and_get_access_token())
+        return HubSpot(access_token=refresh_and_get_access_token())
     api_key = os.environ.get("HUBSPOT_API_KEY")
     if api_key is not None:
-        return hubspot.Client.create(api_key=api_key)
+        return HubSpot(api_key=api_key)
 
-    return hubspot.Client.create()
+    return HubSpot()

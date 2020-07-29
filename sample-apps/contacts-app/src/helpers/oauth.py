@@ -1,8 +1,7 @@
 import time
 import os
 from flask import session, request
-import hubspot
-
+from hubspot import HubSpot
 TOKENS_KEY = "tokens"
 
 
@@ -31,7 +30,7 @@ def refresh_and_get_access_token():
         raise Exception("No refresh token is specified")
     tokens = session[TOKENS_KEY]
     if time.time() > tokens["expires_at"]:
-        tokens = hubspot.Client.create().auth.oauth.default_api.create_token(
+        tokens = HubSpot().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
             redirect_uri=get_redirect_uri(),
             refresh_token=tokens["refresh_token"],

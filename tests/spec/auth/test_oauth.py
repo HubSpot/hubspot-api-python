@@ -1,7 +1,7 @@
-import hubspot
+from hubspot import HubSpot
 from hubspot.auth.oauth import DefaultApi
 
 
 def test_is_discoverable():
-    apis = hubspot.Client.create().auth.oauth
+    apis = HubSpot().auth.oauth
     assert isinstance(apis.default_api, DefaultApi)

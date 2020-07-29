@@ -1,7 +1,7 @@
-import hubspot
+from hubspot import HubSpot
 from hubspot.cms.url_redirects import RedirectsApi
 
 
 def test_is_discoverable():
-    apis = hubspot.Client.create().cms.url_redirects
+    apis = HubSpot().cms.url_redirects
     assert isinstance(apis.redirects_api, RedirectsApi)

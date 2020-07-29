@@ -1,9 +1,9 @@
-import hubspot
+from hubspot import HubSpot
 from hubspot.crm.line_items import BatchApi, SearchApi, BasicApi
 
 
 def test_is_discoverable():
-    apis = hubspot.Client.create().crm.line_items
+    apis = HubSpot().crm.line_items
     assert isinstance(apis.basic_api, BasicApi)
     assert isinstance(apis.batch_api, BatchApi)
     assert isinstance(apis.search_api, SearchApi)

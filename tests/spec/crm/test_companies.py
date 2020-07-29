@@ -1,9 +1,9 @@
-import hubspot
+from hubspot import HubSpot
 from hubspot.crm.companies import BasicApi, AssociationsApi, BatchApi, SearchApi
 
 
 def test_is_discoverable():
-    apis = hubspot.Client.create().crm.companies
+    apis = HubSpot().crm.companies
     assert isinstance(apis.basic_api, BasicApi)
     assert isinstance(apis.associations_api, AssociationsApi)
     assert isinstance(apis.batch_api, BatchApi)

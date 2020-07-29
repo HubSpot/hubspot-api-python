@@ -33,7 +33,7 @@ hubspot.crm.companies.search_api.do_search(
 {% if search is not defined %}
 <pre>
 // src/routes/companies.py
-client = hubspot.Client.create(access_token='access_token')
+client = HubSpot(access_token='access_token')
 companies_page = client.crm.companies.basic_api.get_page()
 </pre>
 {% endif %}
