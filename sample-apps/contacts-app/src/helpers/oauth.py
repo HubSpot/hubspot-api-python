@@ -2,6 +2,7 @@ import time
 import os
 from flask import session, request
 from hubspot import HubSpot
+
 TOKENS_KEY = "tokens"
 
 
