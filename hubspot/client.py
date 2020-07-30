@@ -18,10 +18,7 @@ class Client:
         )
 
     @classmethod
-    def create(
-        cls,
-        **kwargs
-    ):
+    def create(cls, **kwargs):
         return cls(**kwargs)
 
     @property

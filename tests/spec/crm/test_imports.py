@@ -1,7 +1,7 @@
-import hubspot
+from hubspot import HubSpot
 from hubspot.crm.imports import CoreApi
 
 
 def test_is_discoverable():
-    apis = hubspot.Client.create().crm.imports
+    apis = HubSpot().crm.imports
     assert isinstance(apis.core_api, CoreApi)

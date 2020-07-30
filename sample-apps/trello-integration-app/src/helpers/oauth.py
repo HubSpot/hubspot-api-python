@@ -1,5 +1,5 @@
 from os import getenv
-import hubspot
+from hubspot import HubSpot
 from datetime import datetime, timedelta
 from flask import request
 from repositories import SettingsRepository
@@ -29,7 +29,7 @@ def refresh_and_get_access_token():
         raise Exception("No refresh token is specified")
     settings = SettingsRepository.find_one()
     if datetime.now() > settings.token_expires_at:
-        tokens_response = hubspot.Client.create().auth.oauth.default_api.create_token(
+        tokens_response = HubSpot().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
             refresh_token=settings.refresh_token,
             client_id=getenv("HUBSPOT_CLIENT_ID"),

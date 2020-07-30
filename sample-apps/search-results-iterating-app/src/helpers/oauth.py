@@ -2,7 +2,7 @@ import time
 import os
 import json
 from flask import request
-import hubspot
+from hubspot import HubSpot
 from services.redis import redis
 
 TOKENS_KEY = "tokens"
@@ -33,7 +33,7 @@ def refresh_and_get_access_token():
         raise Exception("No refresh token is specified")
     tokens = json.loads(redis.get(TOKENS_KEY))
     if time.time() > tokens["expires_at"]:
-        tokens = hubspot.Client.create().auth.oauth.default_api.create_token(
+        tokens = HubSpot().auth.oauth.default_api.create_token(
             grant_type="refresh_token",
             refresh_token=tokens["refresh_token"],
             client_id=os.environ.get("HUBSPOT_CLIENT_ID"),

@@ -34,7 +34,7 @@ hubspot.crm.contacts.search_api.do_search(
 {% if search is not defined %}
 <pre>
 // src/routes/contacts.py
-client = hubspot.Client.create(access_token='access_token')
+client = HubSpot(access_token='access_token')
 contacts_page = client.crm.contacts.basic_api.get_page()
 </pre>
 {% endif %}
