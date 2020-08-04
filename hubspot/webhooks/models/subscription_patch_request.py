@@ -32,44 +32,44 @@ class SubscriptionPatchRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"enabled": "bool"}
+    openapi_types = {"active": "bool"}
 
-    attribute_map = {"enabled": "enabled"}
+    attribute_map = {"active": "active"}
 
-    def __init__(self, enabled=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, active=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionPatchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._enabled = None
+        self._active = None
         self.discriminator = None
 
-        if enabled is not None:
-            self.enabled = enabled
+        if active is not None:
+            self.active = active
 
     @property
-    def enabled(self):
-        """Gets the enabled of this SubscriptionPatchRequest.  # noqa: E501
+    def active(self):
+        """Gets the active of this SubscriptionPatchRequest.  # noqa: E501
 
         Determines if the subscription is active or paused.  # noqa: E501
 
-        :return: The enabled of this SubscriptionPatchRequest.  # noqa: E501
+        :return: The active of this SubscriptionPatchRequest.  # noqa: E501
         :rtype: bool
         """
-        return self._enabled
+        return self._active
 
-    @enabled.setter
-    def enabled(self, enabled):
-        """Sets the enabled of this SubscriptionPatchRequest.
+    @active.setter
+    def active(self, active):
+        """Sets the active of this SubscriptionPatchRequest.
 
         Determines if the subscription is active or paused.  # noqa: E501
 
-        :param enabled: The enabled of this SubscriptionPatchRequest.  # noqa: E501
+        :param active: The active of this SubscriptionPatchRequest.  # noqa: E501
         :type: bool
         """
 
-        self._enabled = enabled
+        self._active = active
 
     def to_dict(self):
         """Returns the model properties as a dict"""

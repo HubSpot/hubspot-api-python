@@ -32,19 +32,19 @@ class SubscriptionCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"active": "bool", "event_type": "str", "property_name": "str"}
+    openapi_types = {"event_type": "str", "property_name": "str", "active": "bool"}
 
     attribute_map = {
-        "active": "active",
         "event_type": "eventType",
         "property_name": "propertyName",
+        "active": "active",
     }
 
     def __init__(
         self,
-        active=None,
         event_type=None,
         property_name=None,
+        active=False,
         local_vars_configuration=None,
     ):  # noqa: E501
         """SubscriptionCreateRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -52,37 +52,16 @@ class SubscriptionCreateRequest(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._active = None
         self._event_type = None
         self._property_name = None
+        self._active = None
         self.discriminator = None
 
-        if active is not None:
-            self.active = active
         self.event_type = event_type
         if property_name is not None:
             self.property_name = property_name
-
-    @property
-    def active(self):
-        """Gets the active of this SubscriptionCreateRequest.  # noqa: E501
-
-
-        :return: The active of this SubscriptionCreateRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._active
-
-    @active.setter
-    def active(self, active):
-        """Sets the active of this SubscriptionCreateRequest.
-
-
-        :param active: The active of this SubscriptionCreateRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._active = active
+        if active is not None:
+            self.active = active
 
     @property
     def event_type(self):
@@ -156,6 +135,29 @@ class SubscriptionCreateRequest(object):
         """
 
         self._property_name = property_name
+
+    @property
+    def active(self):
+        """Gets the active of this SubscriptionCreateRequest.  # noqa: E501
+
+        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
+
+        :return: The active of this SubscriptionCreateRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._active
+
+    @active.setter
+    def active(self, active):
+        """Sets the active of this SubscriptionCreateRequest.
+
+        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
+
+        :param active: The active of this SubscriptionCreateRequest.  # noqa: E501
+        :type: bool
+        """
+
+        self._active = active
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -33,25 +33,25 @@ class SettingsResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "created_at": "datetime",
-        "updated_at": "datetime",
         "target_url": "str",
         "throttling": "ThrottlingSettings",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
         "target_url": "targetUrl",
         "throttling": "throttling",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
     def __init__(
         self,
-        created_at=None,
-        updated_at=None,
         target_url=None,
         throttling=None,
+        created_at=None,
+        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """SettingsResponse - a model defined in OpenAPI"""  # noqa: E501
@@ -59,69 +59,17 @@ class SettingsResponse(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._created_at = None
-        self._updated_at = None
         self._target_url = None
         self._throttling = None
+        self._created_at = None
+        self._updated_at = None
         self.discriminator = None
 
+        self.target_url = target_url
+        self.throttling = throttling
         self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        self.target_url = target_url
-        self.throttling = throttling
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SettingsResponse.  # noqa: E501
-
-        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :return: The created_at of this SettingsResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SettingsResponse.
-
-        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :param created_at: The created_at of this SettingsResponse.  # noqa: E501
-        :type: datetime
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this SettingsResponse.  # noqa: E501
-
-        When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :return: The updated_at of this SettingsResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this SettingsResponse.
-
-        When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :param updated_at: The updated_at of this SettingsResponse.  # noqa: E501
-        :type: datetime
-        """
-
-        self._updated_at = updated_at
 
     @property
     def target_url(self):
@@ -178,6 +126,58 @@ class SettingsResponse(object):
             )  # noqa: E501
 
         self._throttling = throttling
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this SettingsResponse.  # noqa: E501
+
+        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :return: The created_at of this SettingsResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SettingsResponse.
+
+        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :param created_at: The created_at of this SettingsResponse.  # noqa: E501
+        :type: datetime
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this SettingsResponse.  # noqa: E501
+
+        When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :return: The updated_at of this SettingsResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this SettingsResponse.
+
+        When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :param updated_at: The updated_at of this SettingsResponse.  # noqa: E501
+        :type: datetime
+        """
+
+        self._updated_at = updated_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""
