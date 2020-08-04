@@ -143,7 +143,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
@@ -282,7 +282,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions",
@@ -398,7 +398,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions",
@@ -531,7 +531,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
@@ -690,7 +690,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
@@ -840,7 +840,7 @@ class SubscriptionsApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer-hapikey", "hapikey"]  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/subscriptions/batch/update",
