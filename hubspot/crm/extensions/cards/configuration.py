@@ -139,9 +139,6 @@ class Configuration(object):
         self.signing_info = signing_info
         """The HTTP signing configuration
         """
-        self.access_token = ""
-        """access token for OAuth/Bearer
-        """
         self.logger = {}
         """Logging Settings
         """
@@ -329,25 +326,11 @@ class Configuration(object):
         """
         auth = {}
         if "hapikey" in self.api_key:
-            auth["developer-hapikey"] = {
-                "type": "api_key",
-                "in": "query",
-                "key": "hapikey",
-                "value": self.get_api_key_with_prefix("hapikey"),
-            }
-        if "hapikey" in self.api_key:
             auth["hapikey"] = {
                 "type": "api_key",
                 "in": "query",
                 "key": "hapikey",
                 "value": self.get_api_key_with_prefix("hapikey"),
-            }
-        if self.access_token is not None:
-            auth["oauth2"] = {
-                "type": "oauth2",
-                "in": "header",
-                "key": "Authorization",
-                "value": "Bearer " + self.access_token,
             }
         return auth
 
