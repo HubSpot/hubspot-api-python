@@ -17,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - new `HubSpot` class - a shortage to `hubspot.Client`
 
-
 ## [2.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v2.0.0...v2.1.0) - 2020-06-23
 
 ### Added
