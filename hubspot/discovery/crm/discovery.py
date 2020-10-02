@@ -6,11 +6,13 @@ from .deals.discovery import Discovery as DealsDiscovery
 from .extensions.discovery import Discovery as ExtensionsDiscovery
 from .imports.discovery import Discovery as ImportsDiscovery
 from .line_items.discovery import Discovery as LineItemsDiscovery
+from .objects.discovery import Discovery as ObjectsDiscovery
+from .owners.discovery import Discovery as OwnersDiscovery
 from .pipelines.discovery import Discovery as PipelinesDiscovery
 from .products.discovery import Discovery as ProductsDiscovery
 from .properties.discovery import Discovery as PropertiesDiscovery
 from .quotes.discovery import Discovery as QuotesDiscovery
-from .owners.discovery import Discovery as OwnersDiscovery
+from .schemas.discovery import Discovery as SchemasDiscovery
 from .tickets.discovery import Discovery as TicketsDiscovery
 from .timeline.discovery import Discovery as TimelineDiscovery
 
@@ -45,6 +47,10 @@ class Discovery(DiscoveryBase):
         return LineItemsDiscovery(self.config)
 
     @property
+    def objects(self):
+        return ObjectsDiscovery(self.config)
+
+    @property
     def pipelines(self):
         return PipelinesDiscovery(self.config)
 
@@ -63,6 +69,10 @@ class Discovery(DiscoveryBase):
     @property
     def owners(self):
         return OwnersDiscovery(self.config)
+
+    @property
+    def schemas(self):
+        return SchemasDiscovery(self.config)
 
     @property
     def tickets(self):
