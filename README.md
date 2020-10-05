@@ -108,7 +108,6 @@ all_contacts = hubspot.crm.contacts.get_all()
 
 Please note that pagination is used under the hood to get all results.
 
-
 ### CMS API
 
 #### Get audit logs:
