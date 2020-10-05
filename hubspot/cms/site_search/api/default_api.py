@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.site_search.api_client import ApiClient
-from hubspot.cms.site_search.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.site_search.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class DefaultApi(object):
@@ -87,11 +87,15 @@ class DefaultApi(object):
 
         local_var_params = locals()
 
-        all_params = ["content_id", "type"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["content_id", "type"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -272,11 +276,15 @@ class DefaultApi(object):
             "_property",
             "length",
             "group_id",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        ]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

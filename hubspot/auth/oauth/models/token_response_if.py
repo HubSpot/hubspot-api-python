@@ -32,19 +32,19 @@ class TokenResponseIF(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"access_token": "str", "expires_in": "int", "refresh_token": "str"}
+    openapi_types = {"refresh_token": "str", "expires_in": "int", "access_token": "str"}
 
     attribute_map = {
-        "access_token": "access_token",
-        "expires_in": "expires_in",
         "refresh_token": "refresh_token",
+        "expires_in": "expires_in",
+        "access_token": "access_token",
     }
 
     def __init__(
         self,
-        access_token=None,
-        expires_in=None,
         refresh_token=None,
+        expires_in=None,
+        access_token=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """TokenResponseIF - a model defined in OpenAPI"""  # noqa: E501
@@ -52,42 +52,42 @@ class TokenResponseIF(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._access_token = None
-        self._expires_in = None
         self._refresh_token = None
+        self._expires_in = None
+        self._access_token = None
         self.discriminator = None
 
-        self.access_token = access_token
-        self.expires_in = expires_in
         self.refresh_token = refresh_token
+        self.expires_in = expires_in
+        self.access_token = access_token
 
     @property
-    def access_token(self):
-        """Gets the access_token of this TokenResponseIF.  # noqa: E501
+    def refresh_token(self):
+        """Gets the refresh_token of this TokenResponseIF.  # noqa: E501
 
 
-        :return: The access_token of this TokenResponseIF.  # noqa: E501
+        :return: The refresh_token of this TokenResponseIF.  # noqa: E501
         :rtype: str
         """
-        return self._access_token
+        return self._refresh_token
 
-    @access_token.setter
-    def access_token(self, access_token):
-        """Sets the access_token of this TokenResponseIF.
+    @refresh_token.setter
+    def refresh_token(self, refresh_token):
+        """Sets the refresh_token of this TokenResponseIF.
 
 
-        :param access_token: The access_token of this TokenResponseIF.  # noqa: E501
+        :param refresh_token: The refresh_token of this TokenResponseIF.  # noqa: E501
         :type: str
         """
         if (
             self.local_vars_configuration.client_side_validation
-            and access_token is None
+            and refresh_token is None
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `access_token`, must not be `None`"
+                "Invalid value for `refresh_token`, must not be `None`"
             )  # noqa: E501
 
-        self._access_token = access_token
+        self._refresh_token = refresh_token
 
     @property
     def expires_in(self):
@@ -117,32 +117,32 @@ class TokenResponseIF(object):
         self._expires_in = expires_in
 
     @property
-    def refresh_token(self):
-        """Gets the refresh_token of this TokenResponseIF.  # noqa: E501
+    def access_token(self):
+        """Gets the access_token of this TokenResponseIF.  # noqa: E501
 
 
-        :return: The refresh_token of this TokenResponseIF.  # noqa: E501
+        :return: The access_token of this TokenResponseIF.  # noqa: E501
         :rtype: str
         """
-        return self._refresh_token
+        return self._access_token
 
-    @refresh_token.setter
-    def refresh_token(self, refresh_token):
-        """Sets the refresh_token of this TokenResponseIF.
+    @access_token.setter
+    def access_token(self, access_token):
+        """Sets the access_token of this TokenResponseIF.
 
 
-        :param refresh_token: The refresh_token of this TokenResponseIF.  # noqa: E501
+        :param access_token: The access_token of this TokenResponseIF.  # noqa: E501
         :type: str
         """
         if (
             self.local_vars_configuration.client_side_validation
-            and refresh_token is None
+            and access_token is None
         ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `refresh_token`, must not be `None`"
+                "Invalid value for `access_token`, must not be `None`"
             )  # noqa: E501
 
-        self._refresh_token = refresh_token
+        self._access_token = access_token
 
     def to_dict(self):
         """Returns the model properties as a dict"""

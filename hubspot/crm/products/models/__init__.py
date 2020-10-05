@@ -48,6 +48,7 @@ from hubspot.crm.products.models.filter import Filter
 from hubspot.crm.products.models.filter_group import FilterGroup
 from hubspot.crm.products.models.next_page import NextPage
 from hubspot.crm.products.models.paging import Paging
+from hubspot.crm.products.models.previous_page import PreviousPage
 from hubspot.crm.products.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

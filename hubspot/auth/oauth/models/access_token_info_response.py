@@ -37,6 +37,7 @@ class AccessTokenInfoResponse(object):
         "user": "str",
         "hub_domain": "str",
         "scopes": "list[str]",
+        "scope_to_scope_group_pks": "list[int]",
         "hub_id": "int",
         "app_id": "int",
         "expires_in": "int",
@@ -49,6 +50,7 @@ class AccessTokenInfoResponse(object):
         "user": "user",
         "hub_domain": "hub_domain",
         "scopes": "scopes",
+        "scope_to_scope_group_pks": "scope_to_scope_group_pks",
         "hub_id": "hub_id",
         "app_id": "app_id",
         "expires_in": "expires_in",
@@ -62,6 +64,7 @@ class AccessTokenInfoResponse(object):
         user=None,
         hub_domain=None,
         scopes=None,
+        scope_to_scope_group_pks=None,
         hub_id=None,
         app_id=None,
         expires_in=None,
@@ -78,6 +81,7 @@ class AccessTokenInfoResponse(object):
         self._user = None
         self._hub_domain = None
         self._scopes = None
+        self._scope_to_scope_group_pks = None
         self._hub_id = None
         self._app_id = None
         self._expires_in = None
@@ -91,6 +95,7 @@ class AccessTokenInfoResponse(object):
         if hub_domain is not None:
             self.hub_domain = hub_domain
         self.scopes = scopes
+        self.scope_to_scope_group_pks = scope_to_scope_group_pks
         self.hub_id = hub_id
         self.app_id = app_id
         self.expires_in = expires_in
@@ -192,6 +197,34 @@ class AccessTokenInfoResponse(object):
             )  # noqa: E501
 
         self._scopes = scopes
+
+    @property
+    def scope_to_scope_group_pks(self):
+        """Gets the scope_to_scope_group_pks of this AccessTokenInfoResponse.  # noqa: E501
+
+
+        :return: The scope_to_scope_group_pks of this AccessTokenInfoResponse.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._scope_to_scope_group_pks
+
+    @scope_to_scope_group_pks.setter
+    def scope_to_scope_group_pks(self, scope_to_scope_group_pks):
+        """Sets the scope_to_scope_group_pks of this AccessTokenInfoResponse.
+
+
+        :param scope_to_scope_group_pks: The scope_to_scope_group_pks of this AccessTokenInfoResponse.  # noqa: E501
+        :type: list[int]
+        """
+        if (
+            self.local_vars_configuration.client_side_validation
+            and scope_to_scope_group_pks is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `scope_to_scope_group_pks`, must not be `None`"
+            )  # noqa: E501
+
+        self._scope_to_scope_group_pks = scope_to_scope_group_pks
 
     @property
     def hub_id(self):

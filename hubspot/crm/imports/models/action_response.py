@@ -37,6 +37,7 @@ class ActionResponse(object):
         "requested_at": "datetime",
         "started_at": "datetime",
         "completed_at": "datetime",
+        "links": "dict(str, str)",
     }
 
     attribute_map = {
@@ -44,6 +45,7 @@ class ActionResponse(object):
         "requested_at": "requestedAt",
         "started_at": "startedAt",
         "completed_at": "completedAt",
+        "links": "links",
     }
 
     def __init__(
@@ -52,6 +54,7 @@ class ActionResponse(object):
         requested_at=None,
         started_at=None,
         completed_at=None,
+        links=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ActionResponse - a model defined in OpenAPI"""  # noqa: E501
@@ -63,6 +66,7 @@ class ActionResponse(object):
         self._requested_at = None
         self._started_at = None
         self._completed_at = None
+        self._links = None
         self.discriminator = None
 
         self.status = status
@@ -70,6 +74,8 @@ class ActionResponse(object):
             self.requested_at = requested_at
         self.started_at = started_at
         self.completed_at = completed_at
+        if links is not None:
+            self.links = links
 
     @property
     def status(self):
@@ -183,6 +189,27 @@ class ActionResponse(object):
             )  # noqa: E501
 
         self._completed_at = completed_at
+
+    @property
+    def links(self):
+        """Gets the links of this ActionResponse.  # noqa: E501
+
+
+        :return: The links of this ActionResponse.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this ActionResponse.
+
+
+        :param links: The links of this ActionResponse.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._links = links
 
     def to_dict(self):
         """Returns the model properties as a dict"""

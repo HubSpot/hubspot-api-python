@@ -48,6 +48,7 @@ from hubspot.crm.tickets.models.filter import Filter
 from hubspot.crm.tickets.models.filter_group import FilterGroup
 from hubspot.crm.tickets.models.next_page import NextPage
 from hubspot.crm.tickets.models.paging import Paging
+from hubspot.crm.tickets.models.previous_page import PreviousPage
 from hubspot.crm.tickets.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

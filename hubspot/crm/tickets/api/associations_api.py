@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.tickets.api_client import ApiClient
-from hubspot.crm.tickets.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.tickets.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class AssociationsApi(object):
@@ -95,16 +95,15 @@ class AssociationsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            "ticket_id",
-            "to_object_type",
-            "to_object_id",
-            "association_type",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["ticket_id", "to_object_type", "to_object_id", "association_type"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -213,6 +212,7 @@ class AssociationsApi(object):
         :param str to_object_type: (required)
         :param str to_object_id: (required)
         :param str association_type: (required)
+        :param bool paginate_associations:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -244,6 +244,7 @@ class AssociationsApi(object):
         :param str to_object_type: (required)
         :param str to_object_id: (required)
         :param str association_type: (required)
+        :param bool paginate_associations:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -265,11 +266,16 @@ class AssociationsApi(object):
             "to_object_type",
             "to_object_id",
             "association_type",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+            "paginate_associations",
+        ]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -328,6 +334,13 @@ class AssociationsApi(object):
             ]  # noqa: E501
 
         query_params = []
+        if (
+            "paginate_associations" in local_var_params
+            and local_var_params["paginate_associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("paginateAssociations", local_var_params["paginate_associations"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -374,6 +387,9 @@ class AssociationsApi(object):
         :param async_req bool: execute request asynchronously
         :param str ticket_id: (required)
         :param str to_object_type: (required)
+        :param bool paginate_associations:
+        :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+        :param int limit: The maximum number of results to display per page.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -401,6 +417,9 @@ class AssociationsApi(object):
         :param async_req bool: execute request asynchronously
         :param str ticket_id: (required)
         :param str to_object_type: (required)
+        :param bool paginate_associations:
+        :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+        :param int limit: The maximum number of results to display per page.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -417,11 +436,21 @@ class AssociationsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["ticket_id", "to_object_type"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            "ticket_id",
+            "to_object_type",
+            "paginate_associations",
+            "after",
+            "limit",
+        ]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -458,6 +487,21 @@ class AssociationsApi(object):
             ]  # noqa: E501
 
         query_params = []
+        if (
+            "paginate_associations" in local_var_params
+            and local_var_params["paginate_associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("paginateAssociations", local_var_params["paginate_associations"])
+            )  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
 
         header_params = {}
 

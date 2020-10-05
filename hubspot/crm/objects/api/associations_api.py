@@ -441,12 +441,12 @@ class AssociationsApi(object):
             collection_formats=collection_formats,
         )
 
-    def get_page(self, object_type, object_id, to_object_type, **kwargs):  # noqa: E501
+    def get_all(self, object_type, object_id, to_object_type, **kwargs):  # noqa: E501
         """List associations of an object by type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_page(object_type, object_id, to_object_type, async_req=True)
+        >>> thread = api.get_all(object_type, object_id, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -468,18 +468,18 @@ class AssociationsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_page_with_http_info(
+        return self.get_all_with_http_info(
             object_type, object_id, to_object_type, **kwargs
         )  # noqa: E501
 
-    def get_page_with_http_info(
+    def get_all_with_http_info(
         self, object_type, object_id, to_object_type, **kwargs
     ):  # noqa: E501
         """List associations of an object by type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_page_with_http_info(object_type, object_id, to_object_type, async_req=True)
+        >>> thread = api.get_all_with_http_info(object_type, object_id, to_object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -525,8 +525,7 @@ class AssociationsApi(object):
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
+                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -536,7 +535,7 @@ class AssociationsApi(object):
             or local_var_params["object_type"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_page`"
+                "Missing the required parameter `object_type` when calling `get_all`"
             )  # noqa: E501
         # verify the required parameter 'object_id' is set
         if self.api_client.client_side_validation and (
@@ -544,7 +543,7 @@ class AssociationsApi(object):
             or local_var_params["object_id"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `object_id` when calling `get_page`"
+                "Missing the required parameter `object_id` when calling `get_all`"
             )  # noqa: E501
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and (
@@ -552,7 +551,7 @@ class AssociationsApi(object):
             or local_var_params["to_object_type"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `to_object_type` when calling `get_page`"
+                "Missing the required parameter `to_object_type` when calling `get_all`"
             )  # noqa: E501
 
         collection_formats = {}

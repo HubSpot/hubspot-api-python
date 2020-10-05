@@ -66,6 +66,7 @@ from hubspot.crm.contacts.models.filter import Filter
 from hubspot.crm.contacts.models.filter_group import FilterGroup
 from hubspot.crm.contacts.models.next_page import NextPage
 from hubspot.crm.contacts.models.paging import Paging
+from hubspot.crm.contacts.models.previous_page import PreviousPage
 from hubspot.crm.contacts.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

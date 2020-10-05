@@ -66,6 +66,7 @@ from hubspot.crm.line_items.models.filter import Filter
 from hubspot.crm.line_items.models.filter_group import FilterGroup
 from hubspot.crm.line_items.models.next_page import NextPage
 from hubspot.crm.line_items.models.paging import Paging
+from hubspot.crm.line_items.models.previous_page import PreviousPage
 from hubspot.crm.line_items.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

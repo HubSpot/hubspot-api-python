@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.imports.api_client import ApiClient
-from hubspot.crm.imports.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.imports.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class CoreApi(object):
@@ -85,11 +85,15 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["import_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -159,8 +163,8 @@ class CoreApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format.
         :param file files: A list of files containing the data to import
+        :param str import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -185,8 +189,8 @@ class CoreApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See [this page]() for more on the required format.
         :param file files: A list of files containing the data to import
+        :param str import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -203,11 +207,15 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_request", "files"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["files", "import_request"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -227,12 +235,12 @@ class CoreApi(object):
 
         form_params = []
         local_var_files = {}
+        if "files" in local_var_params:
+            local_var_files["files"] = local_var_params["files"]  # noqa: E501
         if "import_request" in local_var_params:
             form_params.append(
                 ("importRequest", local_var_params["import_request"])
             )  # noqa: E501
-        if "files" in local_var_params:
-            local_var_files["files"] = local_var_params["files"]  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
@@ -322,11 +330,15 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["import_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -443,11 +455,15 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["after", "before", "limit"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["after", "before", "limit"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
