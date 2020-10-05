@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v3.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v3.1.0...HEAD)
+
+## [3.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v3.0.0...v3.1.0) - 2020-08-05
+
+### Added
+
+- `crm.objects` API client
+- `crm.chemas` API client
+
+### Updated
+
+- Minor changes in existing clients
 
 ## [3.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v2.1.0...v3.0.0) - 2020-08-05
 
