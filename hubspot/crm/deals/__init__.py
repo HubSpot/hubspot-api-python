@@ -66,6 +66,7 @@ from hubspot.crm.deals.models.filter import Filter
 from hubspot.crm.deals.models.filter_group import FilterGroup
 from hubspot.crm.deals.models.next_page import NextPage
 from hubspot.crm.deals.models.paging import Paging
+from hubspot.crm.deals.models.previous_page import PreviousPage
 from hubspot.crm.deals.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

@@ -34,7 +34,7 @@ class SearchHitField(object):
     """
     openapi_types = {
         "metadata_field": "bool",
-        "values": "list[object]",
+        "values": "list",
         "name": "str",
         "value": "object",
     }
@@ -104,7 +104,7 @@ class SearchHitField(object):
 
 
         :return: The values of this SearchHitField.  # noqa: E501
-        :rtype: list[object]
+        :rtype: list
         """
         return self._values
 
@@ -114,7 +114,7 @@ class SearchHitField(object):
 
 
         :param values: The values of this SearchHitField.  # noqa: E501
-        :type: list[object]
+        :type: list
         """
         if (
             self.local_vars_configuration.client_side_validation and values is None

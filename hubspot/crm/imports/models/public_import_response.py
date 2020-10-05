@@ -33,32 +33,35 @@ class PublicImportResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "created_at": "datetime",
-        "metadata": "PublicImportMetadata",
-        "updated_at": "datetime",
         "state": "str",
         "import_request_json": "object",
+        "created_at": "datetime",
+        "metadata": "PublicImportMetadata",
+        "import_name": "str",
+        "updated_at": "datetime",
         "opt_out_import": "bool",
         "id": "str",
     }
 
     attribute_map = {
-        "created_at": "createdAt",
-        "metadata": "metadata",
-        "updated_at": "updatedAt",
         "state": "state",
         "import_request_json": "importRequestJson",
+        "created_at": "createdAt",
+        "metadata": "metadata",
+        "import_name": "importName",
+        "updated_at": "updatedAt",
         "opt_out_import": "optOutImport",
         "id": "id",
     }
 
     def __init__(
         self,
-        created_at=None,
-        metadata=None,
-        updated_at=None,
         state=None,
         import_request_json=None,
+        created_at=None,
+        metadata=None,
+        import_name=None,
+        updated_at=None,
         opt_out_import=None,
         id=None,
         local_vars_configuration=None,
@@ -68,104 +71,26 @@ class PublicImportResponse(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._created_at = None
-        self._metadata = None
-        self._updated_at = None
         self._state = None
         self._import_request_json = None
+        self._created_at = None
+        self._metadata = None
+        self._import_name = None
+        self._updated_at = None
         self._opt_out_import = None
         self._id = None
         self.discriminator = None
 
-        self.created_at = created_at
-        self.metadata = metadata
-        self.updated_at = updated_at
         self.state = state
         if import_request_json is not None:
             self.import_request_json = import_request_json
+        self.created_at = created_at
+        self.metadata = metadata
+        if import_name is not None:
+            self.import_name = import_name
+        self.updated_at = updated_at
         self.opt_out_import = opt_out_import
         self.id = id
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this PublicImportResponse.  # noqa: E501
-
-
-        :return: The created_at of this PublicImportResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this PublicImportResponse.
-
-
-        :param created_at: The created_at of this PublicImportResponse.  # noqa: E501
-        :type: datetime
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def metadata(self):
-        """Gets the metadata of this PublicImportResponse.  # noqa: E501
-
-
-        :return: The metadata of this PublicImportResponse.  # noqa: E501
-        :rtype: PublicImportMetadata
-        """
-        return self._metadata
-
-    @metadata.setter
-    def metadata(self, metadata):
-        """Sets the metadata of this PublicImportResponse.
-
-
-        :param metadata: The metadata of this PublicImportResponse.  # noqa: E501
-        :type: PublicImportMetadata
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and metadata is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `metadata`, must not be `None`"
-            )  # noqa: E501
-
-        self._metadata = metadata
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this PublicImportResponse.  # noqa: E501
-
-
-        :return: The updated_at of this PublicImportResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this PublicImportResponse.
-
-
-        :param updated_at: The updated_at of this PublicImportResponse.  # noqa: E501
-        :type: datetime
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and updated_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated_at`, must not be `None`"
-            )  # noqa: E501
-
-        self._updated_at = updated_at
 
     @property
     def state(self):
@@ -232,6 +157,108 @@ class PublicImportResponse(object):
         """
 
         self._import_request_json = import_request_json
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this PublicImportResponse.  # noqa: E501
+
+
+        :return: The created_at of this PublicImportResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this PublicImportResponse.
+
+
+        :param created_at: The created_at of this PublicImportResponse.  # noqa: E501
+        :type: datetime
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def metadata(self):
+        """Gets the metadata of this PublicImportResponse.  # noqa: E501
+
+
+        :return: The metadata of this PublicImportResponse.  # noqa: E501
+        :rtype: PublicImportMetadata
+        """
+        return self._metadata
+
+    @metadata.setter
+    def metadata(self, metadata):
+        """Sets the metadata of this PublicImportResponse.
+
+
+        :param metadata: The metadata of this PublicImportResponse.  # noqa: E501
+        :type: PublicImportMetadata
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and metadata is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `metadata`, must not be `None`"
+            )  # noqa: E501
+
+        self._metadata = metadata
+
+    @property
+    def import_name(self):
+        """Gets the import_name of this PublicImportResponse.  # noqa: E501
+
+
+        :return: The import_name of this PublicImportResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._import_name
+
+    @import_name.setter
+    def import_name(self, import_name):
+        """Sets the import_name of this PublicImportResponse.
+
+
+        :param import_name: The import_name of this PublicImportResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._import_name = import_name
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this PublicImportResponse.  # noqa: E501
+
+
+        :return: The updated_at of this PublicImportResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this PublicImportResponse.
+
+
+        :param updated_at: The updated_at of this PublicImportResponse.  # noqa: E501
+        :type: datetime
+        """
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
+
+        self._updated_at = updated_at
 
     @property
     def opt_out_import(self):

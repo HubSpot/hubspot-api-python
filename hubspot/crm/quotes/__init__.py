@@ -21,7 +21,6 @@ from hubspot.crm.quotes.api.associations_api import AssociationsApi
 from hubspot.crm.quotes.api.basic_api import BasicApi
 from hubspot.crm.quotes.api.batch_api import BatchApi
 from hubspot.crm.quotes.api.search_api import SearchApi
-from hubspot.crm.quotes.api.default_api import DefaultApi
 
 # import ApiClient
 from hubspot.crm.quotes.api_client import ApiClient
@@ -67,6 +66,7 @@ from hubspot.crm.quotes.models.filter import Filter
 from hubspot.crm.quotes.models.filter_group import FilterGroup
 from hubspot.crm.quotes.models.next_page import NextPage
 from hubspot.crm.quotes.models.paging import Paging
+from hubspot.crm.quotes.models.previous_page import PreviousPage
 from hubspot.crm.quotes.models.public_object_search_request import (
     PublicObjectSearchRequest,
 )

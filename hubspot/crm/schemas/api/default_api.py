@@ -33,12 +33,12 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, object_type, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+    def purge(self, object_type, **kwargs):  # noqa: E501
+        """purge  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(object_type, async_req=True)
+        >>> thread = api.purge(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -55,14 +55,14 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(object_type, **kwargs)  # noqa: E501
+        return self.purge_with_http_info(object_type, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, object_type, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+    def purge_with_http_info(self, object_type, **kwargs):  # noqa: E501
+        """purge  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(object_type, async_req=True)
+        >>> thread = api.purge_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -96,7 +96,7 @@ class DefaultApi(object):
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
+                    "Got an unexpected keyword argument '%s'" " to method purge" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -106,7 +106,7 @@ class DefaultApi(object):
             or local_var_params["object_type"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `archive`"
+                "Missing the required parameter `object_type` when calling `purge`"
             )  # noqa: E501
 
         collection_formats = {}

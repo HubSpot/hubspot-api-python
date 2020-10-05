@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.products.api_client import ApiClient
-from hubspot.crm.products.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.products.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class BasicApi(object):
@@ -85,11 +85,15 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["product_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["product_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -152,7 +156,7 @@ class BasicApi(object):
     def create(self, simple_public_object_input, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
-        Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating native products is provided.  # noqa: E501
+        Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard products is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create(simple_public_object_input, async_req=True)
@@ -179,7 +183,7 @@ class BasicApi(object):
     def create_with_http_info(self, simple_public_object_input, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
-        Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating native products is provided.  # noqa: E501
+        Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard products is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_with_http_info(simple_public_object_input, async_req=True)
@@ -203,11 +207,15 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["simple_public_object_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["simple_public_object_input"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -287,6 +295,7 @@ class BasicApi(object):
         :param str product_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :param bool paginate_associations:
         :param bool archived: Whether to return only results that have been archived.
         :param str id_property: The name of a property whose values are unique for this object type
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -316,6 +325,7 @@ class BasicApi(object):
         :param str product_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :param bool paginate_associations:
         :param bool archived: Whether to return only results that have been archived.
         :param str id_property: The name of a property whose values are unique for this object type
         :param _return_http_data_only: response data without head status code
@@ -338,13 +348,18 @@ class BasicApi(object):
             "product_id",
             "properties",
             "associations",
+            "paginate_associations",
             "archived",
             "id_property",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        ]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -386,6 +401,13 @@ class BasicApi(object):
                 ("associations", local_var_params["associations"])
             )  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
+        if (
+            "paginate_associations" in local_var_params
+            and local_var_params["paginate_associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("paginateAssociations", local_var_params["paginate_associations"])
+            )  # noqa: E501
         if (
             "archived" in local_var_params and local_var_params["archived"] is not None
         ):  # noqa: E501
@@ -448,6 +470,7 @@ class BasicApi(object):
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :param bool paginate_associations:
         :param bool archived: Whether to return only results that have been archived.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -477,6 +500,7 @@ class BasicApi(object):
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :param bool paginate_associations:
         :param bool archived: Whether to return only results that have been archived.
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -499,12 +523,17 @@ class BasicApi(object):
             "after",
             "properties",
             "associations",
+            "paginate_associations",
             "archived",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        ]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -544,6 +573,13 @@ class BasicApi(object):
                 ("associations", local_var_params["associations"])
             )  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
+        if (
+            "paginate_associations" in local_var_params
+            and local_var_params["paginate_associations"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("paginateAssociations", local_var_params["paginate_associations"])
+            )  # noqa: E501
         if (
             "archived" in local_var_params and local_var_params["archived"] is not None
         ):  # noqa: E501
@@ -643,11 +679,15 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["product_id", "simple_public_object_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["product_id", "simple_public_object_input"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

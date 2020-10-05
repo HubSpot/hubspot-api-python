@@ -7,4 +7,3 @@ from hubspot.crm.quotes.api.associations_api import AssociationsApi
 from hubspot.crm.quotes.api.basic_api import BasicApi
 from hubspot.crm.quotes.api.batch_api import BatchApi
 from hubspot.crm.quotes.api.search_api import SearchApi
-from hubspot.crm.quotes.api.default_api import DefaultApi

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.webhooks.api_client import ApiClient
-from hubspot.webhooks.exceptions import ApiTypeError, ApiValueError
+from hubspot.webhooks.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class SubscriptionsApi(object):
@@ -89,11 +89,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["subscription_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["subscription_id", "app_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -223,11 +227,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "subscription_create_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "subscription_create_request"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -356,11 +364,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -476,11 +488,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "subscription_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "subscription_id"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -615,15 +631,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            "subscription_id",
-            "app_id",
-            "subscription_patch_request",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["subscription_id", "app_id", "subscription_patch_request"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -772,14 +788,15 @@ class SubscriptionsApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            "app_id",
-            "batch_input_subscription_batch_update_request",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "batch_input_subscription_batch_update_request"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

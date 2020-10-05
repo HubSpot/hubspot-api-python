@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.quotes.api_client import ApiClient
-from hubspot.crm.quotes.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.quotes.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class BatchApi(object):
@@ -91,14 +91,15 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            "batch_read_input_simple_public_object_id",
-            "archived",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_read_input_simple_public_object_id", "archived"]
+        all_params.extend(
+            [
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
