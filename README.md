@@ -87,6 +87,17 @@ except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
 
+#### Get custom objects page:
+
+```python
+from hubspot.crm.objects import ApiException
+
+try:
+    my_custom_objects_page = hubspot.crm.objects.basic_api.get_page(object_type="my_custom_object_type")
+except ApiException as e:
+    print("Exception when requesting custom objects: %s\n" % e)
+```
+
 #### Get all:
 
 get_all method is available for all major objects and works like
