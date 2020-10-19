@@ -33,7 +33,8 @@ def create_card():
     hubspot = create_client_with_developer_api_key()
     app_id = getenv("HUBSPOT_APPLICATION_ID")
     deal_object_type = CardObjectTypeBody(
-        name="deals", properties_to_send=["hs_object_id", "dealname"],
+        name="deals",
+        properties_to_send=["hs_object_id", "dealname"],
     )
     fetch = CardFetchBodyPatch(
         target_url=url_for("trello.associations.card_extension_data", _external=True),
@@ -47,11 +48,15 @@ def create_card():
             title=card_title, fetch=fetch, actions=actions, display=CardDisplayBody()
         )
         response = hubspot.crm.extensions.cards.cards_api.create(
-            app_id=app_id, card_create_request=card_create_request,
+            app_id=app_id,
+            card_create_request=card_create_request,
         )
         SettingsRepository.save_extension_card_id(response.id)
     else:
-        card_patch_request = CardPatchRequest(fetch=fetch, actions=actions,)
+        card_patch_request = CardPatchRequest(
+            fetch=fetch,
+            actions=actions,
+        )
         hubspot.crm.extensions.cards.cards_api.update(
             app_id=app_id, card_id=card_id, card_patch_request=card_patch_request
         )
@@ -69,4 +74,6 @@ def create_card():
 @module.route("/done", methods=["GET"])
 @auth_required
 def done():
-    return render_template("init/done.html",)
+    return render_template(
+        "init/done.html",
+    )

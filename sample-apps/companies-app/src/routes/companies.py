@@ -19,7 +19,12 @@ module = Blueprint("companies", __name__)
 def list():
     hubspot = create_client()
     search_request = PublicObjectSearchRequest(
-        sorts=[{"propertyName": "createdate", "direction": "DESCENDING",}]
+        sorts=[
+            {
+                "propertyName": "createdate",
+                "direction": "DESCENDING",
+            }
+        ]
     )
     companies_page = hubspot.crm.companies.search_api.do_search(
         public_object_search_request=search_request
@@ -81,7 +86,11 @@ def search():
     hubspot = create_client()
     search = request.args.get("search")
 
-    filter = Filter(property_name="domain", operator="EQ", value=search,)
+    filter = Filter(
+        property_name="domain",
+        operator="EQ",
+        value=search,
+    )
     filter_group = FilterGroup(filters=[filter])
     public_object_search_request = PublicObjectSearchRequest(
         filter_groups=[filter_group],

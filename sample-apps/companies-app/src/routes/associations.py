@@ -58,12 +58,21 @@ def new(company_id):
     company = hubspot.crm.companies.basic_api.get_by_id(company_id)
 
     search_request = PublicObjectSearchRequest(
-        sorts=[{"propertyName": "createdate", "direction": "DESCENDING",}]
+        sorts=[
+            {
+                "propertyName": "createdate",
+                "direction": "DESCENDING",
+            }
+        ]
     )
 
     search = request.args.get("search")
     if search:
-        filter = Filter(property_name="email", operator="EQ", value=search,)
+        filter = Filter(
+            property_name="email",
+            operator="EQ",
+            value=search,
+        )
         search_request.filter_groups = [FilterGroup(filters=[filter])]
 
     contacts_page = hubspot.crm.contacts.search_api.do_search(

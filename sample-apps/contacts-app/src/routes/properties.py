@@ -24,9 +24,15 @@ def list():
 @module.route("/new")
 @auth_required
 def new():
-    property_create = PropertyCreate(type="string", group_name="contactinformation",)
+    property_create = PropertyCreate(
+        type="string",
+        group_name="contactinformation",
+    )
 
-    return render_template("properties/show.html", property=property_create,)
+    return render_template(
+        "properties/show.html",
+        property=property_create,
+    )
 
 
 @module.route("/new", methods=["POST"])

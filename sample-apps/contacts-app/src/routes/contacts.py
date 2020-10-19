@@ -28,7 +28,12 @@ module = Blueprint("contacts", __name__)
 def list():
     hubspot = create_client()
     search_request = PublicObjectSearchRequest(
-        sorts=[{"propertyName": "createdate", "direction": "DESCENDING",}]
+        sorts=[
+            {
+                "propertyName": "createdate",
+                "direction": "DESCENDING",
+            }
+        ]
     )
     contacts_page = hubspot.crm.contacts.search_api.do_search(
         public_object_search_request=search_request
@@ -44,7 +49,11 @@ def list():
 @module.route("/new")
 @auth_required
 def new():
-    contact = SimplePublicObject(properties={"email": None,})
+    contact = SimplePublicObject(
+        properties={
+            "email": None,
+        }
+    )
     properties_dict = {
         "email": {"label": "Email"},
     }
@@ -69,7 +78,8 @@ def show(contact_id):
     editable_properties_names = [p.name for p in editable_properties]
     editable_properties_names.append("hubspot_owner_id")
     contact = hubspot.crm.contacts.basic_api.get_by_id(
-        contact_id, properties=editable_properties_names,
+        contact_id,
+        properties=editable_properties_names,
     )
     editable_properties_dict = {p.name: p for p in editable_properties}
     editable_properties_dict["hubspot_owner_id"] = {"label": "Contact Owner"}
@@ -119,7 +129,11 @@ def search():
     hubspot = create_client()
     search = request.args.get("search")
 
-    filter = Filter(property_name="email", operator="EQ", value=search,)
+    filter = Filter(
+        property_name="email",
+        operator="EQ",
+        value=search,
+    )
     filter_group = FilterGroup(filters=[filter])
     public_object_search_request = PublicObjectSearchRequest(
         filter_groups=[filter_group],

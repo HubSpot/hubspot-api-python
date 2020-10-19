@@ -1,6 +1,7 @@
 from ..discovery_base import DiscoveryBase
 from .audit_logs.discovery import Discovery as AuditLogsDiscovery
 from .domains.discovery import Discovery as DomainsDiscovery
+from .hubdb.discovery import Discovery as HubdbDiscovery
 from .performance.discovery import Discovery as PerformanceDiscovery
 from .site_search.discovery import Discovery as SiteSearchDiscovery
 from .url_redirects.discovery import Discovery as UrlRedirectsDiscovery
@@ -14,6 +15,10 @@ class Discovery(DiscoveryBase):
     @property
     def domains(self):
         return DomainsDiscovery(self.config)
+
+    @property
+    def hubdb(self):
+        return HubdbDiscovery(self.config)
 
     @property
     def performance(self):

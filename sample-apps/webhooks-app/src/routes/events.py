@@ -48,4 +48,8 @@ def updates():
     updates_count = session.query(Event).filter(Event.created_at > after).count()
     session.commit()
 
-    return jsonify({"updatesCount": updates_count,})
+    return jsonify(
+        {
+            "updatesCount": updates_count,
+        }
+    )
