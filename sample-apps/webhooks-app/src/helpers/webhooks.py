@@ -19,8 +19,10 @@ def pause_active_subscriptions(hubspot_client: Client, app_id: str):
             SubscriptionBatchUpdateRequest(id=s.id, active=False)
             for s in active_subscriptions
         ]
-        batch_input_subscription_batch_update_request = BatchInputSubscriptionBatchUpdateRequest(
-            inputs=inputs,
+        batch_input_subscription_batch_update_request = (
+            BatchInputSubscriptionBatchUpdateRequest(
+                inputs=inputs,
+            )
         )
         hubspot_client.webhooks.subscriptions_api.update_batch(
             app_id=app_id,
@@ -31,7 +33,8 @@ def pause_active_subscriptions(hubspot_client: Client, app_id: str):
 def configure_target_url(hubspot_client: Client, app_id: str, target_url: str):
     settings_change_request = SettingsChangeRequest(target_url=target_url)
     hubspot_client.webhooks.settings_api.configure(
-        app_id=app_id, settings_change_request=settings_change_request,
+        app_id=app_id,
+        settings_change_request=settings_change_request,
     )
 
 
@@ -40,10 +43,13 @@ def create_or_activate_subscription(
 ):
     try:
         subscription_create_request = SubscriptionCreateRequest(
-            active=True, event_type=event_type, property_name=property_name,
+            active=True,
+            event_type=event_type,
+            property_name=property_name,
         )
         hubspot_client.webhooks.subscriptions_api.create(
-            app_id=app_id, subscription_create_request=subscription_create_request,
+            app_id=app_id,
+            subscription_create_request=subscription_create_request,
         )
     except ApiException as e:
         existing_subscription_id = json.loads(

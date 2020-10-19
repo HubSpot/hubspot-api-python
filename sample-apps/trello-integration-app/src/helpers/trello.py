@@ -32,7 +32,10 @@ def get_token():
 
 
 def get_client():
-    return TrelloClient(api_key=os.getenv("TRELLO_API_KEY"), token=get_token(),)
+    return TrelloClient(
+        api_key=os.getenv("TRELLO_API_KEY"),
+        token=get_token(),
+    )
 
 
 def search_cards(query=None):

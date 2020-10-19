@@ -22,7 +22,10 @@ def boards_list():
     trello = get_client()
     trello_boards = trello.list_boards()
 
-    return render_template("mappings/boards.html", trello_boards=trello_boards,)
+    return render_template(
+        "mappings/boards.html",
+        trello_boards=trello_boards,
+    )
 
 
 @module.route("/boards/<board_id>/pipelines", methods=["GET"])
@@ -46,9 +49,16 @@ def list(board_id, pipeline_id):
     hubspot = create_client()
     pipeline = hubspot.crm.pipelines.pipelines_api.get_by_id("deals", pipeline_id)
 
-    mappings = MappingsRepository.find_by(board_id=board_id, pipeline_id=pipeline_id,)
+    mappings = MappingsRepository.find_by(
+        board_id=board_id,
+        pipeline_id=pipeline_id,
+    )
     mappings.append(
-        {"id": None, "board_list_id": None, "pipeline_stage_id": None,}
+        {
+            "id": None,
+            "board_list_id": None,
+            "pipeline_stage_id": None,
+        }
     )
 
     return render_template(
