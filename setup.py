@@ -16,10 +16,6 @@ from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "hubspot-api-client"
 
-VERSION_FILE_PATH = dirname(abspath(__file__)) + "/VERSION"
-with open(VERSION_FILE_PATH, "r", encoding="utf-8") as f:
-    VERSION = f.readline().strip()
-
 # To install the library, run the following
 #
 # python setup.py install
@@ -30,11 +26,21 @@ with open(VERSION_FILE_PATH, "r", encoding="utf-8") as f:
 REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 DEV_REQUIRES = ["pytest", "black"]
 
+DIR_PATH = dirname(abspath(__file__))
+
+with open(DIR_PATH + "/VERSION", "r", encoding="utf-8") as f:
+    VERSION = f.readline().strip()
+
+with open(DIR_PATH + "/README.md", "r", encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
+
 setup(
     name=NAME,
     packages=find_packages(),
     version=VERSION,
     description="HubSpot API client",
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     url="https://github.com/HubSpot/hubspot-api-python",
     author="HubSpot",
     author_email="support@hubspot.com",
