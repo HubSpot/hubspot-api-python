@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v3.2.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v3.3.0...HEAD)
+
+## [3.3.0](https://github.com/HubSpot/hubspot-api-python/compare/v3.2.0...v3.3.0) - 2020-10-23
+
+### Added
+
+- HubSpot API key support to `cms.hubdb` API client
+- Long description to [PyPi](https://pypi.org/project/hubspot-api-client/) package
 
 ## [3.2.0](https://github.com/HubSpot/hubspot-api-python/compare/v3.1.0...v3.2.0) - 2020-10-19
 
