@@ -37,17 +37,18 @@ from hubspot.cms.hubdb.models.batch_input_string import BatchInputString
 from hubspot.cms.hubdb.models.batch_response_hub_db_table_row_v3_with_errors import (
     BatchResponseHubDbTableRowV3WithErrors,
 )
-from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_row_v3 import (
-    CollectionResponseWithTotalHubDbTableRowV3,
+from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_row_v3_forward_paging import (
+    CollectionResponseWithTotalHubDbTableRowV3ForwardPaging,
 )
-from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_v3 import (
-    CollectionResponseWithTotalHubDbTableV3,
+from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_v3_forward_paging import (
+    CollectionResponseWithTotalHubDbTableV3ForwardPaging,
 )
 from hubspot.cms.hubdb.models.column import Column
 from hubspot.cms.hubdb.models.column_input import ColumnInput
 from hubspot.cms.hubdb.models.error import Error
 from hubspot.cms.hubdb.models.error_detail import ErrorDetail
 from hubspot.cms.hubdb.models.foreign_id import ForeignId
+from hubspot.cms.hubdb.models.forward_paging import ForwardPaging
 from hubspot.cms.hubdb.models.hub_db_table_clone_request import HubDbTableCloneRequest
 from hubspot.cms.hubdb.models.hub_db_table_row_v3 import HubDbTableRowV3
 from hubspot.cms.hubdb.models.hub_db_table_row_v3_input import HubDbTableRowV3Input
@@ -57,6 +58,4 @@ from hubspot.cms.hubdb.models.hub_db_table_v3_live_input import HubDbTableV3Live
 from hubspot.cms.hubdb.models.import_result import ImportResult
 from hubspot.cms.hubdb.models.next_page import NextPage
 from hubspot.cms.hubdb.models.option import Option
-from hubspot.cms.hubdb.models.paging import Paging
-from hubspot.cms.hubdb.models.previous_page import PreviousPage
 from hubspot.cms.hubdb.models.simple_user import SimpleUser

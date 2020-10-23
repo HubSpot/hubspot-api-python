@@ -32,7 +32,7 @@ class BatchInputJsonNode(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"inputs": "list"}
+    openapi_types = {"inputs": "list[object]"}
 
     attribute_map = {"inputs": "inputs"}
 
@@ -53,7 +53,7 @@ class BatchInputJsonNode(object):
 
 
         :return: The inputs of this BatchInputJsonNode.  # noqa: E501
-        :rtype: list
+        :rtype: list[object]
         """
         return self._inputs
 
@@ -63,7 +63,7 @@ class BatchInputJsonNode(object):
 
 
         :param inputs: The inputs of this BatchInputJsonNode.  # noqa: E501
-        :type: list
+        :type: list[object]
         """
         if (
             self.local_vars_configuration.client_side_validation and inputs is None
