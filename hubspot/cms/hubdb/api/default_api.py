@@ -132,7 +132,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}",
@@ -278,7 +278,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/clone",
@@ -424,7 +424,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/create",
@@ -570,7 +570,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/purge",
@@ -716,7 +716,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/read",
@@ -862,7 +862,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/batch/read",
@@ -1008,7 +1008,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/replace",
@@ -1154,7 +1154,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft/batch/update",
@@ -1300,7 +1300,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft/clone",
@@ -1445,7 +1445,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/{rowId}/draft/clone",
@@ -1577,7 +1577,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables",
@@ -1723,7 +1723,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows",
@@ -1850,7 +1850,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft/export",
@@ -1977,7 +1977,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/export",
@@ -2026,7 +2026,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalHubDbTableV3
+        :return: CollectionResponseWithTotalHubDbTableV3ForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2062,7 +2062,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalHubDbTableV3, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseWithTotalHubDbTableV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2178,7 +2178,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/draft",
@@ -2189,7 +2189,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalHubDbTableV3",  # noqa: E501
+            response_type="CollectionResponseWithTotalHubDbTableV3ForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get(
@@ -2227,7 +2227,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalHubDbTableV3
+        :return: CollectionResponseWithTotalHubDbTableV3ForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2263,7 +2263,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalHubDbTableV3, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseWithTotalHubDbTableV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2379,7 +2379,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables",
@@ -2390,7 +2390,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalHubDbTableV3",  # noqa: E501
+            response_type="CollectionResponseWithTotalHubDbTableV3ForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get(
@@ -2521,7 +2521,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft",
@@ -2666,7 +2666,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/{rowId}/draft",
@@ -2802,7 +2802,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft/import",
@@ -2932,7 +2932,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft/push-live",
@@ -3077,7 +3077,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/{rowId}/draft",
@@ -3121,7 +3121,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalHubDbTableRowV3
+        :return: CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -3154,7 +3154,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseWithTotalHubDbTableRowV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -3229,7 +3229,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/draft",
@@ -3240,7 +3240,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalHubDbTableRowV3",  # noqa: E501
+            response_type="CollectionResponseWithTotalHubDbTableRowV3ForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get(
@@ -3395,7 +3395,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/{rowId}/draft",
@@ -3525,7 +3525,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft/reset",
@@ -3680,7 +3680,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/draft",
@@ -3846,7 +3846,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}/rows/{rowId}/draft",
@@ -4014,7 +4014,7 @@ class DefaultApi(object):
         )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableId}",
