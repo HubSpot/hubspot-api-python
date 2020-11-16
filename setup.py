@@ -10,9 +10,8 @@
 """
 
 
-from os.path import dirname, abspath
+from os.path import dirname, abspath, exists
 from setuptools import setup, find_packages  # noqa: H301
-from os.path import exists
 
 
 NAME = "hubspot-api-client"
