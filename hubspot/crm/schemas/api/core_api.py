@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.schemas.api_client import ApiClient
-from hubspot.crm.schemas.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.schemas.exceptions import ApiTypeError, ApiValueError
 
 
 class CoreApi(object):
@@ -85,15 +85,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -134,7 +130,7 @@ class CoreApi(object):
         auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas/{objectType}",
+            "/crm/v3/schemas/{objectType}",
             "DELETE",
             path_params,
             query_params,
@@ -213,15 +209,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "association_identifier"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type", "association_identifier"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -275,7 +267,7 @@ class CoreApi(object):
         auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}",
+            "/crm/v3/schemas/{objectType}/associations/{associationIdentifier}",
             "DELETE",
             path_params,
             query_params,
@@ -346,15 +338,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_schema_egg"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_schema_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -402,7 +390,7 @@ class CoreApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas",
+            "/crm/v3/schemas",
             "POST",
             path_params,
             query_params,
@@ -481,15 +469,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "association_definition_egg"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type", "association_definition_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -548,7 +532,7 @@ class CoreApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas/{objectType}/associations",
+            "/crm/v3/schemas/{objectType}/associations",
             "POST",
             path_params,
             query_params,
@@ -617,15 +601,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = []
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = []  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -656,7 +636,7 @@ class CoreApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas",
+            "/crm/v3/schemas",
             "GET",
             path_params,
             query_params,
@@ -727,15 +707,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -777,7 +753,7 @@ class CoreApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas/{objectType}",
+            "/crm/v3/schemas/{objectType}",
             "GET",
             path_params,
             query_params,
@@ -854,15 +830,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_type_definition_patch"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type", "object_type_definition_patch"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -920,7 +892,7 @@ class CoreApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm-object-schemas/v3/schemas/{objectType}",
+            "/crm/v3/schemas/{objectType}",
             "PATCH",
             path_params,
             query_params,

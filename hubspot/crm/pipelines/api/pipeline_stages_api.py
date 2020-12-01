@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.pipelines.api_client import ApiClient
-from hubspot.crm.pipelines.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.pipelines.exceptions import ApiTypeError, ApiValueError
 
 
 class PipelineStagesApi(object):
@@ -93,15 +93,11 @@ class PipelineStagesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "stage_id"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type", "pipeline_id", "stage_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -239,15 +235,15 @@ class PipelineStagesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "pipeline_stage_input"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = [
+            "object_type",
+            "pipeline_id",
+            "pipeline_stage_input",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -384,15 +380,11 @@ class PipelineStagesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "archived"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["object_type", "pipeline_id", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -530,15 +522,16 @@ class PipelineStagesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "stage_id", "archived"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = [
+            "object_type",
+            "pipeline_id",
+            "stage_id",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -687,15 +680,16 @@ class PipelineStagesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "stage_id", "pipeline_stage_input"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = [
+            "object_type",
+            "pipeline_id",
+            "stage_id",
+            "pipeline_stage_input",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -854,15 +848,11 @@ class PipelineStagesApi(object):
             "stage_id",
             "archived",
             "pipeline_stage_patch_input",
-        ]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
