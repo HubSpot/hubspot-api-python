@@ -10,7 +10,6 @@
 
 from __future__ import absolute_import
 
-import atexit
 import datetime
 from dateutil.parser import parse
 import json
@@ -27,7 +26,7 @@ from six.moves.urllib.parse import quote
 from hubspot.crm.quotes.configuration import Configuration
 import hubspot.crm.quotes.models
 from hubspot.crm.quotes import rest
-from hubspot.crm.quotes.exceptions import ApiValueError, ApiException
+from hubspot.crm.quotes.exceptions import ApiValueError
 
 
 class ApiClient(object):
@@ -74,7 +73,7 @@ class ApiClient(object):
         pool_threads=1,
     ):
         if configuration is None:
-            configuration = Configuration.get_default_copy()
+            configuration = Configuration()
         self.configuration = configuration
         self.pool_threads = pool_threads
 
@@ -87,19 +86,11 @@ class ApiClient(object):
         self.user_agent = "OpenAPI-Generator/1.0.0/python"
         self.client_side_validation = configuration.client_side_validation
 
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback):
-        self.close()
-
-    def close(self):
+    def __del__(self):
         if self._pool:
             self._pool.close()
             self._pool.join()
             self._pool = None
-            if hasattr(atexit, "unregister"):
-                atexit.unregister(self.close)
 
     @property
     def pool(self):
@@ -107,7 +98,6 @@ class ApiClient(object):
         avoids instantiating unused threadpool for blocking clients.
         """
         if self._pool is None:
-            atexit.register(self.close)
             self._pool = ThreadPool(self.pool_threads)
         return self._pool
 
@@ -191,43 +181,27 @@ class ApiClient(object):
             # use server/host defined in path or operation instead
             url = _host + resource_path
 
-        try:
-            # perform request and return response
-            response_data = self.request(
-                method,
-                url,
-                query_params=query_params,
-                headers=header_params,
-                post_params=post_params,
-                body=body,
-                _preload_content=_preload_content,
-                _request_timeout=_request_timeout,
-            )
-        except ApiException as e:
-            e.body = e.body.decode("utf-8") if six.PY3 else e.body
-            raise e
-
-        content_type = response_data.getheader("content-type")
+        # perform request and return response
+        response_data = self.request(
+            method,
+            url,
+            query_params=query_params,
+            headers=header_params,
+            post_params=post_params,
+            body=body,
+            _preload_content=_preload_content,
+            _request_timeout=_request_timeout,
+        )
 
         self.last_response = response_data
 
         return_data = response_data
-
-        if not _preload_content:
-            return return_data
-
-        if six.PY3 and response_type not in ["file", "bytes"]:
-            match = None
-            if content_type is not None:
-                match = re.search(r"charset=([a-zA-Z\-\d]+)[\s\;]?", content_type)
-            encoding = match.group(1) if match else "utf-8"
-            response_data.data = response_data.data.decode(encoding)
-
-        # deserialize response data
-        if response_type:
-            return_data = self.deserialize(response_data, response_type)
-        else:
-            return_data = None
+        if _preload_content:
+            # deserialize response data
+            if response_type:
+                return_data = self.deserialize(response_data, response_type)
+            else:
+                return_data = None
 
         if _return_http_data_only:
             return return_data
@@ -616,7 +590,9 @@ class ApiClient(object):
         for auth in auth_settings:
             auth_setting = self.configuration.auth_settings().get(auth)
             if auth_setting:
-                if auth_setting["in"] == "cookie":
+                if not auth_setting["value"]:
+                    continue
+                elif auth_setting["in"] == "cookie":
                     headers["Cookie"] = auth_setting["value"]
                 elif auth_setting["in"] == "header":
                     headers[auth_setting["key"]] = auth_setting["value"]
@@ -714,14 +690,8 @@ class ApiClient(object):
         :param klass: class literal.
         :return: model object.
         """
-        has_discriminator = False
-        if (
-            hasattr(klass, "get_real_child_model")
-            and klass.discriminator_value_class_map
-        ):
-            has_discriminator = True
 
-        if not klass.openapi_types and has_discriminator is False:
+        if not klass.openapi_types and not hasattr(klass, "get_real_child_model"):
             return data
 
         kwargs = {}
@@ -737,7 +707,7 @@ class ApiClient(object):
 
         instance = klass(**kwargs)
 
-        if has_discriminator:
+        if hasattr(instance, "get_real_child_model"):
             klass_name = instance.get_real_child_model(data)
             if klass_name:
                 instance = self.__deserialize(data, klass_name)

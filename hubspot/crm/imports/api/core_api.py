@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.imports.api_client import ApiClient
-from hubspot.crm.imports.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.imports.exceptions import ApiTypeError, ApiValueError
 
 
 class CoreApi(object):
@@ -85,15 +85,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["import_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -207,15 +203,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["files", "import_request"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["files", "import_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -330,15 +322,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["import_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -455,15 +443,11 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["after", "before", "limit"]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        all_params = ["after", "before", "limit"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

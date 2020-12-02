@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.quotes.api_client import ApiClient
-from hubspot.crm.quotes.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.quotes.exceptions import ApiTypeError, ApiValueError
 
 
 class BasicApi(object):
@@ -102,15 +102,11 @@ class BasicApi(object):
             "paginate_associations",
             "archived",
             "id_property",
-        ]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -276,15 +272,11 @@ class BasicApi(object):
             "associations",
             "paginate_associations",
             "archived",
-        ]
-        all_params.extend(
-            [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
-            ]
-        )
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
