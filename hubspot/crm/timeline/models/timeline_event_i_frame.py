@@ -33,30 +33,22 @@ class TimelineEventIFrame(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "link_label": "str",
-        "header_label": "str",
-        "url": "str",
-        "width": "int",
-        "height": "int",
+        'link_label': 'str',
+        'header_label': 'str',
+        'url': 'str',
+        'width': 'int',
+        'height': 'int'
     }
 
     attribute_map = {
-        "link_label": "linkLabel",
-        "header_label": "headerLabel",
-        "url": "url",
-        "width": "width",
-        "height": "height",
+        'link_label': 'linkLabel',
+        'header_label': 'headerLabel',
+        'url': 'url',
+        'width': 'width',
+        'height': 'height'
     }
 
-    def __init__(
-        self,
-        link_label=None,
-        header_label=None,
-        url=None,
-        width=None,
-        height=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, link_label=None, header_label=None, url=None, width=None, height=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventIFrame - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,12 +87,8 @@ class TimelineEventIFrame(object):
         :param link_label: The link_label of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and link_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `link_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and link_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `link_label`, must not be `None`")  # noqa: E501
 
         self._link_label = link_label
 
@@ -124,13 +112,8 @@ class TimelineEventIFrame(object):
         :param header_label: The header_label of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and header_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `header_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and header_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `header_label`, must not be `None`")  # noqa: E501
 
         self._header_label = header_label
 
@@ -154,12 +137,8 @@ class TimelineEventIFrame(object):
         :param url: The url of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -183,12 +162,8 @@ class TimelineEventIFrame(object):
         :param width: The width of this TimelineEventIFrame.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and width is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `width`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
 
         self._width = width
 
@@ -212,12 +187,8 @@ class TimelineEventIFrame(object):
         :param height: The height of this TimelineEventIFrame.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and height is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `height`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
         self._height = height
 
@@ -228,20 +199,18 @@ class TimelineEventIFrame(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -33,33 +33,24 @@ class HubDbTableRowV3(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "path": "str",
-        "name": "str",
-        "created_at": "datetime",
-        "child_table_id": "str",
-        "values": "object",
+        'id': 'str',
+        'path': 'str',
+        'name': 'str',
+        'created_at': 'datetime',
+        'child_table_id': 'str',
+        'values': 'object'
     }
 
     attribute_map = {
-        "id": "id",
-        "path": "path",
-        "name": "name",
-        "created_at": "createdAt",
-        "child_table_id": "childTableId",
-        "values": "values",
+        'id': 'id',
+        'path': 'path',
+        'name': 'name',
+        'created_at': 'createdAt',
+        'child_table_id': 'childTableId',
+        'values': 'values'
     }
 
-    def __init__(
-        self,
-        id=None,
-        path=None,
-        name=None,
-        created_at=None,
-        child_table_id=None,
-        values=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, path=None, name=None, created_at=None, child_table_id=None, values=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -100,9 +91,7 @@ class HubDbTableRowV3(object):
         :param id: The id of this HubDbTableRowV3.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -127,12 +116,8 @@ class HubDbTableRowV3(object):
         :param path: The path of this HubDbTableRowV3.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and path is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `path`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and path is None:  # noqa: E501
+            raise ValueError("Invalid value for `path`, must not be `None`")  # noqa: E501
 
         self._path = path
 
@@ -156,12 +141,8 @@ class HubDbTableRowV3(object):
         :param name: The name of this HubDbTableRowV3.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -185,12 +166,8 @@ class HubDbTableRowV3(object):
         :param created_at: The created_at of this HubDbTableRowV3.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -214,13 +191,8 @@ class HubDbTableRowV3(object):
         :param child_table_id: The child_table_id of this HubDbTableRowV3.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and child_table_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `child_table_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and child_table_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `child_table_id`, must not be `None`")  # noqa: E501
 
         self._child_table_id = child_table_id
 
@@ -244,12 +216,8 @@ class HubDbTableRowV3(object):
         :param values: The values of this HubDbTableRowV3.  # noqa: E501
         :type: object
         """
-        if (
-            self.local_vars_configuration.client_side_validation and values is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `values`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
 
         self._values = values
 
@@ -260,20 +228,18 @@ class HubDbTableRowV3(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

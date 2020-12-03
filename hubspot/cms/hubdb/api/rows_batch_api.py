@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.hubdb.api_client import ApiClient
-from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.hubdb.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class RowsBatchApi(object):
@@ -33,9 +36,7 @@ class RowsBatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def batch_clone_draft_table_rows(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_clone_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Clone rows in batch  # noqa: E501
 
         Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
@@ -58,14 +59,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_clone_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_string, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_clone_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
 
-    def batch_clone_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_clone_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Clone rows in batch  # noqa: E501
 
         Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
@@ -93,44 +90,41 @@ class RowsBatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'table_id_or_name',
+            'batch_input_string'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_clone_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_clone_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_clone_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_string" not in local_var_params
-            or local_var_params["batch_input_string"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `batch_clone_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_string` when calling `batch_clone_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -140,46 +134,36 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/clone",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/clone', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_create_draft_table_rows(
-        self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-    ):  # noqa: E501
+    def batch_create_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs):  # noqa: E501
         """Create rows in batch  # noqa: E501
 
         Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
@@ -202,14 +186,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_create_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_create_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs)  # noqa: E501
 
-    def batch_create_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-    ):  # noqa: E501
+    def batch_create_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs):  # noqa: E501
         """Create rows in batch  # noqa: E501
 
         Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
@@ -238,46 +218,40 @@ class RowsBatchApi(object):
         local_var_params = locals()
 
         all_params = [
-            "table_id_or_name",
-            "batch_input_hub_db_table_row_v3",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+            'table_id_or_name',
+            'batch_input_hub_db_table_row_v3'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_create_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_create_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_create_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_hub_db_table_row_v3' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_hub_db_table_row_v3" not in local_var_params
-            or local_var_params["batch_input_hub_db_table_row_v3"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_hub_db_table_row_v3` when calling `batch_create_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_hub_db_table_row_v3' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_hub_db_table_row_v3'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_hub_db_table_row_v3` when calling `batch_create_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -287,46 +261,36 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_hub_db_table_row_v3" in local_var_params:
-            body_params = local_var_params["batch_input_hub_db_table_row_v3"]
+        if 'batch_input_hub_db_table_row_v3' in local_var_params:
+            body_params = local_var_params['batch_input_hub_db_table_row_v3']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/create",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/create', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_purge_draft_table_rows(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_purge_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Permanently deletes rows  # noqa: E501
 
         Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
@@ -349,14 +313,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_purge_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_string, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_purge_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
 
-    def batch_purge_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_purge_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Permanently deletes rows  # noqa: E501
 
         Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
@@ -384,44 +344,41 @@ class RowsBatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'table_id_or_name',
+            'batch_input_string'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_purge_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_purge_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_purge_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_string" not in local_var_params
-            or local_var_params["batch_input_string"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `batch_purge_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_string` when calling `batch_purge_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -431,26 +388,21 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/purge",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/purge', 'POST',
             path_params,
             query_params,
             header_params,
@@ -459,18 +411,13 @@ class RowsBatchApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_read_draft_table_rows(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_read_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Get a set of rows from draft table  # noqa: E501
 
         Returns rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
@@ -493,14 +440,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_read_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_string, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_read_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
 
-    def batch_read_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_read_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Get a set of rows from draft table  # noqa: E501
 
         Returns rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
@@ -528,44 +471,41 @@ class RowsBatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'table_id_or_name',
+            'batch_input_string'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_read_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_read_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_read_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_string" not in local_var_params
-            or local_var_params["batch_input_string"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `batch_read_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_string` when calling `batch_read_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -575,46 +515,36 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/read",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_read_table_rows(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_read_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Get a set of rows  # noqa: E501
 
         Returns rows in the `live` version of the specified table, given a set of row ids. **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.  # noqa: E501
@@ -637,14 +567,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_read_table_rows_with_http_info(
-            table_id_or_name, batch_input_string, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_read_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
 
-    def batch_read_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_string, **kwargs
-    ):  # noqa: E501
+    def batch_read_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Get a set of rows  # noqa: E501
 
         Returns rows in the `live` version of the specified table, given a set of row ids. **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.  # noqa: E501
@@ -672,44 +598,41 @@ class RowsBatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'table_id_or_name',
+            'batch_input_string'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_read_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_read_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_read_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_string" not in local_var_params
-            or local_var_params["batch_input_string"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `batch_read_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_string` when calling `batch_read_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -719,46 +642,36 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/batch/read",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_replace_draft_table_rows(
-        self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-    ):  # noqa: E501
+    def batch_replace_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs):  # noqa: E501
         """Replace rows in batch in draft table  # noqa: E501
 
         Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
@@ -781,14 +694,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_replace_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_replace_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs)  # noqa: E501
 
-    def batch_replace_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs
-    ):  # noqa: E501
+    def batch_replace_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_hub_db_table_row_v3, **kwargs):  # noqa: E501
         """Replace rows in batch in draft table  # noqa: E501
 
         Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
@@ -817,46 +726,40 @@ class RowsBatchApi(object):
         local_var_params = locals()
 
         all_params = [
-            "table_id_or_name",
-            "batch_input_hub_db_table_row_v3",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+            'table_id_or_name',
+            'batch_input_hub_db_table_row_v3'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_replace_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_replace_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_replace_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_hub_db_table_row_v3' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_hub_db_table_row_v3" not in local_var_params
-            or local_var_params["batch_input_hub_db_table_row_v3"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_hub_db_table_row_v3` when calling `batch_replace_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_hub_db_table_row_v3' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_hub_db_table_row_v3'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_hub_db_table_row_v3` when calling `batch_replace_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -866,46 +769,36 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_hub_db_table_row_v3" in local_var_params:
-            body_params = local_var_params["batch_input_hub_db_table_row_v3"]
+        if 'batch_input_hub_db_table_row_v3' in local_var_params:
+            body_params = local_var_params['batch_input_hub_db_table_row_v3']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/replace",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/replace', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def batch_update_draft_table_rows(
-        self, table_id_or_name, batch_input_json_node, **kwargs
-    ):  # noqa: E501
+    def batch_update_draft_table_rows(self, table_id_or_name, batch_input_json_node, **kwargs):  # noqa: E501
         """Update rows in batch in draft table  # noqa: E501
 
         Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
@@ -928,14 +821,10 @@ class RowsBatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_update_draft_table_rows_with_http_info(
-            table_id_or_name, batch_input_json_node, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.batch_update_draft_table_rows_with_http_info(table_id_or_name, batch_input_json_node, **kwargs)  # noqa: E501
 
-    def batch_update_draft_table_rows_with_http_info(
-        self, table_id_or_name, batch_input_json_node, **kwargs
-    ):  # noqa: E501
+    def batch_update_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_json_node, **kwargs):  # noqa: E501
         """Update rows in batch in draft table  # noqa: E501
 
         Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
@@ -963,44 +852,41 @@ class RowsBatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_json_node"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'table_id_or_name',
+            'batch_input_json_node'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method batch_update_draft_table_rows" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and (
-            "table_id_or_name" not in local_var_params
-            or local_var_params["table_id_or_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `table_id_or_name` when calling `batch_update_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `batch_update_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_json_node' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_json_node" not in local_var_params
-            or local_var_params["batch_input_json_node"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_json_node` when calling `batch_update_draft_table_rows`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_json_node' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_json_node'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_json_node` when calling `batch_update_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "table_id_or_name" in local_var_params:
-            path_params["tableIdOrName"] = local_var_params[
-                "table_id_or_name"
-            ]  # noqa: E501
+        if 'table_id_or_name' in local_var_params:
+            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
 
         query_params = []
 
@@ -1010,39 +896,31 @@ class RowsBatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_json_node" in local_var_params:
-            body_params = local_var_params["batch_input_json_node"]
+        if 'batch_input_json_node' in local_var_params:
+            body_params = local_var_params['batch_input_json_node']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/update",
-            "POST",
+            '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/update', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="object",  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

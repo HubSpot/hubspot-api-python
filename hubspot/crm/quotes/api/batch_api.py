@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.quotes.api_client import ApiClient
-from hubspot.crm.quotes.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.quotes.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class BatchApi(object):
@@ -56,14 +59,10 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(
-            batch_read_input_simple_public_object_id, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
 
-    def read_with_http_info(
-        self, batch_read_input_simple_public_object_id, **kwargs
-    ):  # noqa: E501
+    def read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of quotes by internal ID, or unique property values  # noqa: E501
 
         Read a list of quotes given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
@@ -92,44 +91,38 @@ class BatchApi(object):
         local_var_params = locals()
 
         all_params = [
-            "batch_read_input_simple_public_object_id",
-            "archived",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+            'batch_read_input_simple_public_object_id',
+            'archived'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method read" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method read" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_read_input_simple_public_object_id' is set
-        if self.api_client.client_side_validation and (
-            "batch_read_input_simple_public_object_id" not in local_var_params
-            or local_var_params[  # noqa: E501
-                "batch_read_input_simple_public_object_id"
-            ]
-            is None
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_read_input_simple_public_object_id` when calling `read`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_read_input_simple_public_object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_read_input_simple_public_object_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_read_input_simple_public_object_id` when calling `read`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -137,39 +130,31 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_read_input_simple_public_object_id" in local_var_params:
-            body_params = local_var_params["batch_read_input_simple_public_object_id"]
+        if 'batch_read_input_simple_public_object_id' in local_var_params:
+            body_params = local_var_params['batch_read_input_simple_public_object_id']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/quotes/batch/read",
-            "POST",
+            '/crm/v3/objects/quotes/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSimplePublicObject",  # noqa: E501
+            response_type='BatchResponseSimplePublicObject',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

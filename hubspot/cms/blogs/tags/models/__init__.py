@@ -17,15 +17,11 @@ from __future__ import absolute_import
 from hubspot.cms.blogs.tags.models.batch_input_json_node import BatchInputJsonNode
 from hubspot.cms.blogs.tags.models.batch_input_string import BatchInputString
 from hubspot.cms.blogs.tags.models.batch_input_tag import BatchInputTag
-from hubspot.cms.blogs.tags.models.batch_response_tag_with_errors import (
-    BatchResponseTagWithErrors,
-)
-from hubspot.cms.blogs.tags.models.collection_response_with_total_tag import (
-    CollectionResponseWithTotalTag,
-)
+from hubspot.cms.blogs.tags.models.batch_response_tag_with_errors import BatchResponseTagWithErrors
+from hubspot.cms.blogs.tags.models.collection_response_with_total_tag_forward_paging import CollectionResponseWithTotalTagForwardPaging
 from hubspot.cms.blogs.tags.models.error import Error
 from hubspot.cms.blogs.tags.models.error_detail import ErrorDetail
+from hubspot.cms.blogs.tags.models.forward_paging import ForwardPaging
 from hubspot.cms.blogs.tags.models.next_page import NextPage
-from hubspot.cms.blogs.tags.models.paging import Paging
-from hubspot.cms.blogs.tags.models.previous_page import PreviousPage
+from hubspot.cms.blogs.tags.models.standard_error import StandardError
 from hubspot.cms.blogs.tags.models.tag import Tag

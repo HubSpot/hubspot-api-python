@@ -33,30 +33,22 @@ class ActionResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "status": "str",
-        "requested_at": "datetime",
-        "started_at": "datetime",
-        "completed_at": "datetime",
-        "links": "dict(str, str)",
+        'status': 'str',
+        'requested_at': 'datetime',
+        'started_at': 'datetime',
+        'completed_at': 'datetime',
+        'links': 'dict(str, str)'
     }
 
     attribute_map = {
-        "status": "status",
-        "requested_at": "requestedAt",
-        "started_at": "startedAt",
-        "completed_at": "completedAt",
-        "links": "links",
+        'status': 'status',
+        'requested_at': 'requestedAt',
+        'started_at': 'startedAt',
+        'completed_at': 'completedAt',
+        'links': 'links'
     }
 
-    def __init__(
-        self,
-        status=None,
-        requested_at=None,
-        started_at=None,
-        completed_at=None,
-        links=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, status=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
         """ActionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,21 +87,13 @@ class ActionResponse(object):
         :param status: The status of this ActionResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and status is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and status not in allowed_values
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}".format(  # noqa: E501
-                    status, allowed_values
-                )
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
             )
 
         self._status = status
@@ -153,12 +137,8 @@ class ActionResponse(object):
         :param started_at: The started_at of this ActionResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and started_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `started_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
 
         self._started_at = started_at
 
@@ -180,13 +160,8 @@ class ActionResponse(object):
         :param completed_at: The completed_at of this ActionResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and completed_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `completed_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
 
         self._completed_at = completed_at
 
@@ -218,20 +193,18 @@ class ActionResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

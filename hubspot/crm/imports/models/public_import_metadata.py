@@ -33,24 +33,18 @@ class PublicImportMetadata(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "object_lists": "list[PublicObjectListRecord]",
-        "counters": "dict(str, int)",
-        "file_ids": "list[str]",
+        'object_lists': 'list[PublicObjectListRecord]',
+        'counters': 'dict(str, int)',
+        'file_ids': 'list[str]'
     }
 
     attribute_map = {
-        "object_lists": "objectLists",
-        "counters": "counters",
-        "file_ids": "fileIds",
+        'object_lists': 'objectLists',
+        'counters': 'counters',
+        'file_ids': 'fileIds'
     }
 
-    def __init__(
-        self,
-        object_lists=None,
-        counters=None,
-        file_ids=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, object_lists=None, counters=None, file_ids=None, local_vars_configuration=None):  # noqa: E501
         """PublicImportMetadata - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,13 +79,8 @@ class PublicImportMetadata(object):
         :param object_lists: The object_lists of this PublicImportMetadata.  # noqa: E501
         :type: list[PublicObjectListRecord]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and object_lists is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_lists`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_lists is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_lists`, must not be `None`")  # noqa: E501
 
         self._object_lists = object_lists
 
@@ -115,12 +104,8 @@ class PublicImportMetadata(object):
         :param counters: The counters of this PublicImportMetadata.  # noqa: E501
         :type: dict(str, int)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and counters is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `counters`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and counters is None:  # noqa: E501
+            raise ValueError("Invalid value for `counters`, must not be `None`")  # noqa: E501
 
         self._counters = counters
 
@@ -144,12 +129,8 @@ class PublicImportMetadata(object):
         :param file_ids: The file_ids of this PublicImportMetadata.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and file_ids is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `file_ids`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and file_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `file_ids`, must not be `None`")  # noqa: E501
 
         self._file_ids = file_ids
 
@@ -160,20 +141,18 @@ class PublicImportMetadata(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
