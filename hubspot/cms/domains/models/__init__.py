@@ -14,9 +14,7 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.cms.domains.models.collection_response_with_total_domain import (
-    CollectionResponseWithTotalDomain,
-)
+from hubspot.cms.domains.models.collection_response_with_total_domain import CollectionResponseWithTotalDomain
 from hubspot.cms.domains.models.domain import Domain
 from hubspot.cms.domains.models.domain_cdn_config import DomainCdnConfig
 from hubspot.cms.domains.models.domain_setup_info import DomainSetupInfo

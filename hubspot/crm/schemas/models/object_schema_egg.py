@@ -33,39 +33,28 @@ class ObjectSchemaEgg(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "labels": "ObjectTypeDefinitionLabels",
-        "required_properties": "list[str]",
-        "searchable_properties": "list[str]",
-        "primary_display_property": "str",
-        "secondary_display_properties": "list[str]",
-        "properties": "list[ObjectTypePropertyCreate]",
-        "associated_objects": "list[str]",
-        "name": "str",
+        'labels': 'ObjectTypeDefinitionLabels',
+        'required_properties': 'list[str]',
+        'searchable_properties': 'list[str]',
+        'primary_display_property': 'str',
+        'secondary_display_properties': 'list[str]',
+        'properties': 'list[ObjectTypePropertyCreate]',
+        'associated_objects': 'list[str]',
+        'name': 'str'
     }
 
     attribute_map = {
-        "labels": "labels",
-        "required_properties": "requiredProperties",
-        "searchable_properties": "searchableProperties",
-        "primary_display_property": "primaryDisplayProperty",
-        "secondary_display_properties": "secondaryDisplayProperties",
-        "properties": "properties",
-        "associated_objects": "associatedObjects",
-        "name": "name",
+        'labels': 'labels',
+        'required_properties': 'requiredProperties',
+        'searchable_properties': 'searchableProperties',
+        'primary_display_property': 'primaryDisplayProperty',
+        'secondary_display_properties': 'secondaryDisplayProperties',
+        'properties': 'properties',
+        'associated_objects': 'associatedObjects',
+        'name': 'name'
     }
 
-    def __init__(
-        self,
-        labels=None,
-        required_properties=None,
-        searchable_properties=None,
-        primary_display_property=None,
-        secondary_display_properties=None,
-        properties=None,
-        associated_objects=None,
-        name=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, labels=None, required_properties=None, searchable_properties=None, primary_display_property=None, secondary_display_properties=None, properties=None, associated_objects=None, name=None, local_vars_configuration=None):  # noqa: E501
         """ObjectSchemaEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -109,12 +98,8 @@ class ObjectSchemaEgg(object):
         :param labels: The labels of this ObjectSchemaEgg.  # noqa: E501
         :type: ObjectTypeDefinitionLabels
         """
-        if (
-            self.local_vars_configuration.client_side_validation and labels is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `labels`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
+            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
         self._labels = labels
 
@@ -138,13 +123,8 @@ class ObjectSchemaEgg(object):
         :param required_properties: The required_properties of this ObjectSchemaEgg.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and required_properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `required_properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and required_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `required_properties`, must not be `None`")  # noqa: E501
 
         self._required_properties = required_properties
 
@@ -168,13 +148,8 @@ class ObjectSchemaEgg(object):
         :param searchable_properties: The searchable_properties of this ObjectSchemaEgg.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and searchable_properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `searchable_properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
 
         self._searchable_properties = searchable_properties
 
@@ -221,13 +196,8 @@ class ObjectSchemaEgg(object):
         :param secondary_display_properties: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and secondary_display_properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `secondary_display_properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
 
         self._secondary_display_properties = secondary_display_properties
 
@@ -251,12 +221,8 @@ class ObjectSchemaEgg(object):
         :param properties: The properties of this ObjectSchemaEgg.  # noqa: E501
         :type: list[ObjectTypePropertyCreate]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -280,13 +246,8 @@ class ObjectSchemaEgg(object):
         :param associated_objects: The associated_objects of this ObjectSchemaEgg.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and associated_objects is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `associated_objects`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and associated_objects is None:  # noqa: E501
+            raise ValueError("Invalid value for `associated_objects`, must not be `None`")  # noqa: E501
 
         self._associated_objects = associated_objects
 
@@ -310,12 +271,8 @@ class ObjectSchemaEgg(object):
         :param name: The name of this ObjectSchemaEgg.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -326,20 +283,18 @@ class ObjectSchemaEgg(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

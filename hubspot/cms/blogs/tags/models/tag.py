@@ -33,30 +33,22 @@ class Tag(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "name": "str",
-        "deleted_at": "datetime",
-        "created_at": "datetime",
-        "updated_at": "datetime",
+        'id': 'str',
+        'name': 'str',
+        'deleted_at': 'datetime',
+        'created_at': 'datetime',
+        'updated_at': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "name": "name",
-        "deleted_at": "deletedAt",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
+        'id': 'id',
+        'name': 'name',
+        'deleted_at': 'deletedAt',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt'
     }
 
-    def __init__(
-        self,
-        id=None,
-        name=None,
-        deleted_at=None,
-        created_at=None,
-        updated_at=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, name=None, deleted_at=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """Tag - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,9 +87,7 @@ class Tag(object):
         :param id: The id of this Tag.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -122,12 +112,8 @@ class Tag(object):
         :param name: The name of this Tag.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -151,12 +137,8 @@ class Tag(object):
         :param deleted_at: The deleted_at of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and deleted_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `deleted_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
 
@@ -180,12 +162,8 @@ class Tag(object):
         :param created_at: The created_at of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -209,12 +187,8 @@ class Tag(object):
         :param updated_at: The updated_at of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and updated_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -225,20 +199,18 @@ class Tag(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

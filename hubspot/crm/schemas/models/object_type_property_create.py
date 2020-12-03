@@ -33,45 +33,32 @@ class ObjectTypePropertyCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "label": "str",
-        "group_name": "str",
-        "description": "str",
-        "options": "list[OptionInput]",
-        "display_order": "int",
-        "has_unique_value": "bool",
-        "hidden": "bool",
-        "type": "str",
-        "field_type": "str",
+        'name': 'str',
+        'label': 'str',
+        'group_name': 'str',
+        'description': 'str',
+        'options': 'list[OptionInput]',
+        'display_order': 'int',
+        'has_unique_value': 'bool',
+        'hidden': 'bool',
+        'type': 'str',
+        'field_type': 'str'
     }
 
     attribute_map = {
-        "name": "name",
-        "label": "label",
-        "group_name": "groupName",
-        "description": "description",
-        "options": "options",
-        "display_order": "displayOrder",
-        "has_unique_value": "hasUniqueValue",
-        "hidden": "hidden",
-        "type": "type",
-        "field_type": "fieldType",
+        'name': 'name',
+        'label': 'label',
+        'group_name': 'groupName',
+        'description': 'description',
+        'options': 'options',
+        'display_order': 'displayOrder',
+        'has_unique_value': 'hasUniqueValue',
+        'hidden': 'hidden',
+        'type': 'type',
+        'field_type': 'fieldType'
     }
 
-    def __init__(
-        self,
-        name=None,
-        label=None,
-        group_name=None,
-        description=None,
-        options=None,
-        display_order=None,
-        has_unique_value=None,
-        hidden=None,
-        type=None,
-        field_type=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, name=None, label=None, group_name=None, description=None, options=None, display_order=None, has_unique_value=None, hidden=None, type=None, field_type=None, local_vars_configuration=None):  # noqa: E501
         """ObjectTypePropertyCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -126,12 +113,8 @@ class ObjectTypePropertyCreate(object):
         :param name: The name of this ObjectTypePropertyCreate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -155,12 +138,8 @@ class ObjectTypePropertyCreate(object):
         :param label: The label of this ObjectTypePropertyCreate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -320,27 +299,13 @@ class ObjectTypePropertyCreate(object):
         :param type: The type of this ObjectTypePropertyCreate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["string", "number", "date", "datetime", "enumeration"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "string",
-            "number",
-            "date",
-            "datetime",
-            "enumeration",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
-                    type, allowed_values
-                )
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
             )
 
         self._type = type
@@ -365,12 +330,8 @@ class ObjectTypePropertyCreate(object):
         :param field_type: The field_type of this ObjectTypePropertyCreate.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and field_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
 
         self._field_type = field_type
 
@@ -381,20 +342,18 @@ class ObjectTypePropertyCreate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.url_redirects.api_client import ApiClient
-from hubspot.cms.url_redirects.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.url_redirects.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class RedirectsApi(object):
@@ -55,7 +58,7 @@ class RedirectsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(url_redirect_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, url_redirect_id, **kwargs):  # noqa: E501
@@ -85,35 +88,36 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'url_redirect_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'url_redirect_id' is set
-        if self.api_client.client_side_validation and (
-            "url_redirect_id" not in local_var_params
-            or local_var_params["url_redirect_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `url_redirect_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('url_redirect_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['url_redirect_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `url_redirect_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "url_redirect_id" in local_var_params:
-            path_params["urlRedirectId"] = local_var_params[
-                "url_redirect_id"
-            ]  # noqa: E501
+        if 'url_redirect_id' in local_var_params:
+            path_params['urlRedirectId'] = local_var_params['url_redirect_id']  # noqa: E501
 
         query_params = []
 
@@ -124,16 +128,14 @@ class RedirectsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/url-redirects/{urlRedirectId}",
-            "DELETE",
+            '/cms/v3/url-redirects/{urlRedirectId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -142,14 +144,11 @@ class RedirectsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, **kwargs):  # noqa: E501
         """Create a redirect  # noqa: E501
@@ -173,7 +172,7 @@ class RedirectsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(**kwargs)  # noqa: E501
 
     def create_with_http_info(self, **kwargs):  # noqa: E501
@@ -203,19 +202,26 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_mapping_create_request_body"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'url_mapping_create_request_body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
@@ -229,42 +235,34 @@ class RedirectsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "url_mapping_create_request_body" in local_var_params:
-            body_params = local_var_params["url_mapping_create_request_body"]
+        if 'url_mapping_create_request_body' in local_var_params:
+            body_params = local_var_params['url_mapping_create_request_body']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/url-redirects/",
-            "POST",
+            '/cms/v3/url-redirects/', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="UrlMapping",  # noqa: E501
+            response_type='UrlMapping',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, url_redirect_id, **kwargs):  # noqa: E501
         """Get details for a redirect  # noqa: E501
@@ -288,7 +286,7 @@ class RedirectsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(url_redirect_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, url_redirect_id, **kwargs):  # noqa: E501
@@ -318,36 +316,36 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'url_redirect_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'url_redirect_id' is set
-        if self.api_client.client_side_validation and (
-            "url_redirect_id" not in local_var_params
-            or local_var_params["url_redirect_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `url_redirect_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('url_redirect_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['url_redirect_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `url_redirect_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "url_redirect_id" in local_var_params:
-            path_params["urlRedirectId"] = local_var_params[
-                "url_redirect_id"
-            ]  # noqa: E501
+        if 'url_redirect_id' in local_var_params:
+            path_params['urlRedirectId'] = local_var_params['url_redirect_id']  # noqa: E501
 
         query_params = []
 
@@ -358,32 +356,27 @@ class RedirectsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/url-redirects/{urlRedirectId}",
-            "GET",
+            '/cms/v3/url-redirects/{urlRedirectId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="UrlMapping",  # noqa: E501
+            response_type='UrlMapping',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_page(self, **kwargs):  # noqa: E501
         """Get current redirects  # noqa: E501
@@ -418,7 +411,7 @@ class RedirectsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -460,111 +453,68 @@ class RedirectsApi(object):
         local_var_params = locals()
 
         all_params = [
-            "created_at",
-            "created_after",
-            "created_before",
-            "updated_at",
-            "updated_after",
-            "updated_before",
-            "sort",
-            "properties",
-            "after",
-            "before",
-            "limit",
-            "archived",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+            'created_at',
+            'created_after',
+            'created_before',
+            'updated_at',
+            'updated_after',
+            'updated_before',
+            'sort',
+            'properties',
+            'after',
+            'before',
+            'limit',
+            'archived'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_page" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if (
-            "created_at" in local_var_params
-            and local_var_params["created_at"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("createdAt", local_var_params["created_at"])
-            )  # noqa: E501
-        if (
-            "created_after" in local_var_params
-            and local_var_params["created_after"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("createdAfter", local_var_params["created_after"])
-            )  # noqa: E501
-        if (
-            "created_before" in local_var_params
-            and local_var_params["created_before"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("createdBefore", local_var_params["created_before"])
-            )  # noqa: E501
-        if (
-            "updated_at" in local_var_params
-            and local_var_params["updated_at"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("updatedAt", local_var_params["updated_at"])
-            )  # noqa: E501
-        if (
-            "updated_after" in local_var_params
-            and local_var_params["updated_after"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("updatedAfter", local_var_params["updated_after"])
-            )  # noqa: E501
-        if (
-            "updated_before" in local_var_params
-            and local_var_params["updated_before"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("updatedBefore", local_var_params["updated_before"])
-            )  # noqa: E501
-        if (
-            "sort" in local_var_params and local_var_params["sort"] is not None
-        ):  # noqa: E501
-            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
-            collection_formats["sort"] = "multi"  # noqa: E501
-        if (
-            "properties" in local_var_params
-            and local_var_params["properties"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("properties", local_var_params["properties"])
-            )  # noqa: E501
-            collection_formats["properties"] = "multi"  # noqa: E501
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
-            query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if (
-            "before" in local_var_params and local_var_params["before"] is not None
-        ):  # noqa: E501
-            query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if 'created_at' in local_var_params and local_var_params['created_at'] is not None:  # noqa: E501
+            query_params.append(('createdAt', local_var_params['created_at']))  # noqa: E501
+        if 'created_after' in local_var_params and local_var_params['created_after'] is not None:  # noqa: E501
+            query_params.append(('createdAfter', local_var_params['created_after']))  # noqa: E501
+        if 'created_before' in local_var_params and local_var_params['created_before'] is not None:  # noqa: E501
+            query_params.append(('createdBefore', local_var_params['created_before']))  # noqa: E501
+        if 'updated_at' in local_var_params and local_var_params['updated_at'] is not None:  # noqa: E501
+            query_params.append(('updatedAt', local_var_params['updated_at']))  # noqa: E501
+        if 'updated_after' in local_var_params and local_var_params['updated_after'] is not None:  # noqa: E501
+            query_params.append(('updatedAfter', local_var_params['updated_after']))  # noqa: E501
+        if 'updated_before' in local_var_params and local_var_params['updated_before'] is not None:  # noqa: E501
+            query_params.append(('updatedBefore', local_var_params['updated_before']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+            collection_formats['sort'] = 'multi'  # noqa: E501
+        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
+            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
+            collection_formats['properties'] = 'multi'  # noqa: E501
+        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
+            query_params.append(('after', local_var_params['after']))  # noqa: E501
+        if 'before' in local_var_params and local_var_params['before'] is not None:  # noqa: E501
+            query_params.append(('before', local_var_params['before']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -573,32 +523,27 @@ class RedirectsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/url-redirects/",
-            "GET",
+            '/cms/v3/url-redirects/', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalUrlMapping",  # noqa: E501
+            response_type='CollectionResponseWithTotalUrlMapping',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update(self, url_redirect_id, **kwargs):  # noqa: E501
         """Update a redirect  # noqa: E501
@@ -623,7 +568,7 @@ class RedirectsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_with_http_info(url_redirect_id, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, url_redirect_id, **kwargs):  # noqa: E501
@@ -654,35 +599,37 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id", "url_mapping"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = [
+            'url_redirect_id',
+            'url_mapping'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'url_redirect_id' is set
-        if self.api_client.client_side_validation and (
-            "url_redirect_id" not in local_var_params
-            or local_var_params["url_redirect_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `url_redirect_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('url_redirect_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['url_redirect_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `url_redirect_id` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "url_redirect_id" in local_var_params:
-            path_params["urlRedirectId"] = local_var_params[
-                "url_redirect_id"
-            ]  # noqa: E501
+        if 'url_redirect_id' in local_var_params:
+            path_params['urlRedirectId'] = local_var_params['url_redirect_id']  # noqa: E501
 
         query_params = []
 
@@ -692,39 +639,31 @@ class RedirectsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "url_mapping" in local_var_params:
-            body_params = local_var_params["url_mapping"]
+        if 'url_mapping' in local_var_params:
+            body_params = local_var_params['url_mapping']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/url-redirects/{urlRedirectId}",
-            "PATCH",
+            '/cms/v3/url-redirects/{urlRedirectId}', 'PATCH',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="UrlMapping",  # noqa: E501
+            response_type='UrlMapping',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

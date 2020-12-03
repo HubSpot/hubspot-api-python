@@ -33,27 +33,20 @@ class HubDbTableRowV3Input(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "path": "str",
-        "child_table_id": "str",
-        "values": "dict(str, str)",
-        "name": "str",
+        'path': 'str',
+        'child_table_id': 'str',
+        'values': 'dict(str, str)',
+        'name': 'str'
     }
 
     attribute_map = {
-        "path": "path",
-        "child_table_id": "childTableId",
-        "values": "values",
-        "name": "name",
+        'path': 'path',
+        'child_table_id': 'childTableId',
+        'values': 'values',
+        'name': 'name'
     }
 
-    def __init__(
-        self,
-        path=None,
-        child_table_id=None,
-        values=None,
-        name=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, path=None, child_table_id=None, values=None, name=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3Input - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -173,20 +166,18 @@ class HubDbTableRowV3Input(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
