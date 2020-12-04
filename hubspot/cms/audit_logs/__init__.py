@@ -27,11 +27,13 @@ from hubspot.cms.audit_logs.exceptions import ApiTypeError
 from hubspot.cms.audit_logs.exceptions import ApiValueError
 from hubspot.cms.audit_logs.exceptions import ApiKeyError
 from hubspot.cms.audit_logs.exceptions import ApiException
+
 # import models into sdk package
-from hubspot.cms.audit_logs.models.collection_response_public_audit_log import CollectionResponsePublicAuditLog
+from hubspot.cms.audit_logs.models.collection_response_public_audit_log import (
+    CollectionResponsePublicAuditLog,
+)
 from hubspot.cms.audit_logs.models.error import Error
 from hubspot.cms.audit_logs.models.error_detail import ErrorDetail
 from hubspot.cms.audit_logs.models.next_page import NextPage
 from hubspot.cms.audit_logs.models.paging import Paging
 from hubspot.cms.audit_logs.models.public_audit_log import PublicAuditLog
-

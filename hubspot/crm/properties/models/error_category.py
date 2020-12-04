@@ -32,17 +32,13 @@ class ErrorCategory(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'http_status': 'str',
-        'name': 'str'
-    }
+    openapi_types = {"http_status": "str", "name": "str"}
 
-    attribute_map = {
-        'http_status': 'httpStatus',
-        'name': 'name'
-    }
+    attribute_map = {"http_status": "httpStatus", "name": "name"}
 
-    def __init__(self, http_status=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, http_status=None, name=None, local_vars_configuration=None
+    ):  # noqa: E501
         """ErrorCategory - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,13 +69,83 @@ class ErrorCategory(object):
         :param http_status: The http_status of this ErrorCategory.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and http_status is None:  # noqa: E501
-            raise ValueError("Invalid value for `http_status`, must not be `None`")  # noqa: E501
-        allowed_values = ["CONTINUE", "SWITCHING_PROTOCOLS", "PROCESSING", "OK", "CREATED", "ACCEPTED", "NON_AUTHORITATIVE_INFORMATION", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MULTI_STATUS", "ALREADY_REPORTED", "IM_USED", "MULTIPLE_CHOICES", "MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "PERMANENT_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "IM_A_TEAPOT", "MISDIRECTED_REQUEST", "UNPROCESSABLE_ENTITY", "LOCKED", "FAILED_DEPENDENCY", "UPGRADE_REQUIRED", "PRECONDITION_REQUIRED", "TOO_MANY_REQUESTS", "REQUEST_HEADERS_FIELDS_TOO_LARGE", "INTERNAL_STALE_SERVICE_DISCOVERY", "UNAVAILABLE_FOR_LEGAL_REASONS", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED", "VARIANT_ALSO_NEGOTIATES", "INSUFFICIENT_STORAGE", "LOOP_DETECTED", "NOT_EXTENDED", "NETWORK_AUTHENTICATION_REQUIRED"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and http_status not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and http_status is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `http_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(http_status, allowed_values)
+                "Invalid value for `http_status`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "CONTINUE",
+            "SWITCHING_PROTOCOLS",
+            "PROCESSING",
+            "OK",
+            "CREATED",
+            "ACCEPTED",
+            "NON_AUTHORITATIVE_INFORMATION",
+            "NO_CONTENT",
+            "RESET_CONTENT",
+            "PARTIAL_CONTENT",
+            "MULTI_STATUS",
+            "ALREADY_REPORTED",
+            "IM_USED",
+            "MULTIPLE_CHOICES",
+            "MOVED_PERMANENTLY",
+            "FOUND",
+            "SEE_OTHER",
+            "NOT_MODIFIED",
+            "USE_PROXY",
+            "TEMPORARY_REDIRECT",
+            "PERMANENT_REDIRECT",
+            "BAD_REQUEST",
+            "UNAUTHORIZED",
+            "PAYMENT_REQUIRED",
+            "FORBIDDEN",
+            "NOT_FOUND",
+            "METHOD_NOT_ALLOWED",
+            "NOT_ACCEPTABLE",
+            "PROXY_AUTHENTICATION_REQUIRED",
+            "REQUEST_TIMEOUT",
+            "CONFLICT",
+            "GONE",
+            "LENGTH_REQUIRED",
+            "PRECONDITION_FAILED",
+            "REQUEST_ENTITY_TOO_LARGE",
+            "REQUEST_URI_TOO_LONG",
+            "UNSUPPORTED_MEDIA_TYPE",
+            "REQUESTED_RANGE_NOT_SATISFIABLE",
+            "EXPECTATION_FAILED",
+            "IM_A_TEAPOT",
+            "MISDIRECTED_REQUEST",
+            "UNPROCESSABLE_ENTITY",
+            "LOCKED",
+            "FAILED_DEPENDENCY",
+            "UPGRADE_REQUIRED",
+            "PRECONDITION_REQUIRED",
+            "TOO_MANY_REQUESTS",
+            "REQUEST_HEADERS_FIELDS_TOO_LARGE",
+            "INTERNAL_STALE_SERVICE_DISCOVERY",
+            "UNAVAILABLE_FOR_LEGAL_REASONS",
+            "INTERNAL_SERVER_ERROR",
+            "NOT_IMPLEMENTED",
+            "BAD_GATEWAY",
+            "SERVICE_UNAVAILABLE",
+            "GATEWAY_TIMEOUT",
+            "HTTP_VERSION_NOT_SUPPORTED",
+            "VARIANT_ALSO_NEGOTIATES",
+            "INSUFFICIENT_STORAGE",
+            "LOOP_DETECTED",
+            "NOT_EXTENDED",
+            "NETWORK_AUTHENTICATION_REQUIRED",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and http_status not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `http_status` ({0}), must be one of {1}".format(  # noqa: E501
+                    http_status, allowed_values
+                )
             )
 
         self._http_status = http_status
@@ -102,8 +168,12 @@ class ErrorCategory(object):
         :param name: The name of this ErrorCategory.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -114,18 +184,20 @@ class ErrorCategory(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

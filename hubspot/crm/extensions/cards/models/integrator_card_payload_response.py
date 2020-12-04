@@ -33,24 +33,33 @@ class IntegratorCardPayloadResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'total_count': 'int',
-        'all_items_link_url': 'str',
-        'card_label': 'str',
-        'top_level_actions': 'TopLevelActions',
-        'sections': 'list[IntegratorObjectResult]',
-        'response_version': 'str'
+        "total_count": "int",
+        "all_items_link_url": "str",
+        "card_label": "str",
+        "top_level_actions": "TopLevelActions",
+        "sections": "list[IntegratorObjectResult]",
+        "response_version": "str",
     }
 
     attribute_map = {
-        'total_count': 'totalCount',
-        'all_items_link_url': 'allItemsLinkUrl',
-        'card_label': 'cardLabel',
-        'top_level_actions': 'topLevelActions',
-        'sections': 'sections',
-        'response_version': 'responseVersion'
+        "total_count": "totalCount",
+        "all_items_link_url": "allItemsLinkUrl",
+        "card_label": "cardLabel",
+        "top_level_actions": "topLevelActions",
+        "sections": "sections",
+        "response_version": "responseVersion",
     }
 
-    def __init__(self, total_count=None, all_items_link_url=None, card_label=None, top_level_actions=None, sections=None, response_version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        total_count=None,
+        all_items_link_url=None,
+        card_label=None,
+        top_level_actions=None,
+        sections=None,
+        response_version=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """IntegratorCardPayloadResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -96,8 +105,12 @@ class IntegratorCardPayloadResponse(object):
         :param total_count: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and total_count is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_count`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and total_count is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `total_count`, must not be `None`"
+            )  # noqa: E501
 
         self._total_count = total_count
 
@@ -210,10 +223,14 @@ class IntegratorCardPayloadResponse(object):
         :type: str
         """
         allowed_values = ["v1", "v3"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and response_version not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and response_version not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `response_version` ({0}), must be one of {1}"  # noqa: E501
-                .format(response_version, allowed_values)
+                "Invalid value for `response_version` ({0}), must be one of {1}".format(  # noqa: E501
+                    response_version, allowed_values
+                )
             )
 
         self._response_version = response_version
@@ -225,18 +242,20 @@ class IntegratorCardPayloadResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

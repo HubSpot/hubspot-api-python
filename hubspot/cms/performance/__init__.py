@@ -27,9 +27,11 @@ from hubspot.cms.performance.exceptions import ApiTypeError
 from hubspot.cms.performance.exceptions import ApiValueError
 from hubspot.cms.performance.exceptions import ApiKeyError
 from hubspot.cms.performance.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.cms.performance.models.error import Error
 from hubspot.cms.performance.models.error_detail import ErrorDetail
 from hubspot.cms.performance.models.performance_view import PerformanceView
-from hubspot.cms.performance.models.public_performance_response import PublicPerformanceResponse
-
+from hubspot.cms.performance.models.public_performance_response import (
+    PublicPerformanceResponse,
+)

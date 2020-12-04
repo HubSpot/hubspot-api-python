@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.audit_logs.api_client import ApiClient
-from hubspot.cms.audit_logs.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.cms.audit_logs.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class DefaultApi(object):
@@ -65,7 +62,7 @@ class DefaultApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -103,59 +100,84 @@ class DefaultApi(object):
         local_var_params = locals()
 
         all_params = [
-            'object_id',
-            'user_id',
-            'after',
-            'before',
-            'sort',
-            'event_type',
-            'limit',
-            'object_type'
+            "object_id",
+            "user_id",
+            "after",
+            "before",
+            "sort",
+            "event_type",
+            "limit",
+            "object_type",
         ]
         all_params.extend(
             [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
+                "async_req",
+                "_return_http_data_only",
+                "_preload_content",
+                "_request_timeout",
             ]
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_page" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'object_id' in local_var_params and local_var_params['object_id'] is not None:  # noqa: E501
-            query_params.append(('objectId', local_var_params['object_id']))  # noqa: E501
-            collection_formats['objectId'] = 'multi'  # noqa: E501
-        if 'user_id' in local_var_params and local_var_params['user_id'] is not None:  # noqa: E501
-            query_params.append(('userId', local_var_params['user_id']))  # noqa: E501
-            collection_formats['userId'] = 'multi'  # noqa: E501
-        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
-            query_params.append(('after', local_var_params['after']))  # noqa: E501
-        if 'before' in local_var_params and local_var_params['before'] is not None:  # noqa: E501
-            query_params.append(('before', local_var_params['before']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'event_type' in local_var_params and local_var_params['event_type'] is not None:  # noqa: E501
-            query_params.append(('eventType', local_var_params['event_type']))  # noqa: E501
-            collection_formats['eventType'] = 'multi'  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'object_type' in local_var_params and local_var_params['object_type'] is not None:  # noqa: E501
-            query_params.append(('objectType', local_var_params['object_type']))  # noqa: E501
-            collection_formats['objectType'] = 'multi'  # noqa: E501
+        if (
+            "object_id" in local_var_params
+            and local_var_params["object_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("objectId", local_var_params["object_id"])
+            )  # noqa: E501
+            collection_formats["objectId"] = "multi"  # noqa: E501
+        if (
+            "user_id" in local_var_params and local_var_params["user_id"] is not None
+        ):  # noqa: E501
+            query_params.append(("userId", local_var_params["user_id"]))  # noqa: E501
+            collection_formats["userId"] = "multi"  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "before" in local_var_params and local_var_params["before"] is not None
+        ):  # noqa: E501
+            query_params.append(("before", local_var_params["before"]))  # noqa: E501
+        if (
+            "sort" in local_var_params and local_var_params["sort"] is not None
+        ):  # noqa: E501
+            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
+            collection_formats["sort"] = "multi"  # noqa: E501
+        if (
+            "event_type" in local_var_params
+            and local_var_params["event_type"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("eventType", local_var_params["event_type"])
+            )  # noqa: E501
+            collection_formats["eventType"] = "multi"  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if (
+            "object_type" in local_var_params
+            and local_var_params["object_type"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("objectType", local_var_params["object_type"])
+            )  # noqa: E501
+            collection_formats["objectType"] = "multi"  # noqa: E501
 
         header_params = {}
 
@@ -164,24 +186,29 @@ class DefaultApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/audit-logs/', 'GET',
+            "/cms/v3/audit-logs/",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponsePublicAuditLog',  # noqa: E501
+            response_type="CollectionResponsePublicAuditLog",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

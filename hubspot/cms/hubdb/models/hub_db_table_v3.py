@@ -33,48 +33,69 @@ class HubDbTableV3(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'label': 'str',
-        'columns': 'list[Column]',
-        'published': 'bool',
-        'row_count': 'int',
-        'created_by': 'SimpleUser',
-        'updated_by': 'SimpleUser',
-        'published_at': 'datetime',
-        'dynamic_meta_tags': 'dict(str, int)',
-        'created_at': 'datetime',
-        'archived': 'bool',
-        'allow_public_api_access': 'bool',
-        'use_for_pages': 'bool',
-        'enable_child_table_pages': 'bool',
-        'column_count': 'int',
-        'allow_child_tables': 'bool',
-        'updated_at': 'datetime'
+        "id": "str",
+        "name": "str",
+        "label": "str",
+        "columns": "list[Column]",
+        "published": "bool",
+        "row_count": "int",
+        "created_by": "SimpleUser",
+        "updated_by": "SimpleUser",
+        "published_at": "datetime",
+        "dynamic_meta_tags": "dict(str, int)",
+        "created_at": "datetime",
+        "archived": "bool",
+        "allow_public_api_access": "bool",
+        "use_for_pages": "bool",
+        "enable_child_table_pages": "bool",
+        "column_count": "int",
+        "allow_child_tables": "bool",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'label': 'label',
-        'columns': 'columns',
-        'published': 'published',
-        'row_count': 'rowCount',
-        'created_by': 'createdBy',
-        'updated_by': 'updatedBy',
-        'published_at': 'publishedAt',
-        'dynamic_meta_tags': 'dynamicMetaTags',
-        'created_at': 'createdAt',
-        'archived': 'archived',
-        'allow_public_api_access': 'allowPublicApiAccess',
-        'use_for_pages': 'useForPages',
-        'enable_child_table_pages': 'enableChildTablePages',
-        'column_count': 'columnCount',
-        'allow_child_tables': 'allowChildTables',
-        'updated_at': 'updatedAt'
+        "id": "id",
+        "name": "name",
+        "label": "label",
+        "columns": "columns",
+        "published": "published",
+        "row_count": "rowCount",
+        "created_by": "createdBy",
+        "updated_by": "updatedBy",
+        "published_at": "publishedAt",
+        "dynamic_meta_tags": "dynamicMetaTags",
+        "created_at": "createdAt",
+        "archived": "archived",
+        "allow_public_api_access": "allowPublicApiAccess",
+        "use_for_pages": "useForPages",
+        "enable_child_table_pages": "enableChildTablePages",
+        "column_count": "columnCount",
+        "allow_child_tables": "allowChildTables",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, id=None, name=None, label=None, columns=None, published=None, row_count=None, created_by=None, updated_by=None, published_at=None, dynamic_meta_tags=None, created_at=None, archived=None, allow_public_api_access=None, use_for_pages=None, enable_child_table_pages=None, column_count=None, allow_child_tables=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        name=None,
+        label=None,
+        columns=None,
+        published=None,
+        row_count=None,
+        created_by=None,
+        updated_by=None,
+        published_at=None,
+        dynamic_meta_tags=None,
+        created_at=None,
+        archived=None,
+        allow_public_api_access=None,
+        use_for_pages=None,
+        enable_child_table_pages=None,
+        column_count=None,
+        allow_child_tables=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """HubDbTableV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -178,8 +199,12 @@ class HubDbTableV3(object):
         :param name: The name of this HubDbTableV3.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -203,8 +228,12 @@ class HubDbTableV3(object):
         :param label: The label of this HubDbTableV3.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -554,18 +583,20 @@ class HubDbTableV3(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

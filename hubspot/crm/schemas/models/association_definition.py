@@ -33,28 +33,39 @@ class AssociationDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'from_object_type_id': 'str',
-        'to_object_type_id': 'str',
-        'name': 'str',
-        'cardinality': 'str',
-        'inverse_cardinality': 'str',
-        'id': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "from_object_type_id": "str",
+        "to_object_type_id": "str",
+        "name": "str",
+        "cardinality": "str",
+        "inverse_cardinality": "str",
+        "id": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'from_object_type_id': 'fromObjectTypeId',
-        'to_object_type_id': 'toObjectTypeId',
-        'name': 'name',
-        'cardinality': 'cardinality',
-        'inverse_cardinality': 'inverseCardinality',
-        'id': 'id',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "from_object_type_id": "fromObjectTypeId",
+        "to_object_type_id": "toObjectTypeId",
+        "name": "name",
+        "cardinality": "cardinality",
+        "inverse_cardinality": "inverseCardinality",
+        "id": "id",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, from_object_type_id=None, to_object_type_id=None, name=None, cardinality=None, inverse_cardinality=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        from_object_type_id=None,
+        to_object_type_id=None,
+        name=None,
+        cardinality=None,
+        inverse_cardinality=None,
+        id=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """AssociationDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -102,8 +113,13 @@ class AssociationDefinition(object):
         :param from_object_type_id: The from_object_type_id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and from_object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `from_object_type_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and from_object_type_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `from_object_type_id`, must not be `None`"
+            )  # noqa: E501
 
         self._from_object_type_id = from_object_type_id
 
@@ -127,8 +143,13 @@ class AssociationDefinition(object):
         :param to_object_type_id: The to_object_type_id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and to_object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_type_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and to_object_type_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `to_object_type_id`, must not be `None`"
+            )  # noqa: E501
 
         self._to_object_type_id = to_object_type_id
 
@@ -173,13 +194,21 @@ class AssociationDefinition(object):
         :param cardinality: The cardinality of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and cardinality is None:  # noqa: E501
-            raise ValueError("Invalid value for `cardinality`, must not be `None`")  # noqa: E501
-        allowed_values = ["ONE_TO_ONE", "ONE_TO_MANY"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and cardinality not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and cardinality is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `cardinality` ({0}), must be one of {1}"  # noqa: E501
-                .format(cardinality, allowed_values)
+                "Invalid value for `cardinality`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["ONE_TO_ONE", "ONE_TO_MANY"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cardinality not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cardinality` ({0}), must be one of {1}".format(  # noqa: E501
+                    cardinality, allowed_values
+                )
             )
 
         self._cardinality = cardinality
@@ -202,13 +231,22 @@ class AssociationDefinition(object):
         :param inverse_cardinality: The inverse_cardinality of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and inverse_cardinality is None:  # noqa: E501
-            raise ValueError("Invalid value for `inverse_cardinality`, must not be `None`")  # noqa: E501
-        allowed_values = ["ONE_TO_ONE", "ONE_TO_MANY"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and inverse_cardinality not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and inverse_cardinality is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `inverse_cardinality` ({0}), must be one of {1}"  # noqa: E501
-                .format(inverse_cardinality, allowed_values)
+                "Invalid value for `inverse_cardinality`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["ONE_TO_ONE", "ONE_TO_MANY"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and inverse_cardinality not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `inverse_cardinality` ({0}), must be one of {1}".format(  # noqa: E501
+                    inverse_cardinality, allowed_values
+                )
             )
 
         self._inverse_cardinality = inverse_cardinality
@@ -233,7 +271,9 @@ class AssociationDefinition(object):
         :param id: The id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -291,18 +331,20 @@ class AssociationDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

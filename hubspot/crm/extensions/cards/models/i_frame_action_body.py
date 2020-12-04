@@ -33,24 +33,33 @@ class IFrameActionBody(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'type': 'str',
-        'width': 'int',
-        'height': 'int',
-        'url': 'str',
-        'label': 'str',
-        'property_names_included': 'list[str]'
+        "type": "str",
+        "width": "int",
+        "height": "int",
+        "url": "str",
+        "label": "str",
+        "property_names_included": "list[str]",
     }
 
     attribute_map = {
-        'type': 'type',
-        'width': 'width',
-        'height': 'height',
-        'url': 'url',
-        'label': 'label',
-        'property_names_included': 'propertyNamesIncluded'
+        "type": "type",
+        "width": "width",
+        "height": "height",
+        "url": "url",
+        "label": "label",
+        "property_names_included": "propertyNamesIncluded",
     }
 
-    def __init__(self, type='IFRAME', width=None, height=None, url=None, label=None, property_names_included=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        type="IFRAME",
+        width=None,
+        height=None,
+        url=None,
+        label=None,
+        property_names_included=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """IFrameActionBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -90,13 +99,21 @@ class IFrameActionBody(object):
         :param type: The type of this IFrameActionBody.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["IFRAME"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
+                "Invalid value for `type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["IFRAME"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
+                    type, allowed_values
+                )
             )
 
         self._type = type
@@ -119,8 +136,12 @@ class IFrameActionBody(object):
         :param width: The width of this IFrameActionBody.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
-            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and width is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `width`, must not be `None`"
+            )  # noqa: E501
 
         self._width = width
 
@@ -142,8 +163,12 @@ class IFrameActionBody(object):
         :param height: The height of this IFrameActionBody.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
-            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and height is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `height`, must not be `None`"
+            )  # noqa: E501
 
         self._height = height
 
@@ -165,8 +190,12 @@ class IFrameActionBody(object):
         :param url: The url of this IFrameActionBody.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `url`, must not be `None`"
+            )  # noqa: E501
 
         self._url = url
 
@@ -209,8 +238,13 @@ class IFrameActionBody(object):
         :param property_names_included: The property_names_included of this IFrameActionBody.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
-            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and property_names_included is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `property_names_included`, must not be `None`"
+            )  # noqa: E501
 
         self._property_names_included = property_names_included
 
@@ -221,18 +255,20 @@ class IFrameActionBody(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

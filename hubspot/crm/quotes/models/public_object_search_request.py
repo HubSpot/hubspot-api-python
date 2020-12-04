@@ -33,24 +33,33 @@ class PublicObjectSearchRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'filter_groups': 'list[FilterGroup]',
-        'sorts': 'list[str]',
-        'query': 'str',
-        'properties': 'list[str]',
-        'limit': 'int',
-        'after': 'int'
+        "filter_groups": "list[FilterGroup]",
+        "sorts": "list[str]",
+        "query": "str",
+        "properties": "list[str]",
+        "limit": "int",
+        "after": "int",
     }
 
     attribute_map = {
-        'filter_groups': 'filterGroups',
-        'sorts': 'sorts',
-        'query': 'query',
-        'properties': 'properties',
-        'limit': 'limit',
-        'after': 'after'
+        "filter_groups": "filterGroups",
+        "sorts": "sorts",
+        "query": "query",
+        "properties": "properties",
+        "limit": "limit",
+        "after": "after",
     }
 
-    def __init__(self, filter_groups=None, sorts=None, query=None, properties=None, limit=None, after=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        filter_groups=None,
+        sorts=None,
+        query=None,
+        properties=None,
+        limit=None,
+        after=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicObjectSearchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -90,8 +99,13 @@ class PublicObjectSearchRequest(object):
         :param filter_groups: The filter_groups of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[FilterGroup]
         """
-        if self.local_vars_configuration.client_side_validation and filter_groups is None:  # noqa: E501
-            raise ValueError("Invalid value for `filter_groups`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and filter_groups is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `filter_groups`, must not be `None`"
+            )  # noqa: E501
 
         self._filter_groups = filter_groups
 
@@ -113,8 +127,12 @@ class PublicObjectSearchRequest(object):
         :param sorts: The sorts of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and sorts is None:  # noqa: E501
-            raise ValueError("Invalid value for `sorts`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and sorts is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sorts`, must not be `None`"
+            )  # noqa: E501
 
         self._sorts = sorts
 
@@ -157,8 +175,12 @@ class PublicObjectSearchRequest(object):
         :param properties: The properties of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and properties is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `properties`, must not be `None`"
+            )  # noqa: E501
 
         self._properties = properties
 
@@ -180,8 +202,12 @@ class PublicObjectSearchRequest(object):
         :param limit: The limit of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and limit is None:  # noqa: E501
-            raise ValueError("Invalid value for `limit`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and limit is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `limit`, must not be `None`"
+            )  # noqa: E501
 
         self._limit = limit
 
@@ -203,8 +229,12 @@ class PublicObjectSearchRequest(object):
         :param after: The after of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and after is None:  # noqa: E501
-            raise ValueError("Invalid value for `after`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and after is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `after`, must not be `None`"
+            )  # noqa: E501
 
         self._after = after
 
@@ -215,18 +245,20 @@ class PublicObjectSearchRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

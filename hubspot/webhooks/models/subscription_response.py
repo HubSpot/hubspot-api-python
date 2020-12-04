@@ -33,24 +33,33 @@ class SubscriptionResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'event_type': 'str',
-        'property_name': 'str',
-        'active': 'bool',
-        'id': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "event_type": "str",
+        "property_name": "str",
+        "active": "bool",
+        "id": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'event_type': 'eventType',
-        'property_name': 'propertyName',
-        'active': 'active',
-        'id': 'id',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "event_type": "eventType",
+        "property_name": "propertyName",
+        "active": "active",
+        "id": "id",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, event_type=None, property_name=None, active=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        event_type=None,
+        property_name=None,
+        active=None,
+        id=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """SubscriptionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -93,13 +102,32 @@ class SubscriptionResponse(object):
         :param event_type: The event_type of this SubscriptionResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and event_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["contact.propertyChange", "company.propertyChange", "deal.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and event_type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `event_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(event_type, allowed_values)
+                "Invalid value for `event_type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "contact.propertyChange",
+            "company.propertyChange",
+            "deal.propertyChange",
+            "contact.creation",
+            "contact.deletion",
+            "contact.privacyDeletion",
+            "company.creation",
+            "company.deletion",
+            "deal.creation",
+            "deal.deletion",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and event_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    event_type, allowed_values
+                )
             )
 
         self._event_type = event_type
@@ -147,8 +175,12 @@ class SubscriptionResponse(object):
         :param active: The active of this SubscriptionResponse.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and active is None:  # noqa: E501
-            raise ValueError("Invalid value for `active`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and active is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `active`, must not be `None`"
+            )  # noqa: E501
 
         self._active = active
 
@@ -172,7 +204,9 @@ class SubscriptionResponse(object):
         :param id: The id of this SubscriptionResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -197,8 +231,12 @@ class SubscriptionResponse(object):
         :param created_at: The created_at of this SubscriptionResponse.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -232,18 +270,20 @@ class SubscriptionResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
