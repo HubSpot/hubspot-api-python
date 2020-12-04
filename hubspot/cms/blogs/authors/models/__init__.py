@@ -14,12 +14,18 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.cms.blogs.authors.models.batch_input_blog_author import BatchInputBlogAuthor
+from hubspot.cms.blogs.authors.models.batch_input_blog_author import (
+    BatchInputBlogAuthor,
+)
 from hubspot.cms.blogs.authors.models.batch_input_json_node import BatchInputJsonNode
 from hubspot.cms.blogs.authors.models.batch_input_string import BatchInputString
-from hubspot.cms.blogs.authors.models.batch_response_blog_author_with_errors import BatchResponseBlogAuthorWithErrors
+from hubspot.cms.blogs.authors.models.batch_response_blog_author_with_errors import (
+    BatchResponseBlogAuthorWithErrors,
+)
 from hubspot.cms.blogs.authors.models.blog_author import BlogAuthor
-from hubspot.cms.blogs.authors.models.collection_response_with_total_blog_author_forward_paging import CollectionResponseWithTotalBlogAuthorForwardPaging
+from hubspot.cms.blogs.authors.models.collection_response_with_total_blog_author_forward_paging import (
+    CollectionResponseWithTotalBlogAuthorForwardPaging,
+)
 from hubspot.cms.blogs.authors.models.error import Error
 from hubspot.cms.blogs.authors.models.error_detail import ErrorDetail
 from hubspot.cms.blogs.authors.models.forward_paging import ForwardPaging

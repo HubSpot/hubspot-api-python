@@ -33,20 +33,27 @@ class SimpleUser(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'email': 'str',
-        'first_name': 'str',
-        'last_name': 'str'
+        "id": "str",
+        "email": "str",
+        "first_name": "str",
+        "last_name": "str",
     }
 
     attribute_map = {
-        'id': 'id',
-        'email': 'email',
-        'first_name': 'firstName',
-        'last_name': 'lastName'
+        "id": "id",
+        "email": "email",
+        "first_name": "firstName",
+        "last_name": "lastName",
     }
 
-    def __init__(self, id=None, email=None, first_name=None, last_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        email=None,
+        first_name=None,
+        last_name=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """SimpleUser - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,7 +88,9 @@ class SimpleUser(object):
         :param id: The id of this SimpleUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -104,8 +113,12 @@ class SimpleUser(object):
         :param email: The email of this SimpleUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
-            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and email is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `email`, must not be `None`"
+            )  # noqa: E501
 
         self._email = email
 
@@ -127,8 +140,12 @@ class SimpleUser(object):
         :param first_name: The first_name of this SimpleUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and first_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `first_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and first_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `first_name`, must not be `None`"
+            )  # noqa: E501
 
         self._first_name = first_name
 
@@ -150,8 +167,12 @@ class SimpleUser(object):
         :param last_name: The last_name of this SimpleUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and last_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `last_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and last_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `last_name`, must not be `None`"
+            )  # noqa: E501
 
         self._last_name = last_name
 
@@ -162,18 +183,20 @@ class SimpleUser(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -14,12 +14,22 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.crm.properties.models.batch_input_property_create import BatchInputPropertyCreate
-from hubspot.crm.properties.models.batch_input_property_name import BatchInputPropertyName
-from hubspot.crm.properties.models.batch_read_input_property_name import BatchReadInputPropertyName
+from hubspot.crm.properties.models.batch_input_property_create import (
+    BatchInputPropertyCreate,
+)
+from hubspot.crm.properties.models.batch_input_property_name import (
+    BatchInputPropertyName,
+)
+from hubspot.crm.properties.models.batch_read_input_property_name import (
+    BatchReadInputPropertyName,
+)
 from hubspot.crm.properties.models.batch_response_property import BatchResponseProperty
-from hubspot.crm.properties.models.collection_response_property import CollectionResponseProperty
-from hubspot.crm.properties.models.collection_response_property_group import CollectionResponsePropertyGroup
+from hubspot.crm.properties.models.collection_response_property import (
+    CollectionResponseProperty,
+)
+from hubspot.crm.properties.models.collection_response_property_group import (
+    CollectionResponsePropertyGroup,
+)
 from hubspot.crm.properties.models.error import Error
 from hubspot.crm.properties.models.error_category import ErrorCategory
 from hubspot.crm.properties.models.error_detail import ErrorDetail
@@ -32,7 +42,9 @@ from hubspot.crm.properties.models.property_create import PropertyCreate
 from hubspot.crm.properties.models.property_group import PropertyGroup
 from hubspot.crm.properties.models.property_group_create import PropertyGroupCreate
 from hubspot.crm.properties.models.property_group_update import PropertyGroupUpdate
-from hubspot.crm.properties.models.property_modification_metadata import PropertyModificationMetadata
+from hubspot.crm.properties.models.property_modification_metadata import (
+    PropertyModificationMetadata,
+)
 from hubspot.crm.properties.models.property_name import PropertyName
 from hubspot.crm.properties.models.property_update import PropertyUpdate
 from hubspot.crm.properties.models.standard_error import StandardError

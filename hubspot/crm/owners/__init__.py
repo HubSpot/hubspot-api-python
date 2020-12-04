@@ -27,12 +27,14 @@ from hubspot.crm.owners.exceptions import ApiTypeError
 from hubspot.crm.owners.exceptions import ApiValueError
 from hubspot.crm.owners.exceptions import ApiKeyError
 from hubspot.crm.owners.exceptions import ApiException
+
 # import models into sdk package
-from hubspot.crm.owners.models.collection_response_public_owner import CollectionResponsePublicOwner
+from hubspot.crm.owners.models.collection_response_public_owner import (
+    CollectionResponsePublicOwner,
+)
 from hubspot.crm.owners.models.error import Error
 from hubspot.crm.owners.models.error_detail import ErrorDetail
 from hubspot.crm.owners.models.next_page import NextPage
 from hubspot.crm.owners.models.paging import Paging
 from hubspot.crm.owners.models.public_owner import PublicOwner
 from hubspot.crm.owners.models.public_team import PublicTeam
-

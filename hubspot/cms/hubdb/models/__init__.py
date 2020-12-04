@@ -14,12 +14,20 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.cms.hubdb.models.batch_input_hub_db_table_row_v3 import BatchInputHubDbTableRowV3
+from hubspot.cms.hubdb.models.batch_input_hub_db_table_row_v3 import (
+    BatchInputHubDbTableRowV3,
+)
 from hubspot.cms.hubdb.models.batch_input_json_node import BatchInputJsonNode
 from hubspot.cms.hubdb.models.batch_input_string import BatchInputString
-from hubspot.cms.hubdb.models.batch_response_hub_db_table_row_v3_with_errors import BatchResponseHubDbTableRowV3WithErrors
-from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_row_v3_forward_paging import CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
-from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_v3_forward_paging import CollectionResponseWithTotalHubDbTableV3ForwardPaging
+from hubspot.cms.hubdb.models.batch_response_hub_db_table_row_v3_with_errors import (
+    BatchResponseHubDbTableRowV3WithErrors,
+)
+from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_row_v3_forward_paging import (
+    CollectionResponseWithTotalHubDbTableRowV3ForwardPaging,
+)
+from hubspot.cms.hubdb.models.collection_response_with_total_hub_db_table_v3_forward_paging import (
+    CollectionResponseWithTotalHubDbTableV3ForwardPaging,
+)
 from hubspot.cms.hubdb.models.column import Column
 from hubspot.cms.hubdb.models.column_input import ColumnInput
 from hubspot.cms.hubdb.models.error import Error

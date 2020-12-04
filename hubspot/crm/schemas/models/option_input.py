@@ -33,22 +33,30 @@ class OptionInput(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'label': 'str',
-        'value': 'str',
-        'description': 'str',
-        'display_order': 'int',
-        'hidden': 'bool'
+        "label": "str",
+        "value": "str",
+        "description": "str",
+        "display_order": "int",
+        "hidden": "bool",
     }
 
     attribute_map = {
-        'label': 'label',
-        'value': 'value',
-        'description': 'description',
-        'display_order': 'displayOrder',
-        'hidden': 'hidden'
+        "label": "label",
+        "value": "value",
+        "description": "description",
+        "display_order": "displayOrder",
+        "hidden": "hidden",
     }
 
-    def __init__(self, label=None, value=None, description=None, display_order=None, hidden=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        label=None,
+        value=None,
+        description=None,
+        display_order=None,
+        hidden=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """OptionInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -88,8 +96,12 @@ class OptionInput(object):
         :param label: The label of this OptionInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -113,8 +125,12 @@ class OptionInput(object):
         :param value: The value of this OptionInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and value is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `value`, must not be `None`"
+            )  # noqa: E501
 
         self._value = value
 
@@ -161,8 +177,13 @@ class OptionInput(object):
         :param display_order: The display_order of this OptionInput.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
-            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and display_order is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `display_order`, must not be `None`"
+            )  # noqa: E501
 
         self._display_order = display_order
 
@@ -186,8 +207,12 @@ class OptionInput(object):
         :param hidden: The hidden of this OptionInput.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and hidden is None:  # noqa: E501
-            raise ValueError("Invalid value for `hidden`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and hidden is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `hidden`, must not be `None`"
+            )  # noqa: E501
 
         self._hidden = hidden
 
@@ -198,18 +223,20 @@ class OptionInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

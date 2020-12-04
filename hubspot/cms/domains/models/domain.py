@@ -33,132 +33,195 @@ class Domain(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'portal_id': 'int',
-        'id': 'int',
-        'created': 'int',
-        'updated': 'int',
-        'domain': 'str',
-        'primary_landing_page': 'bool',
-        'primary_email': 'bool',
-        'primary_blog': 'bool',
-        'primary_blog_post': 'bool',
-        'primary_site_page': 'bool',
-        'primary_knowledge': 'bool',
-        'primary_legacy_page': 'bool',
-        'primary_click_tracking': 'bool',
-        'full_category_key': 'str',
-        'secondary_to_domain': 'str',
-        'is_resolving': 'bool',
-        'is_dns_correct': 'bool',
-        'manually_marked_as_resolving': 'bool',
-        'consecutive_non_resolving_count': 'int',
-        'ssl_cname': 'str',
-        'is_ssl_enabled': 'bool',
-        'is_ssl_only': 'bool',
-        'certificate_id': 'int',
-        'ssl_request_id': 'int',
-        'is_used_for_blog_post': 'bool',
-        'is_used_for_site_page': 'bool',
-        'is_used_for_landing_page': 'bool',
-        'is_used_for_email': 'bool',
-        'is_used_for_knowledge': 'bool',
-        'setup_task_id': 'int',
-        'is_setup_complete': 'bool',
-        'set_up_language': 'str',
-        'team_ids': 'list[int]',
-        'actual_cname': 'str',
-        'correct_cname': 'str',
-        'actual_ip': 'str',
-        'apex_resolution_status': 'str',
-        'apex_domain': 'str',
-        'public_suffix': 'str',
-        'apex_ip_addresses': 'list[str]',
-        'site_id': 'int',
-        'brand_id': 'int',
-        'deletable': 'bool',
-        'domain_cdn_config': 'DomainCdnConfig',
-        'setup_info': 'DomainSetupInfo',
-        'derived_brand_name': 'str',
-        'created_by_id': 'int',
-        'updated_by_id': 'int',
-        'label': 'str',
-        'is_any_primary': 'bool',
-        'is_legacy_domain': 'bool',
-        'is_internal_domain': 'bool',
-        'is_resolving_internal_property': 'bool',
-        'is_resolving_ignoring_manually_marked_as_resolving': 'bool',
-        'is_used_for_any_content_type': 'bool',
-        'is_legacy': 'bool',
-        'author_at': 'int',
-        'cos_object_type': 'str',
-        'cdn_purge_embargo_time': 'int',
-        'is_staging_domain': 'bool'
+        "portal_id": "int",
+        "id": "int",
+        "created": "int",
+        "updated": "int",
+        "domain": "str",
+        "primary_landing_page": "bool",
+        "primary_email": "bool",
+        "primary_blog": "bool",
+        "primary_blog_post": "bool",
+        "primary_site_page": "bool",
+        "primary_knowledge": "bool",
+        "primary_legacy_page": "bool",
+        "primary_click_tracking": "bool",
+        "full_category_key": "str",
+        "secondary_to_domain": "str",
+        "is_resolving": "bool",
+        "is_dns_correct": "bool",
+        "manually_marked_as_resolving": "bool",
+        "consecutive_non_resolving_count": "int",
+        "ssl_cname": "str",
+        "is_ssl_enabled": "bool",
+        "is_ssl_only": "bool",
+        "certificate_id": "int",
+        "ssl_request_id": "int",
+        "is_used_for_blog_post": "bool",
+        "is_used_for_site_page": "bool",
+        "is_used_for_landing_page": "bool",
+        "is_used_for_email": "bool",
+        "is_used_for_knowledge": "bool",
+        "setup_task_id": "int",
+        "is_setup_complete": "bool",
+        "set_up_language": "str",
+        "team_ids": "list[int]",
+        "actual_cname": "str",
+        "correct_cname": "str",
+        "actual_ip": "str",
+        "apex_resolution_status": "str",
+        "apex_domain": "str",
+        "public_suffix": "str",
+        "apex_ip_addresses": "list[str]",
+        "site_id": "int",
+        "brand_id": "int",
+        "deletable": "bool",
+        "domain_cdn_config": "DomainCdnConfig",
+        "setup_info": "DomainSetupInfo",
+        "derived_brand_name": "str",
+        "created_by_id": "int",
+        "updated_by_id": "int",
+        "label": "str",
+        "is_any_primary": "bool",
+        "is_legacy_domain": "bool",
+        "is_internal_domain": "bool",
+        "is_resolving_internal_property": "bool",
+        "is_resolving_ignoring_manually_marked_as_resolving": "bool",
+        "is_used_for_any_content_type": "bool",
+        "is_legacy": "bool",
+        "author_at": "int",
+        "cos_object_type": "str",
+        "cdn_purge_embargo_time": "int",
+        "is_staging_domain": "bool",
     }
 
     attribute_map = {
-        'portal_id': 'portalId',
-        'id': 'id',
-        'created': 'created',
-        'updated': 'updated',
-        'domain': 'domain',
-        'primary_landing_page': 'primaryLandingPage',
-        'primary_email': 'primaryEmail',
-        'primary_blog': 'primaryBlog',
-        'primary_blog_post': 'primaryBlogPost',
-        'primary_site_page': 'primarySitePage',
-        'primary_knowledge': 'primaryKnowledge',
-        'primary_legacy_page': 'primaryLegacyPage',
-        'primary_click_tracking': 'primaryClickTracking',
-        'full_category_key': 'fullCategoryKey',
-        'secondary_to_domain': 'secondaryToDomain',
-        'is_resolving': 'isResolving',
-        'is_dns_correct': 'isDnsCorrect',
-        'manually_marked_as_resolving': 'manuallyMarkedAsResolving',
-        'consecutive_non_resolving_count': 'consecutiveNonResolvingCount',
-        'ssl_cname': 'sslCname',
-        'is_ssl_enabled': 'isSslEnabled',
-        'is_ssl_only': 'isSslOnly',
-        'certificate_id': 'certificateId',
-        'ssl_request_id': 'sslRequestId',
-        'is_used_for_blog_post': 'isUsedForBlogPost',
-        'is_used_for_site_page': 'isUsedForSitePage',
-        'is_used_for_landing_page': 'isUsedForLandingPage',
-        'is_used_for_email': 'isUsedForEmail',
-        'is_used_for_knowledge': 'isUsedForKnowledge',
-        'setup_task_id': 'setupTaskId',
-        'is_setup_complete': 'isSetupComplete',
-        'set_up_language': 'setUpLanguage',
-        'team_ids': 'teamIds',
-        'actual_cname': 'actualCname',
-        'correct_cname': 'correctCname',
-        'actual_ip': 'actualIp',
-        'apex_resolution_status': 'apexResolutionStatus',
-        'apex_domain': 'apexDomain',
-        'public_suffix': 'publicSuffix',
-        'apex_ip_addresses': 'apexIpAddresses',
-        'site_id': 'siteId',
-        'brand_id': 'brandId',
-        'deletable': 'deletable',
-        'domain_cdn_config': 'domainCdnConfig',
-        'setup_info': 'setupInfo',
-        'derived_brand_name': 'derivedBrandName',
-        'created_by_id': 'createdById',
-        'updated_by_id': 'updatedById',
-        'label': 'label',
-        'is_any_primary': 'isAnyPrimary',
-        'is_legacy_domain': 'isLegacyDomain',
-        'is_internal_domain': 'isInternalDomain',
-        'is_resolving_internal_property': 'isResolvingInternalProperty',
-        'is_resolving_ignoring_manually_marked_as_resolving': 'isResolvingIgnoringManuallyMarkedAsResolving',
-        'is_used_for_any_content_type': 'isUsedForAnyContentType',
-        'is_legacy': 'isLegacy',
-        'author_at': 'authorAt',
-        'cos_object_type': 'cosObjectType',
-        'cdn_purge_embargo_time': 'cdnPurgeEmbargoTime',
-        'is_staging_domain': 'isStagingDomain'
+        "portal_id": "portalId",
+        "id": "id",
+        "created": "created",
+        "updated": "updated",
+        "domain": "domain",
+        "primary_landing_page": "primaryLandingPage",
+        "primary_email": "primaryEmail",
+        "primary_blog": "primaryBlog",
+        "primary_blog_post": "primaryBlogPost",
+        "primary_site_page": "primarySitePage",
+        "primary_knowledge": "primaryKnowledge",
+        "primary_legacy_page": "primaryLegacyPage",
+        "primary_click_tracking": "primaryClickTracking",
+        "full_category_key": "fullCategoryKey",
+        "secondary_to_domain": "secondaryToDomain",
+        "is_resolving": "isResolving",
+        "is_dns_correct": "isDnsCorrect",
+        "manually_marked_as_resolving": "manuallyMarkedAsResolving",
+        "consecutive_non_resolving_count": "consecutiveNonResolvingCount",
+        "ssl_cname": "sslCname",
+        "is_ssl_enabled": "isSslEnabled",
+        "is_ssl_only": "isSslOnly",
+        "certificate_id": "certificateId",
+        "ssl_request_id": "sslRequestId",
+        "is_used_for_blog_post": "isUsedForBlogPost",
+        "is_used_for_site_page": "isUsedForSitePage",
+        "is_used_for_landing_page": "isUsedForLandingPage",
+        "is_used_for_email": "isUsedForEmail",
+        "is_used_for_knowledge": "isUsedForKnowledge",
+        "setup_task_id": "setupTaskId",
+        "is_setup_complete": "isSetupComplete",
+        "set_up_language": "setUpLanguage",
+        "team_ids": "teamIds",
+        "actual_cname": "actualCname",
+        "correct_cname": "correctCname",
+        "actual_ip": "actualIp",
+        "apex_resolution_status": "apexResolutionStatus",
+        "apex_domain": "apexDomain",
+        "public_suffix": "publicSuffix",
+        "apex_ip_addresses": "apexIpAddresses",
+        "site_id": "siteId",
+        "brand_id": "brandId",
+        "deletable": "deletable",
+        "domain_cdn_config": "domainCdnConfig",
+        "setup_info": "setupInfo",
+        "derived_brand_name": "derivedBrandName",
+        "created_by_id": "createdById",
+        "updated_by_id": "updatedById",
+        "label": "label",
+        "is_any_primary": "isAnyPrimary",
+        "is_legacy_domain": "isLegacyDomain",
+        "is_internal_domain": "isInternalDomain",
+        "is_resolving_internal_property": "isResolvingInternalProperty",
+        "is_resolving_ignoring_manually_marked_as_resolving": "isResolvingIgnoringManuallyMarkedAsResolving",
+        "is_used_for_any_content_type": "isUsedForAnyContentType",
+        "is_legacy": "isLegacy",
+        "author_at": "authorAt",
+        "cos_object_type": "cosObjectType",
+        "cdn_purge_embargo_time": "cdnPurgeEmbargoTime",
+        "is_staging_domain": "isStagingDomain",
     }
 
-    def __init__(self, portal_id=None, id=None, created=None, updated=None, domain=None, primary_landing_page=None, primary_email=None, primary_blog=None, primary_blog_post=None, primary_site_page=None, primary_knowledge=None, primary_legacy_page=None, primary_click_tracking=None, full_category_key=None, secondary_to_domain=None, is_resolving=None, is_dns_correct=None, manually_marked_as_resolving=None, consecutive_non_resolving_count=None, ssl_cname=None, is_ssl_enabled=None, is_ssl_only=None, certificate_id=None, ssl_request_id=None, is_used_for_blog_post=None, is_used_for_site_page=None, is_used_for_landing_page=None, is_used_for_email=None, is_used_for_knowledge=None, setup_task_id=None, is_setup_complete=None, set_up_language=None, team_ids=None, actual_cname=None, correct_cname=None, actual_ip=None, apex_resolution_status=None, apex_domain=None, public_suffix=None, apex_ip_addresses=None, site_id=None, brand_id=None, deletable=None, domain_cdn_config=None, setup_info=None, derived_brand_name=None, created_by_id=None, updated_by_id=None, label=None, is_any_primary=None, is_legacy_domain=None, is_internal_domain=None, is_resolving_internal_property=None, is_resolving_ignoring_manually_marked_as_resolving=None, is_used_for_any_content_type=None, is_legacy=None, author_at=None, cos_object_type=None, cdn_purge_embargo_time=None, is_staging_domain=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        portal_id=None,
+        id=None,
+        created=None,
+        updated=None,
+        domain=None,
+        primary_landing_page=None,
+        primary_email=None,
+        primary_blog=None,
+        primary_blog_post=None,
+        primary_site_page=None,
+        primary_knowledge=None,
+        primary_legacy_page=None,
+        primary_click_tracking=None,
+        full_category_key=None,
+        secondary_to_domain=None,
+        is_resolving=None,
+        is_dns_correct=None,
+        manually_marked_as_resolving=None,
+        consecutive_non_resolving_count=None,
+        ssl_cname=None,
+        is_ssl_enabled=None,
+        is_ssl_only=None,
+        certificate_id=None,
+        ssl_request_id=None,
+        is_used_for_blog_post=None,
+        is_used_for_site_page=None,
+        is_used_for_landing_page=None,
+        is_used_for_email=None,
+        is_used_for_knowledge=None,
+        setup_task_id=None,
+        is_setup_complete=None,
+        set_up_language=None,
+        team_ids=None,
+        actual_cname=None,
+        correct_cname=None,
+        actual_ip=None,
+        apex_resolution_status=None,
+        apex_domain=None,
+        public_suffix=None,
+        apex_ip_addresses=None,
+        site_id=None,
+        brand_id=None,
+        deletable=None,
+        domain_cdn_config=None,
+        setup_info=None,
+        derived_brand_name=None,
+        created_by_id=None,
+        updated_by_id=None,
+        label=None,
+        is_any_primary=None,
+        is_legacy_domain=None,
+        is_internal_domain=None,
+        is_resolving_internal_property=None,
+        is_resolving_ignoring_manually_marked_as_resolving=None,
+        is_used_for_any_content_type=None,
+        is_legacy=None,
+        author_at=None,
+        cos_object_type=None,
+        cdn_purge_embargo_time=None,
+        is_staging_domain=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Domain - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -279,7 +342,9 @@ class Domain(object):
         self.is_legacy_domain = is_legacy_domain
         self.is_internal_domain = is_internal_domain
         self.is_resolving_internal_property = is_resolving_internal_property
-        self.is_resolving_ignoring_manually_marked_as_resolving = is_resolving_ignoring_manually_marked_as_resolving
+        self.is_resolving_ignoring_manually_marked_as_resolving = (
+            is_resolving_ignoring_manually_marked_as_resolving
+        )
         self.is_used_for_any_content_type = is_used_for_any_content_type
         self.is_legacy = is_legacy
         self.author_at = author_at
@@ -305,8 +370,12 @@ class Domain(object):
         :param portal_id: The portal_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and portal_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `portal_id`, must not be `None`"
+            )  # noqa: E501
 
         self._portal_id = portal_id
 
@@ -328,7 +397,9 @@ class Domain(object):
         :param id: The id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -351,8 +422,12 @@ class Domain(object):
         :param created: The created of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
-            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created`, must not be `None`"
+            )  # noqa: E501
 
         self._created = created
 
@@ -374,8 +449,12 @@ class Domain(object):
         :param updated: The updated of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated`, must not be `None`"
+            )  # noqa: E501
 
         self._updated = updated
 
@@ -397,8 +476,12 @@ class Domain(object):
         :param domain: The domain of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `domain`, must not be `None`"
+            )  # noqa: E501
 
         self._domain = domain
 
@@ -420,8 +503,13 @@ class Domain(object):
         :param primary_landing_page: The primary_landing_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_landing_page is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_landing_page`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_landing_page is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_landing_page`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_landing_page = primary_landing_page
 
@@ -443,8 +531,13 @@ class Domain(object):
         :param primary_email: The primary_email of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_email is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_email`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_email is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_email`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_email = primary_email
 
@@ -466,8 +559,13 @@ class Domain(object):
         :param primary_blog: The primary_blog of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_blog is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_blog`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_blog is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_blog`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_blog = primary_blog
 
@@ -489,8 +587,13 @@ class Domain(object):
         :param primary_blog_post: The primary_blog_post of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_blog_post is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_blog_post`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_blog_post is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_blog_post`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_blog_post = primary_blog_post
 
@@ -512,8 +615,13 @@ class Domain(object):
         :param primary_site_page: The primary_site_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_site_page is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_site_page`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_site_page is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_site_page`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_site_page = primary_site_page
 
@@ -535,8 +643,13 @@ class Domain(object):
         :param primary_knowledge: The primary_knowledge of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_knowledge is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_knowledge`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_knowledge is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_knowledge`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_knowledge = primary_knowledge
 
@@ -558,8 +671,13 @@ class Domain(object):
         :param primary_legacy_page: The primary_legacy_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_legacy_page is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_legacy_page`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_legacy_page is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_legacy_page`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_legacy_page = primary_legacy_page
 
@@ -581,8 +699,13 @@ class Domain(object):
         :param primary_click_tracking: The primary_click_tracking of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary_click_tracking is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_click_tracking`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_click_tracking is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_click_tracking`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_click_tracking = primary_click_tracking
 
@@ -604,8 +727,13 @@ class Domain(object):
         :param full_category_key: The full_category_key of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and full_category_key is None:  # noqa: E501
-            raise ValueError("Invalid value for `full_category_key`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and full_category_key is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `full_category_key`, must not be `None`"
+            )  # noqa: E501
 
         self._full_category_key = full_category_key
 
@@ -627,8 +755,13 @@ class Domain(object):
         :param secondary_to_domain: The secondary_to_domain of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and secondary_to_domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `secondary_to_domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and secondary_to_domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `secondary_to_domain`, must not be `None`"
+            )  # noqa: E501
 
         self._secondary_to_domain = secondary_to_domain
 
@@ -650,8 +783,13 @@ class Domain(object):
         :param is_resolving: The is_resolving of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_resolving is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_resolving`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_resolving is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_resolving`, must not be `None`"
+            )  # noqa: E501
 
         self._is_resolving = is_resolving
 
@@ -673,8 +811,13 @@ class Domain(object):
         :param is_dns_correct: The is_dns_correct of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_dns_correct is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_dns_correct`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_dns_correct is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_dns_correct`, must not be `None`"
+            )  # noqa: E501
 
         self._is_dns_correct = is_dns_correct
 
@@ -696,8 +839,13 @@ class Domain(object):
         :param manually_marked_as_resolving: The manually_marked_as_resolving of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and manually_marked_as_resolving is None:  # noqa: E501
-            raise ValueError("Invalid value for `manually_marked_as_resolving`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and manually_marked_as_resolving is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `manually_marked_as_resolving`, must not be `None`"
+            )  # noqa: E501
 
         self._manually_marked_as_resolving = manually_marked_as_resolving
 
@@ -719,8 +867,13 @@ class Domain(object):
         :param consecutive_non_resolving_count: The consecutive_non_resolving_count of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and consecutive_non_resolving_count is None:  # noqa: E501
-            raise ValueError("Invalid value for `consecutive_non_resolving_count`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and consecutive_non_resolving_count is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `consecutive_non_resolving_count`, must not be `None`"
+            )  # noqa: E501
 
         self._consecutive_non_resolving_count = consecutive_non_resolving_count
 
@@ -742,8 +895,12 @@ class Domain(object):
         :param ssl_cname: The ssl_cname of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and ssl_cname is None:  # noqa: E501
-            raise ValueError("Invalid value for `ssl_cname`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and ssl_cname is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `ssl_cname`, must not be `None`"
+            )  # noqa: E501
 
         self._ssl_cname = ssl_cname
 
@@ -765,8 +922,13 @@ class Domain(object):
         :param is_ssl_enabled: The is_ssl_enabled of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_ssl_enabled is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_ssl_enabled`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_ssl_enabled is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_ssl_enabled`, must not be `None`"
+            )  # noqa: E501
 
         self._is_ssl_enabled = is_ssl_enabled
 
@@ -788,8 +950,12 @@ class Domain(object):
         :param is_ssl_only: The is_ssl_only of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_ssl_only is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_ssl_only`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_ssl_only is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_ssl_only`, must not be `None`"
+            )  # noqa: E501
 
         self._is_ssl_only = is_ssl_only
 
@@ -811,8 +977,13 @@ class Domain(object):
         :param certificate_id: The certificate_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and certificate_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `certificate_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and certificate_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `certificate_id`, must not be `None`"
+            )  # noqa: E501
 
         self._certificate_id = certificate_id
 
@@ -834,8 +1005,13 @@ class Domain(object):
         :param ssl_request_id: The ssl_request_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and ssl_request_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `ssl_request_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and ssl_request_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `ssl_request_id`, must not be `None`"
+            )  # noqa: E501
 
         self._ssl_request_id = ssl_request_id
 
@@ -857,8 +1033,13 @@ class Domain(object):
         :param is_used_for_blog_post: The is_used_for_blog_post of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_blog_post is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_blog_post`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_blog_post is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_blog_post`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_blog_post = is_used_for_blog_post
 
@@ -880,8 +1061,13 @@ class Domain(object):
         :param is_used_for_site_page: The is_used_for_site_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_site_page is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_site_page`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_site_page is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_site_page`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_site_page = is_used_for_site_page
 
@@ -903,8 +1089,13 @@ class Domain(object):
         :param is_used_for_landing_page: The is_used_for_landing_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_landing_page is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_landing_page`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_landing_page is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_landing_page`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_landing_page = is_used_for_landing_page
 
@@ -926,8 +1117,13 @@ class Domain(object):
         :param is_used_for_email: The is_used_for_email of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_email is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_email`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_email is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_email`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_email = is_used_for_email
 
@@ -949,8 +1145,13 @@ class Domain(object):
         :param is_used_for_knowledge: The is_used_for_knowledge of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_knowledge is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_knowledge`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_knowledge is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_knowledge`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_knowledge = is_used_for_knowledge
 
@@ -972,8 +1173,13 @@ class Domain(object):
         :param setup_task_id: The setup_task_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and setup_task_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `setup_task_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and setup_task_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `setup_task_id`, must not be `None`"
+            )  # noqa: E501
 
         self._setup_task_id = setup_task_id
 
@@ -995,8 +1201,13 @@ class Domain(object):
         :param is_setup_complete: The is_setup_complete of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_setup_complete is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_setup_complete`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_setup_complete is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_setup_complete`, must not be `None`"
+            )  # noqa: E501
 
         self._is_setup_complete = is_setup_complete
 
@@ -1018,8 +1229,13 @@ class Domain(object):
         :param set_up_language: The set_up_language of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and set_up_language is None:  # noqa: E501
-            raise ValueError("Invalid value for `set_up_language`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and set_up_language is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `set_up_language`, must not be `None`"
+            )  # noqa: E501
 
         self._set_up_language = set_up_language
 
@@ -1041,8 +1257,12 @@ class Domain(object):
         :param team_ids: The team_ids of this Domain.  # noqa: E501
         :type: list[int]
         """
-        if self.local_vars_configuration.client_side_validation and team_ids is None:  # noqa: E501
-            raise ValueError("Invalid value for `team_ids`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and team_ids is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `team_ids`, must not be `None`"
+            )  # noqa: E501
 
         self._team_ids = team_ids
 
@@ -1064,8 +1284,13 @@ class Domain(object):
         :param actual_cname: The actual_cname of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and actual_cname is None:  # noqa: E501
-            raise ValueError("Invalid value for `actual_cname`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and actual_cname is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `actual_cname`, must not be `None`"
+            )  # noqa: E501
 
         self._actual_cname = actual_cname
 
@@ -1087,8 +1312,13 @@ class Domain(object):
         :param correct_cname: The correct_cname of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and correct_cname is None:  # noqa: E501
-            raise ValueError("Invalid value for `correct_cname`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and correct_cname is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `correct_cname`, must not be `None`"
+            )  # noqa: E501
 
         self._correct_cname = correct_cname
 
@@ -1110,8 +1340,12 @@ class Domain(object):
         :param actual_ip: The actual_ip of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and actual_ip is None:  # noqa: E501
-            raise ValueError("Invalid value for `actual_ip`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and actual_ip is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `actual_ip`, must not be `None`"
+            )  # noqa: E501
 
         self._actual_ip = actual_ip
 
@@ -1133,13 +1367,27 @@ class Domain(object):
         :param apex_resolution_status: The apex_resolution_status of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and apex_resolution_status is None:  # noqa: E501
-            raise ValueError("Invalid value for `apex_resolution_status`, must not be `None`")  # noqa: E501
-        allowed_values = ["INELIGIBLE", "SUGGEST_RESOLVING", "ALREADY_RESOLVING", "ERROR"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and apex_resolution_status not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and apex_resolution_status is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `apex_resolution_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(apex_resolution_status, allowed_values)
+                "Invalid value for `apex_resolution_status`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "INELIGIBLE",
+            "SUGGEST_RESOLVING",
+            "ALREADY_RESOLVING",
+            "ERROR",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and apex_resolution_status not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `apex_resolution_status` ({0}), must be one of {1}".format(  # noqa: E501
+                    apex_resolution_status, allowed_values
+                )
             )
 
         self._apex_resolution_status = apex_resolution_status
@@ -1162,8 +1410,12 @@ class Domain(object):
         :param apex_domain: The apex_domain of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and apex_domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `apex_domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and apex_domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `apex_domain`, must not be `None`"
+            )  # noqa: E501
 
         self._apex_domain = apex_domain
 
@@ -1185,8 +1437,13 @@ class Domain(object):
         :param public_suffix: The public_suffix of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and public_suffix is None:  # noqa: E501
-            raise ValueError("Invalid value for `public_suffix`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and public_suffix is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `public_suffix`, must not be `None`"
+            )  # noqa: E501
 
         self._public_suffix = public_suffix
 
@@ -1208,8 +1465,13 @@ class Domain(object):
         :param apex_ip_addresses: The apex_ip_addresses of this Domain.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and apex_ip_addresses is None:  # noqa: E501
-            raise ValueError("Invalid value for `apex_ip_addresses`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and apex_ip_addresses is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `apex_ip_addresses`, must not be `None`"
+            )  # noqa: E501
 
         self._apex_ip_addresses = apex_ip_addresses
 
@@ -1231,8 +1493,12 @@ class Domain(object):
         :param site_id: The site_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and site_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `site_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and site_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `site_id`, must not be `None`"
+            )  # noqa: E501
 
         self._site_id = site_id
 
@@ -1254,8 +1520,12 @@ class Domain(object):
         :param brand_id: The brand_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and brand_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `brand_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and brand_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `brand_id`, must not be `None`"
+            )  # noqa: E501
 
         self._brand_id = brand_id
 
@@ -1277,8 +1547,12 @@ class Domain(object):
         :param deletable: The deletable of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and deletable is None:  # noqa: E501
-            raise ValueError("Invalid value for `deletable`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and deletable is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `deletable`, must not be `None`"
+            )  # noqa: E501
 
         self._deletable = deletable
 
@@ -1300,8 +1574,13 @@ class Domain(object):
         :param domain_cdn_config: The domain_cdn_config of this Domain.  # noqa: E501
         :type: DomainCdnConfig
         """
-        if self.local_vars_configuration.client_side_validation and domain_cdn_config is None:  # noqa: E501
-            raise ValueError("Invalid value for `domain_cdn_config`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and domain_cdn_config is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `domain_cdn_config`, must not be `None`"
+            )  # noqa: E501
 
         self._domain_cdn_config = domain_cdn_config
 
@@ -1323,8 +1602,12 @@ class Domain(object):
         :param setup_info: The setup_info of this Domain.  # noqa: E501
         :type: DomainSetupInfo
         """
-        if self.local_vars_configuration.client_side_validation and setup_info is None:  # noqa: E501
-            raise ValueError("Invalid value for `setup_info`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and setup_info is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `setup_info`, must not be `None`"
+            )  # noqa: E501
 
         self._setup_info = setup_info
 
@@ -1346,8 +1629,13 @@ class Domain(object):
         :param derived_brand_name: The derived_brand_name of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and derived_brand_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `derived_brand_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and derived_brand_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `derived_brand_name`, must not be `None`"
+            )  # noqa: E501
 
         self._derived_brand_name = derived_brand_name
 
@@ -1369,8 +1657,13 @@ class Domain(object):
         :param created_by_id: The created_by_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and created_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_by_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and created_by_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_by_id`, must not be `None`"
+            )  # noqa: E501
 
         self._created_by_id = created_by_id
 
@@ -1392,8 +1685,13 @@ class Domain(object):
         :param updated_by_id: The updated_by_id of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and updated_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_by_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and updated_by_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_by_id`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_by_id = updated_by_id
 
@@ -1415,8 +1713,12 @@ class Domain(object):
         :param label: The label of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -1438,8 +1740,13 @@ class Domain(object):
         :param is_any_primary: The is_any_primary of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_any_primary is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_any_primary`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_any_primary is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_any_primary`, must not be `None`"
+            )  # noqa: E501
 
         self._is_any_primary = is_any_primary
 
@@ -1461,8 +1768,13 @@ class Domain(object):
         :param is_legacy_domain: The is_legacy_domain of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_legacy_domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_legacy_domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_legacy_domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_legacy_domain`, must not be `None`"
+            )  # noqa: E501
 
         self._is_legacy_domain = is_legacy_domain
 
@@ -1484,8 +1796,13 @@ class Domain(object):
         :param is_internal_domain: The is_internal_domain of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_internal_domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_internal_domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_internal_domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_internal_domain`, must not be `None`"
+            )  # noqa: E501
 
         self._is_internal_domain = is_internal_domain
 
@@ -1507,8 +1824,13 @@ class Domain(object):
         :param is_resolving_internal_property: The is_resolving_internal_property of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_resolving_internal_property is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_resolving_internal_property`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_resolving_internal_property is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_resolving_internal_property`, must not be `None`"
+            )  # noqa: E501
 
         self._is_resolving_internal_property = is_resolving_internal_property
 
@@ -1523,17 +1845,26 @@ class Domain(object):
         return self._is_resolving_ignoring_manually_marked_as_resolving
 
     @is_resolving_ignoring_manually_marked_as_resolving.setter
-    def is_resolving_ignoring_manually_marked_as_resolving(self, is_resolving_ignoring_manually_marked_as_resolving):
+    def is_resolving_ignoring_manually_marked_as_resolving(
+        self, is_resolving_ignoring_manually_marked_as_resolving
+    ):
         """Sets the is_resolving_ignoring_manually_marked_as_resolving of this Domain.
 
 
         :param is_resolving_ignoring_manually_marked_as_resolving: The is_resolving_ignoring_manually_marked_as_resolving of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_resolving_ignoring_manually_marked_as_resolving is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_resolving_ignoring_manually_marked_as_resolving`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_resolving_ignoring_manually_marked_as_resolving is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_resolving_ignoring_manually_marked_as_resolving`, must not be `None`"
+            )  # noqa: E501
 
-        self._is_resolving_ignoring_manually_marked_as_resolving = is_resolving_ignoring_manually_marked_as_resolving
+        self._is_resolving_ignoring_manually_marked_as_resolving = (
+            is_resolving_ignoring_manually_marked_as_resolving
+        )
 
     @property
     def is_used_for_any_content_type(self):
@@ -1553,8 +1884,13 @@ class Domain(object):
         :param is_used_for_any_content_type: The is_used_for_any_content_type of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_used_for_any_content_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_used_for_any_content_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_used_for_any_content_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_used_for_any_content_type`, must not be `None`"
+            )  # noqa: E501
 
         self._is_used_for_any_content_type = is_used_for_any_content_type
 
@@ -1576,8 +1912,12 @@ class Domain(object):
         :param is_legacy: The is_legacy of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_legacy is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_legacy`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_legacy is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_legacy`, must not be `None`"
+            )  # noqa: E501
 
         self._is_legacy = is_legacy
 
@@ -1599,8 +1939,12 @@ class Domain(object):
         :param author_at: The author_at of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and author_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `author_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and author_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `author_at`, must not be `None`"
+            )  # noqa: E501
 
         self._author_at = author_at
 
@@ -1622,13 +1966,65 @@ class Domain(object):
         :param cos_object_type: The cos_object_type of this Domain.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and cos_object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `cos_object_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["CONTENT", "EXTENSION_RESOURCE", "LAYOUT", "CUSTOM_WIDGET", "WIDGET", "FORM", "PLACEMENT", "IMAGE", "DOMAIN_SETTINGS", "SITE_SETTINGS", "EMAIL_ADDRESS", "WORKFLOW", "HUBDB_TABLE", "REDIRECT_URL", "DESIGN_FOLDER", "SITE_MAP", "DOMAIN", "BLOG", "FILE", "FOLDER", "SITE_MENU", "THEME", "CONTENT_GROUP", "FOLLOW_ME", "KNOWLEDGE_BASE", "LIST_MEMBERSHIP", "CONTACT_MEMBERSHIP", "PASSWORD_PROTECTED", "UNRESTRICTED_ACCESS", "MARKETPLACE_LISTING", "LAYOUT_SECTION", "THEME_SETTINGS", "VIDEO_PLAYER", "URL_MAPPING", "KNOWLEDGE_CATEGORY", "KNOWLEDGE_HOMEPAGE_CATEGORY", "RAW_ASSET", "GLOBAL_CONTENT", "HUBDB_TABLE_ROW", "BLOG_AUTHOR", "SERVERLESS_FUNCTION", "KNOWLEDGE_CATEGORY_TRANSLATION"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and cos_object_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cos_object_type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `cos_object_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(cos_object_type, allowed_values)
+                "Invalid value for `cos_object_type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "CONTENT",
+            "EXTENSION_RESOURCE",
+            "LAYOUT",
+            "CUSTOM_WIDGET",
+            "WIDGET",
+            "FORM",
+            "PLACEMENT",
+            "IMAGE",
+            "DOMAIN_SETTINGS",
+            "SITE_SETTINGS",
+            "EMAIL_ADDRESS",
+            "WORKFLOW",
+            "HUBDB_TABLE",
+            "REDIRECT_URL",
+            "DESIGN_FOLDER",
+            "SITE_MAP",
+            "DOMAIN",
+            "BLOG",
+            "FILE",
+            "FOLDER",
+            "SITE_MENU",
+            "THEME",
+            "CONTENT_GROUP",
+            "FOLLOW_ME",
+            "KNOWLEDGE_BASE",
+            "LIST_MEMBERSHIP",
+            "CONTACT_MEMBERSHIP",
+            "PASSWORD_PROTECTED",
+            "UNRESTRICTED_ACCESS",
+            "MARKETPLACE_LISTING",
+            "LAYOUT_SECTION",
+            "THEME_SETTINGS",
+            "VIDEO_PLAYER",
+            "URL_MAPPING",
+            "KNOWLEDGE_CATEGORY",
+            "KNOWLEDGE_HOMEPAGE_CATEGORY",
+            "RAW_ASSET",
+            "GLOBAL_CONTENT",
+            "HUBDB_TABLE_ROW",
+            "BLOG_AUTHOR",
+            "SERVERLESS_FUNCTION",
+            "KNOWLEDGE_CATEGORY_TRANSLATION",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cos_object_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cos_object_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    cos_object_type, allowed_values
+                )
             )
 
         self._cos_object_type = cos_object_type
@@ -1651,8 +2047,13 @@ class Domain(object):
         :param cdn_purge_embargo_time: The cdn_purge_embargo_time of this Domain.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and cdn_purge_embargo_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `cdn_purge_embargo_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cdn_purge_embargo_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cdn_purge_embargo_time`, must not be `None`"
+            )  # noqa: E501
 
         self._cdn_purge_embargo_time = cdn_purge_embargo_time
 
@@ -1674,8 +2075,13 @@ class Domain(object):
         :param is_staging_domain: The is_staging_domain of this Domain.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_staging_domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_staging_domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and is_staging_domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_staging_domain`, must not be `None`"
+            )  # noqa: E501
 
         self._is_staging_domain = is_staging_domain
 
@@ -1686,18 +2092,20 @@ class Domain(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

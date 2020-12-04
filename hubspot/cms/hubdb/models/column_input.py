@@ -33,26 +33,36 @@ class ColumnInput(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'archived': 'bool',
-        'name': 'str',
-        'options': 'list[Option]',
-        'width': 'int',
-        'label': 'str',
-        'id': 'int',
-        'type': 'str'
+        "archived": "bool",
+        "name": "str",
+        "options": "list[Option]",
+        "width": "int",
+        "label": "str",
+        "id": "int",
+        "type": "str",
     }
 
     attribute_map = {
-        'archived': 'archived',
-        'name': 'name',
-        'options': 'options',
-        'width': 'width',
-        'label': 'label',
-        'id': 'id',
-        'type': 'type'
+        "archived": "archived",
+        "name": "name",
+        "options": "options",
+        "width": "width",
+        "label": "label",
+        "id": "id",
+        "type": "type",
     }
 
-    def __init__(self, archived=None, name=None, options=None, width=None, label=None, id=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        archived=None,
+        name=None,
+        options=None,
+        width=None,
+        label=None,
+        id=None,
+        type=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ColumnInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -122,8 +132,12 @@ class ColumnInput(object):
         :param name: The name of this ColumnInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -193,8 +207,12 @@ class ColumnInput(object):
         :param label: The label of this ColumnInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -241,8 +259,12 @@ class ColumnInput(object):
         :param type: The type of this ColumnInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type`, must not be `None`"
+            )  # noqa: E501
 
         self._type = type
 
@@ -253,18 +275,20 @@ class ColumnInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

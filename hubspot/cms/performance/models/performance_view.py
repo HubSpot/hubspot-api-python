@@ -33,56 +33,81 @@ class PerformanceView(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        '_403': 'int',
-        '_404': 'int',
-        '_500': 'int',
-        '_504': 'int',
-        'start_timestamp': 'int',
-        'end_timestamp': 'int',
-        'start_datetime': 'str',
-        'end_datetime': 'str',
-        'total_requests': 'int',
-        'cache_hits': 'int',
-        'cache_hit_rate': 'float',
-        'total_request_time': 'int',
-        'avg_origin_response_time': 'int',
-        'response_time_ms': 'int',
-        '_100_x': 'int',
-        '_20_x': 'int',
-        '_30_x': 'int',
-        '_40_x': 'int',
-        '_50_x': 'int',
-        '_50th': 'int',
-        '_95th': 'int',
-        '_99th': 'int'
+        "_403": "int",
+        "_404": "int",
+        "_500": "int",
+        "_504": "int",
+        "start_timestamp": "int",
+        "end_timestamp": "int",
+        "start_datetime": "str",
+        "end_datetime": "str",
+        "total_requests": "int",
+        "cache_hits": "int",
+        "cache_hit_rate": "float",
+        "total_request_time": "int",
+        "avg_origin_response_time": "int",
+        "response_time_ms": "int",
+        "_100_x": "int",
+        "_20_x": "int",
+        "_30_x": "int",
+        "_40_x": "int",
+        "_50_x": "int",
+        "_50th": "int",
+        "_95th": "int",
+        "_99th": "int",
     }
 
     attribute_map = {
-        '_403': '403',
-        '_404': '404',
-        '_500': '500',
-        '_504': '504',
-        'start_timestamp': 'startTimestamp',
-        'end_timestamp': 'endTimestamp',
-        'start_datetime': 'startDatetime',
-        'end_datetime': 'endDatetime',
-        'total_requests': 'totalRequests',
-        'cache_hits': 'cacheHits',
-        'cache_hit_rate': 'cacheHitRate',
-        'total_request_time': 'totalRequestTime',
-        'avg_origin_response_time': 'avgOriginResponseTime',
-        'response_time_ms': 'responseTimeMs',
-        '_100_x': '100X',
-        '_20_x': '20X',
-        '_30_x': '30X',
-        '_40_x': '40X',
-        '_50_x': '50X',
-        '_50th': '50th',
-        '_95th': '95th',
-        '_99th': '99th'
+        "_403": "403",
+        "_404": "404",
+        "_500": "500",
+        "_504": "504",
+        "start_timestamp": "startTimestamp",
+        "end_timestamp": "endTimestamp",
+        "start_datetime": "startDatetime",
+        "end_datetime": "endDatetime",
+        "total_requests": "totalRequests",
+        "cache_hits": "cacheHits",
+        "cache_hit_rate": "cacheHitRate",
+        "total_request_time": "totalRequestTime",
+        "avg_origin_response_time": "avgOriginResponseTime",
+        "response_time_ms": "responseTimeMs",
+        "_100_x": "100X",
+        "_20_x": "20X",
+        "_30_x": "30X",
+        "_40_x": "40X",
+        "_50_x": "50X",
+        "_50th": "50th",
+        "_95th": "95th",
+        "_99th": "99th",
     }
 
-    def __init__(self, _403=None, _404=None, _500=None, _504=None, start_timestamp=None, end_timestamp=None, start_datetime=None, end_datetime=None, total_requests=None, cache_hits=None, cache_hit_rate=None, total_request_time=None, avg_origin_response_time=None, response_time_ms=None, _100_x=None, _20_x=None, _30_x=None, _40_x=None, _50_x=None, _50th=None, _95th=None, _99th=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        _403=None,
+        _404=None,
+        _500=None,
+        _504=None,
+        start_timestamp=None,
+        end_timestamp=None,
+        start_datetime=None,
+        end_datetime=None,
+        total_requests=None,
+        cache_hits=None,
+        cache_hit_rate=None,
+        total_request_time=None,
+        avg_origin_response_time=None,
+        response_time_ms=None,
+        _100_x=None,
+        _20_x=None,
+        _30_x=None,
+        _40_x=None,
+        _50_x=None,
+        _50th=None,
+        _95th=None,
+        _99th=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PerformanceView - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -155,8 +180,12 @@ class PerformanceView(object):
         :param _403: The _403 of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _403 is None:  # noqa: E501
-            raise ValueError("Invalid value for `_403`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _403 is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_403`, must not be `None`"
+            )  # noqa: E501
 
         self.__403 = _403
 
@@ -180,8 +209,12 @@ class PerformanceView(object):
         :param _404: The _404 of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _404 is None:  # noqa: E501
-            raise ValueError("Invalid value for `_404`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _404 is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_404`, must not be `None`"
+            )  # noqa: E501
 
         self.__404 = _404
 
@@ -205,8 +238,12 @@ class PerformanceView(object):
         :param _500: The _500 of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _500 is None:  # noqa: E501
-            raise ValueError("Invalid value for `_500`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _500 is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_500`, must not be `None`"
+            )  # noqa: E501
 
         self.__500 = _500
 
@@ -230,8 +267,12 @@ class PerformanceView(object):
         :param _504: The _504 of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _504 is None:  # noqa: E501
-            raise ValueError("Invalid value for `_504`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _504 is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_504`, must not be `None`"
+            )  # noqa: E501
 
         self.__504 = _504
 
@@ -255,8 +296,13 @@ class PerformanceView(object):
         :param start_timestamp: The start_timestamp of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and start_timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `start_timestamp`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and start_timestamp is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `start_timestamp`, must not be `None`"
+            )  # noqa: E501
 
         self._start_timestamp = start_timestamp
 
@@ -280,8 +326,13 @@ class PerformanceView(object):
         :param end_timestamp: The end_timestamp of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and end_timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `end_timestamp`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and end_timestamp is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `end_timestamp`, must not be `None`"
+            )  # noqa: E501
 
         self._end_timestamp = end_timestamp
 
@@ -303,8 +354,13 @@ class PerformanceView(object):
         :param start_datetime: The start_datetime of this PerformanceView.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and start_datetime is None:  # noqa: E501
-            raise ValueError("Invalid value for `start_datetime`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and start_datetime is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `start_datetime`, must not be `None`"
+            )  # noqa: E501
 
         self._start_datetime = start_datetime
 
@@ -326,8 +382,13 @@ class PerformanceView(object):
         :param end_datetime: The end_datetime of this PerformanceView.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and end_datetime is None:  # noqa: E501
-            raise ValueError("Invalid value for `end_datetime`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and end_datetime is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `end_datetime`, must not be `None`"
+            )  # noqa: E501
 
         self._end_datetime = end_datetime
 
@@ -351,8 +412,13 @@ class PerformanceView(object):
         :param total_requests: The total_requests of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and total_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_requests`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and total_requests is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `total_requests`, must not be `None`"
+            )  # noqa: E501
 
         self._total_requests = total_requests
 
@@ -376,8 +442,12 @@ class PerformanceView(object):
         :param cache_hits: The cache_hits of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and cache_hits is None:  # noqa: E501
-            raise ValueError("Invalid value for `cache_hits`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and cache_hits is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cache_hits`, must not be `None`"
+            )  # noqa: E501
 
         self._cache_hits = cache_hits
 
@@ -401,8 +471,13 @@ class PerformanceView(object):
         :param cache_hit_rate: The cache_hit_rate of this PerformanceView.  # noqa: E501
         :type: float
         """
-        if self.local_vars_configuration.client_side_validation and cache_hit_rate is None:  # noqa: E501
-            raise ValueError("Invalid value for `cache_hit_rate`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and cache_hit_rate is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cache_hit_rate`, must not be `None`"
+            )  # noqa: E501
 
         self._cache_hit_rate = cache_hit_rate
 
@@ -424,8 +499,13 @@ class PerformanceView(object):
         :param total_request_time: The total_request_time of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and total_request_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_request_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and total_request_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `total_request_time`, must not be `None`"
+            )  # noqa: E501
 
         self._total_request_time = total_request_time
 
@@ -449,8 +529,13 @@ class PerformanceView(object):
         :param avg_origin_response_time: The avg_origin_response_time of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and avg_origin_response_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `avg_origin_response_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and avg_origin_response_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `avg_origin_response_time`, must not be `None`"
+            )  # noqa: E501
 
         self._avg_origin_response_time = avg_origin_response_time
 
@@ -474,8 +559,13 @@ class PerformanceView(object):
         :param response_time_ms: The response_time_ms of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and response_time_ms is None:  # noqa: E501
-            raise ValueError("Invalid value for `response_time_ms`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and response_time_ms is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `response_time_ms`, must not be `None`"
+            )  # noqa: E501
 
         self._response_time_ms = response_time_ms
 
@@ -499,8 +589,12 @@ class PerformanceView(object):
         :param _100_x: The _100_x of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _100_x is None:  # noqa: E501
-            raise ValueError("Invalid value for `_100_x`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _100_x is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_100_x`, must not be `None`"
+            )  # noqa: E501
 
         self.__100_x = _100_x
 
@@ -524,8 +618,12 @@ class PerformanceView(object):
         :param _20_x: The _20_x of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _20_x is None:  # noqa: E501
-            raise ValueError("Invalid value for `_20_x`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _20_x is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_20_x`, must not be `None`"
+            )  # noqa: E501
 
         self.__20_x = _20_x
 
@@ -549,8 +647,12 @@ class PerformanceView(object):
         :param _30_x: The _30_x of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _30_x is None:  # noqa: E501
-            raise ValueError("Invalid value for `_30_x`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _30_x is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_30_x`, must not be `None`"
+            )  # noqa: E501
 
         self.__30_x = _30_x
 
@@ -574,8 +676,12 @@ class PerformanceView(object):
         :param _40_x: The _40_x of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _40_x is None:  # noqa: E501
-            raise ValueError("Invalid value for `_40_x`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _40_x is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_40_x`, must not be `None`"
+            )  # noqa: E501
 
         self.__40_x = _40_x
 
@@ -599,8 +705,12 @@ class PerformanceView(object):
         :param _50_x: The _50_x of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _50_x is None:  # noqa: E501
-            raise ValueError("Invalid value for `_50_x`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _50_x is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_50_x`, must not be `None`"
+            )  # noqa: E501
 
         self.__50_x = _50_x
 
@@ -624,8 +734,12 @@ class PerformanceView(object):
         :param _50th: The _50th of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _50th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_50th`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _50th is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_50th`, must not be `None`"
+            )  # noqa: E501
 
         self.__50th = _50th
 
@@ -649,8 +763,12 @@ class PerformanceView(object):
         :param _95th: The _95th of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _95th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_95th`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _95th is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_95th`, must not be `None`"
+            )  # noqa: E501
 
         self.__95th = _95th
 
@@ -674,8 +792,12 @@ class PerformanceView(object):
         :param _99th: The _99th of this PerformanceView.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and _99th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_99th`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _99th is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_99th`, must not be `None`"
+            )  # noqa: E501
 
         self.__99th = _99th
 
@@ -686,18 +808,20 @@ class PerformanceView(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

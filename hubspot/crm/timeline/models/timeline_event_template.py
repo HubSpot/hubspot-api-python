@@ -33,28 +33,39 @@ class TimelineEventTemplate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'header_template': 'str',
-        'detail_template': 'str',
-        'tokens': 'list[TimelineEventTemplateToken]',
-        'id': 'str',
-        'object_type': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "name": "str",
+        "header_template": "str",
+        "detail_template": "str",
+        "tokens": "list[TimelineEventTemplateToken]",
+        "id": "str",
+        "object_type": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'name': 'name',
-        'header_template': 'headerTemplate',
-        'detail_template': 'detailTemplate',
-        'tokens': 'tokens',
-        'id': 'id',
-        'object_type': 'objectType',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "name": "name",
+        "header_template": "headerTemplate",
+        "detail_template": "detailTemplate",
+        "tokens": "tokens",
+        "id": "id",
+        "object_type": "objectType",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, name=None, header_template=None, detail_template=None, tokens=None, id=None, object_type=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        header_template=None,
+        detail_template=None,
+        tokens=None,
+        id=None,
+        object_type=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """TimelineEventTemplate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -103,8 +114,12 @@ class TimelineEventTemplate(object):
         :param name: The name of this TimelineEventTemplate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -174,8 +189,12 @@ class TimelineEventTemplate(object):
         :param tokens: The tokens of this TimelineEventTemplate.  # noqa: E501
         :type: list[TimelineEventTemplateToken]
         """
-        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
-            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and tokens is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `tokens`, must not be `None`"
+            )  # noqa: E501
 
         self._tokens = tokens
 
@@ -199,7 +218,9 @@ class TimelineEventTemplate(object):
         :param id: The id of this TimelineEventTemplate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -224,8 +245,12 @@ class TimelineEventTemplate(object):
         :param object_type: The object_type of this TimelineEventTemplate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type`, must not be `None`"
+            )  # noqa: E501
 
         self._object_type = object_type
 
@@ -282,18 +307,20 @@ class TimelineEventTemplate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
