@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed hubspot.crm.extensions
+- Fixed hubspot.crm.extensions module init
 
 ## [3.4.1](https://github.com/HubSpot/hubspot-api-python/compare/v3.4.0...v3.4.1) - 2020-12-04
 
