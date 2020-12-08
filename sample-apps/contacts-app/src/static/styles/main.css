@@ -46,3 +46,11 @@
 .navigation .navigation-link.active {
     color: #606c76
 }
+
+.text-center {
+    text-align: center;
+}
+
+.row.authorize-button {
+    justify-content: center;
+}
