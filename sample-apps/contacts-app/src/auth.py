@@ -8,7 +8,8 @@ def is_authorized():
     if is_oauth_authenticated():
         return True
     api_key = os.environ.get("HUBSPOT_API_KEY")
-    return api_key is not None
+
+    return api_key is not None and len(api_key) > 0
 
 
 def auth_required(func):

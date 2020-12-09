@@ -12,7 +12,7 @@ app.register_blueprint(routes.properties, url_prefix="/properties")
 
 
 @app.route("/")
-def contacts():
+def index():
     return redirect(url_for("contacts.list"))
 
 
