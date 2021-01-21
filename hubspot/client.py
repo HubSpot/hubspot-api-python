@@ -1,5 +1,6 @@
 from urllib3.util.retry import Retry
 from .discovery.auth.discovery import Discovery as AuthDiscovery
+from .discovery.automation.discovery import Discovery as AutomationDiscovery
 from .discovery.crm.discovery import Discovery as CrmDiscovery
 from .discovery.cms.discovery import Discovery as CmsDiscovery
 from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
@@ -40,6 +41,10 @@ class Client:
     @property
     def auth(self):
         return AuthDiscovery(self.config)
+
+    @property
+    def automation(self):
+        return AutomationDiscovery(self.config)
 
     @property
     def cms(self):
