@@ -1,5 +1,10 @@
 from hubspot import HubSpot
-from hubspot.automation.actions import CallbacksApi, DefinitionsApi, FunctionsApi, RevisionsApi
+from hubspot.automation.actions import (
+    CallbacksApi,
+    DefinitionsApi,
+    FunctionsApi,
+    RevisionsApi,
+)
 
 
 def test_is_discoverable():

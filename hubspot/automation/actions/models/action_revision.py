@@ -33,20 +33,27 @@ class ActionRevision(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'definition': 'ExtensionActionDefinition',
-        'created_at': 'datetime',
-        'id': 'str',
-        'revision_id': 'str'
+        "definition": "ExtensionActionDefinition",
+        "created_at": "datetime",
+        "id": "str",
+        "revision_id": "str",
     }
 
     attribute_map = {
-        'definition': 'definition',
-        'created_at': 'createdAt',
-        'id': 'id',
-        'revision_id': 'revisionId'
+        "definition": "definition",
+        "created_at": "createdAt",
+        "id": "id",
+        "revision_id": "revisionId",
     }
 
-    def __init__(self, definition=None, created_at=None, id=None, revision_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        definition=None,
+        created_at=None,
+        id=None,
+        revision_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ActionRevision - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,8 +88,12 @@ class ActionRevision(object):
         :param definition: The definition of this ActionRevision.  # noqa: E501
         :type: ExtensionActionDefinition
         """
-        if self.local_vars_configuration.client_side_validation and definition is None:  # noqa: E501
-            raise ValueError("Invalid value for `definition`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and definition is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `definition`, must not be `None`"
+            )  # noqa: E501
 
         self._definition = definition
 
@@ -106,8 +117,12 @@ class ActionRevision(object):
         :param created_at: The created_at of this ActionRevision.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -129,7 +144,9 @@ class ActionRevision(object):
         :param id: The id of this ActionRevision.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -154,8 +171,12 @@ class ActionRevision(object):
         :param revision_id: The revision_id of this ActionRevision.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and revision_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `revision_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and revision_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `revision_id`, must not be `None`"
+            )  # noqa: E501
 
         self._revision_id = revision_id
 
@@ -166,18 +187,20 @@ class ActionRevision(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
