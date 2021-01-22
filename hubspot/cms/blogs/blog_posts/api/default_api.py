@@ -33,13 +33,137 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, batch_input_string, **kwargs):  # noqa: E501
+    def archive(self, object_id, **kwargs):  # noqa: E501
+        """Delete a Blog Post  # noqa: E501
+
+        Delete the Blog Post object identified by the id in the path.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.archive(object_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str object_id: The Blog Post id. (required)
+        :param bool archived: Whether to return only results that have been archived.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.archive_with_http_info(object_id, **kwargs)  # noqa: E501
+
+    def archive_with_http_info(self, object_id, **kwargs):  # noqa: E501
+        """Delete a Blog Post  # noqa: E501
+
+        Delete the Blog Post object identified by the id in the path.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.archive_with_http_info(object_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str object_id: The Blog Post id. (required)
+        :param bool archived: Whether to return only results that have been archived.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["object_id", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'" " to method archive" % key
+                )
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'object_id' is set
+        if self.api_client.client_side_validation and (
+            "object_id" not in local_var_params
+            or local_var_params["object_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_id` when calling `archive`"
+            )  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "object_id" in local_var_params:
+            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+
+        query_params = []
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/{objectId}",
+            "DELETE",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def archive_batch(self, batch_input_string, **kwargs):  # noqa: E501
         """Archive a batch of Blog Posts  # noqa: E501
 
         Archive the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(batch_input_string, async_req=True)
+        >>> thread = api.archive_batch(batch_input_string, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -56,15 +180,17 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(batch_input_string, **kwargs)  # noqa: E501
+        return self.archive_batch_with_http_info(
+            batch_input_string, **kwargs
+        )  # noqa: E501
 
-    def archive_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
+    def archive_batch_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
         """Archive a batch of Blog Posts  # noqa: E501
 
         Archive the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(batch_input_string, async_req=True)
+        >>> thread = api.archive_batch_with_http_info(batch_input_string, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -94,7 +220,8 @@ class DefaultApi(object):
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive_batch" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -104,7 +231,7 @@ class DefaultApi(object):
             or local_var_params["batch_input_string"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `archive`"
+                "Missing the required parameter `batch_input_string` when calling `archive_batch`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -139,131 +266,6 @@ class DefaultApi(object):
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/batch/archive",
             "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def archive_0(self, object_id, **kwargs):  # noqa: E501
-        """Delete a Blog Post  # noqa: E501
-
-        Delete the Blog Post object identified by the id in the path.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_0(object_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Whether to return only results that have been archived.
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.archive_0_with_http_info(object_id, **kwargs)  # noqa: E501
-
-    def archive_0_with_http_info(self, object_id, **kwargs):  # noqa: E501
-        """Delete a Blog Post  # noqa: E501
-
-        Delete the Blog Post object identified by the id in the path.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_0_with_http_info(object_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Whether to return only results that have been archived.
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive_0" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and (
-            "object_id" not in local_var_params
-            or local_var_params["object_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_id` when calling `archive_0`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if "object_id" in local_var_params:
-            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
-
-        query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/{objectId}",
-            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -531,13 +533,13 @@ class DefaultApi(object):
             collection_formats=collection_formats,
         )
 
-    def create_0(self, batch_input_blog_post, **kwargs):  # noqa: E501
+    def create_batch(self, batch_input_blog_post, **kwargs):  # noqa: E501
         """Create a batch of Blog Posts  # noqa: E501
 
         Create the Blog Post objects detailed in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_0(batch_input_blog_post, async_req=True)
+        >>> thread = api.create_batch(batch_input_blog_post, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -554,17 +556,19 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_0_with_http_info(
+        return self.create_batch_with_http_info(
             batch_input_blog_post, **kwargs
         )  # noqa: E501
 
-    def create_0_with_http_info(self, batch_input_blog_post, **kwargs):  # noqa: E501
+    def create_batch_with_http_info(
+        self, batch_input_blog_post, **kwargs
+    ):  # noqa: E501
         """Create a batch of Blog Posts  # noqa: E501
 
         Create the Blog Post objects detailed in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_0_with_http_info(batch_input_blog_post, async_req=True)
+        >>> thread = api.create_batch_with_http_info(batch_input_blog_post, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -595,7 +599,7 @@ class DefaultApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_0" % key
+                    " to method create_batch" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -605,7 +609,7 @@ class DefaultApi(object):
             or local_var_params["batch_input_blog_post"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `batch_input_blog_post` when calling `create_0`"
+                "Missing the required parameter `batch_input_blog_post` when calling `create_batch`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -1483,13 +1487,13 @@ class DefaultApi(object):
             collection_formats=collection_formats,
         )
 
-    def read(self, batch_input_string, **kwargs):  # noqa: E501
+    def read_batch(self, batch_input_string, **kwargs):  # noqa: E501
         """Retrieve a batch of Blog Posts  # noqa: E501
 
         Retrieve the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read(batch_input_string, async_req=True)
+        >>> thread = api.read_batch(batch_input_string, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -1507,15 +1511,17 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(batch_input_string, **kwargs)  # noqa: E501
+        return self.read_batch_with_http_info(
+            batch_input_string, **kwargs
+        )  # noqa: E501
 
-    def read_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
+    def read_batch_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
         """Retrieve a batch of Blog Posts  # noqa: E501
 
         Retrieve the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_with_http_info(batch_input_string, async_req=True)
+        >>> thread = api.read_batch_with_http_info(batch_input_string, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -1546,7 +1552,8 @@ class DefaultApi(object):
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method read" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method read_batch" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -1556,7 +1563,7 @@ class DefaultApi(object):
             or local_var_params["batch_input_string"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `batch_input_string` when calling `read`"
+                "Missing the required parameter `batch_input_string` when calling `read_batch`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -2127,144 +2134,13 @@ class DefaultApi(object):
             collection_formats=collection_formats,
         )
 
-    def update(self, batch_input_json_node, **kwargs):  # noqa: E501
-        """Update a batch of Blog Posts  # noqa: E501
-
-        Update the Blog Post objects identified in the request body.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(batch_input_json_node, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param BatchInputJsonNode batch_input_json_node: (required)
-        :param bool archived: Whether to return only results that have been archived.
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: object
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(batch_input_json_node, **kwargs)  # noqa: E501
-
-    def update_with_http_info(self, batch_input_json_node, **kwargs):  # noqa: E501
-        """Update a batch of Blog Posts  # noqa: E501
-
-        Update the Blog Post objects identified in the request body.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(batch_input_json_node, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param BatchInputJsonNode batch_input_json_node: (required)
-        :param bool archived: Whether to return only results that have been archived.
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["batch_input_json_node", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
-                )
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'batch_input_json_node' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_json_node" not in local_var_params
-            or local_var_params["batch_input_json_node"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_json_node` when calling `update`"
-            )  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "batch_input_json_node" in local_var_params:
-            body_params = local_var_params["batch_input_json_node"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/batch/update",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="object",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def update_0(self, object_id, blog_post, **kwargs):  # noqa: E501
+    def update(self, object_id, blog_post, **kwargs):  # noqa: E501
         """Update a Blog Post  # noqa: E501
 
         Sparse updates a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_0(object_id, blog_post, async_req=True)
+        >>> thread = api.update(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -2283,17 +2159,15 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_0_with_http_info(
-            object_id, blog_post, **kwargs
-        )  # noqa: E501
+        return self.update_with_http_info(object_id, blog_post, **kwargs)  # noqa: E501
 
-    def update_0_with_http_info(self, object_id, blog_post, **kwargs):  # noqa: E501
+    def update_with_http_info(self, object_id, blog_post, **kwargs):  # noqa: E501
         """Update a Blog Post  # noqa: E501
 
         Sparse updates a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_0_with_http_info(object_id, blog_post, async_req=True)
+        >>> thread = api.update_with_http_info(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -2325,8 +2199,7 @@ class DefaultApi(object):
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_0" % key
+                    "Got an unexpected keyword argument '%s'" " to method update" % key
                 )
             local_var_params[key] = val
         del local_var_params["kwargs"]
@@ -2336,7 +2209,7 @@ class DefaultApi(object):
             or local_var_params["object_id"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `object_id` when calling `update_0`"
+                "Missing the required parameter `object_id` when calling `update`"
             )  # noqa: E501
         # verify the required parameter 'blog_post' is set
         if self.api_client.client_side_validation and (
@@ -2344,7 +2217,7 @@ class DefaultApi(object):
             or local_var_params["blog_post"] is None  # noqa: E501
         ):  # noqa: E501
             raise ApiValueError(
-                "Missing the required parameter `blog_post` when calling `update_0`"
+                "Missing the required parameter `blog_post` when calling `update`"
             )  # noqa: E501
 
         collection_formats = {}
@@ -2394,6 +2267,142 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type="BlogPost",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def update_batch(self, batch_input_json_node, **kwargs):  # noqa: E501
+        """Update a batch of Blog Posts  # noqa: E501
+
+        Update the Blog Post objects identified in the request body.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_batch(batch_input_json_node, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param BatchInputJsonNode batch_input_json_node: (required)
+        :param bool archived: Whether to return only results that have been archived.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.update_batch_with_http_info(
+            batch_input_json_node, **kwargs
+        )  # noqa: E501
+
+    def update_batch_with_http_info(
+        self, batch_input_json_node, **kwargs
+    ):  # noqa: E501
+        """Update a batch of Blog Posts  # noqa: E501
+
+        Update the Blog Post objects identified in the request body.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_batch_with_http_info(batch_input_json_node, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param BatchInputJsonNode batch_input_json_node: (required)
+        :param bool archived: Whether to return only results that have been archived.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["batch_input_json_node", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_batch" % key
+                )
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'batch_input_json_node' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_json_node" not in local_var_params
+            or local_var_params["batch_input_json_node"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_json_node` when calling `update_batch`"
+            )  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "batch_input_json_node" in local_var_params:
+            body_params = local_var_params["batch_input_json_node"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/batch/update",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="object",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get(
