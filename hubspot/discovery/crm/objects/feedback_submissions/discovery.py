@@ -1,6 +1,5 @@
-import hubspot.crm.objects as api_client
-from ...discovery_base import DiscoveryBase
-from .feedback_submissions.discovery import Discovery as FeedbackSubmissionsDiscovery
+import hubspot.crm.objects.feedback_submissions as api_client
+from ....discovery_base import DiscoveryBase
 
 
 class Discovery(DiscoveryBase):
@@ -19,7 +18,3 @@ class Discovery(DiscoveryBase):
     @property
     def batch_api(self) -> api_client.BatchApi:
         return self._configure_api_client(api_client, "BatchApi")
-
-    @property
-    def feedback_submissions(self):
-        return FeedbackSubmissionsDiscovery(self.config)
