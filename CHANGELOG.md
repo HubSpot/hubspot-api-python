@@ -11,12 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- HubSpot API key support to `crm.extensions.accounting` API client
-- HubSpot API key support to `crm.extensions.calling` API client
-- HubSpot API key support to `crm.extensions.videoconferencing` API client
-- HubSpot API key support to `crm.objects.feedback_submissions` API client
-- HubSpot API key support to `marketing.transactional` API client
-- HubSpot API key support to `files.files` API client
+- crm.extensions.accounting API client
+- crm.extensions.calling API client
+- crm.extensions.videoconferencing API client
+- crm.objects.feedback_submissions API client
+- marketing.transactional API client
+- files.files API client
 
 ## [3.5.1](https://github.com/HubSpot/hubspot-api-python/compare/v3.5.0...v3.5.1) - 2021-01-22
 
