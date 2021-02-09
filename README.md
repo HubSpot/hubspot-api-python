@@ -29,12 +29,12 @@ Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://p
 ```python
 from hubspot import HubSpot
 
-hubspot = HubSpot()
+api_client = HubSpot()
 # or with api_key
-hubspot = HubSpot(api_key='your_api_key')
+api_client = HubSpot(api_key='your_api_key')
 # or with access_token
-hubspot = HubSpot()
-hubspot.access_token = 'your_access_token'
+api_client = HubSpot()
+api_client.access_token = 'your_access_token'
 ```
 
 ### OAuth API
@@ -45,7 +45,7 @@ hubspot.access_token = 'your_access_token'
 from hubspot.auth.oauth import ApiException
 
 try:
-    tokens = hubspot.auth.oauth.default_api.create_token(
+    tokens = api_client.auth.oauth.default_api.create_token(
         grant_type="authorization_code",
         redirect_uri='http://localhost',
         client_id='client_id',
@@ -69,7 +69,7 @@ try:
     simple_public_object_input = SimplePublicObjectInput(
         properties={"email": "email@example.com"}
     )
-    api_response = hubspot.crm.contacts.basic_api.create(
+    api_response = api_client.crm.contacts.basic_api.create(
         simple_public_object_input=simple_public_object_input
     )
 except ApiException as e:
@@ -82,7 +82,7 @@ except ApiException as e:
 from hubspot.crm.contacts import ApiException
 
 try:
-    contact_fetched = hubspot.crm.contacts.basic_api.get_by_id('contact_id')
+    contact_fetched = api_client.crm.contacts.basic_api.get_by_id('contact_id')
 except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
@@ -93,7 +93,7 @@ except ApiException as e:
 from hubspot.crm.objects import ApiException
 
 try:
-    my_custom_objects_page = hubspot.crm.objects.basic_api.get_page(object_type="my_custom_object_type")
+    my_custom_objects_page = api_client.crm.objects.basic_api.get_page(object_type="my_custom_object_type")
 except ApiException as e:
     print("Exception when requesting custom objects: %s\n" % e)
 ```
@@ -103,7 +103,7 @@ except ApiException as e:
 get_all method is available for all major objects and works like
 
 ```python
-all_contacts = hubspot.crm.contacts.get_all()
+all_contacts = api_client.crm.contacts.get_all()
 ```
 
 Please note that pagination is used under the hood to get all results.
@@ -116,7 +116,7 @@ Please note that pagination is used under the hood to get all results.
 from hubspot.cms.audit_logs import ApiException
 
 try:
-    audit_logs_page = hubspot.cms.audit_logs.default_api.get_page()
+    audit_logs_page = api_client.cms.audit_logs.default_api.get_page()
 except ApiException as e:
     print("Exception when calling cards_api->create: %s\n" % e)
 ```
@@ -172,7 +172,7 @@ retry = Retry(
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
 )
-client = HubSpot(retry=retry)
+api_client = HubSpot(retry=retry)
 ```
 Or with rate limit retry middleware:
 
@@ -184,7 +184,7 @@ retry = Retry(
     total=5,
     status_forcelist=(429,),
 )
-client = HubSpot(retry=retry)
+api_client = HubSpot(retry=retry)
 ```
 
 ## Contributing
