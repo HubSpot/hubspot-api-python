@@ -1,6 +1,6 @@
 # HubSpot-python sample Contacts app
 
-This is a sample app for the [hubspot-php SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/crm/contacts) endpoints and their related actions.
+This is a sample app for the [hubspot-python SDK](../../../../). Currently, this app focuses on demonstrating the functionality of [Contacts API](https://developers.hubspot.com/docs/crm/contacts) endpoints and their related actions.
 
 Please see the documentation on [Creating an app in HubSpot](https://developers.hubspot.com/docs/creating-an-app)
 

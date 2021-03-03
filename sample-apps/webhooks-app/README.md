@@ -4,7 +4,7 @@ This is a sample app for the [hubspot-python SDK](../../../..).
 Currently, this app focuses on demonstrating the functionality of [Webhooks API](https://developers.hubspot.com/docs/crm/extensions), contact creation/deletion in particular.
 
 Please note that the Webhooks events are not sent in chronological order with respect to the creation time. Events might be sent in large numbers, for example when the user imports large number of contacts or deletes a large list of contacts.
-The application demonstrates the use of Queues (Kafka in case of this application - see KafkaHelper.php) to process webhooks events.
+The application demonstrates the use of Queues (Kafka in case of this application - see kafka.py) to process webhooks events.
 Common webhook processing practice consists of few steps:
 1. Handle methods receive the request sent by the webook and immediately place payload on the queue handle.php
 2. Message consumer instance(s) is running in a separate process, typically on multiple nodes in a cloud, such as AWS
