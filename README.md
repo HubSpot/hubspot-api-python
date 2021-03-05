@@ -187,6 +187,16 @@ retry = Retry(
 api_client = HubSpot(retry=retry)
 ```
 
+### Convert response object to dict
+
+`to_dict` method is available for most response objects
+
+```python
+contacts = api_client.crm.contacts.basic_api.get_page()
+for contact in contacts:
+    print(contact.to_dict())
+```
+
 ## Contributing
 
 Install the package locally:
