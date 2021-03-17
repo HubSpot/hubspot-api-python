@@ -34,19 +34,9 @@ class FolderInput(object):
     """
     openapi_types = {"name": "str", "parent_folder_id": "str", "parent_path": "str"}
 
-    attribute_map = {
-        "name": "name",
-        "parent_folder_id": "parentFolderId",
-        "parent_path": "parentPath",
-    }
+    attribute_map = {"name": "name", "parent_folder_id": "parentFolderId", "parent_path": "parentPath"}
 
-    def __init__(
-        self,
-        name=None,
-        parent_folder_id=None,
-        parent_path=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, name=None, parent_folder_id=None, parent_path=None, local_vars_configuration=None):  # noqa: E501
         """FolderInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,12 +73,8 @@ class FolderInput(object):
         :param name: The name of this FolderInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -145,20 +131,11 @@ class FolderInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

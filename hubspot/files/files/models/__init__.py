@@ -15,9 +15,7 @@ from __future__ import absolute_import
 
 # import models into model package
 from hubspot.files.files.models.collection_response_file import CollectionResponseFile
-from hubspot.files.files.models.collection_response_folder import (
-    CollectionResponseFolder,
-)
+from hubspot.files.files.models.collection_response_folder import CollectionResponseFolder
 from hubspot.files.files.models.error import Error
 from hubspot.files.files.models.error_category import ErrorCategory
 from hubspot.files.files.models.error_detail import ErrorDetail
@@ -28,13 +26,9 @@ from hubspot.files.files.models.folder import Folder
 from hubspot.files.files.models.folder_action_response import FolderActionResponse
 from hubspot.files.files.models.folder_input import FolderInput
 from hubspot.files.files.models.folder_update_input import FolderUpdateInput
-from hubspot.files.files.models.folder_update_task_locator import (
-    FolderUpdateTaskLocator,
-)
+from hubspot.files.files.models.folder_update_task_locator import FolderUpdateTaskLocator
 from hubspot.files.files.models.import_from_url_input import ImportFromUrlInput
-from hubspot.files.files.models.import_from_url_task_locator import (
-    ImportFromUrlTaskLocator,
-)
+from hubspot.files.files.models.import_from_url_task_locator import ImportFromUrlTaskLocator
 from hubspot.files.files.models.next_page import NextPage
 from hubspot.files.files.models.paging import Paging
 from hubspot.files.files.models.previous_page import PreviousPage

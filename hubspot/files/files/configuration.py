@@ -330,9 +330,7 @@ class Configuration(object):
         password = ""
         if self.password is not None:
             password = self.password
-        return urllib3.util.make_headers(basic_auth=username + ":" + password).get(
-            "authorization"
-        )
+        return urllib3.util.make_headers(basic_auth=username + ":" + password).get("authorization")
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -341,19 +339,9 @@ class Configuration(object):
         """
         auth = {}
         if "hapikey" in self.api_key:
-            auth["hapikey"] = {
-                "type": "api_key",
-                "in": "query",
-                "key": "hapikey",
-                "value": self.get_api_key_with_prefix("hapikey"),
-            }
+            auth["hapikey"] = {"type": "api_key", "in": "query", "key": "hapikey", "value": self.get_api_key_with_prefix("hapikey")}
         if self.access_token is not None:
-            auth["oauth2"] = {
-                "type": "oauth2",
-                "in": "header",
-                "key": "Authorization",
-                "value": "Bearer " + self.access_token,
-            }
+            auth["oauth2"] = {"type": "oauth2", "in": "header", "key": "Authorization", "value": "Bearer " + self.access_token}
         return auth
 
     def to_debug_report(self):
@@ -361,13 +349,7 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        return (
-            "Python SDK Debug Report:\n"
-            "OS: {env}\n"
-            "Python Version: {pyversion}\n"
-            "Version of the API: v3\n"
-            "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
-        )
+        return "Python SDK Debug Report:\n" "OS: {env}\n" "Python Version: {pyversion}\n" "Version of the API: v3\n" "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
         """Gets an array of host settings
@@ -393,10 +375,7 @@ class Configuration(object):
         try:
             server = servers[index]
         except IndexError:
-            raise ValueError(
-                "Invalid index {0} when selecting the host settings. "
-                "Must be less than {1}".format(index, len(servers))
-            )
+            raise ValueError("Invalid index {0} when selecting the host settings. " "Must be less than {1}".format(index, len(servers)))
 
         url = server["url"]
 
@@ -405,12 +384,7 @@ class Configuration(object):
             used_value = variables.get(variable_name, variable["default_value"])
 
             if "enum_values" in variable and used_value not in variable["enum_values"]:
-                raise ValueError(
-                    "The variable `{0}` in the host URL has invalid value "
-                    "{1}. Must be {2}.".format(
-                        variable_name, variables[variable_name], variable["enum_values"]
-                    )
-                )
+                raise ValueError("The variable `{0}` in the host URL has invalid value " "{1}. Must be {2}.".format(variable_name, variables[variable_name], variable["enum_values"]))
 
             url = url.replace("{" + variable_name + "}", used_value)
 

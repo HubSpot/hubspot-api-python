@@ -43,29 +43,9 @@ class StandardError(object):
         "links": "dict(str, str)",
     }
 
-    attribute_map = {
-        "status": "status",
-        "id": "id",
-        "category": "category",
-        "sub_category": "subCategory",
-        "message": "message",
-        "errors": "errors",
-        "context": "context",
-        "links": "links",
-    }
+    attribute_map = {"status": "status", "id": "id", "category": "category", "sub_category": "subCategory", "message": "message", "errors": "errors", "context": "context", "links": "links"}
 
-    def __init__(
-        self,
-        status=None,
-        id=None,
-        category=None,
-        sub_category=None,
-        message=None,
-        errors=None,
-        context=None,
-        links=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, status=None, id=None, category=None, sub_category=None, message=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """StandardError - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -110,12 +90,8 @@ class StandardError(object):
         :param status: The status of this StandardError.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and status is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
 
@@ -158,12 +134,8 @@ class StandardError(object):
         :param category: The category of this StandardError.  # noqa: E501
         :type: ErrorCategory
         """
-        if (
-            self.local_vars_configuration.client_side_validation and category is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `category`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
+            raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
 
         self._category = category
 
@@ -206,12 +178,8 @@ class StandardError(object):
         :param message: The message of this StandardError.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and message is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `message`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
 
@@ -233,12 +201,8 @@ class StandardError(object):
         :param errors: The errors of this StandardError.  # noqa: E501
         :type: list[ErrorDetail]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and errors is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `errors`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
+            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
 
         self._errors = errors
 
@@ -260,12 +224,8 @@ class StandardError(object):
         :param context: The context of this StandardError.  # noqa: E501
         :type: dict(str, list[str])
         """
-        if (
-            self.local_vars_configuration.client_side_validation and context is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `context`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and context is None:  # noqa: E501
+            raise ValueError("Invalid value for `context`, must not be `None`")  # noqa: E501
 
         self._context = context
 
@@ -287,12 +247,8 @@ class StandardError(object):
         :param links: The links of this StandardError.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and links is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `links`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and links is None:  # noqa: E501
+            raise ValueError("Invalid value for `links`, must not be `None`")  # noqa: E501
 
         self._links = links
 
@@ -303,20 +259,11 @@ class StandardError(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 
