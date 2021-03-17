@@ -119,26 +119,11 @@ class ImportFromUrlInput(object):
         :param access: The access of this ImportFromUrlInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and access is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `access`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "PUBLIC_INDEXABLE",
-            "PUBLIC_NOT_INDEXABLE",
-            "PRIVATE",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and access not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `access` ({0}), must be one of {1}".format(  # noqa: E501
-                    access, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and access is None:  # noqa: E501
+            raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
+        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
 
         self._access = access
 
@@ -208,12 +193,8 @@ class ImportFromUrlInput(object):
         :param url: The url of this ImportFromUrlInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -283,23 +264,11 @@ class ImportFromUrlInput(object):
         :param duplicate_validation_strategy: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and duplicate_validation_strategy is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_strategy`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy is None:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_strategy`, must not be `None`")  # noqa: E501
         allowed_values = ["NONE", "REJECT", "RETURN_EXISTING"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and duplicate_validation_strategy not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}".format(  # noqa: E501
-                    duplicate_validation_strategy, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}".format(duplicate_validation_strategy, allowed_values))  # noqa: E501
 
         self._duplicate_validation_strategy = duplicate_validation_strategy
 
@@ -323,23 +292,11 @@ class ImportFromUrlInput(object):
         :param duplicate_validation_scope: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and duplicate_validation_scope is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_scope`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_scope is None:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_scope`, must not be `None`")  # noqa: E501
         allowed_values = ["ENTIRE_PORTAL", "EXACT_FOLDER"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and duplicate_validation_scope not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}".format(  # noqa: E501
-                    duplicate_validation_scope, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_scope not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}".format(duplicate_validation_scope, allowed_values))  # noqa: E501
 
         self._duplicate_validation_scope = duplicate_validation_scope
 
@@ -363,12 +320,8 @@ class ImportFromUrlInput(object):
         :param overwrite: The overwrite of this ImportFromUrlInput.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and overwrite is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `overwrite`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and overwrite is None:  # noqa: E501
+            raise ValueError("Invalid value for `overwrite`, must not be `None`")  # noqa: E501
 
         self._overwrite = overwrite
 
@@ -379,20 +332,11 @@ class ImportFromUrlInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

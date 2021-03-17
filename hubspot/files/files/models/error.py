@@ -32,37 +32,11 @@ class Error(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        "message": "str",
-        "correlation_id": "str",
-        "category": "str",
-        "sub_category": "str",
-        "errors": "list[ErrorDetail]",
-        "context": "dict(str, list[str])",
-        "links": "dict(str, str)",
-    }
+    openapi_types = {"message": "str", "correlation_id": "str", "category": "str", "sub_category": "str", "errors": "list[ErrorDetail]", "context": "dict(str, list[str])", "links": "dict(str, str)"}
 
-    attribute_map = {
-        "message": "message",
-        "correlation_id": "correlationId",
-        "category": "category",
-        "sub_category": "subCategory",
-        "errors": "errors",
-        "context": "context",
-        "links": "links",
-    }
+    attribute_map = {"message": "message", "correlation_id": "correlationId", "category": "category", "sub_category": "subCategory", "errors": "errors", "context": "context", "links": "links"}
 
-    def __init__(
-        self,
-        message=None,
-        correlation_id=None,
-        category=None,
-        sub_category=None,
-        errors=None,
-        context=None,
-        links=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, message=None, correlation_id=None, category=None, sub_category=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """Error - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -109,12 +83,8 @@ class Error(object):
         :param message: The message of this Error.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and message is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `message`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
 
@@ -138,13 +108,8 @@ class Error(object):
         :param correlation_id: The correlation_id of this Error.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and correlation_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `correlation_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and correlation_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `correlation_id`, must not be `None`")  # noqa: E501
 
         self._correlation_id = correlation_id
 
@@ -168,12 +133,8 @@ class Error(object):
         :param category: The category of this Error.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and category is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `category`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
+            raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
 
         self._category = category
 
@@ -276,20 +237,11 @@ class Error(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 
