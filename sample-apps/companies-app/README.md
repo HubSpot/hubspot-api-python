@@ -13,7 +13,7 @@ Please see the documentation on [Creating an app in HubSpot](https://developers.
   - [Get companies](https://developers.hubspot.com/docs/api/crm/companies)
   - [Get all company properties](https://developers.hubspot.com/docs/api/crm/properties)
   - [Get a company](https://developers.hubspot.com/docs/api/crm/companies)
-  - [Get associated contacts at a company](https://developers.hubspot.com/docs/api/crm/contacts)
+  - [Get associated contacts at a company](https://developers.hubspot.com/docs/api/crm/associations)
   - [Read a batch of contact objects by ID](https://developers.hubspot.com/docs/api/crm/companies)
   - [Get all contacts](https://developers.hubspot.com/docs/api/crm/contacts)
   - [Search for contacts](https://developers.hubspot.com/docs/api/crm/contacts)
