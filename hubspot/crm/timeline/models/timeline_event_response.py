@@ -271,7 +271,7 @@ class TimelineEventResponse(object):
     def timestamp(self):
         """Gets the timestamp of this TimelineEventResponse.  # noqa: E501
 
-        The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.  # noqa: E501
+        The time the event occurred. If not passed in, the current time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.  # noqa: E501
 
         :return: The timestamp of this TimelineEventResponse.  # noqa: E501
         :rtype: datetime
@@ -282,7 +282,7 @@ class TimelineEventResponse(object):
     def timestamp(self, timestamp):
         """Sets the timestamp of this TimelineEventResponse.
 
-        The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.  # noqa: E501
+        The time the event occurred. If not passed in, the current time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.  # noqa: E501
 
         :param timestamp: The timestamp of this TimelineEventResponse.  # noqa: E501
         :type: datetime

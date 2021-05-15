@@ -444,7 +444,7 @@ class BatchApi(object):
     ):  # noqa: E501
         """Update a batch of deals  # noqa: E501
 
-        Perform a partial upate on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
+        Perform a partial update on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update(batch_input_simple_public_object_batch_input, async_req=True)
@@ -473,7 +473,7 @@ class BatchApi(object):
     ):  # noqa: E501
         """Update a batch of deals  # noqa: E501
 
-        Perform a partial upate on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
+        Perform a partial update on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_with_http_info(batch_input_simple_public_object_batch_input, async_req=True)

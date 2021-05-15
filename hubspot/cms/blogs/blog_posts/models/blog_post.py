@@ -503,7 +503,7 @@ class BlogPost(object):
     def state(self):
         """Gets the state of this BlogPost.  # noqa: E501
 
-        An ENUM descibing the current state of this Blog Post.  # noqa: E501
+        An ENUM describing the current state of this Blog Post.  # noqa: E501
 
         :return: The state of this BlogPost.  # noqa: E501
         :rtype: str
@@ -514,7 +514,7 @@ class BlogPost(object):
     def state(self, state):
         """Sets the state of this BlogPost.
 
-        An ENUM descibing the current state of this Blog Post.  # noqa: E501
+        An ENUM describing the current state of this Blog Post.  # noqa: E501
 
         :param state: The state of this BlogPost.  # noqa: E501
         :type: str
@@ -2438,7 +2438,7 @@ class BlogPost(object):
     def content_type_category(self):
         """Gets the content_type_category of this BlogPost.  # noqa: E501
 
-        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
+        An ENUM describing the type of this object. Should always be BLOG_POST.  # noqa: E501
 
         :return: The content_type_category of this BlogPost.  # noqa: E501
         :rtype: str
@@ -2449,7 +2449,7 @@ class BlogPost(object):
     def content_type_category(self, content_type_category):
         """Sets the content_type_category of this BlogPost.
 
-        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
+        An ENUM describing the type of this object. Should always be BLOG_POST.  # noqa: E501
 
         :param content_type_category: The content_type_category of this BlogPost.  # noqa: E501
         :type: str
@@ -2478,7 +2478,7 @@ class BlogPost(object):
     def current_state(self):
         """Gets the current_state of this BlogPost.  # noqa: E501
 
-        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
+        A generated ENUM describing the current state of this Blog Post. Should always match state.  # noqa: E501
 
         :return: The current_state of this BlogPost.  # noqa: E501
         :rtype: str
@@ -2489,7 +2489,7 @@ class BlogPost(object):
     def current_state(self, current_state):
         """Sets the current_state of this BlogPost.
 
-        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
+        A generated ENUM describing the current state of this Blog Post. Should always match state.  # noqa: E501
 
         :param current_state: The current_state of this BlogPost.  # noqa: E501
         :type: str
