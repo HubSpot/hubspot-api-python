@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Contacts
 
@@ -28,12 +26,12 @@ DEV_REQUIRES = ["pytest", "black"]
 
 DIR_PATH = dirname(abspath(__file__))
 
-with open(DIR_PATH + "/VERSION", "r", encoding="utf-8") as f:
+with open(DIR_PATH + "/VERSION", encoding="utf-8") as f:
     VERSION = f.readline().strip()
 
 LONG_DESCRIPTION = None
 if exists(DIR_PATH + "/README.md"):
-    with open(DIR_PATH + "/README.md", "r", encoding="utf-8") as f:
+    with open(DIR_PATH + "/README.md", encoding="utf-8") as f:
         LONG_DESCRIPTION = f.read()
 
 setup(

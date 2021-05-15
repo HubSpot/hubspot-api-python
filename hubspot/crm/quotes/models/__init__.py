@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     Quotes
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.quotes.models.associated_id import AssociatedId

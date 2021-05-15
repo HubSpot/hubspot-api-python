@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     Timeline events
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.timeline.models.batch_input_timeline_event import (

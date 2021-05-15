@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     HubDB endpoints
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.cms.hubdb.models.batch_input_hub_db_table_row_v3 import (

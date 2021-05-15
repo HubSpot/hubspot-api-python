@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     CMS Audit Logs
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.cms.audit_logs.models.collection_response_public_audit_log import (

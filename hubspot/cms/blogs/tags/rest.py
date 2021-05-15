@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Blog Post endpoints
 
@@ -10,7 +8,6 @@
 """
 
 
-from __future__ import absolute_import
 
 import io
 import json
@@ -47,7 +44,7 @@ class RESTResponse(io.IOBase):
         return self.urllib3_response.getheader(name, default)
 
 
-class RESTClientObject(object):
+class RESTClientObject:
     def __init__(self, configuration, pools_size=4, maxsize=None):
         # urllib3.PoolManager will pass all kw parameters to connectionpool
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/poolmanager.py#L75  # noqa: E501
@@ -234,7 +231,7 @@ class RESTClientObject(object):
                     headers=headers,
                 )
         except urllib3.exceptions.SSLError as e:
-            msg = "{0}\n{1}".format(type(e).__name__, str(e))
+            msg = "{}\n{}".format(type(e).__name__, str(e))
             raise ApiException(status=0, reason=msg)
 
         if _preload_content:

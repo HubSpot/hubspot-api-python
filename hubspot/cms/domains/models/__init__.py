@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     Domains
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.cms.domains.models.collection_response_with_total_domain import (

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     Webhooks API
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.webhooks.models.batch_input_subscription_batch_update_request import (

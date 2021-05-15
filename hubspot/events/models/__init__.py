@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     HubSpot Events API
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.events.models.collection_response_external_unified_event import (

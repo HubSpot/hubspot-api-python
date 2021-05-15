@@ -7,4 +7,4 @@ class InvalidSignatureError(Exception):
         self.hash_result = hash_result
         if msg is None:
             msg = "Invalid signature passed to request"
-        super(InvalidSignatureError, self).__init__(msg)
+        super().__init__(msg)

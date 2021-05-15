@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     URL redirects
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.cms.url_redirects.models.collection_response_with_total_url_mapping import (

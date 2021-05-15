@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     CRM cards
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.extensions.cards.models.action_confirmation_body import (

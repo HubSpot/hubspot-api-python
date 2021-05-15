@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     CRM Owners
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.owners.models.collection_response_public_owner import (

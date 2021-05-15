@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 """
     CMS Site Search
@@ -11,7 +9,6 @@
 """
 
 
-from __future__ import absolute_import
 
 # import models into model package
 from hubspot.cms.site_search.models.content_search_result import ContentSearchResult
