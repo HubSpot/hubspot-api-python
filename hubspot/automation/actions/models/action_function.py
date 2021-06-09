@@ -32,21 +32,19 @@ class ActionFunction(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"function_source": "str", "function_type": "str", "id": "str"}
-
-    attribute_map = {
-        "function_source": "functionSource",
-        "function_type": "functionType",
-        "id": "id",
+    openapi_types = {
+        'function_source': 'str',
+        'function_type': 'str',
+        'id': 'str'
     }
 
-    def __init__(
-        self,
-        function_source=None,
-        function_type=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    attribute_map = {
+        'function_source': 'functionSource',
+        'function_type': 'functionType',
+        'id': 'id'
+    }
+
+    def __init__(self, function_source=None, function_type=None, id=None, local_vars_configuration=None):  # noqa: E501
         """ActionFunction - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -82,13 +80,8 @@ class ActionFunction(object):
         :param function_source: The function_source of this ActionFunction.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and function_source is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `function_source`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and function_source is None:  # noqa: E501
+            raise ValueError("Invalid value for `function_source`, must not be `None`")  # noqa: E501
 
         self._function_source = function_source
 
@@ -112,26 +105,13 @@ class ActionFunction(object):
         :param function_type: The function_type of this ActionFunction.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and function_type is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and function_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `function_type`, must not be `None`")  # noqa: E501
+        allowed_values = ["PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and function_type not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `function_type`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "PRE_ACTION_EXECUTION",
-            "PRE_FETCH_OPTIONS",
-            "POST_FETCH_OPTIONS",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and function_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `function_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    function_type, allowed_values
-                )
+                "Invalid value for `function_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(function_type, allowed_values)
             )
 
         self._function_type = function_type
@@ -166,20 +146,18 @@ class ActionFunction(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

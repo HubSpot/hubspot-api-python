@@ -33,42 +33,30 @@ class ExtensionActionDefinitionInput(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "functions": "list[ActionFunction]",
-        "action_url": "str",
-        "published": "bool",
-        "archived_at": "int",
-        "input_fields": "list[InputFieldDefinition]",
-        "object_request_options": "ObjectRequestOptions",
-        "input_field_dependencies": "list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]",
-        "labels": "dict(str, ActionLabels)",
-        "object_types": "list[str]",
+        'functions': 'list[ActionFunction]',
+        'action_url': 'str',
+        'published': 'bool',
+        'archived_at': 'int',
+        'input_fields': 'list[InputFieldDefinition]',
+        'object_request_options': 'ObjectRequestOptions',
+        'input_field_dependencies': 'list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]',
+        'labels': 'dict(str, ActionLabels)',
+        'object_types': 'list[str]'
     }
 
     attribute_map = {
-        "functions": "functions",
-        "action_url": "actionUrl",
-        "published": "published",
-        "archived_at": "archivedAt",
-        "input_fields": "inputFields",
-        "object_request_options": "objectRequestOptions",
-        "input_field_dependencies": "inputFieldDependencies",
-        "labels": "labels",
-        "object_types": "objectTypes",
+        'functions': 'functions',
+        'action_url': 'actionUrl',
+        'published': 'published',
+        'archived_at': 'archivedAt',
+        'input_fields': 'inputFields',
+        'object_request_options': 'objectRequestOptions',
+        'input_field_dependencies': 'inputFieldDependencies',
+        'labels': 'labels',
+        'object_types': 'objectTypes'
     }
 
-    def __init__(
-        self,
-        functions=None,
-        action_url=None,
-        published=None,
-        archived_at=None,
-        input_fields=None,
-        object_request_options=None,
-        input_field_dependencies=None,
-        labels=None,
-        object_types=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, functions=None, action_url=None, published=None, archived_at=None, input_fields=None, object_request_options=None, input_field_dependencies=None, labels=None, object_types=None, local_vars_configuration=None):  # noqa: E501
         """ExtensionActionDefinitionInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -118,12 +106,8 @@ class ExtensionActionDefinitionInput(object):
         :param functions: The functions of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: list[ActionFunction]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and functions is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `functions`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and functions is None:  # noqa: E501
+            raise ValueError("Invalid value for `functions`, must not be `None`")  # noqa: E501
 
         self._functions = functions
 
@@ -147,12 +131,8 @@ class ExtensionActionDefinitionInput(object):
         :param action_url: The action_url of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and action_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `action_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and action_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `action_url`, must not be `None`")  # noqa: E501
 
         self._action_url = action_url
 
@@ -176,12 +156,8 @@ class ExtensionActionDefinitionInput(object):
         :param published: The published of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and published is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `published`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and published is None:  # noqa: E501
+            raise ValueError("Invalid value for `published`, must not be `None`")  # noqa: E501
 
         self._published = published
 
@@ -228,13 +204,8 @@ class ExtensionActionDefinitionInput(object):
         :param input_fields: The input_fields of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: list[InputFieldDefinition]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and input_fields is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `input_fields`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and input_fields is None:  # noqa: E501
+            raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
 
         self._input_fields = input_fields
 
@@ -302,12 +273,8 @@ class ExtensionActionDefinitionInput(object):
         :param labels: The labels of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: dict(str, ActionLabels)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and labels is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `labels`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
+            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
         self._labels = labels
 
@@ -331,13 +298,8 @@ class ExtensionActionDefinitionInput(object):
         :param object_types: The object_types of this ExtensionActionDefinitionInput.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and object_types is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_types`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_types is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_types`, must not be `None`")  # noqa: E501
 
         self._object_types = object_types
 
@@ -348,20 +310,18 @@ class ExtensionActionDefinitionInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

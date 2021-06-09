@@ -27,10 +27,8 @@ from hubspot.crm.extensions.videoconferencing.exceptions import ApiTypeError
 from hubspot.crm.extensions.videoconferencing.exceptions import ApiValueError
 from hubspot.crm.extensions.videoconferencing.exceptions import ApiKeyError
 from hubspot.crm.extensions.videoconferencing.exceptions import ApiException
-
 # import models into sdk package
 from hubspot.crm.extensions.videoconferencing.models.error import Error
 from hubspot.crm.extensions.videoconferencing.models.error_detail import ErrorDetail
-from hubspot.crm.extensions.videoconferencing.models.external_settings import (
-    ExternalSettings,
-)
+from hubspot.crm.extensions.videoconferencing.models.external_settings import ExternalSettings
+

@@ -33,65 +33,32 @@ class BatchReadInputSimplePublicObjectId(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "inputs": "list[SimplePublicObjectId]",
-        "properties": "list[str]",
-        "id_property": "str",
+        'properties': 'list[str]',
+        'id_property': 'str',
+        'inputs': 'list[SimplePublicObjectId]'
     }
 
     attribute_map = {
-        "inputs": "inputs",
-        "properties": "properties",
-        "id_property": "idProperty",
+        'properties': 'properties',
+        'id_property': 'idProperty',
+        'inputs': 'inputs'
     }
 
-    def __init__(
-        self,
-        inputs=None,
-        properties=None,
-        id_property=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, properties=None, id_property=None, inputs=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputSimplePublicObjectId - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._inputs = None
         self._properties = None
         self._id_property = None
+        self._inputs = None
         self.discriminator = None
 
-        self.inputs = inputs
         self.properties = properties
         if id_property is not None:
             self.id_property = id_property
-
-    @property
-    def inputs(self):
-        """Gets the inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-
-
-        :return: The inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-        :rtype: list[SimplePublicObjectId]
-        """
-        return self._inputs
-
-    @inputs.setter
-    def inputs(self, inputs):
-        """Sets the inputs of this BatchReadInputSimplePublicObjectId.
-
-
-        :param inputs: The inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-        :type: list[SimplePublicObjectId]
-        """
-        if (
-            self.local_vars_configuration.client_side_validation and inputs is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `inputs`, must not be `None`"
-            )  # noqa: E501
-
-        self._inputs = inputs
+        self.inputs = inputs
 
     @property
     def properties(self):
@@ -111,12 +78,8 @@ class BatchReadInputSimplePublicObjectId(object):
         :param properties: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -141,6 +104,29 @@ class BatchReadInputSimplePublicObjectId(object):
 
         self._id_property = id_property
 
+    @property
+    def inputs(self):
+        """Gets the inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+
+
+        :return: The inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :rtype: list[SimplePublicObjectId]
+        """
+        return self._inputs
+
+    @inputs.setter
+    def inputs(self, inputs):
+        """Sets the inputs of this BatchReadInputSimplePublicObjectId.
+
+
+        :param inputs: The inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :type: list[SimplePublicObjectId]
+        """
+        if self.local_vars_configuration.client_side_validation and inputs is None:  # noqa: E501
+            raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
+
+        self._inputs = inputs
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -148,20 +134,18 @@ class BatchReadInputSimplePublicObjectId(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

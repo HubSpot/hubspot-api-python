@@ -32,13 +32,17 @@ class CustomerSearchResponseExternal(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"result": "str", "customers": "list[AccountingExtensionCustomer]"}
+    openapi_types = {
+        'result': 'str',
+        'customers': 'list[AccountingExtensionCustomer]'
+    }
 
-    attribute_map = {"result": "@result", "customers": "customers"}
+    attribute_map = {
+        'result': '@result',
+        'customers': 'customers'
+    }
 
-    def __init__(
-        self, result=None, customers=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, result=None, customers=None, local_vars_configuration=None):  # noqa: E501
         """CustomerSearchResponseExternal - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,21 +75,13 @@ class CustomerSearchResponseExternal(object):
         :param result: The result of this CustomerSearchResponseExternal.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and result is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `result`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and result is None:  # noqa: E501
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
         allowed_values = ["OK", "ERR"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and result not in allowed_values
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and result not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `result` ({0}), must be one of {1}".format(  # noqa: E501
-                    result, allowed_values
-                )
+                "Invalid value for `result` ({0}), must be one of {1}"  # noqa: E501
+                .format(result, allowed_values)
             )
 
         self._result = result
@@ -110,12 +106,8 @@ class CustomerSearchResponseExternal(object):
         :param customers: The customers of this CustomerSearchResponseExternal.  # noqa: E501
         :type: list[AccountingExtensionCustomer]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and customers is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `customers`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and customers is None:  # noqa: E501
+            raise ValueError("Invalid value for `customers`, must not be `None`")  # noqa: E501
 
         self._customers = customers
 
@@ -126,20 +118,18 @@ class CustomerSearchResponseExternal(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

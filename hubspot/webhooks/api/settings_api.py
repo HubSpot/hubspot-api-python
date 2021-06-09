@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.webhooks.api_client import ApiClient
-from hubspot.webhooks.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.webhooks.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SettingsApi(object):
@@ -55,7 +58,7 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.clear_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def clear_with_http_info(self, app_id, **kwargs):  # noqa: E501
@@ -85,37 +88,36 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]
+        all_params = [
+            'app_id'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method clear" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method clear" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `clear`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `clear`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -126,16 +128,14 @@ class SettingsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/webhooks/v3/{appId}/settings",
-            "DELETE",
+            '/webhooks/v3/{appId}/settings', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -144,14 +144,11 @@ class SettingsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def configure(self, app_id, settings_change_request, **kwargs):  # noqa: E501
         """Configure webhook settings  # noqa: E501
@@ -176,14 +173,10 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.configure_with_http_info(
-            app_id, settings_change_request, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.configure_with_http_info(app_id, settings_change_request, **kwargs)  # noqa: E501
 
-    def configure_with_http_info(
-        self, app_id, settings_change_request, **kwargs
-    ):  # noqa: E501
+    def configure_with_http_info(self, app_id, settings_change_request, **kwargs):  # noqa: E501
         """Configure webhook settings  # noqa: E501
 
         Used to set the webhook target URL and max concurrency limit for the given app.  # noqa: E501
@@ -211,46 +204,41 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "settings_change_request"]
+        all_params = [
+            'app_id',
+            'settings_change_request'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method configure" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `configure`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `configure`")  # noqa: E501
         # verify the required parameter 'settings_change_request' is set
-        if self.api_client.client_side_validation and (
-            "settings_change_request" not in local_var_params
-            or local_var_params["settings_change_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `settings_change_request` when calling `configure`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('settings_change_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['settings_change_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `settings_change_request` when calling `configure`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -260,42 +248,34 @@ class SettingsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "settings_change_request" in local_var_params:
-            body_params = local_var_params["settings_change_request"]
+        if 'settings_change_request' in local_var_params:
+            body_params = local_var_params['settings_change_request']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/webhooks/v3/{appId}/settings",
-            "PUT",
+            '/webhooks/v3/{appId}/settings', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="SettingsResponse",  # noqa: E501
+            response_type='SettingsResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_all(self, app_id, **kwargs):  # noqa: E501
         """Get webhook settings  # noqa: E501
@@ -319,7 +299,7 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
@@ -349,37 +329,36 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]
+        all_params = [
+            'app_id'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -390,29 +369,24 @@ class SettingsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/webhooks/v3/{appId}/settings",
-            "GET",
+            '/webhooks/v3/{appId}/settings', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="SettingsResponse",  # noqa: E501
+            response_type='SettingsResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

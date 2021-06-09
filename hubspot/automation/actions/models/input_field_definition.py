@@ -33,24 +33,18 @@ class InputFieldDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "type_definition": "FieldTypeDefinition",
-        "supported_value_types": "list[str]",
-        "is_required": "bool",
+        'type_definition': 'FieldTypeDefinition',
+        'supported_value_types': 'list[str]',
+        'is_required': 'bool'
     }
 
     attribute_map = {
-        "type_definition": "typeDefinition",
-        "supported_value_types": "supportedValueTypes",
-        "is_required": "isRequired",
+        'type_definition': 'typeDefinition',
+        'supported_value_types': 'supportedValueTypes',
+        'is_required': 'isRequired'
     }
 
-    def __init__(
-        self,
-        type_definition=None,
-        supported_value_types=None,
-        is_required=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, type_definition=None, supported_value_types=None, is_required=None, local_vars_configuration=None):  # noqa: E501
         """InputFieldDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,13 +78,8 @@ class InputFieldDefinition(object):
         :param type_definition: The type_definition of this InputFieldDefinition.  # noqa: E501
         :type: FieldTypeDefinition
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type_definition is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type_definition`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type_definition is None:  # noqa: E501
+            raise ValueError("Invalid value for `type_definition`, must not be `None`")  # noqa: E501
 
         self._type_definition = type_definition
 
@@ -115,18 +104,12 @@ class InputFieldDefinition(object):
         :type: list[str]
         """
         allowed_values = ["STATIC_VALUE", "OBJECT_PROPERTY", "FIELD_DATA"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and not set(
-            supported_value_types
-        ).issubset(
-            set(allowed_values)
-        ):  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                not set(supported_value_types).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(
-                "Invalid values for `supported_value_types` [{0}], must be a subset of [{1}]".format(  # noqa: E501
-                    ", ".join(
-                        map(str, set(supported_value_types) - set(allowed_values))
-                    ),  # noqa: E501
-                    ", ".join(map(str, allowed_values)),
-                )
+                "Invalid values for `supported_value_types` [{0}], must be a subset of [{1}]"  # noqa: E501
+                .format(", ".join(map(str, set(supported_value_types) - set(allowed_values))),  # noqa: E501
+                        ", ".join(map(str, allowed_values)))
             )
 
         self._supported_value_types = supported_value_types
@@ -151,12 +134,8 @@ class InputFieldDefinition(object):
         :param is_required: The is_required of this InputFieldDefinition.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and is_required is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_required`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_required is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_required`, must not be `None`")  # noqa: E501
 
         self._is_required = is_required
 
@@ -167,20 +146,18 @@ class InputFieldDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

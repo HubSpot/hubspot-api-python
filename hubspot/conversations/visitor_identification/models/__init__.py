@@ -16,9 +16,5 @@ from __future__ import absolute_import
 # import models into model package
 from hubspot.conversations.visitor_identification.models.error import Error
 from hubspot.conversations.visitor_identification.models.error_detail import ErrorDetail
-from hubspot.conversations.visitor_identification.models.identification_token_generation_request import (
-    IdentificationTokenGenerationRequest,
-)
-from hubspot.conversations.visitor_identification.models.identification_token_response import (
-    IdentificationTokenResponse,
-)
+from hubspot.conversations.visitor_identification.models.identification_token_generation_request import IdentificationTokenGenerationRequest
+from hubspot.conversations.visitor_identification.models.identification_token_response import IdentificationTokenResponse

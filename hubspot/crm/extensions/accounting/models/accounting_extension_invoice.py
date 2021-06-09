@@ -33,42 +33,30 @@ class AccountingExtensionInvoice(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "amount_due": "float",
-        "balance": "float",
-        "due_date": "date",
-        "invoice_number": "str",
-        "customer_id": "str",
-        "currency": "str",
-        "invoice_link": "str",
-        "customer_name": "str",
-        "status": "str",
+        'amount_due': 'float',
+        'balance': 'float',
+        'due_date': 'date',
+        'invoice_number': 'str',
+        'customer_id': 'str',
+        'currency': 'str',
+        'invoice_link': 'str',
+        'customer_name': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
-        "amount_due": "amountDue",
-        "balance": "balance",
-        "due_date": "dueDate",
-        "invoice_number": "invoiceNumber",
-        "customer_id": "customerId",
-        "currency": "currency",
-        "invoice_link": "invoiceLink",
-        "customer_name": "customerName",
-        "status": "status",
+        'amount_due': 'amountDue',
+        'balance': 'balance',
+        'due_date': 'dueDate',
+        'invoice_number': 'invoiceNumber',
+        'customer_id': 'customerId',
+        'currency': 'currency',
+        'invoice_link': 'invoiceLink',
+        'customer_name': 'customerName',
+        'status': 'status'
     }
 
-    def __init__(
-        self,
-        amount_due=None,
-        balance=None,
-        due_date=None,
-        invoice_number=None,
-        customer_id=None,
-        currency=None,
-        invoice_link=None,
-        customer_name=None,
-        status=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, amount_due=None, balance=None, due_date=None, invoice_number=None, customer_id=None, currency=None, invoice_link=None, customer_name=None, status=None, local_vars_configuration=None):  # noqa: E501
         """AccountingExtensionInvoice - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -118,12 +106,8 @@ class AccountingExtensionInvoice(object):
         :param amount_due: The amount_due of this AccountingExtensionInvoice.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation and amount_due is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `amount_due`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and amount_due is None:  # noqa: E501
+            raise ValueError("Invalid value for `amount_due`, must not be `None`")  # noqa: E501
 
         self._amount_due = amount_due
 
@@ -170,12 +154,8 @@ class AccountingExtensionInvoice(object):
         :param due_date: The due_date of this AccountingExtensionInvoice.  # noqa: E501
         :type: date
         """
-        if (
-            self.local_vars_configuration.client_side_validation and due_date is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `due_date`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and due_date is None:  # noqa: E501
+            raise ValueError("Invalid value for `due_date`, must not be `None`")  # noqa: E501
 
         self._due_date = due_date
 
@@ -245,12 +225,8 @@ class AccountingExtensionInvoice(object):
         :param currency: The currency of this AccountingExtensionInvoice.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and currency is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `currency`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and currency is None:  # noqa: E501
+            raise ValueError("Invalid value for `currency`, must not be `None`")  # noqa: E501
 
         self._currency = currency
 
@@ -274,13 +250,8 @@ class AccountingExtensionInvoice(object):
         :param invoice_link: The invoice_link of this AccountingExtensionInvoice.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_link is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `invoice_link`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_link is None:  # noqa: E501
+            raise ValueError("Invalid value for `invoice_link`, must not be `None`")  # noqa: E501
 
         self._invoice_link = invoice_link
 
@@ -304,13 +275,8 @@ class AccountingExtensionInvoice(object):
         :param customer_name: The customer_name of this AccountingExtensionInvoice.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and customer_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `customer_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and customer_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `customer_name`, must not be `None`")  # noqa: E501
 
         self._customer_name = customer_name
 
@@ -334,28 +300,13 @@ class AccountingExtensionInvoice(object):
         :param status: The status of this AccountingExtensionInvoice.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and status is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        allowed_values = ["CREATED", "SENT", "PAID", "CLOSED", "OVERDUE", "VOIDED"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `status`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "CREATED",
-            "SENT",
-            "PAID",
-            "CLOSED",
-            "OVERDUE",
-            "VOIDED",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and status not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}".format(  # noqa: E501
-                    status, allowed_values
-                )
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
             )
 
         self._status = status
@@ -367,20 +318,18 @@ class AccountingExtensionInvoice(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

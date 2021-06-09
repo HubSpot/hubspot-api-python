@@ -33,27 +33,20 @@ class ExchangeRateResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "result": "str",
-        "exchange_rate": "float",
-        "source_currency_code": "str",
-        "target_currency_code": "str",
+        'result': 'str',
+        'exchange_rate': 'float',
+        'source_currency_code': 'str',
+        'target_currency_code': 'str'
     }
 
     attribute_map = {
-        "result": "@result",
-        "exchange_rate": "exchangeRate",
-        "source_currency_code": "sourceCurrencyCode",
-        "target_currency_code": "targetCurrencyCode",
+        'result': '@result',
+        'exchange_rate': 'exchangeRate',
+        'source_currency_code': 'sourceCurrencyCode',
+        'target_currency_code': 'targetCurrencyCode'
     }
 
-    def __init__(
-        self,
-        result=None,
-        exchange_rate=None,
-        source_currency_code=None,
-        target_currency_code=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, result=None, exchange_rate=None, source_currency_code=None, target_currency_code=None, local_vars_configuration=None):  # noqa: E501
         """ExchangeRateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -90,21 +83,13 @@ class ExchangeRateResponse(object):
         :param result: The result of this ExchangeRateResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and result is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `result`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and result is None:  # noqa: E501
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
         allowed_values = ["OK", "ERR"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and result not in allowed_values
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and result not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `result` ({0}), must be one of {1}".format(  # noqa: E501
-                    result, allowed_values
-                )
+                "Invalid value for `result` ({0}), must be one of {1}"  # noqa: E501
+                .format(result, allowed_values)
             )
 
         self._result = result
@@ -129,13 +114,8 @@ class ExchangeRateResponse(object):
         :param exchange_rate: The exchange_rate of this ExchangeRateResponse.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and exchange_rate is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `exchange_rate`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and exchange_rate is None:  # noqa: E501
+            raise ValueError("Invalid value for `exchange_rate`, must not be `None`")  # noqa: E501
 
         self._exchange_rate = exchange_rate
 
@@ -159,13 +139,8 @@ class ExchangeRateResponse(object):
         :param source_currency_code: The source_currency_code of this ExchangeRateResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and source_currency_code is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `source_currency_code`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and source_currency_code is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_currency_code`, must not be `None`")  # noqa: E501
 
         self._source_currency_code = source_currency_code
 
@@ -189,13 +164,8 @@ class ExchangeRateResponse(object):
         :param target_currency_code: The target_currency_code of this ExchangeRateResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and target_currency_code is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `target_currency_code`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and target_currency_code is None:  # noqa: E501
+            raise ValueError("Invalid value for `target_currency_code`, must not be `None`")  # noqa: E501
 
         self._target_currency_code = target_currency_code
 
@@ -206,20 +176,18 @@ class ExchangeRateResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

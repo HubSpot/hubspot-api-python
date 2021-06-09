@@ -33,33 +33,24 @@ class ActionLabels(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "input_field_labels": "dict(str, str)",
-        "input_field_descriptions": "dict(str, str)",
-        "action_name": "str",
-        "action_description": "str",
-        "app_display_name": "str",
-        "action_card_content": "str",
+        'input_field_labels': 'dict(str, str)',
+        'input_field_descriptions': 'dict(str, str)',
+        'action_name': 'str',
+        'action_description': 'str',
+        'app_display_name': 'str',
+        'action_card_content': 'str'
     }
 
     attribute_map = {
-        "input_field_labels": "inputFieldLabels",
-        "input_field_descriptions": "inputFieldDescriptions",
-        "action_name": "actionName",
-        "action_description": "actionDescription",
-        "app_display_name": "appDisplayName",
-        "action_card_content": "actionCardContent",
+        'input_field_labels': 'inputFieldLabels',
+        'input_field_descriptions': 'inputFieldDescriptions',
+        'action_name': 'actionName',
+        'action_description': 'actionDescription',
+        'app_display_name': 'appDisplayName',
+        'action_card_content': 'actionCardContent'
     }
 
-    def __init__(
-        self,
-        input_field_labels=None,
-        input_field_descriptions=None,
-        action_name=None,
-        action_description=None,
-        app_display_name=None,
-        action_card_content=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, input_field_labels=None, input_field_descriptions=None, action_name=None, action_description=None, app_display_name=None, action_card_content=None, local_vars_configuration=None):  # noqa: E501
         """ActionLabels - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -151,12 +142,8 @@ class ActionLabels(object):
         :param action_name: The action_name of this ActionLabels.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and action_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `action_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and action_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `action_name`, must not be `None`")  # noqa: E501
 
         self._action_name = action_name
 
@@ -236,20 +223,18 @@ class ActionLabels(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

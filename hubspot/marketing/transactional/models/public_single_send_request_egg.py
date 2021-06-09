@@ -33,27 +33,20 @@ class PublicSingleSendRequestEgg(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "message": "PublicSingleSendEmail",
-        "contact_properties": "dict(str, str)",
-        "custom_properties": "object",
-        "email_id": "int",
+        'message': 'PublicSingleSendEmail',
+        'contact_properties': 'dict(str, str)',
+        'custom_properties': 'object',
+        'email_id': 'int'
     }
 
     attribute_map = {
-        "message": "message",
-        "contact_properties": "contactProperties",
-        "custom_properties": "customProperties",
-        "email_id": "emailId",
+        'message': 'message',
+        'contact_properties': 'contactProperties',
+        'custom_properties': 'customProperties',
+        'email_id': 'emailId'
     }
 
-    def __init__(
-        self,
-        message=None,
-        contact_properties=None,
-        custom_properties=None,
-        email_id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, message=None, contact_properties=None, custom_properties=None, email_id=None, local_vars_configuration=None):  # noqa: E501
         """PublicSingleSendRequestEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -88,12 +81,8 @@ class PublicSingleSendRequestEgg(object):
         :param message: The message of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: PublicSingleSendEmail
         """
-        if (
-            self.local_vars_configuration.client_side_validation and message is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `message`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
 
@@ -117,13 +106,8 @@ class PublicSingleSendRequestEgg(object):
         :param contact_properties: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and contact_properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `contact_properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and contact_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `contact_properties`, must not be `None`")  # noqa: E501
 
         self._contact_properties = contact_properties
 
@@ -147,13 +131,8 @@ class PublicSingleSendRequestEgg(object):
         :param custom_properties: The custom_properties of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: object
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and custom_properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `custom_properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and custom_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `custom_properties`, must not be `None`")  # noqa: E501
 
         self._custom_properties = custom_properties
 
@@ -177,12 +156,8 @@ class PublicSingleSendRequestEgg(object):
         :param email_id: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and email_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `email_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and email_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `email_id`, must not be `None`")  # noqa: E501
 
         self._email_id = email_id
 
@@ -193,20 +168,18 @@ class PublicSingleSendRequestEgg(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

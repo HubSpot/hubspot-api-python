@@ -14,12 +14,10 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.crm.owners.models.collection_response_public_owner import (
-    CollectionResponsePublicOwner,
-)
+from hubspot.crm.owners.models.collection_response_public_owner_forward_paging import CollectionResponsePublicOwnerForwardPaging
 from hubspot.crm.owners.models.error import Error
 from hubspot.crm.owners.models.error_detail import ErrorDetail
+from hubspot.crm.owners.models.forward_paging import ForwardPaging
 from hubspot.crm.owners.models.next_page import NextPage
-from hubspot.crm.owners.models.paging import Paging
 from hubspot.crm.owners.models.public_owner import PublicOwner
 from hubspot.crm.owners.models.public_team import PublicTeam

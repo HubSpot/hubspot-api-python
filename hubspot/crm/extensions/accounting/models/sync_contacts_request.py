@@ -32,13 +32,17 @@ class SyncContactsRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"account_id": "str", "contacts": "list[UpdatedContact]"}
+    openapi_types = {
+        'account_id': 'str',
+        'contacts': 'list[UpdatedContact]'
+    }
 
-    attribute_map = {"account_id": "accountId", "contacts": "contacts"}
+    attribute_map = {
+        'account_id': 'accountId',
+        'contacts': 'contacts'
+    }
 
-    def __init__(
-        self, account_id=None, contacts=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, account_id=None, contacts=None, local_vars_configuration=None):  # noqa: E501
         """SyncContactsRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,12 +75,8 @@ class SyncContactsRequest(object):
         :param account_id: The account_id of this SyncContactsRequest.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and account_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `account_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and account_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `account_id`, must not be `None`")  # noqa: E501
 
         self._account_id = account_id
 
@@ -100,12 +100,8 @@ class SyncContactsRequest(object):
         :param contacts: The contacts of this SyncContactsRequest.  # noqa: E501
         :type: list[UpdatedContact]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and contacts is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `contacts`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and contacts is None:  # noqa: E501
+            raise ValueError("Invalid value for `contacts`, must not be `None`")  # noqa: E501
 
         self._contacts = contacts
 
@@ -116,20 +112,18 @@ class SyncContactsRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

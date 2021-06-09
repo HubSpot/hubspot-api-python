@@ -33,69 +33,48 @@ class File(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "created_at": "datetime",
-        "archived_at": "datetime",
-        "updated_at": "datetime",
-        "archived": "bool",
-        "parent_folder_id": "str",
-        "name": "str",
-        "path": "str",
-        "size": "int",
-        "height": "int",
-        "width": "int",
-        "encoding": "str",
-        "type": "str",
-        "extension": "str",
-        "default_hosting_url": "str",
-        "url": "str",
-        "is_usable_in_content": "bool",
-        "access": "str",
+        'id': 'str',
+        'created_at': 'datetime',
+        'archived_at': 'datetime',
+        'updated_at': 'datetime',
+        'archived': 'bool',
+        'parent_folder_id': 'str',
+        'name': 'str',
+        'path': 'str',
+        'size': 'int',
+        'height': 'int',
+        'width': 'int',
+        'encoding': 'str',
+        'type': 'str',
+        'extension': 'str',
+        'default_hosting_url': 'str',
+        'url': 'str',
+        'is_usable_in_content': 'bool',
+        'access': 'str'
     }
 
     attribute_map = {
-        "id": "id",
-        "created_at": "createdAt",
-        "archived_at": "archivedAt",
-        "updated_at": "updatedAt",
-        "archived": "archived",
-        "parent_folder_id": "parentFolderId",
-        "name": "name",
-        "path": "path",
-        "size": "size",
-        "height": "height",
-        "width": "width",
-        "encoding": "encoding",
-        "type": "type",
-        "extension": "extension",
-        "default_hosting_url": "defaultHostingUrl",
-        "url": "url",
-        "is_usable_in_content": "isUsableInContent",
-        "access": "access",
+        'id': 'id',
+        'created_at': 'createdAt',
+        'archived_at': 'archivedAt',
+        'updated_at': 'updatedAt',
+        'archived': 'archived',
+        'parent_folder_id': 'parentFolderId',
+        'name': 'name',
+        'path': 'path',
+        'size': 'size',
+        'height': 'height',
+        'width': 'width',
+        'encoding': 'encoding',
+        'type': 'type',
+        'extension': 'extension',
+        'default_hosting_url': 'defaultHostingUrl',
+        'url': 'url',
+        'is_usable_in_content': 'isUsableInContent',
+        'access': 'access'
     }
 
-    def __init__(
-        self,
-        id=None,
-        created_at=None,
-        archived_at=None,
-        updated_at=None,
-        archived=None,
-        parent_folder_id=None,
-        name=None,
-        path=None,
-        size=None,
-        height=None,
-        width=None,
-        encoding=None,
-        type=None,
-        extension=None,
-        default_hosting_url=None,
-        url=None,
-        is_usable_in_content=None,
-        access=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, created_at=None, archived_at=None, updated_at=None, archived=None, parent_folder_id=None, name=None, path=None, size=None, height=None, width=None, encoding=None, type=None, extension=None, default_hosting_url=None, url=None, is_usable_in_content=None, access=None, local_vars_configuration=None):  # noqa: E501
         """File - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -576,7 +555,10 @@ class File(object):
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
         allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `access` ({0}), must be one of {1}"  # noqa: E501
+                .format(access, allowed_values)
+            )
 
         self._access = access
 
@@ -587,11 +569,18 @@ class File(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

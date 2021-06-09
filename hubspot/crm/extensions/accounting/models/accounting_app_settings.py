@@ -33,16 +33,18 @@ class AccountingAppSettings(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "app_id": "int",
-        "urls": "AccountingAppUrls",
-        "features": "AccountingFeatures",
+        'app_id': 'int',
+        'urls': 'AccountingAppUrls',
+        'features': 'AccountingFeatures'
     }
 
-    attribute_map = {"app_id": "appId", "urls": "urls", "features": "features"}
+    attribute_map = {
+        'app_id': 'appId',
+        'urls': 'urls',
+        'features': 'features'
+    }
 
-    def __init__(
-        self, app_id=None, urls=None, features=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, app_id=None, urls=None, features=None, local_vars_configuration=None):  # noqa: E501
         """AccountingAppSettings - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,12 +80,8 @@ class AccountingAppSettings(object):
         :param app_id: The app_id of this AccountingAppSettings.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and app_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `app_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
 
         self._app_id = app_id
 
@@ -105,12 +103,8 @@ class AccountingAppSettings(object):
         :param urls: The urls of this AccountingAppSettings.  # noqa: E501
         :type: AccountingAppUrls
         """
-        if (
-            self.local_vars_configuration.client_side_validation and urls is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `urls`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and urls is None:  # noqa: E501
+            raise ValueError("Invalid value for `urls`, must not be `None`")  # noqa: E501
 
         self._urls = urls
 
@@ -142,20 +136,18 @@ class AccountingAppSettings(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

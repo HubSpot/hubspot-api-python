@@ -17,6 +17,4 @@ from __future__ import absolute_import
 from hubspot.cms.performance.models.error import Error
 from hubspot.cms.performance.models.error_detail import ErrorDetail
 from hubspot.cms.performance.models.performance_view import PerformanceView
-from hubspot.cms.performance.models.public_performance_response import (
-    PublicPerformanceResponse,
-)
+from hubspot.cms.performance.models.public_performance_response import PublicPerformanceResponse
