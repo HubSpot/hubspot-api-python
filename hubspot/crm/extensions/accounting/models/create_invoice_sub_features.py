@@ -33,33 +33,24 @@ class CreateInvoiceSubFeatures(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "create_customer": "bool",
-        "taxes": "bool",
-        "exchange_rates": "bool",
-        "terms": "bool",
-        "invoice_comments": "bool",
-        "invoice_discounts": "bool",
+        'create_customer': 'bool',
+        'taxes': 'bool',
+        'exchange_rates': 'bool',
+        'terms': 'bool',
+        'invoice_comments': 'bool',
+        'invoice_discounts': 'bool'
     }
 
     attribute_map = {
-        "create_customer": "createCustomer",
-        "taxes": "taxes",
-        "exchange_rates": "exchangeRates",
-        "terms": "terms",
-        "invoice_comments": "invoiceComments",
-        "invoice_discounts": "invoiceDiscounts",
+        'create_customer': 'createCustomer',
+        'taxes': 'taxes',
+        'exchange_rates': 'exchangeRates',
+        'terms': 'terms',
+        'invoice_comments': 'invoiceComments',
+        'invoice_discounts': 'invoiceDiscounts'
     }
 
-    def __init__(
-        self,
-        create_customer=None,
-        taxes=None,
-        exchange_rates=None,
-        terms=None,
-        invoice_comments=None,
-        invoice_discounts=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, create_customer=None, taxes=None, exchange_rates=None, terms=None, invoice_comments=None, invoice_discounts=None, local_vars_configuration=None):  # noqa: E501
         """CreateInvoiceSubFeatures - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -100,13 +91,8 @@ class CreateInvoiceSubFeatures(object):
         :param create_customer: The create_customer of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and create_customer is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `create_customer`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and create_customer is None:  # noqa: E501
+            raise ValueError("Invalid value for `create_customer`, must not be `None`")  # noqa: E501
 
         self._create_customer = create_customer
 
@@ -130,12 +116,8 @@ class CreateInvoiceSubFeatures(object):
         :param taxes: The taxes of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and taxes is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `taxes`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and taxes is None:  # noqa: E501
+            raise ValueError("Invalid value for `taxes`, must not be `None`")  # noqa: E501
 
         self._taxes = taxes
 
@@ -159,13 +141,8 @@ class CreateInvoiceSubFeatures(object):
         :param exchange_rates: The exchange_rates of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and exchange_rates is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `exchange_rates`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and exchange_rates is None:  # noqa: E501
+            raise ValueError("Invalid value for `exchange_rates`, must not be `None`")  # noqa: E501
 
         self._exchange_rates = exchange_rates
 
@@ -189,12 +166,8 @@ class CreateInvoiceSubFeatures(object):
         :param terms: The terms of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and terms is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `terms`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and terms is None:  # noqa: E501
+            raise ValueError("Invalid value for `terms`, must not be `None`")  # noqa: E501
 
         self._terms = terms
 
@@ -218,13 +191,8 @@ class CreateInvoiceSubFeatures(object):
         :param invoice_comments: The invoice_comments of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_comments is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `invoice_comments`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_comments is None:  # noqa: E501
+            raise ValueError("Invalid value for `invoice_comments`, must not be `None`")  # noqa: E501
 
         self._invoice_comments = invoice_comments
 
@@ -248,13 +216,8 @@ class CreateInvoiceSubFeatures(object):
         :param invoice_discounts: The invoice_discounts of this CreateInvoiceSubFeatures.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_discounts is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `invoice_discounts`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_discounts is None:  # noqa: E501
+            raise ValueError("Invalid value for `invoice_discounts`, must not be `None`")  # noqa: E501
 
         self._invoice_discounts = invoice_discounts
 
@@ -265,20 +228,18 @@ class CreateInvoiceSubFeatures(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

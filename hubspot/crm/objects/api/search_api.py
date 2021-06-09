@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.objects.api_client import ApiClient
-from hubspot.crm.objects.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.objects.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SearchApi(object):
@@ -33,13 +36,13 @@ class SearchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def search(self, object_type, public_object_search_request, **kwargs):  # noqa: E501
+    def do_search(self, object_type, public_object_search_request, **kwargs):  # noqa: E501
         """Filter, Sort, and Search CRM Objects  # noqa: E501
 
         Filter, Sort, and Search CRM Objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.search(object_type, public_object_search_request, async_req=True)
+        >>> thread = api.do_search(object_type, public_object_search_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -52,24 +55,20 @@ class SearchApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalSimplePublicObject
+        :return: CollectionResponseWithTotalSimplePublicObjectForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.search_with_http_info(
-            object_type, public_object_search_request, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.do_search_with_http_info(object_type, public_object_search_request, **kwargs)  # noqa: E501
 
-    def search_with_http_info(
-        self, object_type, public_object_search_request, **kwargs
-    ):  # noqa: E501
+    def do_search_with_http_info(self, object_type, public_object_search_request, **kwargs):  # noqa: E501
         """Filter, Sort, and Search CRM Objects  # noqa: E501
 
         Filter, Sort, and Search CRM Objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.search_with_http_info(object_type, public_object_search_request, async_req=True)
+        >>> thread = api.do_search_with_http_info(object_type, public_object_search_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -84,52 +83,48 @@ class SearchApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalSimplePublicObject, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseWithTotalSimplePublicObjectForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "public_object_search_request"]
+        all_params = [
+            'object_type',
+            'public_object_search_request'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method search" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method do_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `do_search`")  # noqa: E501
         # verify the required parameter 'public_object_search_request' is set
-        if self.api_client.client_side_validation and (
-            "public_object_search_request" not in local_var_params
-            or local_var_params["public_object_search_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `public_object_search_request` when calling `search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('public_object_search_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['public_object_search_request'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_object_search_request` when calling `do_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
 
         query_params = []
 
@@ -139,39 +134,31 @@ class SearchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "public_object_search_request" in local_var_params:
-            body_params = local_var_params["public_object_search_request"]
+        if 'public_object_search_request' in local_var_params:
+            body_params = local_var_params['public_object_search_request']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/{objectType}/search",
-            "POST",
+            '/crm/v3/objects/{objectType}/search', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalSimplePublicObject",  # noqa: E501
+            response_type='CollectionResponseWithTotalSimplePublicObjectForwardPaging',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

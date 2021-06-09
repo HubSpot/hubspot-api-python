@@ -33,39 +33,28 @@ class InvoiceUpdateRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "external_invoice_number": "str",
-        "currency_code": "str",
-        "due_date": "date",
-        "external_recipient_id": "str",
-        "received_by_recipient_date": "int",
-        "is_voided": "bool",
-        "received_by_customer_date": "str",
-        "invoice_number": "str",
+        'external_invoice_number': 'str',
+        'currency_code': 'str',
+        'due_date': 'date',
+        'external_recipient_id': 'str',
+        'received_by_recipient_date': 'int',
+        'is_voided': 'bool',
+        'received_by_customer_date': 'str',
+        'invoice_number': 'str'
     }
 
     attribute_map = {
-        "external_invoice_number": "externalInvoiceNumber",
-        "currency_code": "currencyCode",
-        "due_date": "dueDate",
-        "external_recipient_id": "externalRecipientId",
-        "received_by_recipient_date": "receivedByRecipientDate",
-        "is_voided": "isVoided",
-        "received_by_customer_date": "receivedByCustomerDate",
-        "invoice_number": "invoiceNumber",
+        'external_invoice_number': 'externalInvoiceNumber',
+        'currency_code': 'currencyCode',
+        'due_date': 'dueDate',
+        'external_recipient_id': 'externalRecipientId',
+        'received_by_recipient_date': 'receivedByRecipientDate',
+        'is_voided': 'isVoided',
+        'received_by_customer_date': 'receivedByCustomerDate',
+        'invoice_number': 'invoiceNumber'
     }
 
-    def __init__(
-        self,
-        external_invoice_number=None,
-        currency_code=None,
-        due_date=None,
-        external_recipient_id=None,
-        received_by_recipient_date=None,
-        is_voided=None,
-        received_by_customer_date=None,
-        invoice_number=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, external_invoice_number=None, currency_code=None, due_date=None, external_recipient_id=None, received_by_recipient_date=None, is_voided=None, received_by_customer_date=None, invoice_number=None, local_vars_configuration=None):  # noqa: E501
         """InvoiceUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -285,20 +274,18 @@ class InvoiceUpdateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

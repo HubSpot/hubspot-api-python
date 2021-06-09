@@ -16,6 +16,4 @@ from __future__ import absolute_import
 # import models into model package
 from hubspot.crm.extensions.videoconferencing.models.error import Error
 from hubspot.crm.extensions.videoconferencing.models.error_detail import ErrorDetail
-from hubspot.crm.extensions.videoconferencing.models.external_settings import (
-    ExternalSettings,
-)
+from hubspot.crm.extensions.videoconferencing.models.external_settings import ExternalSettings

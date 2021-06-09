@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.imports.api_client import ApiClient
-from hubspot.crm.imports.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.imports.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class CoreApi(object):
@@ -55,7 +58,7 @@ class CoreApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.cancel_with_http_info(import_id, **kwargs)  # noqa: E501
 
     def cancel_with_http_info(self, import_id, **kwargs):  # noqa: E501
@@ -85,37 +88,36 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]
+        all_params = [
+            'import_id'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method cancel" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method cancel" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'import_id' is set
-        if self.api_client.client_side_validation and (
-            "import_id" not in local_var_params
-            or local_var_params["import_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `import_id` when calling `cancel`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `cancel`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "import_id" in local_var_params:
-            path_params["importId"] = local_var_params["import_id"]  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['importId'] = local_var_params['import_id']  # noqa: E501
 
         query_params = []
 
@@ -126,32 +128,27 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/imports/{importId}/cancel",
-            "POST",
+            '/crm/v3/imports/{importId}/cancel', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionResponse",  # noqa: E501
+            response_type='ActionResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, **kwargs):  # noqa: E501
         """Start a new import  # noqa: E501
@@ -176,7 +173,7 @@ class CoreApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(**kwargs)  # noqa: E501
 
     def create_with_http_info(self, **kwargs):  # noqa: E501
@@ -207,23 +204,27 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["files", "import_request"]
+        all_params = [
+            'files',
+            'import_request'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
@@ -235,48 +236,38 @@ class CoreApi(object):
 
         form_params = []
         local_var_files = {}
-        if "files" in local_var_params:
-            local_var_files["files"] = local_var_params["files"]  # noqa: E501
-        if "import_request" in local_var_params:
-            form_params.append(
-                ("importRequest", local_var_params["import_request"])
-            )  # noqa: E501
+        if 'files' in local_var_params:
+            local_var_files['files'] = local_var_params['files']  # noqa: E501
+        if 'import_request' in local_var_params:
+            form_params.append(('importRequest', local_var_params['import_request']))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["multipart/form-data"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/imports/",
-            "POST",
+            '/crm/v3/imports/', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicImportResponse",  # noqa: E501
+            response_type='PublicImportResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, import_id, **kwargs):  # noqa: E501
         """Get the information on any import  # noqa: E501
@@ -300,7 +291,7 @@ class CoreApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(import_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, import_id, **kwargs):  # noqa: E501
@@ -330,38 +321,36 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id"]
+        all_params = [
+            'import_id'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'import_id' is set
-        if self.api_client.client_side_validation and (
-            "import_id" not in local_var_params
-            or local_var_params["import_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `import_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "import_id" in local_var_params:
-            path_params["importId"] = local_var_params["import_id"]  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['importId'] = local_var_params['import_id']  # noqa: E501
 
         query_params = []
 
@@ -372,32 +361,27 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/imports/{importId}",
-            "GET",
+            '/crm/v3/imports/{importId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicImportResponse",  # noqa: E501
+            response_type='PublicImportResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_page(self, **kwargs):  # noqa: E501
         """Get active imports  # noqa: E501
@@ -423,7 +407,7 @@ class CoreApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -455,42 +439,40 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["after", "before", "limit"]
+        all_params = [
+            'after',
+            'before',
+            'limit'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_page" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
-            query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if (
-            "before" in local_var_params and local_var_params["before"] is not None
-        ):  # noqa: E501
-            query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
+            query_params.append(('after', local_var_params['after']))  # noqa: E501
+        if 'before' in local_var_params and local_var_params['before'] is not None:  # noqa: E501
+            query_params.append(('before', local_var_params['before']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -499,29 +481,24 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/imports/",
-            "GET",
+            '/crm/v3/imports/', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponsePublicImportResponse",  # noqa: E501
+            response_type='CollectionResponsePublicImportResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

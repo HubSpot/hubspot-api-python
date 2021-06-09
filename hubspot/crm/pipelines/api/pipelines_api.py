@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.pipelines.api_client import ApiClient
-from hubspot.crm.pipelines.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.pipelines.exceptions import (  # noqa: F401
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class PipelinesApi(object):
@@ -56,10 +59,8 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.archive_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Archive a pipeline  # noqa: E501
@@ -89,47 +90,43 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id"]
+        all_params = [
+            'object_type',
+            'pipeline_id'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
-        if "pipeline_id" in local_var_params:
-            path_params["pipelineId"] = local_var_params["pipeline_id"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if 'pipeline_id' in local_var_params:
+            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
 
         query_params = []
 
@@ -140,16 +137,14 @@ class PipelinesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}/{pipelineId}",
-            "DELETE",
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -158,14 +153,11 @@ class PipelinesApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, object_type, **kwargs):  # noqa: E501
         """Create a pipeline  # noqa: E501
@@ -190,7 +182,7 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(object_type, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, object_type, **kwargs):  # noqa: E501
@@ -221,37 +213,37 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_input"]
+        all_params = [
+            'object_type',
+            'pipeline_input'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
 
         query_params = []
 
@@ -261,42 +253,34 @@ class PipelinesApi(object):
         local_var_files = {}
 
         body_params = None
-        if "pipeline_input" in local_var_params:
-            body_params = local_var_params["pipeline_input"]
+        if 'pipeline_input' in local_var_params:
+            body_params = local_var_params['pipeline_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}",
-            "POST",
+            '/crm/v3/pipelines/{objectType}', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Pipeline",  # noqa: E501
+            response_type='Pipeline',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_all(self, object_type, **kwargs):  # noqa: E501
         """Retrieve all pipelines  # noqa: E501
@@ -321,7 +305,7 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_all_with_http_info(object_type, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, object_type, **kwargs):  # noqa: E501
@@ -352,45 +336,41 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "archived"]
+        all_params = [
+            'object_type',
+            'archived'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -399,32 +379,27 @@ class PipelinesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}",
-            "GET",
+            '/crm/v3/pipelines/{objectType}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponsePipeline",  # noqa: E501
+            response_type='CollectionResponsePipeline',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return a pipeline by ID  # noqa: E501
@@ -450,14 +425,10 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.get_by_id_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(
-        self, object_type, pipeline_id, **kwargs
-    ):  # noqa: E501
+    def get_by_id_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return a pipeline by ID  # noqa: E501
 
         Return a single pipeline object identified by its unique `{pipelineId}`.  # noqa: E501
@@ -486,56 +457,48 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "archived"]
+        all_params = [
+            'object_type',
+            'pipeline_id',
+            'archived'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
-        if "pipeline_id" in local_var_params:
-            path_params["pipelineId"] = local_var_params["pipeline_id"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if 'pipeline_id' in local_var_params:
+            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -544,32 +507,27 @@ class PipelinesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}/{pipelineId}",
-            "GET",
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Pipeline",  # noqa: E501
+            response_type='Pipeline',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def replace(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Replace a pipeline  # noqa: E501
@@ -595,10 +553,8 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.replace_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.replace_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
     def replace_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Replace a pipeline  # noqa: E501
@@ -629,47 +585,44 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "pipeline_input"]
+        all_params = [
+            'object_type',
+            'pipeline_id',
+            'pipeline_input'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method replace" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method replace" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `replace`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
-        if "pipeline_id" in local_var_params:
-            path_params["pipelineId"] = local_var_params["pipeline_id"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if 'pipeline_id' in local_var_params:
+            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
 
         query_params = []
 
@@ -679,42 +632,34 @@ class PipelinesApi(object):
         local_var_files = {}
 
         body_params = None
-        if "pipeline_input" in local_var_params:
-            body_params = local_var_params["pipeline_input"]
+        if 'pipeline_input' in local_var_params:
+            body_params = local_var_params['pipeline_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}/{pipelineId}",
-            "PUT",
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Pipeline",  # noqa: E501
+            response_type='Pipeline',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Update a pipeline  # noqa: E501
@@ -741,10 +686,8 @@ class PipelinesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.update_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Update a pipeline  # noqa: E501
@@ -776,55 +719,49 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "archived", "pipeline_patch_input"]
+        all_params = [
+            'object_type',
+            'pipeline_id',
+            'archived',
+            'pipeline_patch_input'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_type'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('pipeline_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
-        if "pipeline_id" in local_var_params:
-            path_params["pipelineId"] = local_var_params["pipeline_id"]  # noqa: E501
+        if 'object_type' in local_var_params:
+            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
+        if 'pipeline_id' in local_var_params:
+            path_params['pipelineId'] = local_var_params['pipeline_id']  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -832,39 +769,31 @@ class PipelinesApi(object):
         local_var_files = {}
 
         body_params = None
-        if "pipeline_patch_input" in local_var_params:
-            body_params = local_var_params["pipeline_patch_input"]
+        if 'pipeline_patch_input' in local_var_params:
+            body_params = local_var_params['pipeline_patch_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/pipelines/{objectType}/{pipelineId}",
-            "PATCH",
+            '/crm/v3/pipelines/{objectType}/{pipelineId}', 'PATCH',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Pipeline",  # noqa: E501
+            response_type='Pipeline',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

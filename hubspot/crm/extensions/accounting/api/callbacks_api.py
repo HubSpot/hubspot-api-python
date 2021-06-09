@@ -20,7 +20,7 @@ import six
 from hubspot.crm.extensions.accounting.api_client import ApiClient
 from hubspot.crm.extensions.accounting.exceptions import (  # noqa: F401
     ApiTypeError,
-    ApiValueError,
+    ApiValueError
 )
 
 
@@ -36,9 +36,7 @@ class CallbacksApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_customer(
-        self, request_id, result_id_accounting_response, **kwargs
-    ):  # noqa: E501
+    def create_customer(self, request_id, result_id_accounting_response, **kwargs):  # noqa: E501
         """Endpoint for customer creation response  # noqa: E501
 
         Call this endpoint with the response to a customer creation request.  # noqa: E501
@@ -61,14 +59,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_customer_with_http_info(
-            request_id, result_id_accounting_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.create_customer_with_http_info(request_id, result_id_accounting_response, **kwargs)  # noqa: E501
 
-    def create_customer_with_http_info(
-        self, request_id, result_id_accounting_response, **kwargs
-    ):  # noqa: E501
+    def create_customer_with_http_info(self, request_id, result_id_accounting_response, **kwargs):  # noqa: E501
         """Endpoint for customer creation response  # noqa: E501
 
         Call this endpoint with the response to a customer creation request.  # noqa: E501
@@ -96,46 +90,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "result_id_accounting_response"]
+        all_params = [
+            'request_id',
+            'result_id_accounting_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_customer" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `create_customer`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `create_customer`")  # noqa: E501
         # verify the required parameter 'result_id_accounting_response' is set
-        if self.api_client.client_side_validation and (
-            "result_id_accounting_response" not in local_var_params
-            or local_var_params["result_id_accounting_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `result_id_accounting_response` when calling `create_customer`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('result_id_accounting_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['result_id_accounting_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `result_id_accounting_response` when calling `create_customer`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -145,26 +134,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "result_id_accounting_response" in local_var_params:
-            body_params = local_var_params["result_id_accounting_response"]
+        if 'result_id_accounting_response' in local_var_params:
+            body_params = local_var_params['result_id_accounting_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/customer-create/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/customer-create/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -173,18 +157,13 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def create_exchange_rate(
-        self, request_id, exchange_rate_response, **kwargs
-    ):  # noqa: E501
+    def create_exchange_rate(self, request_id, exchange_rate_response, **kwargs):  # noqa: E501
         """Endpoint for exchange rate response  # noqa: E501
 
         Call this endpoint with the response to an exchange rate request.  # noqa: E501
@@ -207,14 +186,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_exchange_rate_with_http_info(
-            request_id, exchange_rate_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.create_exchange_rate_with_http_info(request_id, exchange_rate_response, **kwargs)  # noqa: E501
 
-    def create_exchange_rate_with_http_info(
-        self, request_id, exchange_rate_response, **kwargs
-    ):  # noqa: E501
+    def create_exchange_rate_with_http_info(self, request_id, exchange_rate_response, **kwargs):  # noqa: E501
         """Endpoint for exchange rate response  # noqa: E501
 
         Call this endpoint with the response to an exchange rate request.  # noqa: E501
@@ -242,46 +217,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "exchange_rate_response"]
+        all_params = [
+            'request_id',
+            'exchange_rate_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_exchange_rate" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `create_exchange_rate`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `create_exchange_rate`")  # noqa: E501
         # verify the required parameter 'exchange_rate_response' is set
-        if self.api_client.client_side_validation and (
-            "exchange_rate_response" not in local_var_params
-            or local_var_params["exchange_rate_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `exchange_rate_response` when calling `create_exchange_rate`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('exchange_rate_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['exchange_rate_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `exchange_rate_response` when calling `create_exchange_rate`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -291,26 +261,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "exchange_rate_response" in local_var_params:
-            body_params = local_var_params["exchange_rate_response"]
+        if 'exchange_rate_response' in local_var_params:
+            body_params = local_var_params['exchange_rate_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/exchange-rate/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/exchange-rate/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -319,18 +284,13 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def create_invoice(
-        self, request_id, result_id_accounting_response, **kwargs
-    ):  # noqa: E501
+    def create_invoice(self, request_id, result_id_accounting_response, **kwargs):  # noqa: E501
         """Endpoint for invoice creation response  # noqa: E501
 
         Call this endpoint with the response to a invoice creation request.  # noqa: E501
@@ -353,14 +313,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_invoice_with_http_info(
-            request_id, result_id_accounting_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.create_invoice_with_http_info(request_id, result_id_accounting_response, **kwargs)  # noqa: E501
 
-    def create_invoice_with_http_info(
-        self, request_id, result_id_accounting_response, **kwargs
-    ):  # noqa: E501
+    def create_invoice_with_http_info(self, request_id, result_id_accounting_response, **kwargs):  # noqa: E501
         """Endpoint for invoice creation response  # noqa: E501
 
         Call this endpoint with the response to a invoice creation request.  # noqa: E501
@@ -388,46 +344,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "result_id_accounting_response"]
+        all_params = [
+            'request_id',
+            'result_id_accounting_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_invoice" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `create_invoice`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `create_invoice`")  # noqa: E501
         # verify the required parameter 'result_id_accounting_response' is set
-        if self.api_client.client_side_validation and (
-            "result_id_accounting_response" not in local_var_params
-            or local_var_params["result_id_accounting_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `result_id_accounting_response` when calling `create_invoice`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('result_id_accounting_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['result_id_accounting_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `result_id_accounting_response` when calling `create_invoice`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -437,26 +388,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "result_id_accounting_response" in local_var_params:
-            body_params = local_var_params["result_id_accounting_response"]
+        if 'result_id_accounting_response' in local_var_params:
+            body_params = local_var_params['result_id_accounting_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/invoice-create/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/invoice-create/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -465,14 +411,11 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create_term(self, request_id, terms_response, **kwargs):  # noqa: E501
         """Endpoint for terms search response  # noqa: E501
@@ -497,14 +440,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_term_with_http_info(
-            request_id, terms_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.create_term_with_http_info(request_id, terms_response, **kwargs)  # noqa: E501
 
-    def create_term_with_http_info(
-        self, request_id, terms_response, **kwargs
-    ):  # noqa: E501
+    def create_term_with_http_info(self, request_id, terms_response, **kwargs):  # noqa: E501
         """Endpoint for terms search response  # noqa: E501
 
         Call this endpoint with the response to a terms search request.  # noqa: E501
@@ -532,46 +471,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "terms_response"]
+        all_params = [
+            'request_id',
+            'terms_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_term" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `create_term`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `create_term`")  # noqa: E501
         # verify the required parameter 'terms_response' is set
-        if self.api_client.client_side_validation and (
-            "terms_response" not in local_var_params
-            or local_var_params["terms_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `terms_response` when calling `create_term`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('terms_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['terms_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `terms_response` when calling `create_term`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -581,26 +515,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "terms_response" in local_var_params:
-            body_params = local_var_params["terms_response"]
+        if 'terms_response' in local_var_params:
+            body_params = local_var_params['terms_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/terms/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/terms/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -609,18 +538,13 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def do_customer_search(
-        self, request_id, customer_search_response_external, **kwargs
-    ):  # noqa: E501
+    def do_customer_search(self, request_id, customer_search_response_external, **kwargs):  # noqa: E501
         """Endpoint for customer search response  # noqa: E501
 
         Call this endpoint with the response to a customer search request.  # noqa: E501
@@ -643,14 +567,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.do_customer_search_with_http_info(
-            request_id, customer_search_response_external, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.do_customer_search_with_http_info(request_id, customer_search_response_external, **kwargs)  # noqa: E501
 
-    def do_customer_search_with_http_info(
-        self, request_id, customer_search_response_external, **kwargs
-    ):  # noqa: E501
+    def do_customer_search_with_http_info(self, request_id, customer_search_response_external, **kwargs):  # noqa: E501
         """Endpoint for customer search response  # noqa: E501
 
         Call this endpoint with the response to a customer search request.  # noqa: E501
@@ -678,47 +598,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "customer_search_response_external"]
+        all_params = [
+            'request_id',
+            'customer_search_response_external'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_customer_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `do_customer_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `do_customer_search`")  # noqa: E501
         # verify the required parameter 'customer_search_response_external' is set
-        if self.api_client.client_side_validation and (
-            "customer_search_response_external" not in local_var_params
-            or local_var_params["customer_search_response_external"]  # noqa: E501
-            is None
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `customer_search_response_external` when calling `do_customer_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('customer_search_response_external' not in local_var_params or  # noqa: E501
+                                                        local_var_params['customer_search_response_external'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `customer_search_response_external` when calling `do_customer_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -728,26 +642,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "customer_search_response_external" in local_var_params:
-            body_params = local_var_params["customer_search_response_external"]
+        if 'customer_search_response_external' in local_var_params:
+            body_params = local_var_params['customer_search_response_external']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/customer-search/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/customer-search/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -756,18 +665,13 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def do_invoice_search(
-        self, request_id, invoice_search_response, **kwargs
-    ):  # noqa: E501
+    def do_invoice_search(self, request_id, invoice_search_response, **kwargs):  # noqa: E501
         """Endpoint for invoice search response  # noqa: E501
 
         Call this endpoint with the response to a invoice search request.  # noqa: E501
@@ -790,14 +694,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.do_invoice_search_with_http_info(
-            request_id, invoice_search_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.do_invoice_search_with_http_info(request_id, invoice_search_response, **kwargs)  # noqa: E501
 
-    def do_invoice_search_with_http_info(
-        self, request_id, invoice_search_response, **kwargs
-    ):  # noqa: E501
+    def do_invoice_search_with_http_info(self, request_id, invoice_search_response, **kwargs):  # noqa: E501
         """Endpoint for invoice search response  # noqa: E501
 
         Call this endpoint with the response to a invoice search request.  # noqa: E501
@@ -825,46 +725,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoice_search_response"]
+        all_params = [
+            'request_id',
+            'invoice_search_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_invoice_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `do_invoice_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `do_invoice_search`")  # noqa: E501
         # verify the required parameter 'invoice_search_response' is set
-        if self.api_client.client_side_validation and (
-            "invoice_search_response" not in local_var_params
-            or local_var_params["invoice_search_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `invoice_search_response` when calling `do_invoice_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('invoice_search_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['invoice_search_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `invoice_search_response` when calling `do_invoice_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -874,26 +769,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "invoice_search_response" in local_var_params:
-            body_params = local_var_params["invoice_search_response"]
+        if 'invoice_search_response' in local_var_params:
+            body_params = local_var_params['invoice_search_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/invoice-search/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/invoice-search/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -902,18 +792,13 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def do_product_search(
-        self, request_id, product_search_response, **kwargs
-    ):  # noqa: E501
+    def do_product_search(self, request_id, product_search_response, **kwargs):  # noqa: E501
         """Endpoint for product search response  # noqa: E501
 
         Call this endpoint with the response to a product search request.  # noqa: E501
@@ -936,14 +821,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.do_product_search_with_http_info(
-            request_id, product_search_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.do_product_search_with_http_info(request_id, product_search_response, **kwargs)  # noqa: E501
 
-    def do_product_search_with_http_info(
-        self, request_id, product_search_response, **kwargs
-    ):  # noqa: E501
+    def do_product_search_with_http_info(self, request_id, product_search_response, **kwargs):  # noqa: E501
         """Endpoint for product search response  # noqa: E501
 
         Call this endpoint with the response to a product search request.  # noqa: E501
@@ -971,46 +852,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "product_search_response"]
+        all_params = [
+            'request_id',
+            'product_search_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_product_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `do_product_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `do_product_search`")  # noqa: E501
         # verify the required parameter 'product_search_response' is set
-        if self.api_client.client_side_validation and (
-            "product_search_response" not in local_var_params
-            or local_var_params["product_search_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `product_search_response` when calling `do_product_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('product_search_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['product_search_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `product_search_response` when calling `do_product_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -1020,26 +896,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "product_search_response" in local_var_params:
-            body_params = local_var_params["product_search_response"]
+        if 'product_search_response' in local_var_params:
+            body_params = local_var_params['product_search_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/product-search/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/product-search/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1048,14 +919,11 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def do_tax_search(self, request_id, tax_search_response, **kwargs):  # noqa: E501
         """Endpoint for taxes search response  # noqa: E501
@@ -1080,14 +948,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.do_tax_search_with_http_info(
-            request_id, tax_search_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.do_tax_search_with_http_info(request_id, tax_search_response, **kwargs)  # noqa: E501
 
-    def do_tax_search_with_http_info(
-        self, request_id, tax_search_response, **kwargs
-    ):  # noqa: E501
+    def do_tax_search_with_http_info(self, request_id, tax_search_response, **kwargs):  # noqa: E501
         """Endpoint for taxes search response  # noqa: E501
 
         Call this endpoint with the response to a taxes search request.  # noqa: E501
@@ -1115,46 +979,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "tax_search_response"]
+        all_params = [
+            'request_id',
+            'tax_search_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_tax_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `do_tax_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `do_tax_search`")  # noqa: E501
         # verify the required parameter 'tax_search_response' is set
-        if self.api_client.client_side_validation and (
-            "tax_search_response" not in local_var_params
-            or local_var_params["tax_search_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `tax_search_response` when calling `do_tax_search`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('tax_search_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['tax_search_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `tax_search_response` when calling `do_tax_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -1164,26 +1023,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "tax_search_response" in local_var_params:
-            body_params = local_var_params["tax_search_response"]
+        if 'tax_search_response' in local_var_params:
+            body_params = local_var_params['tax_search_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/tax-search/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/tax-search/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1192,14 +1046,11 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, request_id, invoices_response_external, **kwargs):  # noqa: E501
         """Endpoint for invoice get-by-id response  # noqa: E501
@@ -1224,14 +1075,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            request_id, invoices_response_external, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.get_by_id_with_http_info(request_id, invoices_response_external, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(
-        self, request_id, invoices_response_external, **kwargs
-    ):  # noqa: E501
+    def get_by_id_with_http_info(self, request_id, invoices_response_external, **kwargs):  # noqa: E501
         """Endpoint for invoice get-by-id response  # noqa: E501
 
         Call this endpoint with the response to a invoice get-by-id request.  # noqa: E501
@@ -1259,46 +1106,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoices_response_external"]
+        all_params = [
+            'request_id',
+            'invoices_response_external'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'invoices_response_external' is set
-        if self.api_client.client_side_validation and (
-            "invoices_response_external" not in local_var_params
-            or local_var_params["invoices_response_external"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `invoices_response_external` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('invoices_response_external' not in local_var_params or  # noqa: E501
+                                                        local_var_params['invoices_response_external'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `invoices_response_external` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -1308,26 +1150,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "invoices_response_external" in local_var_params:
-            body_params = local_var_params["invoices_response_external"]
+        if 'invoices_response_external' in local_var_params:
+            body_params = local_var_params['invoices_response_external']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/invoices/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/invoices/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1336,14 +1173,11 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def invoice_pdf(self, request_id, invoice_pdf_response, **kwargs):  # noqa: E501
         """Endpoint for PDF content of invoice  # noqa: E501
@@ -1368,14 +1202,10 @@ class CallbacksApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.invoice_pdf_with_http_info(
-            request_id, invoice_pdf_response, **kwargs
-        )  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.invoice_pdf_with_http_info(request_id, invoice_pdf_response, **kwargs)  # noqa: E501
 
-    def invoice_pdf_with_http_info(
-        self, request_id, invoice_pdf_response, **kwargs
-    ):  # noqa: E501
+    def invoice_pdf_with_http_info(self, request_id, invoice_pdf_response, **kwargs):  # noqa: E501
         """Endpoint for PDF content of invoice  # noqa: E501
 
         Call this endpoint with the PDF content of a requested invoice.  # noqa: E501
@@ -1403,46 +1233,41 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoice_pdf_response"]
+        all_params = [
+            'request_id',
+            'invoice_pdf_response'
+        ]
         all_params.extend(
             [
-                "async_req",
-                "_return_http_data_only",
-                "_preload_content",
-                "_request_timeout",
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
             ]
         )
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method invoice_pdf" % key
                 )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and (
-            "request_id" not in local_var_params
-            or local_var_params["request_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `request_id` when calling `invoice_pdf`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('request_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['request_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `request_id` when calling `invoice_pdf`")  # noqa: E501
         # verify the required parameter 'invoice_pdf_response' is set
-        if self.api_client.client_side_validation and (
-            "invoice_pdf_response" not in local_var_params
-            or local_var_params["invoice_pdf_response"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `invoice_pdf_response` when calling `invoice_pdf`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ('invoice_pdf_response' not in local_var_params or  # noqa: E501
+                                                        local_var_params['invoice_pdf_response'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `invoice_pdf_response` when calling `invoice_pdf`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "request_id" in local_var_params:
-            path_params["requestId"] = local_var_params["request_id"]  # noqa: E501
+        if 'request_id' in local_var_params:
+            path_params['requestId'] = local_var_params['request_id']  # noqa: E501
 
         query_params = []
 
@@ -1452,26 +1277,21 @@ class CallbacksApi(object):
         local_var_files = {}
 
         body_params = None
-        if "invoice_pdf_response" in local_var_params:
-            body_params = local_var_params["invoice_pdf_response"]
+        if 'invoice_pdf_response' in local_var_params:
+            body_params = local_var_params['invoice_pdf_response']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/accounting/callback/invoice-pdf/{requestId}",
-            "POST",
+            '/crm/v3/extensions/accounting/callback/invoice-pdf/{requestId}', 'POST',
             path_params,
             query_params,
             header_params,
@@ -1480,11 +1300,8 @@ class CallbacksApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

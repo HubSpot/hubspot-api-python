@@ -33,30 +33,24 @@ class SettingsPatchRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "url": "str",
-        "height": "int",
-        "width": "int",
-        "is_ready": "bool",
+        'name': 'str',
+        'url': 'str',
+        'height': 'int',
+        'width': 'int',
+        'is_ready': 'bool',
+        'supports_custom_objects': 'bool'
     }
 
     attribute_map = {
-        "name": "name",
-        "url": "url",
-        "height": "height",
-        "width": "width",
-        "is_ready": "isReady",
+        'name': 'name',
+        'url': 'url',
+        'height': 'height',
+        'width': 'width',
+        'is_ready': 'isReady',
+        'supports_custom_objects': 'supportsCustomObjects'
     }
 
-    def __init__(
-        self,
-        name=None,
-        url=None,
-        height=None,
-        width=None,
-        is_ready=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, name=None, url=None, height=None, width=None, is_ready=None, supports_custom_objects=None, local_vars_configuration=None):  # noqa: E501
         """SettingsPatchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -67,6 +61,7 @@ class SettingsPatchRequest(object):
         self._height = None
         self._width = None
         self._is_ready = None
+        self._supports_custom_objects = None
         self.discriminator = None
 
         if name is not None:
@@ -79,6 +74,8 @@ class SettingsPatchRequest(object):
             self.width = width
         if is_ready is not None:
             self.is_ready = is_ready
+        if supports_custom_objects is not None:
+            self.supports_custom_objects = supports_custom_objects
 
     @property
     def name(self):
@@ -195,6 +192,29 @@ class SettingsPatchRequest(object):
 
         self._is_ready = is_ready
 
+    @property
+    def supports_custom_objects(self):
+        """Gets the supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
+
+        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+
+        :return: The supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._supports_custom_objects
+
+    @supports_custom_objects.setter
+    def supports_custom_objects(self, supports_custom_objects):
+        """Sets the supports_custom_objects of this SettingsPatchRequest.
+
+        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+
+        :param supports_custom_objects: The supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
+        :type: bool
+        """
+
+        self._supports_custom_objects = supports_custom_objects
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -202,20 +222,18 @@ class SettingsPatchRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

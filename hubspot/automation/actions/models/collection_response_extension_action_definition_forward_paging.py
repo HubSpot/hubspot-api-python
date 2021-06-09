@@ -33,15 +33,16 @@ class CollectionResponseExtensionActionDefinitionForwardPaging(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "results": "list[ExtensionActionDefinition]",
-        "paging": "ForwardPaging",
+        'results': 'list[ExtensionActionDefinition]',
+        'paging': 'ForwardPaging'
     }
 
-    attribute_map = {"results": "results", "paging": "paging"}
+    attribute_map = {
+        'results': 'results',
+        'paging': 'paging'
+    }
 
-    def __init__(
-        self, results=None, paging=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseExtensionActionDefinitionForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,12 +74,8 @@ class CollectionResponseExtensionActionDefinitionForwardPaging(object):
         :param results: The results of this CollectionResponseExtensionActionDefinitionForwardPaging.  # noqa: E501
         :type: list[ExtensionActionDefinition]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and results is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `results`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
 
@@ -110,20 +107,18 @@ class CollectionResponseExtensionActionDefinitionForwardPaging(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
@@ -139,18 +134,14 @@ class CollectionResponseExtensionActionDefinitionForwardPaging(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(
-            other, CollectionResponseExtensionActionDefinitionForwardPaging
-        ):
+        if not isinstance(other, CollectionResponseExtensionActionDefinitionForwardPaging):
             return False
 
         return self.to_dict() == other.to_dict()
 
     def __ne__(self, other):
         """Returns true if both objects are not equal"""
-        if not isinstance(
-            other, CollectionResponseExtensionActionDefinitionForwardPaging
-        ):
+        if not isinstance(other, CollectionResponseExtensionActionDefinitionForwardPaging):
             return True
 
         return self.to_dict() != other.to_dict()

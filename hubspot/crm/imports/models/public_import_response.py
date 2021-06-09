@@ -33,39 +33,28 @@ class PublicImportResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "state": "str",
-        "import_request_json": "object",
-        "created_at": "datetime",
-        "metadata": "PublicImportMetadata",
-        "import_name": "str",
-        "updated_at": "datetime",
-        "opt_out_import": "bool",
-        "id": "str",
+        'state': 'str',
+        'import_request_json': 'object',
+        'created_at': 'datetime',
+        'metadata': 'PublicImportMetadata',
+        'import_name': 'str',
+        'updated_at': 'datetime',
+        'opt_out_import': 'bool',
+        'id': 'str'
     }
 
     attribute_map = {
-        "state": "state",
-        "import_request_json": "importRequestJson",
-        "created_at": "createdAt",
-        "metadata": "metadata",
-        "import_name": "importName",
-        "updated_at": "updatedAt",
-        "opt_out_import": "optOutImport",
-        "id": "id",
+        'state': 'state',
+        'import_request_json': 'importRequestJson',
+        'created_at': 'createdAt',
+        'metadata': 'metadata',
+        'import_name': 'importName',
+        'updated_at': 'updatedAt',
+        'opt_out_import': 'optOutImport',
+        'id': 'id'
     }
 
-    def __init__(
-        self,
-        state=None,
-        import_request_json=None,
-        created_at=None,
-        metadata=None,
-        import_name=None,
-        updated_at=None,
-        opt_out_import=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, state=None, import_request_json=None, created_at=None, metadata=None, import_name=None, updated_at=None, opt_out_import=None, id=None, local_vars_configuration=None):  # noqa: E501
         """PublicImportResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -112,27 +101,13 @@ class PublicImportResponse(object):
         :param state: The state of this PublicImportResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and state is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
+        allowed_values = ["STARTED", "PROCESSING", "DONE", "FAILED", "CANCELED", "DEFERRED"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `state`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "STARTED",
-            "PROCESSING",
-            "DONE",
-            "FAILED",
-            "CANCELED",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and state not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `state` ({0}), must be one of {1}".format(  # noqa: E501
-                    state, allowed_values
-                )
+                "Invalid value for `state` ({0}), must be one of {1}"  # noqa: E501
+                .format(state, allowed_values)
             )
 
         self._state = state
@@ -176,12 +151,8 @@ class PublicImportResponse(object):
         :param created_at: The created_at of this PublicImportResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -203,12 +174,8 @@ class PublicImportResponse(object):
         :param metadata: The metadata of this PublicImportResponse.  # noqa: E501
         :type: PublicImportMetadata
         """
-        if (
-            self.local_vars_configuration.client_side_validation and metadata is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `metadata`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
+            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 
@@ -251,12 +218,8 @@ class PublicImportResponse(object):
         :param updated_at: The updated_at of this PublicImportResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and updated_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -280,13 +243,8 @@ class PublicImportResponse(object):
         :param opt_out_import: The opt_out_import of this PublicImportResponse.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and opt_out_import is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `opt_out_import`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and opt_out_import is None:  # noqa: E501
+            raise ValueError("Invalid value for `opt_out_import`, must not be `None`")  # noqa: E501
 
         self._opt_out_import = opt_out_import
 
@@ -308,9 +266,7 @@ class PublicImportResponse(object):
         :param id: The id of this PublicImportResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -322,20 +278,18 @@ class PublicImportResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

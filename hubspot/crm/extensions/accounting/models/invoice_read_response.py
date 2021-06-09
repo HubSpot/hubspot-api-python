@@ -33,63 +33,44 @@ class InvoiceReadResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "external_invoice_number": "str",
-        "total_amount_billed": "float",
-        "balance_due": "float",
-        "currency_code": "str",
-        "due_date": "date",
-        "external_recipient_id": "str",
-        "received_by_recipient_date": "int",
-        "external_create_date_time": "int",
-        "is_voided": "bool",
-        "created_at": "datetime",
-        "updated_at": "datetime",
-        "archived_at": "datetime",
-        "archived": "bool",
-        "external_account_id": "str",
-        "invoice_status": "str",
-        "id": "str",
+        'external_invoice_number': 'str',
+        'total_amount_billed': 'float',
+        'balance_due': 'float',
+        'currency_code': 'str',
+        'due_date': 'date',
+        'external_recipient_id': 'str',
+        'received_by_recipient_date': 'int',
+        'external_create_date_time': 'int',
+        'is_voided': 'bool',
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'archived_at': 'datetime',
+        'archived': 'bool',
+        'external_account_id': 'str',
+        'invoice_status': 'str',
+        'id': 'str'
     }
 
     attribute_map = {
-        "external_invoice_number": "externalInvoiceNumber",
-        "total_amount_billed": "totalAmountBilled",
-        "balance_due": "balanceDue",
-        "currency_code": "currencyCode",
-        "due_date": "dueDate",
-        "external_recipient_id": "externalRecipientId",
-        "received_by_recipient_date": "receivedByRecipientDate",
-        "external_create_date_time": "externalCreateDateTime",
-        "is_voided": "isVoided",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "archived_at": "archivedAt",
-        "archived": "archived",
-        "external_account_id": "externalAccountId",
-        "invoice_status": "invoiceStatus",
-        "id": "id",
+        'external_invoice_number': 'externalInvoiceNumber',
+        'total_amount_billed': 'totalAmountBilled',
+        'balance_due': 'balanceDue',
+        'currency_code': 'currencyCode',
+        'due_date': 'dueDate',
+        'external_recipient_id': 'externalRecipientId',
+        'received_by_recipient_date': 'receivedByRecipientDate',
+        'external_create_date_time': 'externalCreateDateTime',
+        'is_voided': 'isVoided',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt',
+        'archived_at': 'archivedAt',
+        'archived': 'archived',
+        'external_account_id': 'externalAccountId',
+        'invoice_status': 'invoiceStatus',
+        'id': 'id'
     }
 
-    def __init__(
-        self,
-        external_invoice_number=None,
-        total_amount_billed=None,
-        balance_due=None,
-        currency_code=None,
-        due_date=None,
-        external_recipient_id=None,
-        received_by_recipient_date=None,
-        external_create_date_time=None,
-        is_voided=None,
-        created_at=None,
-        updated_at=None,
-        archived_at=None,
-        archived=None,
-        external_account_id=None,
-        invoice_status=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, external_invoice_number=None, total_amount_billed=None, balance_due=None, currency_code=None, due_date=None, external_recipient_id=None, received_by_recipient_date=None, external_create_date_time=None, is_voided=None, created_at=None, updated_at=None, archived_at=None, archived=None, external_account_id=None, invoice_status=None, id=None, local_vars_configuration=None):  # noqa: E501
         """InvoiceReadResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -177,13 +158,8 @@ class InvoiceReadResponse(object):
         :param total_amount_billed: The total_amount_billed of this InvoiceReadResponse.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and total_amount_billed is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `total_amount_billed`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and total_amount_billed is None:  # noqa: E501
+            raise ValueError("Invalid value for `total_amount_billed`, must not be `None`")  # noqa: E501
 
         self._total_amount_billed = total_amount_billed
 
@@ -207,12 +183,8 @@ class InvoiceReadResponse(object):
         :param balance_due: The balance_due of this InvoiceReadResponse.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation and balance_due is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `balance_due`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and balance_due is None:  # noqa: E501
+            raise ValueError("Invalid value for `balance_due`, must not be `None`")  # noqa: E501
 
         self._balance_due = balance_due
 
@@ -236,13 +208,8 @@ class InvoiceReadResponse(object):
         :param currency_code: The currency_code of this InvoiceReadResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and currency_code is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `currency_code`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and currency_code is None:  # noqa: E501
+            raise ValueError("Invalid value for `currency_code`, must not be `None`")  # noqa: E501
 
         self._currency_code = currency_code
 
@@ -266,12 +233,8 @@ class InvoiceReadResponse(object):
         :param due_date: The due_date of this InvoiceReadResponse.  # noqa: E501
         :type: date
         """
-        if (
-            self.local_vars_configuration.client_side_validation and due_date is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `due_date`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and due_date is None:  # noqa: E501
+            raise ValueError("Invalid value for `due_date`, must not be `None`")  # noqa: E501
 
         self._due_date = due_date
 
@@ -295,13 +258,8 @@ class InvoiceReadResponse(object):
         :param external_recipient_id: The external_recipient_id of this InvoiceReadResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and external_recipient_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `external_recipient_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and external_recipient_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `external_recipient_id`, must not be `None`")  # noqa: E501
 
         self._external_recipient_id = external_recipient_id
 
@@ -371,12 +329,8 @@ class InvoiceReadResponse(object):
         :param is_voided: The is_voided of this InvoiceReadResponse.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and is_voided is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_voided`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_voided is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_voided`, must not be `None`")  # noqa: E501
 
         self._is_voided = is_voided
 
@@ -400,12 +354,8 @@ class InvoiceReadResponse(object):
         :param created_at: The created_at of this InvoiceReadResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -429,12 +379,8 @@ class InvoiceReadResponse(object):
         :param updated_at: The updated_at of this InvoiceReadResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and updated_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -477,12 +423,8 @@ class InvoiceReadResponse(object):
         :param archived: The archived of this InvoiceReadResponse.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and archived is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `archived`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
 
@@ -506,13 +448,8 @@ class InvoiceReadResponse(object):
         :param external_account_id: The external_account_id of this InvoiceReadResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and external_account_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `external_account_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and external_account_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `external_account_id`, must not be `None`")  # noqa: E501
 
         self._external_account_id = external_account_id
 
@@ -536,31 +473,13 @@ class InvoiceReadResponse(object):
         :param invoice_status: The invoice_status of this InvoiceReadResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_status is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_status is None:  # noqa: E501
+            raise ValueError("Invalid value for `invoice_status`, must not be `None`")  # noqa: E501
+        allowed_values = ["CREATED", "SENT", "PAID", "CLOSED", "OVERDUE", "VOIDED", "NONE", "UNPAID"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_status not in allowed_values:  # noqa: E501
             raise ValueError(
-                "Invalid value for `invoice_status`, must not be `None`"
-            )  # noqa: E501
-        allowed_values = [
-            "CREATED",
-            "SENT",
-            "PAID",
-            "CLOSED",
-            "OVERDUE",
-            "VOIDED",
-            "NONE",
-            "UNPAID",
-        ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_status not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `invoice_status` ({0}), must be one of {1}".format(  # noqa: E501
-                    invoice_status, allowed_values
-                )
+                "Invalid value for `invoice_status` ({0}), must be one of {1}"  # noqa: E501
+                .format(invoice_status, allowed_values)
             )
 
         self._invoice_status = invoice_status
@@ -585,9 +504,7 @@ class InvoiceReadResponse(object):
         :param id: The id of this InvoiceReadResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -599,20 +516,18 @@ class InvoiceReadResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 
