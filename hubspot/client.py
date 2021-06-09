@@ -2,6 +2,7 @@ from urllib3.util.retry import Retry
 from .discovery.auth.discovery import Discovery as AuthDiscovery
 from .discovery.automation.discovery import Discovery as AutomationDiscovery
 from .discovery.cms.discovery import Discovery as CmsDiscovery
+from .discovery.communication_preferences.discovery import Discovery as CommunicationPreferencesDiscovery
 from .discovery.conversations.discovery import Discovery as ConversationsDiscovery
 from .discovery.crm.discovery import Discovery as CrmDiscovery
 from .discovery.events.discovery import Discovery as EventsDiscovery
@@ -53,6 +54,10 @@ class Client:
     @property
     def cms(self):
         return CmsDiscovery(self.config)
+
+    @property
+    def communication_preferences(self):
+        return CommunicationPreferencesDiscovery(self.config)
 
     @property
     def conversations(self):
