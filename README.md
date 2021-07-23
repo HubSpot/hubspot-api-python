@@ -197,6 +197,10 @@ for contact in contacts:
     print(contact.to_dict())
 ```
 
+## Sample Apps
+
+Please, take a look at our [Sample apps](https://github.com/HubSpot/sample-apps-list)
+
 ## Contributing
 
 Install the package locally:

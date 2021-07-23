@@ -1,4 +1,0 @@
-Flask==1.1.2
-kafka-python==2.0.1
-sqlalchemy==1.3.17
-pymysql==0.9.3
