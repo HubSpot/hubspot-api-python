@@ -2,7 +2,7 @@
 
 Python [HubSpot API](https://developers.hubspot.com/docs/api/overview) v3 SDK(Client) files and sample apps
 
-Sample Applications can be found in [sample-apps](sample-apps/) folder
+Sample Applications can be found in [Sample apps](https://github.com/HubSpot/sample-apps-list)
 
 ## Documentation
 
