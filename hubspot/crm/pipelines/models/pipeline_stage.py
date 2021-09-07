@@ -33,25 +33,25 @@ class PipelineStage(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'created_at': 'datetime',
-        'archived_at': 'datetime',
-        'updated_at': 'datetime',
-        'archived': 'bool',
-        'label': 'str',
-        'display_order': 'int',
-        'metadata': 'dict(str, str)',
-        'id': 'str'
+        "created_at": "datetime",
+        "archived_at": "datetime",
+        "updated_at": "datetime",
+        "archived": "bool",
+        "label": "str",
+        "display_order": "int",
+        "metadata": "dict(str, str)",
+        "id": "str",
     }
 
     attribute_map = {
-        'created_at': 'createdAt',
-        'archived_at': 'archivedAt',
-        'updated_at': 'updatedAt',
-        'archived': 'archived',
-        'label': 'label',
-        'display_order': 'displayOrder',
-        'metadata': 'metadata',
-        'id': 'id'
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
+        "label": "label",
+        "display_order": "displayOrder",
+        "metadata": "metadata",
+        "id": "id",
     }
 
     def __init__(self, created_at=None, archived_at=None, updated_at=None, archived=None, label=None, display_order=None, metadata=None, id=None, local_vars_configuration=None):  # noqa: E501
@@ -285,18 +285,11 @@ class PipelineStage(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

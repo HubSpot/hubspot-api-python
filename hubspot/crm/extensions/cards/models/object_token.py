@@ -32,19 +32,9 @@ class ObjectToken(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'name': 'str',
-        'label': 'str',
-        'data_type': 'str',
-        'value': 'str'
-    }
+    openapi_types = {"name": "str", "label": "str", "data_type": "str", "value": "str"}
 
-    attribute_map = {
-        'name': 'name',
-        'label': 'label',
-        'data_type': 'dataType',
-        'value': 'value'
-    }
+    attribute_map = {"name": "name", "label": "label", "data_type": "dataType", "value": "value"}
 
     def __init__(self, name=None, label=None, data_type=None, value=None, local_vars_configuration=None):  # noqa: E501
         """ObjectToken - a model defined in OpenAPI"""  # noqa: E501
@@ -128,10 +118,7 @@ class ObjectToken(object):
         """
         allowed_values = ["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and data_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `data_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(data_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `data_type` ({0}), must be one of {1}".format(data_type, allowed_values))  # noqa: E501
 
         self._data_type = data_type
 
@@ -165,18 +152,11 @@ class ObjectToken(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -33,30 +33,42 @@ class PublicSubscriptionStatus(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'description': 'str',
-        'status': 'str',
-        'source_of_status': 'str',
-        'brand_id': 'int',
-        'preference_group_name': 'str',
-        'legal_basis': 'str',
-        'legal_basis_explanation': 'str'
+        "id": "str",
+        "name": "str",
+        "description": "str",
+        "status": "str",
+        "source_of_status": "str",
+        "brand_id": "int",
+        "preference_group_name": "str",
+        "legal_basis": "str",
+        "legal_basis_explanation": "str",
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'description': 'description',
-        'status': 'status',
-        'source_of_status': 'sourceOfStatus',
-        'brand_id': 'brandId',
-        'preference_group_name': 'preferenceGroupName',
-        'legal_basis': 'legalBasis',
-        'legal_basis_explanation': 'legalBasisExplanation'
+        "id": "id",
+        "name": "name",
+        "description": "description",
+        "status": "status",
+        "source_of_status": "sourceOfStatus",
+        "brand_id": "brandId",
+        "preference_group_name": "preferenceGroupName",
+        "legal_basis": "legalBasis",
+        "legal_basis_explanation": "legalBasisExplanation",
     }
 
-    def __init__(self, id=None, name=None, description=None, status=None, source_of_status=None, brand_id=None, preference_group_name=None, legal_basis=None, legal_basis_explanation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        name=None,
+        description=None,
+        status=None,
+        source_of_status=None,
+        brand_id=None,
+        preference_group_name=None,
+        legal_basis=None,
+        legal_basis_explanation=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicSubscriptionStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -186,10 +198,7 @@ class PublicSubscriptionStatus(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["SUBSCRIBED", "NOT_SUBSCRIBED"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
 
         self._status = status
 
@@ -217,10 +226,7 @@ class PublicSubscriptionStatus(object):
             raise ValueError("Invalid value for `source_of_status`, must not be `None`")  # noqa: E501
         allowed_values = ["PORTAL_WIDE_STATUS", "BRAND_WIDE_STATUS", "SUBSCRIPTION_STATUS"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and source_of_status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `source_of_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(source_of_status, allowed_values)
-            )
+            raise ValueError("Invalid value for `source_of_status` ({0}), must be one of {1}".format(source_of_status, allowed_values))  # noqa: E501
 
         self._source_of_status = source_of_status
 
@@ -290,12 +296,17 @@ class PublicSubscriptionStatus(object):
         :param legal_basis: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
         :type: str
         """
-        allowed_values = ["LEGITIMATE_INTEREST_PQL", "LEGITIMATE_INTEREST_CLIENT", "PERFORMANCE_OF_CONTRACT", "CONSENT_WITH_NOTICE", "NON_GDPR", "PROCESS_AND_STORE", "LEGITIMATE_INTEREST_OTHER"]  # noqa: E501
+        allowed_values = [
+            "LEGITIMATE_INTEREST_PQL",
+            "LEGITIMATE_INTEREST_CLIENT",
+            "PERFORMANCE_OF_CONTRACT",
+            "CONSENT_WITH_NOTICE",
+            "NON_GDPR",
+            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_OTHER",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and legal_basis not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `legal_basis` ({0}), must be one of {1}"  # noqa: E501
-                .format(legal_basis, allowed_values)
-            )
+            raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
 
         self._legal_basis = legal_basis
 
@@ -329,18 +340,11 @@ class PublicSubscriptionStatus(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -33,40 +33,57 @@ class ObjectSchema(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'labels': 'ObjectTypeDefinitionLabels',
-        'required_properties': 'list[str]',
-        'searchable_properties': 'list[str]',
-        'primary_display_property': 'str',
-        'secondary_display_properties': 'list[str]',
-        'archived': 'bool',
-        'id': 'str',
-        'fully_qualified_name': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime',
-        'object_type_id': 'str',
-        'properties': 'list[ModelProperty]',
-        'associations': 'list[AssociationDefinition]',
-        'name': 'str'
+        "labels": "ObjectTypeDefinitionLabels",
+        "required_properties": "list[str]",
+        "searchable_properties": "list[str]",
+        "primary_display_property": "str",
+        "secondary_display_properties": "list[str]",
+        "archived": "bool",
+        "id": "str",
+        "fully_qualified_name": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "object_type_id": "str",
+        "properties": "list[ModelProperty]",
+        "associations": "list[AssociationDefinition]",
+        "name": "str",
     }
 
     attribute_map = {
-        'labels': 'labels',
-        'required_properties': 'requiredProperties',
-        'searchable_properties': 'searchableProperties',
-        'primary_display_property': 'primaryDisplayProperty',
-        'secondary_display_properties': 'secondaryDisplayProperties',
-        'archived': 'archived',
-        'id': 'id',
-        'fully_qualified_name': 'fullyQualifiedName',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt',
-        'object_type_id': 'objectTypeId',
-        'properties': 'properties',
-        'associations': 'associations',
-        'name': 'name'
+        "labels": "labels",
+        "required_properties": "requiredProperties",
+        "searchable_properties": "searchableProperties",
+        "primary_display_property": "primaryDisplayProperty",
+        "secondary_display_properties": "secondaryDisplayProperties",
+        "archived": "archived",
+        "id": "id",
+        "fully_qualified_name": "fullyQualifiedName",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "object_type_id": "objectTypeId",
+        "properties": "properties",
+        "associations": "associations",
+        "name": "name",
     }
 
-    def __init__(self, labels=None, required_properties=None, searchable_properties=None, primary_display_property=None, secondary_display_properties=None, archived=None, id=None, fully_qualified_name=None, created_at=None, updated_at=None, object_type_id=None, properties=None, associations=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        labels=None,
+        required_properties=None,
+        searchable_properties=None,
+        primary_display_property=None,
+        secondary_display_properties=None,
+        archived=None,
+        id=None,
+        fully_qualified_name=None,
+        created_at=None,
+        updated_at=None,
+        object_type_id=None,
+        properties=None,
+        associations=None,
+        name=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ObjectSchema - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -451,18 +468,11 @@ class ObjectSchema(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

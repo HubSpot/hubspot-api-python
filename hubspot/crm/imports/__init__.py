@@ -18,7 +18,7 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.crm.imports.api.core_api import CoreApi
-from hubspot.crm.imports.api.default_api import DefaultApi
+from hubspot.crm.imports.api.public_imports_api import PublicImportsApi
 
 # import ApiClient
 from hubspot.crm.imports.api_client import ApiClient
@@ -28,6 +28,7 @@ from hubspot.crm.imports.exceptions import ApiTypeError
 from hubspot.crm.imports.exceptions import ApiValueError
 from hubspot.crm.imports.exceptions import ApiKeyError
 from hubspot.crm.imports.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.imports.models.action_response import ActionResponse
 from hubspot.crm.imports.models.collection_response_public_import_error_forward_paging import CollectionResponsePublicImportErrorForwardPaging
@@ -43,4 +44,3 @@ from hubspot.crm.imports.models.public_import_error import PublicImportError
 from hubspot.crm.imports.models.public_import_metadata import PublicImportMetadata
 from hubspot.crm.imports.models.public_import_response import PublicImportResponse
 from hubspot.crm.imports.models.public_object_list_record import PublicObjectListRecord
-

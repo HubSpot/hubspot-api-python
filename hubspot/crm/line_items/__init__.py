@@ -30,6 +30,7 @@ from hubspot.crm.line_items.exceptions import ApiTypeError
 from hubspot.crm.line_items.exceptions import ApiValueError
 from hubspot.crm.line_items.exceptions import ApiKeyError
 from hubspot.crm.line_items.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.line_items.models.associated_id import AssociatedId
 from hubspot.crm.line_items.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
@@ -58,4 +59,3 @@ from hubspot.crm.line_items.models.simple_public_object_id import SimplePublicOb
 from hubspot.crm.line_items.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.line_items.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.line_items.models.standard_error import StandardError
-

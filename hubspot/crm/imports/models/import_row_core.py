@@ -32,17 +32,9 @@ class ImportRowCore(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'file_id': 'int',
-        'page_name': 'str',
-        'line_number': 'int'
-    }
+    openapi_types = {"file_id": "int", "page_name": "str", "line_number": "int"}
 
-    attribute_map = {
-        'file_id': 'fileId',
-        'page_name': 'pageName',
-        'line_number': 'lineNumber'
-    }
+    attribute_map = {"file_id": "fileId", "page_name": "pageName", "line_number": "lineNumber"}
 
     def __init__(self, file_id=None, page_name=None, line_number=None, local_vars_configuration=None):  # noqa: E501
         """ImportRowCore - a model defined in OpenAPI"""  # noqa: E501
@@ -134,18 +126,11 @@ class ImportRowCore(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

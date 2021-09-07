@@ -17,7 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.cms.blogs.blog_posts.api.default_api import DefaultApi
+from hubspot.cms.blogs.blog_posts.api.blog_post_api import BlogPostApi
 
 # import ApiClient
 from hubspot.cms.blogs.blog_posts.api_client import ApiClient
@@ -34,23 +34,13 @@ from hubspot.cms.blogs.blog_posts.models.background_image import BackgroundImage
 from hubspot.cms.blogs.blog_posts.models.batch_input_blog_post import BatchInputBlogPost
 from hubspot.cms.blogs.blog_posts.models.batch_input_json_node import BatchInputJsonNode
 from hubspot.cms.blogs.blog_posts.models.batch_input_string import BatchInputString
-from hubspot.cms.blogs.blog_posts.models.batch_response_blog_post_with_errors import (
-    BatchResponseBlogPostWithErrors,
-)
+from hubspot.cms.blogs.blog_posts.models.batch_response_blog_post_with_errors import BatchResponseBlogPostWithErrors
 from hubspot.cms.blogs.blog_posts.models.blog_post import BlogPost
-from hubspot.cms.blogs.blog_posts.models.collection_response_with_total_blog_post_forward_paging import (
-    CollectionResponseWithTotalBlogPostForwardPaging,
-)
-from hubspot.cms.blogs.blog_posts.models.collection_response_with_total_version_blog_post import (
-    CollectionResponseWithTotalVersionBlogPost,
-)
+from hubspot.cms.blogs.blog_posts.models.collection_response_with_total_blog_post_forward_paging import CollectionResponseWithTotalBlogPostForwardPaging
+from hubspot.cms.blogs.blog_posts.models.collection_response_with_total_version_blog_post import CollectionResponseWithTotalVersionBlogPost
 from hubspot.cms.blogs.blog_posts.models.color_stop import ColorStop
-from hubspot.cms.blogs.blog_posts.models.content_clone_request_v_next import (
-    ContentCloneRequestVNext,
-)
-from hubspot.cms.blogs.blog_posts.models.content_schedule_request_v_next import (
-    ContentScheduleRequestVNext,
-)
+from hubspot.cms.blogs.blog_posts.models.content_clone_request_v_next import ContentCloneRequestVNext
+from hubspot.cms.blogs.blog_posts.models.content_schedule_request_v_next import ContentScheduleRequestVNext
 from hubspot.cms.blogs.blog_posts.models.error import Error
 from hubspot.cms.blogs.blog_posts.models.error_detail import ErrorDetail
 from hubspot.cms.blogs.blog_posts.models.forward_paging import ForwardPaging

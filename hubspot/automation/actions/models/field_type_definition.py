@@ -32,23 +32,9 @@ class FieldTypeDefinition(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'name': 'str',
-        'type': 'str',
-        'field_type': 'str',
-        'options': 'list[Option]',
-        'options_url': 'str',
-        'referenced_object_type': 'str'
-    }
+    openapi_types = {"name": "str", "type": "str", "field_type": "str", "options": "list[Option]", "options_url": "str", "referenced_object_type": "str"}
 
-    attribute_map = {
-        'name': 'name',
-        'type': 'type',
-        'field_type': 'fieldType',
-        'options': 'options',
-        'options_url': 'optionsUrl',
-        'referenced_object_type': 'referencedObjectType'
-    }
+    attribute_map = {"name": "name", "type": "type", "field_type": "fieldType", "options": "options", "options_url": "optionsUrl", "referenced_object_type": "referencedObjectType"}
 
     def __init__(self, name=None, type=None, field_type=None, options=None, options_url=None, referenced_object_type=None, local_vars_configuration=None):  # noqa: E501
         """FieldTypeDefinition - a model defined in OpenAPI"""  # noqa: E501
@@ -123,10 +109,7 @@ class FieldTypeDefinition(object):
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = ["string", "number", "bool", "datetime", "enumeration", "date", "phone_number", "currency_number", "json", "object_coordinates"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -150,12 +133,25 @@ class FieldTypeDefinition(object):
         :param field_type: The field_type of this FieldTypeDefinition.  # noqa: E501
         :type: str
         """
-        allowed_values = ["booleancheckbox", "checkbox", "date", "file", "number", "phonenumber", "radio", "select", "text", "textarea", "calculation_equation", "calculation_rollup", "calculation_score", "calculation_read_time", "unknown"]  # noqa: E501
+        allowed_values = [
+            "booleancheckbox",
+            "checkbox",
+            "date",
+            "file",
+            "number",
+            "phonenumber",
+            "radio",
+            "select",
+            "text",
+            "textarea",
+            "calculation_equation",
+            "calculation_rollup",
+            "calculation_score",
+            "calculation_read_time",
+            "unknown",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and field_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(field_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `field_type` ({0}), must be one of {1}".format(field_type, allowed_values))  # noqa: E501
 
         self._field_type = field_type
 
@@ -227,12 +223,72 @@ class FieldTypeDefinition(object):
         :param referenced_object_type: The referenced_object_type of this FieldTypeDefinition.  # noqa: E501
         :type: str
         """
-        allowed_values = ["CONTACT", "COMPANY", "DEAL", "ENGAGEMENT", "TICKET", "OWNER", "PRODUCT", "LINE_ITEM", "BET_DELIVERABLE_SERVICE", "CONTENT", "CONVERSATION", "BET_ALERT", "PORTAL", "QUOTE", "FORM_SUBMISSION_INBOUNDDB", "QUOTA", "UNSUBSCRIBE", "COMMUNICATION", "FEEDBACK_SUBMISSION", "ATTRIBUTION", "SALESFORCE_SYNC_ERROR", "RESTORABLE_CRM_OBJECT", "HUB", "LANDING_PAGE", "PRODUCT_OR_FOLDER", "TASK", "FORM", "MARKETING_EMAIL", "AD_ACCOUNT", "AD_CAMPAIGN", "AD_GROUP", "AD", "KEYWORD", "CAMPAIGN", "SOCIAL_CHANNEL", "SOCIAL_POST", "SITE_PAGE", "BLOG_POST", "IMPORT", "EXPORT", "CTA", "TASK_TEMPLATE", "AUTOMATION_PLATFORM_FLOW", "OBJECT_LIST", "NOTE", "MEETING_EVENT", "CALL", "EMAIL", "PUBLISHING_TASK", "CONVERSATION_SESSION", "CONTACT_CREATE_ATTRIBUTION", "INVOICE", "MARKETING_EVENT", "CONVERSATION_INBOX", "CHATFLOW", "MEDIA_BRIDGE", "SEQUENCE", "SEQUENCE_STEP", "FORECAST", "SNIPPET", "TEMPLATE", "UNKNOWN"]  # noqa: E501
+        allowed_values = [
+            "CONTACT",
+            "COMPANY",
+            "DEAL",
+            "ENGAGEMENT",
+            "TICKET",
+            "OWNER",
+            "PRODUCT",
+            "LINE_ITEM",
+            "BET_DELIVERABLE_SERVICE",
+            "CONTENT",
+            "CONVERSATION",
+            "BET_ALERT",
+            "PORTAL",
+            "QUOTE",
+            "FORM_SUBMISSION_INBOUNDDB",
+            "QUOTA",
+            "UNSUBSCRIBE",
+            "COMMUNICATION",
+            "FEEDBACK_SUBMISSION",
+            "ATTRIBUTION",
+            "SALESFORCE_SYNC_ERROR",
+            "RESTORABLE_CRM_OBJECT",
+            "HUB",
+            "LANDING_PAGE",
+            "PRODUCT_OR_FOLDER",
+            "TASK",
+            "FORM",
+            "MARKETING_EMAIL",
+            "AD_ACCOUNT",
+            "AD_CAMPAIGN",
+            "AD_GROUP",
+            "AD",
+            "KEYWORD",
+            "CAMPAIGN",
+            "SOCIAL_CHANNEL",
+            "SOCIAL_POST",
+            "SITE_PAGE",
+            "BLOG_POST",
+            "IMPORT",
+            "EXPORT",
+            "CTA",
+            "TASK_TEMPLATE",
+            "AUTOMATION_PLATFORM_FLOW",
+            "OBJECT_LIST",
+            "NOTE",
+            "MEETING_EVENT",
+            "CALL",
+            "EMAIL",
+            "PUBLISHING_TASK",
+            "CONVERSATION_SESSION",
+            "CONTACT_CREATE_ATTRIBUTION",
+            "INVOICE",
+            "MARKETING_EVENT",
+            "CONVERSATION_INBOX",
+            "CHATFLOW",
+            "MEDIA_BRIDGE",
+            "SEQUENCE",
+            "SEQUENCE_STEP",
+            "FORECAST",
+            "SNIPPET",
+            "TEMPLATE",
+            "UNKNOWN",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and referenced_object_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `referenced_object_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(referenced_object_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `referenced_object_type` ({0}), must be one of {1}".format(referenced_object_type, allowed_values))  # noqa: E501
 
         self._referenced_object_type = referenced_object_type
 
@@ -243,18 +299,11 @@ class FieldTypeDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -32,19 +32,9 @@ class PublicUpdateSubscriptionStatusRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'email_address': 'str',
-        'subscription_id': 'str',
-        'legal_basis': 'str',
-        'legal_basis_explanation': 'str'
-    }
+    openapi_types = {"email_address": "str", "subscription_id": "str", "legal_basis": "str", "legal_basis_explanation": "str"}
 
-    attribute_map = {
-        'email_address': 'emailAddress',
-        'subscription_id': 'subscriptionId',
-        'legal_basis': 'legalBasis',
-        'legal_basis_explanation': 'legalBasisExplanation'
-    }
+    attribute_map = {"email_address": "emailAddress", "subscription_id": "subscriptionId", "legal_basis": "legalBasis", "legal_basis_explanation": "legalBasisExplanation"}
 
     def __init__(self, email_address=None, subscription_id=None, legal_basis=None, legal_basis_explanation=None, local_vars_configuration=None):  # noqa: E501
         """PublicUpdateSubscriptionStatusRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -135,12 +125,17 @@ class PublicUpdateSubscriptionStatusRequest(object):
         :param legal_basis: The legal_basis of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :type: str
         """
-        allowed_values = ["LEGITIMATE_INTEREST_PQL", "LEGITIMATE_INTEREST_CLIENT", "PERFORMANCE_OF_CONTRACT", "CONSENT_WITH_NOTICE", "NON_GDPR", "PROCESS_AND_STORE", "LEGITIMATE_INTEREST_OTHER"]  # noqa: E501
+        allowed_values = [
+            "LEGITIMATE_INTEREST_PQL",
+            "LEGITIMATE_INTEREST_CLIENT",
+            "PERFORMANCE_OF_CONTRACT",
+            "CONSENT_WITH_NOTICE",
+            "NON_GDPR",
+            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_OTHER",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and legal_basis not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `legal_basis` ({0}), must be one of {1}"  # noqa: E501
-                .format(legal_basis, allowed_values)
-            )
+            raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
 
         self._legal_basis = legal_basis
 
@@ -174,18 +169,11 @@ class PublicUpdateSubscriptionStatusRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

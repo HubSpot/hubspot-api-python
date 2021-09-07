@@ -32,26 +32,17 @@ class SettingsResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'name': 'str',
-        'url': 'str',
-        'height': 'int',
-        'width': 'int',
-        'is_ready': 'bool',
-        'supports_custom_objects': 'bool',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
-    }
+    openapi_types = {"name": "str", "url": "str", "height": "int", "width": "int", "is_ready": "bool", "supports_custom_objects": "bool", "created_at": "datetime", "updated_at": "datetime"}
 
     attribute_map = {
-        'name': 'name',
-        'url': 'url',
-        'height': 'height',
-        'width': 'width',
-        'is_ready': 'isReady',
-        'supports_custom_objects': 'supportsCustomObjects',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "name": "name",
+        "url": "url",
+        "height": "height",
+        "width": "width",
+        "is_ready": "isReady",
+        "supports_custom_objects": "supportsCustomObjects",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
     def __init__(self, name=None, url=None, height=None, width=None, is_ready=None, supports_custom_objects=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
@@ -286,18 +277,11 @@ class SettingsResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -32,19 +32,11 @@ class TokenResponseIF(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'refresh_token': 'str',
-        'expires_in': 'int',
-        'access_token': 'str'
-    }
+    openapi_types = {"refresh_token": "str", "expires_in": "int", "access_token": "str", "id_token": "str", "token_type": "str"}
 
-    attribute_map = {
-        'refresh_token': 'refresh_token',
-        'expires_in': 'expires_in',
-        'access_token': 'access_token'
-    }
+    attribute_map = {"refresh_token": "refresh_token", "expires_in": "expires_in", "access_token": "access_token", "id_token": "id_token", "token_type": "token_type"}
 
-    def __init__(self, refresh_token=None, expires_in=None, access_token=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, refresh_token=None, expires_in=None, access_token=None, id_token=None, token_type=None, local_vars_configuration=None):  # noqa: E501
         """TokenResponseIF - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -53,11 +45,16 @@ class TokenResponseIF(object):
         self._refresh_token = None
         self._expires_in = None
         self._access_token = None
+        self._id_token = None
+        self._token_type = None
         self.discriminator = None
 
         self.refresh_token = refresh_token
         self.expires_in = expires_in
         self.access_token = access_token
+        if id_token is not None:
+            self.id_token = id_token
+        self.token_type = token_type
 
     @property
     def refresh_token(self):
@@ -128,6 +125,50 @@ class TokenResponseIF(object):
 
         self._access_token = access_token
 
+    @property
+    def id_token(self):
+        """Gets the id_token of this TokenResponseIF.  # noqa: E501
+
+
+        :return: The id_token of this TokenResponseIF.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_token
+
+    @id_token.setter
+    def id_token(self, id_token):
+        """Sets the id_token of this TokenResponseIF.
+
+
+        :param id_token: The id_token of this TokenResponseIF.  # noqa: E501
+        :type: str
+        """
+
+        self._id_token = id_token
+
+    @property
+    def token_type(self):
+        """Gets the token_type of this TokenResponseIF.  # noqa: E501
+
+
+        :return: The token_type of this TokenResponseIF.  # noqa: E501
+        :rtype: str
+        """
+        return self._token_type
+
+    @token_type.setter
+    def token_type(self, token_type):
+        """Sets the token_type of this TokenResponseIF.
+
+
+        :param token_type: The token_type of this TokenResponseIF.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
+
+        self._token_type = token_type
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -135,18 +176,11 @@ class TokenResponseIF(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

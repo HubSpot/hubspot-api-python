@@ -32,17 +32,9 @@ class Filter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'value': 'str',
-        'property_name': 'str',
-        'operator': 'str'
-    }
+    openapi_types = {"value": "str", "property_name": "str", "operator": "str"}
 
-    attribute_map = {
-        'value': 'value',
-        'property_name': 'propertyName',
-        'operator': 'operator'
-    }
+    attribute_map = {"value": "value", "property_name": "propertyName", "operator": "operator"}
 
     def __init__(self, value=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
         """Filter - a model defined in OpenAPI"""  # noqa: E501
@@ -108,6 +100,7 @@ class Filter(object):
     def operator(self):
         """Gets the operator of this Filter.  # noqa: E501
 
+        null  # noqa: E501
 
         :return: The operator of this Filter.  # noqa: E501
         :rtype: str
@@ -118,18 +111,16 @@ class Filter(object):
     def operator(self, operator):
         """Sets the operator of this Filter.
 
+        null  # noqa: E501
 
         :param operator: The operator of this Filter.  # noqa: E501
         :type: str
         """
         if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
             raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
+        allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
-                .format(operator, allowed_values)
-            )
+            raise ValueError("Invalid value for `operator` ({0}), must be one of {1}".format(operator, allowed_values))  # noqa: E501
 
         self._operator = operator
 
@@ -140,18 +131,11 @@ class Filter(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

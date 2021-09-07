@@ -32,27 +32,9 @@ class RefreshTokenInfoResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'token': 'str',
-        'user': 'str',
-        'hub_domain': 'str',
-        'scopes': 'list[str]',
-        'hub_id': 'int',
-        'client_id': 'str',
-        'user_id': 'int',
-        'token_type': 'str'
-    }
+    openapi_types = {"token": "str", "user": "str", "hub_domain": "str", "scopes": "list[str]", "hub_id": "int", "client_id": "str", "user_id": "int", "token_type": "str"}
 
-    attribute_map = {
-        'token': 'token',
-        'user': 'user',
-        'hub_domain': 'hub_domain',
-        'scopes': 'scopes',
-        'hub_id': 'hub_id',
-        'client_id': 'client_id',
-        'user_id': 'user_id',
-        'token_type': 'token_type'
-    }
+    attribute_map = {"token": "token", "user": "user", "hub_domain": "hub_domain", "scopes": "scopes", "hub_id": "hub_id", "client_id": "client_id", "user_id": "user_id", "token_type": "token_type"}
 
     def __init__(self, token=None, user=None, hub_domain=None, scopes=None, hub_id=None, client_id=None, user_id=None, token_type=None, local_vars_configuration=None):  # noqa: E501
         """RefreshTokenInfoResponse - a model defined in OpenAPI"""  # noqa: E501
@@ -268,18 +250,11 @@ class RefreshTokenInfoResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

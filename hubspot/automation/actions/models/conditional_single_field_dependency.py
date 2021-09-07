@@ -32,21 +32,16 @@ class ConditionalSingleFieldDependency(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'dependency_type': 'str',
-        'dependent_field_names': 'list[str]',
-        'controlling_field_name': 'str',
-        'controlling_field_value': 'str'
-    }
+    openapi_types = {"dependency_type": "str", "dependent_field_names": "list[str]", "controlling_field_name": "str", "controlling_field_value": "str"}
 
     attribute_map = {
-        'dependency_type': 'dependencyType',
-        'dependent_field_names': 'dependentFieldNames',
-        'controlling_field_name': 'controllingFieldName',
-        'controlling_field_value': 'controllingFieldValue'
+        "dependency_type": "dependencyType",
+        "dependent_field_names": "dependentFieldNames",
+        "controlling_field_name": "controllingFieldName",
+        "controlling_field_value": "controllingFieldValue",
     }
 
-    def __init__(self, dependency_type='CONDITIONAL_SINGLE_FIELD', dependent_field_names=None, controlling_field_name=None, controlling_field_value=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, dependency_type="CONDITIONAL_SINGLE_FIELD", dependent_field_names=None, controlling_field_name=None, controlling_field_value=None, local_vars_configuration=None):  # noqa: E501
         """ConditionalSingleFieldDependency - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,10 +80,7 @@ class ConditionalSingleFieldDependency(object):
             raise ValueError("Invalid value for `dependency_type`, must not be `None`")  # noqa: E501
         allowed_values = ["CONDITIONAL_SINGLE_FIELD"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and dependency_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `dependency_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(dependency_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `dependency_type` ({0}), must be one of {1}".format(dependency_type, allowed_values))  # noqa: E501
 
         self._dependency_type = dependency_type
 
@@ -168,18 +160,11 @@ class ConditionalSingleFieldDependency(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

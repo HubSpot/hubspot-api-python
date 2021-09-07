@@ -33,46 +33,66 @@ class DomainCdnConfig(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'portal_id': 'int',
-        'created': 'int',
-        'updated': 'int',
-        'domain_id': 'int',
-        'cert_id': 'int',
-        'cert_expiration_date': 'int',
-        'cdn_id': 'str',
-        'cdn_group_id': 'str',
-        'ssl_status': 'str',
-        'validation_method': 'str',
-        'http_body': 'str',
-        'http_url_path': 'str',
-        'cname': 'str',
-        'cname_target': 'str',
-        'minimum_tls_version': 'str',
-        'alternate_origin_hostname': 'str',
-        'id': 'int'
+        "portal_id": "int",
+        "created": "int",
+        "updated": "int",
+        "domain_id": "int",
+        "cert_id": "int",
+        "cert_expiration_date": "int",
+        "cdn_id": "str",
+        "cdn_group_id": "str",
+        "ssl_status": "str",
+        "validation_method": "str",
+        "http_body": "str",
+        "http_url_path": "str",
+        "cname": "str",
+        "cname_target": "str",
+        "minimum_tls_version": "str",
+        "alternate_origin_hostname": "str",
+        "id": "int",
     }
 
     attribute_map = {
-        'portal_id': 'portalId',
-        'created': 'created',
-        'updated': 'updated',
-        'domain_id': 'domainId',
-        'cert_id': 'certId',
-        'cert_expiration_date': 'certExpirationDate',
-        'cdn_id': 'cdnId',
-        'cdn_group_id': 'cdnGroupId',
-        'ssl_status': 'sslStatus',
-        'validation_method': 'validationMethod',
-        'http_body': 'httpBody',
-        'http_url_path': 'httpUrlPath',
-        'cname': 'cname',
-        'cname_target': 'cnameTarget',
-        'minimum_tls_version': 'minimumTlsVersion',
-        'alternate_origin_hostname': 'alternateOriginHostname',
-        'id': 'id'
+        "portal_id": "portalId",
+        "created": "created",
+        "updated": "updated",
+        "domain_id": "domainId",
+        "cert_id": "certId",
+        "cert_expiration_date": "certExpirationDate",
+        "cdn_id": "cdnId",
+        "cdn_group_id": "cdnGroupId",
+        "ssl_status": "sslStatus",
+        "validation_method": "validationMethod",
+        "http_body": "httpBody",
+        "http_url_path": "httpUrlPath",
+        "cname": "cname",
+        "cname_target": "cnameTarget",
+        "minimum_tls_version": "minimumTlsVersion",
+        "alternate_origin_hostname": "alternateOriginHostname",
+        "id": "id",
     }
 
-    def __init__(self, portal_id=None, created=None, updated=None, domain_id=None, cert_id=None, cert_expiration_date=None, cdn_id=None, cdn_group_id=None, ssl_status=None, validation_method=None, http_body=None, http_url_path=None, cname=None, cname_target=None, minimum_tls_version=None, alternate_origin_hostname=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        portal_id=None,
+        created=None,
+        updated=None,
+        domain_id=None,
+        cert_id=None,
+        cert_expiration_date=None,
+        cdn_id=None,
+        cdn_group_id=None,
+        ssl_status=None,
+        validation_method=None,
+        http_body=None,
+        http_url_path=None,
+        cname=None,
+        cname_target=None,
+        minimum_tls_version=None,
+        alternate_origin_hostname=None,
+        id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """DomainCdnConfig - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -321,10 +341,7 @@ class DomainCdnConfig(object):
             raise ValueError("Invalid value for `ssl_status`, must not be `None`")  # noqa: E501
         allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and ssl_status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `ssl_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(ssl_status, allowed_values)
-            )
+            raise ValueError("Invalid value for `ssl_status` ({0}), must be one of {1}".format(ssl_status, allowed_values))  # noqa: E501
 
         self._ssl_status = ssl_status
 
@@ -350,10 +367,7 @@ class DomainCdnConfig(object):
             raise ValueError("Invalid value for `validation_method`, must not be `None`")  # noqa: E501
         allowed_values = ["0", "1", "2"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and validation_method not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `validation_method` ({0}), must be one of {1}"  # noqa: E501
-                .format(validation_method, allowed_values)
-            )
+            raise ValueError("Invalid value for `validation_method` ({0}), must be one of {1}".format(validation_method, allowed_values))  # noqa: E501
 
         self._validation_method = validation_method
 
@@ -471,10 +485,7 @@ class DomainCdnConfig(object):
             raise ValueError("Invalid value for `minimum_tls_version`, must not be `None`")  # noqa: E501
         allowed_values = ["1.0", "1.1", "1.2", "1.3", "none", "null"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and minimum_tls_version not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `minimum_tls_version` ({0}), must be one of {1}"  # noqa: E501
-                .format(minimum_tls_version, allowed_values)
-            )
+            raise ValueError("Invalid value for `minimum_tls_version` ({0}), must be one of {1}".format(minimum_tls_version, allowed_values))  # noqa: E501
 
         self._minimum_tls_version = minimum_tls_version
 
@@ -531,18 +542,11 @@ class DomainCdnConfig(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

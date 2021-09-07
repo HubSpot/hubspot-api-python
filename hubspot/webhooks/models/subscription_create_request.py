@@ -32,17 +32,9 @@ class SubscriptionCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'event_type': 'str',
-        'property_name': 'str',
-        'active': 'bool'
-    }
+    openapi_types = {"event_type": "str", "property_name": "str", "active": "bool"}
 
-    attribute_map = {
-        'event_type': 'eventType',
-        'property_name': 'propertyName',
-        'active': 'active'
-    }
+    attribute_map = {"event_type": "eventType", "property_name": "propertyName", "active": "active"}
 
     def __init__(self, event_type=None, property_name=None, active=False, local_vars_configuration=None):  # noqa: E501
         """SubscriptionCreateRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -83,12 +75,20 @@ class SubscriptionCreateRequest(object):
         """
         if self.local_vars_configuration.client_side_validation and event_type is None:  # noqa: E501
             raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["contact.propertyChange", "company.propertyChange", "deal.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion"]  # noqa: E501
+        allowed_values = [
+            "contact.propertyChange",
+            "company.propertyChange",
+            "deal.propertyChange",
+            "contact.creation",
+            "contact.deletion",
+            "contact.privacyDeletion",
+            "company.creation",
+            "company.deletion",
+            "deal.creation",
+            "deal.deletion",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `event_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(event_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501
 
         self._event_type = event_type
 
@@ -145,18 +145,11 @@ class SubscriptionCreateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

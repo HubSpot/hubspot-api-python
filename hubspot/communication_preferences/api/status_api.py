@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.communication_preferences.api_client import ApiClient
-from hubspot.communication_preferences.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.communication_preferences.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class StatusApi(object):
@@ -58,7 +55,7 @@ class StatusApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_email_status_with_http_info(email_address, **kwargs)  # noqa: E501
 
     def get_email_status_with_http_info(self, email_address, **kwargs):  # noqa: E501
@@ -88,36 +85,23 @@ class StatusApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'email_address'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["email_address"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_email_status" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_email_status" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'email_address' is set
-        if self.api_client.client_side_validation and ('email_address' not in local_var_params or  # noqa: E501
-                                                        local_var_params['email_address'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and ("email_address" not in local_var_params or local_var_params["email_address"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `email_address` when calling `get_email_status`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'email_address' in local_var_params:
-            path_params['emailAddress'] = local_var_params['email_address']  # noqa: E501
+        if "email_address" in local_var_params:
+            path_params["emailAddress"] = local_var_params["email_address"]  # noqa: E501
 
         query_params = []
 
@@ -128,27 +112,28 @@ class StatusApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/communication-preferences/v3/status/email/{emailAddress}', 'GET',
+            "/communication-preferences/v3/status/email/{emailAddress}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PublicSubscriptionStatusesResponse',  # noqa: E501
+            response_type="PublicSubscriptionStatusesResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def subscribe(self, public_update_subscription_status_request, **kwargs):  # noqa: E501
         """Subscribe a contact  # noqa: E501
@@ -172,7 +157,7 @@ class StatusApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.subscribe_with_http_info(public_update_subscription_status_request, **kwargs)  # noqa: E501
 
     def subscribe_with_http_info(self, public_update_subscription_status_request, **kwargs):  # noqa: E501
@@ -202,29 +187,18 @@ class StatusApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'public_update_subscription_status_request'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["public_update_subscription_status_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method subscribe" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method subscribe" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'public_update_subscription_status_request' is set
-        if self.api_client.client_side_validation and ('public_update_subscription_status_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['public_update_subscription_status_request'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "public_update_subscription_status_request" not in local_var_params or local_var_params["public_update_subscription_status_request"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `public_update_subscription_status_request` when calling `subscribe`")  # noqa: E501
 
         collection_formats = {}
@@ -239,34 +213,34 @@ class StatusApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'public_update_subscription_status_request' in local_var_params:
-            body_params = local_var_params['public_update_subscription_status_request']
+        if "public_update_subscription_status_request" in local_var_params:
+            body_params = local_var_params["public_update_subscription_status_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/communication-preferences/v3/subscribe', 'POST',
+            "/communication-preferences/v3/subscribe",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PublicSubscriptionStatus',  # noqa: E501
+            response_type="PublicSubscriptionStatus",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def unsubscribe(self, public_update_subscription_status_request, **kwargs):  # noqa: E501
         """Unsubscribe a contact  # noqa: E501
@@ -290,7 +264,7 @@ class StatusApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.unsubscribe_with_http_info(public_update_subscription_status_request, **kwargs)  # noqa: E501
 
     def unsubscribe_with_http_info(self, public_update_subscription_status_request, **kwargs):  # noqa: E501
@@ -320,29 +294,18 @@ class StatusApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'public_update_subscription_status_request'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["public_update_subscription_status_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method unsubscribe" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method unsubscribe" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'public_update_subscription_status_request' is set
-        if self.api_client.client_side_validation and ('public_update_subscription_status_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['public_update_subscription_status_request'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "public_update_subscription_status_request" not in local_var_params or local_var_params["public_update_subscription_status_request"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `public_update_subscription_status_request` when calling `unsubscribe`")  # noqa: E501
 
         collection_formats = {}
@@ -357,31 +320,31 @@ class StatusApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'public_update_subscription_status_request' in local_var_params:
-            body_params = local_var_params['public_update_subscription_status_request']
+        if "public_update_subscription_status_request" in local_var_params:
+            body_params = local_var_params["public_update_subscription_status_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey']  # noqa: E501
+        auth_settings = ["hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/communication-preferences/v3/unsubscribe', 'POST',
+            "/communication-preferences/v3/unsubscribe",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PublicSubscriptionStatus',  # noqa: E501
+            response_type="PublicSubscriptionStatus",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

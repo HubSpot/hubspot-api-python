@@ -33,24 +33,16 @@ class BatchResponsePublicAssociationMulti(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'results': 'list[PublicAssociationMulti]',
-        'num_errors': 'int',
-        'errors': 'list[StandardError]',
-        'status': 'str',
-        'requested_at': 'datetime',
-        'started_at': 'datetime',
-        'completed_at': 'datetime'
+        "results": "list[PublicAssociationMulti]",
+        "num_errors": "int",
+        "errors": "list[StandardError]",
+        "status": "str",
+        "requested_at": "datetime",
+        "started_at": "datetime",
+        "completed_at": "datetime",
     }
 
-    attribute_map = {
-        'results': 'results',
-        'num_errors': 'numErrors',
-        'errors': 'errors',
-        'status': 'status',
-        'requested_at': 'requestedAt',
-        'started_at': 'startedAt',
-        'completed_at': 'completedAt'
-    }
+    attribute_map = {"results": "results", "num_errors": "numErrors", "errors": "errors", "status": "status", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt"}
 
     def __init__(self, results=None, num_errors=None, errors=None, status=None, requested_at=None, started_at=None, completed_at=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponsePublicAssociationMulti - a model defined in OpenAPI"""  # noqa: E501
@@ -165,10 +157,7 @@ class BatchResponsePublicAssociationMulti(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
 
         self._status = status
 
@@ -246,18 +235,11 @@ class BatchResponsePublicAssociationMulti(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -27,6 +27,7 @@ from hubspot.cms.url_redirects.exceptions import ApiTypeError
 from hubspot.cms.url_redirects.exceptions import ApiValueError
 from hubspot.cms.url_redirects.exceptions import ApiKeyError
 from hubspot.cms.url_redirects.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.cms.url_redirects.models.collection_response_with_total_url_mapping import CollectionResponseWithTotalUrlMapping
 from hubspot.cms.url_redirects.models.error import Error
@@ -35,4 +36,3 @@ from hubspot.cms.url_redirects.models.next_page import NextPage
 from hubspot.cms.url_redirects.models.paging import Paging
 from hubspot.cms.url_redirects.models.url_mapping import UrlMapping
 from hubspot.cms.url_redirects.models.url_mapping_create_request_body import UrlMappingCreateRequestBody
-
