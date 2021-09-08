@@ -32,19 +32,9 @@ class AccountingExtensionTerm(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'due_date': 'date',
-        'name': 'str',
-        'id': 'str',
-        'due_days': 'int'
-    }
+    openapi_types = {"due_date": "date", "name": "str", "id": "str", "due_days": "int"}
 
-    attribute_map = {
-        'due_date': 'dueDate',
-        'name': 'name',
-        'id': 'id',
-        'due_days': 'dueDays'
-    }
+    attribute_map = {"due_date": "dueDate", "name": "name", "id": "id", "due_days": "dueDays"}
 
     def __init__(self, due_date=None, name=None, id=None, due_days=None, local_vars_configuration=None):  # noqa: E501
         """AccountingExtensionTerm - a model defined in OpenAPI"""  # noqa: E501
@@ -168,18 +158,11 @@ class AccountingExtensionTerm(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

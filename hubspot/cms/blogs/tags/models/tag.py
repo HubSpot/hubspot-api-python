@@ -32,21 +32,9 @@ class Tag(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'deleted_at': 'datetime',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
-    }
+    openapi_types = {"id": "str", "name": "str", "deleted_at": "datetime", "created_at": "datetime", "updated_at": "datetime"}
 
-    attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'deleted_at': 'deletedAt',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
-    }
+    attribute_map = {"id": "id", "name": "name", "deleted_at": "deletedAt", "created_at": "createdAt", "updated_at": "updatedAt"}
 
     def __init__(self, id=None, name=None, deleted_at=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """Tag - a model defined in OpenAPI"""  # noqa: E501
@@ -199,18 +187,11 @@ class Tag(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

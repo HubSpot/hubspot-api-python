@@ -32,19 +32,9 @@ class SearchHitField(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'values': 'list[object]',
-        'metadata_field': 'bool',
-        'name': 'str',
-        'value': 'object'
-    }
+    openapi_types = {"values": "list[object]", "metadata_field": "bool", "name": "str", "value": "object"}
 
-    attribute_map = {
-        'values': 'values',
-        'metadata_field': 'metadataField',
-        'name': 'name',
-        'value': 'value'
-    }
+    attribute_map = {"values": "values", "metadata_field": "metadataField", "name": "name", "value": "value"}
 
     def __init__(self, values=None, metadata_field=None, name=None, value=None, local_vars_configuration=None):  # noqa: E501
         """SearchHitField - a model defined in OpenAPI"""  # noqa: E501
@@ -162,18 +152,11 @@ class SearchHitField(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

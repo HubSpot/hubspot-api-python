@@ -29,6 +29,7 @@ from hubspot.crm.properties.exceptions import ApiTypeError
 from hubspot.crm.properties.exceptions import ApiValueError
 from hubspot.crm.properties.exceptions import ApiKeyError
 from hubspot.crm.properties.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.properties.models.batch_input_property_create import BatchInputPropertyCreate
 from hubspot.crm.properties.models.batch_input_property_name import BatchInputPropertyName
@@ -52,4 +53,3 @@ from hubspot.crm.properties.models.property_modification_metadata import Propert
 from hubspot.crm.properties.models.property_name import PropertyName
 from hubspot.crm.properties.models.property_update import PropertyUpdate
 from hubspot.crm.properties.models.standard_error import StandardError
-

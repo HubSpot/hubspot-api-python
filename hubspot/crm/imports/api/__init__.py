@@ -4,4 +4,4 @@ from __future__ import absolute_import
 
 # import apis into api package
 from hubspot.crm.imports.api.core_api import CoreApi
-from hubspot.crm.imports.api.default_api import DefaultApi
+from hubspot.crm.imports.api.public_imports_api import PublicImportsApi

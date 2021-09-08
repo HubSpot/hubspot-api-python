@@ -17,7 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.cms.blogs.authors.api.default_api import DefaultApi
+from hubspot.cms.blogs.authors.api.author_api import AuthorApi
 
 # import ApiClient
 from hubspot.cms.blogs.authors.api_client import ApiClient
@@ -27,6 +27,7 @@ from hubspot.cms.blogs.authors.exceptions import ApiTypeError
 from hubspot.cms.blogs.authors.exceptions import ApiValueError
 from hubspot.cms.blogs.authors.exceptions import ApiKeyError
 from hubspot.cms.blogs.authors.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.cms.blogs.authors.models.batch_input_blog_author import BatchInputBlogAuthor
 from hubspot.cms.blogs.authors.models.batch_input_json_node import BatchInputJsonNode
@@ -39,4 +40,3 @@ from hubspot.cms.blogs.authors.models.error_detail import ErrorDetail
 from hubspot.cms.blogs.authors.models.forward_paging import ForwardPaging
 from hubspot.cms.blogs.authors.models.next_page import NextPage
 from hubspot.cms.blogs.authors.models.standard_error import StandardError
-

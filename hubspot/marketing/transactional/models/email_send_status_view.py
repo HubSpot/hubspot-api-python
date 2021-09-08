@@ -32,24 +32,16 @@ class EmailSendStatusView(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'event_id': 'EventIdView',
-        'status_id': 'str',
-        'send_result': 'str',
-        'requested_at': 'datetime',
-        'started_at': 'datetime',
-        'completed_at': 'datetime',
-        'status': 'str'
-    }
+    openapi_types = {"event_id": "EventIdView", "status_id": "str", "send_result": "str", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "status": "str"}
 
     attribute_map = {
-        'event_id': 'eventId',
-        'status_id': 'statusId',
-        'send_result': 'sendResult',
-        'requested_at': 'requestedAt',
-        'started_at': 'startedAt',
-        'completed_at': 'completedAt',
-        'status': 'status'
+        "event_id": "eventId",
+        "status_id": "statusId",
+        "send_result": "sendResult",
+        "requested_at": "requestedAt",
+        "started_at": "startedAt",
+        "completed_at": "completedAt",
+        "status": "status",
     }
 
     def __init__(self, event_id=None, status_id=None, send_result=None, requested_at=None, started_at=None, completed_at=None, status=None, local_vars_configuration=None):  # noqa: E501
@@ -146,12 +138,51 @@ class EmailSendStatusView(object):
         :param send_result: The send_result of this EmailSendStatusView.  # noqa: E501
         :type: str
         """
-        allowed_values = ["SENT", "IDEMPOTENT_IGNORE", "QUEUED", "IDEMPOTENT_FAIL", "THROTTLED", "EMAIL_DISABLED", "PORTAL_SUSPENDED", "INVALID_TO_ADDRESS", "BLOCKED_DOMAIN", "PREVIOUSLY_BOUNCED", "EMAIL_UNCONFIRMED", "PREVIOUS_SPAM", "PREVIOUSLY_UNSUBSCRIBED_MESSAGE", "PREVIOUSLY_UNSUBSCRIBED_PORTAL", "INVALID_FROM_ADDRESS", "CAMPAIGN_CANCELLED", "VALIDATION_FAILED", "MTA_IGNORE", "BLOCKED_ADDRESS", "PORTAL_OVER_LIMIT", "PORTAL_EXPIRED", "PORTAL_MISSING_MARKETING_SCOPE", "MISSING_TEMPLATE_PROPERTIES", "MISSING_REQUIRED_PARAMETER", "PORTAL_AUTHENTICATION_FAILURE", "MISSING_CONTENT", "CORRUPT_INPUT", "TEMPLATE_RENDER_EXCEPTION", "GRAYMAIL_SUPPRESSED", "UNCONFIGURED_SENDING_DOMAIN", "UNDELIVERABLE", "CANCELLED_ABUSE", "QUARANTINED_ADDRESS", "ADDRESS_ONLY_ACCEPTED_ON_PROD", "PORTAL_NOT_AUTHORIZED_FOR_APPLICATION", "ADDRESS_LIST_BOMBED", "ADDRESS_OPTED_OUT", "RECIPIENT_FATIGUE_SUPPRESSED", "TOO_MANY_RECIPIENTS", "PREVIOUSLY_UNSUBSCRIBED_BRAND", "NON_MARKETABLE_CONTACT"]  # noqa: E501
+        allowed_values = [
+            "SENT",
+            "IDEMPOTENT_IGNORE",
+            "QUEUED",
+            "IDEMPOTENT_FAIL",
+            "THROTTLED",
+            "EMAIL_DISABLED",
+            "PORTAL_SUSPENDED",
+            "INVALID_TO_ADDRESS",
+            "BLOCKED_DOMAIN",
+            "PREVIOUSLY_BOUNCED",
+            "EMAIL_UNCONFIRMED",
+            "PREVIOUS_SPAM",
+            "PREVIOUSLY_UNSUBSCRIBED_MESSAGE",
+            "PREVIOUSLY_UNSUBSCRIBED_PORTAL",
+            "INVALID_FROM_ADDRESS",
+            "CAMPAIGN_CANCELLED",
+            "VALIDATION_FAILED",
+            "MTA_IGNORE",
+            "BLOCKED_ADDRESS",
+            "PORTAL_OVER_LIMIT",
+            "PORTAL_EXPIRED",
+            "PORTAL_MISSING_MARKETING_SCOPE",
+            "MISSING_TEMPLATE_PROPERTIES",
+            "MISSING_REQUIRED_PARAMETER",
+            "PORTAL_AUTHENTICATION_FAILURE",
+            "MISSING_CONTENT",
+            "CORRUPT_INPUT",
+            "TEMPLATE_RENDER_EXCEPTION",
+            "GRAYMAIL_SUPPRESSED",
+            "UNCONFIGURED_SENDING_DOMAIN",
+            "UNDELIVERABLE",
+            "CANCELLED_ABUSE",
+            "QUARANTINED_ADDRESS",
+            "ADDRESS_ONLY_ACCEPTED_ON_PROD",
+            "PORTAL_NOT_AUTHORIZED_FOR_APPLICATION",
+            "ADDRESS_LIST_BOMBED",
+            "ADDRESS_OPTED_OUT",
+            "RECIPIENT_FATIGUE_SUPPRESSED",
+            "TOO_MANY_RECIPIENTS",
+            "PREVIOUSLY_UNSUBSCRIBED_BRAND",
+            "NON_MARKETABLE_CONTACT",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and send_result not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `send_result` ({0}), must be one of {1}"  # noqa: E501
-                .format(send_result, allowed_values)
-            )
+            raise ValueError("Invalid value for `send_result` ({0}), must be one of {1}".format(send_result, allowed_values))  # noqa: E501
 
         self._send_result = send_result
 
@@ -248,10 +279,7 @@ class EmailSendStatusView(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
 
         self._status = status
 
@@ -262,18 +290,11 @@ class EmailSendStatusView(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

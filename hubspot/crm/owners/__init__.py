@@ -17,7 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.crm.owners.api.default_api import DefaultApi
+from hubspot.crm.owners.api.owners_api import OwnersApi
 
 # import ApiClient
 from hubspot.crm.owners.api_client import ApiClient
@@ -27,6 +27,7 @@ from hubspot.crm.owners.exceptions import ApiTypeError
 from hubspot.crm.owners.exceptions import ApiValueError
 from hubspot.crm.owners.exceptions import ApiKeyError
 from hubspot.crm.owners.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.owners.models.collection_response_public_owner_forward_paging import CollectionResponsePublicOwnerForwardPaging
 from hubspot.crm.owners.models.error import Error
@@ -35,4 +36,3 @@ from hubspot.crm.owners.models.forward_paging import ForwardPaging
 from hubspot.crm.owners.models.next_page import NextPage
 from hubspot.crm.owners.models.public_owner import PublicOwner
 from hubspot.crm.owners.models.public_team import PublicTeam
-

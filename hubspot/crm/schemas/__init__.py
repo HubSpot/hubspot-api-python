@@ -18,7 +18,7 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.crm.schemas.api.core_api import CoreApi
-from hubspot.crm.schemas.api.default_api import DefaultApi
+from hubspot.crm.schemas.api.public_object_schemas_api import PublicObjectSchemasApi
 
 # import ApiClient
 from hubspot.crm.schemas.api_client import ApiClient
@@ -28,6 +28,7 @@ from hubspot.crm.schemas.exceptions import ApiTypeError
 from hubspot.crm.schemas.exceptions import ApiValueError
 from hubspot.crm.schemas.exceptions import ApiKeyError
 from hubspot.crm.schemas.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.schemas.models.association_definition import AssociationDefinition
 from hubspot.crm.schemas.models.association_definition_egg import AssociationDefinitionEgg
@@ -44,4 +45,3 @@ from hubspot.crm.schemas.models.object_type_property_create import ObjectTypePro
 from hubspot.crm.schemas.models.option import Option
 from hubspot.crm.schemas.models.option_input import OptionInput
 from hubspot.crm.schemas.models.property_modification_metadata import PropertyModificationMetadata
-

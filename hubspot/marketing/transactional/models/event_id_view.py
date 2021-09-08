@@ -32,15 +32,9 @@ class EventIdView(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'created': 'datetime',
-        'id': 'str'
-    }
+    openapi_types = {"created": "datetime", "id": "str"}
 
-    attribute_map = {
-        'created': 'created',
-        'id': 'id'
-    }
+    attribute_map = {"created": "created", "id": "id"}
 
     def __init__(self, created=None, id=None, local_vars_configuration=None):  # noqa: E501
         """EventIdView - a model defined in OpenAPI"""  # noqa: E501
@@ -112,18 +106,11 @@ class EventIdView(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

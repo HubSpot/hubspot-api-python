@@ -30,6 +30,7 @@ from hubspot.crm.objects.feedback_submissions.exceptions import ApiTypeError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiValueError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiKeyError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.objects.feedback_submissions.models.associated_id import AssociatedId
 from hubspot.crm.objects.feedback_submissions.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
@@ -58,4 +59,3 @@ from hubspot.crm.objects.feedback_submissions.models.simple_public_object_id imp
 from hubspot.crm.objects.feedback_submissions.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.objects.feedback_submissions.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.objects.feedback_submissions.models.standard_error import StandardError
-

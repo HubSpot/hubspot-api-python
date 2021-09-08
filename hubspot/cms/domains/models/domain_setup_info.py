@@ -32,15 +32,9 @@ class DomainSetupInfo(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'supports_ssl_externally': 'bool',
-        'who_is_email_addresses': 'list[str]'
-    }
+    openapi_types = {"supports_ssl_externally": "bool", "who_is_email_addresses": "list[str]"}
 
-    attribute_map = {
-        'supports_ssl_externally': 'supportsSslExternally',
-        'who_is_email_addresses': 'whoIsEmailAddresses'
-    }
+    attribute_map = {"supports_ssl_externally": "supportsSslExternally", "who_is_email_addresses": "whoIsEmailAddresses"}
 
     def __init__(self, supports_ssl_externally=None, who_is_email_addresses=None, local_vars_configuration=None):  # noqa: E501
         """DomainSetupInfo - a model defined in OpenAPI"""  # noqa: E501
@@ -108,18 +102,11 @@ class DomainSetupInfo(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

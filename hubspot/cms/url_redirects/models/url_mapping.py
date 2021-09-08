@@ -33,62 +33,90 @@ class UrlMapping(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'int',
-        'portal_id': 'int',
-        'created': 'int',
-        'updated': 'int',
-        'created_by_id': 'int',
-        'updated_by_id': 'int',
-        'route_prefix': 'str',
-        'destination': 'str',
-        'redirect_style': 'int',
-        'content_group_id': 'int',
-        'is_only_after_not_found': 'bool',
-        'is_regex': 'bool',
-        'is_match_full_url': 'bool',
-        'is_match_query_string': 'bool',
-        'is_pattern': 'bool',
-        'is_trailing_slash_optional': 'bool',
-        'is_protocol_agnostic': 'bool',
-        'name': 'str',
-        'precedence': 'int',
-        'deleted_at': 'int',
-        'note': 'str',
-        'label': 'str',
-        'internally_created': 'bool',
-        'cos_object_type': 'str',
-        'cdn_purge_embargo_time': 'int'
+        "id": "int",
+        "portal_id": "int",
+        "created": "int",
+        "updated": "int",
+        "created_by_id": "int",
+        "updated_by_id": "int",
+        "route_prefix": "str",
+        "destination": "str",
+        "redirect_style": "int",
+        "content_group_id": "int",
+        "is_only_after_not_found": "bool",
+        "is_regex": "bool",
+        "is_match_full_url": "bool",
+        "is_match_query_string": "bool",
+        "is_pattern": "bool",
+        "is_trailing_slash_optional": "bool",
+        "is_protocol_agnostic": "bool",
+        "name": "str",
+        "precedence": "int",
+        "deleted_at": "int",
+        "note": "str",
+        "label": "str",
+        "internally_created": "bool",
+        "cos_object_type": "str",
+        "cdn_purge_embargo_time": "int",
     }
 
     attribute_map = {
-        'id': 'id',
-        'portal_id': 'portalId',
-        'created': 'created',
-        'updated': 'updated',
-        'created_by_id': 'createdById',
-        'updated_by_id': 'updatedById',
-        'route_prefix': 'routePrefix',
-        'destination': 'destination',
-        'redirect_style': 'redirectStyle',
-        'content_group_id': 'contentGroupId',
-        'is_only_after_not_found': 'isOnlyAfterNotFound',
-        'is_regex': 'isRegex',
-        'is_match_full_url': 'isMatchFullUrl',
-        'is_match_query_string': 'isMatchQueryString',
-        'is_pattern': 'isPattern',
-        'is_trailing_slash_optional': 'isTrailingSlashOptional',
-        'is_protocol_agnostic': 'isProtocolAgnostic',
-        'name': 'name',
-        'precedence': 'precedence',
-        'deleted_at': 'deletedAt',
-        'note': 'note',
-        'label': 'label',
-        'internally_created': 'internallyCreated',
-        'cos_object_type': 'cosObjectType',
-        'cdn_purge_embargo_time': 'cdnPurgeEmbargoTime'
+        "id": "id",
+        "portal_id": "portalId",
+        "created": "created",
+        "updated": "updated",
+        "created_by_id": "createdById",
+        "updated_by_id": "updatedById",
+        "route_prefix": "routePrefix",
+        "destination": "destination",
+        "redirect_style": "redirectStyle",
+        "content_group_id": "contentGroupId",
+        "is_only_after_not_found": "isOnlyAfterNotFound",
+        "is_regex": "isRegex",
+        "is_match_full_url": "isMatchFullUrl",
+        "is_match_query_string": "isMatchQueryString",
+        "is_pattern": "isPattern",
+        "is_trailing_slash_optional": "isTrailingSlashOptional",
+        "is_protocol_agnostic": "isProtocolAgnostic",
+        "name": "name",
+        "precedence": "precedence",
+        "deleted_at": "deletedAt",
+        "note": "note",
+        "label": "label",
+        "internally_created": "internallyCreated",
+        "cos_object_type": "cosObjectType",
+        "cdn_purge_embargo_time": "cdnPurgeEmbargoTime",
     }
 
-    def __init__(self, id=None, portal_id=None, created=None, updated=None, created_by_id=None, updated_by_id=None, route_prefix=None, destination=None, redirect_style=None, content_group_id=None, is_only_after_not_found=None, is_regex=None, is_match_full_url=None, is_match_query_string=None, is_pattern=None, is_trailing_slash_optional=None, is_protocol_agnostic=None, name=None, precedence=None, deleted_at=None, note=None, label=None, internally_created=None, cos_object_type=None, cdn_purge_embargo_time=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        portal_id=None,
+        created=None,
+        updated=None,
+        created_by_id=None,
+        updated_by_id=None,
+        route_prefix=None,
+        destination=None,
+        redirect_style=None,
+        content_group_id=None,
+        is_only_after_not_found=None,
+        is_regex=None,
+        is_match_full_url=None,
+        is_match_query_string=None,
+        is_pattern=None,
+        is_trailing_slash_optional=None,
+        is_protocol_agnostic=None,
+        name=None,
+        precedence=None,
+        deleted_at=None,
+        note=None,
+        label=None,
+        internally_created=None,
+        cos_object_type=None,
+        cdn_purge_embargo_time=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """UrlMapping - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -718,12 +746,52 @@ class UrlMapping(object):
         """
         if self.local_vars_configuration.client_side_validation and cos_object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `cos_object_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["CONTENT", "EXTENSION_RESOURCE", "LAYOUT", "CUSTOM_WIDGET", "WIDGET", "FORM", "PLACEMENT", "IMAGE", "DOMAIN_SETTINGS", "SITE_SETTINGS", "EMAIL_ADDRESS", "WORKFLOW", "HUBDB_TABLE", "REDIRECT_URL", "DESIGN_FOLDER", "SITE_MAP", "DOMAIN", "BLOG", "FILE", "FOLDER", "SITE_MENU", "THEME", "CONTENT_GROUP", "FOLLOW_ME", "KNOWLEDGE_BASE", "LIST_MEMBERSHIP", "CONTACT_MEMBERSHIP", "PASSWORD_PROTECTED", "UNRESTRICTED_ACCESS", "MARKETPLACE_LISTING", "LAYOUT_SECTION", "THEME_SETTINGS", "VIDEO_PLAYER", "URL_MAPPING", "KNOWLEDGE_CATEGORY", "KNOWLEDGE_HOMEPAGE_CATEGORY", "RAW_ASSET", "GLOBAL_CONTENT", "HUBDB_TABLE_ROW", "BLOG_AUTHOR", "SERVERLESS_FUNCTION", "KNOWLEDGE_CATEGORY_TRANSLATION"]  # noqa: E501
+        allowed_values = [
+            "CONTENT",
+            "EXTENSION_RESOURCE",
+            "LAYOUT",
+            "CUSTOM_WIDGET",
+            "WIDGET",
+            "FORM",
+            "PLACEMENT",
+            "IMAGE",
+            "DOMAIN_SETTINGS",
+            "SITE_SETTINGS",
+            "EMAIL_ADDRESS",
+            "WORKFLOW",
+            "HUBDB_TABLE",
+            "REDIRECT_URL",
+            "DESIGN_FOLDER",
+            "SITE_MAP",
+            "DOMAIN",
+            "BLOG",
+            "FILE",
+            "FOLDER",
+            "SITE_MENU",
+            "THEME",
+            "CONTENT_GROUP",
+            "FOLLOW_ME",
+            "KNOWLEDGE_BASE",
+            "LIST_MEMBERSHIP",
+            "CONTACT_MEMBERSHIP",
+            "PASSWORD_PROTECTED",
+            "UNRESTRICTED_ACCESS",
+            "MARKETPLACE_LISTING",
+            "LAYOUT_SECTION",
+            "THEME_SETTINGS",
+            "VIDEO_PLAYER",
+            "URL_MAPPING",
+            "KNOWLEDGE_CATEGORY",
+            "KNOWLEDGE_HOMEPAGE_CATEGORY",
+            "RAW_ASSET",
+            "GLOBAL_CONTENT",
+            "HUBDB_TABLE_ROW",
+            "BLOG_AUTHOR",
+            "SERVERLESS_FUNCTION",
+            "KNOWLEDGE_CATEGORY_TRANSLATION",
+        ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and cos_object_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `cos_object_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(cos_object_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `cos_object_type` ({0}), must be one of {1}".format(cos_object_type, allowed_values))  # noqa: E501
 
         self._cos_object_type = cos_object_type
 
@@ -757,18 +825,11 @@ class UrlMapping(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

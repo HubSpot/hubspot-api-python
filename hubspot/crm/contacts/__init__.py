@@ -20,6 +20,7 @@ __version__ = "1.0.0"
 from hubspot.crm.contacts.api.associations_api import AssociationsApi
 from hubspot.crm.contacts.api.basic_api import BasicApi
 from hubspot.crm.contacts.api.batch_api import BatchApi
+from hubspot.crm.contacts.api.gdpr_api import GDPRApi
 from hubspot.crm.contacts.api.search_api import SearchApi
 
 # import ApiClient
@@ -30,6 +31,7 @@ from hubspot.crm.contacts.exceptions import ApiTypeError
 from hubspot.crm.contacts.exceptions import ApiValueError
 from hubspot.crm.contacts.exceptions import ApiKeyError
 from hubspot.crm.contacts.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.contacts.models.associated_id import AssociatedId
 from hubspot.crm.contacts.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
@@ -58,4 +60,3 @@ from hubspot.crm.contacts.models.simple_public_object_id import SimplePublicObje
 from hubspot.crm.contacts.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.contacts.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.contacts.models.standard_error import StandardError
-

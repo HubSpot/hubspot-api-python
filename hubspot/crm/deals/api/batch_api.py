@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.deals.api_client import ApiClient
-from hubspot.crm.deals.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.crm.deals.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class BatchApi(object):
@@ -39,7 +36,6 @@ class BatchApi(object):
     def archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Archive a batch of deals by ID  # noqa: E501
 
-        Archive a list of deals given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.archive(batch_input_simple_public_object_id, async_req=True)
@@ -58,13 +54,12 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(batch_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Archive a batch of deals by ID  # noqa: E501
 
-        Archive a list of deals given a collection of IDs. This method will return a `204 No Content` response on success regardless of the initial state of the object (e.g. active, already archived, non-existent).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.archive_with_http_info(batch_input_simple_public_object_id, async_req=True)
@@ -88,29 +83,18 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'batch_input_simple_public_object_id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["batch_input_simple_public_object_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_simple_public_object_id' is set
-        if self.api_client.client_side_validation and ('batch_input_simple_public_object_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_simple_public_object_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_id" not in local_var_params or local_var_params["batch_input_simple_public_object_id"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -125,21 +109,20 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_simple_public_object_id' in local_var_params:
-            body_params = local_var_params['batch_input_simple_public_object_id']
+        if "batch_input_simple_public_object_id" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_id"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/deals/batch/archive', 'POST',
+            "/crm/v3/objects/deals/batch/archive",
+            "POST",
             path_params,
             query_params,
             header_params,
@@ -148,16 +131,16 @@ class BatchApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create(self, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
         """Create a batch of deals  # noqa: E501
 
-        Create a batch of deals. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create(batch_input_simple_public_object_input, async_req=True)
@@ -176,13 +159,12 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(batch_input_simple_public_object_input, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
         """Create a batch of deals  # noqa: E501
 
-        Create a batch of deals. This follows the same rules as creating an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_with_http_info(batch_input_simple_public_object_input, async_req=True)
@@ -206,29 +188,18 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'batch_input_simple_public_object_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["batch_input_simple_public_object_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_simple_public_object_input' is set
-        if self.api_client.client_side_validation and ('batch_input_simple_public_object_input' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_simple_public_object_input'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_input" not in local_var_params or local_var_params["batch_input_simple_public_object_input"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -243,39 +214,38 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_simple_public_object_input' in local_var_params:
-            body_params = local_var_params['batch_input_simple_public_object_input']
+        if "batch_input_simple_public_object_input" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_input"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/deals/batch/create', 'POST',
+            "/crm/v3/objects/deals/batch/create",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseSimplePublicObject',  # noqa: E501
+            response_type="BatchResponseSimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of deals by internal ID, or unique property values  # noqa: E501
 
-        Read a list of deals given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.read(batch_read_input_simple_public_object_id, async_req=True)
@@ -295,13 +265,12 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of deals by internal ID, or unique property values  # noqa: E501
 
-        Read a list of deals given a collection of IDs. Use the `properties` request body property to control which properties are returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.read_with_http_info(batch_read_input_simple_public_object_id, async_req=True)
@@ -326,30 +295,18 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'batch_read_input_simple_public_object_id',
-            'archived'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["batch_read_input_simple_public_object_id", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method read" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method read" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_read_input_simple_public_object_id' is set
-        if self.api_client.client_side_validation and ('batch_read_input_simple_public_object_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_read_input_simple_public_object_id'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_read_input_simple_public_object_id" not in local_var_params or local_var_params["batch_read_input_simple_public_object_id"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_read_input_simple_public_object_id` when calling `read`")  # noqa: E501
 
         collection_formats = {}
@@ -357,8 +314,8 @@ class BatchApi(object):
         path_params = {}
 
         query_params = []
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -366,39 +323,38 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_read_input_simple_public_object_id' in local_var_params:
-            body_params = local_var_params['batch_read_input_simple_public_object_id']
+        if "batch_read_input_simple_public_object_id" in local_var_params:
+            body_params = local_var_params["batch_read_input_simple_public_object_id"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/deals/batch/read', 'POST',
+            "/crm/v3/objects/deals/batch/read",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseSimplePublicObject',  # noqa: E501
+            response_type="BatchResponseSimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def update(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
         """Update a batch of deals  # noqa: E501
 
-        Perform a partial upate on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update(batch_input_simple_public_object_batch_input, async_req=True)
@@ -417,13 +373,12 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
         """Update a batch of deals  # noqa: E501
 
-        Perform a partial upate on a batch of deals. This follows the same rules as performing partial updates on an individual object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_with_http_info(batch_input_simple_public_object_batch_input, async_req=True)
@@ -447,29 +402,18 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            'batch_input_simple_public_object_batch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
+        all_params = ["batch_input_simple_public_object_batch_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_simple_public_object_batch_input' is set
-        if self.api_client.client_side_validation and ('batch_input_simple_public_object_batch_input' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_simple_public_object_batch_input'] is None):  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_simple_public_object_batch_input" not in local_var_params or local_var_params["batch_input_simple_public_object_batch_input"] is None  # noqa: E501
+        ):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_batch_input` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -484,31 +428,31 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_simple_public_object_batch_input' in local_var_params:
-            body_params = local_var_params['batch_input_simple_public_object_batch_input']
+        if "batch_input_simple_public_object_batch_input" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_batch_input"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/objects/deals/batch/update', 'POST',
+            "/crm/v3/objects/deals/batch/update",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseSimplePublicObject',  # noqa: E501
+            response_type="BatchResponseSimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

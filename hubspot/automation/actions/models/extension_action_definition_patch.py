@@ -33,26 +33,28 @@ class ExtensionActionDefinitionPatch(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'action_url': 'str',
-        'published': 'bool',
-        'input_fields': 'list[InputFieldDefinition]',
-        'object_request_options': 'ObjectRequestOptions',
-        'input_field_dependencies': 'list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]',
-        'labels': 'dict(str, ActionLabels)',
-        'object_types': 'list[str]'
+        "action_url": "str",
+        "published": "bool",
+        "input_fields": "list[InputFieldDefinition]",
+        "object_request_options": "ObjectRequestOptions",
+        "input_field_dependencies": "list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]",
+        "labels": "dict(str, ActionLabels)",
+        "object_types": "list[str]",
     }
 
     attribute_map = {
-        'action_url': 'actionUrl',
-        'published': 'published',
-        'input_fields': 'inputFields',
-        'object_request_options': 'objectRequestOptions',
-        'input_field_dependencies': 'inputFieldDependencies',
-        'labels': 'labels',
-        'object_types': 'objectTypes'
+        "action_url": "actionUrl",
+        "published": "published",
+        "input_fields": "inputFields",
+        "object_request_options": "objectRequestOptions",
+        "input_field_dependencies": "inputFieldDependencies",
+        "labels": "labels",
+        "object_types": "objectTypes",
     }
 
-    def __init__(self, action_url=None, published=None, input_fields=None, object_request_options=None, input_field_dependencies=None, labels=None, object_types=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, action_url=None, published=None, input_fields=None, object_request_options=None, input_field_dependencies=None, labels=None, object_types=None, local_vars_configuration=None
+    ):  # noqa: E501
         """ExtensionActionDefinitionPatch - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -248,18 +250,11 @@ class ExtensionActionDefinitionPatch(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

@@ -34,14 +34,9 @@ class SideOrCorner(object):
     """
     openapi_types = {"vertical_side": "str", "horizontal_side": "str"}
 
-    attribute_map = {
-        "vertical_side": "verticalSide",
-        "horizontal_side": "horizontalSide",
-    }
+    attribute_map = {"vertical_side": "verticalSide", "horizontal_side": "horizontalSide"}
 
-    def __init__(
-        self, vertical_side=None, horizontal_side=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, vertical_side=None, horizontal_side=None, local_vars_configuration=None):  # noqa: E501
         """SideOrCorner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -72,23 +67,11 @@ class SideOrCorner(object):
         :param vertical_side: The vertical_side of this SideOrCorner.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and vertical_side is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `vertical_side`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and vertical_side is None:  # noqa: E501
+            raise ValueError("Invalid value for `vertical_side`, must not be `None`")  # noqa: E501
         allowed_values = ["TOP", "MIDDLE", "BOTTOM"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and vertical_side not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `vertical_side` ({0}), must be one of {1}".format(  # noqa: E501
-                    vertical_side, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and vertical_side not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `vertical_side` ({0}), must be one of {1}".format(vertical_side, allowed_values))  # noqa: E501
 
         self._vertical_side = vertical_side
 
@@ -110,23 +93,11 @@ class SideOrCorner(object):
         :param horizontal_side: The horizontal_side of this SideOrCorner.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and horizontal_side is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `horizontal_side`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and horizontal_side is None:  # noqa: E501
+            raise ValueError("Invalid value for `horizontal_side`, must not be `None`")  # noqa: E501
         allowed_values = ["LEFT", "CENTER", "RIGHT"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and horizontal_side not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `horizontal_side` ({0}), must be one of {1}".format(  # noqa: E501
-                    horizontal_side, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and horizontal_side not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `horizontal_side` ({0}), must be one of {1}".format(horizontal_side, allowed_values))  # noqa: E501
 
         self._horizontal_side = horizontal_side
 
@@ -137,20 +108,11 @@ class SideOrCorner(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(
-                    map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
-                        value.items(),
-                    )
-                )
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

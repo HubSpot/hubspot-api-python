@@ -21,5 +21,9 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BatchApi")
 
     @property
+    def gdpr_api(self) -> api_client.GDPRApi:
+        return self._configure_api_client(api_client, "GDPRApi")
+
+    @property
     def feedback_submissions(self):
         return FeedbackSubmissionsDiscovery(self.config)

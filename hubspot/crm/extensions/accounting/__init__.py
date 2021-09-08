@@ -31,6 +31,7 @@ from hubspot.crm.extensions.accounting.exceptions import ApiTypeError
 from hubspot.crm.extensions.accounting.exceptions import ApiValueError
 from hubspot.crm.extensions.accounting.exceptions import ApiKeyError
 from hubspot.crm.extensions.accounting.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.crm.extensions.accounting.models.accounting_app_settings import AccountingAppSettings
 from hubspot.crm.extensions.accounting.models.accounting_app_urls import AccountingAppUrls
@@ -68,4 +69,3 @@ from hubspot.crm.extensions.accounting.models.terms_response import TermsRespons
 from hubspot.crm.extensions.accounting.models.unit_price import UnitPrice
 from hubspot.crm.extensions.accounting.models.updated_contact import UpdatedContact
 from hubspot.crm.extensions.accounting.models.updated_product import UpdatedProduct
-

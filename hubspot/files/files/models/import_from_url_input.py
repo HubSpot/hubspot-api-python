@@ -33,30 +33,42 @@ class ImportFromUrlInput(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'access': 'str',
-        'ttl': 'str',
-        'name': 'str',
-        'url': 'str',
-        'folder_id': 'str',
-        'folder_path': 'str',
-        'duplicate_validation_strategy': 'str',
-        'duplicate_validation_scope': 'str',
-        'overwrite': 'bool'
+        "access": "str",
+        "ttl": "str",
+        "name": "str",
+        "url": "str",
+        "folder_id": "str",
+        "folder_path": "str",
+        "duplicate_validation_strategy": "str",
+        "duplicate_validation_scope": "str",
+        "overwrite": "bool",
     }
 
     attribute_map = {
-        'access': 'access',
-        'ttl': 'ttl',
-        'name': 'name',
-        'url': 'url',
-        'folder_id': 'folderId',
-        'folder_path': 'folderPath',
-        'duplicate_validation_strategy': 'duplicateValidationStrategy',
-        'duplicate_validation_scope': 'duplicateValidationScope',
-        'overwrite': 'overwrite'
+        "access": "access",
+        "ttl": "ttl",
+        "name": "name",
+        "url": "url",
+        "folder_id": "folderId",
+        "folder_path": "folderPath",
+        "duplicate_validation_strategy": "duplicateValidationStrategy",
+        "duplicate_validation_scope": "duplicateValidationScope",
+        "overwrite": "overwrite",
     }
 
-    def __init__(self, access=None, ttl=None, name=None, url=None, folder_id=None, folder_path=None, duplicate_validation_strategy=None, duplicate_validation_scope=None, overwrite=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        access=None,
+        ttl=None,
+        name=None,
+        url=None,
+        folder_id=None,
+        folder_path=None,
+        duplicate_validation_strategy=None,
+        duplicate_validation_scope=None,
+        overwrite=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ImportFromUrlInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -111,10 +123,7 @@ class ImportFromUrlInput(object):
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
         allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `access` ({0}), must be one of {1}"  # noqa: E501
-                .format(access, allowed_values)
-            )
+            raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
 
         self._access = access
 
@@ -259,10 +268,7 @@ class ImportFromUrlInput(object):
             raise ValueError("Invalid value for `duplicate_validation_strategy`, must not be `None`")  # noqa: E501
         allowed_values = ["NONE", "REJECT", "RETURN_EXISTING"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}"  # noqa: E501
-                .format(duplicate_validation_strategy, allowed_values)
-            )
+            raise ValueError("Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}".format(duplicate_validation_strategy, allowed_values))  # noqa: E501
 
         self._duplicate_validation_strategy = duplicate_validation_strategy
 
@@ -290,10 +296,7 @@ class ImportFromUrlInput(object):
             raise ValueError("Invalid value for `duplicate_validation_scope`, must not be `None`")  # noqa: E501
         allowed_values = ["ENTIRE_PORTAL", "EXACT_FOLDER"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and duplicate_validation_scope not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}"  # noqa: E501
-                .format(duplicate_validation_scope, allowed_values)
-            )
+            raise ValueError("Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}".format(duplicate_validation_scope, allowed_values))  # noqa: E501
 
         self._duplicate_validation_scope = duplicate_validation_scope
 
@@ -329,18 +332,11 @@ class ImportFromUrlInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 
