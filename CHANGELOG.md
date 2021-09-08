@@ -5,7 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v3.8.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v4.0.0...HEAD)
+
+## [4.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v3.8.2...v4.0.0) - 2021-09-08
+
+### Added
+
+- crm.objects.gdpr_api API client
+- crm.contacts.gdpr_api API client
+
+### Changed (breaking changes)
+
+- oauth api client regenerated
+- cms.audit_logs.default_api => cms.audit_logs.audit_logs_api
+- cms.blogs.authors.default_api => cms.blogs.authors.author_api
+- cms.blogs.blog_posts.default_api => cms.blogs.blog_posts.blog_post_api
+- cms.blogs.tags.default_api => cms.blogs.tags.tag_api
+- cms.performance.default_api => cms.performance.public_performance_api
+- cms.site_search.default_api => cms.site_search.public_api
+- crm.imports.default_api => crm.imports.public_imports_api
+- crm.owners.default_api => crm.owners.owners_api
+- crm.schemas.default_api => crm.schemas.public_object_schemas_api and crm.schemas.core_api
+- marketing.transactional.default_api => marketing.transactional.public_smtp_tokens_api and
+marketing.transactional.single_send_api
 
 ## [3.8.0](https://github.com/HubSpot/hubspot-api-python/compare/v3.7.2...v3.8.0) - 2021-06-09
 

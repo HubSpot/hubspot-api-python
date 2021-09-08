@@ -20,5 +20,9 @@ class Discovery(DiscoveryBase):
     def batch_api(self) -> api_client.BatchApi:
         return self._configure_api_client(api_client, "BatchApi")
 
+    @property
+    def gdpr_api(self) -> api_client.GDPRApi:
+        return self._configure_api_client(api_client, "GDPRApi")
+
     def get_all(self, **kwargs):
         return fetch_all(self.basic_api, **kwargs)
