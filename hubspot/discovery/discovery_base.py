@@ -6,8 +6,13 @@ class DiscoveryBase:
         self.config = config
 
     def _configure_api_client(self, api_client_package, api_name):
+        api_factory = self.config.get("api_factory") or self._default_api_factory
+        config = {k: v for k, v in self.config.items() if k != "api_factory" and v}
+        return api_factory(api_client_package, api_name, config)
+
+    @staticmethod
+    def _default_api_factory(api_client_package, api_name, config):
         configuration = api_client_package.Configuration()
-        config = {k: v for k, v in self.config.items() if v is not None}
         if "api_key" in config:
             configuration.api_key["hapikey"] = config["api_key"]
         if "access_token" in config:
