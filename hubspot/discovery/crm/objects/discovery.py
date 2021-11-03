@@ -27,3 +27,6 @@ class Discovery(DiscoveryBase):
     @property
     def feedback_submissions(self):
         return FeedbackSubmissionsDiscovery(self.config)
+
+    def get_all(self, **kwargs):
+        return fetch_all(self.basic_api, **kwargs)
