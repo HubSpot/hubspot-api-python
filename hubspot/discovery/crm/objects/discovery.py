@@ -1,4 +1,5 @@
 import hubspot.crm.objects as api_client
+from hubspot.utils.objects import fetch_all
 from ...discovery_base import DiscoveryBase
 from .feedback_submissions.discovery import Discovery as FeedbackSubmissionsDiscovery
 
