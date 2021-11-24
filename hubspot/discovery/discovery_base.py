@@ -14,6 +14,8 @@ class DiscoveryBase:
             configuration.access_token = config["access_token"]
         if "retry" in config:
             configuration.retries = config["retry"]
+        if "verify_ssl" in config:
+            configuration.verify_ssl = config["verify_ssl"]
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 
