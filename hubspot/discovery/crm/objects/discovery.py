@@ -27,3 +27,20 @@ class Discovery(DiscoveryBase):
     @property
     def feedback_submissions(self):
         return FeedbackSubmissionsDiscovery(self.config)
+
+    def get_all(self, object_type, **kwargs):
+        return self.fetch_all(object_type, **kwargs)
+
+    def fetch_all(self, object_type, **kwargs):
+        results = []
+        after = None
+        PAGE_MAX_SIZE = 100
+
+        while True:
+            page = self.basic_api.get_page(object_type, after=after, limit=PAGE_MAX_SIZE, **kwargs)
+            results.extend(page.results)
+            if page.paging is None:
+                break
+            after = page.paging.next.after
+
+        return results
