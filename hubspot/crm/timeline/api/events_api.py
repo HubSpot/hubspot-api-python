@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.timeline.api_client import ApiClient
-from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError
 
 
 class EventsApi(object):
@@ -85,8 +85,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["timeline_event"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["timeline_event"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -118,7 +121,7 @@ class EventsApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2_legacy"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events",
@@ -190,8 +193,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_timeline_event"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["batch_input_timeline_event"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -223,7 +229,7 @@ class EventsApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2_legacy"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events/batch/create",
@@ -297,8 +303,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "event_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "event_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -332,7 +341,7 @@ class EventsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2_legacy"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events/{eventTemplateId}/{eventId}",
@@ -406,8 +415,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "event_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "event_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -441,7 +453,7 @@ class EventsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2_legacy"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events/{eventTemplateId}/{eventId}/detail",
@@ -517,8 +529,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "event_id", "detail"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "event_id", "detail"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -554,7 +569,7 @@ class EventsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["text/html", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2_legacy"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events/{eventTemplateId}/{eventId}/render",

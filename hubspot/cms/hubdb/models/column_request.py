@@ -32,11 +32,11 @@ class ColumnRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "int", "name": "str", "label": "str", "type": "str", "options": "list[Option]"}
+    openapi_types = {"id": "int", "name": "str", "label": "str", "type": "str", "options": "list[Option]", "foreign_table_id": "int", "foreign_column_id": "int"}
 
-    attribute_map = {"id": "id", "name": "name", "label": "label", "type": "type", "options": "options"}
+    attribute_map = {"id": "id", "name": "name", "label": "label", "type": "type", "options": "options", "foreign_table_id": "foreignTableId", "foreign_column_id": "foreignColumnId"}
 
-    def __init__(self, id=None, name=None, label=None, type=None, options=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, label=None, type=None, options=None, foreign_table_id=None, foreign_column_id=None, local_vars_configuration=None):  # noqa: E501
         """ColumnRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -47,6 +47,8 @@ class ColumnRequest(object):
         self._label = None
         self._type = None
         self._options = None
+        self._foreign_table_id = None
+        self._foreign_column_id = None
         self.discriminator = None
 
         self.id = id
@@ -54,6 +56,10 @@ class ColumnRequest(object):
         self.label = label
         self.type = type
         self.options = options
+        if foreign_table_id is not None:
+            self.foreign_table_id = foreign_table_id
+        if foreign_column_id is not None:
+            self.foreign_column_id = foreign_column_id
 
     @property
     def id(self):
@@ -199,6 +205,52 @@ class ColumnRequest(object):
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
 
         self._options = options
+
+    @property
+    def foreign_table_id(self):
+        """Gets the foreign_table_id of this ColumnRequest.  # noqa: E501
+
+        The id of another table to which the column refers/points to.  # noqa: E501
+
+        :return: The foreign_table_id of this ColumnRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._foreign_table_id
+
+    @foreign_table_id.setter
+    def foreign_table_id(self, foreign_table_id):
+        """Sets the foreign_table_id of this ColumnRequest.
+
+        The id of another table to which the column refers/points to.  # noqa: E501
+
+        :param foreign_table_id: The foreign_table_id of this ColumnRequest.  # noqa: E501
+        :type: int
+        """
+
+        self._foreign_table_id = foreign_table_id
+
+    @property
+    def foreign_column_id(self):
+        """Gets the foreign_column_id of this ColumnRequest.  # noqa: E501
+
+        The id of the column from another table to which the column refers/points to.  # noqa: E501
+
+        :return: The foreign_column_id of this ColumnRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._foreign_column_id
+
+    @foreign_column_id.setter
+    def foreign_column_id(self, foreign_column_id):
+        """Sets the foreign_column_id of this ColumnRequest.
+
+        The id of the column from another table to which the column refers/points to.  # noqa: E501
+
+        :param foreign_column_id: The foreign_column_id of this ColumnRequest.  # noqa: E501
+        :type: int
+        """
+
+        self._foreign_column_id = foreign_column_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

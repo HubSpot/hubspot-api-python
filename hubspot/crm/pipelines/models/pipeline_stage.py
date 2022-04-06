@@ -33,150 +33,52 @@ class PipelineStage(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "created_at": "datetime",
-        "archived_at": "datetime",
-        "updated_at": "datetime",
-        "archived": "bool",
         "label": "str",
         "display_order": "int",
         "metadata": "dict(str, str)",
         "id": "str",
+        "created_at": "datetime",
+        "archived_at": "datetime",
+        "updated_at": "datetime",
+        "archived": "bool",
     }
 
     attribute_map = {
-        "created_at": "createdAt",
-        "archived_at": "archivedAt",
-        "updated_at": "updatedAt",
-        "archived": "archived",
         "label": "label",
         "display_order": "displayOrder",
         "metadata": "metadata",
         "id": "id",
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
     }
 
-    def __init__(self, created_at=None, archived_at=None, updated_at=None, archived=None, label=None, display_order=None, metadata=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, label=None, display_order=None, metadata=None, id=None, created_at=None, archived_at=None, updated_at=None, archived=None, local_vars_configuration=None):  # noqa: E501
         """PipelineStage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._created_at = None
-        self._archived_at = None
-        self._updated_at = None
-        self._archived = None
         self._label = None
         self._display_order = None
         self._metadata = None
         self._id = None
+        self._created_at = None
+        self._archived_at = None
+        self._updated_at = None
+        self._archived = None
         self.discriminator = None
 
+        self.label = label
+        self.display_order = display_order
+        self.metadata = metadata
+        self.id = id
         self.created_at = created_at
         if archived_at is not None:
             self.archived_at = archived_at
         self.updated_at = updated_at
         self.archived = archived
-        self.label = label
-        self.display_order = display_order
-        self.metadata = metadata
-        self.id = id
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this PipelineStage.  # noqa: E501
-
-        The date the pipeline stage was created. The stages on default pipelines will have createdAt = 0.  # noqa: E501
-
-        :return: The created_at of this PipelineStage.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this PipelineStage.
-
-        The date the pipeline stage was created. The stages on default pipelines will have createdAt = 0.  # noqa: E501
-
-        :param created_at: The created_at of this PipelineStage.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def archived_at(self):
-        """Gets the archived_at of this PipelineStage.  # noqa: E501
-
-        The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.  # noqa: E501
-
-        :return: The archived_at of this PipelineStage.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._archived_at
-
-    @archived_at.setter
-    def archived_at(self, archived_at):
-        """Sets the archived_at of this PipelineStage.
-
-        The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.  # noqa: E501
-
-        :param archived_at: The archived_at of this PipelineStage.  # noqa: E501
-        :type: datetime
-        """
-
-        self._archived_at = archived_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this PipelineStage.  # noqa: E501
-
-        The date the pipeline stage was last updated.  # noqa: E501
-
-        :return: The updated_at of this PipelineStage.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this PipelineStage.
-
-        The date the pipeline stage was last updated.  # noqa: E501
-
-        :param updated_at: The updated_at of this PipelineStage.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
-
-    @property
-    def archived(self):
-        """Gets the archived of this PipelineStage.  # noqa: E501
-
-        Whether the pipeline is archived.  # noqa: E501
-
-        :return: The archived of this PipelineStage.  # noqa: E501
-        :rtype: bool
-        """
-        return self._archived
-
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this PipelineStage.
-
-        Whether the pipeline is archived.  # noqa: E501
-
-        :param archived: The archived of this PipelineStage.  # noqa: E501
-        :type: bool
-        """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
-
-        self._archived = archived
 
     @property
     def label(self):
@@ -277,6 +179,104 @@ class PipelineStage(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this PipelineStage.  # noqa: E501
+
+        The date the pipeline stage was created. The stages on default pipelines will have createdAt = 0.  # noqa: E501
+
+        :return: The created_at of this PipelineStage.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this PipelineStage.
+
+        The date the pipeline stage was created. The stages on default pipelines will have createdAt = 0.  # noqa: E501
+
+        :param created_at: The created_at of this PipelineStage.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def archived_at(self):
+        """Gets the archived_at of this PipelineStage.  # noqa: E501
+
+        The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.  # noqa: E501
+
+        :return: The archived_at of this PipelineStage.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._archived_at
+
+    @archived_at.setter
+    def archived_at(self, archived_at):
+        """Sets the archived_at of this PipelineStage.
+
+        The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.  # noqa: E501
+
+        :param archived_at: The archived_at of this PipelineStage.  # noqa: E501
+        :type: datetime
+        """
+
+        self._archived_at = archived_at
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this PipelineStage.  # noqa: E501
+
+        The date the pipeline stage was last updated.  # noqa: E501
+
+        :return: The updated_at of this PipelineStage.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this PipelineStage.
+
+        The date the pipeline stage was last updated.  # noqa: E501
+
+        :param updated_at: The updated_at of this PipelineStage.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
+
+    @property
+    def archived(self):
+        """Gets the archived of this PipelineStage.  # noqa: E501
+
+        Whether the pipeline is archived.  # noqa: E501
+
+        :return: The archived of this PipelineStage.  # noqa: E501
+        :rtype: bool
+        """
+        return self._archived
+
+    @archived.setter
+    def archived(self, archived):
+        """Sets the archived of this PipelineStage.
+
+        Whether the pipeline is archived.  # noqa: E501
+
+        :param archived: The archived of this PipelineStage.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+
+        self._archived = archived
 
     def to_dict(self):
         """Returns the model properties as a dict"""

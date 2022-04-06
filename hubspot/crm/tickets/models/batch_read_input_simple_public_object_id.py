@@ -32,22 +32,24 @@ class BatchReadInputSimplePublicObjectId(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"properties": "list[str]", "id_property": "str", "inputs": "list[SimplePublicObjectId]"}
+    openapi_types = {"properties": "list[str]", "properties_with_history": "list[str]", "id_property": "str", "inputs": "list[SimplePublicObjectId]"}
 
-    attribute_map = {"properties": "properties", "id_property": "idProperty", "inputs": "inputs"}
+    attribute_map = {"properties": "properties", "properties_with_history": "propertiesWithHistory", "id_property": "idProperty", "inputs": "inputs"}
 
-    def __init__(self, properties=None, id_property=None, inputs=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, properties=None, properties_with_history=None, id_property=None, inputs=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputSimplePublicObjectId - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._properties = None
+        self._properties_with_history = None
         self._id_property = None
         self._inputs = None
         self.discriminator = None
 
         self.properties = properties
+        self.properties_with_history = properties_with_history
         if id_property is not None:
             self.id_property = id_property
         self.inputs = inputs
@@ -74,6 +76,29 @@ class BatchReadInputSimplePublicObjectId(object):
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
+
+    @property
+    def properties_with_history(self):
+        """Gets the properties_with_history of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+
+
+        :return: The properties_with_history of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._properties_with_history
+
+    @properties_with_history.setter
+    def properties_with_history(self, properties_with_history):
+        """Sets the properties_with_history of this BatchReadInputSimplePublicObjectId.
+
+
+        :param properties_with_history: The properties_with_history of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :type: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and properties_with_history is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties_with_history`, must not be `None`")  # noqa: E501
+
+        self._properties_with_history = properties_with_history
 
     @property
     def id_property(self):

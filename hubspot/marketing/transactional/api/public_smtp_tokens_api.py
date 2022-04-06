@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.transactional.api_client import ApiClient
-from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError
 
 
 class PublicSmtpTokensApi(object):
@@ -85,8 +85,11 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["token_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -187,8 +190,11 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["smtp_api_token_request_egg"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["smtp_api_token_request_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -289,8 +295,11 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["token_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -397,8 +406,11 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["campaign_name", "email_campaign_id", "after", "limit"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["campaign_name", "email_campaign_id", "after", "limit"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -502,8 +514,11 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["token_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

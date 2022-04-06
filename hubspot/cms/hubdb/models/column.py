@@ -40,8 +40,8 @@ class Column(object):
         "foreign_table_id": "int",
         "foreign_column_id": "int",
         "foreign_ids": "list[ForeignId]",
-        "foreign_ids_by_name": "dict(str, ForeignId)",
         "foreign_ids_by_id": "dict(str, ForeignId)",
+        "foreign_ids_by_name": "dict(str, ForeignId)",
         "type": "str",
         "option_count": "int",
         "archived": "bool",
@@ -56,8 +56,8 @@ class Column(object):
         "foreign_table_id": "foreignTableId",
         "foreign_column_id": "foreignColumnId",
         "foreign_ids": "foreignIds",
-        "foreign_ids_by_name": "foreignIdsByName",
         "foreign_ids_by_id": "foreignIdsById",
+        "foreign_ids_by_name": "foreignIdsByName",
         "type": "type",
         "option_count": "optionCount",
         "archived": "archived",
@@ -73,8 +73,8 @@ class Column(object):
         foreign_table_id=None,
         foreign_column_id=None,
         foreign_ids=None,
-        foreign_ids_by_name=None,
         foreign_ids_by_id=None,
+        foreign_ids_by_name=None,
         type=None,
         option_count=None,
         archived=None,
@@ -93,8 +93,8 @@ class Column(object):
         self._foreign_table_id = None
         self._foreign_column_id = None
         self._foreign_ids = None
-        self._foreign_ids_by_name = None
         self._foreign_ids_by_id = None
+        self._foreign_ids_by_name = None
         self._type = None
         self._option_count = None
         self._archived = None
@@ -113,10 +113,10 @@ class Column(object):
             self.foreign_column_id = foreign_column_id
         if foreign_ids is not None:
             self.foreign_ids = foreign_ids
-        if foreign_ids_by_name is not None:
-            self.foreign_ids_by_name = foreign_ids_by_name
         if foreign_ids_by_id is not None:
             self.foreign_ids_by_id = foreign_ids_by_id
+        if foreign_ids_by_name is not None:
+            self.foreign_ids_by_name = foreign_ids_by_name
         self.type = type
         if option_count is not None:
             self.option_count = option_count
@@ -291,29 +291,6 @@ class Column(object):
         self._foreign_ids = foreign_ids
 
     @property
-    def foreign_ids_by_name(self):
-        """Gets the foreign_ids_by_name of this Column.  # noqa: E501
-
-        Foreign ids by name  # noqa: E501
-
-        :return: The foreign_ids_by_name of this Column.  # noqa: E501
-        :rtype: dict(str, ForeignId)
-        """
-        return self._foreign_ids_by_name
-
-    @foreign_ids_by_name.setter
-    def foreign_ids_by_name(self, foreign_ids_by_name):
-        """Sets the foreign_ids_by_name of this Column.
-
-        Foreign ids by name  # noqa: E501
-
-        :param foreign_ids_by_name: The foreign_ids_by_name of this Column.  # noqa: E501
-        :type: dict(str, ForeignId)
-        """
-
-        self._foreign_ids_by_name = foreign_ids_by_name
-
-    @property
     def foreign_ids_by_id(self):
         """Gets the foreign_ids_by_id of this Column.  # noqa: E501
 
@@ -335,6 +312,29 @@ class Column(object):
         """
 
         self._foreign_ids_by_id = foreign_ids_by_id
+
+    @property
+    def foreign_ids_by_name(self):
+        """Gets the foreign_ids_by_name of this Column.  # noqa: E501
+
+        Foreign ids by name  # noqa: E501
+
+        :return: The foreign_ids_by_name of this Column.  # noqa: E501
+        :rtype: dict(str, ForeignId)
+        """
+        return self._foreign_ids_by_name
+
+    @foreign_ids_by_name.setter
+    def foreign_ids_by_name(self, foreign_ids_by_name):
+        """Sets the foreign_ids_by_name of this Column.
+
+        Foreign ids by name  # noqa: E501
+
+        :param foreign_ids_by_name: The foreign_ids_by_name of this Column.  # noqa: E501
+        :type: dict(str, ForeignId)
+        """
+
+        self._foreign_ids_by_name = foreign_ids_by_name
 
     @property
     def type(self):

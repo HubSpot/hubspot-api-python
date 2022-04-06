@@ -32,49 +32,26 @@ class SearchHitField(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"values": "list[object]", "metadata_field": "bool", "name": "str", "value": "object"}
+    openapi_types = {"metadata_field": "bool", "values": "list[object]", "name": "str", "value": "object"}
 
-    attribute_map = {"values": "values", "metadata_field": "metadataField", "name": "name", "value": "value"}
+    attribute_map = {"metadata_field": "metadataField", "values": "values", "name": "name", "value": "value"}
 
-    def __init__(self, values=None, metadata_field=None, name=None, value=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, metadata_field=None, values=None, name=None, value=None, local_vars_configuration=None):  # noqa: E501
         """SearchHitField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._values = None
         self._metadata_field = None
+        self._values = None
         self._name = None
         self._value = None
         self.discriminator = None
 
-        self.values = values
         self.metadata_field = metadata_field
+        self.values = values
         self.name = name
         self.value = value
-
-    @property
-    def values(self):
-        """Gets the values of this SearchHitField.  # noqa: E501
-
-
-        :return: The values of this SearchHitField.  # noqa: E501
-        :rtype: list[object]
-        """
-        return self._values
-
-    @values.setter
-    def values(self, values):
-        """Sets the values of this SearchHitField.
-
-
-        :param values: The values of this SearchHitField.  # noqa: E501
-        :type: list[object]
-        """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
-
-        self._values = values
 
     @property
     def metadata_field(self):
@@ -98,6 +75,29 @@ class SearchHitField(object):
             raise ValueError("Invalid value for `metadata_field`, must not be `None`")  # noqa: E501
 
         self._metadata_field = metadata_field
+
+    @property
+    def values(self):
+        """Gets the values of this SearchHitField.  # noqa: E501
+
+
+        :return: The values of this SearchHitField.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        """Sets the values of this SearchHitField.
+
+
+        :param values: The values of this SearchHitField.  # noqa: E501
+        :type: list[object]
+        """
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+
+        self._values = values
 
     @property
     def name(self):

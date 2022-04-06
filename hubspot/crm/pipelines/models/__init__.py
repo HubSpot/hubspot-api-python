@@ -14,15 +14,15 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.crm.pipelines.models.collection_response_pipeline import CollectionResponsePipeline
-from hubspot.crm.pipelines.models.collection_response_pipeline_stage import CollectionResponsePipelineStage
+from hubspot.crm.pipelines.models.collection_response_pipeline_no_paging import CollectionResponsePipelineNoPaging
+from hubspot.crm.pipelines.models.collection_response_pipeline_stage_no_paging import CollectionResponsePipelineStageNoPaging
+from hubspot.crm.pipelines.models.collection_response_public_audit_info_no_paging import CollectionResponsePublicAuditInfoNoPaging
 from hubspot.crm.pipelines.models.error import Error
 from hubspot.crm.pipelines.models.error_detail import ErrorDetail
-from hubspot.crm.pipelines.models.next_page import NextPage
-from hubspot.crm.pipelines.models.paging import Paging
 from hubspot.crm.pipelines.models.pipeline import Pipeline
 from hubspot.crm.pipelines.models.pipeline_input import PipelineInput
 from hubspot.crm.pipelines.models.pipeline_patch_input import PipelinePatchInput
 from hubspot.crm.pipelines.models.pipeline_stage import PipelineStage
 from hubspot.crm.pipelines.models.pipeline_stage_input import PipelineStageInput
 from hubspot.crm.pipelines.models.pipeline_stage_patch_input import PipelineStagePatchInput
+from hubspot.crm.pipelines.models.public_audit_info import PublicAuditInfo

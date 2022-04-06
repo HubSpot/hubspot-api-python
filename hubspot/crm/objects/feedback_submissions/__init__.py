@@ -59,3 +59,4 @@ from hubspot.crm.objects.feedback_submissions.models.simple_public_object_id imp
 from hubspot.crm.objects.feedback_submissions.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.objects.feedback_submissions.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.objects.feedback_submissions.models.standard_error import StandardError
+from hubspot.crm.objects.feedback_submissions.models.value_with_timestamp import ValueWithTimestamp

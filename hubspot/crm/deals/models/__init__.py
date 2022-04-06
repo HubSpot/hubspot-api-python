@@ -41,3 +41,4 @@ from hubspot.crm.deals.models.simple_public_object_id import SimplePublicObjectI
 from hubspot.crm.deals.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.deals.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.deals.models.standard_error import StandardError
+from hubspot.crm.deals.models.value_with_timestamp import ValueWithTimestamp

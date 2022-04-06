@@ -3,4 +3,4 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis into api package
-from hubspot.cms.blogs.authors.api.author_api import AuthorApi
+from hubspot.cms.blogs.authors.api.blog_authors_api import BlogAuthorsApi

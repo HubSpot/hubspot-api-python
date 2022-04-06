@@ -41,3 +41,4 @@ from hubspot.crm.line_items.models.simple_public_object_id import SimplePublicOb
 from hubspot.crm.line_items.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.line_items.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.line_items.models.standard_error import StandardError
+from hubspot.crm.line_items.models.value_with_timestamp import ValueWithTimestamp

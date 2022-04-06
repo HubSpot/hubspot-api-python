@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.files.files.api_client import ApiClient
-from hubspot.files.files.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.files.files.exceptions import ApiTypeError, ApiValueError
 
 
 class FilesApi(object):
@@ -85,8 +85,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -117,7 +120,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -189,8 +192,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -221,7 +227,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}/gdpr-delete",
@@ -293,8 +299,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["task_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["task_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -323,7 +332,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/import-from-url/async/tasks/{taskId}/status",
@@ -466,8 +475,11 @@ class FilesApi(object):
             "url",
             "is_usable_in_content",
             "allows_anonymous_access",
-        ]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -541,7 +553,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/search",
@@ -615,8 +627,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id", "properties"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id", "properties"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -650,7 +665,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -728,8 +743,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id", "size", "expiration_seconds", "upscale"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id", "size", "expiration_seconds", "upscale"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -766,7 +784,7 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}/signed-url",
@@ -838,8 +856,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_from_url_input"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["import_from_url_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -871,7 +892,7 @@ class FilesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/import-from-url/async",
@@ -949,8 +970,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id", "file", "charset_hunch", "options"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id", "file", "charset_hunch", "options"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -990,7 +1014,7 @@ class FilesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -1064,8 +1088,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_id", "file_update_input"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file_id", "file_update_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1104,7 +1131,7 @@ class FilesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -1186,8 +1213,11 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file", "folder_id", "folder_path", "file_name", "charset_hunch", "options"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["file", "folder_id", "folder_path", "file_name", "charset_hunch", "options"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1226,7 +1256,7 @@ class FilesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/files/v3/files",

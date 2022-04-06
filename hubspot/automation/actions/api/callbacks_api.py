@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.automation.actions.api_client import ApiClient
-from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError
 
 
 class CallbacksApi(object):
@@ -87,8 +87,11 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["callback_id", "callback_completion_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["callback_id", "callback_completion_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -125,7 +128,7 @@ class CallbacksApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/automation/v4/actions/callbacks/{callbackId}/complete",
@@ -197,8 +200,11 @@ class CallbacksApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_callback_completion_batch_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["batch_input_callback_completion_batch_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -232,7 +238,7 @@ class CallbacksApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/automation/v4/actions/callbacks/complete",

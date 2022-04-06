@@ -38,6 +38,7 @@ class HubDbTableV3(object):
         "label": "str",
         "columns": "list[Column]",
         "published": "bool",
+        "column_count": "int",
         "row_count": "int",
         "created_by": "SimpleUser",
         "updated_by": "SimpleUser",
@@ -48,7 +49,6 @@ class HubDbTableV3(object):
         "allow_public_api_access": "bool",
         "use_for_pages": "bool",
         "enable_child_table_pages": "bool",
-        "column_count": "int",
         "allow_child_tables": "bool",
         "updated_at": "datetime",
     }
@@ -59,6 +59,7 @@ class HubDbTableV3(object):
         "label": "label",
         "columns": "columns",
         "published": "published",
+        "column_count": "columnCount",
         "row_count": "rowCount",
         "created_by": "createdBy",
         "updated_by": "updatedBy",
@@ -69,7 +70,6 @@ class HubDbTableV3(object):
         "allow_public_api_access": "allowPublicApiAccess",
         "use_for_pages": "useForPages",
         "enable_child_table_pages": "enableChildTablePages",
-        "column_count": "columnCount",
         "allow_child_tables": "allowChildTables",
         "updated_at": "updatedAt",
     }
@@ -81,6 +81,7 @@ class HubDbTableV3(object):
         label=None,
         columns=None,
         published=None,
+        column_count=None,
         row_count=None,
         created_by=None,
         updated_by=None,
@@ -91,7 +92,6 @@ class HubDbTableV3(object):
         allow_public_api_access=None,
         use_for_pages=None,
         enable_child_table_pages=None,
-        column_count=None,
         allow_child_tables=None,
         updated_at=None,
         local_vars_configuration=None,
@@ -106,6 +106,7 @@ class HubDbTableV3(object):
         self._label = None
         self._columns = None
         self._published = None
+        self._column_count = None
         self._row_count = None
         self._created_by = None
         self._updated_by = None
@@ -116,7 +117,6 @@ class HubDbTableV3(object):
         self._allow_public_api_access = None
         self._use_for_pages = None
         self._enable_child_table_pages = None
-        self._column_count = None
         self._allow_child_tables = None
         self._updated_at = None
         self.discriminator = None
@@ -129,6 +129,8 @@ class HubDbTableV3(object):
             self.columns = columns
         if published is not None:
             self.published = published
+        if column_count is not None:
+            self.column_count = column_count
         if row_count is not None:
             self.row_count = row_count
         if created_by is not None:
@@ -149,8 +151,6 @@ class HubDbTableV3(object):
             self.use_for_pages = use_for_pages
         if enable_child_table_pages is not None:
             self.enable_child_table_pages = enable_child_table_pages
-        if column_count is not None:
-            self.column_count = column_count
         if allow_child_tables is not None:
             self.allow_child_tables = allow_child_tables
         if updated_at is not None:
@@ -272,6 +272,29 @@ class HubDbTableV3(object):
         """
 
         self._published = published
+
+    @property
+    def column_count(self):
+        """Gets the column_count of this HubDbTableV3.  # noqa: E501
+
+        Number of columns including deleted  # noqa: E501
+
+        :return: The column_count of this HubDbTableV3.  # noqa: E501
+        :rtype: int
+        """
+        return self._column_count
+
+    @column_count.setter
+    def column_count(self, column_count):
+        """Sets the column_count of this HubDbTableV3.
+
+        Number of columns including deleted  # noqa: E501
+
+        :param column_count: The column_count of this HubDbTableV3.  # noqa: E501
+        :type: int
+        """
+
+        self._column_count = column_count
 
     @property
     def row_count(self):
@@ -498,29 +521,6 @@ class HubDbTableV3(object):
         """
 
         self._enable_child_table_pages = enable_child_table_pages
-
-    @property
-    def column_count(self):
-        """Gets the column_count of this HubDbTableV3.  # noqa: E501
-
-        Number of columns including deleted  # noqa: E501
-
-        :return: The column_count of this HubDbTableV3.  # noqa: E501
-        :rtype: int
-        """
-        return self._column_count
-
-    @column_count.setter
-    def column_count(self, column_count):
-        """Sets the column_count of this HubDbTableV3.
-
-        Number of columns including deleted  # noqa: E501
-
-        :param column_count: The column_count of this HubDbTableV3.  # noqa: E501
-        :type: int
-        """
-
-        self._column_count = column_count
 
     @property
     def allow_child_tables(self):

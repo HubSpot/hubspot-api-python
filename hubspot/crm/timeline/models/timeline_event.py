@@ -94,7 +94,8 @@ class TimelineEvent(object):
             self.extra_data = extra_data
         if timeline_i_frame is not None:
             self.timeline_i_frame = timeline_i_frame
-        self.id = id
+        if id is not None:
+            self.id = id
 
     @property
     def event_template_id(self):
@@ -325,8 +326,6 @@ class TimelineEvent(object):
         :param id: The id of this TimelineEvent.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.events.api_client import ApiClient
-from hubspot.events.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.events.exceptions import ApiTypeError, ApiValueError
 
 
 class EventsApi(object):
@@ -99,8 +99,11 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["occurred_after", "occurred_before", "object_type", "object_id", "event_type", "after", "before", "limit", "sort"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["occurred_after", "occurred_before", "object_type", "object_id", "event_type", "after", "before", "limit", "sort"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -143,7 +146,7 @@ class EventsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/events/v3/events",

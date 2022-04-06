@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.objects.api_client import ApiClient
-from hubspot.crm.objects.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.objects.exceptions import ApiTypeError, ApiValueError
 
 
 class BasicApi(object):
@@ -87,8 +87,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -122,7 +125,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}",
@@ -196,8 +199,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "simple_public_object_input"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "simple_public_object_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -234,7 +240,7 @@ class BasicApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}",
@@ -267,6 +273,7 @@ class BasicApi(object):
         :param str object_type: (required)
         :param str object_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param str id_property: The name of a property whose values are unique for this object type
@@ -297,6 +304,7 @@ class BasicApi(object):
         :param str object_type: (required)
         :param str object_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param str id_property: The name of a property whose values are unique for this object type
@@ -316,8 +324,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "properties", "associations", "archived", "id_property"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id", "properties", "properties_with_history", "associations", "archived", "id_property"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -343,6 +354,9 @@ class BasicApi(object):
         if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
+        if "properties_with_history" in local_var_params and local_var_params["properties_with_history"] is not None:  # noqa: E501
+            query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
+            collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
         if "associations" in local_var_params and local_var_params["associations"] is not None:  # noqa: E501
             query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
@@ -361,7 +375,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}",
@@ -395,6 +409,7 @@ class BasicApi(object):
         :param int limit: The maximum number of results to display per page.
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -425,6 +440,7 @@ class BasicApi(object):
         :param int limit: The maximum number of results to display per page.
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param _return_http_data_only: response data without head status code
@@ -443,8 +459,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "limit", "after", "properties", "associations", "archived"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "limit", "after", "properties", "properties_with_history", "associations", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -469,6 +488,9 @@ class BasicApi(object):
         if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
+        if "properties_with_history" in local_var_params and local_var_params["properties_with_history"] is not None:  # noqa: E501
+            query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
+            collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
         if "associations" in local_var_params and local_var_params["associations"] is not None:  # noqa: E501
             query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
@@ -485,7 +507,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}",
@@ -563,8 +585,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "simple_public_object_input", "id_property"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id", "simple_public_object_input", "id_property"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -608,7 +633,7 @@ class BasicApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}",

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.timeline.api_client import ApiClient
-from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError
 
 
 class TemplatesApi(object):
@@ -87,8 +87,11 @@ class TemplatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "app_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -196,8 +199,11 @@ class TemplatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "timeline_event_template_create_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["app_id", "timeline_event_template_create_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -308,8 +314,11 @@ class TemplatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["app_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -412,8 +421,11 @@ class TemplatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "app_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -523,8 +535,11 @@ class TemplatesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id", "timeline_event_template_update_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["event_template_id", "app_id", "timeline_event_template_update_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.contacts.api_client import ApiClient
-from hubspot.crm.contacts.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.contacts.exceptions import ApiTypeError, ApiValueError
 
 
 class BasicApi(object):
@@ -85,8 +85,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["contact_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["contact_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -115,7 +118,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/contacts/{contactId}",
@@ -187,8 +190,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["simple_public_object_input"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["simple_public_object_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -220,7 +226,7 @@ class BasicApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/contacts",
@@ -243,7 +249,7 @@ class BasicApi(object):
     def get_by_id(self, contact_id, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
+        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_by_id(contact_id, async_req=True)
@@ -252,9 +258,9 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
-        :param str id_property: The name of a property whose values are unique for this object type
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -272,7 +278,7 @@ class BasicApi(object):
     def get_by_id_with_http_info(self, contact_id, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
+        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_by_id_with_http_info(contact_id, async_req=True)
@@ -281,9 +287,9 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
-        :param str id_property: The name of a property whose values are unique for this object type
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -300,8 +306,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["contact_id", "properties", "associations", "archived", "id_property"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["contact_id", "properties", "properties_with_history", "associations", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -322,13 +331,14 @@ class BasicApi(object):
         if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
+        if "properties_with_history" in local_var_params and local_var_params["properties_with_history"] is not None:  # noqa: E501
+            query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
+            collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
         if "associations" in local_var_params and local_var_params["associations"] is not None:  # noqa: E501
             query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
         if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
-        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
 
         header_params = {}
 
@@ -340,7 +350,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/contacts/{contactId}",
@@ -373,6 +383,7 @@ class BasicApi(object):
         :param int limit: The maximum number of results to display per page.
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -402,6 +413,7 @@ class BasicApi(object):
         :param int limit: The maximum number of results to display per page.
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :param list[str] properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+        :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
         :param _return_http_data_only: response data without head status code
@@ -420,8 +432,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["limit", "after", "properties", "associations", "archived"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["limit", "after", "properties", "properties_with_history", "associations", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -441,6 +456,9 @@ class BasicApi(object):
         if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
+        if "properties_with_history" in local_var_params and local_var_params["properties_with_history"] is not None:  # noqa: E501
+            query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
+            collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
         if "associations" in local_var_params and local_var_params["associations"] is not None:  # noqa: E501
             query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
             collection_formats["associations"] = "multi"  # noqa: E501
@@ -457,7 +475,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/contacts",
@@ -480,7 +498,7 @@ class BasicApi(object):
     def update(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update(contact_id, simple_public_object_input, async_req=True)
@@ -489,7 +507,6 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param SimplePublicObjectInput simple_public_object_input: (required)
-        :param str id_property: The name of a property whose values are unique for this object type
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -507,7 +524,7 @@ class BasicApi(object):
     def update_with_http_info(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_with_http_info(contact_id, simple_public_object_input, async_req=True)
@@ -516,7 +533,6 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param SimplePublicObjectInput simple_public_object_input: (required)
-        :param str id_property: The name of a property whose values are unique for this object type
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -533,8 +549,11 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["contact_id", "simple_public_object_input", "id_property"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["contact_id", "simple_public_object_input"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -555,8 +574,6 @@ class BasicApi(object):
             path_params["contactId"] = local_var_params["contact_id"]  # noqa: E501
 
         query_params = []
-        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
 
         header_params = {}
 
@@ -573,7 +590,7 @@ class BasicApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/contacts/{contactId}",

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.url_redirects.api_client import ApiClient
-from hubspot.cms.url_redirects.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.cms.url_redirects.exceptions import ApiTypeError, ApiValueError
 
 
 class RedirectsApi(object):
@@ -85,8 +85,11 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["url_redirect_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -115,7 +118,7 @@ class RedirectsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/url-redirects/{urlRedirectId}",
@@ -187,8 +190,11 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_mapping_create_request_body"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["url_mapping_create_request_body"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -217,7 +223,7 @@ class RedirectsApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/url-redirects/",
@@ -289,8 +295,11 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["url_redirect_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -319,7 +328,7 @@ class RedirectsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/url-redirects/{urlRedirectId}",
@@ -413,8 +422,11 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "properties", "after", "before", "limit", "archived"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "properties", "after", "before", "limit", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -464,7 +476,7 @@ class RedirectsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/url-redirects/",
@@ -538,8 +550,11 @@ class RedirectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["url_redirect_id", "url_mapping"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["url_redirect_id", "url_mapping"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -573,7 +588,7 @@ class RedirectsApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/url-redirects/{urlRedirectId}",

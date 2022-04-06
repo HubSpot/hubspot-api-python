@@ -53,6 +53,7 @@ from hubspot.crm.objects.models.forward_paging import ForwardPaging
 from hubspot.crm.objects.models.next_page import NextPage
 from hubspot.crm.objects.models.paging import Paging
 from hubspot.crm.objects.models.previous_page import PreviousPage
+from hubspot.crm.objects.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.objects.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.objects.models.simple_public_object import SimplePublicObject
 from hubspot.crm.objects.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
@@ -60,3 +61,4 @@ from hubspot.crm.objects.models.simple_public_object_id import SimplePublicObjec
 from hubspot.crm.objects.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.objects.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.objects.models.standard_error import StandardError
+from hubspot.crm.objects.models.value_with_timestamp import ValueWithTimestamp
