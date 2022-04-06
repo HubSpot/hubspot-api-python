@@ -4,5 +4,5 @@ from ....discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
-    def tag_api(self) -> api_client.TagApi:
-        return self._configure_api_client(api_client, "TagApi")
+    def tag_api(self) -> api_client.BlogTagsApi:
+        return self._configure_api_client(api_client, "BlogTagsApi")

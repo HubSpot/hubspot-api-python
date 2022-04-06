@@ -4,5 +4,5 @@ from ....discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
-    def author_api(self) -> api_client.AuthorApi:
-        return self._configure_api_client(api_client, "AuthorApi")
+    def author_api(self) -> api_client.BlogAuthorsApi:
+        return self._configure_api_client(api_client, "BlogAuthorsApi")
