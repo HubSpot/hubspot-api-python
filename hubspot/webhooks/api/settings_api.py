@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.webhooks.api_client import ApiClient
-from hubspot.webhooks.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.webhooks.exceptions import ApiTypeError, ApiValueError
 
 
 class SettingsApi(object):
@@ -34,16 +34,15 @@ class SettingsApi(object):
         self.api_client = api_client
 
     def clear(self, app_id, **kwargs):  # noqa: E501
-        """Clear webhook settings  # noqa: E501
+        """clear  # noqa: E501
 
-        Resets webhook target URL to empty, and max concurrency limit to `0` for the given app. This will effectively pause all webhook subscriptions until new settings are provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.clear(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param int app_id: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -59,16 +58,15 @@ class SettingsApi(object):
         return self.clear_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def clear_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Clear webhook settings  # noqa: E501
+        """clear  # noqa: E501
 
-        Resets webhook target URL to empty, and max concurrency limit to `0` for the given app. This will effectively pause all webhook subscriptions until new settings are provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.clear_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param int app_id: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -85,8 +83,11 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["app_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -115,7 +116,7 @@ class SettingsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["developer_hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/settings",
@@ -136,17 +137,16 @@ class SettingsApi(object):
         )
 
     def configure(self, app_id, settings_change_request, **kwargs):  # noqa: E501
-        """Configure webhook settings  # noqa: E501
+        """configure  # noqa: E501
 
-        Used to set the webhook target URL and max concurrency limit for the given app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.configure(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with. (required)
+        :param int app_id: (required)
+        :param SettingsChangeRequest settings_change_request: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -162,17 +162,16 @@ class SettingsApi(object):
         return self.configure_with_http_info(app_id, settings_change_request, **kwargs)  # noqa: E501
 
     def configure_with_http_info(self, app_id, settings_change_request, **kwargs):  # noqa: E501
-        """Configure webhook settings  # noqa: E501
+        """configure  # noqa: E501
 
-        Used to set the webhook target URL and max concurrency limit for the given app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.configure_with_http_info(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param SettingsChangeRequest settings_change_request: Settings state to create new with or replace existing settings with. (required)
+        :param int app_id: (required)
+        :param SettingsChangeRequest settings_change_request: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -189,8 +188,11 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "settings_change_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["app_id", "settings_change_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -227,7 +229,7 @@ class SettingsApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["developer_hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/settings",
@@ -248,16 +250,15 @@ class SettingsApi(object):
         )
 
     def get_all(self, app_id, **kwargs):  # noqa: E501
-        """Get webhook settings  # noqa: E501
+        """get_all  # noqa: E501
 
-        Returns the current state of webhook settings for the given app. These settings include the app's configured target URL and max concurrency limit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param int app_id: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -273,16 +274,15 @@ class SettingsApi(object):
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Get webhook settings  # noqa: E501
+        """get_all  # noqa: E501
 
-        Returns the current state of webhook settings for the given app. These settings include the app's configured target URL and max concurrency limit.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param int app_id: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -299,8 +299,11 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["app_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -329,7 +332,7 @@ class SettingsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["developer_hapikey"]  # noqa: E501
 
         return self.api_client.call_api(
             "/webhooks/v3/{appId}/settings",

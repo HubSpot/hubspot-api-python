@@ -120,6 +120,7 @@ class ErrorCategory(object):
             "REQUEST_HEADERS_FIELDS_TOO_LARGE",
             "INTERNAL_STALE_SERVICE_DISCOVERY",
             "UNAVAILABLE_FOR_LEGAL_REASONS",
+            "MIGRATION_IN_PROGRESS",
             "INTERNAL_SERVER_ERROR",
             "NOT_IMPLEMENTED",
             "BAD_GATEWAY",

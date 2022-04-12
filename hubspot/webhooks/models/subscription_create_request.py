@@ -36,7 +36,7 @@ class SubscriptionCreateRequest(object):
 
     attribute_map = {"event_type": "eventType", "property_name": "propertyName", "active": "active"}
 
-    def __init__(self, event_type=None, property_name=None, active=False, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, event_type=None, property_name=None, active=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,6 +79,9 @@ class SubscriptionCreateRequest(object):
             "contact.propertyChange",
             "company.propertyChange",
             "deal.propertyChange",
+            "ticket.propertyChange",
+            "product.propertyChange",
+            "line_item.propertyChange",
             "contact.creation",
             "contact.deletion",
             "contact.privacyDeletion",
@@ -86,6 +89,17 @@ class SubscriptionCreateRequest(object):
             "company.deletion",
             "deal.creation",
             "deal.deletion",
+            "ticket.creation",
+            "ticket.deletion",
+            "product.creation",
+            "product.deletion",
+            "line_item.creation",
+            "line_item.deletion",
+            "conversation.creation",
+            "conversation.deletion",
+            "conversation.newMessage",
+            "conversation.privacyDeletion",
+            "conversation.propertyChange",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501

@@ -41,3 +41,4 @@ from hubspot.crm.tickets.models.simple_public_object_id import SimplePublicObjec
 from hubspot.crm.tickets.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.tickets.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.tickets.models.standard_error import StandardError
+from hubspot.crm.tickets.models.value_with_timestamp import ValueWithTimestamp

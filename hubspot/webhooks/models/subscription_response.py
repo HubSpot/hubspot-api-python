@@ -85,6 +85,9 @@ class SubscriptionResponse(object):
             "contact.propertyChange",
             "company.propertyChange",
             "deal.propertyChange",
+            "ticket.propertyChange",
+            "product.propertyChange",
+            "line_item.propertyChange",
             "contact.creation",
             "contact.deletion",
             "contact.privacyDeletion",
@@ -92,6 +95,17 @@ class SubscriptionResponse(object):
             "company.deletion",
             "deal.creation",
             "deal.deletion",
+            "ticket.creation",
+            "ticket.deletion",
+            "product.creation",
+            "product.deletion",
+            "line_item.creation",
+            "line_item.deletion",
+            "conversation.creation",
+            "conversation.deletion",
+            "conversation.newMessage",
+            "conversation.privacyDeletion",
+            "conversation.propertyChange",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501

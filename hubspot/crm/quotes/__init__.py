@@ -59,3 +59,4 @@ from hubspot.crm.quotes.models.simple_public_object_id import SimplePublicObject
 from hubspot.crm.quotes.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.quotes.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.quotes.models.standard_error import StandardError
+from hubspot.crm.quotes.models.value_with_timestamp import ValueWithTimestamp

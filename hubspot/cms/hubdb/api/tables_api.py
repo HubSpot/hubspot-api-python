@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.hubdb.api_client import ApiClient
-from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError
 
 
 class TablesApi(object):
@@ -85,8 +85,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -115,7 +118,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}",
@@ -189,8 +192,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "hub_db_table_clone_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "hub_db_table_clone_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -227,7 +233,7 @@ class TablesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft/clone",
@@ -299,8 +305,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["hub_db_table_v3_request"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["hub_db_table_v3_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -332,7 +341,7 @@ class TablesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables",
@@ -406,8 +415,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "format"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "format"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -438,7 +450,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/vnd.ms-excel", "text/csv", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft/export",
@@ -512,8 +524,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "format"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "format"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -544,7 +559,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/vnd.ms-excel", "text/csv", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/export",
@@ -634,8 +649,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["sort", "after", "limit", "created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "archived"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["sort", "after", "limit", "created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -680,7 +698,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/draft",
@@ -770,8 +788,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["sort", "after", "limit", "created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "archived"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["sort", "after", "limit", "created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "archived"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -816,7 +837,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables",
@@ -892,8 +913,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -926,7 +950,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft",
@@ -1002,8 +1026,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1036,7 +1063,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}",
@@ -1112,8 +1139,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "config", "file"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "config", "file"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1149,7 +1179,7 @@ class TablesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft/import",
@@ -1223,8 +1253,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1255,7 +1288,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish",
@@ -1329,8 +1362,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1361,7 +1397,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset",
@@ -1435,8 +1471,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1467,7 +1506,7 @@ class TablesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/unpublish",
@@ -1545,8 +1584,11 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "hub_db_table_v3_request", "archived", "include_foreign_ids"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["table_id_or_name", "hub_db_table_v3_request", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1587,7 +1629,7 @@ class TablesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/draft",

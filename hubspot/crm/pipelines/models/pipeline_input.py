@@ -32,49 +32,24 @@ class PipelineInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"stages": "list[PipelineStageInput]", "label": "str", "display_order": "int"}
+    openapi_types = {"label": "str", "display_order": "int", "stages": "list[PipelineStageInput]"}
 
-    attribute_map = {"stages": "stages", "label": "label", "display_order": "displayOrder"}
+    attribute_map = {"label": "label", "display_order": "displayOrder", "stages": "stages"}
 
-    def __init__(self, stages=None, label=None, display_order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, label=None, display_order=None, stages=None, local_vars_configuration=None):  # noqa: E501
         """PipelineInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._stages = None
         self._label = None
         self._display_order = None
+        self._stages = None
         self.discriminator = None
 
-        self.stages = stages
         self.label = label
         self.display_order = display_order
-
-    @property
-    def stages(self):
-        """Gets the stages of this PipelineInput.  # noqa: E501
-
-        Pipeline stage inputs used to create the new or replacement pipeline.  # noqa: E501
-
-        :return: The stages of this PipelineInput.  # noqa: E501
-        :rtype: list[PipelineStageInput]
-        """
-        return self._stages
-
-    @stages.setter
-    def stages(self, stages):
-        """Sets the stages of this PipelineInput.
-
-        Pipeline stage inputs used to create the new or replacement pipeline.  # noqa: E501
-
-        :param stages: The stages of this PipelineInput.  # noqa: E501
-        :type: list[PipelineStageInput]
-        """
-        if self.local_vars_configuration.client_side_validation and stages is None:  # noqa: E501
-            raise ValueError("Invalid value for `stages`, must not be `None`")  # noqa: E501
-
-        self._stages = stages
+        self.stages = stages
 
     @property
     def label(self):
@@ -125,6 +100,31 @@ class PipelineInput(object):
             raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
 
         self._display_order = display_order
+
+    @property
+    def stages(self):
+        """Gets the stages of this PipelineInput.  # noqa: E501
+
+        Pipeline stage inputs used to create the new or replacement pipeline.  # noqa: E501
+
+        :return: The stages of this PipelineInput.  # noqa: E501
+        :rtype: list[PipelineStageInput]
+        """
+        return self._stages
+
+    @stages.setter
+    def stages(self, stages):
+        """Sets the stages of this PipelineInput.
+
+        Pipeline stage inputs used to create the new or replacement pipeline.  # noqa: E501
+
+        :param stages: The stages of this PipelineInput.  # noqa: E501
+        :type: list[PipelineStageInput]
+        """
+        if self.local_vars_configuration.client_side_validation and stages is None:  # noqa: E501
+            raise ValueError("Invalid value for `stages`, must not be `None`")  # noqa: E501
+
+        self._stages = stages
 
     def to_dict(self):
         """Returns the model properties as a dict"""

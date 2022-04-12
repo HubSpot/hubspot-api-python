@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.transactional.api_client import ApiClient
-from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError
 
 
 class SingleSendApi(object):
@@ -85,8 +85,11 @@ class SingleSendApi(object):
 
         local_var_params = locals()
 
-        all_params = ["public_single_send_request_egg"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["public_single_send_request_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -115,7 +118,7 @@ class SingleSendApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/single-email/send",

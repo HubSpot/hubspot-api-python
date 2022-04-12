@@ -5,7 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v4.0.2...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v5.0.0...HEAD)
+
+## [5.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v4.0.6...v5.0.0) - 2022-04-12
+
+### Added
+
+- cms.source_code API client
+- crm.objects.calls API client
+- crm.objects.emails API client
+- crm.objects.meetings API client
+- crm.objects.notes API client
+- crm.objects.tasks API client
+- marketing.forms API client
+- marketing.events API client
+- settings.users API client
+
+### Changed (no discovery breaking changes)
+
+- cms.blogs.authors.author_api => cms.blogs.authors.blog_authors_api
+- cms.blogs.blog_posts.default_api => cms.blogs.blog_posts.blog_posts_api
+- cms.blogs.tags.default_api => cms.blogs.tags.blog_tags_api
 
 ## [4.0.2](https://github.com/HubSpot/hubspot-api-python/compare/v4.0.1...v4.0.1) - 2021-11-03
 

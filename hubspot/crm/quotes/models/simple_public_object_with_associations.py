@@ -35,6 +35,7 @@ class SimplePublicObjectWithAssociations(object):
     openapi_types = {
         "id": "str",
         "properties": "dict(str, str)",
+        "properties_with_history": "dict(str, list[ValueWithTimestamp])",
         "created_at": "datetime",
         "updated_at": "datetime",
         "archived": "bool",
@@ -42,9 +43,20 @@ class SimplePublicObjectWithAssociations(object):
         "associations": "dict(str, CollectionResponseAssociatedId)",
     }
 
-    attribute_map = {"id": "id", "properties": "properties", "created_at": "createdAt", "updated_at": "updatedAt", "archived": "archived", "archived_at": "archivedAt", "associations": "associations"}
+    attribute_map = {
+        "id": "id",
+        "properties": "properties",
+        "properties_with_history": "propertiesWithHistory",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
+        "archived_at": "archivedAt",
+        "associations": "associations",
+    }
 
-    def __init__(self, id=None, properties=None, created_at=None, updated_at=None, archived=None, archived_at=None, associations=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, id=None, properties=None, properties_with_history=None, created_at=None, updated_at=None, archived=None, archived_at=None, associations=None, local_vars_configuration=None
+    ):  # noqa: E501
         """SimplePublicObjectWithAssociations - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -52,6 +64,7 @@ class SimplePublicObjectWithAssociations(object):
 
         self._id = None
         self._properties = None
+        self._properties_with_history = None
         self._created_at = None
         self._updated_at = None
         self._archived = None
@@ -61,6 +74,8 @@ class SimplePublicObjectWithAssociations(object):
 
         self.id = id
         self.properties = properties
+        if properties_with_history is not None:
+            self.properties_with_history = properties_with_history
         self.created_at = created_at
         self.updated_at = updated_at
         if archived is not None:
@@ -115,6 +130,27 @@ class SimplePublicObjectWithAssociations(object):
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
+
+    @property
+    def properties_with_history(self):
+        """Gets the properties_with_history of this SimplePublicObjectWithAssociations.  # noqa: E501
+
+
+        :return: The properties_with_history of this SimplePublicObjectWithAssociations.  # noqa: E501
+        :rtype: dict(str, list[ValueWithTimestamp])
+        """
+        return self._properties_with_history
+
+    @properties_with_history.setter
+    def properties_with_history(self, properties_with_history):
+        """Sets the properties_with_history of this SimplePublicObjectWithAssociations.
+
+
+        :param properties_with_history: The properties_with_history of this SimplePublicObjectWithAssociations.  # noqa: E501
+        :type: dict(str, list[ValueWithTimestamp])
+        """
+
+        self._properties_with_history = properties_with_history
 
     @property
     def created_at(self):

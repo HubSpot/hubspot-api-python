@@ -84,7 +84,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
     def subscription_id(self):
         """Gets the subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
 
-        ID of the subscription the contact is being resubscribed to.  # noqa: E501
+        ID of the subscription being updated for the contact.  # noqa: E501
 
         :return: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
     def subscription_id(self, subscription_id):
         """Sets the subscription_id of this PublicUpdateSubscriptionStatusRequest.
 
-        ID of the subscription the contact is being resubscribed to.  # noqa: E501
+        ID of the subscription being updated for the contact.  # noqa: E501
 
         :param subscription_id: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :type: str
@@ -109,7 +109,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
     def legal_basis(self):
         """Gets the legal_basis of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
 
-        Legal basis for resubscribing the contact (required for GDPR enabled portals).  # noqa: E501
+        Legal basis for updating the contact's status (required for GDPR enabled portals).  # noqa: E501
 
         :return: The legal_basis of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
     def legal_basis(self, legal_basis):
         """Sets the legal_basis of this PublicUpdateSubscriptionStatusRequest.
 
-        Legal basis for resubscribing the contact (required for GDPR enabled portals).  # noqa: E501
+        Legal basis for updating the contact's status (required for GDPR enabled portals).  # noqa: E501
 
         :param legal_basis: The legal_basis of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :type: str

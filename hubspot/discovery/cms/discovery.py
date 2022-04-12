@@ -5,6 +5,7 @@ from .domains.discovery import Discovery as DomainsDiscovery
 from .hubdb.discovery import Discovery as HubdbDiscovery
 from .performance.discovery import Discovery as PerformanceDiscovery
 from .site_search.discovery import Discovery as SiteSearchDiscovery
+from .source_code.discovery import Discovery as SourceCodeDiscovery
 from .url_redirects.discovery import Discovery as UrlRedirectsDiscovery
 
 
@@ -32,6 +33,10 @@ class Discovery(DiscoveryBase):
     @property
     def site_search(self):
         return SiteSearchDiscovery(self.config)
+
+    @property
+    def source_code(self):
+        return SourceCodeDiscovery(self.config)
 
     @property
     def url_redirects(self):

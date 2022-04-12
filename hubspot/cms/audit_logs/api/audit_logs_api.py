@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.audit_logs.api_client import ApiClient
-from hubspot.cms.audit_logs.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.cms.audit_logs.exceptions import ApiTypeError, ApiValueError
 
 
 class AuditLogsApi(object):
@@ -99,8 +99,11 @@ class AuditLogsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_id", "user_id", "after", "before", "sort", "event_type", "limit", "object_type"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_id", "user_id", "after", "before", "sort", "event_type", "limit", "object_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -145,7 +148,7 @@ class AuditLogsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/cms/v3/audit-logs/",

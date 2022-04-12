@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.objects.api_client import ApiClient
-from hubspot.crm.objects.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.crm.objects.exceptions import ApiTypeError, ApiValueError
 
 
 class AssociationsApi(object):
@@ -91,8 +91,11 @@ class AssociationsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "to_object_type", "to_object_id", "association_type"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id", "to_object_type", "to_object_id", "association_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -141,7 +144,7 @@ class AssociationsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}/{associationType}",
@@ -219,8 +222,11 @@ class AssociationsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "to_object_type", "to_object_id", "association_type"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id", "to_object_type", "to_object_id", "association_type"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -269,7 +275,7 @@ class AssociationsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}/{associationType}",
@@ -347,8 +353,11 @@ class AssociationsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "to_object_type", "after", "limit"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout"])
+        all_params = ["object_type", "object_id", "to_object_type", "after", "limit"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -391,7 +400,7 @@ class AssociationsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2", "oauth2_legacy"]  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/crm/v3/objects/{objectType}/{objectId}/associations/{toObjectType}",

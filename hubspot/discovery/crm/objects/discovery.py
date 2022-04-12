@@ -1,7 +1,11 @@
 import hubspot.crm.objects as api_client
 from ...discovery_base import DiscoveryBase
+from .calls.discovery import Discovery as CallsDiscovery
+from .emails.discovery import Discovery as EmailsDiscovery
 from .feedback_submissions.discovery import Discovery as FeedbackSubmissionsDiscovery
-
+from .meetings.discovery import Discovery as MeetingsDiscovery
+from .notes.discovery import Discovery as NotesDiscovery
+from .tasks.discovery import Discovery as TasksDiscovery
 
 class Discovery(DiscoveryBase):
     @property
@@ -25,8 +29,28 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "GDPRApi")
 
     @property
+    def calls(self):
+        return CallsDiscovery(self.config)
+
+    @property
+    def emails(self):
+        return EmailsDiscovery(self.config)
+
+    @property
     def feedback_submissions(self):
         return FeedbackSubmissionsDiscovery(self.config)
+
+    @property
+    def meetings(self):
+        return MeetingsDiscovery(self.config)
+
+    @property
+    def notes(self):
+        return NotesDiscovery(self.config)
+
+    @property
+    def tasks(self):
+        return TasksDiscovery(self.config)
 
     def get_all(self, object_type, **kwargs):
         return self.fetch_all(object_type, **kwargs)
