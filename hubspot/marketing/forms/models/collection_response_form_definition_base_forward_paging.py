@@ -32,7 +32,7 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"results": "list[OneOfHubSpotFormDefinition]", "paging": "ForwardPaging"}
+    openapi_types = {"results": "list[HubSpotFormDefinition]", "paging": "ForwardPaging"}
 
     attribute_map = {"results": "results", "paging": "paging"}
 
@@ -56,7 +56,7 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
 
 
         :return: The results of this CollectionResponseFormDefinitionBaseForwardPaging.  # noqa: E501
-        :rtype: list[OneOfHubSpotFormDefinition]
+        :rtype: list[HubSpotFormDefinition]
         """
         return self._results
 
@@ -66,7 +66,7 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
 
 
         :param results: The results of this CollectionResponseFormDefinitionBaseForwardPaging.  # noqa: E501
-        :type: list[OneOfHubSpotFormDefinition]
+        :type: list[HubSpotFormDefinition]
         """
         if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
