@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - OneOfHubSpotFormDefinition model changed to HubSpotFormDefinition
+- CRM Contacts Endpoint - Added support for `id_property` (See the developer docs section [Unique identifiers and deduplication](https://developers.hubspot.com/docs/api/crm/contacts))
 
 ## [5.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v4.0.6...v5.0.0) - 2022-04-12
 
