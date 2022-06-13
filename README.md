@@ -29,13 +29,14 @@ Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://p
 ```python
 from hubspot import HubSpot
 
-api_client = HubSpot()
-# or with api_key
-api_client = HubSpot(api_key='your_api_key')
-# or with access_token
+api_client = HubSpot(access_token='your_access_token')
+
+# or set your access token later
 api_client = HubSpot()
 api_client.access_token = 'your_access_token'
 ```
+
+You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain OAuth2 access token.
 
 ### OAuth API
 
