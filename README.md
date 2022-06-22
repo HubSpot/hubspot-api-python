@@ -46,7 +46,7 @@ You'll need to create a [private app](https://developers.hubspot.com/docs/api/pr
 from hubspot.auth.oauth import ApiException
 
 try:
-    tokens = api_client.auth.oauth.default_api.create_token(
+    tokens = api_client.auth.oauth.tokens_api.create_token(
         grant_type="authorization_code",
         redirect_uri='http://localhost',
         client_id='client_id',
