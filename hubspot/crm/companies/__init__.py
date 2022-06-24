@@ -20,6 +20,7 @@ __version__ = "1.0.0"
 from hubspot.crm.companies.api.associations_api import AssociationsApi
 from hubspot.crm.companies.api.basic_api import BasicApi
 from hubspot.crm.companies.api.batch_api import BatchApi
+from hubspot.crm.companies.api.public_object_api import PublicObjectApi
 from hubspot.crm.companies.api.search_api import SearchApi
 
 # import ApiClient
@@ -52,6 +53,7 @@ from hubspot.crm.companies.models.forward_paging import ForwardPaging
 from hubspot.crm.companies.models.next_page import NextPage
 from hubspot.crm.companies.models.paging import Paging
 from hubspot.crm.companies.models.previous_page import PreviousPage
+from hubspot.crm.companies.models.public_merge_input import PublicMergeInput
 from hubspot.crm.companies.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.companies.models.simple_public_object import SimplePublicObject
 from hubspot.crm.companies.models.simple_public_object_batch_input import SimplePublicObjectBatchInput

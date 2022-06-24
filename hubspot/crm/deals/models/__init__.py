@@ -34,6 +34,7 @@ from hubspot.crm.deals.models.forward_paging import ForwardPaging
 from hubspot.crm.deals.models.next_page import NextPage
 from hubspot.crm.deals.models.paging import Paging
 from hubspot.crm.deals.models.previous_page import PreviousPage
+from hubspot.crm.deals.models.public_merge_input import PublicMergeInput
 from hubspot.crm.deals.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.deals.models.simple_public_object import SimplePublicObject
 from hubspot.crm.deals.models.simple_public_object_batch_input import SimplePublicObjectBatchInput

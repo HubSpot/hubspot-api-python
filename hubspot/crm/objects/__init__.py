@@ -21,6 +21,7 @@ from hubspot.crm.objects.api.associations_api import AssociationsApi
 from hubspot.crm.objects.api.basic_api import BasicApi
 from hubspot.crm.objects.api.batch_api import BatchApi
 from hubspot.crm.objects.api.gdpr_api import GDPRApi
+from hubspot.crm.objects.api.public_object_api import PublicObjectApi
 from hubspot.crm.objects.api.search_api import SearchApi
 
 # import ApiClient
@@ -54,6 +55,7 @@ from hubspot.crm.objects.models.next_page import NextPage
 from hubspot.crm.objects.models.paging import Paging
 from hubspot.crm.objects.models.previous_page import PreviousPage
 from hubspot.crm.objects.models.public_gdpr_delete_input import PublicGdprDeleteInput
+from hubspot.crm.objects.models.public_merge_input import PublicMergeInput
 from hubspot.crm.objects.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.objects.models.simple_public_object import SimplePublicObject
 from hubspot.crm.objects.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
