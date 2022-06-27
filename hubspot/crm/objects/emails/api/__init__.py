@@ -6,4 +6,5 @@ from __future__ import absolute_import
 from hubspot.crm.objects.emails.api.associations_api import AssociationsApi
 from hubspot.crm.objects.emails.api.basic_api import BasicApi
 from hubspot.crm.objects.emails.api.batch_api import BatchApi
+from hubspot.crm.objects.emails.api.public_object_api import PublicObjectApi
 from hubspot.crm.objects.emails.api.search_api import SearchApi

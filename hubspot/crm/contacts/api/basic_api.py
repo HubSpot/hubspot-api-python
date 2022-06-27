@@ -261,6 +261,7 @@ class BasicApi(object):
         :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
+        :param str id_property: The name of a property whose values are unique for this object type
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -290,6 +291,7 @@ class BasicApi(object):
         :param list[str] properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :param list[str] associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
         :param bool archived: Whether to return only results that have been archived.
+        :param str id_property: The name of a property whose values are unique for this object type
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -306,7 +308,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["contact_id", "properties", "properties_with_history", "associations", "archived"]  # noqa: E501
+        all_params = ["contact_id", "properties", "properties_with_history", "associations", "archived", "id_property"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -339,6 +341,8 @@ class BasicApi(object):
             collection_formats["associations"] = "multi"  # noqa: E501
         if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
+            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
 
         header_params = {}
 
@@ -507,6 +511,7 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param SimplePublicObjectInput simple_public_object_input: (required)
+        :param str id_property: The name of a property whose values are unique for this object type
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -533,6 +538,7 @@ class BasicApi(object):
         :param async_req bool: execute request asynchronously
         :param str contact_id: (required)
         :param SimplePublicObjectInput simple_public_object_input: (required)
+        :param str id_property: The name of a property whose values are unique for this object type
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -549,7 +555,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["contact_id", "simple_public_object_input"]  # noqa: E501
+        all_params = ["contact_id", "simple_public_object_input", "id_property"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -574,6 +580,8 @@ class BasicApi(object):
             path_params["contactId"] = local_var_params["contact_id"]  # noqa: E501
 
         query_params = []
+        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
+            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
 
         header_params = {}
 

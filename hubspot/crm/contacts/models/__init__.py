@@ -35,6 +35,7 @@ from hubspot.crm.contacts.models.next_page import NextPage
 from hubspot.crm.contacts.models.paging import Paging
 from hubspot.crm.contacts.models.previous_page import PreviousPage
 from hubspot.crm.contacts.models.public_gdpr_delete_input import PublicGdprDeleteInput
+from hubspot.crm.contacts.models.public_merge_input import PublicMergeInput
 from hubspot.crm.contacts.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.contacts.models.simple_public_object import SimplePublicObject
 from hubspot.crm.contacts.models.simple_public_object_batch_input import SimplePublicObjectBatchInput

@@ -32,23 +32,26 @@ class Filter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"value": "str", "property_name": "str", "operator": "str"}
+    openapi_types = {"value": "str", "values": "list[str]", "property_name": "str", "operator": "str"}
 
-    attribute_map = {"value": "value", "property_name": "propertyName", "operator": "operator"}
+    attribute_map = {"value": "value", "values": "values", "property_name": "propertyName", "operator": "operator"}
 
-    def __init__(self, value=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, value=None, values=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
         """Filter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._value = None
+        self._values = None
         self._property_name = None
         self._operator = None
         self.discriminator = None
 
         if value is not None:
             self.value = value
+        if values is not None:
+            self.values = values
         self.property_name = property_name
         self.operator = operator
 
@@ -72,6 +75,27 @@ class Filter(object):
         """
 
         self._value = value
+
+    @property
+    def values(self):
+        """Gets the values of this Filter.  # noqa: E501
+
+
+        :return: The values of this Filter.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        """Sets the values of this Filter.
+
+
+        :param values: The values of this Filter.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._values = values
 
     @property
     def property_name(self):

@@ -20,6 +20,7 @@ __version__ = "1.0.0"
 from hubspot.crm.objects.emails.api.associations_api import AssociationsApi
 from hubspot.crm.objects.emails.api.basic_api import BasicApi
 from hubspot.crm.objects.emails.api.batch_api import BatchApi
+from hubspot.crm.objects.emails.api.public_object_api import PublicObjectApi
 from hubspot.crm.objects.emails.api.search_api import SearchApi
 
 # import ApiClient
@@ -52,6 +53,7 @@ from hubspot.crm.objects.emails.models.forward_paging import ForwardPaging
 from hubspot.crm.objects.emails.models.next_page import NextPage
 from hubspot.crm.objects.emails.models.paging import Paging
 from hubspot.crm.objects.emails.models.previous_page import PreviousPage
+from hubspot.crm.objects.emails.models.public_merge_input import PublicMergeInput
 from hubspot.crm.objects.emails.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.objects.emails.models.simple_public_object import SimplePublicObject
 from hubspot.crm.objects.emails.models.simple_public_object_batch_input import SimplePublicObjectBatchInput

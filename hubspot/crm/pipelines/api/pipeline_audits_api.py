@@ -33,13 +33,13 @@ class PipelineAuditsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_crm_v3_pipelines_object_type_pipeline_id_audit(self, object_type, pipeline_id, **kwargs):  # noqa: E501
+    def get_audit(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return an audit of all changes to the pipeline  # noqa: E501
 
         Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_crm_v3_pipelines_object_type_pipeline_id_audit(object_type, pipeline_id, async_req=True)
+        >>> thread = api.get_audit(object_type, pipeline_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -57,15 +57,15 @@ class PipelineAuditsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_crm_v3_pipelines_object_type_pipeline_id_audit_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
+        return self.get_audit_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
-    def get_crm_v3_pipelines_object_type_pipeline_id_audit_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
+    def get_audit_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return an audit of all changes to the pipeline  # noqa: E501
 
         Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_crm_v3_pipelines_object_type_pipeline_id_audit_with_http_info(object_type, pipeline_id, async_req=True)
+        >>> thread = api.get_audit_with_http_info(object_type, pipeline_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -95,15 +95,15 @@ class PipelineAuditsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_crm_v3_pipelines_object_type_pipeline_id_audit" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_audit" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `get_crm_v3_pipelines_object_type_pipeline_id_audit`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_audit`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
         if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_crm_v3_pipelines_object_type_pipeline_id_audit`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_audit`")  # noqa: E501
 
         collection_formats = {}
 

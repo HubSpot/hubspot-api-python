@@ -34,6 +34,7 @@ from hubspot.crm.objects.notes.models.forward_paging import ForwardPaging
 from hubspot.crm.objects.notes.models.next_page import NextPage
 from hubspot.crm.objects.notes.models.paging import Paging
 from hubspot.crm.objects.notes.models.previous_page import PreviousPage
+from hubspot.crm.objects.notes.models.public_merge_input import PublicMergeInput
 from hubspot.crm.objects.notes.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.objects.notes.models.simple_public_object import SimplePublicObject
 from hubspot.crm.objects.notes.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
