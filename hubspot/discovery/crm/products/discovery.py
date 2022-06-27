@@ -20,5 +20,9 @@ class Discovery(DiscoveryBase):
     def batch_api(self) -> api_client.BatchApi:
         return self._configure_api_client(api_client, "BatchApi")
 
+    @property
+    def public_object_api(self) -> api_client.PublicObjectApi:
+        return self._configure_api_client(api_client, "PublicObjectApi")
+
     def get_all(self, **kwargs):
         return fetch_all(self.basic_api, **kwargs)

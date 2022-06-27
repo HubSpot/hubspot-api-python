@@ -29,6 +29,10 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "GDPRApi")
 
     @property
+    def public_object_api(self) -> api_client.PublicObjectApi:
+        return self._configure_api_client(api_client, "PublicObjectApi")
+
+    @property
     def calls(self):
         return CallsDiscovery(self.config)
 

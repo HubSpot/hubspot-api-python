@@ -24,5 +24,9 @@ class Discovery(DiscoveryBase):
     def gdpr_api(self) -> api_client.GDPRApi:
         return self._configure_api_client(api_client, "GDPRApi")
 
+    @property
+    def public_object_api(self) -> api_client.PublicObjectApi:
+        return self._configure_api_client(api_client, "PublicObjectApi")
+
     def get_all(self, **kwargs):
         return fetch_all(self.basic_api, **kwargs)
