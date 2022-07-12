@@ -14,7 +14,7 @@ jobs:
           python-version: 3.x
       - run: pip install --upgrade pip wheel
       - run: pip install bandit black codespell flake8 flake8-2020 flake8-bugbear
-                         flake8-comprehensions, isort mypy pytest pyupgrade safety
+                         flake8-comprehensions isort mypy pytest pyupgrade safety
       - run: bandit --recursive --skip B101,B105,B107 .
       - run: black --check . || true
       - run: codespell --ignore-words-list="fo,nd,querys,seh,te" || true  # --skip="*.css,*.js,*.lock"
