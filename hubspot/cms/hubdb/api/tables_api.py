@@ -1529,7 +1529,7 @@ class TablesApi(object):
     def update_draft_table(self, table_id_or_name, hub_db_table_v3_request, **kwargs):  # noqa: E501
         """Update an existing table  # noqa: E501
 
-        Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` verion of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
+        Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` version of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_draft_table(table_id_or_name, hub_db_table_v3_request, async_req=True)
@@ -1557,7 +1557,7 @@ class TablesApi(object):
     def update_draft_table_with_http_info(self, table_id_or_name, hub_db_table_v3_request, **kwargs):  # noqa: E501
         """Update an existing table  # noqa: E501
 
-        Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` verion of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
+        Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` version of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_draft_table_with_http_info(table_id_or_name, hub_db_table_v3_request, async_req=True)

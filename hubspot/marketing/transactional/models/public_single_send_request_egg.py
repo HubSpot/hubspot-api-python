@@ -80,7 +80,7 @@ class PublicSingleSendRequestEgg(object):
     def contact_properties(self):
         """Gets the contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
 
-        The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
+        The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a receipt you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
 
         :return: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
         :rtype: dict(str, str)
@@ -91,7 +91,7 @@ class PublicSingleSendRequestEgg(object):
     def contact_properties(self, contact_properties):
         """Sets the contact_properties of this PublicSingleSendRequestEgg.
 
-        The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
+        The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a receipt you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
 
         :param contact_properties: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: dict(str, str)
