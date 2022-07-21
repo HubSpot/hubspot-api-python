@@ -38,6 +38,10 @@ api_client.access_token = 'your_access_token'
 
 You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain OAuth2 access token.
 
+#### Hapikey support:
+
+Please, note that hapikey is no longer supported after v5.1.0. You can get more info about hapikey sunset [here](https://developers.hubspot.com/changelog/upcoming-api-key-sunset). Also, plese, visit a [migration guide](https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app) if you need help with a migration process.
+
 ### OAuth API
 
 #### Obtain OAuth2 access token:
