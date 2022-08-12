@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v5.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v6.0.0...HEAD)
+
+## [6.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v5.1.1...v6.0.0) - 2022-08-12
+
+### Changed
+
+- Dropped unsupported versions of Python
 
 ## [5.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v5.0.1...v5.1.0) - 2022-06-27
 
