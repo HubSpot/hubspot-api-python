@@ -1,8 +1,7 @@
 from ..discovery_base import DiscoveryBase
-from .files.discovery import Discovery as FilesDiscovery
-
 
 class Discovery(DiscoveryBase):
     @property
     def files(self):
+        from .files.discovery import Discovery as FilesDiscovery
         return FilesDiscovery(self.config)
