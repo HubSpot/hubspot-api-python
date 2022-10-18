@@ -1,16 +1,4 @@
 from urllib3.util.retry import Retry
-from .discovery.auth.discovery import Discovery as AuthDiscovery
-from .discovery.automation.discovery import Discovery as AutomationDiscovery
-from .discovery.cms.discovery import Discovery as CmsDiscovery
-from .discovery.communication_preferences.discovery import Discovery as CommunicationPreferencesDiscovery
-from .discovery.conversations.discovery import Discovery as ConversationsDiscovery
-from .discovery.crm.discovery import Discovery as CrmDiscovery
-from .discovery.events.discovery import Discovery as EventsDiscovery
-from .discovery.files.discovery import Discovery as FilesDiscovery
-from .discovery.marketing.discovery import Discovery as MarketingDiscovery
-from .discovery.settings.discovery import Discovery as SettingsDiscovery
-from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
-
 
 class Client:
     def __init__(
@@ -46,44 +34,55 @@ class Client:
 
     @property
     def auth(self):
+        from .discovery.auth.discovery import Discovery as AuthDiscovery
         return AuthDiscovery(self.config)
 
     @property
     def automation(self):
+        from .discovery.automation.discovery import Discovery as AutomationDiscovery
         return AutomationDiscovery(self.config)
 
     @property
     def cms(self):
+        from .discovery.cms.discovery import Discovery as CmsDiscovery
         return CmsDiscovery(self.config)
 
     @property
     def communication_preferences(self):
+        from .discovery.communication_preferences.discovery import Discovery as CommunicationPreferencesDiscovery
         return CommunicationPreferencesDiscovery(self.config)
 
     @property
     def conversations(self):
+        from .discovery.conversations.discovery import Discovery as ConversationsDiscovery
         return ConversationsDiscovery(self.config)
 
     @property
     def crm(self):
+        from .discovery.crm.discovery import Discovery as CrmDiscovery
         return CrmDiscovery(self.config)
 
     @property
     def events(self):
+        from .discovery.events.discovery import Discovery as EventsDiscovery
         return EventsDiscovery(self.config)
 
     @property
     def files(self):
+        from .discovery.files.discovery import Discovery as FilesDiscovery
         return FilesDiscovery(self.config)
 
     @property
     def marketing(self):
+        from .discovery.marketing.discovery import Discovery as MarketingDiscovery
         return MarketingDiscovery(self.config)
 
     @property
     def settings(self):
+        from .discovery.settings.discovery import Discovery as SettingsDiscovery
         return SettingsDiscovery(self.config)
 
     @property
     def webhooks(self):
+        from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
         return WebhooksDiscovery(self.config)
