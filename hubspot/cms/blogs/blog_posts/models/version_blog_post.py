@@ -32,11 +32,11 @@ class VersionBlogPost(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object": "BlogPost", "user": "VersionUser", "id": "str", "updated": "datetime"}
+    openapi_types = {"object": "BlogPost", "user": "VersionUser", "id": "str", "updated_at": "datetime"}
 
-    attribute_map = {"object": "object", "user": "user", "id": "id", "updated": "updated"}
+    attribute_map = {"object": "object", "user": "user", "id": "id", "updated_at": "updatedAt"}
 
-    def __init__(self, object=None, user=None, id=None, updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, object=None, user=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """VersionBlogPost - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -45,13 +45,13 @@ class VersionBlogPost(object):
         self._object = None
         self._user = None
         self._id = None
-        self._updated = None
+        self._updated_at = None
         self.discriminator = None
 
         self.object = object
         self.user = user
         self.id = id
-        self.updated = updated
+        self.updated_at = updated_at
 
     @property
     def object(self):
@@ -125,29 +125,27 @@ class VersionBlogPost(object):
         self._id = id
 
     @property
-    def updated(self):
-        """Gets the updated of this VersionBlogPost.  # noqa: E501
+    def updated_at(self):
+        """Gets the updated_at of this VersionBlogPost.  # noqa: E501
 
-        The timestamp (ISO8601 format) when this version was updated.  # noqa: E501
 
-        :return: The updated of this VersionBlogPost.  # noqa: E501
+        :return: The updated_at of this VersionBlogPost.  # noqa: E501
         :rtype: datetime
         """
-        return self._updated
+        return self._updated_at
 
-    @updated.setter
-    def updated(self, updated):
-        """Sets the updated of this VersionBlogPost.
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this VersionBlogPost.
 
-        The timestamp (ISO8601 format) when this version was updated.  # noqa: E501
 
-        :param updated: The updated of this VersionBlogPost.  # noqa: E501
+        :param updated_at: The updated_at of this VersionBlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
-        self._updated = updated
+        self._updated_at = updated_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -33,9 +33,6 @@ class UrlMappingCreateRequestBody(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "route_prefix": "str",
-        "destination": "str",
-        "redirect_style": "int",
         "precedence": "int",
         "is_only_after_not_found": "bool",
         "is_match_full_url": "bool",
@@ -43,12 +40,12 @@ class UrlMappingCreateRequestBody(object):
         "is_pattern": "bool",
         "is_trailing_slash_optional": "bool",
         "is_protocol_agnostic": "bool",
+        "route_prefix": "str",
+        "destination": "str",
+        "redirect_style": "int",
     }
 
     attribute_map = {
-        "route_prefix": "routePrefix",
-        "destination": "destination",
-        "redirect_style": "redirectStyle",
         "precedence": "precedence",
         "is_only_after_not_found": "isOnlyAfterNotFound",
         "is_match_full_url": "isMatchFullUrl",
@@ -56,13 +53,13 @@ class UrlMappingCreateRequestBody(object):
         "is_pattern": "isPattern",
         "is_trailing_slash_optional": "isTrailingSlashOptional",
         "is_protocol_agnostic": "isProtocolAgnostic",
+        "route_prefix": "routePrefix",
+        "destination": "destination",
+        "redirect_style": "redirectStyle",
     }
 
     def __init__(
         self,
-        route_prefix=None,
-        destination=None,
-        redirect_style=None,
         precedence=None,
         is_only_after_not_found=None,
         is_match_full_url=None,
@@ -70,6 +67,9 @@ class UrlMappingCreateRequestBody(object):
         is_pattern=None,
         is_trailing_slash_optional=None,
         is_protocol_agnostic=None,
+        route_prefix=None,
+        destination=None,
+        redirect_style=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """UrlMappingCreateRequestBody - a model defined in OpenAPI"""  # noqa: E501
@@ -77,9 +77,6 @@ class UrlMappingCreateRequestBody(object):
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._route_prefix = None
-        self._destination = None
-        self._redirect_style = None
         self._precedence = None
         self._is_only_after_not_found = None
         self._is_match_full_url = None
@@ -87,11 +84,11 @@ class UrlMappingCreateRequestBody(object):
         self._is_pattern = None
         self._is_trailing_slash_optional = None
         self._is_protocol_agnostic = None
+        self._route_prefix = None
+        self._destination = None
+        self._redirect_style = None
         self.discriminator = None
 
-        self.route_prefix = route_prefix
-        self.destination = destination
-        self.redirect_style = redirect_style
         if precedence is not None:
             self.precedence = precedence
         if is_only_after_not_found is not None:
@@ -106,75 +103,9 @@ class UrlMappingCreateRequestBody(object):
             self.is_trailing_slash_optional = is_trailing_slash_optional
         if is_protocol_agnostic is not None:
             self.is_protocol_agnostic = is_protocol_agnostic
-
-    @property
-    def route_prefix(self):
-        """Gets the route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
-
-
-        :return: The route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
-        :rtype: str
-        """
-        return self._route_prefix
-
-    @route_prefix.setter
-    def route_prefix(self, route_prefix):
-        """Sets the route_prefix of this UrlMappingCreateRequestBody.
-
-
-        :param route_prefix: The route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
-            raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
-
-        self._route_prefix = route_prefix
-
-    @property
-    def destination(self):
-        """Gets the destination of this UrlMappingCreateRequestBody.  # noqa: E501
-
-
-        :return: The destination of this UrlMappingCreateRequestBody.  # noqa: E501
-        :rtype: str
-        """
-        return self._destination
-
-    @destination.setter
-    def destination(self, destination):
-        """Sets the destination of this UrlMappingCreateRequestBody.
-
-
-        :param destination: The destination of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
-            raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
-
-        self._destination = destination
-
-    @property
-    def redirect_style(self):
-        """Gets the redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
-
-
-        :return: The redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
-        :rtype: int
-        """
-        return self._redirect_style
-
-    @redirect_style.setter
-    def redirect_style(self, redirect_style):
-        """Sets the redirect_style of this UrlMappingCreateRequestBody.
-
-
-        :param redirect_style: The redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
-            raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
-
-        self._redirect_style = redirect_style
+        self.route_prefix = route_prefix
+        self.destination = destination
+        self.redirect_style = redirect_style
 
     @property
     def precedence(self):
@@ -322,6 +253,75 @@ class UrlMappingCreateRequestBody(object):
         """
 
         self._is_protocol_agnostic = is_protocol_agnostic
+
+    @property
+    def route_prefix(self):
+        """Gets the route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
+
+
+        :return: The route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._route_prefix
+
+    @route_prefix.setter
+    def route_prefix(self, route_prefix):
+        """Sets the route_prefix of this UrlMappingCreateRequestBody.
+
+
+        :param route_prefix: The route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
+            raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
+
+        self._route_prefix = route_prefix
+
+    @property
+    def destination(self):
+        """Gets the destination of this UrlMappingCreateRequestBody.  # noqa: E501
+
+
+        :return: The destination of this UrlMappingCreateRequestBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._destination
+
+    @destination.setter
+    def destination(self, destination):
+        """Sets the destination of this UrlMappingCreateRequestBody.
+
+
+        :param destination: The destination of this UrlMappingCreateRequestBody.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
+            raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
+
+        self._destination = destination
+
+    @property
+    def redirect_style(self):
+        """Gets the redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
+
+
+        :return: The redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
+        :rtype: int
+        """
+        return self._redirect_style
+
+    @redirect_style.setter
+    def redirect_style(self, redirect_style):
+        """Sets the redirect_style of this UrlMappingCreateRequestBody.
+
+
+        :param redirect_style: The redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
+            raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
+
+        self._redirect_style = redirect_style
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -32,11 +32,11 @@ class Tag(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "language": "str", "translated_from_id": "int", "deleted_at": "datetime", "created_at": "datetime", "updated_at": "datetime"}
+    openapi_types = {"id": "str", "name": "str", "language": "str", "translated_from_id": "int", "created": "datetime", "updated": "datetime", "deleted_at": "datetime"}
 
-    attribute_map = {"id": "id", "name": "name", "language": "language", "translated_from_id": "translatedFromId", "deleted_at": "deletedAt", "created_at": "createdAt", "updated_at": "updatedAt"}
+    attribute_map = {"id": "id", "name": "name", "language": "language", "translated_from_id": "translatedFromId", "created": "created", "updated": "updated", "deleted_at": "deletedAt"}
 
-    def __init__(self, id=None, name=None, language=None, translated_from_id=None, deleted_at=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, language=None, translated_from_id=None, created=None, updated=None, deleted_at=None, local_vars_configuration=None):  # noqa: E501
         """Tag - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -46,18 +46,18 @@ class Tag(object):
         self._name = None
         self._language = None
         self._translated_from_id = None
+        self._created = None
+        self._updated = None
         self._deleted_at = None
-        self._created_at = None
-        self._updated_at = None
         self.discriminator = None
 
         self.id = id
         self.name = name
         self.language = language
         self.translated_from_id = translated_from_id
+        self.created = created
+        self.updated = updated
         self.deleted_at = deleted_at
-        self.created_at = created_at
-        self.updated_at = updated_at
 
     @property
     def id(self):
@@ -643,6 +643,7 @@ class Tag(object):
             "nl",
             "nl-aw",
             "nl-be",
+            "nl-ch",
             "nl-bq",
             "nl-cw",
             "nl-lu",
@@ -877,6 +878,52 @@ class Tag(object):
         self._translated_from_id = translated_from_id
 
     @property
+    def created(self):
+        """Gets the created of this Tag.  # noqa: E501
+
+
+        :return: The created of this Tag.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this Tag.
+
+
+        :param created: The created of this Tag.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+
+        self._created = created
+
+    @property
+    def updated(self):
+        """Gets the updated of this Tag.  # noqa: E501
+
+
+        :return: The updated of this Tag.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this Tag.
+
+
+        :param updated: The updated of this Tag.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+
+        self._updated = updated
+
+    @property
     def deleted_at(self):
         """Gets the deleted_at of this Tag.  # noqa: E501
 
@@ -900,56 +947,6 @@ class Tag(object):
             raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this Tag.  # noqa: E501
-
-        The timestamp (ISO8601 format) when this Blog Tag was created.  # noqa: E501
-
-        :return: The created_at of this Tag.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this Tag.
-
-        The timestamp (ISO8601 format) when this Blog Tag was created.  # noqa: E501
-
-        :param created_at: The created_at of this Tag.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this Tag.  # noqa: E501
-
-        The timestamp (ISO8601 format) when this Blog Tag was last updated.  # noqa: E501
-
-        :return: The updated_at of this Tag.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this Tag.
-
-        The timestamp (ISO8601 format) when this Blog Tag was last updated.  # noqa: E501
-
-        :param updated_at: The updated_at of this Tag.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""

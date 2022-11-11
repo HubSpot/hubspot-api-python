@@ -138,17 +138,17 @@ class RedirectsApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, **kwargs):  # noqa: E501
+    def create(self, url_mapping_create_request_body, **kwargs):  # noqa: E501
         """Create a redirect  # noqa: E501
 
         Creates and configures a new URL redirect.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(async_req=True)
+        >>> thread = api.create(url_mapping_create_request_body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param UrlMappingCreateRequestBody url_mapping_create_request_body:
+        :param UrlMappingCreateRequestBody url_mapping_create_request_body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -161,19 +161,19 @@ class RedirectsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(**kwargs)  # noqa: E501
+        return self.create_with_http_info(url_mapping_create_request_body, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, **kwargs):  # noqa: E501
+    def create_with_http_info(self, url_mapping_create_request_body, **kwargs):  # noqa: E501
         """Create a redirect  # noqa: E501
 
         Creates and configures a new URL redirect.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(url_mapping_create_request_body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param UrlMappingCreateRequestBody url_mapping_create_request_body:
+        :param UrlMappingCreateRequestBody url_mapping_create_request_body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -201,6 +201,11 @@ class RedirectsApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'url_mapping_create_request_body' is set
+        if self.api_client.client_side_validation and (
+            "url_mapping_create_request_body" not in local_var_params or local_var_params["url_mapping_create_request_body"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `url_mapping_create_request_body` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -365,9 +370,7 @@ class RedirectsApi(object):
         :param datetime updated_after: Only return redirects last updated after this date.
         :param datetime updated_before: Only return redirects last updated before this date.
         :param list[str] sort:
-        :param list[str] properties:
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-        :param str before:
         :param int limit: Maximum number of result per page
         :param bool archived: Whether to return only results that have been archived.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -377,7 +380,7 @@ class RedirectsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalUrlMapping
+        :return: CollectionResponseWithTotalUrlMappingForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -401,9 +404,7 @@ class RedirectsApi(object):
         :param datetime updated_after: Only return redirects last updated after this date.
         :param datetime updated_before: Only return redirects last updated before this date.
         :param list[str] sort:
-        :param list[str] properties:
         :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-        :param str before:
         :param int limit: Maximum number of result per page
         :param bool archived: Whether to return only results that have been archived.
         :param _return_http_data_only: response data without head status code
@@ -415,14 +416,14 @@ class RedirectsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalUrlMapping, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseWithTotalUrlMappingForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "properties", "after", "before", "limit", "archived"]  # noqa: E501
+        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -454,13 +455,8 @@ class RedirectsApi(object):
         if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
-            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
-            collection_formats["properties"] = "multi"  # noqa: E501
         if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "before" in local_var_params and local_var_params["before"] is not None:  # noqa: E501
-            query_params.append(("before", local_var_params["before"]))  # noqa: E501
         if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
         if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
@@ -487,7 +483,7 @@ class RedirectsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalUrlMapping",  # noqa: E501
+            response_type="CollectionResponseWithTotalUrlMappingForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
@@ -496,18 +492,18 @@ class RedirectsApi(object):
             collection_formats=collection_formats,
         )
 
-    def update(self, url_redirect_id, **kwargs):  # noqa: E501
+    def update(self, url_redirect_id, url_mapping, **kwargs):  # noqa: E501
         """Update a redirect  # noqa: E501
 
         Updates the settings for an existing URL redirect.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(url_redirect_id, async_req=True)
+        >>> thread = api.update(url_redirect_id, url_mapping, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str url_redirect_id: (required)
-        :param UrlMapping url_mapping:
+        :param UrlMapping url_mapping: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -520,20 +516,20 @@ class RedirectsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(url_redirect_id, **kwargs)  # noqa: E501
+        return self.update_with_http_info(url_redirect_id, url_mapping, **kwargs)  # noqa: E501
 
-    def update_with_http_info(self, url_redirect_id, **kwargs):  # noqa: E501
+    def update_with_http_info(self, url_redirect_id, url_mapping, **kwargs):  # noqa: E501
         """Update a redirect  # noqa: E501
 
         Updates the settings for an existing URL redirect.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(url_redirect_id, async_req=True)
+        >>> thread = api.update_with_http_info(url_redirect_id, url_mapping, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str url_redirect_id: (required)
-        :param UrlMapping url_mapping:
+        :param UrlMapping url_mapping: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -564,6 +560,9 @@ class RedirectsApi(object):
         # verify the required parameter 'url_redirect_id' is set
         if self.api_client.client_side_validation and ("url_redirect_id" not in local_var_params or local_var_params["url_redirect_id"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `url_redirect_id` when calling `update`")  # noqa: E501
+        # verify the required parameter 'url_mapping' is set
+        if self.api_client.client_side_validation and ("url_mapping" not in local_var_params or local_var_params["url_mapping"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `url_mapping` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 

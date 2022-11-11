@@ -140,7 +140,7 @@ class AssociationsApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/contacts/{contactId}/associations/{toObjectType}/{toObjectId}/{associationType}",
+            "/crm/v4/objects/contacts/{contactId}/associations/{toObjectType}/{toObjectId}",
             "DELETE",
             path_params,
             query_params,
@@ -264,7 +264,7 @@ class AssociationsApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/contacts/{contactId}/associations/{toObjectType}/{toObjectId}/{associationType}",
+            "/crm/v4/objects/contacts/{contactId}/associations/{toObjectType}/{toObjectId}",
             "PUT",
             path_params,
             query_params,
@@ -382,7 +382,7 @@ class AssociationsApi(object):
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/contacts/{contactId}/associations/{toObjectType}",
+            "/crm/v4/objects/contacts/{contactId}/associations/{toObjectType}",
             "GET",
             path_params,
             query_params,

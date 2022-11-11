@@ -162,7 +162,6 @@ class PublicApi(object):
         :param bool autocomplete: Specifies whether or not you are showing autocomplete results. Defaults to false.
         :param float popularity_boost: Specifies how strongly a result is boosted based on its view count. Defaults to 1.0.
         :param float boost_limit: Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html).
-        :param float min_score: Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall.
         :param str boost_recent: Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent=10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days).
         :param int table_id: Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the `hubdbQuery` parameter to further filter results.
         :param str hubdb_query: Specify a HubDB query to further filter the search results.
@@ -204,7 +203,6 @@ class PublicApi(object):
         :param bool autocomplete: Specifies whether or not you are showing autocomplete results. Defaults to false.
         :param float popularity_boost: Specifies how strongly a result is boosted based on its view count. Defaults to 1.0.
         :param float boost_limit: Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html).
-        :param float min_score: Specifies the minimum search score threshold for returned results. This value is intentionally set low by default in order to return many results. Increase this for higher precision, but less recall.
         :param str boost_recent: Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent=10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days).
         :param int table_id: Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the `hubdbQuery` parameter to further filter results.
         :param str hubdb_query: Specify a HubDB query to further filter the search results.
@@ -239,7 +237,6 @@ class PublicApi(object):
             "autocomplete",
             "popularity_boost",
             "boost_limit",
-            "min_score",
             "boost_recent",
             "table_id",
             "hubdb_query",
@@ -282,8 +279,6 @@ class PublicApi(object):
             query_params.append(("popularityBoost", local_var_params["popularity_boost"]))  # noqa: E501
         if "boost_limit" in local_var_params and local_var_params["boost_limit"] is not None:  # noqa: E501
             query_params.append(("boostLimit", local_var_params["boost_limit"]))  # noqa: E501
-        if "min_score" in local_var_params and local_var_params["min_score"] is not None:  # noqa: E501
-            query_params.append(("minScore", local_var_params["min_score"]))  # noqa: E501
         if "boost_recent" in local_var_params and local_var_params["boost_recent"] is not None:  # noqa: E501
             query_params.append(("boostRecent", local_var_params["boost_recent"]))  # noqa: E501
         if "table_id" in local_var_params and local_var_params["table_id"] is not None:  # noqa: E501

@@ -118,7 +118,7 @@ class PublicSmtpTokensApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/smtp-tokens/{tokenId}",
@@ -138,17 +138,17 @@ class PublicSmtpTokensApi(object):
             collection_formats=collection_formats,
         )
 
-    def create_token(self, **kwargs):  # noqa: E501
+    def create_token(self, smtp_api_token_request_egg, **kwargs):  # noqa: E501
         """Create a SMTP API token.  # noqa: E501
 
         Create a SMTP API token.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token(async_req=True)
+        >>> thread = api.create_token(smtp_api_token_request_egg, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SmtpApiTokenRequestEgg smtp_api_token_request_egg: A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails.
+        :param SmtpApiTokenRequestEgg smtp_api_token_request_egg: A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -161,19 +161,19 @@ class PublicSmtpTokensApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_token_with_http_info(**kwargs)  # noqa: E501
+        return self.create_token_with_http_info(smtp_api_token_request_egg, **kwargs)  # noqa: E501
 
-    def create_token_with_http_info(self, **kwargs):  # noqa: E501
+    def create_token_with_http_info(self, smtp_api_token_request_egg, **kwargs):  # noqa: E501
         """Create a SMTP API token.  # noqa: E501
 
         Create a SMTP API token.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token_with_http_info(async_req=True)
+        >>> thread = api.create_token_with_http_info(smtp_api_token_request_egg, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SmtpApiTokenRequestEgg smtp_api_token_request_egg: A request object that includes the campaign name tied to the token and whether contacts should be created for recipients of emails.
+        :param SmtpApiTokenRequestEgg smtp_api_token_request_egg: A request object that includes the campaign name tied to the token and whether contacts should be created for email recipients. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -201,6 +201,9 @@ class PublicSmtpTokensApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_token" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
+        # verify the required parameter 'smtp_api_token_request_egg' is set
+        if self.api_client.client_side_validation and ("smtp_api_token_request_egg" not in local_var_params or local_var_params["smtp_api_token_request_egg"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `smtp_api_token_request_egg` when calling `create_token`")  # noqa: E501
 
         collection_formats = {}
 
@@ -223,7 +226,7 @@ class PublicSmtpTokensApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/smtp-tokens",
@@ -328,7 +331,7 @@ class PublicSmtpTokensApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/smtp-tokens/{tokenId}",
@@ -369,7 +372,7 @@ class PublicSmtpTokensApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseSmtpApiTokenView
+        :return: CollectionResponseSmtpApiTokenViewForwardPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -399,7 +402,7 @@ class PublicSmtpTokensApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseSmtpApiTokenView, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponseSmtpApiTokenViewForwardPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -442,7 +445,7 @@ class PublicSmtpTokensApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/smtp-tokens",
@@ -453,7 +456,7 @@ class PublicSmtpTokensApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseSmtpApiTokenView",  # noqa: E501
+            response_type="CollectionResponseSmtpApiTokenViewForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
@@ -547,7 +550,7 @@ class PublicSmtpTokensApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/transactional/smtp-tokens/{tokenId}/password-reset",

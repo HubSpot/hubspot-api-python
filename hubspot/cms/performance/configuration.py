@@ -62,6 +62,9 @@ class Configuration(object):
         self.password = password
         """Password for HTTP basic authentication
         """
+        self.access_token = ""
+        """access token for OAuth/Bearer
+        """
         self.logger = {}
         """Logging Settings
         """
@@ -239,6 +242,7 @@ class Configuration(object):
         """
         return {
             "hapikey": {"type": "api_key", "in": "query", "key": "hapikey", "value": self.get_api_key_with_prefix("hapikey")},
+            "oauth2": {"type": "oauth2", "in": "header", "key": "Authorization", "value": "Bearer " + self.access_token},
         }
 
     def to_debug_report(self):

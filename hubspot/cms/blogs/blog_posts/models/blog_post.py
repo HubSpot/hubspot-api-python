@@ -54,20 +54,18 @@ class BlogPost(object):
         "language": "str",
         "translated_from_id": "str",
         "translations": "dict(str, ContentLanguageVariation)",
-        "dynamic_page_hub_db_table_id": "str",
+        "dynamic_page_data_source_type": "int",
+        "dynamic_page_data_source_id": "str",
         "blog_author_id": "str",
         "tag_ids": "list[int]",
         "html_title": "str",
+        "enable_google_amp_output_override": "bool",
         "use_featured_image": "bool",
         "post_body": "str",
         "post_summary": "str",
         "rss_body": "str",
         "rss_summary": "str",
-        "enable_google_amp_output_override": "bool",
-        "url": "str",
-        "password": "str",
-        "current_state": "str",
-        "link_rel_canonical_url": "str",
+        "currently_published": "bool",
         "page_expiry_enabled": "bool",
         "page_expiry_redirect_id": "int",
         "page_expiry_redirect_url": "str",
@@ -75,10 +73,11 @@ class BlogPost(object):
         "include_default_custom_css": "bool",
         "enable_layout_stylesheets": "bool",
         "enable_domain_stylesheets": "bool",
-        "content_type_category": "str",
         "publish_immediately": "bool",
         "featured_image": "str",
         "featured_image_alt_text": "str",
+        "link_rel_canonical_url": "str",
+        "content_type_category": "str",
         "attached_stylesheets": "list[dict(str, object)]",
         "meta_description": "str",
         "head_html": "str",
@@ -88,11 +87,13 @@ class BlogPost(object):
         "public_access_rules": "list[object]",
         "layout_sections": "dict(str, LayoutSection)",
         "theme_settings_values": "dict(str, object)",
+        "url": "str",
+        "password": "str",
+        "current_state": "str",
         "publish_date": "datetime",
+        "created": "datetime",
+        "updated": "datetime",
         "deleted_at": "datetime",
-        "created_at": "datetime",
-        "published": "bool",
-        "updated_at": "datetime",
     }
 
     attribute_map = {
@@ -117,20 +118,18 @@ class BlogPost(object):
         "language": "language",
         "translated_from_id": "translatedFromId",
         "translations": "translations",
-        "dynamic_page_hub_db_table_id": "dynamicPageHubDbTableId",
+        "dynamic_page_data_source_type": "dynamicPageDataSourceType",
+        "dynamic_page_data_source_id": "dynamicPageDataSourceId",
         "blog_author_id": "blogAuthorId",
         "tag_ids": "tagIds",
         "html_title": "htmlTitle",
+        "enable_google_amp_output_override": "enableGoogleAmpOutputOverride",
         "use_featured_image": "useFeaturedImage",
         "post_body": "postBody",
         "post_summary": "postSummary",
         "rss_body": "rssBody",
         "rss_summary": "rssSummary",
-        "enable_google_amp_output_override": "enableGoogleAmpOutputOverride",
-        "url": "url",
-        "password": "password",
-        "current_state": "currentState",
-        "link_rel_canonical_url": "linkRelCanonicalUrl",
+        "currently_published": "currentlyPublished",
         "page_expiry_enabled": "pageExpiryEnabled",
         "page_expiry_redirect_id": "pageExpiryRedirectId",
         "page_expiry_redirect_url": "pageExpiryRedirectUrl",
@@ -138,10 +137,11 @@ class BlogPost(object):
         "include_default_custom_css": "includeDefaultCustomCss",
         "enable_layout_stylesheets": "enableLayoutStylesheets",
         "enable_domain_stylesheets": "enableDomainStylesheets",
-        "content_type_category": "contentTypeCategory",
         "publish_immediately": "publishImmediately",
         "featured_image": "featuredImage",
         "featured_image_alt_text": "featuredImageAltText",
+        "link_rel_canonical_url": "linkRelCanonicalUrl",
+        "content_type_category": "contentTypeCategory",
         "attached_stylesheets": "attachedStylesheets",
         "meta_description": "metaDescription",
         "head_html": "headHtml",
@@ -151,11 +151,13 @@ class BlogPost(object):
         "public_access_rules": "publicAccessRules",
         "layout_sections": "layoutSections",
         "theme_settings_values": "themeSettingsValues",
+        "url": "url",
+        "password": "password",
+        "current_state": "currentState",
         "publish_date": "publishDate",
+        "created": "created",
+        "updated": "updated",
         "deleted_at": "deletedAt",
-        "created_at": "createdAt",
-        "published": "published",
-        "updated_at": "updatedAt",
     }
 
     def __init__(
@@ -181,20 +183,18 @@ class BlogPost(object):
         language=None,
         translated_from_id=None,
         translations=None,
-        dynamic_page_hub_db_table_id=None,
+        dynamic_page_data_source_type=None,
+        dynamic_page_data_source_id=None,
         blog_author_id=None,
         tag_ids=None,
         html_title=None,
+        enable_google_amp_output_override=None,
         use_featured_image=None,
         post_body=None,
         post_summary=None,
         rss_body=None,
         rss_summary=None,
-        enable_google_amp_output_override=None,
-        url=None,
-        password=None,
-        current_state=None,
-        link_rel_canonical_url=None,
+        currently_published=None,
         page_expiry_enabled=None,
         page_expiry_redirect_id=None,
         page_expiry_redirect_url=None,
@@ -202,10 +202,11 @@ class BlogPost(object):
         include_default_custom_css=None,
         enable_layout_stylesheets=None,
         enable_domain_stylesheets=None,
-        content_type_category=None,
         publish_immediately=None,
         featured_image=None,
         featured_image_alt_text=None,
+        link_rel_canonical_url=None,
+        content_type_category=None,
         attached_stylesheets=None,
         meta_description=None,
         head_html=None,
@@ -215,11 +216,13 @@ class BlogPost(object):
         public_access_rules=None,
         layout_sections=None,
         theme_settings_values=None,
+        url=None,
+        password=None,
+        current_state=None,
         publish_date=None,
+        created=None,
+        updated=None,
         deleted_at=None,
-        created_at=None,
-        published=None,
-        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """BlogPost - a model defined in OpenAPI"""  # noqa: E501
@@ -248,20 +251,18 @@ class BlogPost(object):
         self._language = None
         self._translated_from_id = None
         self._translations = None
-        self._dynamic_page_hub_db_table_id = None
+        self._dynamic_page_data_source_type = None
+        self._dynamic_page_data_source_id = None
         self._blog_author_id = None
         self._tag_ids = None
         self._html_title = None
+        self._enable_google_amp_output_override = None
         self._use_featured_image = None
         self._post_body = None
         self._post_summary = None
         self._rss_body = None
         self._rss_summary = None
-        self._enable_google_amp_output_override = None
-        self._url = None
-        self._password = None
-        self._current_state = None
-        self._link_rel_canonical_url = None
+        self._currently_published = None
         self._page_expiry_enabled = None
         self._page_expiry_redirect_id = None
         self._page_expiry_redirect_url = None
@@ -269,10 +270,11 @@ class BlogPost(object):
         self._include_default_custom_css = None
         self._enable_layout_stylesheets = None
         self._enable_domain_stylesheets = None
-        self._content_type_category = None
         self._publish_immediately = None
         self._featured_image = None
         self._featured_image_alt_text = None
+        self._link_rel_canonical_url = None
+        self._content_type_category = None
         self._attached_stylesheets = None
         self._meta_description = None
         self._head_html = None
@@ -282,11 +284,13 @@ class BlogPost(object):
         self._public_access_rules = None
         self._layout_sections = None
         self._theme_settings_values = None
+        self._url = None
+        self._password = None
+        self._current_state = None
         self._publish_date = None
+        self._created = None
+        self._updated = None
         self._deleted_at = None
-        self._created_at = None
-        self._published = None
-        self._updated_at = None
         self.discriminator = None
 
         self.id = id
@@ -310,20 +314,18 @@ class BlogPost(object):
         self.language = language
         self.translated_from_id = translated_from_id
         self.translations = translations
-        self.dynamic_page_hub_db_table_id = dynamic_page_hub_db_table_id
+        self.dynamic_page_data_source_type = dynamic_page_data_source_type
+        self.dynamic_page_data_source_id = dynamic_page_data_source_id
         self.blog_author_id = blog_author_id
         self.tag_ids = tag_ids
         self.html_title = html_title
+        self.enable_google_amp_output_override = enable_google_amp_output_override
         self.use_featured_image = use_featured_image
         self.post_body = post_body
         self.post_summary = post_summary
         self.rss_body = rss_body
         self.rss_summary = rss_summary
-        self.enable_google_amp_output_override = enable_google_amp_output_override
-        self.url = url
-        self.password = password
-        self.current_state = current_state
-        self.link_rel_canonical_url = link_rel_canonical_url
+        self.currently_published = currently_published
         self.page_expiry_enabled = page_expiry_enabled
         self.page_expiry_redirect_id = page_expiry_redirect_id
         self.page_expiry_redirect_url = page_expiry_redirect_url
@@ -331,10 +333,11 @@ class BlogPost(object):
         self.include_default_custom_css = include_default_custom_css
         self.enable_layout_stylesheets = enable_layout_stylesheets
         self.enable_domain_stylesheets = enable_domain_stylesheets
-        self.content_type_category = content_type_category
         self.publish_immediately = publish_immediately
         self.featured_image = featured_image
         self.featured_image_alt_text = featured_image_alt_text
+        self.link_rel_canonical_url = link_rel_canonical_url
+        self.content_type_category = content_type_category
         self.attached_stylesheets = attached_stylesheets
         self.meta_description = meta_description
         self.head_html = head_html
@@ -344,11 +347,13 @@ class BlogPost(object):
         self.public_access_rules = public_access_rules
         self.layout_sections = layout_sections
         self.theme_settings_values = theme_settings_values
+        self.url = url
+        self.password = password
+        self.current_state = current_state
         self.publish_date = publish_date
+        self.created = created
+        self.updated = updated
         self.deleted_at = deleted_at
-        self.created_at = created_at
-        self.published = published
-        self.updated_at = updated_at
 
     @property
     def id(self):
@@ -1329,6 +1334,7 @@ class BlogPost(object):
             "nl",
             "nl-aw",
             "nl-be",
+            "nl-ch",
             "nl-bq",
             "nl-cw",
             "nl-lu",
@@ -1586,29 +1592,50 @@ class BlogPost(object):
         self._translations = translations
 
     @property
-    def dynamic_page_hub_db_table_id(self):
-        """Gets the dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
+    def dynamic_page_data_source_type(self):
+        """Gets the dynamic_page_data_source_type of this BlogPost.  # noqa: E501
 
-        The ID of the HubDB table this Blog Post references, if applicable  # noqa: E501
 
-        :return: The dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
+        :return: The dynamic_page_data_source_type of this BlogPost.  # noqa: E501
+        :rtype: int
+        """
+        return self._dynamic_page_data_source_type
+
+    @dynamic_page_data_source_type.setter
+    def dynamic_page_data_source_type(self, dynamic_page_data_source_type):
+        """Sets the dynamic_page_data_source_type of this BlogPost.
+
+
+        :param dynamic_page_data_source_type: The dynamic_page_data_source_type of this BlogPost.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `dynamic_page_data_source_type`, must not be `None`")  # noqa: E501
+
+        self._dynamic_page_data_source_type = dynamic_page_data_source_type
+
+    @property
+    def dynamic_page_data_source_id(self):
+        """Gets the dynamic_page_data_source_id of this BlogPost.  # noqa: E501
+
+
+        :return: The dynamic_page_data_source_id of this BlogPost.  # noqa: E501
         :rtype: str
         """
-        return self._dynamic_page_hub_db_table_id
+        return self._dynamic_page_data_source_id
 
-    @dynamic_page_hub_db_table_id.setter
-    def dynamic_page_hub_db_table_id(self, dynamic_page_hub_db_table_id):
-        """Sets the dynamic_page_hub_db_table_id of this BlogPost.
+    @dynamic_page_data_source_id.setter
+    def dynamic_page_data_source_id(self, dynamic_page_data_source_id):
+        """Sets the dynamic_page_data_source_id of this BlogPost.
 
-        The ID of the HubDB table this Blog Post references, if applicable  # noqa: E501
 
-        :param dynamic_page_hub_db_table_id: The dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
+        :param dynamic_page_data_source_id: The dynamic_page_data_source_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and dynamic_page_hub_db_table_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `dynamic_page_hub_db_table_id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `dynamic_page_data_source_id`, must not be `None`")  # noqa: E501
 
-        self._dynamic_page_hub_db_table_id = dynamic_page_hub_db_table_id
+        self._dynamic_page_data_source_id = dynamic_page_data_source_id
 
     @property
     def blog_author_id(self):
@@ -1684,6 +1711,31 @@ class BlogPost(object):
             raise ValueError("Invalid value for `html_title`, must not be `None`")  # noqa: E501
 
         self._html_title = html_title
+
+    @property
+    def enable_google_amp_output_override(self):
+        """Gets the enable_google_amp_output_override of this BlogPost.  # noqa: E501
+
+        Boolean to allow overriding the AMP settings for the blog.  # noqa: E501
+
+        :return: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
+        :rtype: bool
+        """
+        return self._enable_google_amp_output_override
+
+    @enable_google_amp_output_override.setter
+    def enable_google_amp_output_override(self, enable_google_amp_output_override):
+        """Sets the enable_google_amp_output_override of this BlogPost.
+
+        Boolean to allow overriding the AMP settings for the blog.  # noqa: E501
+
+        :param enable_google_amp_output_override: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
+        :type: bool
+        """
+        if self.local_vars_configuration.client_side_validation and enable_google_amp_output_override is None:  # noqa: E501
+            raise ValueError("Invalid value for `enable_google_amp_output_override`, must not be `None`")  # noqa: E501
+
+        self._enable_google_amp_output_override = enable_google_amp_output_override
 
     @property
     def use_featured_image(self):
@@ -1811,164 +1863,27 @@ class BlogPost(object):
         self._rss_summary = rss_summary
 
     @property
-    def enable_google_amp_output_override(self):
-        """Gets the enable_google_amp_output_override of this BlogPost.  # noqa: E501
+    def currently_published(self):
+        """Gets the currently_published of this BlogPost.  # noqa: E501
 
-        Boolean to allow overriding the AMP settings for the blog.  # noqa: E501
 
-        :return: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
+        :return: The currently_published of this BlogPost.  # noqa: E501
         :rtype: bool
         """
-        return self._enable_google_amp_output_override
+        return self._currently_published
 
-    @enable_google_amp_output_override.setter
-    def enable_google_amp_output_override(self, enable_google_amp_output_override):
-        """Sets the enable_google_amp_output_override of this BlogPost.
+    @currently_published.setter
+    def currently_published(self, currently_published):
+        """Sets the currently_published of this BlogPost.
 
-        Boolean to allow overriding the AMP settings for the blog.  # noqa: E501
 
-        :param enable_google_amp_output_override: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
+        :param currently_published: The currently_published of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and enable_google_amp_output_override is None:  # noqa: E501
-            raise ValueError("Invalid value for `enable_google_amp_output_override`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and currently_published is None:  # noqa: E501
+            raise ValueError("Invalid value for `currently_published`, must not be `None`")  # noqa: E501
 
-        self._enable_google_amp_output_override = enable_google_amp_output_override
-
-    @property
-    def url(self):
-        """Gets the url of this BlogPost.  # noqa: E501
-
-        A generated field representing the URL of this blog post.  # noqa: E501
-
-        :return: The url of this BlogPost.  # noqa: E501
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this BlogPost.
-
-        A generated field representing the URL of this blog post.  # noqa: E501
-
-        :param url: The url of this BlogPost.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-
-        self._url = url
-
-    @property
-    def password(self):
-        """Gets the password of this BlogPost.  # noqa: E501
-
-        Set this to create a password protected page. Entering the password will be required to view the page.  # noqa: E501
-
-        :return: The password of this BlogPost.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this BlogPost.
-
-        Set this to create a password protected page. Entering the password will be required to view the page.  # noqa: E501
-
-        :param password: The password of this BlogPost.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
-            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
-
-        self._password = password
-
-    @property
-    def current_state(self):
-        """Gets the current_state of this BlogPost.  # noqa: E501
-
-        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
-
-        :return: The current_state of this BlogPost.  # noqa: E501
-        :rtype: str
-        """
-        return self._current_state
-
-    @current_state.setter
-    def current_state(self, current_state):
-        """Sets the current_state of this BlogPost.
-
-        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
-
-        :param current_state: The current_state of this BlogPost.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and current_state is None:  # noqa: E501
-            raise ValueError("Invalid value for `current_state`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "AUTOMATED",
-            "AUTOMATED_DRAFT",
-            "AUTOMATED_SENDING",
-            "AUTOMATED_FOR_FORM",
-            "AUTOMATED_FOR_FORM_BUFFER",
-            "AUTOMATED_FOR_FORM_DRAFT",
-            "AUTOMATED_FOR_FORM_LEGACY",
-            "BLOG_EMAIL_DRAFT",
-            "BLOG_EMAIL_PUBLISHED",
-            "DRAFT",
-            "DRAFT_AB",
-            "DRAFT_AB_VARIANT",
-            "ERROR",
-            "LOSER_AB_VARIANT",
-            "PAGE_STUB",
-            "PRE_PROCESSING",
-            "PROCESSING",
-            "PUBLISHED",
-            "PUBLISHED_AB",
-            "PUBLISHED_AB_VARIANT",
-            "PUBLISHED_OR_SCHEDULED",
-            "RSS_TO_EMAIL_DRAFT",
-            "RSS_TO_EMAIL_PUBLISHED",
-            "SCHEDULED",
-            "SCHEDULED_AB",
-            "SCHEDULED_OR_PUBLISHED",
-            "AUTOMATED_AB",
-            "AUTOMATED_AB_VARIANT",
-            "AUTOMATED_DRAFT_AB",
-            "AUTOMATED_DRAFT_ABVARIANT",
-            "AUTOMATED_LOSER_ABVARIANT",
-        ]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and current_state not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `current_state` ({0}), must be one of {1}".format(current_state, allowed_values))  # noqa: E501
-
-        self._current_state = current_state
-
-    @property
-    def link_rel_canonical_url(self):
-        """Gets the link_rel_canonical_url of this BlogPost.  # noqa: E501
-
-        Optional override to set the URL to be used in the rel=canonical link tag on the page.  # noqa: E501
-
-        :return: The link_rel_canonical_url of this BlogPost.  # noqa: E501
-        :rtype: str
-        """
-        return self._link_rel_canonical_url
-
-    @link_rel_canonical_url.setter
-    def link_rel_canonical_url(self, link_rel_canonical_url):
-        """Sets the link_rel_canonical_url of this BlogPost.
-
-        Optional override to set the URL to be used in the rel=canonical link tag on the page.  # noqa: E501
-
-        :param link_rel_canonical_url: The link_rel_canonical_url of this BlogPost.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and link_rel_canonical_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `link_rel_canonical_url`, must not be `None`")  # noqa: E501
-
-        self._link_rel_canonical_url = link_rel_canonical_url
+        self._currently_published = currently_published
 
     @property
     def page_expiry_enabled(self):
@@ -2138,34 +2053,6 @@ class BlogPost(object):
         self._enable_domain_stylesheets = enable_domain_stylesheets
 
     @property
-    def content_type_category(self):
-        """Gets the content_type_category of this BlogPost.  # noqa: E501
-
-        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
-
-        :return: The content_type_category of this BlogPost.  # noqa: E501
-        :rtype: str
-        """
-        return self._content_type_category
-
-    @content_type_category.setter
-    def content_type_category(self, content_type_category):
-        """Sets the content_type_category of this BlogPost.
-
-        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
-
-        :param content_type_category: The content_type_category of this BlogPost.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and content_type_category is None:  # noqa: E501
-            raise ValueError("Invalid value for `content_type_category`, must not be `None`")  # noqa: E501
-        allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and content_type_category not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `content_type_category` ({0}), must be one of {1}".format(content_type_category, allowed_values))  # noqa: E501
-
-        self._content_type_category = content_type_category
-
-    @property
     def publish_immediately(self):
         """Gets the publish_immediately of this BlogPost.  # noqa: E501
 
@@ -2239,6 +2126,59 @@ class BlogPost(object):
             raise ValueError("Invalid value for `featured_image_alt_text`, must not be `None`")  # noqa: E501
 
         self._featured_image_alt_text = featured_image_alt_text
+
+    @property
+    def link_rel_canonical_url(self):
+        """Gets the link_rel_canonical_url of this BlogPost.  # noqa: E501
+
+        Optional override to set the URL to be used in the rel=canonical link tag on the page.  # noqa: E501
+
+        :return: The link_rel_canonical_url of this BlogPost.  # noqa: E501
+        :rtype: str
+        """
+        return self._link_rel_canonical_url
+
+    @link_rel_canonical_url.setter
+    def link_rel_canonical_url(self, link_rel_canonical_url):
+        """Sets the link_rel_canonical_url of this BlogPost.
+
+        Optional override to set the URL to be used in the rel=canonical link tag on the page.  # noqa: E501
+
+        :param link_rel_canonical_url: The link_rel_canonical_url of this BlogPost.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and link_rel_canonical_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `link_rel_canonical_url`, must not be `None`")  # noqa: E501
+
+        self._link_rel_canonical_url = link_rel_canonical_url
+
+    @property
+    def content_type_category(self):
+        """Gets the content_type_category of this BlogPost.  # noqa: E501
+
+        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
+
+        :return: The content_type_category of this BlogPost.  # noqa: E501
+        :rtype: str
+        """
+        return self._content_type_category
+
+    @content_type_category.setter
+    def content_type_category(self, content_type_category):
+        """Sets the content_type_category of this BlogPost.
+
+        An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
+
+        :param content_type_category: The content_type_category of this BlogPost.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and content_type_category is None:  # noqa: E501
+            raise ValueError("Invalid value for `content_type_category`, must not be `None`")  # noqa: E501
+        allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and content_type_category not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `content_type_category` ({0}), must be one of {1}".format(content_type_category, allowed_values))  # noqa: E501
+
+        self._content_type_category = content_type_category
 
     @property
     def attached_stylesheets(self):
@@ -2462,6 +2402,116 @@ class BlogPost(object):
         self._theme_settings_values = theme_settings_values
 
     @property
+    def url(self):
+        """Gets the url of this BlogPost.  # noqa: E501
+
+        A generated field representing the URL of this blog post.  # noqa: E501
+
+        :return: The url of this BlogPost.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this BlogPost.
+
+        A generated field representing the URL of this blog post.  # noqa: E501
+
+        :param url: The url of this BlogPost.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
+
+    @property
+    def password(self):
+        """Gets the password of this BlogPost.  # noqa: E501
+
+        Set this to create a password protected page. Entering the password will be required to view the page.  # noqa: E501
+
+        :return: The password of this BlogPost.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this BlogPost.
+
+        Set this to create a password protected page. Entering the password will be required to view the page.  # noqa: E501
+
+        :param password: The password of this BlogPost.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
+            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
+
+        self._password = password
+
+    @property
+    def current_state(self):
+        """Gets the current_state of this BlogPost.  # noqa: E501
+
+        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
+
+        :return: The current_state of this BlogPost.  # noqa: E501
+        :rtype: str
+        """
+        return self._current_state
+
+    @current_state.setter
+    def current_state(self, current_state):
+        """Sets the current_state of this BlogPost.
+
+        A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
+
+        :param current_state: The current_state of this BlogPost.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and current_state is None:  # noqa: E501
+            raise ValueError("Invalid value for `current_state`, must not be `None`")  # noqa: E501
+        allowed_values = [
+            "AUTOMATED",
+            "AUTOMATED_DRAFT",
+            "AUTOMATED_SENDING",
+            "AUTOMATED_FOR_FORM",
+            "AUTOMATED_FOR_FORM_BUFFER",
+            "AUTOMATED_FOR_FORM_DRAFT",
+            "AUTOMATED_FOR_FORM_LEGACY",
+            "BLOG_EMAIL_DRAFT",
+            "BLOG_EMAIL_PUBLISHED",
+            "DRAFT",
+            "DRAFT_AB",
+            "DRAFT_AB_VARIANT",
+            "ERROR",
+            "LOSER_AB_VARIANT",
+            "PAGE_STUB",
+            "PRE_PROCESSING",
+            "PROCESSING",
+            "PUBLISHED",
+            "PUBLISHED_AB",
+            "PUBLISHED_AB_VARIANT",
+            "PUBLISHED_OR_SCHEDULED",
+            "RSS_TO_EMAIL_DRAFT",
+            "RSS_TO_EMAIL_PUBLISHED",
+            "SCHEDULED",
+            "SCHEDULED_AB",
+            "SCHEDULED_OR_PUBLISHED",
+            "AUTOMATED_AB",
+            "AUTOMATED_AB_VARIANT",
+            "AUTOMATED_DRAFT_AB",
+            "AUTOMATED_DRAFT_ABVARIANT",
+            "AUTOMATED_LOSER_ABVARIANT",
+        ]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and current_state not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `current_state` ({0}), must be one of {1}".format(current_state, allowed_values))  # noqa: E501
+
+        self._current_state = current_state
+
+    @property
     def publish_date(self):
         """Gets the publish_date of this BlogPost.  # noqa: E501
 
@@ -2487,6 +2537,52 @@ class BlogPost(object):
         self._publish_date = publish_date
 
     @property
+    def created(self):
+        """Gets the created of this BlogPost.  # noqa: E501
+
+
+        :return: The created of this BlogPost.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this BlogPost.
+
+
+        :param created: The created of this BlogPost.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+
+        self._created = created
+
+    @property
+    def updated(self):
+        """Gets the updated of this BlogPost.  # noqa: E501
+
+
+        :return: The updated of this BlogPost.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this BlogPost.
+
+
+        :param updated: The updated of this BlogPost.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+
+        self._updated = updated
+
+    @property
     def deleted_at(self):
         """Gets the deleted_at of this BlogPost.  # noqa: E501
 
@@ -2510,81 +2606,6 @@ class BlogPost(object):
             raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this BlogPost.  # noqa: E501
-
-        The timestamp (ISO8601 format) when this blog post was created.  # noqa: E501
-
-        :return: The created_at of this BlogPost.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this BlogPost.
-
-        The timestamp (ISO8601 format) when this blog post was created.  # noqa: E501
-
-        :param created_at: The created_at of this BlogPost.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def published(self):
-        """Gets the published of this BlogPost.  # noqa: E501
-
-        Boolean describing if this Blog Post is published.  # noqa: E501
-
-        :return: The published of this BlogPost.  # noqa: E501
-        :rtype: bool
-        """
-        return self._published
-
-    @published.setter
-    def published(self, published):
-        """Sets the published of this BlogPost.
-
-        Boolean describing if this Blog Post is published.  # noqa: E501
-
-        :param published: The published of this BlogPost.  # noqa: E501
-        :type: bool
-        """
-        if self.local_vars_configuration.client_side_validation and published is None:  # noqa: E501
-            raise ValueError("Invalid value for `published`, must not be `None`")  # noqa: E501
-
-        self._published = published
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this BlogPost.  # noqa: E501
-
-        The timestamp (ISO8601 format) when this Blog Post was last updated.  # noqa: E501
-
-        :return: The updated_at of this BlogPost.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this BlogPost.
-
-        The timestamp (ISO8601 format) when this Blog Post was last updated.  # noqa: E501
-
-        :param updated_at: The updated_at of this BlogPost.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -250,6 +250,116 @@ class BlogPostsApi(object):
             collection_formats=collection_formats,
         )
 
+    def attach_to_lang_group(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
+        """Attach a Blog Post to a multi-language group  # noqa: E501
+
+        Attach a Blog Post to a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.attach_to_lang_group(attach_to_lang_primary_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Error
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, **kwargs)  # noqa: E501
+
+    def attach_to_lang_group_with_http_info(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
+        """Attach a Blog Post to a multi-language group  # noqa: E501
+
+        Attach a Blog Post to a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["attach_to_lang_primary_request_v_next"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method attach_to_lang_group" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'attach_to_lang_primary_request_v_next' is set
+        if self.api_client.client_side_validation and (
+            "attach_to_lang_primary_request_v_next" not in local_var_params or local_var_params["attach_to_lang_primary_request_v_next"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `attach_to_lang_primary_request_v_next` when calling `attach_to_lang_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "attach_to_lang_primary_request_v_next" in local_var_params:
+            body_params = local_var_params["attach_to_lang_primary_request_v_next"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/multi-language/attach-to-lang-group",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="Error",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
     def clone(self, content_clone_request_v_next, **kwargs):  # noqa: E501
         """Clone a Blog Post  # noqa: E501
 
@@ -566,6 +676,226 @@ class BlogPostsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type="BatchResponseBlogPost",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def create_lang_variation(self, blog_post_language_clone_request_v_next, **kwargs):  # noqa: E501
+        """Create a new language variation  # noqa: E501
+
+        Create a new language variation from an existing Blog Post  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_lang_variation(blog_post_language_clone_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param BlogPostLanguageCloneRequestVNext blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: BlogPost
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.create_lang_variation_with_http_info(blog_post_language_clone_request_v_next, **kwargs)  # noqa: E501
+
+    def create_lang_variation_with_http_info(self, blog_post_language_clone_request_v_next, **kwargs):  # noqa: E501
+        """Create a new language variation  # noqa: E501
+
+        Create a new language variation from an existing Blog Post  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_lang_variation_with_http_info(blog_post_language_clone_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param BlogPostLanguageCloneRequestVNext blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["blog_post_language_clone_request_v_next"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_lang_variation" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'blog_post_language_clone_request_v_next' is set
+        if self.api_client.client_side_validation and (
+            "blog_post_language_clone_request_v_next" not in local_var_params or local_var_params["blog_post_language_clone_request_v_next"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `blog_post_language_clone_request_v_next` when calling `create_lang_variation`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "blog_post_language_clone_request_v_next" in local_var_params:
+            body_params = local_var_params["blog_post_language_clone_request_v_next"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/multi-language/create-language-variation",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="BlogPost",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def detach_from_lang_group(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
+        """Detach a Blog Post from a multi-language group  # noqa: E501
+
+        Detach a Blog Post from a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.detach_from_lang_group(detach_from_lang_group_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Error
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, **kwargs)  # noqa: E501
+
+    def detach_from_lang_group_with_http_info(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
+        """Detach a Blog Post from a multi-language group  # noqa: E501
+
+        Detach a Blog Post from a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["detach_from_lang_group_request_v_next"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method detach_from_lang_group" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'detach_from_lang_group_request_v_next' is set
+        if self.api_client.client_side_validation and (
+            "detach_from_lang_group_request_v_next" not in local_var_params or local_var_params["detach_from_lang_group_request_v_next"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `detach_from_lang_group_request_v_next` when calling `detach_from_lang_group`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "detach_from_lang_group_request_v_next" in local_var_params:
+            body_params = local_var_params["detach_from_lang_group_request_v_next"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/multi-language/detach-from-lang-group",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="Error",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
@@ -1156,446 +1486,6 @@ class BlogPostsApi(object):
             collection_formats=collection_formats,
         )
 
-    def post_cms_v3_blogs_posts_multi_language_attach_to_lang_group(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
-        """Attach a Blog Post to a multi-language group  # noqa: E501
-
-        Attach a Blog Post to a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_attach_to_lang_group(attach_to_lang_primary_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Error
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.post_cms_v3_blogs_posts_multi_language_attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, **kwargs)  # noqa: E501
-
-    def post_cms_v3_blogs_posts_multi_language_attach_to_lang_group_with_http_info(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
-        """Attach a Blog Post to a multi-language group  # noqa: E501
-
-        Attach a Blog Post to a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["attach_to_lang_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method post_cms_v3_blogs_posts_multi_language_attach_to_lang_group" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'attach_to_lang_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "attach_to_lang_primary_request_v_next" not in local_var_params or local_var_params["attach_to_lang_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `attach_to_lang_primary_request_v_next` when calling `post_cms_v3_blogs_posts_multi_language_attach_to_lang_group`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "attach_to_lang_primary_request_v_next" in local_var_params:
-            body_params = local_var_params["attach_to_lang_primary_request_v_next"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/multi-language/attach-to-lang-group",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="Error",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def post_cms_v3_blogs_posts_multi_language_create_language_variation(self, content_language_clone_request_v_next, **kwargs):  # noqa: E501
-        """Create a new language variation  # noqa: E501
-
-        Create a new language variation from an existing Blog Post  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_create_language_variation(content_language_clone_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param ContentLanguageCloneRequestVNext content_language_clone_request_v_next: The JSON representation of the ContentLanguageCloneRequest object. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: BlogPost
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.post_cms_v3_blogs_posts_multi_language_create_language_variation_with_http_info(content_language_clone_request_v_next, **kwargs)  # noqa: E501
-
-    def post_cms_v3_blogs_posts_multi_language_create_language_variation_with_http_info(self, content_language_clone_request_v_next, **kwargs):  # noqa: E501
-        """Create a new language variation  # noqa: E501
-
-        Create a new language variation from an existing Blog Post  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_create_language_variation_with_http_info(content_language_clone_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param ContentLanguageCloneRequestVNext content_language_clone_request_v_next: The JSON representation of the ContentLanguageCloneRequest object. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["content_language_clone_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method post_cms_v3_blogs_posts_multi_language_create_language_variation" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'content_language_clone_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "content_language_clone_request_v_next" not in local_var_params or local_var_params["content_language_clone_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `content_language_clone_request_v_next` when calling `post_cms_v3_blogs_posts_multi_language_create_language_variation`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "content_language_clone_request_v_next" in local_var_params:
-            body_params = local_var_params["content_language_clone_request_v_next"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/multi-language/create-language-variation",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def post_cms_v3_blogs_posts_multi_language_detach_from_lang_group(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
-        """Detach a Blog Post from a multi-language group  # noqa: E501
-
-        Detach a Blog Post from a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_detach_from_lang_group(detach_from_lang_group_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Error
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.post_cms_v3_blogs_posts_multi_language_detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, **kwargs)  # noqa: E501
-
-    def post_cms_v3_blogs_posts_multi_language_detach_from_lang_group_with_http_info(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
-        """Detach a Blog Post from a multi-language group  # noqa: E501
-
-        Detach a Blog Post from a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["detach_from_lang_group_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method post_cms_v3_blogs_posts_multi_language_detach_from_lang_group" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'detach_from_lang_group_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "detach_from_lang_group_request_v_next" not in local_var_params or local_var_params["detach_from_lang_group_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `detach_from_lang_group_request_v_next` when calling `post_cms_v3_blogs_posts_multi_language_detach_from_lang_group`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "detach_from_lang_group_request_v_next" in local_var_params:
-            body_params = local_var_params["detach_from_lang_group_request_v_next"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/multi-language/detach-from-lang-group",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="Error",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def post_cms_v3_blogs_posts_multi_language_update_languages(self, update_languages_request_v_next, **kwargs):  # noqa: E501
-        """Update languages of multi-language group  # noqa: E501
-
-        Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_update_languages(update_languages_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Error
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.post_cms_v3_blogs_posts_multi_language_update_languages_with_http_info(update_languages_request_v_next, **kwargs)  # noqa: E501
-
-    def post_cms_v3_blogs_posts_multi_language_update_languages_with_http_info(self, update_languages_request_v_next, **kwargs):  # noqa: E501
-        """Update languages of multi-language group  # noqa: E501
-
-        Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_cms_v3_blogs_posts_multi_language_update_languages_with_http_info(update_languages_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["update_languages_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method post_cms_v3_blogs_posts_multi_language_update_languages" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'update_languages_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "update_languages_request_v_next" not in local_var_params or local_var_params["update_languages_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `update_languages_request_v_next` when calling `post_cms_v3_blogs_posts_multi_language_update_languages`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "update_languages_request_v_next" in local_var_params:
-            body_params = local_var_params["update_languages_request_v_next"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/multi-language/update-languages",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="Error",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
     def push_live(self, object_id, **kwargs):  # noqa: E501
         """Push Blog Post draft edits live  # noqa: E501
 
@@ -1686,116 +1576,6 @@ class BlogPostsApi(object):
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/draft/push-live",
             "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
-
-    def put_cms_v3_blogs_posts_multi_language_set_new_lang_primary(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
-        """Set a new primary language  # noqa: E501
-
-        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.put_cms_v3_blogs_posts_multi_language_set_new_lang_primary(set_new_language_primary_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.put_cms_v3_blogs_posts_multi_language_set_new_lang_primary_with_http_info(set_new_language_primary_request_v_next, **kwargs)  # noqa: E501
-
-    def put_cms_v3_blogs_posts_multi_language_set_new_lang_primary_with_http_info(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
-        """Set a new primary language  # noqa: E501
-
-        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.put_cms_v3_blogs_posts_multi_language_set_new_lang_primary_with_http_info(set_new_language_primary_request_v_next, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["set_new_language_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method put_cms_v3_blogs_posts_multi_language_set_new_lang_primary" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'set_new_language_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "set_new_language_primary_request_v_next" not in local_var_params or local_var_params["set_new_language_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `set_new_language_primary_request_v_next` when calling `put_cms_v3_blogs_posts_multi_language_set_new_lang_primary`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "set_new_language_primary_request_v_next" in local_var_params:
-            body_params = local_var_params["set_new_language_primary_request_v_next"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/cms/v3/blogs/posts/multi-language/set-new-lang-primary",
-            "PUT",
             path_params,
             query_params,
             header_params,
@@ -2362,6 +2142,116 @@ class BlogPostsApi(object):
             collection_formats=collection_formats,
         )
 
+    def set_lang_primary(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
+        """Set a new primary language  # noqa: E501
+
+        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_lang_primary(set_new_language_primary_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.set_lang_primary_with_http_info(set_new_language_primary_request_v_next, **kwargs)  # noqa: E501
+
+    def set_lang_primary_with_http_info(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
+        """Set a new primary language  # noqa: E501
+
+        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_lang_primary_with_http_info(set_new_language_primary_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["set_new_language_primary_request_v_next"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method set_lang_primary" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'set_new_language_primary_request_v_next' is set
+        if self.api_client.client_side_validation and (
+            "set_new_language_primary_request_v_next" not in local_var_params or local_var_params["set_new_language_primary_request_v_next"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `set_new_language_primary_request_v_next` when calling `set_lang_primary`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "set_new_language_primary_request_v_next" in local_var_params:
+            body_params = local_var_params["set_new_language_primary_request_v_next"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/multi-language/set-new-lang-primary",
+            "PUT",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
     def update(self, object_id, blog_post, **kwargs):  # noqa: E501
         """Update a Blog Post  # noqa: E501
 
@@ -2700,6 +2590,116 @@ class BlogPostsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type="BlogPost",  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
+
+    def update_langs(self, update_languages_request_v_next, **kwargs):  # noqa: E501
+        """Update languages of multi-language group  # noqa: E501
+
+        Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_langs(update_languages_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Error
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.update_langs_with_http_info(update_languages_request_v_next, **kwargs)  # noqa: E501
+
+    def update_langs_with_http_info(self, update_languages_request_v_next, **kwargs):  # noqa: E501
+        """Update languages of multi-language group  # noqa: E501
+
+        Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_langs_with_http_info(update_languages_request_v_next, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ["update_languages_request_v_next"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_langs" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'update_languages_request_v_next' is set
+        if self.api_client.client_side_validation and (
+            "update_languages_request_v_next" not in local_var_params or local_var_params["update_languages_request_v_next"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `update_languages_request_v_next` when calling `update_langs`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "update_languages_request_v_next" in local_var_params:
+            body_params = local_var_params["update_languages_request_v_next"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        return self.api_client.call_api(
+            "/cms/v3/blogs/posts/multi-language/update-languages",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type="Error",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501

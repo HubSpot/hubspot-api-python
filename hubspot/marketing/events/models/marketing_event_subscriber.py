@@ -32,21 +32,24 @@ class MarketingEventSubscriber(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"interaction_date_time": "int", "vid": "int"}
+    openapi_types = {"interaction_date_time": "int", "properties": "dict(str, str)", "vid": "int"}
 
-    attribute_map = {"interaction_date_time": "interactionDateTime", "vid": "vid"}
+    attribute_map = {"interaction_date_time": "interactionDateTime", "properties": "properties", "vid": "vid"}
 
-    def __init__(self, interaction_date_time=None, vid=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, interaction_date_time=None, properties=None, vid=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventSubscriber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._interaction_date_time = None
+        self._properties = None
         self._vid = None
         self.discriminator = None
 
         self.interaction_date_time = interaction_date_time
+        if properties is not None:
+            self.properties = properties
         if vid is not None:
             self.vid = vid
 
@@ -74,6 +77,27 @@ class MarketingEventSubscriber(object):
             raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
 
         self._interaction_date_time = interaction_date_time
+
+    @property
+    def properties(self):
+        """Gets the properties of this MarketingEventSubscriber.  # noqa: E501
+
+
+        :return: The properties of this MarketingEventSubscriber.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this MarketingEventSubscriber.
+
+
+        :param properties: The properties of this MarketingEventSubscriber.  # noqa: E501
+        :type: dict(str, str)
+        """
+
+        self._properties = properties
 
     @property
     def vid(self):

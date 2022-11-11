@@ -32,7 +32,7 @@ class IndexedData(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "type": "str", "fields": "dict(str, SearchHitField)"}
+    openapi_types = {"id": "str", "type": "str", "fields": "dict(str, IndexedField)"}
 
     attribute_map = {"id": "id", "type": "type", "fields": "fields"}
 
@@ -111,7 +111,7 @@ class IndexedData(object):
         The indexed fields in HubSpot.  # noqa: E501
 
         :return: The fields of this IndexedData.  # noqa: E501
-        :rtype: dict(str, SearchHitField)
+        :rtype: dict(str, IndexedField)
         """
         return self._fields
 
@@ -122,7 +122,7 @@ class IndexedData(object):
         The indexed fields in HubSpot.  # noqa: E501
 
         :param fields: The fields of this IndexedData.  # noqa: E501
-        :type: dict(str, SearchHitField)
+        :type: dict(str, IndexedField)
         """
         if self.local_vars_configuration.client_side_validation and fields is None:  # noqa: E501
             raise ValueError("Invalid value for `fields`, must not be `None`")  # noqa: E501
