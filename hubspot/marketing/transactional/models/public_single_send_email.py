@@ -52,13 +52,15 @@ class PublicSingleSendEmail(object):
 
         if _from is not None:
             self._from = _from
-        if to is not None:
-            self.to = to
+        self.to = to
         if send_id is not None:
             self.send_id = send_id
-        self.reply_to = reply_to
-        self.cc = cc
-        self.bcc = bcc
+        if reply_to is not None:
+            self.reply_to = reply_to
+        if cc is not None:
+            self.cc = cc
+        if bcc is not None:
+            self.bcc = bcc
 
     @property
     def _from(self):
@@ -103,6 +105,8 @@ class PublicSingleSendEmail(object):
         :param to: The to of this PublicSingleSendEmail.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
+            raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
 
@@ -149,8 +153,6 @@ class PublicSingleSendEmail(object):
         :param reply_to: The reply_to of this PublicSingleSendEmail.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and reply_to is None:  # noqa: E501
-            raise ValueError("Invalid value for `reply_to`, must not be `None`")  # noqa: E501
 
         self._reply_to = reply_to
 
@@ -174,8 +176,6 @@ class PublicSingleSendEmail(object):
         :param cc: The cc of this PublicSingleSendEmail.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and cc is None:  # noqa: E501
-            raise ValueError("Invalid value for `cc`, must not be `None`")  # noqa: E501
 
         self._cc = cc
 
@@ -199,8 +199,6 @@ class PublicSingleSendEmail(object):
         :param bcc: The bcc of this PublicSingleSendEmail.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and bcc is None:  # noqa: E501
-            raise ValueError("Invalid value for `bcc`, must not be `None`")  # noqa: E501
 
         self._bcc = bcc
 

@@ -608,6 +608,7 @@ class UpdateLanguagesRequestVNext(object):
             "nl",
             "nl-aw",
             "nl-be",
+            "nl-ch",
             "nl-bq",
             "nl-cw",
             "nl-lu",

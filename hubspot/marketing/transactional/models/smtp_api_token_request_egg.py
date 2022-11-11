@@ -53,7 +53,7 @@ class SmtpApiTokenRequestEgg(object):
     def create_contact(self):
         """Gets the create_contact of this SmtpApiTokenRequestEgg.  # noqa: E501
 
-        Indicates whether a contact should be created for recipients of emails.  # noqa: E501
+        Indicates whether a contact should be created for email recipients.  # noqa: E501
 
         :return: The create_contact of this SmtpApiTokenRequestEgg.  # noqa: E501
         :rtype: bool
@@ -64,7 +64,7 @@ class SmtpApiTokenRequestEgg(object):
     def create_contact(self, create_contact):
         """Sets the create_contact of this SmtpApiTokenRequestEgg.
 
-        Indicates whether a contact should be created for recipients of emails.  # noqa: E501
+        Indicates whether a contact should be created for email recipients.  # noqa: E501
 
         :param create_contact: The create_contact of this SmtpApiTokenRequestEgg.  # noqa: E501
         :type: bool

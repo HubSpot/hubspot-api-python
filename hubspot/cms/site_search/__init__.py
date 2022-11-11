@@ -33,5 +33,5 @@ from hubspot.cms.site_search.models.content_search_result import ContentSearchRe
 from hubspot.cms.site_search.models.error import Error
 from hubspot.cms.site_search.models.error_detail import ErrorDetail
 from hubspot.cms.site_search.models.indexed_data import IndexedData
+from hubspot.cms.site_search.models.indexed_field import IndexedField
 from hubspot.cms.site_search.models.public_search_results import PublicSearchResults
-from hubspot.cms.site_search.models.search_hit_field import SearchHitField

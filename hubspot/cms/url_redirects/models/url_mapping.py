@@ -33,88 +33,52 @@ class UrlMapping(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "int",
-        "portal_id": "int",
-        "created": "int",
-        "updated": "int",
-        "created_by_id": "int",
-        "updated_by_id": "int",
+        "id": "str",
         "route_prefix": "str",
         "destination": "str",
         "redirect_style": "int",
-        "content_group_id": "int",
         "is_only_after_not_found": "bool",
-        "is_regex": "bool",
         "is_match_full_url": "bool",
         "is_match_query_string": "bool",
         "is_pattern": "bool",
         "is_trailing_slash_optional": "bool",
         "is_protocol_agnostic": "bool",
-        "name": "str",
         "precedence": "int",
-        "deleted_at": "int",
-        "note": "str",
-        "label": "str",
-        "internally_created": "bool",
-        "cos_object_type": "str",
-        "cdn_purge_embargo_time": "int",
+        "created": "datetime",
+        "updated": "datetime",
     }
 
     attribute_map = {
         "id": "id",
-        "portal_id": "portalId",
-        "created": "created",
-        "updated": "updated",
-        "created_by_id": "createdById",
-        "updated_by_id": "updatedById",
         "route_prefix": "routePrefix",
         "destination": "destination",
         "redirect_style": "redirectStyle",
-        "content_group_id": "contentGroupId",
         "is_only_after_not_found": "isOnlyAfterNotFound",
-        "is_regex": "isRegex",
         "is_match_full_url": "isMatchFullUrl",
         "is_match_query_string": "isMatchQueryString",
         "is_pattern": "isPattern",
         "is_trailing_slash_optional": "isTrailingSlashOptional",
         "is_protocol_agnostic": "isProtocolAgnostic",
-        "name": "name",
         "precedence": "precedence",
-        "deleted_at": "deletedAt",
-        "note": "note",
-        "label": "label",
-        "internally_created": "internallyCreated",
-        "cos_object_type": "cosObjectType",
-        "cdn_purge_embargo_time": "cdnPurgeEmbargoTime",
+        "created": "created",
+        "updated": "updated",
     }
 
     def __init__(
         self,
         id=None,
-        portal_id=None,
-        created=None,
-        updated=None,
-        created_by_id=None,
-        updated_by_id=None,
         route_prefix=None,
         destination=None,
         redirect_style=None,
-        content_group_id=None,
         is_only_after_not_found=None,
-        is_regex=None,
         is_match_full_url=None,
         is_match_query_string=None,
         is_pattern=None,
         is_trailing_slash_optional=None,
         is_protocol_agnostic=None,
-        name=None,
         precedence=None,
-        deleted_at=None,
-        note=None,
-        label=None,
-        internally_created=None,
-        cos_object_type=None,
-        cdn_purge_embargo_time=None,
+        created=None,
+        updated=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """UrlMapping - a model defined in OpenAPI"""  # noqa: E501
@@ -123,57 +87,35 @@ class UrlMapping(object):
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
-        self._portal_id = None
-        self._created = None
-        self._updated = None
-        self._created_by_id = None
-        self._updated_by_id = None
         self._route_prefix = None
         self._destination = None
         self._redirect_style = None
-        self._content_group_id = None
         self._is_only_after_not_found = None
-        self._is_regex = None
         self._is_match_full_url = None
         self._is_match_query_string = None
         self._is_pattern = None
         self._is_trailing_slash_optional = None
         self._is_protocol_agnostic = None
-        self._name = None
         self._precedence = None
-        self._deleted_at = None
-        self._note = None
-        self._label = None
-        self._internally_created = None
-        self._cos_object_type = None
-        self._cdn_purge_embargo_time = None
+        self._created = None
+        self._updated = None
         self.discriminator = None
 
         self.id = id
-        self.portal_id = portal_id
-        self.created = created
-        self.updated = updated
-        self.created_by_id = created_by_id
-        self.updated_by_id = updated_by_id
         self.route_prefix = route_prefix
         self.destination = destination
         self.redirect_style = redirect_style
-        self.content_group_id = content_group_id
         self.is_only_after_not_found = is_only_after_not_found
-        self.is_regex = is_regex
         self.is_match_full_url = is_match_full_url
         self.is_match_query_string = is_match_query_string
         self.is_pattern = is_pattern
         self.is_trailing_slash_optional = is_trailing_slash_optional
         self.is_protocol_agnostic = is_protocol_agnostic
-        self.name = name
         self.precedence = precedence
-        self.deleted_at = deleted_at
-        self.note = note
-        self.label = label
-        self.internally_created = internally_created
-        self.cos_object_type = cos_object_type
-        self.cdn_purge_embargo_time = cdn_purge_embargo_time
+        if created is not None:
+            self.created = created
+        if updated is not None:
+            self.updated = updated
 
     @property
     def id(self):
@@ -182,7 +124,7 @@ class UrlMapping(object):
         The unique ID of this URL redirect.  # noqa: E501
 
         :return: The id of this UrlMapping.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._id
 
@@ -193,127 +135,12 @@ class UrlMapping(object):
         The unique ID of this URL redirect.  # noqa: E501
 
         :param id: The id of this UrlMapping.  # noqa: E501
-        :type: int
+        :type: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def portal_id(self):
-        """Gets the portal_id of this UrlMapping.  # noqa: E501
-
-
-        :return: The portal_id of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._portal_id
-
-    @portal_id.setter
-    def portal_id(self, portal_id):
-        """Sets the portal_id of this UrlMapping.
-
-
-        :param portal_id: The portal_id of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
-
-        self._portal_id = portal_id
-
-    @property
-    def created(self):
-        """Gets the created of this UrlMapping.  # noqa: E501
-
-
-        :return: The created of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._created
-
-    @created.setter
-    def created(self, created):
-        """Sets the created of this UrlMapping.
-
-
-        :param created: The created of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
-            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
-
-        self._created = created
-
-    @property
-    def updated(self):
-        """Gets the updated of this UrlMapping.  # noqa: E501
-
-
-        :return: The updated of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._updated
-
-    @updated.setter
-    def updated(self, updated):
-        """Sets the updated of this UrlMapping.
-
-
-        :param updated: The updated of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
-
-        self._updated = updated
-
-    @property
-    def created_by_id(self):
-        """Gets the created_by_id of this UrlMapping.  # noqa: E501
-
-
-        :return: The created_by_id of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._created_by_id
-
-    @created_by_id.setter
-    def created_by_id(self, created_by_id):
-        """Sets the created_by_id of this UrlMapping.
-
-
-        :param created_by_id: The created_by_id of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and created_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_by_id`, must not be `None`")  # noqa: E501
-
-        self._created_by_id = created_by_id
-
-    @property
-    def updated_by_id(self):
-        """Gets the updated_by_id of this UrlMapping.  # noqa: E501
-
-
-        :return: The updated_by_id of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._updated_by_id
-
-    @updated_by_id.setter
-    def updated_by_id(self, updated_by_id):
-        """Sets the updated_by_id of this UrlMapping.
-
-
-        :param updated_by_id: The updated_by_id of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and updated_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_by_id`, must not be `None`")  # noqa: E501
-
-        self._updated_by_id = updated_by_id
 
     @property
     def route_prefix(self):
@@ -391,29 +218,6 @@ class UrlMapping(object):
         self._redirect_style = redirect_style
 
     @property
-    def content_group_id(self):
-        """Gets the content_group_id of this UrlMapping.  # noqa: E501
-
-
-        :return: The content_group_id of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._content_group_id
-
-    @content_group_id.setter
-    def content_group_id(self, content_group_id):
-        """Sets the content_group_id of this UrlMapping.
-
-
-        :param content_group_id: The content_group_id of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and content_group_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `content_group_id`, must not be `None`")  # noqa: E501
-
-        self._content_group_id = content_group_id
-
-    @property
     def is_only_after_not_found(self):
         """Gets the is_only_after_not_found of this UrlMapping.  # noqa: E501
 
@@ -437,29 +241,6 @@ class UrlMapping(object):
             raise ValueError("Invalid value for `is_only_after_not_found`, must not be `None`")  # noqa: E501
 
         self._is_only_after_not_found = is_only_after_not_found
-
-    @property
-    def is_regex(self):
-        """Gets the is_regex of this UrlMapping.  # noqa: E501
-
-
-        :return: The is_regex of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_regex
-
-    @is_regex.setter
-    def is_regex(self, is_regex):
-        """Sets the is_regex of this UrlMapping.
-
-
-        :param is_regex: The is_regex of this UrlMapping.  # noqa: E501
-        :type: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_regex is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_regex`, must not be `None`")  # noqa: E501
-
-        self._is_regex = is_regex
 
     @property
     def is_match_full_url(self):
@@ -587,29 +368,6 @@ class UrlMapping(object):
         self._is_protocol_agnostic = is_protocol_agnostic
 
     @property
-    def name(self):
-        """Gets the name of this UrlMapping.  # noqa: E501
-
-
-        :return: The name of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this UrlMapping.
-
-
-        :param name: The name of this UrlMapping.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
     def precedence(self):
         """Gets the precedence of this UrlMapping.  # noqa: E501
 
@@ -635,188 +393,46 @@ class UrlMapping(object):
         self._precedence = precedence
 
     @property
-    def deleted_at(self):
-        """Gets the deleted_at of this UrlMapping.  # noqa: E501
+    def created(self):
+        """Gets the created of this UrlMapping.  # noqa: E501
 
 
-        :return: The deleted_at of this UrlMapping.  # noqa: E501
-        :rtype: int
+        :return: The created of this UrlMapping.  # noqa: E501
+        :rtype: datetime
         """
-        return self._deleted_at
+        return self._created
 
-    @deleted_at.setter
-    def deleted_at(self, deleted_at):
-        """Sets the deleted_at of this UrlMapping.
+    @created.setter
+    def created(self, created):
+        """Sets the created of this UrlMapping.
 
 
-        :param deleted_at: The deleted_at of this UrlMapping.  # noqa: E501
-        :type: int
+        :param created: The created of this UrlMapping.  # noqa: E501
+        :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
-        self._deleted_at = deleted_at
+        self._created = created
 
     @property
-    def note(self):
-        """Gets the note of this UrlMapping.  # noqa: E501
+    def updated(self):
+        """Gets the updated of this UrlMapping.  # noqa: E501
 
 
-        :return: The note of this UrlMapping.  # noqa: E501
-        :rtype: str
+        :return: The updated of this UrlMapping.  # noqa: E501
+        :rtype: datetime
         """
-        return self._note
+        return self._updated
 
-    @note.setter
-    def note(self, note):
-        """Sets the note of this UrlMapping.
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this UrlMapping.
 
 
-        :param note: The note of this UrlMapping.  # noqa: E501
-        :type: str
+        :param updated: The updated of this UrlMapping.  # noqa: E501
+        :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and note is None:  # noqa: E501
-            raise ValueError("Invalid value for `note`, must not be `None`")  # noqa: E501
 
-        self._note = note
-
-    @property
-    def label(self):
-        """Gets the label of this UrlMapping.  # noqa: E501
-
-
-        :return: The label of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this UrlMapping.
-
-
-        :param label: The label of this UrlMapping.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
-
-        self._label = label
-
-    @property
-    def internally_created(self):
-        """Gets the internally_created of this UrlMapping.  # noqa: E501
-
-
-        :return: The internally_created of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._internally_created
-
-    @internally_created.setter
-    def internally_created(self, internally_created):
-        """Sets the internally_created of this UrlMapping.
-
-
-        :param internally_created: The internally_created of this UrlMapping.  # noqa: E501
-        :type: bool
-        """
-        if self.local_vars_configuration.client_side_validation and internally_created is None:  # noqa: E501
-            raise ValueError("Invalid value for `internally_created`, must not be `None`")  # noqa: E501
-
-        self._internally_created = internally_created
-
-    @property
-    def cos_object_type(self):
-        """Gets the cos_object_type of this UrlMapping.  # noqa: E501
-
-
-        :return: The cos_object_type of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._cos_object_type
-
-    @cos_object_type.setter
-    def cos_object_type(self, cos_object_type):
-        """Sets the cos_object_type of this UrlMapping.
-
-
-        :param cos_object_type: The cos_object_type of this UrlMapping.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and cos_object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `cos_object_type`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "CONTENT",
-            "EXTENSION_RESOURCE",
-            "LAYOUT",
-            "CUSTOM_WIDGET",
-            "WIDGET",
-            "FORM",
-            "PLACEMENT",
-            "IMAGE",
-            "DOMAIN_SETTINGS",
-            "SITE_SETTINGS",
-            "EMAIL_ADDRESS",
-            "WORKFLOW",
-            "HUBDB_TABLE",
-            "REDIRECT_URL",
-            "DESIGN_FOLDER",
-            "SITE_MAP",
-            "DOMAIN",
-            "BLOG",
-            "FILE",
-            "FOLDER",
-            "SITE_MENU",
-            "THEME",
-            "CONTENT_GROUP",
-            "FOLLOW_ME",
-            "KNOWLEDGE_BASE",
-            "LIST_MEMBERSHIP",
-            "CONTACT_MEMBERSHIP",
-            "PASSWORD_PROTECTED",
-            "UNRESTRICTED_ACCESS",
-            "MARKETPLACE_LISTING",
-            "LAYOUT_SECTION",
-            "THEME_SETTINGS",
-            "VIDEO_PLAYER",
-            "URL_MAPPING",
-            "KNOWLEDGE_CATEGORY",
-            "KNOWLEDGE_HOMEPAGE_CATEGORY",
-            "RAW_ASSET",
-            "GLOBAL_CONTENT",
-            "HUBDB_TABLE_ROW",
-            "BLOG_AUTHOR",
-            "SERVERLESS_FUNCTION",
-            "KNOWLEDGE_CATEGORY_TRANSLATION",
-        ]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and cos_object_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `cos_object_type` ({0}), must be one of {1}".format(cos_object_type, allowed_values))  # noqa: E501
-
-        self._cos_object_type = cos_object_type
-
-    @property
-    def cdn_purge_embargo_time(self):
-        """Gets the cdn_purge_embargo_time of this UrlMapping.  # noqa: E501
-
-
-        :return: The cdn_purge_embargo_time of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._cdn_purge_embargo_time
-
-    @cdn_purge_embargo_time.setter
-    def cdn_purge_embargo_time(self, cdn_purge_embargo_time):
-        """Sets the cdn_purge_embargo_time of this UrlMapping.
-
-
-        :param cdn_purge_embargo_time: The cdn_purge_embargo_time of this UrlMapping.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and cdn_purge_embargo_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `cdn_purge_embargo_time`, must not be `None`")  # noqa: E501
-
-        self._cdn_purge_embargo_time = cdn_purge_embargo_time
+        self._updated = updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""

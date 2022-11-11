@@ -44,9 +44,9 @@ class ContentLanguageVariation(object):
         "campaign": "str",
         "tag_ids": "list[int]",
         "archived_in_dashboard": "bool",
+        "created": "datetime",
+        "updated": "datetime",
         "publish_date": "datetime",
-        "created_at": "datetime",
-        "updated_at": "datetime",
     }
 
     attribute_map = {
@@ -61,9 +61,9 @@ class ContentLanguageVariation(object):
         "campaign": "campaign",
         "tag_ids": "tagIds",
         "archived_in_dashboard": "archivedInDashboard",
+        "created": "created",
+        "updated": "updated",
         "publish_date": "publishDate",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
     }
 
     def __init__(
@@ -79,9 +79,9 @@ class ContentLanguageVariation(object):
         campaign=None,
         tag_ids=None,
         archived_in_dashboard=None,
+        created=None,
+        updated=None,
         publish_date=None,
-        created_at=None,
-        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ContentLanguageVariation - a model defined in OpenAPI"""  # noqa: E501
@@ -100,9 +100,9 @@ class ContentLanguageVariation(object):
         self._campaign = None
         self._tag_ids = None
         self._archived_in_dashboard = None
+        self._created = None
+        self._updated = None
         self._publish_date = None
-        self._created_at = None
-        self._updated_at = None
         self.discriminator = None
 
         self.id = id
@@ -117,9 +117,9 @@ class ContentLanguageVariation(object):
         if tag_ids is not None:
             self.tag_ids = tag_ids
         self.archived_in_dashboard = archived_in_dashboard
+        self.created = created
+        self.updated = updated
         self.publish_date = publish_date
-        self.created_at = created_at
-        self.updated_at = updated_at
 
     @property
     def id(self):
@@ -373,6 +373,52 @@ class ContentLanguageVariation(object):
         self._archived_in_dashboard = archived_in_dashboard
 
     @property
+    def created(self):
+        """Gets the created of this ContentLanguageVariation.  # noqa: E501
+
+
+        :return: The created of this ContentLanguageVariation.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this ContentLanguageVariation.
+
+
+        :param created: The created of this ContentLanguageVariation.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+
+        self._created = created
+
+    @property
+    def updated(self):
+        """Gets the updated of this ContentLanguageVariation.  # noqa: E501
+
+
+        :return: The updated of this ContentLanguageVariation.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this ContentLanguageVariation.
+
+
+        :param updated: The updated of this ContentLanguageVariation.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+
+        self._updated = updated
+
+    @property
     def publish_date(self):
         """Gets the publish_date of this ContentLanguageVariation.  # noqa: E501
 
@@ -394,52 +440,6 @@ class ContentLanguageVariation(object):
             raise ValueError("Invalid value for `publish_date`, must not be `None`")  # noqa: E501
 
         self._publish_date = publish_date
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this ContentLanguageVariation.  # noqa: E501
-
-
-        :return: The created_at of this ContentLanguageVariation.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this ContentLanguageVariation.
-
-
-        :param created_at: The created_at of this ContentLanguageVariation.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this ContentLanguageVariation.  # noqa: E501
-
-
-        :return: The updated_at of this ContentLanguageVariation.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this ContentLanguageVariation.
-
-
-        :param updated_at: The updated_at of this ContentLanguageVariation.  # noqa: E501
-        :type: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""

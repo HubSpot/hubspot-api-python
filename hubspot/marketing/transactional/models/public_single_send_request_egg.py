@@ -32,26 +32,53 @@ class PublicSingleSendRequestEgg(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"message": "PublicSingleSendEmail", "contact_properties": "dict(str, str)", "custom_properties": "object", "email_id": "int"}
+    openapi_types = {"email_id": "int", "message": "PublicSingleSendEmail", "contact_properties": "dict(str, str)", "custom_properties": "dict(str, object)"}
 
-    attribute_map = {"message": "message", "contact_properties": "contactProperties", "custom_properties": "customProperties", "email_id": "emailId"}
+    attribute_map = {"email_id": "emailId", "message": "message", "contact_properties": "contactProperties", "custom_properties": "customProperties"}
 
-    def __init__(self, message=None, contact_properties=None, custom_properties=None, email_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, email_id=None, message=None, contact_properties=None, custom_properties=None, local_vars_configuration=None):  # noqa: E501
         """PublicSingleSendRequestEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._email_id = None
         self._message = None
         self._contact_properties = None
         self._custom_properties = None
-        self._email_id = None
         self.discriminator = None
 
-        self.message = message
-        self.contact_properties = contact_properties
-        self.custom_properties = custom_properties
         self.email_id = email_id
+        self.message = message
+        if contact_properties is not None:
+            self.contact_properties = contact_properties
+        if custom_properties is not None:
+            self.custom_properties = custom_properties
+
+    @property
+    def email_id(self):
+        """Gets the email_id of this PublicSingleSendRequestEgg.  # noqa: E501
+
+        The content ID for the transactional email, which can be found in email tool UI.  # noqa: E501
+
+        :return: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
+        :rtype: int
+        """
+        return self._email_id
+
+    @email_id.setter
+    def email_id(self, email_id):
+        """Sets the email_id of this PublicSingleSendRequestEgg.
+
+        The content ID for the transactional email, which can be found in email tool UI.  # noqa: E501
+
+        :param email_id: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and email_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `email_id`, must not be `None`")  # noqa: E501
+
+        self._email_id = email_id
 
     @property
     def message(self):
@@ -96,8 +123,6 @@ class PublicSingleSendRequestEgg(object):
         :param contact_properties: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: dict(str, str)
         """
-        if self.local_vars_configuration.client_side_validation and contact_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `contact_properties`, must not be `None`")  # noqa: E501
 
         self._contact_properties = contact_properties
 
@@ -108,7 +133,7 @@ class PublicSingleSendRequestEgg(object):
         The customProperties field is a map of property values. Each property value contains a name and value property. Each property will be visible in the template under {{ custom.NAME }}. Note: Custom properties do not currently support arrays. To provide a listing in an email, one workaround is to build an HTML list (either with tables or ul) and specify it as a custom property.  # noqa: E501
 
         :return: The custom_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, object)
         """
         return self._custom_properties
 
@@ -119,37 +144,10 @@ class PublicSingleSendRequestEgg(object):
         The customProperties field is a map of property values. Each property value contains a name and value property. Each property will be visible in the template under {{ custom.NAME }}. Note: Custom properties do not currently support arrays. To provide a listing in an email, one workaround is to build an HTML list (either with tables or ul) and specify it as a custom property.  # noqa: E501
 
         :param custom_properties: The custom_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: object
+        :type: dict(str, object)
         """
-        if self.local_vars_configuration.client_side_validation and custom_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `custom_properties`, must not be `None`")  # noqa: E501
 
         self._custom_properties = custom_properties
-
-    @property
-    def email_id(self):
-        """Gets the email_id of this PublicSingleSendRequestEgg.  # noqa: E501
-
-        The content ID for the transactional email, which can be found in email tool UI.  # noqa: E501
-
-        :return: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
-        :rtype: int
-        """
-        return self._email_id
-
-    @email_id.setter
-    def email_id(self, email_id):
-        """Sets the email_id of this PublicSingleSendRequestEgg.
-
-        The content ID for the transactional email, which can be found in email tool UI.  # noqa: E501
-
-        :param email_id: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and email_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `email_id`, must not be `None`")  # noqa: E501
-
-        self._email_id = email_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

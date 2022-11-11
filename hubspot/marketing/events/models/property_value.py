@@ -319,6 +319,13 @@ class PropertyValue(object):
             "GOALS",
             "PORTAL_OBJECT_SYNC",
             "APPROVALS",
+            "FILE_MANAGER",
+            "MARKETPLACE",
+            "INTERNAL_PROCESSING",
+            "FORECASTING",
+            "SLACK_INTEGRATION",
+            "CRM_UI_BULK_ACTION",
+            "WORKFLOW_CONTACT_DELETE_ACTION",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and source not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `source` ({0}), must be one of {1}".format(source, allowed_values))  # noqa: E501
