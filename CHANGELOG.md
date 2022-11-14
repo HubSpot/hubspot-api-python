@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v6.1.0...HEAD)
 
+## [7.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v6.1.0...v7.0.0) - 2022-11-14
+
+### Changed (Breaking changes)
+
+- marketing.events updates
+
 ## [6.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v6.0.0...v6.1.0) - 2022-10-17
 
 ### Changed
