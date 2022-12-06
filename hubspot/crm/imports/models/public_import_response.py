@@ -105,7 +105,7 @@ class PublicImportResponse(object):
         """
         if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
             raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
-        allowed_values = ["STARTED", "PROCESSING", "DONE", "FAILED", "CANCELED", "DEFERRED"]  # noqa: E501
+        allowed_values = ["STARTED", "PROCESSING", "DONE", "FAILED", "CANCELED", "DEFERRED", "REVERTED"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and state not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `state` ({0}), must be one of {1}".format(state, allowed_values))  # noqa: E501
 

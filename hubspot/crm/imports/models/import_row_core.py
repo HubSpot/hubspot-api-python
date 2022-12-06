@@ -32,25 +32,73 @@ class ImportRowCore(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"file_id": "int", "page_name": "str", "line_number": "int"}
+    openapi_types = {"line_number": "int", "row_data": "list[str]", "file_id": "int", "page_name": "str"}
 
-    attribute_map = {"file_id": "fileId", "page_name": "pageName", "line_number": "lineNumber"}
+    attribute_map = {"line_number": "lineNumber", "row_data": "rowData", "file_id": "fileId", "page_name": "pageName"}
 
-    def __init__(self, file_id=None, page_name=None, line_number=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, line_number=None, row_data=None, file_id=None, page_name=None, local_vars_configuration=None):  # noqa: E501
         """ImportRowCore - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._line_number = None
+        self._row_data = None
         self._file_id = None
         self._page_name = None
-        self._line_number = None
         self.discriminator = None
 
+        self.line_number = line_number
+        self.row_data = row_data
         self.file_id = file_id
         if page_name is not None:
             self.page_name = page_name
-        self.line_number = line_number
+
+    @property
+    def line_number(self):
+        """Gets the line_number of this ImportRowCore.  # noqa: E501
+
+
+        :return: The line_number of this ImportRowCore.  # noqa: E501
+        :rtype: int
+        """
+        return self._line_number
+
+    @line_number.setter
+    def line_number(self, line_number):
+        """Sets the line_number of this ImportRowCore.
+
+
+        :param line_number: The line_number of this ImportRowCore.  # noqa: E501
+        :type: int
+        """
+        if self.local_vars_configuration.client_side_validation and line_number is None:  # noqa: E501
+            raise ValueError("Invalid value for `line_number`, must not be `None`")  # noqa: E501
+
+        self._line_number = line_number
+
+    @property
+    def row_data(self):
+        """Gets the row_data of this ImportRowCore.  # noqa: E501
+
+
+        :return: The row_data of this ImportRowCore.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._row_data
+
+    @row_data.setter
+    def row_data(self, row_data):
+        """Sets the row_data of this ImportRowCore.
+
+
+        :param row_data: The row_data of this ImportRowCore.  # noqa: E501
+        :type: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and row_data is None:  # noqa: E501
+            raise ValueError("Invalid value for `row_data`, must not be `None`")  # noqa: E501
+
+        self._row_data = row_data
 
     @property
     def file_id(self):
@@ -95,29 +143,6 @@ class ImportRowCore(object):
         """
 
         self._page_name = page_name
-
-    @property
-    def line_number(self):
-        """Gets the line_number of this ImportRowCore.  # noqa: E501
-
-
-        :return: The line_number of this ImportRowCore.  # noqa: E501
-        :rtype: int
-        """
-        return self._line_number
-
-    @line_number.setter
-    def line_number(self, line_number):
-        """Sets the line_number of this ImportRowCore.
-
-
-        :param line_number: The line_number of this ImportRowCore.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and line_number is None:  # noqa: E501
-            raise ValueError("Invalid value for `line_number`, must not be `None`")  # noqa: E501
-
-        self._line_number = line_number
 
     def to_dict(self):
         """Returns the model properties as a dict"""
