@@ -15,6 +15,8 @@ from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.objects.notes.models.associated_id import AssociatedId
+from hubspot.crm.objects.notes.models.association_spec import AssociationSpec
+from hubspot.crm.objects.notes.models.association_spec_with_label import AssociationSpecWithLabel
 from hubspot.crm.objects.notes.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
 from hubspot.crm.objects.notes.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
 from hubspot.crm.objects.notes.models.batch_input_simple_public_object_input import BatchInputSimplePublicObjectInput
@@ -22,7 +24,7 @@ from hubspot.crm.objects.notes.models.batch_read_input_simple_public_object_id i
 from hubspot.crm.objects.notes.models.batch_response_simple_public_object import BatchResponseSimplePublicObject
 from hubspot.crm.objects.notes.models.batch_response_simple_public_object_with_errors import BatchResponseSimplePublicObjectWithErrors
 from hubspot.crm.objects.notes.models.collection_response_associated_id import CollectionResponseAssociatedId
-from hubspot.crm.objects.notes.models.collection_response_associated_id_forward_paging import CollectionResponseAssociatedIdForwardPaging
+from hubspot.crm.objects.notes.models.collection_response_multi_associated_object_with_label_forward_paging import CollectionResponseMultiAssociatedObjectWithLabelForwardPaging
 from hubspot.crm.objects.notes.models.collection_response_simple_public_object_with_associations_forward_paging import CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
 from hubspot.crm.objects.notes.models.collection_response_with_total_simple_public_object_forward_paging import CollectionResponseWithTotalSimplePublicObjectForwardPaging
 from hubspot.crm.objects.notes.models.error import Error
@@ -31,6 +33,8 @@ from hubspot.crm.objects.notes.models.error_detail import ErrorDetail
 from hubspot.crm.objects.notes.models.filter import Filter
 from hubspot.crm.objects.notes.models.filter_group import FilterGroup
 from hubspot.crm.objects.notes.models.forward_paging import ForwardPaging
+from hubspot.crm.objects.notes.models.labels_between_object_pair import LabelsBetweenObjectPair
+from hubspot.crm.objects.notes.models.multi_associated_object_with_label import MultiAssociatedObjectWithLabel
 from hubspot.crm.objects.notes.models.next_page import NextPage
 from hubspot.crm.objects.notes.models.paging import Paging
 from hubspot.crm.objects.notes.models.previous_page import PreviousPage

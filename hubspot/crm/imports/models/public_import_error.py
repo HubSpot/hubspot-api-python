@@ -34,24 +34,24 @@ class PublicImportError(object):
     """
     openapi_types = {
         "error_type": "str",
+        "source_data": "ImportRowCore",
         "object_type": "str",
         "invalid_value": "str",
         "extra_context": "str",
         "object_type_id": "str",
         "known_column_number": "int",
-        "source_data": "ImportRowCore",
         "created_at": "int",
         "id": "str",
     }
 
     attribute_map = {
         "error_type": "errorType",
+        "source_data": "sourceData",
         "object_type": "objectType",
         "invalid_value": "invalidValue",
         "extra_context": "extraContext",
         "object_type_id": "objectTypeId",
         "known_column_number": "knownColumnNumber",
-        "source_data": "sourceData",
         "created_at": "createdAt",
         "id": "id",
     }
@@ -59,12 +59,12 @@ class PublicImportError(object):
     def __init__(
         self,
         error_type=None,
+        source_data=None,
         object_type=None,
         invalid_value=None,
         extra_context=None,
         object_type_id=None,
         known_column_number=None,
-        source_data=None,
         created_at=None,
         id=None,
         local_vars_configuration=None,
@@ -75,17 +75,18 @@ class PublicImportError(object):
         self.local_vars_configuration = local_vars_configuration
 
         self._error_type = None
+        self._source_data = None
         self._object_type = None
         self._invalid_value = None
         self._extra_context = None
         self._object_type_id = None
         self._known_column_number = None
-        self._source_data = None
         self._created_at = None
         self._id = None
         self.discriminator = None
 
         self.error_type = error_type
+        self.source_data = source_data
         if object_type is not None:
             self.object_type = object_type
         if invalid_value is not None:
@@ -95,7 +96,6 @@ class PublicImportError(object):
         if object_type_id is not None:
             self.object_type_id = object_type_id
         self.known_column_number = known_column_number
-        self.source_data = source_data
         self.created_at = created_at
         self.id = id
 
@@ -129,6 +129,7 @@ class PublicImportError(object):
             "PROPERTY_VALUE_NOT_FOUND",
             "COULD_NOT_FIND_OWNER",
             "MULTIPLE_OWNERS_FOUND",
+            "COULD_NOT_FIND_BUSINESS_UNIT",
             "COULD_NOT_PARSE_NUMBER",
             "COULD_NOT_PARSE_DATE",
             "COULD_NOT_PARSE_TERM",
@@ -157,14 +158,46 @@ class PublicImportError(object):
             "UNKNOWN_ERROR",
             "FAILED_TO_OPT_OUT_CONTACT",
             "INVALID_REQUIRED_PROPERTY",
+            "MISSING_REQUIRED_PROPERTY",
             "DUPLICATE_ALTERNATE_ID",
             "DUPLICATE_OBJECT_ID",
             "DUPLICATE_UNIQUE_PROPERTY_VALUE",
+            "BLANK_VALUE_PROVIDED",
+            "UNKNOWN_ASSOCIATION_RECORD_ID",
+            "INVALID_RECORD_ID",
+            "DUPLICATE_RECORD_ID",
+            "INVALID_CUSTOM_PROPERTY_VALIDATION",
+            "CREATE_ONLY_IMPORT",
+            "UPDATE_ONLY_IMPORT",
+            "COLUMN_TOO_LARGE",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and error_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `error_type` ({0}), must be one of {1}".format(error_type, allowed_values))  # noqa: E501
 
         self._error_type = error_type
+
+    @property
+    def source_data(self):
+        """Gets the source_data of this PublicImportError.  # noqa: E501
+
+
+        :return: The source_data of this PublicImportError.  # noqa: E501
+        :rtype: ImportRowCore
+        """
+        return self._source_data
+
+    @source_data.setter
+    def source_data(self, source_data):
+        """Sets the source_data of this PublicImportError.
+
+
+        :param source_data: The source_data of this PublicImportError.  # noqa: E501
+        :type: ImportRowCore
+        """
+        if self.local_vars_configuration.client_side_validation and source_data is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_data`, must not be `None`")  # noqa: E501
+
+        self._source_data = source_data
 
     @property
     def object_type(self):
@@ -266,6 +299,47 @@ class PublicImportError(object):
             "APPROVAL",
             "APPROVAL_STEP",
             "CTA_VARIANT",
+            "SALES_DOCUMENT",
+            "DISCOUNT",
+            "FEE",
+            "TAX",
+            "MARKETING_CALENDAR",
+            "PERMISSIONS_TESTING",
+            "PRIVACY_SCANNER_COOKIE",
+            "DATA_SYNC_STATE",
+            "WEB_INTERACTIVE",
+            "PLAYBOOK",
+            "FOLDER",
+            "PLAYBOOK_QUESTION",
+            "PLAYBOOK_SUBMISSION",
+            "PLAYBOOK_SUBMISSION_ANSWER",
+            "COMMERCE_PAYMENT",
+            "GSC_PROPERTY",
+            "SOX_PROTECTED_DUMMY_TYPE",
+            "BLOG_LISTING_PAGE",
+            "QUARANTINED_SUBMISSION",
+            "PAYMENT_SCHEDULE",
+            "PAYMENT_SCHEDULE_INSTALLMENT",
+            "MARKETING_CAMPAIGN_UTM",
+            "DISCOUNT_TEMPLATE",
+            "DISCOUNT_CODE",
+            "FEEDBACK_SURVEY",
+            "CMS_URL",
+            "SALES_TASK",
+            "SALES_WORKLOAD",
+            "USER",
+            "POSTAL_MAIL",
+            "SCHEMAS_BACKEND_TEST",
+            "PAYMENT_LINK",
+            "SUBMISSION_TAG",
+            "CAMPAIGN_STEP",
+            "SCHEDULING_PAGE",
+            "SOX_PROTECTED_TEST_TYPE",
+            "ORDER",
+            "MARKETING_SMS",
+            "PARTNER_ACCOUNT",
+            "CAMPAIGN_TEMPLATE",
+            "CAMPAIGN_TEMPLATE_STEP",
             "UNKNOWN",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
@@ -358,29 +432,6 @@ class PublicImportError(object):
             raise ValueError("Invalid value for `known_column_number`, must not be `None`")  # noqa: E501
 
         self._known_column_number = known_column_number
-
-    @property
-    def source_data(self):
-        """Gets the source_data of this PublicImportError.  # noqa: E501
-
-
-        :return: The source_data of this PublicImportError.  # noqa: E501
-        :rtype: ImportRowCore
-        """
-        return self._source_data
-
-    @source_data.setter
-    def source_data(self, source_data):
-        """Sets the source_data of this PublicImportError.
-
-
-        :param source_data: The source_data of this PublicImportError.  # noqa: E501
-        :type: ImportRowCore
-        """
-        if self.local_vars_configuration.client_side_validation and source_data is None:  # noqa: E501
-            raise ValueError("Invalid value for `source_data`, must not be `None`")  # noqa: E501
-
-        self._source_data = source_data
 
     @property
     def created_at(self):
