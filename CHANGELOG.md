@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v7.1.0...HEAD)
 
-## [7.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v7.0.0...v7.1.0) - 2022-12-17
+## [7.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v7.0.0...v7.1.0) - 2022-12-07
 
 ### Changed
 
