@@ -1,5 +1,12 @@
 from hubspot import HubSpot
-from hubspot.crm.extensions.accounting import CallbacksApi, InvoiceApi, SettingsApi, SyncApi, UserAccountsApi
+from hubspot.crm.extensions.accounting import (
+    CallbacksApi,
+    InvoiceApi,
+    SettingsApi,
+    SyncApi,
+    UserAccountsApi
+)
+
 
 def test_is_discoverable():
     apis = HubSpot().crm.extensions.accounting

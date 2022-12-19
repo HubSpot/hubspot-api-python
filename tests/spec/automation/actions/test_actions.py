@@ -9,7 +9,7 @@ from hubspot.automation.actions import (
 
 def test_is_discoverable():
     apis = HubSpot().automation.actions
-    assert isinstance(apis.сallbacks_api, CallbacksApi)
+    assert isinstance(apis.callbacks_api, CallbacksApi)
     assert isinstance(apis.definitions_api, DefinitionsApi)
     assert isinstance(apis.functions_api, FunctionsApi)
     assert isinstance(apis.revisions_api, RevisionsApi)
