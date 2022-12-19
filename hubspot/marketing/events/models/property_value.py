@@ -45,6 +45,7 @@ class PropertyValue(object):
         "source_metadata": "str",
         "request_id": "str",
         "updated_by_user_id": "int",
+        "persistence_timestamp": "int",
     }
 
     attribute_map = {
@@ -60,6 +61,7 @@ class PropertyValue(object):
         "source_metadata": "sourceMetadata",
         "request_id": "requestId",
         "updated_by_user_id": "updatedByUserId",
+        "persistence_timestamp": "persistenceTimestamp",
     }
 
     def __init__(
@@ -76,6 +78,7 @@ class PropertyValue(object):
         source_metadata=None,
         request_id=None,
         updated_by_user_id=None,
+        persistence_timestamp=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PropertyValue - a model defined in OpenAPI"""  # noqa: E501
@@ -95,6 +98,7 @@ class PropertyValue(object):
         self._source_metadata = None
         self._request_id = None
         self._updated_by_user_id = None
+        self._persistence_timestamp = None
         self.discriminator = None
 
         self.name = name
@@ -110,6 +114,8 @@ class PropertyValue(object):
         self.request_id = request_id
         if updated_by_user_id is not None:
             self.updated_by_user_id = updated_by_user_id
+        if persistence_timestamp is not None:
+            self.persistence_timestamp = persistence_timestamp
 
     @property
     def name(self):
@@ -469,6 +475,27 @@ class PropertyValue(object):
         """
 
         self._updated_by_user_id = updated_by_user_id
+
+    @property
+    def persistence_timestamp(self):
+        """Gets the persistence_timestamp of this PropertyValue.  # noqa: E501
+
+
+        :return: The persistence_timestamp of this PropertyValue.  # noqa: E501
+        :rtype: int
+        """
+        return self._persistence_timestamp
+
+    @persistence_timestamp.setter
+    def persistence_timestamp(self, persistence_timestamp):
+        """Sets the persistence_timestamp of this PropertyValue.
+
+
+        :param persistence_timestamp: The persistence_timestamp of this PropertyValue.  # noqa: E501
+        :type: int
+        """
+
+        self._persistence_timestamp = persistence_timestamp
 
     def to_dict(self):
         """Returns the model properties as a dict"""
