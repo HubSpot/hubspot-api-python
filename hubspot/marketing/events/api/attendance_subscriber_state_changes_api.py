@@ -141,7 +141,7 @@ class AttendanceSubscriberStateChangesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create",
@@ -269,7 +269,7 @@ class AttendanceSubscriberStateChangesApi(object):
         header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create",
