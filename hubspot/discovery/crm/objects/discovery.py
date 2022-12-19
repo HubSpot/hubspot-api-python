@@ -52,6 +52,11 @@ class Discovery(DiscoveryBase):
         return NotesDiscovery(self.config)
 
     @property
+    def postal_mail(self):
+        from .postal_mail.discovery import Discovery as PostalMailDiscovery
+        return PostalMailDiscovery(self.config)
+
+    @property
     def tasks(self):
         from .tasks.discovery import Discovery as TasksDiscovery
         return TasksDiscovery(self.config)
