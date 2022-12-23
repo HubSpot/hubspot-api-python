@@ -10,3 +10,11 @@ class Discovery(DiscoveryBase):
     @property
     def pipelines_api(self) -> api_client.PipelinesApi:
         return self._configure_api_client(api_client, "PipelinesApi")
+
+    @property
+    def pipeline_audits_api(self) -> api_client.PipelineAuditsApi:
+        return self._configure_api_client(api_client, "PipelineAuditsApi")
+
+    @property
+    def pipeline_stage_audits_api(self) -> api_client.PipelineStageAuditsApi:
+        return self._configure_api_client(api_client, "PipelineStageAuditsApi")
