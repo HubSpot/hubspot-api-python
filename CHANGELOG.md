@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added
 
-- missing object_type and account_type (were removed during regen)
+- missing object_type and association_type (were removed during regen)
 
 ## [7.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v7.2.0...v7.2.1) - 2022-12-23
 
