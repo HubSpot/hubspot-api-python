@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v7.2.2...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v7.3.0...HEAD)
+
+## [7.3.0](https://github.com/HubSpot/hubspot-api-python/compare/v7.2.2...v7.3.0) - 2023-01-04
+
+ ### Added
+
+- Signature's util 'HubSpot.utils.signature'
+- test coverage for regen
+
+ ### Deprecated
+
+- webhook's util 'HubSpot.utils.webhooks'
 
 ## [7.2.2](https://github.com/HubSpot/hubspot-api-python/compare/v7.2.1...v7.2.2) - 2023-01-03
 
