@@ -2,6 +2,7 @@ import hashlib
 from hubspot.exceptions import InvalidSignatureError
 
 
+# @deprecated
 def validate_signature(
     signature: str,
     client_secret: str,
