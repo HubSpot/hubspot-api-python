@@ -113,6 +113,40 @@ all_contacts = api_client.crm.contacts.get_all()
 
 Please note that pagination is used under the hood to get all results.
 
+### Search by date:
+
+```python
+import hubspot
+
+from dateutil import parser
+from pprint import pprint
+from hubspot.crm.contacts import PublicObjectSearchRequest, ApiException
+
+api_client = hubspot.Client.create(access_token="YOUR_ACCESS_TOKEN")
+
+# timestamp in milliseconds
+date = str(int(parser.isoparse("XXXX-XX-XXTXX:XX:XX.XXXZ").timestamp() * 1000))
+public_object_search_request = PublicObjectSearchRequest(
+    filter_groups=[
+        {
+            "filters": [
+                {
+                    "value": date,
+                    "propertyName": "lastmodifieddate",
+                    "operator": "EQ"
+                }
+            ]
+        }
+    ], limit=10
+)
+try:
+    api_response = api_client.crm.contacts.search_api.do_search(public_object_search_request=public_object_search_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling search_api->do_search: %s\n" % e)
+
+```
+
 ### CMS API
 
 #### Get audit logs:
