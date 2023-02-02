@@ -105,7 +105,7 @@ except ApiException as e:
 
 #### Get all:
 
-get_all method is available for all major objects and works like
+`get_all` method is available for all objects (Companies, Contacts, Deals and etc).
 
 ```python
 all_contacts = api_client.crm.contacts.get_all()
@@ -113,8 +113,11 @@ all_contacts = api_client.crm.contacts.get_all()
 
 Please note that pagination is used under the hood to get all results.
 
-### Search by date:
+## Search:
 
+`do_search` method is available for all objects (Companies, Contacts, Deals and etc).
+
+### Example Search by date:
 ```python
 import hubspot
 
