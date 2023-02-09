@@ -11,11 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
  ### Added
 
-- More examples in README(search by date)
+- added search by date example in README.
 
  ### Fixed
 
-- added associations.types_api to crm.associations discovery
+- fixed access to `crm.associations.types_api`
 
 ## [7.3.0](https://github.com/HubSpot/hubspot-api-python/compare/v7.2.2...v7.3.0) - 2023-01-04
 
