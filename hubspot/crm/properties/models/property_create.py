@@ -33,40 +33,48 @@ class PropertyCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'label': 'str',
-        'type': 'str',
-        'field_type': 'str',
-        'group_name': 'str',
-        'description': 'str',
-        'options': 'list[OptionInput]',
-        'display_order': 'int',
-        'has_unique_value': 'bool',
-        'hidden': 'bool',
-        'form_field': 'bool',
-        'external_options': 'bool',
-        'referenced_object_type': 'str',
-        'calculation_formula': 'str'
+        "name": "str",
+        "label": "str",
+        "type": "str",
+        "field_type": "str",
+        "group_name": "str",
+        "description": "str",
+        "options": "list[OptionInput]",
+        "display_order": "int",
+        "has_unique_value": "bool",
+        "hidden": "bool",
+        "form_field": "bool",
     }
 
     attribute_map = {
-        'name': 'name',
-        'label': 'label',
-        'type': 'type',
-        'field_type': 'fieldType',
-        'group_name': 'groupName',
-        'description': 'description',
-        'options': 'options',
-        'display_order': 'displayOrder',
-        'has_unique_value': 'hasUniqueValue',
-        'hidden': 'hidden',
-        'form_field': 'formField',
-        'external_options': 'externalOptions',
-        'referenced_object_type': 'referencedObjectType',
-        'calculation_formula': 'calculationFormula'
+        "name": "name",
+        "label": "label",
+        "type": "type",
+        "field_type": "fieldType",
+        "group_name": "groupName",
+        "description": "description",
+        "options": "options",
+        "display_order": "displayOrder",
+        "has_unique_value": "hasUniqueValue",
+        "hidden": "hidden",
+        "form_field": "formField",
     }
 
-    def __init__(self, name=None, label=None, type=None, field_type=None, group_name=None, description=None, options=None, display_order=None, has_unique_value=None, hidden=None, form_field=None, external_options=None, referenced_object_type=None, calculation_formula=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        label=None,
+        type=None,
+        field_type=None,
+        group_name=None,
+        description=None,
+        options=None,
+        display_order=None,
+        has_unique_value=None,
+        hidden=None,
+        form_field=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PropertyCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,9 +91,6 @@ class PropertyCreate(object):
         self._has_unique_value = None
         self._hidden = None
         self._form_field = None
-        self._external_options = None
-        self._referenced_object_type = None
-        self._calculation_formula = None
         self.discriminator = None
 
         self.name = name
@@ -105,12 +110,6 @@ class PropertyCreate(object):
             self.hidden = hidden
         if form_field is not None:
             self.form_field = form_field
-        if external_options is not None:
-            self.external_options = external_options
-        if referenced_object_type is not None:
-            self.referenced_object_type = referenced_object_type
-        if calculation_formula is not None:
-            self.calculation_formula = calculation_formula
 
     @property
     def name(self):
@@ -184,12 +183,9 @@ class PropertyCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["string", "number", "date", "datetime", "enumeration", "bool"]  # noqa: E501
+        allowed_values = ["string", "number", "date", "datetime", "enumeration"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -215,12 +211,9 @@ class PropertyCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["textarea", "text", "date", "file", "number", "select", "radio", "checkbox", "booleancheckbox", "calculation_equation"]  # noqa: E501
+        allowed_values = ["textarea", "text", "date", "file", "number", "select", "radio", "checkbox", "booleancheckbox"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and field_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(field_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `field_type` ({0}), must be one of {1}".format(field_type, allowed_values))  # noqa: E501
 
         self._field_type = field_type
 
@@ -387,75 +380,6 @@ class PropertyCreate(object):
 
         self._form_field = form_field
 
-    @property
-    def external_options(self):
-        """Gets the external_options of this PropertyCreate.  # noqa: E501
-
-        Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.  # noqa: E501
-
-        :return: The external_options of this PropertyCreate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._external_options
-
-    @external_options.setter
-    def external_options(self, external_options):
-        """Sets the external_options of this PropertyCreate.
-
-        Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.  # noqa: E501
-
-        :param external_options: The external_options of this PropertyCreate.  # noqa: E501
-        :type: bool
-        """
-
-        self._external_options = external_options
-
-    @property
-    def referenced_object_type(self):
-        """Gets the referenced_object_type of this PropertyCreate.  # noqa: E501
-
-        Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.  # noqa: E501
-
-        :return: The referenced_object_type of this PropertyCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._referenced_object_type
-
-    @referenced_object_type.setter
-    def referenced_object_type(self, referenced_object_type):
-        """Sets the referenced_object_type of this PropertyCreate.
-
-        Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.  # noqa: E501
-
-        :param referenced_object_type: The referenced_object_type of this PropertyCreate.  # noqa: E501
-        :type: str
-        """
-
-        self._referenced_object_type = referenced_object_type
-
-    @property
-    def calculation_formula(self):
-        """Gets the calculation_formula of this PropertyCreate.  # noqa: E501
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :return: The calculation_formula of this PropertyCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._calculation_formula
-
-    @calculation_formula.setter
-    def calculation_formula(self, calculation_formula):
-        """Sets the calculation_formula of this PropertyCreate.
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :param calculation_formula: The calculation_formula of this PropertyCreate.  # noqa: E501
-        :type: str
-        """
-
-        self._calculation_formula = calculation_formula
-
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -463,18 +387,11 @@ class PropertyCreate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 
