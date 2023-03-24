@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.objects.postal_mail.api_client import ApiClient
-from hubspot.crm.objects.postal_mail.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.objects.postal_mail.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class BatchApi(object):
@@ -33,12 +36,12 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Archive a batch of postal mail by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(batch_input_simple_public_object_id, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_archive(batch_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -54,15 +57,15 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(batch_input_simple_public_object_id, **kwargs)  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.post_crm_v3_objects_postal_mail_batch_archive_with_http_info(batch_input_simple_public_object_id, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_archive_with_http_info(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Archive a batch of postal mail by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(batch_input_simple_public_object_id, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_archive_with_http_info(batch_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -83,22 +86,24 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_simple_public_object_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_simple_public_object_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_crm_v3_objects_postal_mail_batch_archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_simple_public_object_id' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_simple_public_object_id" not in local_var_params or local_var_params["batch_input_simple_public_object_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_simple_public_object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_simple_public_object_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_id` when calling `post_crm_v3_objects_postal_mail_batch_archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -112,20 +117,21 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_id" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_id"]
+        if 'batch_input_simple_public_object_id' in local_var_params:
+            body_params = local_var_params['batch_input_simple_public_object_id']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/batch/archive",
-            "POST",
+            '/crm/v3/objects/postal mail/batch/archive', 'POST',
             path_params,
             query_params,
             header_params,
@@ -134,23 +140,22 @@ class BatchApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def create(self, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_create(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of postal mail  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(batch_input_simple_public_object_input, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_create(batch_input_simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
+        :param BatchInputSimplePublicObjectInputForCreate batch_input_simple_public_object_input_for_create: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -162,19 +167,19 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(batch_input_simple_public_object_input, **kwargs)  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.post_crm_v3_objects_postal_mail_batch_create_with_http_info(batch_input_simple_public_object_input_for_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_create_with_http_info(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of postal mail  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(batch_input_simple_public_object_input, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_create_with_http_info(batch_input_simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
+        :param BatchInputSimplePublicObjectInputForCreate batch_input_simple_public_object_input_for_create: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -191,22 +196,24 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_simple_public_object_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_simple_public_object_input_for_create']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_crm_v3_objects_postal_mail_batch_create" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'batch_input_simple_public_object_input' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_simple_public_object_input" not in local_var_params or local_var_params["batch_input_simple_public_object_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input` when calling `create`")  # noqa: E501
+        del local_var_params['kwargs']
+        # verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
+        if self.api_client.client_side_validation and ('batch_input_simple_public_object_input_for_create' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_simple_public_object_input_for_create'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input_for_create` when calling `post_crm_v3_objects_postal_mail_batch_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -220,41 +227,41 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_input" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_input"]
+        if 'batch_input_simple_public_object_input_for_create' in local_var_params:
+            body_params = local_var_params['batch_input_simple_public_object_input_for_create']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/batch/create",
-            "POST",
+            '/crm/v3/objects/postal mail/batch/create', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSimplePublicObject",  # noqa: E501
+            response_type='BatchResponseSimplePublicObject',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of postal mail by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read(batch_read_input_simple_public_object_id, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_read(batch_read_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -271,15 +278,15 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.post_crm_v3_objects_postal_mail_batch_read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
 
-    def read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of postal mail by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_with_http_info(batch_read_input_simple_public_object_id, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_read_with_http_info(batch_read_input_simple_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -301,30 +308,32 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_read_input_simple_public_object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_read_input_simple_public_object_id', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method read" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_crm_v3_objects_postal_mail_batch_read" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_read_input_simple_public_object_id' is set
-        if self.api_client.client_side_validation and (
-            "batch_read_input_simple_public_object_id" not in local_var_params or local_var_params["batch_read_input_simple_public_object_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_read_input_simple_public_object_id` when calling `read`")  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_read_input_simple_public_object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_read_input_simple_public_object_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_read_input_simple_public_object_id` when calling `post_crm_v3_objects_postal_mail_batch_read`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -332,41 +341,41 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_read_input_simple_public_object_id" in local_var_params:
-            body_params = local_var_params["batch_read_input_simple_public_object_id"]
+        if 'batch_read_input_simple_public_object_id' in local_var_params:
+            body_params = local_var_params['batch_read_input_simple_public_object_id']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/batch/read",
-            "POST",
+            '/crm/v3/objects/postal mail/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSimplePublicObject",  # noqa: E501
+            response_type='BatchResponseSimplePublicObject',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
-    def update(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_update(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
         """Update a batch of postal mail  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update(batch_input_simple_public_object_batch_input, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_update(batch_input_simple_public_object_batch_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -382,15 +391,15 @@ class BatchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
+        kwargs['_return_http_data_only'] = True
+        return self.post_crm_v3_objects_postal_mail_batch_update_with_http_info(batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
 
-    def update_with_http_info(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
+    def post_crm_v3_objects_postal_mail_batch_update_with_http_info(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
         """Update a batch of postal mail  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_with_http_info(batch_input_simple_public_object_batch_input, async_req=True)
+        >>> thread = api.post_crm_v3_objects_postal_mail_batch_update_with_http_info(batch_input_simple_public_object_batch_input, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -411,22 +420,24 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_simple_public_object_batch_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_simple_public_object_batch_input']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method post_crm_v3_objects_postal_mail_batch_update" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_simple_public_object_batch_input' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_simple_public_object_batch_input" not in local_var_params or local_var_params["batch_input_simple_public_object_batch_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_batch_input` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_simple_public_object_batch_input' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_simple_public_object_batch_input'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_batch_input` when calling `post_crm_v3_objects_postal_mail_batch_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -440,31 +451,31 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_batch_input" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_batch_input"]
+        if 'batch_input_simple_public_object_batch_input' in local_var_params:
+            body_params = local_var_params['batch_input_simple_public_object_batch_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/batch/update",
-            "POST",
+            '/crm/v3/objects/postal mail/batch/update', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSimplePublicObject",  # noqa: E501
+            response_type='BatchResponseSimplePublicObject',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

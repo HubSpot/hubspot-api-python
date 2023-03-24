@@ -29,7 +29,6 @@ from hubspot.crm.timeline.exceptions import ApiTypeError
 from hubspot.crm.timeline.exceptions import ApiValueError
 from hubspot.crm.timeline.exceptions import ApiKeyError
 from hubspot.crm.timeline.exceptions import ApiException
-
 # import models into sdk package
 from hubspot.crm.timeline.models.batch_input_timeline_event import BatchInputTimelineEvent
 from hubspot.crm.timeline.models.batch_response_timeline_event_response import BatchResponseTimelineEventResponse
@@ -49,3 +48,4 @@ from hubspot.crm.timeline.models.timeline_event_template_token import TimelineEv
 from hubspot.crm.timeline.models.timeline_event_template_token_option import TimelineEventTemplateTokenOption
 from hubspot.crm.timeline.models.timeline_event_template_token_update_request import TimelineEventTemplateTokenUpdateRequest
 from hubspot.crm.timeline.models.timeline_event_template_update_request import TimelineEventTemplateUpdateRequest
+

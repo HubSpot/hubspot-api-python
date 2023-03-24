@@ -32,9 +32,17 @@ class MarketingEventExternalUniqueIdentifier(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"app_id": "int", "external_account_id": "str", "external_event_id": "str"}
+    openapi_types = {
+        'app_id': 'int',
+        'external_account_id': 'str',
+        'external_event_id': 'str'
+    }
 
-    attribute_map = {"app_id": "appId", "external_account_id": "externalAccountId", "external_event_id": "externalEventId"}
+    attribute_map = {
+        'app_id': 'appId',
+        'external_account_id': 'externalAccountId',
+        'external_event_id': 'externalEventId'
+    }
 
     def __init__(self, app_id=None, external_account_id=None, external_event_id=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventExternalUniqueIdentifier - a model defined in OpenAPI"""  # noqa: E501
@@ -133,11 +141,18 @@ class MarketingEventExternalUniqueIdentifier(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

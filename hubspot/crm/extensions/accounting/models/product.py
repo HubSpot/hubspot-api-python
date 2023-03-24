@@ -32,9 +32,23 @@ class Product(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"unit_price": "UnitPrice", "tax_exempt": "bool", "sales_tax_type": "TaxType", "name": "str", "description": "str", "id": "str"}
+    openapi_types = {
+        'unit_price': 'UnitPrice',
+        'tax_exempt': 'bool',
+        'sales_tax_type': 'TaxType',
+        'name': 'str',
+        'description': 'str',
+        'id': 'str'
+    }
 
-    attribute_map = {"unit_price": "unitPrice", "tax_exempt": "taxExempt", "sales_tax_type": "salesTaxType", "name": "name", "description": "description", "id": "id"}
+    attribute_map = {
+        'unit_price': 'unitPrice',
+        'tax_exempt': 'taxExempt',
+        'sales_tax_type': 'salesTaxType',
+        'name': 'name',
+        'description': 'description',
+        'id': 'id'
+    }
 
     def __init__(self, unit_price=None, tax_exempt=None, sales_tax_type=None, name=None, description=None, id=None, local_vars_configuration=None):  # noqa: E501
         """Product - a model defined in OpenAPI"""  # noqa: E501
@@ -208,11 +222,18 @@ class Product(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

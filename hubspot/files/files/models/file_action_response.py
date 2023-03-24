@@ -33,32 +33,30 @@ class FileActionResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "status": "str",
-        "result": "File",
-        "num_errors": "int",
-        "errors": "list[StandardError]",
-        "requested_at": "datetime",
-        "started_at": "datetime",
-        "completed_at": "datetime",
-        "links": "dict(str, str)",
-        "task_id": "str",
+        'status': 'str',
+        'result': 'File',
+        'num_errors': 'int',
+        'errors': 'list[StandardError]',
+        'requested_at': 'datetime',
+        'started_at': 'datetime',
+        'completed_at': 'datetime',
+        'links': 'dict(str, str)',
+        'task_id': 'str'
     }
 
     attribute_map = {
-        "status": "status",
-        "result": "result",
-        "num_errors": "numErrors",
-        "errors": "errors",
-        "requested_at": "requestedAt",
-        "started_at": "startedAt",
-        "completed_at": "completedAt",
-        "links": "links",
-        "task_id": "taskId",
+        'status': 'status',
+        'result': 'result',
+        'num_errors': 'numErrors',
+        'errors': 'errors',
+        'requested_at': 'requestedAt',
+        'started_at': 'startedAt',
+        'completed_at': 'completedAt',
+        'links': 'links',
+        'task_id': 'taskId'
     }
 
-    def __init__(
-        self, status=None, result=None, num_errors=None, errors=None, requested_at=None, started_at=None, completed_at=None, links=None, task_id=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, status=None, result=None, num_errors=None, errors=None, requested_at=None, started_at=None, completed_at=None, links=None, task_id=None, local_vars_configuration=None):  # noqa: E501
         """FileActionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -114,7 +112,10 @@ class FileActionResponse(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
 
         self._status = status
 
@@ -313,11 +314,18 @@ class FileActionResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

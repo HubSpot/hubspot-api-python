@@ -34,8 +34,11 @@ class Configuration(object):
     :param password: Password for HTTP basic authentication
     """
 
-    def __init__(self, host="https://api.hubapi.com", api_key=None, api_key_prefix=None, username="", password=""):
-        """Constructor"""
+    def __init__(self, host="https://api.hubapi.com",
+                 api_key=None, api_key_prefix=None,
+                 username="", password=""):
+        """Constructor
+        """
         self.host = host
         """Default Base url
         """
@@ -70,7 +73,7 @@ class Configuration(object):
         """
         self.logger["package_logger"] = logging.getLogger("hubspot.cms.domains")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
-        self.logger_format = "%(asctime)s %(levelname)s %(message)s"
+        self.logger_format = '%(asctime)s %(levelname)s %(message)s'
         """Log format
         """
         self.logger_stream_handler = None
@@ -118,7 +121,7 @@ class Configuration(object):
         self.proxy_headers = None
         """Proxy headers
         """
-        self.safe_chars_for_path_param = ""
+        self.safe_chars_for_path_param = ''
         """Safe chars for path_param
         """
         self.retries = None
@@ -233,7 +236,9 @@ class Configuration(object):
 
         :return: The token for basic HTTP authentication.
         """
-        return urllib3.util.make_headers(basic_auth=self.username + ":" + self.password).get("authorization")
+        return urllib3.util.make_headers(
+            basic_auth=self.username + ':' + self.password
+        ).get('authorization')
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -241,8 +246,20 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
-            "hapikey": {"type": "api_key", "in": "query", "key": "hapikey", "value": self.get_api_key_with_prefix("hapikey")},
-            "oauth2": {"type": "oauth2", "in": "header", "key": "Authorization", "value": "Bearer " + self.access_token},
+            'hapikey':
+                {
+                    'type': 'api_key',
+                    'in': 'query',
+                    'key': 'hapikey',
+                    'value': self.get_api_key_with_prefix('hapikey')
+                },
+            'oauth2':
+                {
+                    'type': 'oauth2',
+                    'in': 'header',
+                    'key': 'Authorization',
+                    'value': 'Bearer ' + self.access_token
+                },
         }
 
     def to_debug_report(self):
@@ -250,7 +267,12 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        return "Python SDK Debug Report:\n" "OS: {env}\n" "Python Version: {pyversion}\n" "Version of the API: v3\n" "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
+        return "Python SDK Debug Report:\n"\
+               "OS: {env}\n"\
+               "Python Version: {pyversion}\n"\
+               "Version of the API: v3\n"\
+               "SDK Package Version: 1.0.0".\
+               format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
         """Gets an array of host settings
@@ -259,8 +281,8 @@ class Configuration(object):
         """
         return [
             {
-                "url": "https://api.hubapi.com/",
-                "description": "No description provided",
+                'url': "https://api.hubapi.com/",
+                'description': "No description provided",
             }
         ]
 
@@ -275,24 +297,30 @@ class Configuration(object):
 
         # check array index out of bound
         if index < 0 or index >= len(servers):
-            raise ValueError("Invalid index {} when selecting the host settings. Must be less than {}".format(index, len(servers)))  # noqa: E501
+            raise ValueError(
+                "Invalid index {} when selecting the host settings. Must be less than {}"  # noqa: E501
+                .format(index, len(servers)))
 
         server = servers[index]
-        url = server["url"]
+        url = server['url']
 
         # go through variable and assign a value
-        for variable_name in server["variables"]:
+        for variable_name in server['variables']:
             if variable_name in variables:
-                if variables[variable_name] in server["variables"][variable_name]["enum_values"]:
-                    url = url.replace("{" + variable_name + "}", variables[variable_name])
+                if variables[variable_name] in server['variables'][
+                        variable_name]['enum_values']:
+                    url = url.replace("{" + variable_name + "}",
+                                      variables[variable_name])
                 else:
                     raise ValueError(
-                        "The variable `{}` in the host URL has invalid value {}. Must be {}.".format(  # noqa: E501
-                            variable_name, variables[variable_name], server["variables"][variable_name]["enum_values"]
-                        )
-                    )
+                        "The variable `{}` in the host URL has invalid value {}. Must be {}."  # noqa: E501
+                        .format(
+                            variable_name, variables[variable_name],
+                            server['variables'][variable_name]['enum_values']))
             else:
                 # use default value
-                url = url.replace("{" + variable_name + "}", server["variables"][variable_name]["default_value"])
+                url = url.replace(
+                    "{" + variable_name + "}",
+                    server['variables'][variable_name]['default_value'])
 
         return url

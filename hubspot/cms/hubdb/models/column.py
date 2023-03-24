@@ -33,54 +33,40 @@ class Column(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "label": "str",
-        "id": "str",
-        "width": "int",
-        "foreign_table_id": "int",
-        "foreign_column_id": "int",
-        "foreign_ids": "list[ForeignId]",
-        "foreign_ids_by_id": "dict(str, ForeignId)",
-        "foreign_ids_by_name": "dict(str, ForeignId)",
-        "type": "str",
-        "option_count": "int",
-        "archived": "bool",
-        "options": "list[Option]",
+        'name': 'str',
+        'label': 'str',
+        'id': 'str',
+        'deleted': 'bool',
+        'options': 'list[Option]',
+        'width': 'int',
+        'foreign_table_id': 'int',
+        'foreign_column_id': 'int',
+        'description': 'str',
+        'foreign_ids': 'list[ForeignId]',
+        'type': 'str',
+        'foreign_ids_by_name': 'dict(str, ForeignId)',
+        'foreign_ids_by_id': 'dict(str, ForeignId)',
+        'option_count': 'int'
     }
 
     attribute_map = {
-        "name": "name",
-        "label": "label",
-        "id": "id",
-        "width": "width",
-        "foreign_table_id": "foreignTableId",
-        "foreign_column_id": "foreignColumnId",
-        "foreign_ids": "foreignIds",
-        "foreign_ids_by_id": "foreignIdsById",
-        "foreign_ids_by_name": "foreignIdsByName",
-        "type": "type",
-        "option_count": "optionCount",
-        "archived": "archived",
-        "options": "options",
+        'name': 'name',
+        'label': 'label',
+        'id': 'id',
+        'deleted': 'deleted',
+        'options': 'options',
+        'width': 'width',
+        'foreign_table_id': 'foreignTableId',
+        'foreign_column_id': 'foreignColumnId',
+        'description': 'description',
+        'foreign_ids': 'foreignIds',
+        'type': 'type',
+        'foreign_ids_by_name': 'foreignIdsByName',
+        'foreign_ids_by_id': 'foreignIdsById',
+        'option_count': 'optionCount'
     }
 
-    def __init__(
-        self,
-        name=None,
-        label=None,
-        id=None,
-        width=None,
-        foreign_table_id=None,
-        foreign_column_id=None,
-        foreign_ids=None,
-        foreign_ids_by_id=None,
-        foreign_ids_by_name=None,
-        type=None,
-        option_count=None,
-        archived=None,
-        options=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, name=None, label=None, id=None, deleted=None, options=None, width=None, foreign_table_id=None, foreign_column_id=None, description=None, foreign_ids=None, type=None, foreign_ids_by_name=None, foreign_ids_by_id=None, option_count=None, local_vars_configuration=None):  # noqa: E501
         """Column - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -89,41 +75,44 @@ class Column(object):
         self._name = None
         self._label = None
         self._id = None
+        self._deleted = None
+        self._options = None
         self._width = None
         self._foreign_table_id = None
         self._foreign_column_id = None
+        self._description = None
         self._foreign_ids = None
-        self._foreign_ids_by_id = None
-        self._foreign_ids_by_name = None
         self._type = None
+        self._foreign_ids_by_name = None
+        self._foreign_ids_by_id = None
         self._option_count = None
-        self._archived = None
-        self._options = None
         self.discriminator = None
 
         self.name = name
         self.label = label
         if id is not None:
             self.id = id
+        if deleted is not None:
+            self.deleted = deleted
+        if options is not None:
+            self.options = options
         if width is not None:
             self.width = width
         if foreign_table_id is not None:
             self.foreign_table_id = foreign_table_id
         if foreign_column_id is not None:
             self.foreign_column_id = foreign_column_id
+        if description is not None:
+            self.description = description
         if foreign_ids is not None:
             self.foreign_ids = foreign_ids
-        if foreign_ids_by_id is not None:
-            self.foreign_ids_by_id = foreign_ids_by_id
+        self.type = type
         if foreign_ids_by_name is not None:
             self.foreign_ids_by_name = foreign_ids_by_name
-        self.type = type
+        if foreign_ids_by_id is not None:
+            self.foreign_ids_by_id = foreign_ids_by_id
         if option_count is not None:
             self.option_count = option_count
-        if archived is not None:
-            self.archived = archived
-        if options is not None:
-            self.options = options
 
     @property
     def name(self):
@@ -199,6 +188,50 @@ class Column(object):
         self._id = id
 
     @property
+    def deleted(self):
+        """Gets the deleted of this Column.  # noqa: E501
+
+
+        :return: The deleted of this Column.  # noqa: E501
+        :rtype: bool
+        """
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self, deleted):
+        """Sets the deleted of this Column.
+
+
+        :param deleted: The deleted of this Column.  # noqa: E501
+        :type: bool
+        """
+
+        self._deleted = deleted
+
+    @property
+    def options(self):
+        """Gets the options of this Column.  # noqa: E501
+
+        Options to choose for select and multi-select columns  # noqa: E501
+
+        :return: The options of this Column.  # noqa: E501
+        :rtype: list[Option]
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this Column.
+
+        Options to choose for select and multi-select columns  # noqa: E501
+
+        :param options: The options of this Column.  # noqa: E501
+        :type: list[Option]
+        """
+
+        self._options = options
+
+    @property
     def width(self):
         """Gets the width of this Column.  # noqa: E501
 
@@ -268,6 +301,27 @@ class Column(object):
         self._foreign_column_id = foreign_column_id
 
     @property
+    def description(self):
+        """Gets the description of this Column.  # noqa: E501
+
+
+        :return: The description of this Column.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this Column.
+
+
+        :param description: The description of this Column.  # noqa: E501
+        :type: str
+        """
+
+        self._description = description
+
+    @property
     def foreign_ids(self):
         """Gets the foreign_ids of this Column.  # noqa: E501
 
@@ -291,27 +345,35 @@ class Column(object):
         self._foreign_ids = foreign_ids
 
     @property
-    def foreign_ids_by_id(self):
-        """Gets the foreign_ids_by_id of this Column.  # noqa: E501
+    def type(self):
+        """Gets the type of this Column.  # noqa: E501
 
-        Foreign ids  # noqa: E501
+        Type of the column  # noqa: E501
 
-        :return: The foreign_ids_by_id of this Column.  # noqa: E501
-        :rtype: dict(str, ForeignId)
+        :return: The type of this Column.  # noqa: E501
+        :rtype: str
         """
-        return self._foreign_ids_by_id
+        return self._type
 
-    @foreign_ids_by_id.setter
-    def foreign_ids_by_id(self, foreign_ids_by_id):
-        """Sets the foreign_ids_by_id of this Column.
+    @type.setter
+    def type(self, type):
+        """Sets the type of this Column.
 
-        Foreign ids  # noqa: E501
+        Type of the column  # noqa: E501
 
-        :param foreign_ids_by_id: The foreign_ids_by_id of this Column.  # noqa: E501
-        :type: dict(str, ForeignId)
+        :param type: The type of this Column.  # noqa: E501
+        :type: str
         """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["NULL", "TEXT", "NUMBER", "URL", "IMAGE", "SELECT", "MULTISELECT", "BOOLEAN", "LOCATION", "DATE", "DATETIME", "CURRENCY", "RICHTEXT", "FOREIGN_ID", "VIDEO", "CTA", "FILE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
 
-        self._foreign_ids_by_id = foreign_ids_by_id
+        self._type = type
 
     @property
     def foreign_ids_by_name(self):
@@ -337,49 +399,27 @@ class Column(object):
         self._foreign_ids_by_name = foreign_ids_by_name
 
     @property
-    def type(self):
-        """Gets the type of this Column.  # noqa: E501
+    def foreign_ids_by_id(self):
+        """Gets the foreign_ids_by_id of this Column.  # noqa: E501
 
-        Type of the column  # noqa: E501
+        Foreign ids  # noqa: E501
 
-        :return: The type of this Column.  # noqa: E501
-        :rtype: str
+        :return: The foreign_ids_by_id of this Column.  # noqa: E501
+        :rtype: dict(str, ForeignId)
         """
-        return self._type
+        return self._foreign_ids_by_id
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this Column.
+    @foreign_ids_by_id.setter
+    def foreign_ids_by_id(self, foreign_ids_by_id):
+        """Sets the foreign_ids_by_id of this Column.
 
-        Type of the column  # noqa: E501
+        Foreign ids  # noqa: E501
 
-        :param type: The type of this Column.  # noqa: E501
-        :type: str
+        :param foreign_ids_by_id: The foreign_ids_by_id of this Column.  # noqa: E501
+        :type: dict(str, ForeignId)
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "NULL",
-            "TEXT",
-            "NUMBER",
-            "URL",
-            "IMAGE",
-            "SELECT",
-            "MULTISELECT",
-            "BOOLEAN",
-            "LOCATION",
-            "DATE",
-            "DATETIME",
-            "CURRENCY",
-            "RICHTEXT",
-            "FOREIGN_ID",
-            "VIDEO",
-            "CTA",
-        ]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
-        self._type = type
+        self._foreign_ids_by_id = foreign_ids_by_id
 
     @property
     def option_count(self):
@@ -404,52 +444,6 @@ class Column(object):
 
         self._option_count = option_count
 
-    @property
-    def archived(self):
-        """Gets the archived of this Column.  # noqa: E501
-
-        Specifies whether the column is archived  # noqa: E501
-
-        :return: The archived of this Column.  # noqa: E501
-        :rtype: bool
-        """
-        return self._archived
-
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this Column.
-
-        Specifies whether the column is archived  # noqa: E501
-
-        :param archived: The archived of this Column.  # noqa: E501
-        :type: bool
-        """
-
-        self._archived = archived
-
-    @property
-    def options(self):
-        """Gets the options of this Column.  # noqa: E501
-
-        Options to choose for select and multi-select columns  # noqa: E501
-
-        :return: The options of this Column.  # noqa: E501
-        :rtype: list[Option]
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this Column.
-
-        Options to choose for select and multi-select columns  # noqa: E501
-
-        :param options: The options of this Column.  # noqa: E501
-        :type: list[Option]
-        """
-
-        self._options = options
-
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -457,11 +451,18 @@ class Column(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

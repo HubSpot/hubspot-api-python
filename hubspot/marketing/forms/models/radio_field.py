@@ -33,48 +33,34 @@ class RadioField(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "field_type": "str",
-        "object_type_id": "str",
-        "name": "str",
-        "label": "str",
-        "description": "str",
-        "required": "bool",
-        "hidden": "bool",
-        "dependent_fields": "list[DependentField]",
-        "default_values": "list[str]",
-        "options": "list[EnumeratedFieldOption]",
-        "placeholder": "str",
+        'field_type': 'str',
+        'object_type_id': 'str',
+        'name': 'str',
+        'label': 'str',
+        'description': 'str',
+        'required': 'bool',
+        'hidden': 'bool',
+        'dependent_fields': 'list[DependentField]',
+        'default_values': 'list[str]',
+        'options': 'list[EnumeratedFieldOption]',
+        'placeholder': 'str'
     }
 
     attribute_map = {
-        "field_type": "fieldType",
-        "object_type_id": "objectTypeId",
-        "name": "name",
-        "label": "label",
-        "description": "description",
-        "required": "required",
-        "hidden": "hidden",
-        "dependent_fields": "dependentFields",
-        "default_values": "defaultValues",
-        "options": "options",
-        "placeholder": "placeholder",
+        'field_type': 'fieldType',
+        'object_type_id': 'objectTypeId',
+        'name': 'name',
+        'label': 'label',
+        'description': 'description',
+        'required': 'required',
+        'hidden': 'hidden',
+        'dependent_fields': 'dependentFields',
+        'default_values': 'defaultValues',
+        'options': 'options',
+        'placeholder': 'placeholder'
     }
 
-    def __init__(
-        self,
-        field_type="radio",
-        object_type_id=None,
-        name=None,
-        label=None,
-        description=None,
-        required=None,
-        hidden=None,
-        dependent_fields=None,
-        default_values=None,
-        options=None,
-        placeholder=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, field_type='radio', object_type_id=None, name=None, label=None, description=None, required=None, hidden=None, dependent_fields=None, default_values=None, options=None, placeholder=None, local_vars_configuration=None):  # noqa: E501
         """RadioField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -139,7 +125,10 @@ class RadioField(object):
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
         allowed_values = ["radio"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and field_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `field_type` ({0}), must be one of {1}".format(field_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `field_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(field_type, allowed_values)
+            )
 
         self._field_type = field_type
 
@@ -380,11 +369,18 @@ class RadioField(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

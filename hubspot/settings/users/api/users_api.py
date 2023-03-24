@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.settings.users.api_client import ApiClient
-from hubspot.settings.users.exceptions import ApiTypeError, ApiValueError
+from hubspot.settings.users.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class UsersApi(object):
@@ -56,7 +59,7 @@ class UsersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(user_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, user_id, **kwargs):  # noqa: E501
@@ -87,30 +90,34 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["user_id", "id_property"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['user_id', 'id_property']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'user_id' is set
-        if self.api_client.client_side_validation and ("user_id" not in local_var_params or local_var_params["user_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "user_id" in local_var_params:
-            path_params["userId"] = local_var_params["user_id"]  # noqa: E501
+        if 'user_id' in local_var_params:
+            path_params['userId'] = local_var_params['user_id']  # noqa: E501
 
         query_params = []
-        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
+        if 'id_property' in local_var_params and local_var_params['id_property'] is not None:  # noqa: E501
+            query_params.append(('idProperty', local_var_params['id_property']))  # noqa: E501
 
         header_params = {}
 
@@ -119,14 +126,14 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ['oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/settings/v3/users/{userId}",
-            "DELETE",
+            '/settings/v3/users/{userId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -135,12 +142,11 @@ class UsersApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, user_provision_request, **kwargs):  # noqa: E501
         """Adds a user  # noqa: E501
@@ -164,7 +170,7 @@ class UsersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(user_provision_request, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, user_provision_request, **kwargs):  # noqa: E501
@@ -194,19 +200,23 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["user_provision_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['user_provision_request']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'user_provision_request' is set
-        if self.api_client.client_side_validation and ("user_provision_request" not in local_var_params or local_var_params["user_provision_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('user_provision_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_provision_request'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_provision_request` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -221,34 +231,34 @@ class UsersApi(object):
         local_var_files = {}
 
         body_params = None
-        if "user_provision_request" in local_var_params:
-            body_params = local_var_params["user_provision_request"]
+        if 'user_provision_request' in local_var_params:
+            body_params = local_var_params['user_provision_request']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ['oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/settings/v3/users/",
-            "POST",
+            '/settings/v3/users/', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicUser",  # noqa: E501
+            response_type='PublicUser',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, user_id, **kwargs):  # noqa: E501
         """Retrieves a user  # noqa: E501
@@ -273,7 +283,7 @@ class UsersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(user_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, user_id, **kwargs):  # noqa: E501
@@ -304,30 +314,34 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["user_id", "id_property"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['user_id', 'id_property']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_id" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'user_id' is set
-        if self.api_client.client_side_validation and ("user_id" not in local_var_params or local_var_params["user_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "user_id" in local_var_params:
-            path_params["userId"] = local_var_params["user_id"]  # noqa: E501
+        if 'user_id' in local_var_params:
+            path_params['userId'] = local_var_params['user_id']  # noqa: E501
 
         query_params = []
-        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
+        if 'id_property' in local_var_params and local_var_params['id_property'] is not None:  # noqa: E501
+            query_params.append(('idProperty', local_var_params['id_property']))  # noqa: E501
 
         header_params = {}
 
@@ -336,28 +350,27 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ['oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/settings/v3/users/{userId}",
-            "GET",
+            '/settings/v3/users/{userId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicUser",  # noqa: E501
+            response_type='PublicUser',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_page(self, **kwargs):  # noqa: E501
         """Retrieves a list of users from an account  # noqa: E501
@@ -382,7 +395,7 @@ class UsersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -413,27 +426,30 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["limit", "after"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['limit', 'after']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
-            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
+            query_params.append(('after', local_var_params['after']))  # noqa: E501
 
         header_params = {}
 
@@ -442,28 +458,27 @@ class UsersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ['oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/settings/v3/users/",
-            "GET",
+            '/settings/v3/users/', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponsePublicUserForwardPaging",  # noqa: E501
+            response_type='CollectionResponsePublicUserForwardPaging',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def replace(self, user_id, public_user_update, **kwargs):  # noqa: E501
         """Modifies a user  # noqa: E501
@@ -489,7 +504,7 @@ class UsersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.replace_with_http_info(user_id, public_user_update, **kwargs)  # noqa: E501
 
     def replace_with_http_info(self, user_id, public_user_update, **kwargs):  # noqa: E501
@@ -521,33 +536,38 @@ class UsersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["user_id", "public_user_update", "id_property"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['user_id', 'public_user_update', 'id_property']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method replace" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method replace" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'user_id' is set
-        if self.api_client.client_side_validation and ("user_id" not in local_var_params or local_var_params["user_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'public_user_update' is set
-        if self.api_client.client_side_validation and ("public_user_update" not in local_var_params or local_var_params["public_user_update"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('public_user_update' not in local_var_params or  # noqa: E501
+                                                        local_var_params['public_user_update'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `public_user_update` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "user_id" in local_var_params:
-            path_params["userId"] = local_var_params["user_id"]  # noqa: E501
+        if 'user_id' in local_var_params:
+            path_params['userId'] = local_var_params['user_id']  # noqa: E501
 
         query_params = []
-        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
+        if 'id_property' in local_var_params and local_var_params['id_property'] is not None:  # noqa: E501
+            query_params.append(('idProperty', local_var_params['id_property']))  # noqa: E501
 
         header_params = {}
 
@@ -555,31 +575,31 @@ class UsersApi(object):
         local_var_files = {}
 
         body_params = None
-        if "public_user_update" in local_var_params:
-            body_params = local_var_params["public_user_update"]
+        if 'public_user_update' in local_var_params:
+            body_params = local_var_params['public_user_update']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
+        auth_settings = ['oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/settings/v3/users/{userId}",
-            "PUT",
+            '/settings/v3/users/{userId}', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicUser",  # noqa: E501
+            response_type='PublicUser',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

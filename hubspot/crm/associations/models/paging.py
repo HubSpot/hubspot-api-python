@@ -32,21 +32,30 @@ class Paging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"next": "NextPage"}
+    openapi_types = {
+        'next': 'NextPage',
+        'prev': 'PreviousPage'
+    }
 
-    attribute_map = {"next": "next"}
+    attribute_map = {
+        'next': 'next',
+        'prev': 'prev'
+    }
 
-    def __init__(self, next=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, next=None, prev=None, local_vars_configuration=None):  # noqa: E501
         """Paging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._next = None
+        self._prev = None
         self.discriminator = None
 
         if next is not None:
             self.next = next
+        if prev is not None:
+            self.prev = prev
 
     @property
     def next(self):
@@ -69,6 +78,27 @@ class Paging(object):
 
         self._next = next
 
+    @property
+    def prev(self):
+        """Gets the prev of this Paging.  # noqa: E501
+
+
+        :return: The prev of this Paging.  # noqa: E501
+        :rtype: PreviousPage
+        """
+        return self._prev
+
+    @prev.setter
+    def prev(self, prev):
+        """Sets the prev of this Paging.
+
+
+        :param prev: The prev of this Paging.  # noqa: E501
+        :type: PreviousPage
+        """
+
+        self._prev = prev
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -76,11 +106,18 @@ class Paging(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.files.files.api_client import ApiClient
-from hubspot.files.files.exceptions import ApiTypeError, ApiValueError
+from hubspot.files.files.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class FoldersApi(object):
@@ -55,7 +58,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(folder_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, folder_id, **kwargs):  # noqa: E501
@@ -85,28 +88,32 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ("folder_id" not in local_var_params or local_var_params["folder_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `archive`")  # noqa: E501
 
-        if self.api_client.client_side_validation and "folder_id" in local_var_params and not re.search(r"\d+", local_var_params["folder_id"]):  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_id' in local_var_params and not re.search(r'\d+', local_var_params['folder_id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `folder_id` when calling `archive`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if "folder_id" in local_var_params:
-            path_params["folderId"] = local_var_params["folder_id"]  # noqa: E501
+        if 'folder_id' in local_var_params:
+            path_params['folderId'] = local_var_params['folder_id']  # noqa: E501
 
         query_params = []
 
@@ -117,14 +124,14 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/{folderId}",
-            "DELETE",
+            '/files/v3/folders/{folderId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -133,12 +140,11 @@ class FoldersApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def archive_by_path(self, folder_path, **kwargs):  # noqa: E501
         """Delete folder.  # noqa: E501
@@ -162,7 +168,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_by_path_with_http_info(folder_path, **kwargs)  # noqa: E501
 
     def archive_by_path_with_http_info(self, folder_path, **kwargs):  # noqa: E501
@@ -192,28 +198,32 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_path"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_path']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive_by_path" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive_by_path" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_path' is set
-        if self.api_client.client_side_validation and ("folder_path" not in local_var_params or local_var_params["folder_path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_path` when calling `archive_by_path`")  # noqa: E501
 
-        if self.api_client.client_side_validation and "folder_path" in local_var_params and not re.search(r".+", local_var_params["folder_path"]):  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_path' in local_var_params and not re.search(r'.+', local_var_params['folder_path']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `folder_path` when calling `archive_by_path`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if "folder_path" in local_var_params:
-            path_params["folderPath"] = local_var_params["folder_path"]  # noqa: E501
+        if 'folder_path' in local_var_params:
+            path_params['folderPath'] = local_var_params['folder_path']  # noqa: E501
 
         query_params = []
 
@@ -224,14 +234,14 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/{folderPath}",
-            "DELETE",
+            '/files/v3/folders/{folderPath}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -240,12 +250,11 @@ class FoldersApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def check_update_status(self, task_id, **kwargs):  # noqa: E501
         """Check folder update status.  # noqa: E501
@@ -269,7 +278,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.check_update_status_with_http_info(task_id, **kwargs)  # noqa: E501
 
     def check_update_status_with_http_info(self, task_id, **kwargs):  # noqa: E501
@@ -299,26 +308,30 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["task_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['task_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method check_update_status" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method check_update_status" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'task_id' is set
-        if self.api_client.client_side_validation and ("task_id" not in local_var_params or local_var_params["task_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('task_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['task_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `task_id` when calling `check_update_status`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "task_id" in local_var_params:
-            path_params["taskId"] = local_var_params["task_id"]  # noqa: E501
+        if 'task_id' in local_var_params:
+            path_params['taskId'] = local_var_params['task_id']  # noqa: E501
 
         query_params = []
 
@@ -329,28 +342,27 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/update/async/tasks/{taskId}/status",
-            "GET",
+            '/files/v3/folders/update/async/tasks/{taskId}/status', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="FolderActionResponse",  # noqa: E501
+            response_type='FolderActionResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, folder_input, **kwargs):  # noqa: E501
         """Create folder.  # noqa: E501
@@ -374,7 +386,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(folder_input, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, folder_input, **kwargs):  # noqa: E501
@@ -404,19 +416,23 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_input']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_input' is set
-        if self.api_client.client_side_validation and ("folder_input" not in local_var_params or local_var_params["folder_input"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_input' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_input'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_input` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -431,34 +447,34 @@ class FoldersApi(object):
         local_var_files = {}
 
         body_params = None
-        if "folder_input" in local_var_params:
-            body_params = local_var_params["folder_input"]
+        if 'folder_input' in local_var_params:
+            body_params = local_var_params['folder_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders",
-            "POST",
+            '/files/v3/folders', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Folder",  # noqa: E501
+            response_type='Folder',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def do_search(self, **kwargs):  # noqa: E501
         """Search folders  # noqa: E501
@@ -496,7 +512,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.do_search_with_http_info(**kwargs)  # noqa: E501
 
     def do_search_with_http_info(self, **kwargs):  # noqa: E501
@@ -540,71 +556,58 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = [
-            "properties",
-            "after",
-            "before",
-            "limit",
-            "sort",
-            "id",
-            "created_at",
-            "created_at_lte",
-            "created_at_gte",
-            "updated_at",
-            "updated_at_lte",
-            "updated_at_gte",
-            "name",
-            "path",
-            "parent_folder_id",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['properties', 'after', 'before', 'limit', 'sort', 'id', 'created_at', 'created_at_lte', 'created_at_gte', 'updated_at', 'updated_at_lte', 'updated_at_gte', 'name', 'path', 'parent_folder_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method do_search" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method do_search" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
-            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
-            collection_formats["properties"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
-            query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "before" in local_var_params and local_var_params["before"] is not None:  # noqa: E501
-            query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
-            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
-            collection_formats["sort"] = "multi"  # noqa: E501
-        if "id" in local_var_params and local_var_params["id"] is not None:  # noqa: E501
-            query_params.append(("id", local_var_params["id"]))  # noqa: E501
-        if "created_at" in local_var_params and local_var_params["created_at"] is not None:  # noqa: E501
-            query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
-        if "created_at_lte" in local_var_params and local_var_params["created_at_lte"] is not None:  # noqa: E501
-            query_params.append(("createdAtLte", local_var_params["created_at_lte"]))  # noqa: E501
-        if "created_at_gte" in local_var_params and local_var_params["created_at_gte"] is not None:  # noqa: E501
-            query_params.append(("createdAtGte", local_var_params["created_at_gte"]))  # noqa: E501
-        if "updated_at" in local_var_params and local_var_params["updated_at"] is not None:  # noqa: E501
-            query_params.append(("updatedAt", local_var_params["updated_at"]))  # noqa: E501
-        if "updated_at_lte" in local_var_params and local_var_params["updated_at_lte"] is not None:  # noqa: E501
-            query_params.append(("updatedAtLte", local_var_params["updated_at_lte"]))  # noqa: E501
-        if "updated_at_gte" in local_var_params and local_var_params["updated_at_gte"] is not None:  # noqa: E501
-            query_params.append(("updatedAtGte", local_var_params["updated_at_gte"]))  # noqa: E501
-        if "name" in local_var_params and local_var_params["name"] is not None:  # noqa: E501
-            query_params.append(("name", local_var_params["name"]))  # noqa: E501
-        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
-            query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if "parent_folder_id" in local_var_params and local_var_params["parent_folder_id"] is not None:  # noqa: E501
-            query_params.append(("parentFolderId", local_var_params["parent_folder_id"]))  # noqa: E501
+        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
+            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
+            collection_formats['properties'] = 'multi'  # noqa: E501
+        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
+            query_params.append(('after', local_var_params['after']))  # noqa: E501
+        if 'before' in local_var_params and local_var_params['before'] is not None:  # noqa: E501
+            query_params.append(('before', local_var_params['before']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+            collection_formats['sort'] = 'multi'  # noqa: E501
+        if 'id' in local_var_params and local_var_params['id'] is not None:  # noqa: E501
+            query_params.append(('id', local_var_params['id']))  # noqa: E501
+        if 'created_at' in local_var_params and local_var_params['created_at'] is not None:  # noqa: E501
+            query_params.append(('createdAt', local_var_params['created_at']))  # noqa: E501
+        if 'created_at_lte' in local_var_params and local_var_params['created_at_lte'] is not None:  # noqa: E501
+            query_params.append(('createdAtLte', local_var_params['created_at_lte']))  # noqa: E501
+        if 'created_at_gte' in local_var_params and local_var_params['created_at_gte'] is not None:  # noqa: E501
+            query_params.append(('createdAtGte', local_var_params['created_at_gte']))  # noqa: E501
+        if 'updated_at' in local_var_params and local_var_params['updated_at'] is not None:  # noqa: E501
+            query_params.append(('updatedAt', local_var_params['updated_at']))  # noqa: E501
+        if 'updated_at_lte' in local_var_params and local_var_params['updated_at_lte'] is not None:  # noqa: E501
+            query_params.append(('updatedAtLte', local_var_params['updated_at_lte']))  # noqa: E501
+        if 'updated_at_gte' in local_var_params and local_var_params['updated_at_gte'] is not None:  # noqa: E501
+            query_params.append(('updatedAtGte', local_var_params['updated_at_gte']))  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
+        if 'path' in local_var_params and local_var_params['path'] is not None:  # noqa: E501
+            query_params.append(('path', local_var_params['path']))  # noqa: E501
+        if 'parent_folder_id' in local_var_params and local_var_params['parent_folder_id'] is not None:  # noqa: E501
+            query_params.append(('parentFolderId', local_var_params['parent_folder_id']))  # noqa: E501
 
         header_params = {}
 
@@ -613,28 +616,27 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/search",
-            "GET",
+            '/files/v3/folders/search', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseFolder",  # noqa: E501
+            response_type='CollectionResponseFolder',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, folder_id, **kwargs):  # noqa: E501
         """Get folder  # noqa: E501
@@ -659,7 +661,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(folder_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, folder_id, **kwargs):  # noqa: E501
@@ -690,33 +692,37 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_id", "properties"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_id', 'properties']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_id" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_id' is set
-        if self.api_client.client_side_validation and ("folder_id" not in local_var_params or local_var_params["folder_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_id` when calling `get_by_id`")  # noqa: E501
 
-        if self.api_client.client_side_validation and "folder_id" in local_var_params and not re.search(r"\d+", local_var_params["folder_id"]):  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_id' in local_var_params and not re.search(r'\d+', local_var_params['folder_id']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `folder_id` when calling `get_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if "folder_id" in local_var_params:
-            path_params["folderId"] = local_var_params["folder_id"]  # noqa: E501
+        if 'folder_id' in local_var_params:
+            path_params['folderId'] = local_var_params['folder_id']  # noqa: E501
 
         query_params = []
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
-            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
-            collection_formats["properties"] = "multi"  # noqa: E501
+        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
+            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
+            collection_formats['properties'] = 'multi'  # noqa: E501
 
         header_params = {}
 
@@ -725,28 +731,27 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/{folderId}",
-            "GET",
+            '/files/v3/folders/{folderId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Folder",  # noqa: E501
+            response_type='Folder',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_path(self, folder_path, **kwargs):  # noqa: E501
         """Get folder.  # noqa: E501
@@ -771,7 +776,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_path_with_http_info(folder_path, **kwargs)  # noqa: E501
 
     def get_by_path_with_http_info(self, folder_path, **kwargs):  # noqa: E501
@@ -802,33 +807,37 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_path", "properties"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_path', 'properties']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_path" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_path" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_path' is set
-        if self.api_client.client_side_validation and ("folder_path" not in local_var_params or local_var_params["folder_path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_path` when calling `get_by_path`")  # noqa: E501
 
-        if self.api_client.client_side_validation and "folder_path" in local_var_params and not re.search(r".+", local_var_params["folder_path"]):  # noqa: E501
+        if self.api_client.client_side_validation and 'folder_path' in local_var_params and not re.search(r'.+', local_var_params['folder_path']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `folder_path` when calling `get_by_path`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if "folder_path" in local_var_params:
-            path_params["folderPath"] = local_var_params["folder_path"]  # noqa: E501
+        if 'folder_path' in local_var_params:
+            path_params['folderPath'] = local_var_params['folder_path']  # noqa: E501
 
         query_params = []
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
-            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
-            collection_formats["properties"] = "multi"  # noqa: E501
+        if 'properties' in local_var_params and local_var_params['properties'] is not None:  # noqa: E501
+            query_params.append(('properties', local_var_params['properties']))  # noqa: E501
+            collection_formats['properties'] = 'multi'  # noqa: E501
 
         header_params = {}
 
@@ -837,28 +846,27 @@ class FoldersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/{folderPath}",
-            "GET",
+            '/files/v3/folders/{folderPath}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Folder",  # noqa: E501
+            response_type='Folder',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update_properties(self, folder_update_input, **kwargs):  # noqa: E501
         """Update folder properties  # noqa: E501
@@ -882,7 +890,7 @@ class FoldersApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_properties_with_http_info(folder_update_input, **kwargs)  # noqa: E501
 
     def update_properties_with_http_info(self, folder_update_input, **kwargs):  # noqa: E501
@@ -912,19 +920,23 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_update_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['folder_update_input']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_properties" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_properties" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'folder_update_input' is set
-        if self.api_client.client_side_validation and ("folder_update_input" not in local_var_params or local_var_params["folder_update_input"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('folder_update_input' not in local_var_params or  # noqa: E501
+                                                        local_var_params['folder_update_input'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `folder_update_input` when calling `update_properties`")  # noqa: E501
 
         collection_formats = {}
@@ -939,31 +951,31 @@ class FoldersApi(object):
         local_var_files = {}
 
         body_params = None
-        if "folder_update_input" in local_var_params:
-            body_params = local_var_params["folder_update_input"]
+        if 'folder_update_input' in local_var_params:
+            body_params = local_var_params['folder_update_input']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/files/v3/folders/update/async",
-            "POST",
+            '/files/v3/folders/update/async', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="FolderUpdateTaskLocator",  # noqa: E501
+            response_type='FolderUpdateTaskLocator',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

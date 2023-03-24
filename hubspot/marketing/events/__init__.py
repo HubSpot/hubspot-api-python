@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.marketing.events.api.attendance_subscriber_state_changes_api import AttendanceSubscriberStateChangesApi
 from hubspot.marketing.events.api.marketing_events_external_api import MarketingEventsExternalApi
+from hubspot.marketing.events.api.search_api import SearchApi
 from hubspot.marketing.events.api.settings_external_api import SettingsExternalApi
 
 # import ApiClient
@@ -29,7 +30,6 @@ from hubspot.marketing.events.exceptions import ApiTypeError
 from hubspot.marketing.events.exceptions import ApiValueError
 from hubspot.marketing.events.exceptions import ApiKeyError
 from hubspot.marketing.events.exceptions import ApiException
-
 # import models into sdk package
 from hubspot.marketing.events.models.batch_input_marketing_event_create_request_params import BatchInputMarketingEventCreateRequestParams
 from hubspot.marketing.events.models.batch_input_marketing_event_email_subscriber import BatchInputMarketingEventEmailSubscriber
@@ -57,3 +57,4 @@ from hubspot.marketing.events.models.property_value import PropertyValue
 from hubspot.marketing.events.models.standard_error import StandardError
 from hubspot.marketing.events.models.subscriber_email_response import SubscriberEmailResponse
 from hubspot.marketing.events.models.subscriber_vid_response import SubscriberVidResponse
+

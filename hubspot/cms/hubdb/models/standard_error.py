@@ -33,17 +33,26 @@ class StandardError(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "status": "str",
-        "id": "str",
-        "category": "object",
-        "sub_category": "object",
-        "message": "str",
-        "errors": "list[ErrorDetail]",
-        "context": "dict(str, list[str])",
-        "links": "dict(str, str)",
+        'status': 'str',
+        'id': 'str',
+        'category': 'object',
+        'sub_category': 'object',
+        'message': 'str',
+        'errors': 'list[ErrorDetail]',
+        'context': 'dict(str, list[str])',
+        'links': 'dict(str, str)'
     }
 
-    attribute_map = {"status": "status", "id": "id", "category": "category", "sub_category": "subCategory", "message": "message", "errors": "errors", "context": "context", "links": "links"}
+    attribute_map = {
+        'status': 'status',
+        'id': 'id',
+        'category': 'category',
+        'sub_category': 'subCategory',
+        'message': 'message',
+        'errors': 'errors',
+        'context': 'context',
+        'links': 'links'
+    }
 
     def __init__(self, status=None, id=None, category=None, sub_category=None, message=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """StandardError - a model defined in OpenAPI"""  # noqa: E501
@@ -259,11 +268,18 @@ class StandardError(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

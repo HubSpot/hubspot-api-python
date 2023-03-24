@@ -33,54 +33,40 @@ class PropertyValue(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "value": "str",
-        "timestamp": "int",
-        "source_id": "str",
-        "source_label": "str",
-        "source": "str",
-        "selected_by_user": "bool",
-        "selected_by_user_timestamp": "int",
-        "source_vid": "list[int]",
-        "source_metadata": "str",
-        "request_id": "str",
-        "updated_by_user_id": "int",
-        "persistence_timestamp": "int",
+        'name': 'str',
+        'value': 'str',
+        'timestamp': 'int',
+        'source_id': 'str',
+        'source_label': 'str',
+        'source': 'str',
+        'selected_by_user': 'bool',
+        'selected_by_user_timestamp': 'int',
+        'source_vid': 'list[int]',
+        'source_metadata': 'str',
+        'request_id': 'str',
+        'updated_by_user_id': 'int',
+        'persistence_timestamp': 'int',
+        'use_timestamp_as_persistence_timestamp': 'bool'
     }
 
     attribute_map = {
-        "name": "name",
-        "value": "value",
-        "timestamp": "timestamp",
-        "source_id": "sourceId",
-        "source_label": "sourceLabel",
-        "source": "source",
-        "selected_by_user": "selectedByUser",
-        "selected_by_user_timestamp": "selectedByUserTimestamp",
-        "source_vid": "sourceVid",
-        "source_metadata": "sourceMetadata",
-        "request_id": "requestId",
-        "updated_by_user_id": "updatedByUserId",
-        "persistence_timestamp": "persistenceTimestamp",
+        'name': 'name',
+        'value': 'value',
+        'timestamp': 'timestamp',
+        'source_id': 'sourceId',
+        'source_label': 'sourceLabel',
+        'source': 'source',
+        'selected_by_user': 'selectedByUser',
+        'selected_by_user_timestamp': 'selectedByUserTimestamp',
+        'source_vid': 'sourceVid',
+        'source_metadata': 'sourceMetadata',
+        'request_id': 'requestId',
+        'updated_by_user_id': 'updatedByUserId',
+        'persistence_timestamp': 'persistenceTimestamp',
+        'use_timestamp_as_persistence_timestamp': 'useTimestampAsPersistenceTimestamp'
     }
 
-    def __init__(
-        self,
-        name=None,
-        value=None,
-        timestamp=None,
-        source_id=None,
-        source_label=None,
-        source=None,
-        selected_by_user=None,
-        selected_by_user_timestamp=None,
-        source_vid=None,
-        source_metadata=None,
-        request_id=None,
-        updated_by_user_id=None,
-        persistence_timestamp=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, name=None, value=None, timestamp=None, source_id=None, source_label=None, source=None, selected_by_user=None, selected_by_user_timestamp=None, source_vid=None, source_metadata=None, request_id=None, updated_by_user_id=None, persistence_timestamp=None, use_timestamp_as_persistence_timestamp=None, local_vars_configuration=None):  # noqa: E501
         """PropertyValue - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -99,6 +85,7 @@ class PropertyValue(object):
         self._request_id = None
         self._updated_by_user_id = None
         self._persistence_timestamp = None
+        self._use_timestamp_as_persistence_timestamp = None
         self.discriminator = None
 
         self.name = name
@@ -116,6 +103,8 @@ class PropertyValue(object):
             self.updated_by_user_id = updated_by_user_id
         if persistence_timestamp is not None:
             self.persistence_timestamp = persistence_timestamp
+        if use_timestamp_as_persistence_timestamp is not None:
+            self.use_timestamp_as_persistence_timestamp = use_timestamp_as_persistence_timestamp
 
     @property
     def name(self):
@@ -252,89 +241,12 @@ class PropertyValue(object):
         """
         if self.local_vars_configuration.client_side_validation and source is None:  # noqa: E501
             raise ValueError("Invalid value for `source`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "IMPORT",
-            "API",
-            "FORM",
-            "ANALYTICS",
-            "MIGRATION",
-            "SALESFORCE",
-            "INTEGRATION",
-            "CONTACTS_WEB",
-            "WAL_INCREMENTAL",
-            "TASK",
-            "EMAIL",
-            "WORKFLOWS",
-            "CALCULATED",
-            "SOCIAL",
-            "BATCH_UPDATE",
-            "SIGNALS",
-            "BIDEN",
-            "DEFAULT",
-            "COMPANIES",
-            "DEALS",
-            "ASSISTS",
-            "PRESENTATIONS",
-            "TALLY",
-            "SIDEKICK",
-            "CRM_UI",
-            "MERGE_CONTACTS",
-            "PORTAL_USER_ASSOCIATOR",
-            "INTEGRATIONS_PLATFORM",
-            "BCC_TO_CRM",
-            "FORWARD_TO_CRM",
-            "ENGAGEMENTS",
-            "SALES",
-            "HEISENBERG",
-            "LEADIN",
-            "GMAIL_INTEGRATION",
-            "ACADEMY",
-            "SALES_MESSAGES",
-            "AVATARS_SERVICE",
-            "MERGE_COMPANIES",
-            "SEQUENCES",
-            "COMPANY_FAMILIES",
-            "MOBILE_IOS",
-            "MOBILE_ANDROID",
-            "CONTACTS",
-            "ASSOCIATIONS",
-            "EXTENSION",
-            "SUCCESS",
-            "BOT",
-            "INTEGRATIONS_SYNC",
-            "AUTOMATION_PLATFORM",
-            "CONVERSATIONS",
-            "EMAIL_INTEGRATION",
-            "CONTENT_MEMBERSHIP",
-            "QUOTES",
-            "BET_ASSIGNMENT",
-            "QUOTAS",
-            "BET_CRM_CONNECTOR",
-            "MEETINGS",
-            "MERGE_OBJECTS",
-            "RECYCLING_BIN",
-            "ADS",
-            "AI_GROUP",
-            "COMMUNICATOR",
-            "SETTINGS",
-            "PROPERTY_SETTINGS",
-            "PIPELINE_SETTINGS",
-            "COMPANY_INSIGHTS",
-            "BEHAVIORAL_EVENTS",
-            "PAYMENTS",
-            "GOALS",
-            "PORTAL_OBJECT_SYNC",
-            "APPROVALS",
-            "FILE_MANAGER",
-            "MARKETPLACE",
-            "INTERNAL_PROCESSING",
-            "FORECASTING",
-            "SLACK_INTEGRATION",
-            "CRM_UI_BULK_ACTION",
-            "WORKFLOW_CONTACT_DELETE_ACTION",
-        ]  # noqa: E501
+        allowed_values = ["IMPORT", "API", "FORM", "ANALYTICS", "MIGRATION", "SALESFORCE", "INTEGRATION", "CONTACTS_WEB", "WAL_INCREMENTAL", "TASK", "EMAIL", "WORKFLOWS", "CALCULATED", "SOCIAL", "BATCH_UPDATE", "SIGNALS", "BIDEN", "DEFAULT", "COMPANIES", "DEALS", "ASSISTS", "PRESENTATIONS", "TALLY", "SIDEKICK", "CRM_UI", "MERGE_CONTACTS", "PORTAL_USER_ASSOCIATOR", "INTEGRATIONS_PLATFORM", "BCC_TO_CRM", "FORWARD_TO_CRM", "ENGAGEMENTS", "SALES", "HEISENBERG", "LEADIN", "GMAIL_INTEGRATION", "ACADEMY", "SALES_MESSAGES", "AVATARS_SERVICE", "MERGE_COMPANIES", "SEQUENCES", "COMPANY_FAMILIES", "MOBILE_IOS", "MOBILE_ANDROID", "CONTACTS", "ASSOCIATIONS", "EXTENSION", "SUCCESS", "BOT", "INTEGRATIONS_SYNC", "AUTOMATION_PLATFORM", "CONVERSATIONS", "EMAIL_INTEGRATION", "CONTENT_MEMBERSHIP", "QUOTES", "BET_ASSIGNMENT", "QUOTAS", "BET_CRM_CONNECTOR", "MEETINGS", "MERGE_OBJECTS", "RECYCLING_BIN", "ADS", "AI_GROUP", "COMMUNICATOR", "SETTINGS", "PROPERTY_SETTINGS", "PIPELINE_SETTINGS", "COMPANY_INSIGHTS", "BEHAVIORAL_EVENTS", "PAYMENTS", "GOALS", "PORTAL_OBJECT_SYNC", "APPROVALS", "FILE_MANAGER", "MARKETPLACE", "INTERNAL_PROCESSING", "FORECASTING", "SLACK_INTEGRATION", "CRM_UI_BULK_ACTION", "WORKFLOW_CONTACT_DELETE_ACTION"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and source not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `source` ({0}), must be one of {1}".format(source, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `source` ({0}), must be one of {1}"  # noqa: E501
+                .format(source, allowed_values)
+            )
 
         self._source = source
 
@@ -497,6 +409,27 @@ class PropertyValue(object):
 
         self._persistence_timestamp = persistence_timestamp
 
+    @property
+    def use_timestamp_as_persistence_timestamp(self):
+        """Gets the use_timestamp_as_persistence_timestamp of this PropertyValue.  # noqa: E501
+
+
+        :return: The use_timestamp_as_persistence_timestamp of this PropertyValue.  # noqa: E501
+        :rtype: bool
+        """
+        return self._use_timestamp_as_persistence_timestamp
+
+    @use_timestamp_as_persistence_timestamp.setter
+    def use_timestamp_as_persistence_timestamp(self, use_timestamp_as_persistence_timestamp):
+        """Sets the use_timestamp_as_persistence_timestamp of this PropertyValue.
+
+
+        :param use_timestamp_as_persistence_timestamp: The use_timestamp_as_persistence_timestamp of this PropertyValue.  # noqa: E501
+        :type: bool
+        """
+
+        self._use_timestamp_as_persistence_timestamp = use_timestamp_as_persistence_timestamp
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -504,11 +437,18 @@ class PropertyValue(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

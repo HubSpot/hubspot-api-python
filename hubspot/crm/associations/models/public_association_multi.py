@@ -32,11 +32,19 @@ class PublicAssociationMulti(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"_from": "PublicObjectId", "to": "list[AssociatedId]"}
+    openapi_types = {
+        '_from': 'PublicObjectId',
+        'to': 'list[AssociatedId]',
+        'paging': 'Paging'
+    }
 
-    attribute_map = {"_from": "from", "to": "to"}
+    attribute_map = {
+        '_from': 'from',
+        'to': 'to',
+        'paging': 'paging'
+    }
 
-    def __init__(self, _from=None, to=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, _from=None, to=None, paging=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationMulti - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -44,10 +52,13 @@ class PublicAssociationMulti(object):
 
         self.__from = None
         self._to = None
+        self._paging = None
         self.discriminator = None
 
         self._from = _from
         self.to = to
+        if paging is not None:
+            self.paging = paging
 
     @property
     def _from(self):
@@ -97,6 +108,27 @@ class PublicAssociationMulti(object):
 
         self._to = to
 
+    @property
+    def paging(self):
+        """Gets the paging of this PublicAssociationMulti.  # noqa: E501
+
+
+        :return: The paging of this PublicAssociationMulti.  # noqa: E501
+        :rtype: Paging
+        """
+        return self._paging
+
+    @paging.setter
+    def paging(self, paging):
+        """Sets the paging of this PublicAssociationMulti.
+
+
+        :param paging: The paging of this PublicAssociationMulti.  # noqa: E501
+        :type: Paging
+        """
+
+        self._paging = paging
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -104,11 +136,18 @@ class PublicAssociationMulti(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

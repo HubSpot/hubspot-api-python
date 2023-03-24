@@ -33,75 +33,52 @@ class Domain(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "domain": "str",
-        "primary_landing_page": "bool",
-        "primary_email": "bool",
-        "primary_blog_post": "bool",
-        "primary_site_page": "bool",
-        "primary_knowledge": "bool",
-        "secondary_to_domain": "str",
-        "is_resolving": "bool",
-        "manually_marked_as_resolving": "bool",
-        "is_ssl_enabled": "bool",
-        "is_ssl_only": "bool",
-        "is_used_for_blog_post": "bool",
-        "is_used_for_site_page": "bool",
-        "is_used_for_landing_page": "bool",
-        "is_used_for_email": "bool",
-        "is_used_for_knowledge": "bool",
-        "correct_cname": "str",
-        "created": "datetime",
-        "updated": "datetime",
+        'id': 'str',
+        'domain': 'str',
+        'primary_landing_page': 'bool',
+        'primary_email': 'bool',
+        'primary_blog_post': 'bool',
+        'primary_site_page': 'bool',
+        'primary_knowledge': 'bool',
+        'secondary_to_domain': 'str',
+        'is_resolving': 'bool',
+        'manually_marked_as_resolving': 'bool',
+        'is_ssl_enabled': 'bool',
+        'is_ssl_only': 'bool',
+        'is_used_for_blog_post': 'bool',
+        'is_used_for_site_page': 'bool',
+        'is_used_for_landing_page': 'bool',
+        'is_used_for_email': 'bool',
+        'is_used_for_knowledge': 'bool',
+        'correct_cname': 'str',
+        'created': 'datetime',
+        'updated': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "domain": "domain",
-        "primary_landing_page": "primaryLandingPage",
-        "primary_email": "primaryEmail",
-        "primary_blog_post": "primaryBlogPost",
-        "primary_site_page": "primarySitePage",
-        "primary_knowledge": "primaryKnowledge",
-        "secondary_to_domain": "secondaryToDomain",
-        "is_resolving": "isResolving",
-        "manually_marked_as_resolving": "manuallyMarkedAsResolving",
-        "is_ssl_enabled": "isSslEnabled",
-        "is_ssl_only": "isSslOnly",
-        "is_used_for_blog_post": "isUsedForBlogPost",
-        "is_used_for_site_page": "isUsedForSitePage",
-        "is_used_for_landing_page": "isUsedForLandingPage",
-        "is_used_for_email": "isUsedForEmail",
-        "is_used_for_knowledge": "isUsedForKnowledge",
-        "correct_cname": "correctCname",
-        "created": "created",
-        "updated": "updated",
+        'id': 'id',
+        'domain': 'domain',
+        'primary_landing_page': 'primaryLandingPage',
+        'primary_email': 'primaryEmail',
+        'primary_blog_post': 'primaryBlogPost',
+        'primary_site_page': 'primarySitePage',
+        'primary_knowledge': 'primaryKnowledge',
+        'secondary_to_domain': 'secondaryToDomain',
+        'is_resolving': 'isResolving',
+        'manually_marked_as_resolving': 'manuallyMarkedAsResolving',
+        'is_ssl_enabled': 'isSslEnabled',
+        'is_ssl_only': 'isSslOnly',
+        'is_used_for_blog_post': 'isUsedForBlogPost',
+        'is_used_for_site_page': 'isUsedForSitePage',
+        'is_used_for_landing_page': 'isUsedForLandingPage',
+        'is_used_for_email': 'isUsedForEmail',
+        'is_used_for_knowledge': 'isUsedForKnowledge',
+        'correct_cname': 'correctCname',
+        'created': 'created',
+        'updated': 'updated'
     }
 
-    def __init__(
-        self,
-        id=None,
-        domain=None,
-        primary_landing_page=None,
-        primary_email=None,
-        primary_blog_post=None,
-        primary_site_page=None,
-        primary_knowledge=None,
-        secondary_to_domain=None,
-        is_resolving=None,
-        manually_marked_as_resolving=None,
-        is_ssl_enabled=None,
-        is_ssl_only=None,
-        is_used_for_blog_post=None,
-        is_used_for_site_page=None,
-        is_used_for_landing_page=None,
-        is_used_for_email=None,
-        is_used_for_knowledge=None,
-        correct_cname=None,
-        created=None,
-        updated=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, domain=None, primary_landing_page=None, primary_email=None, primary_blog_post=None, primary_site_page=None, primary_knowledge=None, secondary_to_domain=None, is_resolving=None, manually_marked_as_resolving=None, is_ssl_enabled=None, is_ssl_only=None, is_used_for_blog_post=None, is_used_for_site_page=None, is_used_for_landing_page=None, is_used_for_email=None, is_used_for_knowledge=None, correct_cname=None, created=None, updated=None, local_vars_configuration=None):  # noqa: E501
         """Domain - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -621,11 +598,18 @@ class Domain(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -33,54 +33,38 @@ class UrlMapping(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "route_prefix": "str",
-        "destination": "str",
-        "redirect_style": "int",
-        "is_only_after_not_found": "bool",
-        "is_match_full_url": "bool",
-        "is_match_query_string": "bool",
-        "is_pattern": "bool",
-        "is_trailing_slash_optional": "bool",
-        "is_protocol_agnostic": "bool",
-        "precedence": "int",
-        "created": "datetime",
-        "updated": "datetime",
+        'id': 'str',
+        'route_prefix': 'str',
+        'destination': 'str',
+        'redirect_style': 'int',
+        'is_only_after_not_found': 'bool',
+        'is_match_full_url': 'bool',
+        'is_match_query_string': 'bool',
+        'is_pattern': 'bool',
+        'is_trailing_slash_optional': 'bool',
+        'is_protocol_agnostic': 'bool',
+        'precedence': 'int',
+        'created': 'datetime',
+        'updated': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "route_prefix": "routePrefix",
-        "destination": "destination",
-        "redirect_style": "redirectStyle",
-        "is_only_after_not_found": "isOnlyAfterNotFound",
-        "is_match_full_url": "isMatchFullUrl",
-        "is_match_query_string": "isMatchQueryString",
-        "is_pattern": "isPattern",
-        "is_trailing_slash_optional": "isTrailingSlashOptional",
-        "is_protocol_agnostic": "isProtocolAgnostic",
-        "precedence": "precedence",
-        "created": "created",
-        "updated": "updated",
+        'id': 'id',
+        'route_prefix': 'routePrefix',
+        'destination': 'destination',
+        'redirect_style': 'redirectStyle',
+        'is_only_after_not_found': 'isOnlyAfterNotFound',
+        'is_match_full_url': 'isMatchFullUrl',
+        'is_match_query_string': 'isMatchQueryString',
+        'is_pattern': 'isPattern',
+        'is_trailing_slash_optional': 'isTrailingSlashOptional',
+        'is_protocol_agnostic': 'isProtocolAgnostic',
+        'precedence': 'precedence',
+        'created': 'created',
+        'updated': 'updated'
     }
 
-    def __init__(
-        self,
-        id=None,
-        route_prefix=None,
-        destination=None,
-        redirect_style=None,
-        is_only_after_not_found=None,
-        is_match_full_url=None,
-        is_match_query_string=None,
-        is_pattern=None,
-        is_trailing_slash_optional=None,
-        is_protocol_agnostic=None,
-        precedence=None,
-        created=None,
-        updated=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, route_prefix=None, destination=None, redirect_style=None, is_only_after_not_found=None, is_match_full_url=None, is_match_query_string=None, is_pattern=None, is_trailing_slash_optional=None, is_protocol_agnostic=None, precedence=None, created=None, updated=None, local_vars_configuration=None):  # noqa: E501
         """UrlMapping - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -441,11 +425,18 @@ class UrlMapping(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -32,38 +32,59 @@ class HubDbTableRowV3(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "path": "str", "name": "str", "created_at": "datetime", "updated_at": "datetime", "child_table_id": "str", "values": "dict(str, object)"}
+    openapi_types = {
+        'id': 'str',
+        'values': 'dict(str, object)',
+        'path': 'str',
+        'name': 'str',
+        'child_table_id': 'str',
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'published_at': 'datetime'
+    }
 
-    attribute_map = {"id": "id", "path": "path", "name": "name", "created_at": "createdAt", "updated_at": "updatedAt", "child_table_id": "childTableId", "values": "values"}
+    attribute_map = {
+        'id': 'id',
+        'values': 'values',
+        'path': 'path',
+        'name': 'name',
+        'child_table_id': 'childTableId',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt',
+        'published_at': 'publishedAt'
+    }
 
-    def __init__(self, id=None, path=None, name=None, created_at=None, updated_at=None, child_table_id=None, values=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, values=None, path=None, name=None, child_table_id=None, created_at=None, updated_at=None, published_at=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
+        self._values = None
         self._path = None
         self._name = None
+        self._child_table_id = None
         self._created_at = None
         self._updated_at = None
-        self._child_table_id = None
-        self._values = None
+        self._published_at = None
         self.discriminator = None
 
         if id is not None:
             self.id = id
+        self.values = values
         if path is not None:
             self.path = path
         if name is not None:
             self.name = name
+        if child_table_id is not None:
+            self.child_table_id = child_table_id
         if created_at is not None:
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        if child_table_id is not None:
-            self.child_table_id = child_table_id
-        self.values = values
+        if published_at is not None:
+            self.published_at = published_at
 
     @property
     def id(self):
@@ -87,6 +108,31 @@ class HubDbTableRowV3(object):
         """
 
         self._id = id
+
+    @property
+    def values(self):
+        """Gets the values of this HubDbTableRowV3.  # noqa: E501
+
+        List of key value pairs with the column name and column value  # noqa: E501
+
+        :return: The values of this HubDbTableRowV3.  # noqa: E501
+        :rtype: dict(str, object)
+        """
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        """Sets the values of this HubDbTableRowV3.
+
+        List of key value pairs with the column name and column value  # noqa: E501
+
+        :param values: The values of this HubDbTableRowV3.  # noqa: E501
+        :type: dict(str, object)
+        """
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+
+        self._values = values
 
     @property
     def path(self):
@@ -135,6 +181,29 @@ class HubDbTableRowV3(object):
         self._name = name
 
     @property
+    def child_table_id(self):
+        """Gets the child_table_id of this HubDbTableRowV3.  # noqa: E501
+
+        Specifies the value for the column child table id  # noqa: E501
+
+        :return: The child_table_id of this HubDbTableRowV3.  # noqa: E501
+        :rtype: str
+        """
+        return self._child_table_id
+
+    @child_table_id.setter
+    def child_table_id(self, child_table_id):
+        """Sets the child_table_id of this HubDbTableRowV3.
+
+        Specifies the value for the column child table id  # noqa: E501
+
+        :param child_table_id: The child_table_id of this HubDbTableRowV3.  # noqa: E501
+        :type: str
+        """
+
+        self._child_table_id = child_table_id
+
+    @property
     def created_at(self):
         """Gets the created_at of this HubDbTableRowV3.  # noqa: E501
 
@@ -181,52 +250,25 @@ class HubDbTableRowV3(object):
         self._updated_at = updated_at
 
     @property
-    def child_table_id(self):
-        """Gets the child_table_id of this HubDbTableRowV3.  # noqa: E501
+    def published_at(self):
+        """Gets the published_at of this HubDbTableRowV3.  # noqa: E501
 
-        Specifies the value for the column child table id  # noqa: E501
 
-        :return: The child_table_id of this HubDbTableRowV3.  # noqa: E501
-        :rtype: str
+        :return: The published_at of this HubDbTableRowV3.  # noqa: E501
+        :rtype: datetime
         """
-        return self._child_table_id
+        return self._published_at
 
-    @child_table_id.setter
-    def child_table_id(self, child_table_id):
-        """Sets the child_table_id of this HubDbTableRowV3.
+    @published_at.setter
+    def published_at(self, published_at):
+        """Sets the published_at of this HubDbTableRowV3.
 
-        Specifies the value for the column child table id  # noqa: E501
 
-        :param child_table_id: The child_table_id of this HubDbTableRowV3.  # noqa: E501
-        :type: str
+        :param published_at: The published_at of this HubDbTableRowV3.  # noqa: E501
+        :type: datetime
         """
 
-        self._child_table_id = child_table_id
-
-    @property
-    def values(self):
-        """Gets the values of this HubDbTableRowV3.  # noqa: E501
-
-        List of key value pairs with the column name and column value  # noqa: E501
-
-        :return: The values of this HubDbTableRowV3.  # noqa: E501
-        :rtype: dict(str, object)
-        """
-        return self._values
-
-    @values.setter
-    def values(self, values):
-        """Sets the values of this HubDbTableRowV3.
-
-        List of key value pairs with the column name and column value  # noqa: E501
-
-        :param values: The values of this HubDbTableRowV3.  # noqa: E501
-        :type: dict(str, object)
-        """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
-
-        self._values = values
+        self._published_at = published_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -235,11 +277,18 @@ class HubDbTableRowV3(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

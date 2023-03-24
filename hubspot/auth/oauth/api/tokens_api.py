@@ -35,12 +35,12 @@ class TokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_token(self, **kwargs):  # noqa: E501
-        """create_token  # noqa: E501
+    def create(self, **kwargs):  # noqa: E501
+        """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token(async_req=True)
+        >>> thread = api.create(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -62,14 +62,14 @@ class TokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.create_token_with_http_info(**kwargs)  # noqa: E501
+        return self.create_with_http_info(**kwargs)  # noqa: E501
 
-    def create_token_with_http_info(self, **kwargs):  # noqa: E501
-        """create_token  # noqa: E501
+    def create_with_http_info(self, **kwargs):  # noqa: E501
+        """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -105,7 +105,7 @@ class TokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_token" % key
+                    " to method create" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']

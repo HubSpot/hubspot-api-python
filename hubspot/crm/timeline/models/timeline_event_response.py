@@ -33,51 +33,36 @@ class TimelineEventResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "event_template_id": "str",
-        "email": "str",
-        "object_id": "str",
-        "utk": "str",
-        "domain": "str",
-        "timestamp": "datetime",
-        "tokens": "dict(str, str)",
-        "extra_data": "object",
-        "timeline_i_frame": "TimelineEventIFrame",
-        "object_type": "str",
-        "created_at": "datetime",
+        'id': 'str',
+        'event_template_id': 'str',
+        'email': 'str',
+        'object_id': 'str',
+        'utk': 'str',
+        'domain': 'str',
+        'timestamp': 'datetime',
+        'tokens': 'dict(str, str)',
+        'extra_data': 'object',
+        'timeline_i_frame': 'TimelineEventIFrame',
+        'object_type': 'str',
+        'created_at': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "event_template_id": "eventTemplateId",
-        "email": "email",
-        "object_id": "objectId",
-        "utk": "utk",
-        "domain": "domain",
-        "timestamp": "timestamp",
-        "tokens": "tokens",
-        "extra_data": "extraData",
-        "timeline_i_frame": "timelineIFrame",
-        "object_type": "objectType",
-        "created_at": "createdAt",
+        'id': 'id',
+        'event_template_id': 'eventTemplateId',
+        'email': 'email',
+        'object_id': 'objectId',
+        'utk': 'utk',
+        'domain': 'domain',
+        'timestamp': 'timestamp',
+        'tokens': 'tokens',
+        'extra_data': 'extraData',
+        'timeline_i_frame': 'timelineIFrame',
+        'object_type': 'objectType',
+        'created_at': 'createdAt'
     }
 
-    def __init__(
-        self,
-        id=None,
-        event_template_id=None,
-        email=None,
-        object_id=None,
-        utk=None,
-        domain=None,
-        timestamp=None,
-        tokens=None,
-        extra_data=None,
-        timeline_i_frame=None,
-        object_type=None,
-        created_at=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, event_template_id=None, email=None, object_id=None, utk=None, domain=None, timestamp=None, tokens=None, extra_data=None, timeline_i_frame=None, object_type=None, created_at=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -405,11 +390,18 @@ class TimelineEventResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

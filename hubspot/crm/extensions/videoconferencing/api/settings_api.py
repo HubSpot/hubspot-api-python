@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.extensions.videoconferencing.api_client import ApiClient
-from hubspot.crm.extensions.videoconferencing.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.extensions.videoconferencing.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SettingsApi(object):
@@ -55,7 +58,7 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, app_id, **kwargs):  # noqa: E501
@@ -85,26 +88,30 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -115,14 +122,14 @@ class SettingsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/videoconferencing/settings/{appId}",
-            "DELETE",
+            '/crm/v3/extensions/videoconferencing/settings/{appId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -131,12 +138,11 @@ class SettingsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, app_id, **kwargs):  # noqa: E501
         """Get settings  # noqa: E501
@@ -160,7 +166,7 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, app_id, **kwargs):  # noqa: E501
@@ -190,26 +196,30 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_id" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -220,28 +230,27 @@ class SettingsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/videoconferencing/settings/{appId}",
-            "GET",
+            '/crm/v3/extensions/videoconferencing/settings/{appId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ExternalSettings",  # noqa: E501
+            response_type='ExternalSettings',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def replace(self, app_id, external_settings, **kwargs):  # noqa: E501
         """Update settings  # noqa: E501
@@ -266,7 +275,7 @@ class SettingsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.replace_with_http_info(app_id, external_settings, **kwargs)  # noqa: E501
 
     def replace_with_http_info(self, app_id, external_settings, **kwargs):  # noqa: E501
@@ -297,29 +306,34 @@ class SettingsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "external_settings"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['app_id', 'external_settings']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method replace" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method replace" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'external_settings' is set
-        if self.api_client.client_side_validation and ("external_settings" not in local_var_params or local_var_params["external_settings"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('external_settings' not in local_var_params or  # noqa: E501
+                                                        local_var_params['external_settings'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_settings` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -329,31 +343,31 @@ class SettingsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "external_settings" in local_var_params:
-            body_params = local_var_params["external_settings"]
+        if 'external_settings' in local_var_params:
+            body_params = local_var_params['external_settings']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey"]  # noqa: E501
+        auth_settings = ['hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/videoconferencing/settings/{appId}",
-            "PUT",
+            '/crm/v3/extensions/videoconferencing/settings/{appId}', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ExternalSettings",  # noqa: E501
+            response_type='ExternalSettings',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

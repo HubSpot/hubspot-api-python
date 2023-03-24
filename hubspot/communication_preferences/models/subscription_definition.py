@@ -33,45 +33,32 @@ class SubscriptionDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "name": "str",
-        "description": "str",
-        "purpose": "str",
-        "communication_method": "str",
-        "is_active": "bool",
-        "is_default": "bool",
-        "is_internal": "bool",
-        "created_at": "datetime",
-        "updated_at": "datetime",
+        'id': 'str',
+        'name': 'str',
+        'description': 'str',
+        'purpose': 'str',
+        'communication_method': 'str',
+        'is_active': 'bool',
+        'is_default': 'bool',
+        'is_internal': 'bool',
+        'created_at': 'datetime',
+        'updated_at': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "name": "name",
-        "description": "description",
-        "purpose": "purpose",
-        "communication_method": "communicationMethod",
-        "is_active": "isActive",
-        "is_default": "isDefault",
-        "is_internal": "isInternal",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
+        'id': 'id',
+        'name': 'name',
+        'description': 'description',
+        'purpose': 'purpose',
+        'communication_method': 'communicationMethod',
+        'is_active': 'isActive',
+        'is_default': 'isDefault',
+        'is_internal': 'isInternal',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt'
     }
 
-    def __init__(
-        self,
-        id=None,
-        name=None,
-        description=None,
-        purpose=None,
-        communication_method=None,
-        is_active=None,
-        is_default=None,
-        is_internal=None,
-        created_at=None,
-        updated_at=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, name=None, description=None, purpose=None, communication_method=None, is_active=None, is_default=None, is_internal=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -355,11 +342,18 @@ class SubscriptionDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

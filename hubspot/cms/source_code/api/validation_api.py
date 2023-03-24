@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.source_code.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class ValidationApi(object):
@@ -56,7 +59,7 @@ class ValidationApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.do_validate_with_http_info(path, **kwargs)  # noqa: E501
 
     def do_validate_with_http_info(self, path, **kwargs):  # noqa: E501
@@ -87,28 +90,32 @@ class ValidationApi(object):
 
         local_var_params = locals()
 
-        all_params = ["path", "file"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['path', 'file']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method do_validate" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method do_validate" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('path' not in local_var_params or  # noqa: E501
+                                                        local_var_params['path'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `do_validate`")  # noqa: E501
 
-        if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
+        if self.api_client.client_side_validation and 'path' in local_var_params and not re.search(r'.+', local_var_params['path']):  # noqa: E501
             raise ApiValueError("Invalid value for parameter `path` when calling `do_validate`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if "path" in local_var_params:
-            path_params["path"] = local_var_params["path"]  # noqa: E501
+        if 'path' in local_var_params:
+            path_params['path'] = local_var_params['path']  # noqa: E501
 
         query_params = []
 
@@ -116,33 +123,33 @@ class ValidationApi(object):
 
         form_params = []
         local_var_files = {}
-        if "file" in local_var_params:
-            local_var_files["file"] = local_var_params["file"]  # noqa: E501
+        if 'file' in local_var_params:
+            local_var_files['file'] = local_var_params['file']  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/source-code/{environment}/validate/{path}",
-            "POST",
+            '/cms/v3/source-code/{environment}/validate/{path}', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_type='Error',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

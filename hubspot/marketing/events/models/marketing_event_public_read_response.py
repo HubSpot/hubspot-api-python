@@ -33,66 +33,46 @@ class MarketingEventPublicReadResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "event_name": "str",
-        "event_type": "str",
-        "start_date_time": "datetime",
-        "end_date_time": "datetime",
-        "event_organizer": "str",
-        "event_description": "str",
-        "event_url": "str",
-        "event_cancelled": "bool",
-        "custom_properties": "list[PropertyValue]",
-        "external_event_id": "str",
-        "registrants": "int",
-        "attendees": "int",
-        "cancellations": "int",
-        "no_shows": "int",
-        "created_at": "datetime",
-        "updated_at": "datetime",
-        "id": "str",
+        'event_name': 'str',
+        'event_type': 'str',
+        'start_date_time': 'datetime',
+        'end_date_time': 'datetime',
+        'event_organizer': 'str',
+        'event_description': 'str',
+        'event_url': 'str',
+        'event_cancelled': 'bool',
+        'custom_properties': 'list[PropertyValue]',
+        'external_event_id': 'str',
+        'registrants': 'int',
+        'attendees': 'int',
+        'cancellations': 'int',
+        'no_shows': 'int',
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'id': 'str'
     }
 
     attribute_map = {
-        "event_name": "eventName",
-        "event_type": "eventType",
-        "start_date_time": "startDateTime",
-        "end_date_time": "endDateTime",
-        "event_organizer": "eventOrganizer",
-        "event_description": "eventDescription",
-        "event_url": "eventUrl",
-        "event_cancelled": "eventCancelled",
-        "custom_properties": "customProperties",
-        "external_event_id": "externalEventId",
-        "registrants": "registrants",
-        "attendees": "attendees",
-        "cancellations": "cancellations",
-        "no_shows": "noShows",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "id": "id",
+        'event_name': 'eventName',
+        'event_type': 'eventType',
+        'start_date_time': 'startDateTime',
+        'end_date_time': 'endDateTime',
+        'event_organizer': 'eventOrganizer',
+        'event_description': 'eventDescription',
+        'event_url': 'eventUrl',
+        'event_cancelled': 'eventCancelled',
+        'custom_properties': 'customProperties',
+        'external_event_id': 'externalEventId',
+        'registrants': 'registrants',
+        'attendees': 'attendees',
+        'cancellations': 'cancellations',
+        'no_shows': 'noShows',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt',
+        'id': 'id'
     }
 
-    def __init__(
-        self,
-        event_name=None,
-        event_type=None,
-        start_date_time=None,
-        end_date_time=None,
-        event_organizer=None,
-        event_description=None,
-        event_url=None,
-        event_cancelled=None,
-        custom_properties=None,
-        external_event_id=None,
-        registrants=None,
-        attendees=None,
-        cancellations=None,
-        no_shows=None,
-        created_at=None,
-        updated_at=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, event_name=None, event_type=None, start_date_time=None, end_date_time=None, event_organizer=None, event_description=None, event_url=None, event_cancelled=None, custom_properties=None, external_event_id=None, registrants=None, attendees=None, cancellations=None, no_shows=None, created_at=None, updated_at=None, id=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventPublicReadResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -554,11 +534,18 @@ class MarketingEventPublicReadResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

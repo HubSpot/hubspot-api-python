@@ -32,9 +32,21 @@ class UpdatedContact(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"sync_action": "str", "updated_at": "datetime", "email_address": "str", "id": "str", "customer_type": "str"}
+    openapi_types = {
+        'sync_action': 'str',
+        'updated_at': 'datetime',
+        'email_address': 'str',
+        'id': 'str',
+        'customer_type': 'str'
+    }
 
-    attribute_map = {"sync_action": "syncAction", "updated_at": "updatedAt", "email_address": "emailAddress", "id": "id", "customer_type": "customerType"}
+    attribute_map = {
+        'sync_action': 'syncAction',
+        'updated_at': 'updatedAt',
+        'email_address': 'emailAddress',
+        'id': 'id',
+        'customer_type': 'customerType'
+    }
 
     def __init__(self, sync_action=None, updated_at=None, email_address=None, id=None, customer_type=None, local_vars_configuration=None):  # noqa: E501
         """UpdatedContact - a model defined in OpenAPI"""  # noqa: E501
@@ -80,7 +92,10 @@ class UpdatedContact(object):
             raise ValueError("Invalid value for `sync_action`, must not be `None`")  # noqa: E501
         allowed_values = ["CREATE", "UPDATE", "DELETE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and sync_action not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `sync_action` ({0}), must be one of {1}".format(sync_action, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sync_action` ({0}), must be one of {1}"  # noqa: E501
+                .format(sync_action, allowed_values)
+            )
 
         self._sync_action = sync_action
 
@@ -181,7 +196,10 @@ class UpdatedContact(object):
         """
         allowed_values = ["CONTACT", "COMPANY"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and customer_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `customer_type` ({0}), must be one of {1}".format(customer_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `customer_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(customer_type, allowed_values)
+            )
 
         self._customer_type = customer_type
 
@@ -192,11 +210,18 @@ class UpdatedContact(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

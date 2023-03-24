@@ -35,12 +35,12 @@ class RefreshTokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive_refresh_token(self, token, **kwargs):  # noqa: E501
-        """archive_refresh_token  # noqa: E501
+    def archive(self, token, **kwargs):  # noqa: E501
+        """archive  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_refresh_token(token, async_req=True)
+        >>> thread = api.archive(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -57,14 +57,14 @@ class RefreshTokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.archive_refresh_token_with_http_info(token, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(token, **kwargs)  # noqa: E501
 
-    def archive_refresh_token_with_http_info(self, token, **kwargs):  # noqa: E501
-        """archive_refresh_token  # noqa: E501
+    def archive_with_http_info(self, token, **kwargs):  # noqa: E501
+        """archive  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_refresh_token_with_http_info(token, async_req=True)
+        >>> thread = api.archive_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -95,14 +95,14 @@ class RefreshTokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method archive_refresh_token" % key
+                    " to method archive" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'token' is set
         if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
                                                         local_var_params['token'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token` when calling `archive_refresh_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -141,12 +141,12 @@ class RefreshTokensApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_refresh_token(self, token, **kwargs):  # noqa: E501
-        """get_refresh_token  # noqa: E501
+    def get(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_refresh_token(token, async_req=True)
+        >>> thread = api.get(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -163,14 +163,14 @@ class RefreshTokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_refresh_token_with_http_info(token, **kwargs)  # noqa: E501
+        return self.get_with_http_info(token, **kwargs)  # noqa: E501
 
-    def get_refresh_token_with_http_info(self, token, **kwargs):  # noqa: E501
-        """get_refresh_token  # noqa: E501
+    def get_with_http_info(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_refresh_token_with_http_info(token, async_req=True)
+        >>> thread = api.get_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -201,14 +201,14 @@ class RefreshTokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_refresh_token" % key
+                    " to method get" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'token' is set
         if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
                                                         local_var_params['token'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token` when calling `get_refresh_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token` when calling `get`")  # noqa: E501
 
         collection_formats = {}
 

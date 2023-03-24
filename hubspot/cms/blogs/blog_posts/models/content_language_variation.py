@@ -33,57 +33,40 @@ class ContentLanguageVariation(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "int",
-        "name": "str",
-        "slug": "str",
-        "state": "str",
-        "author_name": "str",
-        "password": "str",
-        "public_access_rules_enabled": "bool",
-        "public_access_rules": "list[object]",
-        "campaign": "str",
-        "tag_ids": "list[int]",
-        "archived_in_dashboard": "bool",
-        "created": "datetime",
-        "updated": "datetime",
-        "publish_date": "datetime",
+        'id': 'int',
+        'name': 'str',
+        'slug': 'str',
+        'state': 'str',
+        'author_name': 'str',
+        'password': 'str',
+        'public_access_rules_enabled': 'bool',
+        'public_access_rules': 'list[object]',
+        'campaign': 'str',
+        'tag_ids': 'list[int]',
+        'archived_in_dashboard': 'bool',
+        'created': 'datetime',
+        'updated': 'datetime',
+        'publish_date': 'datetime'
     }
 
     attribute_map = {
-        "id": "id",
-        "name": "name",
-        "slug": "slug",
-        "state": "state",
-        "author_name": "authorName",
-        "password": "password",
-        "public_access_rules_enabled": "publicAccessRulesEnabled",
-        "public_access_rules": "publicAccessRules",
-        "campaign": "campaign",
-        "tag_ids": "tagIds",
-        "archived_in_dashboard": "archivedInDashboard",
-        "created": "created",
-        "updated": "updated",
-        "publish_date": "publishDate",
+        'id': 'id',
+        'name': 'name',
+        'slug': 'slug',
+        'state': 'state',
+        'author_name': 'authorName',
+        'password': 'password',
+        'public_access_rules_enabled': 'publicAccessRulesEnabled',
+        'public_access_rules': 'publicAccessRules',
+        'campaign': 'campaign',
+        'tag_ids': 'tagIds',
+        'archived_in_dashboard': 'archivedInDashboard',
+        'created': 'created',
+        'updated': 'updated',
+        'publish_date': 'publishDate'
     }
 
-    def __init__(
-        self,
-        id=None,
-        name=None,
-        slug=None,
-        state=None,
-        author_name=None,
-        password=None,
-        public_access_rules_enabled=None,
-        public_access_rules=None,
-        campaign=None,
-        tag_ids=None,
-        archived_in_dashboard=None,
-        created=None,
-        updated=None,
-        publish_date=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, id=None, name=None, slug=None, state=None, author_name=None, password=None, public_access_rules_enabled=None, public_access_rules=None, campaign=None, tag_ids=None, archived_in_dashboard=None, created=None, updated=None, publish_date=None, local_vars_configuration=None):  # noqa: E501
         """ContentLanguageVariation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -448,11 +431,18 @@ class ContentLanguageVariation(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

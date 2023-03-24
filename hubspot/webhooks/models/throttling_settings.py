@@ -32,9 +32,15 @@ class ThrottlingSettings(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"max_concurrent_requests": "int", "period": "str"}
+    openapi_types = {
+        'max_concurrent_requests': 'int',
+        'period': 'str'
+    }
 
-    attribute_map = {"max_concurrent_requests": "maxConcurrentRequests", "period": "period"}
+    attribute_map = {
+        'max_concurrent_requests': 'maxConcurrentRequests',
+        'period': 'period'
+    }
 
     def __init__(self, max_concurrent_requests=None, period=None, local_vars_configuration=None):  # noqa: E501
         """ThrottlingSettings - a model defined in OpenAPI"""  # noqa: E501
@@ -98,7 +104,10 @@ class ThrottlingSettings(object):
             raise ValueError("Invalid value for `period`, must not be `None`")  # noqa: E501
         allowed_values = ["SECONDLY", "ROLLING_MINUTE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and period not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `period` ({0}), must be one of {1}".format(period, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `period` ({0}), must be one of {1}"  # noqa: E501
+                .format(period, allowed_values)
+            )
 
         self._period = period
 
@@ -109,11 +118,18 @@ class ThrottlingSettings(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

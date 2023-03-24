@@ -32,17 +32,30 @@ class Filter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"value": "str", "values": "list[str]", "property_name": "str", "operator": "str"}
+    openapi_types = {
+        'value': 'str',
+        'high_value': 'str',
+        'values': 'list[str]',
+        'property_name': 'str',
+        'operator': 'str'
+    }
 
-    attribute_map = {"value": "value", "values": "values", "property_name": "propertyName", "operator": "operator"}
+    attribute_map = {
+        'value': 'value',
+        'high_value': 'highValue',
+        'values': 'values',
+        'property_name': 'propertyName',
+        'operator': 'operator'
+    }
 
-    def __init__(self, value=None, values=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, value=None, high_value=None, values=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
         """Filter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._value = None
+        self._high_value = None
         self._values = None
         self._property_name = None
         self._operator = None
@@ -50,6 +63,8 @@ class Filter(object):
 
         if value is not None:
             self.value = value
+        if high_value is not None:
+            self.high_value = high_value
         if values is not None:
             self.values = values
         self.property_name = property_name
@@ -75,6 +90,27 @@ class Filter(object):
         """
 
         self._value = value
+
+    @property
+    def high_value(self):
+        """Gets the high_value of this Filter.  # noqa: E501
+
+
+        :return: The high_value of this Filter.  # noqa: E501
+        :rtype: str
+        """
+        return self._high_value
+
+    @high_value.setter
+    def high_value(self, high_value):
+        """Sets the high_value of this Filter.
+
+
+        :param high_value: The high_value of this Filter.  # noqa: E501
+        :type: str
+        """
+
+        self._high_value = high_value
 
     @property
     def values(self):
@@ -144,7 +180,10 @@ class Filter(object):
             raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
         allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `operator` ({0}), must be one of {1}".format(operator, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
+                .format(operator, allowed_values)
+            )
 
         self._operator = operator
 
@@ -155,11 +194,18 @@ class Filter(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

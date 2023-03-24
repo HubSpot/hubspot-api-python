@@ -30,7 +30,6 @@ from hubspot.crm.pipelines.exceptions import ApiTypeError
 from hubspot.crm.pipelines.exceptions import ApiValueError
 from hubspot.crm.pipelines.exceptions import ApiKeyError
 from hubspot.crm.pipelines.exceptions import ApiException
-
 # import models into sdk package
 from hubspot.crm.pipelines.models.collection_response_pipeline_no_paging import CollectionResponsePipelineNoPaging
 from hubspot.crm.pipelines.models.collection_response_pipeline_stage_no_paging import CollectionResponsePipelineStageNoPaging
@@ -44,3 +43,4 @@ from hubspot.crm.pipelines.models.pipeline_stage import PipelineStage
 from hubspot.crm.pipelines.models.pipeline_stage_input import PipelineStageInput
 from hubspot.crm.pipelines.models.pipeline_stage_patch_input import PipelineStagePatchInput
 from hubspot.crm.pipelines.models.public_audit_info import PublicAuditInfo
+

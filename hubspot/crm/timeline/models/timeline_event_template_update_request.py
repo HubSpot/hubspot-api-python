@@ -32,9 +32,21 @@ class TimelineEventTemplateUpdateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "header_template": "str", "detail_template": "str", "tokens": "list[TimelineEventTemplateToken]", "id": "str"}
+    openapi_types = {
+        'name': 'str',
+        'header_template': 'str',
+        'detail_template': 'str',
+        'tokens': 'list[TimelineEventTemplateToken]',
+        'id': 'str'
+    }
 
-    attribute_map = {"name": "name", "header_template": "headerTemplate", "detail_template": "detailTemplate", "tokens": "tokens", "id": "id"}
+    attribute_map = {
+        'name': 'name',
+        'header_template': 'headerTemplate',
+        'detail_template': 'detailTemplate',
+        'tokens': 'tokens',
+        'id': 'id'
+    }
 
     def __init__(self, name=None, header_template=None, detail_template=None, tokens=None, id=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -185,11 +197,18 @@ class TimelineEventTemplateUpdateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

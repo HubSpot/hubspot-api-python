@@ -32,9 +32,21 @@ class FormDisplayOptions(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"render_raw_html": "bool", "theme": "str", "submit_button_text": "str", "style": "FormStyle", "css_class": "str"}
+    openapi_types = {
+        'render_raw_html': 'bool',
+        'theme': 'str',
+        'submit_button_text': 'str',
+        'style': 'FormStyle',
+        'css_class': 'str'
+    }
 
-    attribute_map = {"render_raw_html": "renderRawHtml", "theme": "theme", "submit_button_text": "submitButtonText", "style": "style", "css_class": "cssClass"}
+    attribute_map = {
+        'render_raw_html': 'renderRawHtml',
+        'theme': 'theme',
+        'submit_button_text': 'submitButtonText',
+        'style': 'style',
+        'css_class': 'cssClass'
+    }
 
     def __init__(self, render_raw_html=None, theme=None, submit_button_text=None, style=None, css_class=None, local_vars_configuration=None):  # noqa: E501
         """FormDisplayOptions - a model defined in OpenAPI"""  # noqa: E501
@@ -105,7 +117,10 @@ class FormDisplayOptions(object):
             raise ValueError("Invalid value for `theme`, must not be `None`")  # noqa: E501
         allowed_values = ["default_style", "canvas", "linear", "round", "sharp"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and theme not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `theme` ({0}), must be one of {1}".format(theme, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `theme` ({0}), must be one of {1}"  # noqa: E501
+                .format(theme, allowed_values)
+            )
 
         self._theme = theme
 
@@ -185,11 +200,18 @@ class FormDisplayOptions(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

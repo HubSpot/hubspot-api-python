@@ -32,11 +32,23 @@ class HubDbTableRowV3Request(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"path": "str", "name": "str", "child_table_id": "int", "values": "dict(str, object)"}
+    openapi_types = {
+        'path': 'str',
+        'name': 'str',
+        'child_table_id': 'int',
+        'values': 'dict(str, object)',
+        'display_index': 'int'
+    }
 
-    attribute_map = {"path": "path", "name": "name", "child_table_id": "childTableId", "values": "values"}
+    attribute_map = {
+        'path': 'path',
+        'name': 'name',
+        'child_table_id': 'childTableId',
+        'values': 'values',
+        'display_index': 'displayIndex'
+    }
 
-    def __init__(self, path=None, name=None, child_table_id=None, values=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, path=None, name=None, child_table_id=None, values=None, display_index=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3Request - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -46,6 +58,7 @@ class HubDbTableRowV3Request(object):
         self._name = None
         self._child_table_id = None
         self._values = None
+        self._display_index = None
         self.discriminator = None
 
         if path is not None:
@@ -55,6 +68,8 @@ class HubDbTableRowV3Request(object):
         if child_table_id is not None:
             self.child_table_id = child_table_id
         self.values = values
+        if display_index is not None:
+            self.display_index = display_index
 
     @property
     def path(self):
@@ -150,6 +165,27 @@ class HubDbTableRowV3Request(object):
 
         self._values = values
 
+    @property
+    def display_index(self):
+        """Gets the display_index of this HubDbTableRowV3Request.  # noqa: E501
+
+
+        :return: The display_index of this HubDbTableRowV3Request.  # noqa: E501
+        :rtype: int
+        """
+        return self._display_index
+
+    @display_index.setter
+    def display_index(self, display_index):
+        """Sets the display_index of this HubDbTableRowV3Request.
+
+
+        :param display_index: The display_index of this HubDbTableRowV3Request.  # noqa: E501
+        :type: int
+        """
+
+        self._display_index = display_index
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -157,11 +193,18 @@ class HubDbTableRowV3Request(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

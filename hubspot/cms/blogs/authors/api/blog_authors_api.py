@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.blogs.authors.api_client import ApiClient
-from hubspot.cms.blogs.authors.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.blogs.authors.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class BlogAuthorsApi(object):
@@ -56,7 +59,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(object_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, object_id, **kwargs):  # noqa: E501
@@ -87,30 +90,34 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['object_id', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_id" in local_var_params:
-            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+        if 'object_id' in local_var_params:
+            path_params['objectId'] = local_var_params['object_id']  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -119,14 +126,14 @@ class BlogAuthorsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/{objectId}",
-            "DELETE",
+            '/cms/v3/blogs/authors/{objectId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -135,12 +142,11 @@ class BlogAuthorsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def archive_batch(self, batch_input_string, **kwargs):  # noqa: E501
         """Delete a batch of Blog Authors  # noqa: E501
@@ -164,7 +170,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_batch_with_http_info(batch_input_string, **kwargs)  # noqa: E501
 
     def archive_batch_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
@@ -194,19 +200,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_string']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive_batch" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive_batch" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `archive_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -221,20 +231,21 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/batch/archive",
-            "POST",
+            '/cms/v3/blogs/authors/batch/archive', 'POST',
             path_params,
             query_params,
             header_params,
@@ -243,12 +254,11 @@ class BlogAuthorsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def attach_to_lang_group(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
         """Attach a Blog Author to a multi-language group  # noqa: E501
@@ -272,7 +282,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, **kwargs)  # noqa: E501
 
     def attach_to_lang_group_with_http_info(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
@@ -302,21 +312,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["attach_to_lang_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['attach_to_lang_primary_request_v_next']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method attach_to_lang_group" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method attach_to_lang_group" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'attach_to_lang_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "attach_to_lang_primary_request_v_next" not in local_var_params or local_var_params["attach_to_lang_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('attach_to_lang_primary_request_v_next' not in local_var_params or  # noqa: E501
+                                                        local_var_params['attach_to_lang_primary_request_v_next'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `attach_to_lang_primary_request_v_next` when calling `attach_to_lang_group`")  # noqa: E501
 
         collection_formats = {}
@@ -331,34 +343,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "attach_to_lang_primary_request_v_next" in local_var_params:
-            body_params = local_var_params["attach_to_lang_primary_request_v_next"]
+        if 'attach_to_lang_primary_request_v_next' in local_var_params:
+            body_params = local_var_params['attach_to_lang_primary_request_v_next']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/multi-language/attach-to-lang-group",
-            "POST",
+            '/cms/v3/blogs/authors/multi-language/attach-to-lang-group', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_type='Error',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, blog_author, **kwargs):  # noqa: E501
         """Create a new Blog Author  # noqa: E501
@@ -382,7 +394,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(blog_author, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, blog_author, **kwargs):  # noqa: E501
@@ -412,19 +424,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["blog_author"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['blog_author']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'blog_author' is set
-        if self.api_client.client_side_validation and ("blog_author" not in local_var_params or local_var_params["blog_author"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('blog_author' not in local_var_params or  # noqa: E501
+                                                        local_var_params['blog_author'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_author` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -439,34 +455,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "blog_author" in local_var_params:
-            body_params = local_var_params["blog_author"]
+        if 'blog_author' in local_var_params:
+            body_params = local_var_params['blog_author']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors",
-            "POST",
+            '/cms/v3/blogs/authors', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogAuthor",  # noqa: E501
+            response_type='BlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create_batch(self, batch_input_blog_author, **kwargs):  # noqa: E501
         """Create a batch of Blog Authors  # noqa: E501
@@ -490,7 +506,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_batch_with_http_info(batch_input_blog_author, **kwargs)  # noqa: E501
 
     def create_batch_with_http_info(self, batch_input_blog_author, **kwargs):  # noqa: E501
@@ -520,19 +536,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_blog_author"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_blog_author']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_batch" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_batch" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_blog_author' is set
-        if self.api_client.client_side_validation and ("batch_input_blog_author" not in local_var_params or local_var_params["batch_input_blog_author"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_blog_author' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_blog_author'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_blog_author` when calling `create_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -547,34 +567,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_blog_author" in local_var_params:
-            body_params = local_var_params["batch_input_blog_author"]
+        if 'batch_input_blog_author' in local_var_params:
+            body_params = local_var_params['batch_input_blog_author']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/batch/create",
-            "POST",
+            '/cms/v3/blogs/authors/batch/create', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogAuthor",  # noqa: E501
+            response_type='BatchResponseBlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create_lang_variation(self, blog_author_clone_request_v_next, **kwargs):  # noqa: E501
         """Create a new language variation  # noqa: E501
@@ -598,7 +618,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_lang_variation_with_http_info(blog_author_clone_request_v_next, **kwargs)  # noqa: E501
 
     def create_lang_variation_with_http_info(self, blog_author_clone_request_v_next, **kwargs):  # noqa: E501
@@ -628,21 +648,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["blog_author_clone_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['blog_author_clone_request_v_next']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_lang_variation" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_lang_variation" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'blog_author_clone_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "blog_author_clone_request_v_next" not in local_var_params or local_var_params["blog_author_clone_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('blog_author_clone_request_v_next' not in local_var_params or  # noqa: E501
+                                                        local_var_params['blog_author_clone_request_v_next'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_author_clone_request_v_next` when calling `create_lang_variation`")  # noqa: E501
 
         collection_formats = {}
@@ -657,34 +679,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "blog_author_clone_request_v_next" in local_var_params:
-            body_params = local_var_params["blog_author_clone_request_v_next"]
+        if 'blog_author_clone_request_v_next' in local_var_params:
+            body_params = local_var_params['blog_author_clone_request_v_next']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/multi-language/create-language-variation",
-            "POST",
+            '/cms/v3/blogs/authors/multi-language/create-language-variation', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogAuthor",  # noqa: E501
+            response_type='BlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def detach_from_lang_group(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
         """Detach a Blog Author from a multi-language group  # noqa: E501
@@ -708,7 +730,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, **kwargs)  # noqa: E501
 
     def detach_from_lang_group_with_http_info(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
@@ -738,21 +760,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["detach_from_lang_group_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['detach_from_lang_group_request_v_next']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method detach_from_lang_group" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method detach_from_lang_group" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'detach_from_lang_group_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "detach_from_lang_group_request_v_next" not in local_var_params or local_var_params["detach_from_lang_group_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('detach_from_lang_group_request_v_next' not in local_var_params or  # noqa: E501
+                                                        local_var_params['detach_from_lang_group_request_v_next'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `detach_from_lang_group_request_v_next` when calling `detach_from_lang_group`")  # noqa: E501
 
         collection_formats = {}
@@ -767,34 +791,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "detach_from_lang_group_request_v_next" in local_var_params:
-            body_params = local_var_params["detach_from_lang_group_request_v_next"]
+        if 'detach_from_lang_group_request_v_next' in local_var_params:
+            body_params = local_var_params['detach_from_lang_group_request_v_next']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/multi-language/detach-from-lang-group",
-            "POST",
+            '/cms/v3/blogs/authors/multi-language/detach-from-lang-group', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_type='Error',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_by_id(self, object_id, **kwargs):  # noqa: E501
         """Retrieve a Blog Author  # noqa: E501
@@ -819,7 +843,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_by_id_with_http_info(object_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, object_id, **kwargs):  # noqa: E501
@@ -850,30 +874,34 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['object_id', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_by_id" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_id" in local_var_params:
-            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+        if 'object_id' in local_var_params:
+            path_params['objectId'] = local_var_params['object_id']  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -882,28 +910,27 @@ class BlogAuthorsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/{objectId}",
-            "GET",
+            '/cms/v3/blogs/authors/{objectId}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogAuthor",  # noqa: E501
+            response_type='BlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_page(self, **kwargs):  # noqa: E501
         """Get all Blog Authors  # noqa: E501
@@ -936,7 +963,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -975,44 +1002,47 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['created_at', 'created_after', 'created_before', 'updated_at', 'updated_after', 'updated_before', 'sort', 'after', 'limit', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_page" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if "created_at" in local_var_params and local_var_params["created_at"] is not None:  # noqa: E501
-            query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
-        if "created_after" in local_var_params and local_var_params["created_after"] is not None:  # noqa: E501
-            query_params.append(("createdAfter", local_var_params["created_after"]))  # noqa: E501
-        if "created_before" in local_var_params and local_var_params["created_before"] is not None:  # noqa: E501
-            query_params.append(("createdBefore", local_var_params["created_before"]))  # noqa: E501
-        if "updated_at" in local_var_params and local_var_params["updated_at"] is not None:  # noqa: E501
-            query_params.append(("updatedAt", local_var_params["updated_at"]))  # noqa: E501
-        if "updated_after" in local_var_params and local_var_params["updated_after"] is not None:  # noqa: E501
-            query_params.append(("updatedAfter", local_var_params["updated_after"]))  # noqa: E501
-        if "updated_before" in local_var_params and local_var_params["updated_before"] is not None:  # noqa: E501
-            query_params.append(("updatedBefore", local_var_params["updated_before"]))  # noqa: E501
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
-            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
-            collection_formats["sort"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
-            query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'created_at' in local_var_params and local_var_params['created_at'] is not None:  # noqa: E501
+            query_params.append(('createdAt', local_var_params['created_at']))  # noqa: E501
+        if 'created_after' in local_var_params and local_var_params['created_after'] is not None:  # noqa: E501
+            query_params.append(('createdAfter', local_var_params['created_after']))  # noqa: E501
+        if 'created_before' in local_var_params and local_var_params['created_before'] is not None:  # noqa: E501
+            query_params.append(('createdBefore', local_var_params['created_before']))  # noqa: E501
+        if 'updated_at' in local_var_params and local_var_params['updated_at'] is not None:  # noqa: E501
+            query_params.append(('updatedAt', local_var_params['updated_at']))  # noqa: E501
+        if 'updated_after' in local_var_params and local_var_params['updated_after'] is not None:  # noqa: E501
+            query_params.append(('updatedAfter', local_var_params['updated_after']))  # noqa: E501
+        if 'updated_before' in local_var_params and local_var_params['updated_before'] is not None:  # noqa: E501
+            query_params.append(('updatedBefore', local_var_params['updated_before']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+            collection_formats['sort'] = 'multi'  # noqa: E501
+        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
+            query_params.append(('after', local_var_params['after']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -1021,28 +1051,27 @@ class BlogAuthorsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors",
-            "GET",
+            '/cms/v3/blogs/authors', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalBlogAuthorForwardPaging",  # noqa: E501
+            response_type='CollectionResponseWithTotalBlogAuthorForwardPaging',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def read_batch(self, batch_input_string, **kwargs):  # noqa: E501
         """Retrieve a batch of Blog Authors  # noqa: E501
@@ -1067,7 +1096,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.read_batch_with_http_info(batch_input_string, **kwargs)  # noqa: E501
 
     def read_batch_with_http_info(self, batch_input_string, **kwargs):  # noqa: E501
@@ -1098,19 +1127,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_string", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_string', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method read_batch" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method read_batch" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_string' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_string'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `read_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -1118,8 +1151,8 @@ class BlogAuthorsApi(object):
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -1127,34 +1160,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_string" in local_var_params:
-            body_params = local_var_params["batch_input_string"]
+        if 'batch_input_string' in local_var_params:
+            body_params = local_var_params['batch_input_string']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/batch/read",
-            "POST",
+            '/cms/v3/blogs/authors/batch/read', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogAuthor",  # noqa: E501
+            response_type='BatchResponseBlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def set_lang_primary(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
         """Set a new primary language  # noqa: E501
@@ -1178,7 +1211,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.set_lang_primary_with_http_info(set_new_language_primary_request_v_next, **kwargs)  # noqa: E501
 
     def set_lang_primary_with_http_info(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
@@ -1208,21 +1241,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["set_new_language_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['set_new_language_primary_request_v_next']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method set_lang_primary" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_lang_primary" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'set_new_language_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "set_new_language_primary_request_v_next" not in local_var_params or local_var_params["set_new_language_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('set_new_language_primary_request_v_next' not in local_var_params or  # noqa: E501
+                                                        local_var_params['set_new_language_primary_request_v_next'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `set_new_language_primary_request_v_next` when calling `set_lang_primary`")  # noqa: E501
 
         collection_formats = {}
@@ -1237,20 +1272,21 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "set_new_language_primary_request_v_next" in local_var_params:
-            body_params = local_var_params["set_new_language_primary_request_v_next"]
+        if 'set_new_language_primary_request_v_next' in local_var_params:
+            body_params = local_var_params['set_new_language_primary_request_v_next']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/multi-language/set-new-lang-primary",
-            "PUT",
+            '/cms/v3/blogs/authors/multi-language/set-new-lang-primary', 'PUT',
             path_params,
             query_params,
             header_params,
@@ -1259,12 +1295,11 @@ class BlogAuthorsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update(self, object_id, blog_author, **kwargs):  # noqa: E501
         """Update a Blog Author  # noqa: E501
@@ -1290,7 +1325,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_with_http_info(object_id, blog_author, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, object_id, blog_author, **kwargs):  # noqa: E501
@@ -1322,33 +1357,38 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_id", "blog_author", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['object_id', 'blog_author', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('object_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['object_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'blog_author' is set
-        if self.api_client.client_side_validation and ("blog_author" not in local_var_params or local_var_params["blog_author"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('blog_author' not in local_var_params or  # noqa: E501
+                                                        local_var_params['blog_author'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_author` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_id" in local_var_params:
-            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+        if 'object_id' in local_var_params:
+            path_params['objectId'] = local_var_params['object_id']  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -1356,34 +1396,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "blog_author" in local_var_params:
-            body_params = local_var_params["blog_author"]
+        if 'blog_author' in local_var_params:
+            body_params = local_var_params['blog_author']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/{objectId}",
-            "PATCH",
+            '/cms/v3/blogs/authors/{objectId}', 'PATCH',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogAuthor",  # noqa: E501
+            response_type='BlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update_batch(self, batch_input_json_node, **kwargs):  # noqa: E501
         """Update a batch of Blog Authors  # noqa: E501
@@ -1408,7 +1448,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_batch_with_http_info(batch_input_json_node, **kwargs)  # noqa: E501
 
     def update_batch_with_http_info(self, batch_input_json_node, **kwargs):  # noqa: E501
@@ -1439,19 +1479,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_json_node", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['batch_input_json_node', 'archived']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_batch" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_batch" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'batch_input_json_node' is set
-        if self.api_client.client_side_validation and ("batch_input_json_node" not in local_var_params or local_var_params["batch_input_json_node"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('batch_input_json_node' not in local_var_params or  # noqa: E501
+                                                        local_var_params['batch_input_json_node'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_json_node` when calling `update_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -1459,8 +1503,8 @@ class BlogAuthorsApi(object):
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
+            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
 
         header_params = {}
 
@@ -1468,34 +1512,34 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_json_node" in local_var_params:
-            body_params = local_var_params["batch_input_json_node"]
+        if 'batch_input_json_node' in local_var_params:
+            body_params = local_var_params['batch_input_json_node']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/batch/update",
-            "POST",
+            '/cms/v3/blogs/authors/batch/update', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogAuthor",  # noqa: E501
+            response_type='BatchResponseBlogAuthor',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update_langs(self, update_languages_request_v_next, **kwargs):  # noqa: E501
         """Update languages of multi-language group  # noqa: E501
@@ -1519,7 +1563,7 @@ class BlogAuthorsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_langs_with_http_info(update_languages_request_v_next, **kwargs)  # noqa: E501
 
     def update_langs_with_http_info(self, update_languages_request_v_next, **kwargs):  # noqa: E501
@@ -1549,21 +1593,23 @@ class BlogAuthorsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["update_languages_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['update_languages_request_v_next']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_langs" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_langs" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'update_languages_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "update_languages_request_v_next" not in local_var_params or local_var_params["update_languages_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('update_languages_request_v_next' not in local_var_params or  # noqa: E501
+                                                        local_var_params['update_languages_request_v_next'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `update_languages_request_v_next` when calling `update_langs`")  # noqa: E501
 
         collection_formats = {}
@@ -1578,31 +1624,31 @@ class BlogAuthorsApi(object):
         local_var_files = {}
 
         body_params = None
-        if "update_languages_request_v_next" in local_var_params:
-            body_params = local_var_params["update_languages_request_v_next"]
+        if 'update_languages_request_v_next' in local_var_params:
+            body_params = local_var_params['update_languages_request_v_next']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/blogs/authors/multi-language/update-languages",
-            "POST",
+            '/cms/v3/blogs/authors/multi-language/update-languages', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_type='Error',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

@@ -32,9 +32,25 @@ class PublicAuditLog(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object_id": "str", "user_id": "str", "timestamp": "datetime", "object_name": "str", "full_name": "str", "event": "str", "object_type": "str"}
+    openapi_types = {
+        'object_id': 'str',
+        'user_id': 'str',
+        'timestamp': 'datetime',
+        'object_name': 'str',
+        'full_name': 'str',
+        'event': 'str',
+        'object_type': 'str'
+    }
 
-    attribute_map = {"object_id": "objectId", "user_id": "userId", "timestamp": "timestamp", "object_name": "objectName", "full_name": "fullName", "event": "event", "object_type": "objectType"}
+    attribute_map = {
+        'object_id': 'objectId',
+        'user_id': 'userId',
+        'timestamp': 'timestamp',
+        'object_name': 'objectName',
+        'full_name': 'fullName',
+        'event': 'event',
+        'object_type': 'objectType'
+    }
 
     def __init__(self, object_id=None, user_id=None, timestamp=None, object_name=None, full_name=None, event=None, object_type=None, local_vars_configuration=None):  # noqa: E501
         """PublicAuditLog - a model defined in OpenAPI"""  # noqa: E501
@@ -208,7 +224,10 @@ class PublicAuditLog(object):
             raise ValueError("Invalid value for `event`, must not be `None`")  # noqa: E501
         allowed_values = ["CREATED", "UPDATED", "PUBLISHED", "DELETED", "UNPUBLISHED"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `event` ({0}), must be one of {1}".format(event, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event` ({0}), must be one of {1}"  # noqa: E501
+                .format(event, allowed_values)
+            )
 
         self._event = event
 
@@ -234,28 +253,12 @@ class PublicAuditLog(object):
         """
         if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "BLOG",
-            "BLOG_POST",
-            "LANDING_PAGE",
-            "WEBSITE_PAGE",
-            "TEMPLATE",
-            "MODULE",
-            "GLOBAL_MODULE",
-            "SERVERLESS_FUNCTION",
-            "DOMAIN",
-            "URL_MAPPING",
-            "EMAIL",
-            "CONTENT_SETTINGS",
-            "HUBDB_TABLE",
-            "KNOWLEDGE_BASE_ARTICLE",
-            "KNOWLEDGE_BASE",
-            "THEME",
-            "CSS",
-            "JS",
-        ]  # noqa: E501
+        allowed_values = ["BLOG", "BLOG_POST", "LANDING_PAGE", "WEBSITE_PAGE", "TEMPLATE", "MODULE", "GLOBAL_MODULE", "SERVERLESS_FUNCTION", "DOMAIN", "URL_MAPPING", "EMAIL", "CONTENT_SETTINGS", "HUBDB_TABLE", "KNOWLEDGE_BASE_ARTICLE", "KNOWLEDGE_BASE", "THEME", "CSS", "JS"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `object_type` ({0}), must be one of {1}".format(object_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(object_type, allowed_values)
+            )
 
         self._object_type = object_type
 
@@ -266,11 +269,18 @@ class PublicAuditLog(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

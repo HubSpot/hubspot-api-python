@@ -32,9 +32,19 @@ class ExternalSettings(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"create_meeting_url": "str", "update_meeting_url": "str", "delete_meeting_url": "str", "user_verify_url": "str"}
+    openapi_types = {
+        'create_meeting_url': 'str',
+        'update_meeting_url': 'str',
+        'delete_meeting_url': 'str',
+        'user_verify_url': 'str'
+    }
 
-    attribute_map = {"create_meeting_url": "createMeetingUrl", "update_meeting_url": "updateMeetingUrl", "delete_meeting_url": "deleteMeetingUrl", "user_verify_url": "userVerifyUrl"}
+    attribute_map = {
+        'create_meeting_url': 'createMeetingUrl',
+        'update_meeting_url': 'updateMeetingUrl',
+        'delete_meeting_url': 'deleteMeetingUrl',
+        'user_verify_url': 'userVerifyUrl'
+    }
 
     def __init__(self, create_meeting_url=None, update_meeting_url=None, delete_meeting_url=None, user_verify_url=None, local_vars_configuration=None):  # noqa: E501
         """ExternalSettings - a model defined in OpenAPI"""  # noqa: E501
@@ -157,11 +167,18 @@ class ExternalSettings(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -33,45 +33,32 @@ class HubSpotFormDefinitionCreateRequestAllOf(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "form_type": "str",
-        "name": "str",
-        "created_at": "datetime",
-        "updated_at": "datetime",
-        "archived": "bool",
-        "archived_at": "datetime",
-        "field_groups": "list[FieldGroup]",
-        "configuration": "HubSpotFormConfiguration",
-        "display_options": "FormDisplayOptions",
-        "legal_consent_options": "object",
+        'form_type': 'str',
+        'name': 'str',
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'archived': 'bool',
+        'archived_at': 'datetime',
+        'field_groups': 'list[FieldGroup]',
+        'configuration': 'HubSpotFormConfiguration',
+        'display_options': 'FormDisplayOptions',
+        'legal_consent_options': 'object'
     }
 
     attribute_map = {
-        "form_type": "formType",
-        "name": "name",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "archived": "archived",
-        "archived_at": "archivedAt",
-        "field_groups": "fieldGroups",
-        "configuration": "configuration",
-        "display_options": "displayOptions",
-        "legal_consent_options": "legalConsentOptions",
+        'form_type': 'formType',
+        'name': 'name',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt',
+        'archived': 'archived',
+        'archived_at': 'archivedAt',
+        'field_groups': 'fieldGroups',
+        'configuration': 'configuration',
+        'display_options': 'displayOptions',
+        'legal_consent_options': 'legalConsentOptions'
     }
 
-    def __init__(
-        self,
-        form_type="hubspot",
-        name=None,
-        created_at=None,
-        updated_at=None,
-        archived=None,
-        archived_at=None,
-        field_groups=None,
-        configuration=None,
-        display_options=None,
-        legal_consent_options=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, form_type='hubspot', name=None, created_at=None, updated_at=None, archived=None, archived_at=None, field_groups=None, configuration=None, display_options=None, legal_consent_options=None, local_vars_configuration=None):  # noqa: E501
         """HubSpotFormDefinitionCreateRequestAllOf - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -123,7 +110,10 @@ class HubSpotFormDefinitionCreateRequestAllOf(object):
             raise ValueError("Invalid value for `form_type`, must not be `None`")  # noqa: E501
         allowed_values = ["hubspot"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and form_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `form_type` ({0}), must be one of {1}".format(form_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `form_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(form_type, allowed_values)
+            )
 
         self._form_type = form_type
 
@@ -339,11 +329,18 @@ class HubSpotFormDefinitionCreateRequestAllOf(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

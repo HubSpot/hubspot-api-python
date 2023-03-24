@@ -33,51 +33,36 @@ class FormStyle(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "font_family": "str",
-        "background_width": "str",
-        "label_text_color": "str",
-        "label_text_size": "str",
-        "help_text_color": "str",
-        "help_text_size": "str",
-        "legal_consent_text_color": "str",
-        "legal_consent_text_size": "str",
-        "submit_color": "str",
-        "submit_alignment": "str",
-        "submit_font_color": "str",
-        "submit_size": "str",
+        'font_family': 'str',
+        'background_width': 'str',
+        'label_text_color': 'str',
+        'label_text_size': 'str',
+        'help_text_color': 'str',
+        'help_text_size': 'str',
+        'legal_consent_text_color': 'str',
+        'legal_consent_text_size': 'str',
+        'submit_color': 'str',
+        'submit_alignment': 'str',
+        'submit_font_color': 'str',
+        'submit_size': 'str'
     }
 
     attribute_map = {
-        "font_family": "fontFamily",
-        "background_width": "backgroundWidth",
-        "label_text_color": "labelTextColor",
-        "label_text_size": "labelTextSize",
-        "help_text_color": "helpTextColor",
-        "help_text_size": "helpTextSize",
-        "legal_consent_text_color": "legalConsentTextColor",
-        "legal_consent_text_size": "legalConsentTextSize",
-        "submit_color": "submitColor",
-        "submit_alignment": "submitAlignment",
-        "submit_font_color": "submitFontColor",
-        "submit_size": "submitSize",
+        'font_family': 'fontFamily',
+        'background_width': 'backgroundWidth',
+        'label_text_color': 'labelTextColor',
+        'label_text_size': 'labelTextSize',
+        'help_text_color': 'helpTextColor',
+        'help_text_size': 'helpTextSize',
+        'legal_consent_text_color': 'legalConsentTextColor',
+        'legal_consent_text_size': 'legalConsentTextSize',
+        'submit_color': 'submitColor',
+        'submit_alignment': 'submitAlignment',
+        'submit_font_color': 'submitFontColor',
+        'submit_size': 'submitSize'
     }
 
-    def __init__(
-        self,
-        font_family=None,
-        background_width=None,
-        label_text_color=None,
-        label_text_size=None,
-        help_text_color=None,
-        help_text_size=None,
-        legal_consent_text_color=None,
-        legal_consent_text_size=None,
-        submit_color=None,
-        submit_alignment=None,
-        submit_font_color=None,
-        submit_size=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, font_family=None, background_width=None, label_text_color=None, label_text_size=None, help_text_color=None, help_text_size=None, legal_consent_text_color=None, legal_consent_text_size=None, submit_color=None, submit_alignment=None, submit_font_color=None, submit_size=None, local_vars_configuration=None):  # noqa: E501
         """FormStyle - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -339,7 +324,10 @@ class FormStyle(object):
             raise ValueError("Invalid value for `submit_alignment`, must not be `None`")  # noqa: E501
         allowed_values = ["left", "right", "center"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and submit_alignment not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `submit_alignment` ({0}), must be one of {1}".format(submit_alignment, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `submit_alignment` ({0}), must be one of {1}"  # noqa: E501
+                .format(submit_alignment, allowed_values)
+            )
 
         self._submit_alignment = submit_alignment
 
@@ -396,11 +384,18 @@ class FormStyle(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

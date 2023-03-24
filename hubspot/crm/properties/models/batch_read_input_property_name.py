@@ -32,45 +32,28 @@ class BatchReadInputPropertyName(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"inputs": "list[PropertyName]", "archived": "bool"}
+    openapi_types = {
+        'archived': 'bool',
+        'inputs': 'list[PropertyName]'
+    }
 
-    attribute_map = {"inputs": "inputs", "archived": "archived"}
+    attribute_map = {
+        'archived': 'archived',
+        'inputs': 'inputs'
+    }
 
-    def __init__(self, inputs=None, archived=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, archived=None, inputs=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputPropertyName - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._inputs = None
         self._archived = None
+        self._inputs = None
         self.discriminator = None
 
-        self.inputs = inputs
         self.archived = archived
-
-    @property
-    def inputs(self):
-        """Gets the inputs of this BatchReadInputPropertyName.  # noqa: E501
-
-
-        :return: The inputs of this BatchReadInputPropertyName.  # noqa: E501
-        :rtype: list[PropertyName]
-        """
-        return self._inputs
-
-    @inputs.setter
-    def inputs(self, inputs):
-        """Sets the inputs of this BatchReadInputPropertyName.
-
-
-        :param inputs: The inputs of this BatchReadInputPropertyName.  # noqa: E501
-        :type: list[PropertyName]
-        """
-        if self.local_vars_configuration.client_side_validation and inputs is None:  # noqa: E501
-            raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
-
-        self._inputs = inputs
+        self.inputs = inputs
 
     @property
     def archived(self):
@@ -95,6 +78,29 @@ class BatchReadInputPropertyName(object):
 
         self._archived = archived
 
+    @property
+    def inputs(self):
+        """Gets the inputs of this BatchReadInputPropertyName.  # noqa: E501
+
+
+        :return: The inputs of this BatchReadInputPropertyName.  # noqa: E501
+        :rtype: list[PropertyName]
+        """
+        return self._inputs
+
+    @inputs.setter
+    def inputs(self, inputs):
+        """Sets the inputs of this BatchReadInputPropertyName.
+
+
+        :param inputs: The inputs of this BatchReadInputPropertyName.  # noqa: E501
+        :type: list[PropertyName]
+        """
+        if self.local_vars_configuration.client_side_validation and inputs is None:  # noqa: E501
+            raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
+
+        self._inputs = inputs
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -102,11 +108,18 @@ class BatchReadInputPropertyName(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

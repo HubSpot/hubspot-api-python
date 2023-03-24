@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.source_code.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SourceCodeExtractApi(object):
@@ -54,7 +57,7 @@ class SourceCodeExtractApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.do_async_with_http_info(file_extract_request, **kwargs)  # noqa: E501
 
     def do_async_with_http_info(self, file_extract_request, **kwargs):  # noqa: E501
@@ -83,19 +86,23 @@ class SourceCodeExtractApi(object):
 
         local_var_params = locals()
 
-        all_params = ["file_extract_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['file_extract_request']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method do_async" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method do_async" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'file_extract_request' is set
-        if self.api_client.client_side_validation and ("file_extract_request" not in local_var_params or local_var_params["file_extract_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('file_extract_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file_extract_request'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_extract_request` when calling `do_async`")  # noqa: E501
 
         collection_formats = {}
@@ -110,31 +117,30 @@ class SourceCodeExtractApi(object):
         local_var_files = {}
 
         body_params = None
-        if "file_extract_request" in local_var_params:
-            body_params = local_var_params["file_extract_request"]
+        if 'file_extract_request' in local_var_params:
+            body_params = local_var_params['file_extract_request']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/source-code/extract/async",
-            "POST",
+            '/cms/v3/source-code/extract/async', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TaskLocator",  # noqa: E501
+            response_type='TaskLocator',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def get_async_status(self, task_id, **kwargs):  # noqa: E501
         """get_async_status  # noqa: E501
@@ -157,7 +163,7 @@ class SourceCodeExtractApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.get_async_status_with_http_info(task_id, **kwargs)  # noqa: E501
 
     def get_async_status_with_http_info(self, task_id, **kwargs):  # noqa: E501
@@ -186,26 +192,30 @@ class SourceCodeExtractApi(object):
 
         local_var_params = locals()
 
-        all_params = ["task_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['task_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_async_status" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_async_status" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'task_id' is set
-        if self.api_client.client_side_validation and ("task_id" not in local_var_params or local_var_params["task_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('task_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['task_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `task_id` when calling `get_async_status`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "task_id" in local_var_params:
-            path_params["taskId"] = local_var_params["task_id"]  # noqa: E501
+        if 'task_id' in local_var_params:
+            path_params['taskId'] = local_var_params['task_id']  # noqa: E501
 
         query_params = []
 
@@ -216,25 +226,24 @@ class SourceCodeExtractApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
 
         return self.api_client.call_api(
-            "/cms/v3/source-code/extract/async/tasks/{taskId}/status",
-            "GET",
+            '/cms/v3/source-code/extract/async/tasks/{taskId}/status', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionResponse",  # noqa: E501
+            response_type='ActionResponse',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)

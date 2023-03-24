@@ -32,11 +32,23 @@ class Option(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "type": "str", "order": "int"}
+    openapi_types = {
+        'id': 'str',
+        'name': 'str',
+        'label': 'str',
+        'type': 'str',
+        'order': 'int'
+    }
 
-    attribute_map = {"id": "id", "name": "name", "type": "type", "order": "order"}
+    attribute_map = {
+        'id': 'id',
+        'name': 'name',
+        'label': 'label',
+        'type': 'type',
+        'order': 'order'
+    }
 
-    def __init__(self, id=None, name=None, type=None, order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, label=None, type=None, order=None, local_vars_configuration=None):  # noqa: E501
         """Option - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -44,12 +56,15 @@ class Option(object):
 
         self._id = None
         self._name = None
+        self._label = None
         self._type = None
         self._order = None
         self.discriminator = None
 
         self.id = id
         self.name = name
+        if label is not None:
+            self.label = label
         self.type = type
         self.order = order
 
@@ -98,6 +113,27 @@ class Option(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def label(self):
+        """Gets the label of this Option.  # noqa: E501
+
+
+        :return: The label of this Option.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this Option.
+
+
+        :param label: The label of this Option.  # noqa: E501
+        :type: str
+        """
+
+        self._label = label
 
     @property
     def type(self):
@@ -152,11 +188,18 @@ class Option(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

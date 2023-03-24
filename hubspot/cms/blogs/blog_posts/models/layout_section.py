@@ -33,54 +33,38 @@ class LayoutSection(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "x": "int",
-        "w": "int",
-        "name": "str",
-        "label": "str",
-        "type": "str",
-        "params": "dict(str, object)",
-        "rows": "list[dict(str, LayoutSection)]",
-        "row_meta_data": "list[RowMetaData]",
-        "cells": "list[LayoutSection]",
-        "css_class": "str",
-        "css_style": "str",
-        "css_id": "str",
-        "styles": "Styles",
+        'x': 'int',
+        'w': 'int',
+        'name': 'str',
+        'label': 'str',
+        'type': 'str',
+        'params': 'dict(str, object)',
+        'rows': 'list[dict(str, LayoutSection)]',
+        'row_meta_data': 'list[RowMetaData]',
+        'cells': 'list[LayoutSection]',
+        'css_class': 'str',
+        'css_style': 'str',
+        'css_id': 'str',
+        'styles': 'Styles'
     }
 
     attribute_map = {
-        "x": "x",
-        "w": "w",
-        "name": "name",
-        "label": "label",
-        "type": "type",
-        "params": "params",
-        "rows": "rows",
-        "row_meta_data": "rowMetaData",
-        "cells": "cells",
-        "css_class": "cssClass",
-        "css_style": "cssStyle",
-        "css_id": "cssId",
-        "styles": "styles",
+        'x': 'x',
+        'w': 'w',
+        'name': 'name',
+        'label': 'label',
+        'type': 'type',
+        'params': 'params',
+        'rows': 'rows',
+        'row_meta_data': 'rowMetaData',
+        'cells': 'cells',
+        'css_class': 'cssClass',
+        'css_style': 'cssStyle',
+        'css_id': 'cssId',
+        'styles': 'styles'
     }
 
-    def __init__(
-        self,
-        x=None,
-        w=None,
-        name=None,
-        label=None,
-        type=None,
-        params=None,
-        rows=None,
-        row_meta_data=None,
-        cells=None,
-        css_class=None,
-        css_style=None,
-        css_id=None,
-        styles=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, x=None, w=None, name=None, label=None, type=None, params=None, rows=None, row_meta_data=None, cells=None, css_class=None, css_style=None, css_id=None, styles=None, local_vars_configuration=None):  # noqa: E501
         """LayoutSection - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -423,11 +407,18 @@ class LayoutSection(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -32,9 +32,23 @@ class BatchResponseSimplePublicObject(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"status": "str", "results": "list[SimplePublicObject]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict(str, str)"}
+    openapi_types = {
+        'status': 'str',
+        'results': 'list[SimplePublicObject]',
+        'requested_at': 'datetime',
+        'started_at': 'datetime',
+        'completed_at': 'datetime',
+        'links': 'dict(str, str)'
+    }
 
-    attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
+    attribute_map = {
+        'status': 'status',
+        'results': 'results',
+        'requested_at': 'requestedAt',
+        'started_at': 'startedAt',
+        'completed_at': 'completedAt',
+        'links': 'links'
+    }
 
     def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseSimplePublicObject - a model defined in OpenAPI"""  # noqa: E501
@@ -81,7 +95,10 @@ class BatchResponseSimplePublicObject(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
 
         self._status = status
 
@@ -203,11 +220,18 @@ class BatchResponseSimplePublicObject(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

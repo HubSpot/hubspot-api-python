@@ -33,60 +33,42 @@ class AccountingAppUrls(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "get_invoice_url": "str",
-        "search_customer_url": "str",
-        "get_invoice_pdf_url": "str",
-        "customer_url_template": "str",
-        "product_url_template": "str",
-        "invoice_url_template": "str",
-        "create_invoice_url": "str",
-        "search_invoice_url": "str",
-        "search_product_url": "str",
-        "get_terms_url": "str",
-        "create_customer_url": "str",
-        "search_tax_url": "str",
-        "exchange_rate_url": "str",
-        "search_url": "str",
-        "search_count_url": "str",
+        'get_invoice_url': 'str',
+        'search_customer_url': 'str',
+        'get_invoice_pdf_url': 'str',
+        'customer_url_template': 'str',
+        'product_url_template': 'str',
+        'invoice_url_template': 'str',
+        'create_invoice_url': 'str',
+        'search_invoice_url': 'str',
+        'search_product_url': 'str',
+        'get_terms_url': 'str',
+        'create_customer_url': 'str',
+        'search_tax_url': 'str',
+        'exchange_rate_url': 'str',
+        'search_url': 'str',
+        'search_count_url': 'str'
     }
 
     attribute_map = {
-        "get_invoice_url": "getInvoiceUrl",
-        "search_customer_url": "searchCustomerUrl",
-        "get_invoice_pdf_url": "getInvoicePdfUrl",
-        "customer_url_template": "customerUrlTemplate",
-        "product_url_template": "productUrlTemplate",
-        "invoice_url_template": "invoiceUrlTemplate",
-        "create_invoice_url": "createInvoiceUrl",
-        "search_invoice_url": "searchInvoiceUrl",
-        "search_product_url": "searchProductUrl",
-        "get_terms_url": "getTermsUrl",
-        "create_customer_url": "createCustomerUrl",
-        "search_tax_url": "searchTaxUrl",
-        "exchange_rate_url": "exchangeRateUrl",
-        "search_url": "searchUrl",
-        "search_count_url": "searchCountUrl",
+        'get_invoice_url': 'getInvoiceUrl',
+        'search_customer_url': 'searchCustomerUrl',
+        'get_invoice_pdf_url': 'getInvoicePdfUrl',
+        'customer_url_template': 'customerUrlTemplate',
+        'product_url_template': 'productUrlTemplate',
+        'invoice_url_template': 'invoiceUrlTemplate',
+        'create_invoice_url': 'createInvoiceUrl',
+        'search_invoice_url': 'searchInvoiceUrl',
+        'search_product_url': 'searchProductUrl',
+        'get_terms_url': 'getTermsUrl',
+        'create_customer_url': 'createCustomerUrl',
+        'search_tax_url': 'searchTaxUrl',
+        'exchange_rate_url': 'exchangeRateUrl',
+        'search_url': 'searchUrl',
+        'search_count_url': 'searchCountUrl'
     }
 
-    def __init__(
-        self,
-        get_invoice_url=None,
-        search_customer_url=None,
-        get_invoice_pdf_url=None,
-        customer_url_template=None,
-        product_url_template=None,
-        invoice_url_template=None,
-        create_invoice_url=None,
-        search_invoice_url=None,
-        search_product_url=None,
-        get_terms_url=None,
-        create_customer_url=None,
-        search_tax_url=None,
-        exchange_rate_url=None,
-        search_url=None,
-        search_count_url=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, get_invoice_url=None, search_customer_url=None, get_invoice_pdf_url=None, customer_url_template=None, product_url_template=None, invoice_url_template=None, create_invoice_url=None, search_invoice_url=None, search_product_url=None, get_terms_url=None, create_customer_url=None, search_tax_url=None, exchange_rate_url=None, search_url=None, search_count_url=None, local_vars_configuration=None):  # noqa: E501
         """AccountingAppUrls - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -494,11 +476,18 @@ class AccountingAppUrls(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -33,42 +33,30 @@ class PublicImportError(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "error_type": "str",
-        "source_data": "ImportRowCore",
-        "object_type": "str",
-        "invalid_value": "str",
-        "extra_context": "str",
-        "object_type_id": "str",
-        "known_column_number": "int",
-        "created_at": "int",
-        "id": "str",
+        'error_type': 'str',
+        'source_data': 'ImportRowCore',
+        'object_type': 'str',
+        'invalid_value': 'str',
+        'extra_context': 'str',
+        'object_type_id': 'str',
+        'known_column_number': 'int',
+        'created_at': 'int',
+        'id': 'str'
     }
 
     attribute_map = {
-        "error_type": "errorType",
-        "source_data": "sourceData",
-        "object_type": "objectType",
-        "invalid_value": "invalidValue",
-        "extra_context": "extraContext",
-        "object_type_id": "objectTypeId",
-        "known_column_number": "knownColumnNumber",
-        "created_at": "createdAt",
-        "id": "id",
+        'error_type': 'errorType',
+        'source_data': 'sourceData',
+        'object_type': 'objectType',
+        'invalid_value': 'invalidValue',
+        'extra_context': 'extraContext',
+        'object_type_id': 'objectTypeId',
+        'known_column_number': 'knownColumnNumber',
+        'created_at': 'createdAt',
+        'id': 'id'
     }
 
-    def __init__(
-        self,
-        error_type=None,
-        source_data=None,
-        object_type=None,
-        invalid_value=None,
-        extra_context=None,
-        object_type_id=None,
-        known_column_number=None,
-        created_at=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, error_type=None, source_data=None, object_type=None, invalid_value=None, extra_context=None, object_type_id=None, known_column_number=None, created_at=None, id=None, local_vars_configuration=None):  # noqa: E501
         """PublicImportError - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -119,60 +107,12 @@ class PublicImportError(object):
         """
         if self.local_vars_configuration.client_side_validation and error_type is None:  # noqa: E501
             raise ValueError("Invalid value for `error_type`, must not be `None`")  # noqa: E501
-        allowed_values = [
-            "INCORRECT_NUMBER_OF_COLUMNS",
-            "INVALID_OBJECT_ID",
-            "INVALID_ASSOCIATION_IDENTIFIER",
-            "NO_OBJECT_ID_FROM_ASSOCIATION_IDENTIFIER",
-            "MULTIPLE_COMPANIES_WITH_THIS_DOMAIN",
-            "PROPERTY_DEFINITION_NOT_FOUND",
-            "PROPERTY_VALUE_NOT_FOUND",
-            "COULD_NOT_FIND_OWNER",
-            "MULTIPLE_OWNERS_FOUND",
-            "COULD_NOT_FIND_BUSINESS_UNIT",
-            "COULD_NOT_PARSE_NUMBER",
-            "COULD_NOT_PARSE_DATE",
-            "COULD_NOT_PARSE_TERM",
-            "OUTSIDE_VALID_TIME_RANGE",
-            "OUTSIDE_VALID_TERM_RANGE",
-            "COULD_NOT_PARSE_ROW",
-            "INVALID_ENUMERATION_OPTION",
-            "AMBIGUOUS_ENUMERATION_OPTION",
-            "FAILED_VALIDATION",
-            "FAILED_TO_CREATE_ASSOCIATION",
-            "FILE_NOT_FOUND",
-            "INVALID_COLUMN_CONFIGURATION",
-            "INVALID_FILE_TYPE",
-            "INVALID_SPREADSHEET",
-            "INVALID_SHEET_COUNT",
-            "FAILED_TO_PROCESS_OBJECT_WITH_EMPTY_PROPERTY_VALUES",
-            "UNKNOWN_BAD_REQUEST",
-            "GDPR_BLACKLISTED_EMAIL",
-            "DUPLICATE_ASSOCIATION_ID",
-            "LIMIT_EXCEEDED",
-            "INVALID_ALTERNATE_ID",
-            "INVALID_EMAIL",
-            "INVALID_DOMAIN",
-            "DUPLICATE_ROW_CONTENT",
-            "INVALID_NUMBER_SIZE",
-            "UNKNOWN_ERROR",
-            "FAILED_TO_OPT_OUT_CONTACT",
-            "INVALID_REQUIRED_PROPERTY",
-            "MISSING_REQUIRED_PROPERTY",
-            "DUPLICATE_ALTERNATE_ID",
-            "DUPLICATE_OBJECT_ID",
-            "DUPLICATE_UNIQUE_PROPERTY_VALUE",
-            "BLANK_VALUE_PROVIDED",
-            "UNKNOWN_ASSOCIATION_RECORD_ID",
-            "INVALID_RECORD_ID",
-            "DUPLICATE_RECORD_ID",
-            "INVALID_CUSTOM_PROPERTY_VALIDATION",
-            "CREATE_ONLY_IMPORT",
-            "UPDATE_ONLY_IMPORT",
-            "COLUMN_TOO_LARGE",
-        ]  # noqa: E501
+        allowed_values = ["INCORRECT_NUMBER_OF_COLUMNS", "INVALID_OBJECT_ID", "INVALID_ASSOCIATION_IDENTIFIER", "NO_OBJECT_ID_FROM_ASSOCIATION_IDENTIFIER", "MULTIPLE_COMPANIES_WITH_THIS_DOMAIN", "PROPERTY_DEFINITION_NOT_FOUND", "PROPERTY_VALUE_NOT_FOUND", "COULD_NOT_FIND_OWNER", "MULTIPLE_OWNERS_FOUND", "COULD_NOT_FIND_BUSINESS_UNIT", "COULD_NOT_PARSE_NUMBER", "COULD_NOT_PARSE_DATE", "COULD_NOT_PARSE_TERM", "OUTSIDE_VALID_TIME_RANGE", "OUTSIDE_VALID_TERM_RANGE", "COULD_NOT_PARSE_ROW", "INVALID_ENUMERATION_OPTION", "AMBIGUOUS_ENUMERATION_OPTION", "FAILED_VALIDATION", "FAILED_TO_CREATE_ASSOCIATION", "FILE_NOT_FOUND", "INVALID_COLUMN_CONFIGURATION", "INVALID_FILE_TYPE", "INVALID_SPREADSHEET", "INVALID_SHEET_COUNT", "FAILED_TO_PROCESS_OBJECT_WITH_EMPTY_PROPERTY_VALUES", "UNKNOWN_BAD_REQUEST", "GDPR_BLACKLISTED_EMAIL", "DUPLICATE_ASSOCIATION_ID", "LIMIT_EXCEEDED", "INVALID_ALTERNATE_ID", "INVALID_EMAIL", "INVALID_DOMAIN", "DUPLICATE_ROW_CONTENT", "INVALID_NUMBER_SIZE", "UNKNOWN_ERROR", "FAILED_TO_OPT_OUT_CONTACT", "INVALID_REQUIRED_PROPERTY", "MISSING_REQUIRED_PROPERTY", "DUPLICATE_ALTERNATE_ID", "DUPLICATE_OBJECT_ID", "DUPLICATE_UNIQUE_PROPERTY_VALUE", "BLANK_VALUE_PROVIDED", "UNKNOWN_ASSOCIATION_RECORD_ID", "INVALID_RECORD_ID", "DUPLICATE_RECORD_ID", "INVALID_CUSTOM_PROPERTY_VALIDATION", "CREATE_ONLY_IMPORT", "UPDATE_ONLY_IMPORT", "COLUMN_TOO_LARGE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and error_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `error_type` ({0}), must be one of {1}".format(error_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `error_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(error_type, allowed_values)
+            )
 
         self._error_type = error_type
 
@@ -217,133 +157,12 @@ class PublicImportError(object):
         :param object_type: The object_type of this PublicImportError.  # noqa: E501
         :type: str
         """
-        allowed_values = [
-            "CONTACT",
-            "COMPANY",
-            "DEAL",
-            "ENGAGEMENT",
-            "TICKET",
-            "OWNER",
-            "PRODUCT",
-            "LINE_ITEM",
-            "BET_DELIVERABLE_SERVICE",
-            "CONTENT",
-            "CONVERSATION",
-            "BET_ALERT",
-            "PORTAL",
-            "QUOTE",
-            "FORM_SUBMISSION_INBOUNDDB",
-            "QUOTA",
-            "UNSUBSCRIBE",
-            "COMMUNICATION",
-            "FEEDBACK_SUBMISSION",
-            "ATTRIBUTION",
-            "SALESFORCE_SYNC_ERROR",
-            "RESTORABLE_CRM_OBJECT",
-            "HUB",
-            "LANDING_PAGE",
-            "PRODUCT_OR_FOLDER",
-            "TASK",
-            "FORM",
-            "MARKETING_EMAIL",
-            "AD_ACCOUNT",
-            "AD_CAMPAIGN",
-            "AD_GROUP",
-            "AD",
-            "KEYWORD",
-            "CAMPAIGN",
-            "SOCIAL_CHANNEL",
-            "SOCIAL_POST",
-            "SITE_PAGE",
-            "BLOG_POST",
-            "IMPORT",
-            "EXPORT",
-            "CTA",
-            "TASK_TEMPLATE",
-            "AUTOMATION_PLATFORM_FLOW",
-            "OBJECT_LIST",
-            "NOTE",
-            "MEETING_EVENT",
-            "CALL",
-            "EMAIL",
-            "PUBLISHING_TASK",
-            "CONVERSATION_SESSION",
-            "CONTACT_CREATE_ATTRIBUTION",
-            "INVOICE",
-            "MARKETING_EVENT",
-            "CONVERSATION_INBOX",
-            "CHATFLOW",
-            "MEDIA_BRIDGE",
-            "SEQUENCE",
-            "SEQUENCE_STEP",
-            "FORECAST",
-            "SNIPPET",
-            "TEMPLATE",
-            "DEAL_CREATE_ATTRIBUTION",
-            "QUOTE_TEMPLATE",
-            "QUOTE_MODULE",
-            "QUOTE_MODULE_FIELD",
-            "QUOTE_FIELD",
-            "SEQUENCE_ENROLLMENT",
-            "SUBSCRIPTION",
-            "ACCEPTANCE_TEST",
-            "SOCIAL_BROADCAST",
-            "DEAL_SPLIT",
-            "DEAL_REGISTRATION",
-            "GOAL_TARGET",
-            "GOAL_TARGET_GROUP",
-            "PORTAL_OBJECT_SYNC_MESSAGE",
-            "FILE_MANAGER_FILE",
-            "FILE_MANAGER_FOLDER",
-            "SEQUENCE_STEP_ENROLLMENT",
-            "APPROVAL",
-            "APPROVAL_STEP",
-            "CTA_VARIANT",
-            "SALES_DOCUMENT",
-            "DISCOUNT",
-            "FEE",
-            "TAX",
-            "MARKETING_CALENDAR",
-            "PERMISSIONS_TESTING",
-            "PRIVACY_SCANNER_COOKIE",
-            "DATA_SYNC_STATE",
-            "WEB_INTERACTIVE",
-            "PLAYBOOK",
-            "FOLDER",
-            "PLAYBOOK_QUESTION",
-            "PLAYBOOK_SUBMISSION",
-            "PLAYBOOK_SUBMISSION_ANSWER",
-            "COMMERCE_PAYMENT",
-            "GSC_PROPERTY",
-            "SOX_PROTECTED_DUMMY_TYPE",
-            "BLOG_LISTING_PAGE",
-            "QUARANTINED_SUBMISSION",
-            "PAYMENT_SCHEDULE",
-            "PAYMENT_SCHEDULE_INSTALLMENT",
-            "MARKETING_CAMPAIGN_UTM",
-            "DISCOUNT_TEMPLATE",
-            "DISCOUNT_CODE",
-            "FEEDBACK_SURVEY",
-            "CMS_URL",
-            "SALES_TASK",
-            "SALES_WORKLOAD",
-            "USER",
-            "POSTAL_MAIL",
-            "SCHEMAS_BACKEND_TEST",
-            "PAYMENT_LINK",
-            "SUBMISSION_TAG",
-            "CAMPAIGN_STEP",
-            "SCHEDULING_PAGE",
-            "SOX_PROTECTED_TEST_TYPE",
-            "ORDER",
-            "MARKETING_SMS",
-            "PARTNER_ACCOUNT",
-            "CAMPAIGN_TEMPLATE",
-            "CAMPAIGN_TEMPLATE_STEP",
-            "UNKNOWN",
-        ]  # noqa: E501
+        allowed_values = ["CONTACT", "COMPANY", "DEAL", "ENGAGEMENT", "TICKET", "OWNER", "PRODUCT", "LINE_ITEM", "BET_DELIVERABLE_SERVICE", "CONTENT", "CONVERSATION", "BET_ALERT", "PORTAL", "QUOTE", "FORM_SUBMISSION_INBOUNDDB", "QUOTA", "UNSUBSCRIBE", "COMMUNICATION", "FEEDBACK_SUBMISSION", "ATTRIBUTION", "SALESFORCE_SYNC_ERROR", "RESTORABLE_CRM_OBJECT", "HUB", "LANDING_PAGE", "PRODUCT_OR_FOLDER", "TASK", "FORM", "MARKETING_EMAIL", "AD_ACCOUNT", "AD_CAMPAIGN", "AD_GROUP", "AD", "KEYWORD", "CAMPAIGN", "SOCIAL_CHANNEL", "SOCIAL_POST", "SITE_PAGE", "BLOG_POST", "IMPORT", "EXPORT", "CTA", "TASK_TEMPLATE", "AUTOMATION_PLATFORM_FLOW", "OBJECT_LIST", "NOTE", "MEETING_EVENT", "CALL", "EMAIL", "PUBLISHING_TASK", "CONVERSATION_SESSION", "CONTACT_CREATE_ATTRIBUTION", "INVOICE", "MARKETING_EVENT", "CONVERSATION_INBOX", "CHATFLOW", "MEDIA_BRIDGE", "SEQUENCE", "SEQUENCE_STEP", "FORECAST", "SNIPPET", "TEMPLATE", "DEAL_CREATE_ATTRIBUTION", "QUOTE_TEMPLATE", "QUOTE_MODULE", "QUOTE_MODULE_FIELD", "QUOTE_FIELD", "SEQUENCE_ENROLLMENT", "SUBSCRIPTION", "ACCEPTANCE_TEST", "SOCIAL_BROADCAST", "DEAL_SPLIT", "DEAL_REGISTRATION", "GOAL_TARGET", "GOAL_TARGET_GROUP", "PORTAL_OBJECT_SYNC_MESSAGE", "FILE_MANAGER_FILE", "FILE_MANAGER_FOLDER", "SEQUENCE_STEP_ENROLLMENT", "APPROVAL", "APPROVAL_STEP", "CTA_VARIANT", "SALES_DOCUMENT", "DISCOUNT", "FEE", "TAX", "MARKETING_CALENDAR", "PERMISSIONS_TESTING", "PRIVACY_SCANNER_COOKIE", "DATA_SYNC_STATE", "WEB_INTERACTIVE", "PLAYBOOK", "FOLDER", "PLAYBOOK_QUESTION", "PLAYBOOK_SUBMISSION", "PLAYBOOK_SUBMISSION_ANSWER", "COMMERCE_PAYMENT", "GSC_PROPERTY", "SOX_PROTECTED_DUMMY_TYPE", "BLOG_LISTING_PAGE", "QUARANTINED_SUBMISSION", "PAYMENT_SCHEDULE", "PAYMENT_SCHEDULE_INSTALLMENT", "MARKETING_CAMPAIGN_UTM", "DISCOUNT_TEMPLATE", "DISCOUNT_CODE", "FEEDBACK_SURVEY", "CMS_URL", "SALES_TASK", "SALES_WORKLOAD", "USER", "POSTAL_MAIL", "SCHEMAS_BACKEND_TEST", "PAYMENT_LINK", "SUBMISSION_TAG", "CAMPAIGN_STEP", "SCHEDULING_PAGE", "SOX_PROTECTED_TEST_TYPE", "ORDER", "MARKETING_SMS", "PARTNER_ACCOUNT", "CAMPAIGN_TEMPLATE", "CAMPAIGN_TEMPLATE_STEP", "UNKNOWN"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `object_type` ({0}), must be one of {1}".format(object_type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(object_type, allowed_values)
+            )
 
         self._object_type = object_type
 
@@ -486,11 +305,18 @@ class PublicImportError(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

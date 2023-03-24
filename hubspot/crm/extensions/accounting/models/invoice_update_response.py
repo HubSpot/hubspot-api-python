@@ -33,63 +33,44 @@ class InvoiceUpdateResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "external_invoice_number": "str",
-        "total_amount_billed": "float",
-        "balance_due": "float",
-        "currency_code": "str",
-        "due_date": "date",
-        "external_recipient_id": "str",
-        "received_by_recipient_date": "int",
-        "external_create_date_time": "int",
-        "is_voided": "bool",
-        "created_at": "datetime",
-        "updated_at": "datetime",
-        "archived_at": "datetime",
-        "archived": "bool",
-        "external_account_id": "str",
-        "invoice_status": "str",
-        "id": "str",
+        'external_invoice_number': 'str',
+        'total_amount_billed': 'float',
+        'balance_due': 'float',
+        'currency_code': 'str',
+        'due_date': 'date',
+        'external_recipient_id': 'str',
+        'received_by_recipient_date': 'int',
+        'external_create_date_time': 'int',
+        'is_voided': 'bool',
+        'created_at': 'datetime',
+        'updated_at': 'datetime',
+        'archived_at': 'datetime',
+        'archived': 'bool',
+        'external_account_id': 'str',
+        'invoice_status': 'str',
+        'id': 'str'
     }
 
     attribute_map = {
-        "external_invoice_number": "externalInvoiceNumber",
-        "total_amount_billed": "totalAmountBilled",
-        "balance_due": "balanceDue",
-        "currency_code": "currencyCode",
-        "due_date": "dueDate",
-        "external_recipient_id": "externalRecipientId",
-        "received_by_recipient_date": "receivedByRecipientDate",
-        "external_create_date_time": "externalCreateDateTime",
-        "is_voided": "isVoided",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "archived_at": "archivedAt",
-        "archived": "archived",
-        "external_account_id": "externalAccountId",
-        "invoice_status": "invoiceStatus",
-        "id": "id",
+        'external_invoice_number': 'externalInvoiceNumber',
+        'total_amount_billed': 'totalAmountBilled',
+        'balance_due': 'balanceDue',
+        'currency_code': 'currencyCode',
+        'due_date': 'dueDate',
+        'external_recipient_id': 'externalRecipientId',
+        'received_by_recipient_date': 'receivedByRecipientDate',
+        'external_create_date_time': 'externalCreateDateTime',
+        'is_voided': 'isVoided',
+        'created_at': 'createdAt',
+        'updated_at': 'updatedAt',
+        'archived_at': 'archivedAt',
+        'archived': 'archived',
+        'external_account_id': 'externalAccountId',
+        'invoice_status': 'invoiceStatus',
+        'id': 'id'
     }
 
-    def __init__(
-        self,
-        external_invoice_number=None,
-        total_amount_billed=None,
-        balance_due=None,
-        currency_code=None,
-        due_date=None,
-        external_recipient_id=None,
-        received_by_recipient_date=None,
-        external_create_date_time=None,
-        is_voided=None,
-        created_at=None,
-        updated_at=None,
-        archived_at=None,
-        archived=None,
-        external_account_id=None,
-        invoice_status=None,
-        id=None,
-        local_vars_configuration=None,
-    ):  # noqa: E501
+    def __init__(self, external_invoice_number=None, total_amount_billed=None, balance_due=None, currency_code=None, due_date=None, external_recipient_id=None, received_by_recipient_date=None, external_create_date_time=None, is_voided=None, created_at=None, updated_at=None, archived_at=None, archived=None, external_account_id=None, invoice_status=None, id=None, local_vars_configuration=None):  # noqa: E501
         """InvoiceUpdateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -470,7 +451,10 @@ class InvoiceUpdateResponse(object):
             raise ValueError("Invalid value for `invoice_status`, must not be `None`")  # noqa: E501
         allowed_values = ["CREATED", "SENT", "PAID", "CLOSED", "OVERDUE", "VOIDED", "NONE", "UNPAID"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and invoice_status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `invoice_status` ({0}), must be one of {1}".format(invoice_status, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `invoice_status` ({0}), must be one of {1}"  # noqa: E501
+                .format(invoice_status, allowed_values)
+            )
 
         self._invoice_status = invoice_status
 
@@ -504,11 +488,18 @@ class InvoiceUpdateResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

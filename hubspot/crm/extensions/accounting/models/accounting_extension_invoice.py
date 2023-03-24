@@ -33,32 +33,30 @@ class AccountingExtensionInvoice(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "amount_due": "float",
-        "balance": "float",
-        "due_date": "date",
-        "invoice_number": "str",
-        "customer_id": "str",
-        "currency": "str",
-        "invoice_link": "str",
-        "customer_name": "str",
-        "status": "str",
+        'amount_due': 'float',
+        'balance': 'float',
+        'due_date': 'date',
+        'invoice_number': 'str',
+        'customer_id': 'str',
+        'currency': 'str',
+        'invoice_link': 'str',
+        'customer_name': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
-        "amount_due": "amountDue",
-        "balance": "balance",
-        "due_date": "dueDate",
-        "invoice_number": "invoiceNumber",
-        "customer_id": "customerId",
-        "currency": "currency",
-        "invoice_link": "invoiceLink",
-        "customer_name": "customerName",
-        "status": "status",
+        'amount_due': 'amountDue',
+        'balance': 'balance',
+        'due_date': 'dueDate',
+        'invoice_number': 'invoiceNumber',
+        'customer_id': 'customerId',
+        'currency': 'currency',
+        'invoice_link': 'invoiceLink',
+        'customer_name': 'customerName',
+        'status': 'status'
     }
 
-    def __init__(
-        self, amount_due=None, balance=None, due_date=None, invoice_number=None, customer_id=None, currency=None, invoice_link=None, customer_name=None, status=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, amount_due=None, balance=None, due_date=None, invoice_number=None, customer_id=None, currency=None, invoice_link=None, customer_name=None, status=None, local_vars_configuration=None):  # noqa: E501
         """AccountingExtensionInvoice - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -306,7 +304,10 @@ class AccountingExtensionInvoice(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["CREATED", "SENT", "PAID", "CLOSED", "OVERDUE", "VOIDED"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
 
         self._status = status
 
@@ -317,11 +318,18 @@ class AccountingExtensionInvoice(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

@@ -32,9 +32,19 @@ class ImportResult(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"errors": "list[Error]", "rows_imported": "int", "duplicate_rows": "int", "row_limit_exceeded": "bool"}
+    openapi_types = {
+        'errors': 'list[Error]',
+        'rows_imported': 'int',
+        'duplicate_rows': 'int',
+        'row_limit_exceeded': 'bool'
+    }
 
-    attribute_map = {"errors": "errors", "rows_imported": "rowsImported", "duplicate_rows": "duplicateRows", "row_limit_exceeded": "rowLimitExceeded"}
+    attribute_map = {
+        'errors': 'errors',
+        'rows_imported': 'rowsImported',
+        'duplicate_rows': 'duplicateRows',
+        'row_limit_exceeded': 'rowLimitExceeded'
+    }
 
     def __init__(self, errors=None, rows_imported=None, duplicate_rows=None, row_limit_exceeded=None, local_vars_configuration=None):  # noqa: E501
         """ImportResult - a model defined in OpenAPI"""  # noqa: E501
@@ -160,11 +170,18 @@ class ImportResult(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

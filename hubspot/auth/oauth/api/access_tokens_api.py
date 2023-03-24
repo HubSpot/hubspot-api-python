@@ -35,12 +35,12 @@ class AccessTokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_access_token(self, token, **kwargs):  # noqa: E501
-        """get_access_token  # noqa: E501
+    def get(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_access_token(token, async_req=True)
+        >>> thread = api.get(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -57,14 +57,14 @@ class AccessTokensApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.get_access_token_with_http_info(token, **kwargs)  # noqa: E501
+        return self.get_with_http_info(token, **kwargs)  # noqa: E501
 
-    def get_access_token_with_http_info(self, token, **kwargs):  # noqa: E501
-        """get_access_token  # noqa: E501
+    def get_with_http_info(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_access_token_with_http_info(token, async_req=True)
+        >>> thread = api.get_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -95,14 +95,14 @@ class AccessTokensApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_token" % key
+                    " to method get" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'token' is set
         if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
                                                         local_var_params['token'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token` when calling `get_access_token`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token` when calling `get`")  # noqa: E501
 
         collection_formats = {}
 

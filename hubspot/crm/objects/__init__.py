@@ -32,12 +32,12 @@ from hubspot.crm.objects.exceptions import ApiTypeError
 from hubspot.crm.objects.exceptions import ApiValueError
 from hubspot.crm.objects.exceptions import ApiKeyError
 from hubspot.crm.objects.exceptions import ApiException
-
 # import models into sdk package
 from hubspot.crm.objects.models.associated_id import AssociatedId
+from hubspot.crm.objects.models.association_spec import AssociationSpec
 from hubspot.crm.objects.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
 from hubspot.crm.objects.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
-from hubspot.crm.objects.models.batch_input_simple_public_object_input import BatchInputSimplePublicObjectInput
+from hubspot.crm.objects.models.batch_input_simple_public_object_input_for_create import BatchInputSimplePublicObjectInputForCreate
 from hubspot.crm.objects.models.batch_read_input_simple_public_object_id import BatchReadInputSimplePublicObjectId
 from hubspot.crm.objects.models.batch_response_simple_public_object import BatchResponseSimplePublicObject
 from hubspot.crm.objects.models.batch_response_simple_public_object_with_errors import BatchResponseSimplePublicObjectWithErrors
@@ -54,13 +54,17 @@ from hubspot.crm.objects.models.forward_paging import ForwardPaging
 from hubspot.crm.objects.models.next_page import NextPage
 from hubspot.crm.objects.models.paging import Paging
 from hubspot.crm.objects.models.previous_page import PreviousPage
+from hubspot.crm.objects.models.public_associations_for_object import PublicAssociationsForObject
 from hubspot.crm.objects.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.objects.models.public_merge_input import PublicMergeInput
+from hubspot.crm.objects.models.public_object_id import PublicObjectId
 from hubspot.crm.objects.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.objects.models.simple_public_object import SimplePublicObject
 from hubspot.crm.objects.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
 from hubspot.crm.objects.models.simple_public_object_id import SimplePublicObjectId
 from hubspot.crm.objects.models.simple_public_object_input import SimplePublicObjectInput
+from hubspot.crm.objects.models.simple_public_object_input_for_create import SimplePublicObjectInputForCreate
 from hubspot.crm.objects.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.objects.models.standard_error import StandardError
 from hubspot.crm.objects.models.value_with_timestamp import ValueWithTimestamp
+

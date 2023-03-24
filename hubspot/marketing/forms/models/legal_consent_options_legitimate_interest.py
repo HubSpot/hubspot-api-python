@@ -32,11 +32,21 @@ class LegalConsentOptionsLegitimateInterest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"type": "str", "subscription_type_ids": "list[int]", "lawful_basis": "str", "privacy_text": "str"}
+    openapi_types = {
+        'type': 'str',
+        'subscription_type_ids': 'list[int]',
+        'lawful_basis': 'str',
+        'privacy_text': 'str'
+    }
 
-    attribute_map = {"type": "type", "subscription_type_ids": "subscriptionTypeIds", "lawful_basis": "lawfulBasis", "privacy_text": "privacyText"}
+    attribute_map = {
+        'type': 'type',
+        'subscription_type_ids': 'subscriptionTypeIds',
+        'lawful_basis': 'lawfulBasis',
+        'privacy_text': 'privacyText'
+    }
 
-    def __init__(self, type="legitimate_interest", subscription_type_ids=None, lawful_basis=None, privacy_text=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, type='legitimate_interest', subscription_type_ids=None, lawful_basis=None, privacy_text=None, local_vars_configuration=None):  # noqa: E501
         """LegalConsentOptionsLegitimateInterest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,7 +85,10 @@ class LegalConsentOptionsLegitimateInterest(object):
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = ["legitimate_interest"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
+                .format(type, allowed_values)
+            )
 
         self._type = type
 
@@ -124,7 +137,10 @@ class LegalConsentOptionsLegitimateInterest(object):
             raise ValueError("Invalid value for `lawful_basis`, must not be `None`")  # noqa: E501
         allowed_values = ["lead", "client"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and lawful_basis not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `lawful_basis` ({0}), must be one of {1}".format(lawful_basis, allowed_values))  # noqa: E501
+            raise ValueError(
+                "Invalid value for `lawful_basis` ({0}), must be one of {1}"  # noqa: E501
+                .format(lawful_basis, allowed_values)
+            )
 
         self._lawful_basis = lawful_basis
 
@@ -158,11 +174,18 @@ class LegalConsentOptionsLegitimateInterest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
             else:
                 result[attr] = value
 

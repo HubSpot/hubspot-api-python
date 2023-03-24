@@ -18,7 +18,10 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.timeline.api_client import ApiClient
-from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.timeline.exceptions import (
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TokensApi(object):
@@ -57,7 +60,7 @@ class TokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.archive_with_http_info(event_template_id, token_name, app_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, event_template_id, token_name, app_id, **kwargs):  # noqa: E501
@@ -89,36 +92,42 @@ class TokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "token_name", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['event_template_id', 'token_name', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method archive" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['event_template_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'token_name' is set
-        if self.api_client.client_side_validation and ("token_name" not in local_var_params or local_var_params["token_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('token_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['token_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `token_name` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
-        if "token_name" in local_var_params:
-            path_params["tokenName"] = local_var_params["token_name"]  # noqa: E501
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'event_template_id' in local_var_params:
+            path_params['eventTemplateId'] = local_var_params['event_template_id']  # noqa: E501
+        if 'token_name' in local_var_params:
+            path_params['tokenName'] = local_var_params['token_name']  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -129,14 +138,14 @@ class TokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer_hapikey"]  # noqa: E501
+        auth_settings = ['developer_hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
-            "DELETE",
+            '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -145,12 +154,11 @@ class TokensApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def create(self, event_template_id, app_id, timeline_event_template_token, **kwargs):  # noqa: E501
         """Adds a token to an existing event template  # noqa: E501
@@ -176,7 +184,7 @@ class TokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.create_with_http_info(event_template_id, app_id, timeline_event_template_token, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, event_template_id, app_id, timeline_event_template_token, **kwargs):  # noqa: E501
@@ -208,36 +216,40 @@ class TokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id", "timeline_event_template_token"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['event_template_id', 'app_id', 'timeline_event_template_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['event_template_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'timeline_event_template_token' is set
-        if self.api_client.client_side_validation and (
-            "timeline_event_template_token" not in local_var_params or local_var_params["timeline_event_template_token"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('timeline_event_template_token' not in local_var_params or  # noqa: E501
+                                                        local_var_params['timeline_event_template_token'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `timeline_event_template_token` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'event_template_id' in local_var_params:
+            path_params['eventTemplateId'] = local_var_params['event_template_id']  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -247,34 +259,34 @@ class TokensApi(object):
         local_var_files = {}
 
         body_params = None
-        if "timeline_event_template_token" in local_var_params:
-            body_params = local_var_params["timeline_event_template_token"]
+        if 'timeline_event_template_token' in local_var_params:
+            body_params = local_var_params['timeline_event_template_token']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer_hapikey"]  # noqa: E501
+        auth_settings = ['developer_hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens",
-            "POST",
+            '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TimelineEventTemplateToken",  # noqa: E501
+            response_type='TimelineEventTemplateToken',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
 
     def update(self, event_template_id, token_name, app_id, timeline_event_template_token_update_request, **kwargs):  # noqa: E501
         """Updates an existing token on an event template  # noqa: E501
@@ -301,7 +313,7 @@ class TokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs["_return_http_data_only"] = True
+        kwargs['_return_http_data_only'] = True
         return self.update_with_http_info(event_template_id, token_name, app_id, timeline_event_template_token_update_request, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, event_template_id, token_name, app_id, timeline_event_template_token_update_request, **kwargs):  # noqa: E501
@@ -334,41 +346,46 @@ class TokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "token_name", "app_id", "timeline_event_template_token_update_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ['event_template_id', 'token_name', 'app_id', 'timeline_event_template_token_update_request']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
 
-        for key, val in six.iteritems(local_var_params["kwargs"]):
+        for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update" % key
+                )
             local_var_params[key] = val
-        del local_var_params["kwargs"]
+        del local_var_params['kwargs']
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('event_template_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['event_template_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'token_name' is set
-        if self.api_client.client_side_validation and ("token_name" not in local_var_params or local_var_params["token_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('token_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['token_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `token_name` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and ('app_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['app_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'timeline_event_template_token_update_request' is set
-        if self.api_client.client_side_validation and (
-            "timeline_event_template_token_update_request" not in local_var_params or local_var_params["timeline_event_template_token_update_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and ('timeline_event_template_token_update_request' not in local_var_params or  # noqa: E501
+                                                        local_var_params['timeline_event_template_token_update_request'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `timeline_event_template_token_update_request` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
-        if "token_name" in local_var_params:
-            path_params["tokenName"] = local_var_params["token_name"]  # noqa: E501
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+        if 'event_template_id' in local_var_params:
+            path_params['eventTemplateId'] = local_var_params['event_template_id']  # noqa: E501
+        if 'token_name' in local_var_params:
+            path_params['tokenName'] = local_var_params['token_name']  # noqa: E501
+        if 'app_id' in local_var_params:
+            path_params['appId'] = local_var_params['app_id']  # noqa: E501
 
         query_params = []
 
@@ -378,31 +395,31 @@ class TokensApi(object):
         local_var_files = {}
 
         body_params = None
-        if "timeline_event_template_token_update_request" in local_var_params:
-            body_params = local_var_params["timeline_event_template_token_update_request"]
+        if 'timeline_event_template_token_update_request' in local_var_params:
+            body_params = local_var_params['timeline_event_template_token_update_request']
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', '*/*'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["developer_hapikey"]  # noqa: E501
+        auth_settings = ['developer_hapikey']  # noqa: E501
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
-            "PUT",
+            '/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}', 'PUT',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TimelineEventTemplateToken",  # noqa: E501
+            response_type='TimelineEventTemplateToken',  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-        )
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
