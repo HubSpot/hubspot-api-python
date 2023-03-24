@@ -33,22 +33,30 @@ class LegalConsentOptionsImplicitConsentToProcess(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'type': 'str',
-        'communication_consent_text': 'str',
-        'communications_checkboxes': 'list[LegalConsentCheckbox]',
-        'privacy_text': 'str',
-        'consent_to_process_text': 'str'
+        "type": "str",
+        "communication_consent_text": "str",
+        "communications_checkboxes": "list[LegalConsentCheckbox]",
+        "privacy_text": "str",
+        "consent_to_process_text": "str",
     }
 
     attribute_map = {
-        'type': 'type',
-        'communication_consent_text': 'communicationConsentText',
-        'communications_checkboxes': 'communicationsCheckboxes',
-        'privacy_text': 'privacyText',
-        'consent_to_process_text': 'consentToProcessText'
+        "type": "type",
+        "communication_consent_text": "communicationConsentText",
+        "communications_checkboxes": "communicationsCheckboxes",
+        "privacy_text": "privacyText",
+        "consent_to_process_text": "consentToProcessText",
     }
 
-    def __init__(self, type='implicit_consent_to_process', communication_consent_text=None, communications_checkboxes=None, privacy_text=None, consent_to_process_text=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        type="implicit_consent_to_process",
+        communication_consent_text=None,
+        communications_checkboxes=None,
+        privacy_text=None,
+        consent_to_process_text=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """LegalConsentOptionsImplicitConsentToProcess - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -87,13 +95,21 @@ class LegalConsentOptionsImplicitConsentToProcess(object):
         :param type: The type of this LegalConsentOptionsImplicitConsentToProcess.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["implicit_consent_to_process"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
+                "Invalid value for `type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["implicit_consent_to_process"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
+                    type, allowed_values
+                )
             )
 
         self._type = type
@@ -137,8 +153,13 @@ class LegalConsentOptionsImplicitConsentToProcess(object):
         :param communications_checkboxes: The communications_checkboxes of this LegalConsentOptionsImplicitConsentToProcess.  # noqa: E501
         :type: list[LegalConsentCheckbox]
         """
-        if self.local_vars_configuration.client_side_validation and communications_checkboxes is None:  # noqa: E501
-            raise ValueError("Invalid value for `communications_checkboxes`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and communications_checkboxes is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `communications_checkboxes`, must not be `None`"
+            )  # noqa: E501
 
         self._communications_checkboxes = communications_checkboxes
 
@@ -160,8 +181,13 @@ class LegalConsentOptionsImplicitConsentToProcess(object):
         :param privacy_text: The privacy_text of this LegalConsentOptionsImplicitConsentToProcess.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and privacy_text is None:  # noqa: E501
-            raise ValueError("Invalid value for `privacy_text`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and privacy_text is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `privacy_text`, must not be `None`"
+            )  # noqa: E501
 
         self._privacy_text = privacy_text
 
@@ -193,18 +219,20 @@ class LegalConsentOptionsImplicitConsentToProcess(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -14,7 +14,9 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.events.models.collection_response_external_unified_event import CollectionResponseExternalUnifiedEvent
+from hubspot.events.models.collection_response_external_unified_event import (
+    CollectionResponseExternalUnifiedEvent,
+)
 from hubspot.events.models.error import Error
 from hubspot.events.models.error_detail import ErrorDetail
 from hubspot.events.models.external_unified_event import ExternalUnifiedEvent

@@ -14,7 +14,9 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.crm.owners.models.collection_response_public_owner_forward_paging import CollectionResponsePublicOwnerForwardPaging
+from hubspot.crm.owners.models.collection_response_public_owner_forward_paging import (
+    CollectionResponsePublicOwnerForwardPaging,
+)
 from hubspot.crm.owners.models.error import Error
 from hubspot.crm.owners.models.error_detail import ErrorDetail
 from hubspot.crm.owners.models.forward_paging import ForwardPaging

@@ -33,26 +33,36 @@ class AssetFileMetadata(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'folder': 'bool',
-        'children': 'list[str]',
-        'updated_at': 'int',
-        'created_at': 'int',
-        'archived_at': 'int'
+        "id": "str",
+        "name": "str",
+        "folder": "bool",
+        "children": "list[str]",
+        "updated_at": "int",
+        "created_at": "int",
+        "archived_at": "int",
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'folder': 'folder',
-        'children': 'children',
-        'updated_at': 'updatedAt',
-        'created_at': 'createdAt',
-        'archived_at': 'archivedAt'
+        "id": "id",
+        "name": "name",
+        "folder": "folder",
+        "children": "children",
+        "updated_at": "updatedAt",
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
     }
 
-    def __init__(self, id=None, name=None, folder=None, children=None, updated_at=None, created_at=None, archived_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        name=None,
+        folder=None,
+        children=None,
+        updated_at=None,
+        created_at=None,
+        archived_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """AssetFileMetadata - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -97,7 +107,9 @@ class AssetFileMetadata(object):
         :param id: The id of this AssetFileMetadata.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -122,8 +134,12 @@ class AssetFileMetadata(object):
         :param name: The name of this AssetFileMetadata.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -147,8 +163,12 @@ class AssetFileMetadata(object):
         :param folder: The folder of this AssetFileMetadata.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and folder is None:  # noqa: E501
-            raise ValueError("Invalid value for `folder`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and folder is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `folder`, must not be `None`"
+            )  # noqa: E501
 
         self._folder = folder
 
@@ -195,8 +215,12 @@ class AssetFileMetadata(object):
         :param updated_at: The updated_at of this AssetFileMetadata.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -220,8 +244,12 @@ class AssetFileMetadata(object):
         :param created_at: The created_at of this AssetFileMetadata.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -255,18 +283,20 @@ class AssetFileMetadata(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

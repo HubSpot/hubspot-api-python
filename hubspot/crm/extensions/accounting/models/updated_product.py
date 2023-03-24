@@ -33,24 +33,33 @@ class UpdatedProduct(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'sync_action': 'str',
-        'updated_at': 'datetime',
-        'price': 'float',
-        'currency_code': 'str',
-        'id': 'str',
-        'properties': 'dict(str, str)'
+        "sync_action": "str",
+        "updated_at": "datetime",
+        "price": "float",
+        "currency_code": "str",
+        "id": "str",
+        "properties": "dict(str, str)",
     }
 
     attribute_map = {
-        'sync_action': 'syncAction',
-        'updated_at': 'updatedAt',
-        'price': 'price',
-        'currency_code': 'currencyCode',
-        'id': 'id',
-        'properties': 'properties'
+        "sync_action": "syncAction",
+        "updated_at": "updatedAt",
+        "price": "price",
+        "currency_code": "currencyCode",
+        "id": "id",
+        "properties": "properties",
     }
 
-    def __init__(self, sync_action=None, updated_at=None, price=None, currency_code=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        sync_action=None,
+        updated_at=None,
+        price=None,
+        currency_code=None,
+        id=None,
+        properties=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """UpdatedProduct - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -92,13 +101,21 @@ class UpdatedProduct(object):
         :param sync_action: The sync_action of this UpdatedProduct.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and sync_action is None:  # noqa: E501
-            raise ValueError("Invalid value for `sync_action`, must not be `None`")  # noqa: E501
-        allowed_values = ["CREATE", "UPDATE", "DELETE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and sync_action not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and sync_action is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `sync_action` ({0}), must be one of {1}"  # noqa: E501
-                .format(sync_action, allowed_values)
+                "Invalid value for `sync_action`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["CREATE", "UPDATE", "DELETE"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and sync_action not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `sync_action` ({0}), must be one of {1}".format(  # noqa: E501
+                    sync_action, allowed_values
+                )
             )
 
         self._sync_action = sync_action
@@ -123,8 +140,12 @@ class UpdatedProduct(object):
         :param updated_at: The updated_at of this UpdatedProduct.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -148,8 +169,12 @@ class UpdatedProduct(object):
         :param price: The price of this UpdatedProduct.  # noqa: E501
         :type: float
         """
-        if self.local_vars_configuration.client_side_validation and price is None:  # noqa: E501
-            raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and price is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `price`, must not be `None`"
+            )  # noqa: E501
 
         self._price = price
 
@@ -196,7 +221,9 @@ class UpdatedProduct(object):
         :param id: The id of this UpdatedProduct.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -221,8 +248,12 @@ class UpdatedProduct(object):
         :param properties: The properties of this UpdatedProduct.  # noqa: E501
         :type: dict(str, str)
         """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and properties is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `properties`, must not be `None`"
+            )  # noqa: E501
 
         self._properties = properties
 
@@ -233,18 +264,20 @@ class UpdatedProduct(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

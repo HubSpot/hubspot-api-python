@@ -33,20 +33,27 @@ class InvoiceCreatePaymentRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'amount_paid': 'float',
-        'currency_code': 'str',
-        'payment_date_time': 'datetime',
-        'external_payment_id': 'str'
+        "amount_paid": "float",
+        "currency_code": "str",
+        "payment_date_time": "datetime",
+        "external_payment_id": "str",
     }
 
     attribute_map = {
-        'amount_paid': 'amountPaid',
-        'currency_code': 'currencyCode',
-        'payment_date_time': 'paymentDateTime',
-        'external_payment_id': 'externalPaymentId'
+        "amount_paid": "amountPaid",
+        "currency_code": "currencyCode",
+        "payment_date_time": "paymentDateTime",
+        "external_payment_id": "externalPaymentId",
     }
 
-    def __init__(self, amount_paid=None, currency_code=None, payment_date_time=None, external_payment_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        amount_paid=None,
+        currency_code=None,
+        payment_date_time=None,
+        external_payment_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """InvoiceCreatePaymentRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,8 +90,12 @@ class InvoiceCreatePaymentRequest(object):
         :param amount_paid: The amount_paid of this InvoiceCreatePaymentRequest.  # noqa: E501
         :type: float
         """
-        if self.local_vars_configuration.client_side_validation and amount_paid is None:  # noqa: E501
-            raise ValueError("Invalid value for `amount_paid`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and amount_paid is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `amount_paid`, must not be `None`"
+            )  # noqa: E501
 
         self._amount_paid = amount_paid
 
@@ -108,8 +119,13 @@ class InvoiceCreatePaymentRequest(object):
         :param currency_code: The currency_code of this InvoiceCreatePaymentRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and currency_code is None:  # noqa: E501
-            raise ValueError("Invalid value for `currency_code`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and currency_code is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `currency_code`, must not be `None`"
+            )  # noqa: E501
 
         self._currency_code = currency_code
 
@@ -133,8 +149,13 @@ class InvoiceCreatePaymentRequest(object):
         :param payment_date_time: The payment_date_time of this InvoiceCreatePaymentRequest.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and payment_date_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `payment_date_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and payment_date_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `payment_date_time`, must not be `None`"
+            )  # noqa: E501
 
         self._payment_date_time = payment_date_time
 
@@ -158,8 +179,13 @@ class InvoiceCreatePaymentRequest(object):
         :param external_payment_id: The external_payment_id of this InvoiceCreatePaymentRequest.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and external_payment_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `external_payment_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and external_payment_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `external_payment_id`, must not be `None`"
+            )  # noqa: E501
 
         self._external_payment_id = external_payment_id
 
@@ -170,18 +196,20 @@ class InvoiceCreatePaymentRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

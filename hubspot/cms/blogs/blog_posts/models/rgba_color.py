@@ -32,21 +32,13 @@ class RGBAColor(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'r': 'int',
-        'g': 'int',
-        'b': 'int',
-        'a': 'float'
-    }
+    openapi_types = {"r": "int", "g": "int", "b": "int", "a": "float"}
 
-    attribute_map = {
-        'r': 'r',
-        'g': 'g',
-        'b': 'b',
-        'a': 'a'
-    }
+    attribute_map = {"r": "r", "g": "g", "b": "b", "a": "a"}
 
-    def __init__(self, r=None, g=None, b=None, a=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, r=None, g=None, b=None, a=None, local_vars_configuration=None
+    ):  # noqa: E501
         """RGBAColor - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,7 +75,9 @@ class RGBAColor(object):
         :param r: The r of this RGBAColor.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and r is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and r is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `r`, must not be `None`")  # noqa: E501
 
         self._r = r
@@ -108,7 +102,9 @@ class RGBAColor(object):
         :param g: The g of this RGBAColor.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and g is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and g is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `g`, must not be `None`")  # noqa: E501
 
         self._g = g
@@ -133,7 +129,9 @@ class RGBAColor(object):
         :param b: The b of this RGBAColor.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and b is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and b is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `b`, must not be `None`")  # noqa: E501
 
         self._b = b
@@ -158,7 +156,9 @@ class RGBAColor(object):
         :param a: The a of this RGBAColor.  # noqa: E501
         :type: float
         """
-        if self.local_vars_configuration.client_side_validation and a is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and a is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `a`, must not be `None`")  # noqa: E501
 
         self._a = a
@@ -170,18 +170,20 @@ class RGBAColor(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -33,18 +33,16 @@ class CollectionResponseWithTotalHubDbTableRowV3ForwardPaging(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'total': 'int',
-        'results': 'list[HubDbTableRowV3]',
-        'paging': 'ForwardPaging'
+        "total": "int",
+        "results": "list[HubDbTableRowV3]",
+        "paging": "ForwardPaging",
     }
 
-    attribute_map = {
-        'total': 'total',
-        'results': 'results',
-        'paging': 'paging'
-    }
+    attribute_map = {"total": "total", "results": "results", "paging": "paging"}
 
-    def __init__(self, total=None, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, total=None, results=None, paging=None, local_vars_configuration=None
+    ):  # noqa: E501
         """CollectionResponseWithTotalHubDbTableRowV3ForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,8 +76,12 @@ class CollectionResponseWithTotalHubDbTableRowV3ForwardPaging(object):
         :param total: The total of this CollectionResponseWithTotalHubDbTableRowV3ForwardPaging.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and total is None:  # noqa: E501
-            raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and total is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `total`, must not be `None`"
+            )  # noqa: E501
 
         self._total = total
 
@@ -101,8 +103,12 @@ class CollectionResponseWithTotalHubDbTableRowV3ForwardPaging(object):
         :param results: The results of this CollectionResponseWithTotalHubDbTableRowV3ForwardPaging.  # noqa: E501
         :type: list[HubDbTableRowV3]
         """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and results is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `results`, must not be `None`"
+            )  # noqa: E501
 
         self._results = results
 
@@ -134,18 +140,20 @@ class CollectionResponseWithTotalHubDbTableRowV3ForwardPaging(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 
@@ -161,14 +169,18 @@ class CollectionResponseWithTotalHubDbTableRowV3ForwardPaging(object):
 
     def __eq__(self, other):
         """Returns true if both objects are equal"""
-        if not isinstance(other, CollectionResponseWithTotalHubDbTableRowV3ForwardPaging):
+        if not isinstance(
+            other, CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
+        ):
             return False
 
         return self.to_dict() == other.to_dict()
 
     def __ne__(self, other):
         """Returns true if both objects are not equal"""
-        if not isinstance(other, CollectionResponseWithTotalHubDbTableRowV3ForwardPaging):
+        if not isinstance(
+            other, CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
+        ):
             return True
 
         return self.to_dict() != other.to_dict()

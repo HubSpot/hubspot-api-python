@@ -33,26 +33,36 @@ class Styles(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'vertical_alignment': 'str',
-        'background_color': 'RGBAColor',
-        'background_image': 'BackgroundImage',
-        'background_gradient': 'Gradient',
-        'max_width_section_centering': 'int',
-        'force_full_width_section': 'bool',
-        'flexbox_positioning': 'str'
+        "vertical_alignment": "str",
+        "background_color": "RGBAColor",
+        "background_image": "BackgroundImage",
+        "background_gradient": "Gradient",
+        "max_width_section_centering": "int",
+        "force_full_width_section": "bool",
+        "flexbox_positioning": "str",
     }
 
     attribute_map = {
-        'vertical_alignment': 'verticalAlignment',
-        'background_color': 'backgroundColor',
-        'background_image': 'backgroundImage',
-        'background_gradient': 'backgroundGradient',
-        'max_width_section_centering': 'maxWidthSectionCentering',
-        'force_full_width_section': 'forceFullWidthSection',
-        'flexbox_positioning': 'flexboxPositioning'
+        "vertical_alignment": "verticalAlignment",
+        "background_color": "backgroundColor",
+        "background_image": "backgroundImage",
+        "background_gradient": "backgroundGradient",
+        "max_width_section_centering": "maxWidthSectionCentering",
+        "force_full_width_section": "forceFullWidthSection",
+        "flexbox_positioning": "flexboxPositioning",
     }
 
-    def __init__(self, vertical_alignment=None, background_color=None, background_image=None, background_gradient=None, max_width_section_centering=None, force_full_width_section=None, flexbox_positioning=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        vertical_alignment=None,
+        background_color=None,
+        background_image=None,
+        background_gradient=None,
+        max_width_section_centering=None,
+        force_full_width_section=None,
+        flexbox_positioning=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Styles - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -93,13 +103,22 @@ class Styles(object):
         :param vertical_alignment: The vertical_alignment of this Styles.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and vertical_alignment is None:  # noqa: E501
-            raise ValueError("Invalid value for `vertical_alignment`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP", "MIDDLE", "BOTTOM"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and vertical_alignment not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vertical_alignment is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `vertical_alignment` ({0}), must be one of {1}"  # noqa: E501
-                .format(vertical_alignment, allowed_values)
+                "Invalid value for `vertical_alignment`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["TOP", "MIDDLE", "BOTTOM"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and vertical_alignment not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `vertical_alignment` ({0}), must be one of {1}".format(  # noqa: E501
+                    vertical_alignment, allowed_values
+                )
             )
 
         self._vertical_alignment = vertical_alignment
@@ -122,8 +141,13 @@ class Styles(object):
         :param background_color: The background_color of this Styles.  # noqa: E501
         :type: RGBAColor
         """
-        if self.local_vars_configuration.client_side_validation and background_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `background_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and background_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `background_color`, must not be `None`"
+            )  # noqa: E501
 
         self._background_color = background_color
 
@@ -145,8 +169,13 @@ class Styles(object):
         :param background_image: The background_image of this Styles.  # noqa: E501
         :type: BackgroundImage
         """
-        if self.local_vars_configuration.client_side_validation and background_image is None:  # noqa: E501
-            raise ValueError("Invalid value for `background_image`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and background_image is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `background_image`, must not be `None`"
+            )  # noqa: E501
 
         self._background_image = background_image
 
@@ -168,8 +197,13 @@ class Styles(object):
         :param background_gradient: The background_gradient of this Styles.  # noqa: E501
         :type: Gradient
         """
-        if self.local_vars_configuration.client_side_validation and background_gradient is None:  # noqa: E501
-            raise ValueError("Invalid value for `background_gradient`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and background_gradient is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `background_gradient`, must not be `None`"
+            )  # noqa: E501
 
         self._background_gradient = background_gradient
 
@@ -191,8 +225,13 @@ class Styles(object):
         :param max_width_section_centering: The max_width_section_centering of this Styles.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and max_width_section_centering is None:  # noqa: E501
-            raise ValueError("Invalid value for `max_width_section_centering`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and max_width_section_centering is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `max_width_section_centering`, must not be `None`"
+            )  # noqa: E501
 
         self._max_width_section_centering = max_width_section_centering
 
@@ -214,8 +253,13 @@ class Styles(object):
         :param force_full_width_section: The force_full_width_section of this Styles.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and force_full_width_section is None:  # noqa: E501
-            raise ValueError("Invalid value for `force_full_width_section`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and force_full_width_section is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `force_full_width_section`, must not be `None`"
+            )  # noqa: E501
 
         self._force_full_width_section = force_full_width_section
 
@@ -237,13 +281,32 @@ class Styles(object):
         :param flexbox_positioning: The flexbox_positioning of this Styles.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and flexbox_positioning is None:  # noqa: E501
-            raise ValueError("Invalid value for `flexbox_positioning`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP_LEFT", "TOP_CENTER", "TOP_RIGHT", "MIDDLE_LEFT", "MIDDLE_CENTER", "MIDDLE_RIGHT", "BOTTOM_LEFT", "BOTTOM_CENTER", "BOTTOM_RIGHT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and flexbox_positioning not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and flexbox_positioning is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `flexbox_positioning` ({0}), must be one of {1}"  # noqa: E501
-                .format(flexbox_positioning, allowed_values)
+                "Invalid value for `flexbox_positioning`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "TOP_LEFT",
+            "TOP_CENTER",
+            "TOP_RIGHT",
+            "MIDDLE_LEFT",
+            "MIDDLE_CENTER",
+            "MIDDLE_RIGHT",
+            "BOTTOM_LEFT",
+            "BOTTOM_CENTER",
+            "BOTTOM_RIGHT",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and flexbox_positioning not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `flexbox_positioning` ({0}), must be one of {1}".format(  # noqa: E501
+                    flexbox_positioning, allowed_values
+                )
             )
 
         self._flexbox_positioning = flexbox_positioning
@@ -255,18 +318,20 @@ class Styles(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

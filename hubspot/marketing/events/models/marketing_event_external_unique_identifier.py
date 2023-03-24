@@ -33,18 +33,24 @@ class MarketingEventExternalUniqueIdentifier(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'app_id': 'int',
-        'external_account_id': 'str',
-        'external_event_id': 'str'
+        "app_id": "int",
+        "external_account_id": "str",
+        "external_event_id": "str",
     }
 
     attribute_map = {
-        'app_id': 'appId',
-        'external_account_id': 'externalAccountId',
-        'external_event_id': 'externalEventId'
+        "app_id": "appId",
+        "external_account_id": "externalAccountId",
+        "external_event_id": "externalEventId",
     }
 
-    def __init__(self, app_id=None, external_account_id=None, external_event_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        app_id=None,
+        external_account_id=None,
+        external_event_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """MarketingEventExternalUniqueIdentifier - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,8 +85,12 @@ class MarketingEventExternalUniqueIdentifier(object):
         :param app_id: The app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and app_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `app_id`, must not be `None`"
+            )  # noqa: E501
 
         self._app_id = app_id
 
@@ -104,8 +114,13 @@ class MarketingEventExternalUniqueIdentifier(object):
         :param external_account_id: The external_account_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and external_account_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `external_account_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and external_account_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `external_account_id`, must not be `None`"
+            )  # noqa: E501
 
         self._external_account_id = external_account_id
 
@@ -129,8 +144,13 @@ class MarketingEventExternalUniqueIdentifier(object):
         :param external_event_id: The external_event_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and external_event_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `external_event_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and external_event_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `external_event_id`, must not be `None`"
+            )  # noqa: E501
 
         self._external_event_id = external_event_id
 
@@ -141,18 +161,20 @@ class MarketingEventExternalUniqueIdentifier(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

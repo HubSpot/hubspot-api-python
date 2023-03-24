@@ -33,28 +33,39 @@ class SettingsResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'url': 'str',
-        'height': 'int',
-        'width': 'int',
-        'is_ready': 'bool',
-        'supports_custom_objects': 'bool',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "name": "str",
+        "url": "str",
+        "height": "int",
+        "width": "int",
+        "is_ready": "bool",
+        "supports_custom_objects": "bool",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'name': 'name',
-        'url': 'url',
-        'height': 'height',
-        'width': 'width',
-        'is_ready': 'isReady',
-        'supports_custom_objects': 'supportsCustomObjects',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "name": "name",
+        "url": "url",
+        "height": "height",
+        "width": "width",
+        "is_ready": "isReady",
+        "supports_custom_objects": "supportsCustomObjects",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, name=None, url=None, height=None, width=None, is_ready=None, supports_custom_objects=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        url=None,
+        height=None,
+        width=None,
+        is_ready=None,
+        supports_custom_objects=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """SettingsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -99,8 +110,12 @@ class SettingsResponse(object):
         :param name: The name of this SettingsResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -124,8 +139,12 @@ class SettingsResponse(object):
         :param url: The url of this SettingsResponse.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `url`, must not be `None`"
+            )  # noqa: E501
 
         self._url = url
 
@@ -149,8 +168,12 @@ class SettingsResponse(object):
         :param height: The height of this SettingsResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
-            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and height is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `height`, must not be `None`"
+            )  # noqa: E501
 
         self._height = height
 
@@ -174,8 +197,12 @@ class SettingsResponse(object):
         :param width: The width of this SettingsResponse.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
-            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and width is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `width`, must not be `None`"
+            )  # noqa: E501
 
         self._width = width
 
@@ -199,8 +226,12 @@ class SettingsResponse(object):
         :param is_ready: The is_ready of this SettingsResponse.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_ready is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_ready`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_ready is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_ready`, must not be `None`"
+            )  # noqa: E501
 
         self._is_ready = is_ready
 
@@ -224,8 +255,13 @@ class SettingsResponse(object):
         :param supports_custom_objects: The supports_custom_objects of this SettingsResponse.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and supports_custom_objects is None:  # noqa: E501
-            raise ValueError("Invalid value for `supports_custom_objects`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and supports_custom_objects is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `supports_custom_objects`, must not be `None`"
+            )  # noqa: E501
 
         self._supports_custom_objects = supports_custom_objects
 
@@ -249,8 +285,12 @@ class SettingsResponse(object):
         :param created_at: The created_at of this SettingsResponse.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -274,8 +314,12 @@ class SettingsResponse(object):
         :param updated_at: The updated_at of this SettingsResponse.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -286,18 +330,20 @@ class SettingsResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

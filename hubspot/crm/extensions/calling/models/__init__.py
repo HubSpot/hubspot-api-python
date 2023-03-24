@@ -16,6 +16,8 @@ from __future__ import absolute_import
 # import models into model package
 from hubspot.crm.extensions.calling.models.error import Error
 from hubspot.crm.extensions.calling.models.error_detail import ErrorDetail
-from hubspot.crm.extensions.calling.models.settings_patch_request import SettingsPatchRequest
+from hubspot.crm.extensions.calling.models.settings_patch_request import (
+    SettingsPatchRequest,
+)
 from hubspot.crm.extensions.calling.models.settings_request import SettingsRequest
 from hubspot.crm.extensions.calling.models.settings_response import SettingsResponse

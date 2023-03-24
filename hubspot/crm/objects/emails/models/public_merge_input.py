@@ -32,17 +32,19 @@ class PublicMergeInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'primary_object_id': 'str',
-        'object_id_to_merge': 'str'
-    }
+    openapi_types = {"primary_object_id": "str", "object_id_to_merge": "str"}
 
     attribute_map = {
-        'primary_object_id': 'primaryObjectId',
-        'object_id_to_merge': 'objectIdToMerge'
+        "primary_object_id": "primaryObjectId",
+        "object_id_to_merge": "objectIdToMerge",
     }
 
-    def __init__(self, primary_object_id=None, object_id_to_merge=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        primary_object_id=None,
+        object_id_to_merge=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicMergeInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,8 +75,13 @@ class PublicMergeInput(object):
         :param primary_object_id: The primary_object_id of this PublicMergeInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and primary_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_object_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and primary_object_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary_object_id`, must not be `None`"
+            )  # noqa: E501
 
         self._primary_object_id = primary_object_id
 
@@ -96,8 +103,13 @@ class PublicMergeInput(object):
         :param object_id_to_merge: The object_id_to_merge of this PublicMergeInput.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_id_to_merge is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_id_to_merge`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and object_id_to_merge is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_id_to_merge`, must not be `None`"
+            )  # noqa: E501
 
         self._object_id_to_merge = object_id_to_merge
 
@@ -108,18 +120,20 @@ class PublicMergeInput(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

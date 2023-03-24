@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.events.api_client import ApiClient
-from hubspot.marketing.events.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError
 
 
 class AttendanceSubscriberStateChangesApi(object):
@@ -36,7 +33,13 @@ class AttendanceSubscriberStateChangesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def create(
+        self,
+        external_event_id,
+        subscriber_state,
+        batch_input_marketing_event_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """Record  # noqa: E501
 
         Record a subscription state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
@@ -61,10 +64,21 @@ class AttendanceSubscriberStateChangesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_with_http_info(
+            external_event_id,
+            subscriber_state,
+            batch_input_marketing_event_subscriber,
+            **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def create_with_http_info(
+        self,
+        external_event_id,
+        subscriber_state,
+        batch_input_marketing_event_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """Record  # noqa: E501
 
         Record a subscription state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
@@ -94,44 +108,70 @@ class AttendanceSubscriberStateChangesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'subscriber_state', 'batch_input_marketing_event_subscriber', 'external_account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "subscriber_state",
+            "batch_input_marketing_event_subscriber",
+            "external_account_id",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    "Got an unexpected keyword argument '%s'" " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `create`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `create`"
+            )  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ('subscriber_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscriber_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "subscriber_state" not in local_var_params
+            or local_var_params["subscriber_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `subscriber_state` when calling `create`"
+            )  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_subscriber' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_subscriber'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `create`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_subscriber" not in local_var_params
+            or local_var_params["batch_input_marketing_event_subscriber"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_subscriber` when calling `create`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
-        if 'subscriber_state' in local_var_params:
-            path_params['subscriberState'] = local_var_params['subscriber_state']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
+        if "subscriber_state" in local_var_params:
+            path_params["subscriberState"] = local_var_params[
+                "subscriber_state"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -139,36 +179,50 @@ class AttendanceSubscriberStateChangesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_subscriber' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_subscriber']
+        if "batch_input_marketing_event_subscriber" in local_var_params:
+            body_params = local_var_params["batch_input_marketing_event_subscriber"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create', 'POST',
+            "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseSubscriberVidResponse',  # noqa: E501
+            response_type="BatchResponseSubscriberVidResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def create_by_email(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def create_by_email(
+        self,
+        external_event_id,
+        subscriber_state,
+        batch_input_marketing_event_email_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """Record  # noqa: E501
 
         Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
@@ -193,10 +247,21 @@ class AttendanceSubscriberStateChangesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_by_email_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_by_email_with_http_info(
+            external_event_id,
+            subscriber_state,
+            batch_input_marketing_event_email_subscriber,
+            **kwargs
+        )  # noqa: E501
 
-    def create_by_email_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def create_by_email_with_http_info(
+        self,
+        external_event_id,
+        subscriber_state,
+        batch_input_marketing_event_email_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """Record  # noqa: E501
 
         Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
@@ -226,44 +291,73 @@ class AttendanceSubscriberStateChangesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'subscriber_state', 'batch_input_marketing_event_email_subscriber', 'external_account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "subscriber_state",
+            "batch_input_marketing_event_email_subscriber",
+            "external_account_id",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_by_email" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `create_by_email`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `create_by_email`"
+            )  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ('subscriber_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscriber_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create_by_email`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "subscriber_state" not in local_var_params
+            or local_var_params["subscriber_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `subscriber_state` when calling `create_by_email`"
+            )  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_email_subscriber' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_email_subscriber'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `create_by_email`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_email_subscriber" not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_input_marketing_event_email_subscriber"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `create_by_email`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
-        if 'subscriber_state' in local_var_params:
-            path_params['subscriberState'] = local_var_params['subscriber_state']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
+        if "subscriber_state" in local_var_params:
+            path_params["subscriberState"] = local_var_params[
+                "subscriber_state"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -271,31 +365,41 @@ class AttendanceSubscriberStateChangesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_email_subscriber' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_email_subscriber']
+        if "batch_input_marketing_event_email_subscriber" in local_var_params:
+            body_params = local_var_params[
+                "batch_input_marketing_event_email_subscriber"
+            ]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create', 'POST',
+            "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseSubscriberEmailResponse',  # noqa: E501
+            response_type="BatchResponseSubscriberEmailResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

@@ -33,18 +33,24 @@ class Gradient(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'side_or_corner': 'SideOrCorner',
-        'angle': 'Angle',
-        'colors': 'list[ColorStop]'
+        "side_or_corner": "SideOrCorner",
+        "angle": "Angle",
+        "colors": "list[ColorStop]",
     }
 
     attribute_map = {
-        'side_or_corner': 'sideOrCorner',
-        'angle': 'angle',
-        'colors': 'colors'
+        "side_or_corner": "sideOrCorner",
+        "angle": "angle",
+        "colors": "colors",
     }
 
-    def __init__(self, side_or_corner=None, angle=None, colors=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        side_or_corner=None,
+        angle=None,
+        colors=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Gradient - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -77,8 +83,13 @@ class Gradient(object):
         :param side_or_corner: The side_or_corner of this Gradient.  # noqa: E501
         :type: SideOrCorner
         """
-        if self.local_vars_configuration.client_side_validation and side_or_corner is None:  # noqa: E501
-            raise ValueError("Invalid value for `side_or_corner`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and side_or_corner is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `side_or_corner`, must not be `None`"
+            )  # noqa: E501
 
         self._side_or_corner = side_or_corner
 
@@ -100,8 +111,12 @@ class Gradient(object):
         :param angle: The angle of this Gradient.  # noqa: E501
         :type: Angle
         """
-        if self.local_vars_configuration.client_side_validation and angle is None:  # noqa: E501
-            raise ValueError("Invalid value for `angle`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and angle is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `angle`, must not be `None`"
+            )  # noqa: E501
 
         self._angle = angle
 
@@ -123,8 +138,12 @@ class Gradient(object):
         :param colors: The colors of this Gradient.  # noqa: E501
         :type: list[ColorStop]
         """
-        if self.local_vars_configuration.client_side_validation and colors is None:  # noqa: E501
-            raise ValueError("Invalid value for `colors`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and colors is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `colors`, must not be `None`"
+            )  # noqa: E501
 
         self._colors = colors
 
@@ -135,18 +154,20 @@ class Gradient(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

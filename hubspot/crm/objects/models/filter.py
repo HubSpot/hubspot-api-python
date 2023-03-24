@@ -33,22 +33,30 @@ class Filter(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'value': 'str',
-        'high_value': 'str',
-        'values': 'list[str]',
-        'property_name': 'str',
-        'operator': 'str'
+        "value": "str",
+        "high_value": "str",
+        "values": "list[str]",
+        "property_name": "str",
+        "operator": "str",
     }
 
     attribute_map = {
-        'value': 'value',
-        'high_value': 'highValue',
-        'values': 'values',
-        'property_name': 'propertyName',
-        'operator': 'operator'
+        "value": "value",
+        "high_value": "highValue",
+        "values": "values",
+        "property_name": "propertyName",
+        "operator": "operator",
     }
 
-    def __init__(self, value=None, high_value=None, values=None, property_name=None, operator=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        value=None,
+        high_value=None,
+        values=None,
+        property_name=None,
+        operator=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Filter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -151,8 +159,13 @@ class Filter(object):
         :param property_name: The property_name of this Filter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and property_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `property_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and property_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `property_name`, must not be `None`"
+            )  # noqa: E501
 
         self._property_name = property_name
 
@@ -176,13 +189,35 @@ class Filter(object):
         :param operator: The operator of this Filter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
-            raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["EQ", "NEQ", "LT", "LTE", "GT", "GTE", "BETWEEN", "IN", "NOT_IN", "HAS_PROPERTY", "NOT_HAS_PROPERTY", "CONTAINS_TOKEN", "NOT_CONTAINS_TOKEN"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and operator is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
-                .format(operator, allowed_values)
+                "Invalid value for `operator`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "EQ",
+            "NEQ",
+            "LT",
+            "LTE",
+            "GT",
+            "GTE",
+            "BETWEEN",
+            "IN",
+            "NOT_IN",
+            "HAS_PROPERTY",
+            "NOT_HAS_PROPERTY",
+            "CONTAINS_TOKEN",
+            "NOT_CONTAINS_TOKEN",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and operator not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `operator` ({0}), must be one of {1}".format(  # noqa: E501
+                    operator, allowed_values
+                )
             )
 
         self._operator = operator
@@ -194,18 +229,20 @@ class Filter(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

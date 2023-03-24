@@ -32,19 +32,21 @@ class CreateUserAccountRequestExternal(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'account_id': 'str',
-        'account_name': 'str',
-        'currency_code': 'str'
-    }
+    openapi_types = {"account_id": "str", "account_name": "str", "currency_code": "str"}
 
     attribute_map = {
-        'account_id': 'accountId',
-        'account_name': 'accountName',
-        'currency_code': 'currencyCode'
+        "account_id": "accountId",
+        "account_name": "accountName",
+        "currency_code": "currencyCode",
     }
 
-    def __init__(self, account_id=None, account_name=None, currency_code=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        account_id=None,
+        account_name=None,
+        currency_code=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """CreateUserAccountRequestExternal - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,8 +81,12 @@ class CreateUserAccountRequestExternal(object):
         :param account_id: The account_id of this CreateUserAccountRequestExternal.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and account_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `account_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and account_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `account_id`, must not be `None`"
+            )  # noqa: E501
 
         self._account_id = account_id
 
@@ -104,8 +110,13 @@ class CreateUserAccountRequestExternal(object):
         :param account_name: The account_name of this CreateUserAccountRequestExternal.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and account_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `account_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and account_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `account_name`, must not be `None`"
+            )  # noqa: E501
 
         self._account_name = account_name
 
@@ -129,8 +140,13 @@ class CreateUserAccountRequestExternal(object):
         :param currency_code: The currency_code of this CreateUserAccountRequestExternal.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and currency_code is None:  # noqa: E501
-            raise ValueError("Invalid value for `currency_code`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and currency_code is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `currency_code`, must not be `None`"
+            )  # noqa: E501
 
         self._currency_code = currency_code
 
@@ -141,18 +157,20 @@ class CreateUserAccountRequestExternal(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

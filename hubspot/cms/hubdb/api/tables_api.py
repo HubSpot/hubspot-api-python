@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.hubdb.api_client import ApiClient
-from hubspot.cms.hubdb.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError
 
 
 class TablesApi(object):
@@ -58,8 +55,10 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.archive_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.archive_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
     def archive_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
         """Archive a table  # noqa: E501
@@ -88,30 +87,36 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method archive_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `archive_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `archive_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
 
@@ -122,14 +127,16 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}', 'DELETE',
+            "/cms/v3/hubdb/tables/{tableIdOrName}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -138,13 +145,18 @@ class TablesApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def clone_draft_table(self, table_id_or_name, hub_db_table_clone_request, **kwargs):  # noqa: E501
+    def clone_draft_table(
+        self, table_id_or_name, hub_db_table_clone_request, **kwargs
+    ):  # noqa: E501
         """Clone a table  # noqa: E501
 
         Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the `body` parameter. This will create the cloned table as a `draft`.  # noqa: E501
@@ -167,10 +179,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.clone_draft_table_with_http_info(table_id_or_name, hub_db_table_clone_request, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.clone_draft_table_with_http_info(
+            table_id_or_name, hub_db_table_clone_request, **kwargs
+        )  # noqa: E501
 
-    def clone_draft_table_with_http_info(self, table_id_or_name, hub_db_table_clone_request, **kwargs):  # noqa: E501
+    def clone_draft_table_with_http_info(
+        self, table_id_or_name, hub_db_table_clone_request, **kwargs
+    ):  # noqa: E501
         """Clone a table  # noqa: E501
 
         Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the `body` parameter. This will create the cloned table as a `draft`.  # noqa: E501
@@ -198,34 +214,44 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'hub_db_table_clone_request']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "hub_db_table_clone_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method clone_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `clone_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `clone_draft_table`"
+            )  # noqa: E501
         # verify the required parameter 'hub_db_table_clone_request' is set
-        if self.api_client.client_side_validation and ('hub_db_table_clone_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['hub_db_table_clone_request'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `hub_db_table_clone_request` when calling `clone_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "hub_db_table_clone_request" not in local_var_params
+            or local_var_params["hub_db_table_clone_request"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `hub_db_table_clone_request` when calling `clone_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
 
@@ -235,34 +261,42 @@ class TablesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'hub_db_table_clone_request' in local_var_params:
-            body_params = local_var_params['hub_db_table_clone_request']
+        if "hub_db_table_clone_request" in local_var_params:
+            body_params = local_var_params["hub_db_table_clone_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft/clone', 'POST',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft/clone",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create_table(self, hub_db_table_v3_request, **kwargs):  # noqa: E501
         """Create a new table  # noqa: E501
@@ -286,10 +320,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_table_with_http_info(hub_db_table_v3_request, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_table_with_http_info(
+            hub_db_table_v3_request, **kwargs
+        )  # noqa: E501
 
-    def create_table_with_http_info(self, hub_db_table_v3_request, **kwargs):  # noqa: E501
+    def create_table_with_http_info(
+        self, hub_db_table_v3_request, **kwargs
+    ):  # noqa: E501
         """Create a new table  # noqa: E501
 
         Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.  # noqa: E501
@@ -316,24 +354,28 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['hub_db_table_v3_request']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["hub_db_table_v3_request"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'hub_db_table_v3_request' is set
-        if self.api_client.client_side_validation and ('hub_db_table_v3_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['hub_db_table_v3_request'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `hub_db_table_v3_request` when calling `create_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "hub_db_table_v3_request" not in local_var_params
+            or local_var_params["hub_db_table_v3_request"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `hub_db_table_v3_request` when calling `create_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -347,34 +389,42 @@ class TablesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'hub_db_table_v3_request' in local_var_params:
-            body_params = local_var_params['hub_db_table_v3_request']
+        if "hub_db_table_v3_request" in local_var_params:
+            body_params = local_var_params["hub_db_table_v3_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables', 'POST',
+            "/cms/v3/hubdb/tables",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def export_draft_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Export a draft table  # noqa: E501
@@ -399,10 +449,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.export_draft_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.export_draft_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def export_draft_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def export_draft_table_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Export a draft table  # noqa: E501
 
         Exports the `draft` version of a table to CSV / EXCEL format.  # noqa: E501
@@ -430,34 +484,42 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'format']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "format"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method export_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `export_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `export_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
-            query_params.append(('format', local_var_params['format']))  # noqa: E501
+        if (
+            "format" in local_var_params and local_var_params["format"] is not None
+        ):  # noqa: E501
+            query_params.append(("format", local_var_params["format"]))  # noqa: E501
 
         header_params = {}
 
@@ -466,27 +528,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/vnd.ms-excel', 'text/csv', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/vnd.ms-excel", "text/csv", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft/export', 'GET',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft/export",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='file',  # noqa: E501
+            response_type="file",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def export_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Export a published version of a table  # noqa: E501
@@ -511,8 +578,10 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.export_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.export_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
     def export_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
         """Export a published version of a table  # noqa: E501
@@ -542,34 +611,42 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'format']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "format"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method export_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `export_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `export_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
-            query_params.append(('format', local_var_params['format']))  # noqa: E501
+        if (
+            "format" in local_var_params and local_var_params["format"] is not None
+        ):  # noqa: E501
+            query_params.append(("format", local_var_params["format"]))  # noqa: E501
 
         header_params = {}
 
@@ -578,27 +655,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/vnd.ms-excel', 'text/csv', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/vnd.ms-excel", "text/csv", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/export', 'GET',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/export",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='file',  # noqa: E501
+            response_type="file",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_all_draft_tables(self, **kwargs):  # noqa: E501
         """Return all draft tables  # noqa: E501
@@ -631,7 +713,7 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_all_draft_tables_with_http_info(**kwargs)  # noqa: E501
 
     def get_all_draft_tables_with_http_info(self, **kwargs):  # noqa: E501
@@ -670,47 +752,98 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['sort', 'after', 'limit', 'created_at', 'created_after', 'created_before', 'updated_at', 'updated_after', 'updated_before', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "sort",
+            "after",
+            "limit",
+            "created_at",
+            "created_after",
+            "created_before",
+            "updated_at",
+            "updated_after",
+            "updated_before",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_all_draft_tables" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
-            query_params.append(('after', local_var_params['after']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'created_at' in local_var_params and local_var_params['created_at'] is not None:  # noqa: E501
-            query_params.append(('createdAt', local_var_params['created_at']))  # noqa: E501
-        if 'created_after' in local_var_params and local_var_params['created_after'] is not None:  # noqa: E501
-            query_params.append(('createdAfter', local_var_params['created_after']))  # noqa: E501
-        if 'created_before' in local_var_params and local_var_params['created_before'] is not None:  # noqa: E501
-            query_params.append(('createdBefore', local_var_params['created_before']))  # noqa: E501
-        if 'updated_at' in local_var_params and local_var_params['updated_at'] is not None:  # noqa: E501
-            query_params.append(('updatedAt', local_var_params['updated_at']))  # noqa: E501
-        if 'updated_after' in local_var_params and local_var_params['updated_after'] is not None:  # noqa: E501
-            query_params.append(('updatedAfter', local_var_params['updated_after']))  # noqa: E501
-        if 'updated_before' in local_var_params and local_var_params['updated_before'] is not None:  # noqa: E501
-            query_params.append(('updatedBefore', local_var_params['updated_before']))  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "sort" in local_var_params and local_var_params["sort"] is not None
+        ):  # noqa: E501
+            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
+            collection_formats["sort"] = "multi"  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if (
+            "created_at" in local_var_params
+            and local_var_params["created_at"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdAt", local_var_params["created_at"])
+            )  # noqa: E501
+        if (
+            "created_after" in local_var_params
+            and local_var_params["created_after"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdAfter", local_var_params["created_after"])
+            )  # noqa: E501
+        if (
+            "created_before" in local_var_params
+            and local_var_params["created_before"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdBefore", local_var_params["created_before"])
+            )  # noqa: E501
+        if (
+            "updated_at" in local_var_params
+            and local_var_params["updated_at"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedAt", local_var_params["updated_at"])
+            )  # noqa: E501
+        if (
+            "updated_after" in local_var_params
+            and local_var_params["updated_after"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedAfter", local_var_params["updated_after"])
+            )  # noqa: E501
+        if (
+            "updated_before" in local_var_params
+            and local_var_params["updated_before"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedBefore", local_var_params["updated_before"])
+            )  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -719,27 +852,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/draft', 'GET',
+            "/cms/v3/hubdb/tables/draft",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponseWithTotalHubDbTableV3ForwardPaging',  # noqa: E501
+            response_type="CollectionResponseWithTotalHubDbTableV3ForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_all_tables(self, **kwargs):  # noqa: E501
         """Get all published tables  # noqa: E501
@@ -772,7 +910,7 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_all_tables_with_http_info(**kwargs)  # noqa: E501
 
     def get_all_tables_with_http_info(self, **kwargs):  # noqa: E501
@@ -811,47 +949,98 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['sort', 'after', 'limit', 'created_at', 'created_after', 'created_before', 'updated_at', 'updated_after', 'updated_before', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "sort",
+            "after",
+            "limit",
+            "created_at",
+            "created_after",
+            "created_before",
+            "updated_at",
+            "updated_after",
+            "updated_before",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_all_tables" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
-            query_params.append(('after', local_var_params['after']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'created_at' in local_var_params and local_var_params['created_at'] is not None:  # noqa: E501
-            query_params.append(('createdAt', local_var_params['created_at']))  # noqa: E501
-        if 'created_after' in local_var_params and local_var_params['created_after'] is not None:  # noqa: E501
-            query_params.append(('createdAfter', local_var_params['created_after']))  # noqa: E501
-        if 'created_before' in local_var_params and local_var_params['created_before'] is not None:  # noqa: E501
-            query_params.append(('createdBefore', local_var_params['created_before']))  # noqa: E501
-        if 'updated_at' in local_var_params and local_var_params['updated_at'] is not None:  # noqa: E501
-            query_params.append(('updatedAt', local_var_params['updated_at']))  # noqa: E501
-        if 'updated_after' in local_var_params and local_var_params['updated_after'] is not None:  # noqa: E501
-            query_params.append(('updatedAfter', local_var_params['updated_after']))  # noqa: E501
-        if 'updated_before' in local_var_params and local_var_params['updated_before'] is not None:  # noqa: E501
-            query_params.append(('updatedBefore', local_var_params['updated_before']))  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "sort" in local_var_params and local_var_params["sort"] is not None
+        ):  # noqa: E501
+            query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
+            collection_formats["sort"] = "multi"  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if (
+            "created_at" in local_var_params
+            and local_var_params["created_at"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdAt", local_var_params["created_at"])
+            )  # noqa: E501
+        if (
+            "created_after" in local_var_params
+            and local_var_params["created_after"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdAfter", local_var_params["created_after"])
+            )  # noqa: E501
+        if (
+            "created_before" in local_var_params
+            and local_var_params["created_before"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("createdBefore", local_var_params["created_before"])
+            )  # noqa: E501
+        if (
+            "updated_at" in local_var_params
+            and local_var_params["updated_at"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedAt", local_var_params["updated_at"])
+            )  # noqa: E501
+        if (
+            "updated_after" in local_var_params
+            and local_var_params["updated_after"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedAfter", local_var_params["updated_after"])
+            )  # noqa: E501
+        if (
+            "updated_before" in local_var_params
+            and local_var_params["updated_before"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("updatedBefore", local_var_params["updated_before"])
+            )  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -860,27 +1049,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables', 'GET',
+            "/cms/v3/hubdb/tables",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponseWithTotalHubDbTableV3ForwardPaging',  # noqa: E501
+            response_type="CollectionResponseWithTotalHubDbTableV3ForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_draft_table_details_by_id(self, table_id_or_name, **kwargs):  # noqa: E501
         """Get details for a draft table  # noqa: E501
@@ -906,10 +1100,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_draft_table_details_by_id_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_draft_table_details_by_id_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def get_draft_table_details_by_id_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def get_draft_table_details_by_id_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Get details for a draft table  # noqa: E501
 
         Get the details for the `draft` version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.  # noqa: E501
@@ -938,36 +1136,55 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'include_foreign_ids', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "table_id_or_name",
+            "include_foreign_ids",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_draft_table_details_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `get_draft_table_details_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `get_draft_table_details_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -976,27 +1193,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft', 'GET',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_table_details(self, table_id_or_name, **kwargs):  # noqa: E501
         """Get details for a published table  # noqa: E501
@@ -1022,10 +1244,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_table_details_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_table_details_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def get_table_details_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def get_table_details_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Get details for a published table  # noqa: E501
 
         Returns the details for the `published` version of the specified table. This will include the definitions for the columns in the table and the number of rows in the table.  **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.  # noqa: E501
@@ -1054,36 +1280,55 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'include_foreign_ids', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "table_id_or_name",
+            "include_foreign_ids",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_table_details" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `get_table_details`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `get_table_details`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1092,27 +1337,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}', 'GET',
+            "/cms/v3/hubdb/tables/{tableIdOrName}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def import_draft_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Import data into draft table  # noqa: E501
@@ -1138,10 +1388,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.import_draft_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.import_draft_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def import_draft_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def import_draft_table_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Import data into draft table  # noqa: E501
 
         Import the contents of a CSV file into an existing HubDB table. The data will always be imported into the `draft` version of the table. Use `/publish` endpoint to push these changes to `published` version. This endpoint takes a multi-part POST request. The first part will be a set of JSON-formatted options for the import and you can specify this with the name as `config`.  The second part will be the CSV file you want to import and you can specify this with the name as `file`. Refer the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#importing-tables) to check the details and format of the JSON-formatted options for the import.  # noqa: E501
@@ -1170,30 +1424,36 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'config', 'file']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "config", "file"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method import_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `import_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `import_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
 
@@ -1201,38 +1461,46 @@ class TablesApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'config' in local_var_params:
-            form_params.append(('config', local_var_params['config']))  # noqa: E501
-        if 'file' in local_var_params:
-            local_var_files['file'] = local_var_params['file']  # noqa: E501
+        if "config" in local_var_params:
+            form_params.append(("config", local_var_params["config"]))  # noqa: E501
+        if "file" in local_var_params:
+            local_var_files["file"] = local_var_params["file"]  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["multipart/form-data"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft/import', 'POST',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft/import",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ImportResult',  # noqa: E501
+            response_type="ImportResult",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def publish_draft_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Publish a table from draft  # noqa: E501
@@ -1257,10 +1525,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.publish_draft_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.publish_draft_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def publish_draft_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def publish_draft_table_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Publish a table from draft  # noqa: E501
 
         Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.  # noqa: E501
@@ -1288,34 +1560,45 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'include_foreign_ids']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method publish_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `publish_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `publish_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1324,27 +1607,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish', 'POST',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def reset_draft_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Reset a draft table  # noqa: E501
@@ -1369,10 +1657,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.reset_draft_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.reset_draft_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
-    def reset_draft_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
+    def reset_draft_table_with_http_info(
+        self, table_id_or_name, **kwargs
+    ):  # noqa: E501
         """Reset a draft table  # noqa: E501
 
         Replaces the data in the `draft` version of the table with values from the `published` version. Any unpublished changes in the `draft` will be lost after this call is made.  # noqa: E501
@@ -1400,34 +1692,45 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'include_foreign_ids']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method reset_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `reset_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `reset_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1436,27 +1739,32 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset', 'POST',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def unpublish_table(self, table_id_or_name, **kwargs):  # noqa: E501
         """Unpublish a table  # noqa: E501
@@ -1481,8 +1789,10 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.unpublish_table_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.unpublish_table_with_http_info(
+            table_id_or_name, **kwargs
+        )  # noqa: E501
 
     def unpublish_table_with_http_info(self, table_id_or_name, **kwargs):  # noqa: E501
         """Unpublish a table  # noqa: E501
@@ -1512,34 +1822,45 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'include_foreign_ids']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["table_id_or_name", "include_foreign_ids"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method unpublish_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `unpublish_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `unpublish_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1548,29 +1869,36 @@ class TablesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/unpublish', 'POST',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/unpublish",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def update_draft_table(self, table_id_or_name, hub_db_table_v3_request, **kwargs):  # noqa: E501
+    def update_draft_table(
+        self, table_id_or_name, hub_db_table_v3_request, **kwargs
+    ):  # noqa: E501
         """Update an existing table  # noqa: E501
 
         Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` verion of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
@@ -1595,10 +1923,14 @@ class TablesApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.update_draft_table_with_http_info(table_id_or_name, hub_db_table_v3_request, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.update_draft_table_with_http_info(
+            table_id_or_name, hub_db_table_v3_request, **kwargs
+        )  # noqa: E501
 
-    def update_draft_table_with_http_info(self, table_id_or_name, hub_db_table_v3_request, **kwargs):  # noqa: E501
+    def update_draft_table_with_http_info(
+        self, table_id_or_name, hub_db_table_v3_request, **kwargs
+    ):  # noqa: E501
         """Update an existing table  # noqa: E501
 
         Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the `draft` verion of the table. Use `publish` endpoint to push all the changes to the `published` version. To restore a table, include the query parameter `archived=true` and `\"archived\": false` in the json body. **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.  # noqa: E501
@@ -1628,40 +1960,64 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['table_id_or_name', 'hub_db_table_v3_request', 'include_foreign_ids', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "table_id_or_name",
+            "hub_db_table_v3_request",
+            "include_foreign_ids",
+            "archived",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method update_draft_table" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ('table_id_or_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['table_id_or_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `update_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "table_id_or_name" not in local_var_params
+            or local_var_params["table_id_or_name"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `table_id_or_name` when calling `update_draft_table`"
+            )  # noqa: E501
         # verify the required parameter 'hub_db_table_v3_request' is set
-        if self.api_client.client_side_validation and ('hub_db_table_v3_request' not in local_var_params or  # noqa: E501
-                                                        local_var_params['hub_db_table_v3_request'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `hub_db_table_v3_request` when calling `update_draft_table`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "hub_db_table_v3_request" not in local_var_params
+            or local_var_params["hub_db_table_v3_request"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `hub_db_table_v3_request` when calling `update_draft_table`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'table_id_or_name' in local_var_params:
-            path_params['tableIdOrName'] = local_var_params['table_id_or_name']  # noqa: E501
+        if "table_id_or_name" in local_var_params:
+            path_params["tableIdOrName"] = local_var_params[
+                "table_id_or_name"
+            ]  # noqa: E501
 
         query_params = []
-        if 'include_foreign_ids' in local_var_params and local_var_params['include_foreign_ids'] is not None:  # noqa: E501
-            query_params.append(('includeForeignIds', local_var_params['include_foreign_ids']))  # noqa: E501
-        if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
-            query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if (
+            "include_foreign_ids" in local_var_params
+            and local_var_params["include_foreign_ids"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("includeForeignIds", local_var_params["include_foreign_ids"])
+            )  # noqa: E501
+        if (
+            "archived" in local_var_params and local_var_params["archived"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("archived", local_var_params["archived"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1669,31 +2025,39 @@ class TablesApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'hub_db_table_v3_request' in local_var_params:
-            body_params = local_var_params['hub_db_table_v3_request']
+        if "hub_db_table_v3_request" in local_var_params:
+            body_params = local_var_params["hub_db_table_v3_request"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/hubdb/tables/{tableIdOrName}/draft', 'PATCH',
+            "/cms/v3/hubdb/tables/{tableIdOrName}/draft",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='HubDbTableV3',  # noqa: E501
+            response_type="HubDbTableV3",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

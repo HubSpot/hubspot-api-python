@@ -33,34 +33,48 @@ class HubSpotFormConfiguration(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'language': 'str',
-        'cloneable': 'bool',
-        'post_submit_action': 'FormPostSubmitAction',
-        'editable': 'bool',
-        'archivable': 'bool',
-        'recaptcha_enabled': 'bool',
-        'notify_contact_owner': 'bool',
-        'notify_recipients': 'list[str]',
-        'create_new_contact_for_new_email': 'bool',
-        'pre_populate_known_values': 'bool',
-        'allow_link_to_reset_known_values': 'bool'
+        "language": "str",
+        "cloneable": "bool",
+        "post_submit_action": "FormPostSubmitAction",
+        "editable": "bool",
+        "archivable": "bool",
+        "recaptcha_enabled": "bool",
+        "notify_contact_owner": "bool",
+        "notify_recipients": "list[str]",
+        "create_new_contact_for_new_email": "bool",
+        "pre_populate_known_values": "bool",
+        "allow_link_to_reset_known_values": "bool",
     }
 
     attribute_map = {
-        'language': 'language',
-        'cloneable': 'cloneable',
-        'post_submit_action': 'postSubmitAction',
-        'editable': 'editable',
-        'archivable': 'archivable',
-        'recaptcha_enabled': 'recaptchaEnabled',
-        'notify_contact_owner': 'notifyContactOwner',
-        'notify_recipients': 'notifyRecipients',
-        'create_new_contact_for_new_email': 'createNewContactForNewEmail',
-        'pre_populate_known_values': 'prePopulateKnownValues',
-        'allow_link_to_reset_known_values': 'allowLinkToResetKnownValues'
+        "language": "language",
+        "cloneable": "cloneable",
+        "post_submit_action": "postSubmitAction",
+        "editable": "editable",
+        "archivable": "archivable",
+        "recaptcha_enabled": "recaptchaEnabled",
+        "notify_contact_owner": "notifyContactOwner",
+        "notify_recipients": "notifyRecipients",
+        "create_new_contact_for_new_email": "createNewContactForNewEmail",
+        "pre_populate_known_values": "prePopulateKnownValues",
+        "allow_link_to_reset_known_values": "allowLinkToResetKnownValues",
     }
 
-    def __init__(self, language=None, cloneable=None, post_submit_action=None, editable=None, archivable=None, recaptcha_enabled=None, notify_contact_owner=None, notify_recipients=None, create_new_contact_for_new_email=None, pre_populate_known_values=None, allow_link_to_reset_known_values=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        language=None,
+        cloneable=None,
+        post_submit_action=None,
+        editable=None,
+        archivable=None,
+        recaptcha_enabled=None,
+        notify_contact_owner=None,
+        notify_recipients=None,
+        create_new_contact_for_new_email=None,
+        pre_populate_known_values=None,
+        allow_link_to_reset_known_values=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """HubSpotFormConfiguration - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -111,13 +125,57 @@ class HubSpotFormConfiguration(object):
         :param language: The language of this HubSpotFormConfiguration.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
-            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
-        allowed_values = ["af", "ar-eg", "bn", "bg", "ca-es", "cs", "da", "de", "el", "en", "es", "es-mx", "fi", "fr", "hr", "hu", "id", "it", "ja", "ko", "nl", "no-no", "pl", "pt", "pt-br", "ro", "ru", "sl", "sv", "th", "tr", "uk", "vi", "zh-cn", "zh-hk"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and language is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `language` ({0}), must be one of {1}"  # noqa: E501
-                .format(language, allowed_values)
+                "Invalid value for `language`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "af",
+            "ar-eg",
+            "bn",
+            "bg",
+            "ca-es",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "en",
+            "es",
+            "es-mx",
+            "fi",
+            "fr",
+            "hr",
+            "hu",
+            "id",
+            "it",
+            "ja",
+            "ko",
+            "nl",
+            "no-no",
+            "pl",
+            "pt",
+            "pt-br",
+            "ro",
+            "ru",
+            "sl",
+            "sv",
+            "th",
+            "tr",
+            "uk",
+            "vi",
+            "zh-cn",
+            "zh-hk",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and language not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `language` ({0}), must be one of {1}".format(  # noqa: E501
+                    language, allowed_values
+                )
             )
 
         self._language = language
@@ -142,8 +200,12 @@ class HubSpotFormConfiguration(object):
         :param cloneable: The cloneable of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and cloneable is None:  # noqa: E501
-            raise ValueError("Invalid value for `cloneable`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and cloneable is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `cloneable`, must not be `None`"
+            )  # noqa: E501
 
         self._cloneable = cloneable
 
@@ -165,8 +227,13 @@ class HubSpotFormConfiguration(object):
         :param post_submit_action: The post_submit_action of this HubSpotFormConfiguration.  # noqa: E501
         :type: FormPostSubmitAction
         """
-        if self.local_vars_configuration.client_side_validation and post_submit_action is None:  # noqa: E501
-            raise ValueError("Invalid value for `post_submit_action`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and post_submit_action is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `post_submit_action`, must not be `None`"
+            )  # noqa: E501
 
         self._post_submit_action = post_submit_action
 
@@ -190,8 +257,12 @@ class HubSpotFormConfiguration(object):
         :param editable: The editable of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and editable is None:  # noqa: E501
-            raise ValueError("Invalid value for `editable`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and editable is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `editable`, must not be `None`"
+            )  # noqa: E501
 
         self._editable = editable
 
@@ -215,8 +286,12 @@ class HubSpotFormConfiguration(object):
         :param archivable: The archivable of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archivable is None:  # noqa: E501
-            raise ValueError("Invalid value for `archivable`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archivable is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archivable`, must not be `None`"
+            )  # noqa: E501
 
         self._archivable = archivable
 
@@ -240,8 +315,13 @@ class HubSpotFormConfiguration(object):
         :param recaptcha_enabled: The recaptcha_enabled of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and recaptcha_enabled is None:  # noqa: E501
-            raise ValueError("Invalid value for `recaptcha_enabled`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and recaptcha_enabled is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `recaptcha_enabled`, must not be `None`"
+            )  # noqa: E501
 
         self._recaptcha_enabled = recaptcha_enabled
 
@@ -265,8 +345,13 @@ class HubSpotFormConfiguration(object):
         :param notify_contact_owner: The notify_contact_owner of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and notify_contact_owner is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_contact_owner`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and notify_contact_owner is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `notify_contact_owner`, must not be `None`"
+            )  # noqa: E501
 
         self._notify_contact_owner = notify_contact_owner
 
@@ -290,8 +375,13 @@ class HubSpotFormConfiguration(object):
         :param notify_recipients: The notify_recipients of this HubSpotFormConfiguration.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and notify_recipients is None:  # noqa: E501
-            raise ValueError("Invalid value for `notify_recipients`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and notify_recipients is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `notify_recipients`, must not be `None`"
+            )  # noqa: E501
 
         self._notify_recipients = notify_recipients
 
@@ -315,8 +405,13 @@ class HubSpotFormConfiguration(object):
         :param create_new_contact_for_new_email: The create_new_contact_for_new_email of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and create_new_contact_for_new_email is None:  # noqa: E501
-            raise ValueError("Invalid value for `create_new_contact_for_new_email`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and create_new_contact_for_new_email is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `create_new_contact_for_new_email`, must not be `None`"
+            )  # noqa: E501
 
         self._create_new_contact_for_new_email = create_new_contact_for_new_email
 
@@ -340,8 +435,13 @@ class HubSpotFormConfiguration(object):
         :param pre_populate_known_values: The pre_populate_known_values of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and pre_populate_known_values is None:  # noqa: E501
-            raise ValueError("Invalid value for `pre_populate_known_values`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and pre_populate_known_values is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `pre_populate_known_values`, must not be `None`"
+            )  # noqa: E501
 
         self._pre_populate_known_values = pre_populate_known_values
 
@@ -365,8 +465,13 @@ class HubSpotFormConfiguration(object):
         :param allow_link_to_reset_known_values: The allow_link_to_reset_known_values of this HubSpotFormConfiguration.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and allow_link_to_reset_known_values is None:  # noqa: E501
-            raise ValueError("Invalid value for `allow_link_to_reset_known_values`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and allow_link_to_reset_known_values is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `allow_link_to_reset_known_values`, must not be `None`"
+            )  # noqa: E501
 
         self._allow_link_to_reset_known_values = allow_link_to_reset_known_values
 
@@ -377,18 +482,20 @@ class HubSpotFormConfiguration(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

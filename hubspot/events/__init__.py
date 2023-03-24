@@ -27,11 +27,13 @@ from hubspot.events.exceptions import ApiTypeError
 from hubspot.events.exceptions import ApiValueError
 from hubspot.events.exceptions import ApiKeyError
 from hubspot.events.exceptions import ApiException
+
 # import models into sdk package
-from hubspot.events.models.collection_response_external_unified_event import CollectionResponseExternalUnifiedEvent
+from hubspot.events.models.collection_response_external_unified_event import (
+    CollectionResponseExternalUnifiedEvent,
+)
 from hubspot.events.models.error import Error
 from hubspot.events.models.error_detail import ErrorDetail
 from hubspot.events.models.external_unified_event import ExternalUnifiedEvent
 from hubspot.events.models.next_page import NextPage
 from hubspot.events.models.paging import Paging
-

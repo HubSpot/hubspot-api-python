@@ -14,7 +14,7 @@ class Discovery(DiscoveryBase):
     @property
     def metadata_api(self) -> api_client.MetadataApi:
         return self._configure_api_client(api_client, "MetadataApi")
- 
+
     @property
     def source_code_extract_api(self) -> api_client.SourceCodeExtractApi:
         return self._configure_api_client(api_client, "SourceCodeExtractApi")

@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.transactional.api_client import ApiClient
-from hubspot.marketing.transactional.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError
 
 
 class PublicSmtpTokensApi(object):
@@ -58,7 +55,7 @@ class PublicSmtpTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.archive_token_with_http_info(token_id, **kwargs)  # noqa: E501
 
     def archive_token_with_http_info(self, token_id, **kwargs):  # noqa: E501
@@ -88,30 +85,34 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['token_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method archive_token" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'token_id' is set
-        if self.api_client.client_side_validation and ('token_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['token_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token_id` when calling `archive_token`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "token_id" not in local_var_params
+            or local_var_params["token_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `token_id` when calling `archive_token`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'token_id' in local_var_params:
-            path_params['tokenId'] = local_var_params['token_id']  # noqa: E501
+        if "token_id" in local_var_params:
+            path_params["tokenId"] = local_var_params["token_id"]  # noqa: E501
 
         query_params = []
 
@@ -122,14 +123,16 @@ class PublicSmtpTokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/smtp-tokens/{tokenId}', 'DELETE',
+            "/marketing/v3/transactional/smtp-tokens/{tokenId}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -138,11 +141,14 @@ class PublicSmtpTokensApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create_token(self, smtp_api_token_request_egg, **kwargs):  # noqa: E501
         """Create a SMTP API token.  # noqa: E501
@@ -166,10 +172,14 @@ class PublicSmtpTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_token_with_http_info(smtp_api_token_request_egg, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_token_with_http_info(
+            smtp_api_token_request_egg, **kwargs
+        )  # noqa: E501
 
-    def create_token_with_http_info(self, smtp_api_token_request_egg, **kwargs):  # noqa: E501
+    def create_token_with_http_info(
+        self, smtp_api_token_request_egg, **kwargs
+    ):  # noqa: E501
         """Create a SMTP API token.  # noqa: E501
 
         Create a SMTP API token.  # noqa: E501
@@ -196,24 +206,28 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['smtp_api_token_request_egg']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["smtp_api_token_request_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method create_token" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'smtp_api_token_request_egg' is set
-        if self.api_client.client_side_validation and ('smtp_api_token_request_egg' not in local_var_params or  # noqa: E501
-                                                        local_var_params['smtp_api_token_request_egg'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `smtp_api_token_request_egg` when calling `create_token`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "smtp_api_token_request_egg" not in local_var_params
+            or local_var_params["smtp_api_token_request_egg"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `smtp_api_token_request_egg` when calling `create_token`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -227,34 +241,42 @@ class PublicSmtpTokensApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'smtp_api_token_request_egg' in local_var_params:
-            body_params = local_var_params['smtp_api_token_request_egg']
+        if "smtp_api_token_request_egg" in local_var_params:
+            body_params = local_var_params["smtp_api_token_request_egg"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/smtp-tokens', 'POST',
+            "/marketing/v3/transactional/smtp-tokens",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SmtpApiTokenView',  # noqa: E501
+            response_type="SmtpApiTokenView",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_token_by_id(self, token_id, **kwargs):  # noqa: E501
         """Query a single token by ID.  # noqa: E501
@@ -278,7 +300,7 @@ class PublicSmtpTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_token_by_id_with_http_info(token_id, **kwargs)  # noqa: E501
 
     def get_token_by_id_with_http_info(self, token_id, **kwargs):  # noqa: E501
@@ -308,30 +330,34 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['token_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_token_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'token_id' is set
-        if self.api_client.client_side_validation and ('token_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['token_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token_id` when calling `get_token_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "token_id" not in local_var_params
+            or local_var_params["token_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `token_id` when calling `get_token_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'token_id' in local_var_params:
-            path_params['tokenId'] = local_var_params['token_id']  # noqa: E501
+        if "token_id" in local_var_params:
+            path_params["tokenId"] = local_var_params["token_id"]  # noqa: E501
 
         query_params = []
 
@@ -342,27 +368,32 @@ class PublicSmtpTokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/smtp-tokens/{tokenId}', 'GET',
+            "/marketing/v3/transactional/smtp-tokens/{tokenId}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SmtpApiTokenView',  # noqa: E501
+            response_type="SmtpApiTokenView",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_tokens_page(self, **kwargs):  # noqa: E501
         """Query SMTP API tokens by campaign name or an emailCampaignId.  # noqa: E501
@@ -389,7 +420,7 @@ class PublicSmtpTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.get_tokens_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_tokens_page_with_http_info(self, **kwargs):  # noqa: E501
@@ -422,34 +453,53 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['campaign_name', 'email_campaign_id', 'after', 'limit']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "campaign_name",
+            "email_campaign_id",
+            "after",
+            "limit",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_tokens_page" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'campaign_name' in local_var_params and local_var_params['campaign_name'] is not None:  # noqa: E501
-            query_params.append(('campaignName', local_var_params['campaign_name']))  # noqa: E501
-        if 'email_campaign_id' in local_var_params and local_var_params['email_campaign_id'] is not None:  # noqa: E501
-            query_params.append(('emailCampaignId', local_var_params['email_campaign_id']))  # noqa: E501
-        if 'after' in local_var_params and local_var_params['after'] is not None:  # noqa: E501
-            query_params.append(('after', local_var_params['after']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if (
+            "campaign_name" in local_var_params
+            and local_var_params["campaign_name"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("campaignName", local_var_params["campaign_name"])
+            )  # noqa: E501
+        if (
+            "email_campaign_id" in local_var_params
+            and local_var_params["email_campaign_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("emailCampaignId", local_var_params["email_campaign_id"])
+            )  # noqa: E501
+        if (
+            "after" in local_var_params and local_var_params["after"] is not None
+        ):  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if (
+            "limit" in local_var_params and local_var_params["limit"] is not None
+        ):  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
 
         header_params = {}
 
@@ -458,27 +508,32 @@ class PublicSmtpTokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/smtp-tokens', 'GET',
+            "/marketing/v3/transactional/smtp-tokens",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponseSmtpApiTokenViewForwardPaging',  # noqa: E501
+            response_type="CollectionResponseSmtpApiTokenViewForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def reset_password(self, token_id, **kwargs):  # noqa: E501
         """Reset the password of an existing token.  # noqa: E501
@@ -502,7 +557,7 @@ class PublicSmtpTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.reset_password_with_http_info(token_id, **kwargs)  # noqa: E501
 
     def reset_password_with_http_info(self, token_id, **kwargs):  # noqa: E501
@@ -532,30 +587,34 @@ class PublicSmtpTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['token_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["token_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method reset_password" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'token_id' is set
-        if self.api_client.client_side_validation and ('token_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['token_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token_id` when calling `reset_password`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "token_id" not in local_var_params
+            or local_var_params["token_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `token_id` when calling `reset_password`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'token_id' in local_var_params:
-            path_params['tokenId'] = local_var_params['token_id']  # noqa: E501
+        if "token_id" in local_var_params:
+            path_params["tokenId"] = local_var_params["token_id"]  # noqa: E501
 
         query_params = []
 
@@ -566,24 +625,29 @@ class PublicSmtpTokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/smtp-tokens/{tokenId}/password-reset', 'POST',
+            "/marketing/v3/transactional/smtp-tokens/{tokenId}/password-reset",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SmtpApiTokenView',  # noqa: E501
+            response_type="SmtpApiTokenView",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

@@ -33,26 +33,36 @@ class PublicAuditInfo(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'portal_id': 'int',
-        'identifier': 'str',
-        'action': 'str',
-        'timestamp': 'datetime',
-        'message': 'str',
-        'raw_object': 'object',
-        'from_user_id': 'int'
+        "portal_id": "int",
+        "identifier": "str",
+        "action": "str",
+        "timestamp": "datetime",
+        "message": "str",
+        "raw_object": "object",
+        "from_user_id": "int",
     }
 
     attribute_map = {
-        'portal_id': 'portalId',
-        'identifier': 'identifier',
-        'action': 'action',
-        'timestamp': 'timestamp',
-        'message': 'message',
-        'raw_object': 'rawObject',
-        'from_user_id': 'fromUserId'
+        "portal_id": "portalId",
+        "identifier": "identifier",
+        "action": "action",
+        "timestamp": "timestamp",
+        "message": "message",
+        "raw_object": "rawObject",
+        "from_user_id": "fromUserId",
     }
 
-    def __init__(self, portal_id=None, identifier=None, action=None, timestamp=None, message=None, raw_object=None, from_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        portal_id=None,
+        identifier=None,
+        action=None,
+        timestamp=None,
+        message=None,
+        raw_object=None,
+        from_user_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicAuditInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -97,8 +107,12 @@ class PublicAuditInfo(object):
         :param portal_id: The portal_id of this PublicAuditInfo.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and portal_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `portal_id`, must not be `None`"
+            )  # noqa: E501
 
         self._portal_id = portal_id
 
@@ -120,8 +134,12 @@ class PublicAuditInfo(object):
         :param identifier: The identifier of this PublicAuditInfo.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and identifier is None:  # noqa: E501
-            raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and identifier is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `identifier`, must not be `None`"
+            )  # noqa: E501
 
         self._identifier = identifier
 
@@ -143,8 +161,12 @@ class PublicAuditInfo(object):
         :param action: The action of this PublicAuditInfo.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and action is None:  # noqa: E501
-            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and action is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `action`, must not be `None`"
+            )  # noqa: E501
 
         self._action = action
 
@@ -239,18 +261,20 @@ class PublicAuditInfo(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -32,17 +32,13 @@ class MarketingEventCompleteRequestParams(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'start_date_time': 'datetime',
-        'end_date_time': 'datetime'
-    }
+    openapi_types = {"start_date_time": "datetime", "end_date_time": "datetime"}
 
-    attribute_map = {
-        'start_date_time': 'startDateTime',
-        'end_date_time': 'endDateTime'
-    }
+    attribute_map = {"start_date_time": "startDateTime", "end_date_time": "endDateTime"}
 
-    def __init__(self, start_date_time=None, end_date_time=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, start_date_time=None, end_date_time=None, local_vars_configuration=None
+    ):  # noqa: E501
         """MarketingEventCompleteRequestParams - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,8 +69,13 @@ class MarketingEventCompleteRequestParams(object):
         :param start_date_time: The start_date_time of this MarketingEventCompleteRequestParams.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and start_date_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `start_date_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and start_date_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `start_date_time`, must not be `None`"
+            )  # noqa: E501
 
         self._start_date_time = start_date_time
 
@@ -96,8 +97,13 @@ class MarketingEventCompleteRequestParams(object):
         :param end_date_time: The end_date_time of this MarketingEventCompleteRequestParams.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and end_date_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `end_date_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and end_date_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `end_date_time`, must not be `None`"
+            )  # noqa: E501
 
         self._end_date_time = end_date_time
 
@@ -108,18 +114,20 @@ class MarketingEventCompleteRequestParams(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -33,16 +33,21 @@ class DependentField(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'dependent_condition': 'DependentFieldFilter',
-        'dependent_field': 'OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField'
+        "dependent_condition": "DependentFieldFilter",
+        "dependent_field": "OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField",
     }
 
     attribute_map = {
-        'dependent_condition': 'dependentCondition',
-        'dependent_field': 'dependentField'
+        "dependent_condition": "dependentCondition",
+        "dependent_field": "dependentField",
     }
 
-    def __init__(self, dependent_condition=None, dependent_field=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        dependent_condition=None,
+        dependent_field=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """DependentField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,8 +100,13 @@ class DependentField(object):
         :param dependent_field: The dependent_field of this DependentField.  # noqa: E501
         :type: OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField
         """
-        if self.local_vars_configuration.client_side_validation and dependent_field is None:  # noqa: E501
-            raise ValueError("Invalid value for `dependent_field`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and dependent_field is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `dependent_field`, must not be `None`"
+            )  # noqa: E501
 
         self._dependent_field = dependent_field
 
@@ -107,18 +117,20 @@ class DependentField(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

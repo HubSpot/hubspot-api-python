@@ -33,36 +33,51 @@ class FormStyle(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'font_family': 'str',
-        'background_width': 'str',
-        'label_text_color': 'str',
-        'label_text_size': 'str',
-        'help_text_color': 'str',
-        'help_text_size': 'str',
-        'legal_consent_text_color': 'str',
-        'legal_consent_text_size': 'str',
-        'submit_color': 'str',
-        'submit_alignment': 'str',
-        'submit_font_color': 'str',
-        'submit_size': 'str'
+        "font_family": "str",
+        "background_width": "str",
+        "label_text_color": "str",
+        "label_text_size": "str",
+        "help_text_color": "str",
+        "help_text_size": "str",
+        "legal_consent_text_color": "str",
+        "legal_consent_text_size": "str",
+        "submit_color": "str",
+        "submit_alignment": "str",
+        "submit_font_color": "str",
+        "submit_size": "str",
     }
 
     attribute_map = {
-        'font_family': 'fontFamily',
-        'background_width': 'backgroundWidth',
-        'label_text_color': 'labelTextColor',
-        'label_text_size': 'labelTextSize',
-        'help_text_color': 'helpTextColor',
-        'help_text_size': 'helpTextSize',
-        'legal_consent_text_color': 'legalConsentTextColor',
-        'legal_consent_text_size': 'legalConsentTextSize',
-        'submit_color': 'submitColor',
-        'submit_alignment': 'submitAlignment',
-        'submit_font_color': 'submitFontColor',
-        'submit_size': 'submitSize'
+        "font_family": "fontFamily",
+        "background_width": "backgroundWidth",
+        "label_text_color": "labelTextColor",
+        "label_text_size": "labelTextSize",
+        "help_text_color": "helpTextColor",
+        "help_text_size": "helpTextSize",
+        "legal_consent_text_color": "legalConsentTextColor",
+        "legal_consent_text_size": "legalConsentTextSize",
+        "submit_color": "submitColor",
+        "submit_alignment": "submitAlignment",
+        "submit_font_color": "submitFontColor",
+        "submit_size": "submitSize",
     }
 
-    def __init__(self, font_family=None, background_width=None, label_text_color=None, label_text_size=None, help_text_color=None, help_text_size=None, legal_consent_text_color=None, legal_consent_text_size=None, submit_color=None, submit_alignment=None, submit_font_color=None, submit_size=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        font_family=None,
+        background_width=None,
+        label_text_color=None,
+        label_text_size=None,
+        help_text_color=None,
+        help_text_size=None,
+        legal_consent_text_color=None,
+        legal_consent_text_size=None,
+        submit_color=None,
+        submit_alignment=None,
+        submit_font_color=None,
+        submit_size=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """FormStyle - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -113,8 +128,12 @@ class FormStyle(object):
         :param font_family: The font_family of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and font_family is None:  # noqa: E501
-            raise ValueError("Invalid value for `font_family`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and font_family is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `font_family`, must not be `None`"
+            )  # noqa: E501
 
         self._font_family = font_family
 
@@ -136,8 +155,13 @@ class FormStyle(object):
         :param background_width: The background_width of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and background_width is None:  # noqa: E501
-            raise ValueError("Invalid value for `background_width`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and background_width is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `background_width`, must not be `None`"
+            )  # noqa: E501
 
         self._background_width = background_width
 
@@ -159,8 +183,13 @@ class FormStyle(object):
         :param label_text_color: The label_text_color of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label_text_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `label_text_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and label_text_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label_text_color`, must not be `None`"
+            )  # noqa: E501
 
         self._label_text_color = label_text_color
 
@@ -182,8 +211,13 @@ class FormStyle(object):
         :param label_text_size: The label_text_size of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label_text_size is None:  # noqa: E501
-            raise ValueError("Invalid value for `label_text_size`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and label_text_size is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label_text_size`, must not be `None`"
+            )  # noqa: E501
 
         self._label_text_size = label_text_size
 
@@ -205,8 +239,13 @@ class FormStyle(object):
         :param help_text_color: The help_text_color of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and help_text_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `help_text_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and help_text_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `help_text_color`, must not be `None`"
+            )  # noqa: E501
 
         self._help_text_color = help_text_color
 
@@ -228,8 +267,13 @@ class FormStyle(object):
         :param help_text_size: The help_text_size of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and help_text_size is None:  # noqa: E501
-            raise ValueError("Invalid value for `help_text_size`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and help_text_size is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `help_text_size`, must not be `None`"
+            )  # noqa: E501
 
         self._help_text_size = help_text_size
 
@@ -251,8 +295,13 @@ class FormStyle(object):
         :param legal_consent_text_color: The legal_consent_text_color of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and legal_consent_text_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `legal_consent_text_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and legal_consent_text_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `legal_consent_text_color`, must not be `None`"
+            )  # noqa: E501
 
         self._legal_consent_text_color = legal_consent_text_color
 
@@ -274,8 +323,13 @@ class FormStyle(object):
         :param legal_consent_text_size: The legal_consent_text_size of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and legal_consent_text_size is None:  # noqa: E501
-            raise ValueError("Invalid value for `legal_consent_text_size`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and legal_consent_text_size is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `legal_consent_text_size`, must not be `None`"
+            )  # noqa: E501
 
         self._legal_consent_text_size = legal_consent_text_size
 
@@ -297,8 +351,13 @@ class FormStyle(object):
         :param submit_color: The submit_color of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and submit_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `submit_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and submit_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `submit_color`, must not be `None`"
+            )  # noqa: E501
 
         self._submit_color = submit_color
 
@@ -320,13 +379,22 @@ class FormStyle(object):
         :param submit_alignment: The submit_alignment of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and submit_alignment is None:  # noqa: E501
-            raise ValueError("Invalid value for `submit_alignment`, must not be `None`")  # noqa: E501
-        allowed_values = ["left", "right", "center"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and submit_alignment not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and submit_alignment is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `submit_alignment` ({0}), must be one of {1}"  # noqa: E501
-                .format(submit_alignment, allowed_values)
+                "Invalid value for `submit_alignment`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["left", "right", "center"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and submit_alignment not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `submit_alignment` ({0}), must be one of {1}".format(  # noqa: E501
+                    submit_alignment, allowed_values
+                )
             )
 
         self._submit_alignment = submit_alignment
@@ -349,8 +417,13 @@ class FormStyle(object):
         :param submit_font_color: The submit_font_color of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and submit_font_color is None:  # noqa: E501
-            raise ValueError("Invalid value for `submit_font_color`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and submit_font_color is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `submit_font_color`, must not be `None`"
+            )  # noqa: E501
 
         self._submit_font_color = submit_font_color
 
@@ -372,8 +445,12 @@ class FormStyle(object):
         :param submit_size: The submit_size of this FormStyle.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and submit_size is None:  # noqa: E501
-            raise ValueError("Invalid value for `submit_size`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and submit_size is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `submit_size`, must not be `None`"
+            )  # noqa: E501
 
         self._submit_size = submit_size
 
@@ -384,18 +461,20 @@ class FormStyle(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

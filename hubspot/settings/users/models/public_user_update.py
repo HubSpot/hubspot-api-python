@@ -33,18 +33,24 @@ class PublicUserUpdate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'role_id': 'str',
-        'primary_team_id': 'str',
-        'secondary_team_ids': 'list[str]'
+        "role_id": "str",
+        "primary_team_id": "str",
+        "secondary_team_ids": "list[str]",
     }
 
     attribute_map = {
-        'role_id': 'roleId',
-        'primary_team_id': 'primaryTeamId',
-        'secondary_team_ids': 'secondaryTeamIds'
+        "role_id": "roleId",
+        "primary_team_id": "primaryTeamId",
+        "secondary_team_ids": "secondaryTeamIds",
     }
 
-    def __init__(self, role_id=None, primary_team_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        role_id=None,
+        primary_team_id=None,
+        secondary_team_ids=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicUserUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -138,18 +144,20 @@ class PublicUserUpdate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

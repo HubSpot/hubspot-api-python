@@ -32,21 +32,23 @@ class AccountingExtensionTerm(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'due_date': 'date',
-        'name': 'str',
-        'id': 'str',
-        'due_days': 'int'
-    }
+    openapi_types = {"due_date": "date", "name": "str", "id": "str", "due_days": "int"}
 
     attribute_map = {
-        'due_date': 'dueDate',
-        'name': 'name',
-        'id': 'id',
-        'due_days': 'dueDays'
+        "due_date": "dueDate",
+        "name": "name",
+        "id": "id",
+        "due_days": "dueDays",
     }
 
-    def __init__(self, due_date=None, name=None, id=None, due_days=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        due_date=None,
+        name=None,
+        id=None,
+        due_days=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """AccountingExtensionTerm - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -108,8 +110,12 @@ class AccountingExtensionTerm(object):
         :param name: The name of this AccountingExtensionTerm.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -133,7 +139,9 @@ class AccountingExtensionTerm(object):
         :param id: The id of this AccountingExtensionTerm.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -168,18 +176,20 @@ class AccountingExtensionTerm(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

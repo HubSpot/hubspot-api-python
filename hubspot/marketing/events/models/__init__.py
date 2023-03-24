@@ -14,29 +14,69 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.marketing.events.models.batch_input_marketing_event_create_request_params import BatchInputMarketingEventCreateRequestParams
-from hubspot.marketing.events.models.batch_input_marketing_event_email_subscriber import BatchInputMarketingEventEmailSubscriber
-from hubspot.marketing.events.models.batch_input_marketing_event_external_unique_identifier import BatchInputMarketingEventExternalUniqueIdentifier
-from hubspot.marketing.events.models.batch_input_marketing_event_subscriber import BatchInputMarketingEventSubscriber
-from hubspot.marketing.events.models.batch_response_marketing_event_public_default_response import BatchResponseMarketingEventPublicDefaultResponse
-from hubspot.marketing.events.models.batch_response_subscriber_email_response import BatchResponseSubscriberEmailResponse
-from hubspot.marketing.events.models.batch_response_subscriber_vid_response import BatchResponseSubscriberVidResponse
-from hubspot.marketing.events.models.collection_response_marketing_event_external_unique_identifier_no_paging import CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging
+from hubspot.marketing.events.models.batch_input_marketing_event_create_request_params import (
+    BatchInputMarketingEventCreateRequestParams,
+)
+from hubspot.marketing.events.models.batch_input_marketing_event_email_subscriber import (
+    BatchInputMarketingEventEmailSubscriber,
+)
+from hubspot.marketing.events.models.batch_input_marketing_event_external_unique_identifier import (
+    BatchInputMarketingEventExternalUniqueIdentifier,
+)
+from hubspot.marketing.events.models.batch_input_marketing_event_subscriber import (
+    BatchInputMarketingEventSubscriber,
+)
+from hubspot.marketing.events.models.batch_response_marketing_event_public_default_response import (
+    BatchResponseMarketingEventPublicDefaultResponse,
+)
+from hubspot.marketing.events.models.batch_response_subscriber_email_response import (
+    BatchResponseSubscriberEmailResponse,
+)
+from hubspot.marketing.events.models.batch_response_subscriber_vid_response import (
+    BatchResponseSubscriberVidResponse,
+)
+from hubspot.marketing.events.models.collection_response_marketing_event_external_unique_identifier_no_paging import (
+    CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging,
+)
 from hubspot.marketing.events.models.error import Error
 from hubspot.marketing.events.models.error_category import ErrorCategory
 from hubspot.marketing.events.models.error_detail import ErrorDetail
 from hubspot.marketing.events.models.event_detail_settings import EventDetailSettings
-from hubspot.marketing.events.models.event_detail_settings_url import EventDetailSettingsUrl
-from hubspot.marketing.events.models.marketing_event_complete_request_params import MarketingEventCompleteRequestParams
-from hubspot.marketing.events.models.marketing_event_create_request_params import MarketingEventCreateRequestParams
-from hubspot.marketing.events.models.marketing_event_default_response import MarketingEventDefaultResponse
-from hubspot.marketing.events.models.marketing_event_email_subscriber import MarketingEventEmailSubscriber
-from hubspot.marketing.events.models.marketing_event_external_unique_identifier import MarketingEventExternalUniqueIdentifier
-from hubspot.marketing.events.models.marketing_event_public_default_response import MarketingEventPublicDefaultResponse
-from hubspot.marketing.events.models.marketing_event_public_read_response import MarketingEventPublicReadResponse
-from hubspot.marketing.events.models.marketing_event_subscriber import MarketingEventSubscriber
-from hubspot.marketing.events.models.marketing_event_update_request_params import MarketingEventUpdateRequestParams
+from hubspot.marketing.events.models.event_detail_settings_url import (
+    EventDetailSettingsUrl,
+)
+from hubspot.marketing.events.models.marketing_event_complete_request_params import (
+    MarketingEventCompleteRequestParams,
+)
+from hubspot.marketing.events.models.marketing_event_create_request_params import (
+    MarketingEventCreateRequestParams,
+)
+from hubspot.marketing.events.models.marketing_event_default_response import (
+    MarketingEventDefaultResponse,
+)
+from hubspot.marketing.events.models.marketing_event_email_subscriber import (
+    MarketingEventEmailSubscriber,
+)
+from hubspot.marketing.events.models.marketing_event_external_unique_identifier import (
+    MarketingEventExternalUniqueIdentifier,
+)
+from hubspot.marketing.events.models.marketing_event_public_default_response import (
+    MarketingEventPublicDefaultResponse,
+)
+from hubspot.marketing.events.models.marketing_event_public_read_response import (
+    MarketingEventPublicReadResponse,
+)
+from hubspot.marketing.events.models.marketing_event_subscriber import (
+    MarketingEventSubscriber,
+)
+from hubspot.marketing.events.models.marketing_event_update_request_params import (
+    MarketingEventUpdateRequestParams,
+)
 from hubspot.marketing.events.models.property_value import PropertyValue
 from hubspot.marketing.events.models.standard_error import StandardError
-from hubspot.marketing.events.models.subscriber_email_response import SubscriberEmailResponse
-from hubspot.marketing.events.models.subscriber_vid_response import SubscriberVidResponse
+from hubspot.marketing.events.models.subscriber_email_response import (
+    SubscriberEmailResponse,
+)
+from hubspot.marketing.events.models.subscriber_vid_response import (
+    SubscriberVidResponse,
+)

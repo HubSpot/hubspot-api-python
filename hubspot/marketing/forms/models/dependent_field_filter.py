@@ -33,22 +33,30 @@ class DependentFieldFilter(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'operator': 'str',
-        'value': 'str',
-        'values': 'list[str]',
-        'range_start': 'str',
-        'range_end': 'str'
+        "operator": "str",
+        "value": "str",
+        "values": "list[str]",
+        "range_start": "str",
+        "range_end": "str",
     }
 
     attribute_map = {
-        'operator': 'operator',
-        'value': 'value',
-        'values': 'values',
-        'range_start': 'rangeStart',
-        'range_end': 'rangeEnd'
+        "operator": "operator",
+        "value": "value",
+        "values": "values",
+        "range_start": "rangeStart",
+        "range_end": "rangeEnd",
     }
 
-    def __init__(self, operator=None, value=None, values=None, range_start=None, range_end=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        operator=None,
+        value=None,
+        values=None,
+        range_start=None,
+        range_end=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """DependentFieldFilter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,13 +93,43 @@ class DependentFieldFilter(object):
         :param operator: The operator of this DependentFieldFilter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
-            raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["eq", "neq", "contains", "doesnt_contain", "str_starts_with", "str_ends_with", "lt", "lte", "gt", "gte", "between", "not_between", "within_time_reverse", "within_time", "set_any", "set_not_any", "set_all", "set_not_all", "set_eq", "set_neq", "is_not_empty"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and operator is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501
-                .format(operator, allowed_values)
+                "Invalid value for `operator`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "eq",
+            "neq",
+            "contains",
+            "doesnt_contain",
+            "str_starts_with",
+            "str_ends_with",
+            "lt",
+            "lte",
+            "gt",
+            "gte",
+            "between",
+            "not_between",
+            "within_time_reverse",
+            "within_time",
+            "set_any",
+            "set_not_any",
+            "set_all",
+            "set_not_all",
+            "set_eq",
+            "set_neq",
+            "is_not_empty",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and operator not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `operator` ({0}), must be one of {1}".format(  # noqa: E501
+                    operator, allowed_values
+                )
             )
 
         self._operator = operator
@@ -114,8 +152,12 @@ class DependentFieldFilter(object):
         :param value: The value of this DependentFieldFilter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and value is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `value`, must not be `None`"
+            )  # noqa: E501
 
         self._value = value
 
@@ -137,8 +179,12 @@ class DependentFieldFilter(object):
         :param values: The values of this DependentFieldFilter.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and values is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `values`, must not be `None`"
+            )  # noqa: E501
 
         self._values = values
 
@@ -160,8 +206,12 @@ class DependentFieldFilter(object):
         :param range_start: The range_start of this DependentFieldFilter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and range_start is None:  # noqa: E501
-            raise ValueError("Invalid value for `range_start`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and range_start is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `range_start`, must not be `None`"
+            )  # noqa: E501
 
         self._range_start = range_start
 
@@ -183,8 +233,12 @@ class DependentFieldFilter(object):
         :param range_end: The range_end of this DependentFieldFilter.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and range_end is None:  # noqa: E501
-            raise ValueError("Invalid value for `range_end`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and range_end is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `range_end`, must not be `None`"
+            )  # noqa: E501
 
         self._range_end = range_end
 
@@ -195,18 +249,20 @@ class DependentFieldFilter(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

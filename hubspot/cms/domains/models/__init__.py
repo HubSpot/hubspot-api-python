@@ -14,7 +14,9 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.cms.domains.models.collection_response_with_total_domain_forward_paging import CollectionResponseWithTotalDomainForwardPaging
+from hubspot.cms.domains.models.collection_response_with_total_domain_forward_paging import (
+    CollectionResponseWithTotalDomainForwardPaging,
+)
 from hubspot.cms.domains.models.domain import Domain
 from hubspot.cms.domains.models.error import Error
 from hubspot.cms.domains.models.error_detail import ErrorDetail

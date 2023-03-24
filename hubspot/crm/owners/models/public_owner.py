@@ -33,30 +33,42 @@ class PublicOwner(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'email': 'str',
-        'first_name': 'str',
-        'last_name': 'str',
-        'user_id': 'int',
-        'created_at': 'datetime',
-        'updated_at': 'datetime',
-        'archived': 'bool',
-        'teams': 'list[PublicTeam]'
+        "id": "str",
+        "email": "str",
+        "first_name": "str",
+        "last_name": "str",
+        "user_id": "int",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "archived": "bool",
+        "teams": "list[PublicTeam]",
     }
 
     attribute_map = {
-        'id': 'id',
-        'email': 'email',
-        'first_name': 'firstName',
-        'last_name': 'lastName',
-        'user_id': 'userId',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt',
-        'archived': 'archived',
-        'teams': 'teams'
+        "id": "id",
+        "email": "email",
+        "first_name": "firstName",
+        "last_name": "lastName",
+        "user_id": "userId",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
+        "teams": "teams",
     }
 
-    def __init__(self, id=None, email=None, first_name=None, last_name=None, user_id=None, created_at=None, updated_at=None, archived=None, teams=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        email=None,
+        first_name=None,
+        last_name=None,
+        user_id=None,
+        created_at=None,
+        updated_at=None,
+        archived=None,
+        teams=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicOwner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -106,7 +118,9 @@ class PublicOwner(object):
         :param id: The id of this PublicOwner.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -213,8 +227,12 @@ class PublicOwner(object):
         :param created_at: The created_at of this PublicOwner.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -236,8 +254,12 @@ class PublicOwner(object):
         :param updated_at: The updated_at of this PublicOwner.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -259,8 +281,12 @@ class PublicOwner(object):
         :param archived: The archived of this PublicOwner.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archived is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived`, must not be `None`"
+            )  # noqa: E501
 
         self._archived = archived
 
@@ -292,18 +318,20 @@ class PublicOwner(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

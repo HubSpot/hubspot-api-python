@@ -28,12 +28,22 @@ from hubspot.communication_preferences.exceptions import ApiTypeError
 from hubspot.communication_preferences.exceptions import ApiValueError
 from hubspot.communication_preferences.exceptions import ApiKeyError
 from hubspot.communication_preferences.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.communication_preferences.models.error import Error
 from hubspot.communication_preferences.models.error_detail import ErrorDetail
-from hubspot.communication_preferences.models.public_subscription_status import PublicSubscriptionStatus
-from hubspot.communication_preferences.models.public_subscription_statuses_response import PublicSubscriptionStatusesResponse
-from hubspot.communication_preferences.models.public_update_subscription_status_request import PublicUpdateSubscriptionStatusRequest
-from hubspot.communication_preferences.models.subscription_definition import SubscriptionDefinition
-from hubspot.communication_preferences.models.subscription_definitions_response import SubscriptionDefinitionsResponse
-
+from hubspot.communication_preferences.models.public_subscription_status import (
+    PublicSubscriptionStatus,
+)
+from hubspot.communication_preferences.models.public_subscription_statuses_response import (
+    PublicSubscriptionStatusesResponse,
+)
+from hubspot.communication_preferences.models.public_update_subscription_status_request import (
+    PublicUpdateSubscriptionStatusRequest,
+)
+from hubspot.communication_preferences.models.subscription_definition import (
+    SubscriptionDefinition,
+)
+from hubspot.communication_preferences.models.subscription_definitions_response import (
+    SubscriptionDefinitionsResponse,
+)

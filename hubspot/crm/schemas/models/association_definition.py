@@ -33,24 +33,33 @@ class AssociationDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'from_object_type_id': 'str',
-        'to_object_type_id': 'str',
-        'name': 'str',
-        'id': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "from_object_type_id": "str",
+        "to_object_type_id": "str",
+        "name": "str",
+        "id": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'from_object_type_id': 'fromObjectTypeId',
-        'to_object_type_id': 'toObjectTypeId',
-        'name': 'name',
-        'id': 'id',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "from_object_type_id": "fromObjectTypeId",
+        "to_object_type_id": "toObjectTypeId",
+        "name": "name",
+        "id": "id",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, from_object_type_id=None, to_object_type_id=None, name=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        from_object_type_id=None,
+        to_object_type_id=None,
+        name=None,
+        id=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """AssociationDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -94,8 +103,13 @@ class AssociationDefinition(object):
         :param from_object_type_id: The from_object_type_id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and from_object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `from_object_type_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and from_object_type_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `from_object_type_id`, must not be `None`"
+            )  # noqa: E501
 
         self._from_object_type_id = from_object_type_id
 
@@ -119,8 +133,13 @@ class AssociationDefinition(object):
         :param to_object_type_id: The to_object_type_id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and to_object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_type_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and to_object_type_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `to_object_type_id`, must not be `None`"
+            )  # noqa: E501
 
         self._to_object_type_id = to_object_type_id
 
@@ -167,7 +186,9 @@ class AssociationDefinition(object):
         :param id: The id of this AssociationDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -225,18 +246,20 @@ class AssociationDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.transactional.api_client import ApiClient
-from hubspot.marketing.transactional.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.marketing.transactional.exceptions import ApiTypeError, ApiValueError
 
 
 class SingleSendApi(object):
@@ -58,10 +55,14 @@ class SingleSendApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.send_email_with_http_info(public_single_send_request_egg, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.send_email_with_http_info(
+            public_single_send_request_egg, **kwargs
+        )  # noqa: E501
 
-    def send_email_with_http_info(self, public_single_send_request_egg, **kwargs):  # noqa: E501
+    def send_email_with_http_info(
+        self, public_single_send_request_egg, **kwargs
+    ):  # noqa: E501
         """Send a single transactional email asynchronously.  # noqa: E501
 
         Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.  # noqa: E501
@@ -88,24 +89,28 @@ class SingleSendApi(object):
 
         local_var_params = locals()
 
-        all_params = ['public_single_send_request_egg']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["public_single_send_request_egg"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method send_email" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'public_single_send_request_egg' is set
-        if self.api_client.client_side_validation and ('public_single_send_request_egg' not in local_var_params or  # noqa: E501
-                                                        local_var_params['public_single_send_request_egg'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `public_single_send_request_egg` when calling `send_email`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "public_single_send_request_egg" not in local_var_params
+            or local_var_params["public_single_send_request_egg"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `public_single_send_request_egg` when calling `send_email`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -119,31 +124,39 @@ class SingleSendApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'public_single_send_request_egg' in local_var_params:
-            body_params = local_var_params['public_single_send_request_egg']
+        if "public_single_send_request_egg" in local_var_params:
+            body_params = local_var_params["public_single_send_request_egg"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/transactional/single-email/send', 'POST',
+            "/marketing/v3/transactional/single-email/send",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='EmailSendStatusView',  # noqa: E501
+            response_type="EmailSendStatusView",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

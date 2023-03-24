@@ -27,9 +27,13 @@ from hubspot.conversations.visitor_identification.exceptions import ApiTypeError
 from hubspot.conversations.visitor_identification.exceptions import ApiValueError
 from hubspot.conversations.visitor_identification.exceptions import ApiKeyError
 from hubspot.conversations.visitor_identification.exceptions import ApiException
+
 # import models into sdk package
 from hubspot.conversations.visitor_identification.models.error import Error
 from hubspot.conversations.visitor_identification.models.error_detail import ErrorDetail
-from hubspot.conversations.visitor_identification.models.identification_token_generation_request import IdentificationTokenGenerationRequest
-from hubspot.conversations.visitor_identification.models.identification_token_response import IdentificationTokenResponse
-
+from hubspot.conversations.visitor_identification.models.identification_token_generation_request import (
+    IdentificationTokenGenerationRequest,
+)
+from hubspot.conversations.visitor_identification.models.identification_token_response import (
+    IdentificationTokenResponse,
+)

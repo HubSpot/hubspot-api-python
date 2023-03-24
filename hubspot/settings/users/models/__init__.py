@@ -14,9 +14,15 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.settings.users.models.collection_response_public_permission_set_no_paging import CollectionResponsePublicPermissionSetNoPaging
-from hubspot.settings.users.models.collection_response_public_team_no_paging import CollectionResponsePublicTeamNoPaging
-from hubspot.settings.users.models.collection_response_public_user_forward_paging import CollectionResponsePublicUserForwardPaging
+from hubspot.settings.users.models.collection_response_public_permission_set_no_paging import (
+    CollectionResponsePublicPermissionSetNoPaging,
+)
+from hubspot.settings.users.models.collection_response_public_team_no_paging import (
+    CollectionResponsePublicTeamNoPaging,
+)
+from hubspot.settings.users.models.collection_response_public_user_forward_paging import (
+    CollectionResponsePublicUserForwardPaging,
+)
 from hubspot.settings.users.models.error import Error
 from hubspot.settings.users.models.error_detail import ErrorDetail
 from hubspot.settings.users.models.forward_paging import ForwardPaging

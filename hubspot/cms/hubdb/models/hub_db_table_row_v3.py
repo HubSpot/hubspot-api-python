@@ -33,28 +33,39 @@ class HubDbTableRowV3(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'values': 'dict(str, object)',
-        'path': 'str',
-        'name': 'str',
-        'child_table_id': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime',
-        'published_at': 'datetime'
+        "id": "str",
+        "values": "dict(str, object)",
+        "path": "str",
+        "name": "str",
+        "child_table_id": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "published_at": "datetime",
     }
 
     attribute_map = {
-        'id': 'id',
-        'values': 'values',
-        'path': 'path',
-        'name': 'name',
-        'child_table_id': 'childTableId',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt',
-        'published_at': 'publishedAt'
+        "id": "id",
+        "values": "values",
+        "path": "path",
+        "name": "name",
+        "child_table_id": "childTableId",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "published_at": "publishedAt",
     }
 
-    def __init__(self, id=None, values=None, path=None, name=None, child_table_id=None, created_at=None, updated_at=None, published_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        values=None,
+        path=None,
+        name=None,
+        child_table_id=None,
+        created_at=None,
+        updated_at=None,
+        published_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """HubDbTableRowV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -129,8 +140,12 @@ class HubDbTableRowV3(object):
         :param values: The values of this HubDbTableRowV3.  # noqa: E501
         :type: dict(str, object)
         """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and values is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `values`, must not be `None`"
+            )  # noqa: E501
 
         self._values = values
 
@@ -277,18 +292,20 @@ class HubDbTableRowV3(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

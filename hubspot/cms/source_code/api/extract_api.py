@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
 
 
 class ExtractApi(object):
@@ -58,7 +55,7 @@ class ExtractApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.extract_by_path_with_http_info(path, **kwargs)  # noqa: E501
 
     def extract_by_path_with_http_info(self, path, **kwargs):  # noqa: E501
@@ -88,32 +85,42 @@ class ExtractApi(object):
 
         local_var_params = locals()
 
-        all_params = ['path']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["path"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method extract_by_path" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ('path' not in local_var_params or  # noqa: E501
-                                                        local_var_params['path'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `path` when calling `extract_by_path`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "path" not in local_var_params
+            or local_var_params["path"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `path` when calling `extract_by_path`"
+            )  # noqa: E501
 
-        if self.api_client.client_side_validation and 'path' in local_var_params and not re.search(r'.+', local_var_params['path']):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `path` when calling `extract_by_path`, must conform to the pattern `/.+/`")  # noqa: E501
+        if (
+            self.api_client.client_side_validation
+            and "path" in local_var_params
+            and not re.search(r".+", local_var_params["path"])
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Invalid value for parameter `path` when calling `extract_by_path`, must conform to the pattern `/.+/`"
+            )  # noqa: E501
         collection_formats = {}
 
         path_params = {}
-        if 'path' in local_var_params:
-            path_params['path'] = local_var_params['path']  # noqa: E501
+        if "path" in local_var_params:
+            path_params["path"] = local_var_params["path"]  # noqa: E501
 
         query_params = []
 
@@ -124,14 +131,16 @@ class ExtractApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/cms/v3/source-code/extract/{path}', 'POST',
+            "/cms/v3/source-code/extract/{path}",
+            "POST",
             path_params,
             query_params,
             header_params,
@@ -140,8 +149,11 @@ class ExtractApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

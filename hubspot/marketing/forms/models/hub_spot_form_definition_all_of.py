@@ -33,34 +33,48 @@ class HubSpotFormDefinitionAllOf(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'form_type': 'str',
-        'id': 'str',
-        'name': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime',
-        'archived': 'bool',
-        'archived_at': 'datetime',
-        'field_groups': 'list[FieldGroup]',
-        'configuration': 'HubSpotFormConfiguration',
-        'display_options': 'FormDisplayOptions',
-        'legal_consent_options': 'object'
+        "form_type": "str",
+        "id": "str",
+        "name": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "archived": "bool",
+        "archived_at": "datetime",
+        "field_groups": "list[FieldGroup]",
+        "configuration": "HubSpotFormConfiguration",
+        "display_options": "FormDisplayOptions",
+        "legal_consent_options": "object",
     }
 
     attribute_map = {
-        'form_type': 'formType',
-        'id': 'id',
-        'name': 'name',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt',
-        'archived': 'archived',
-        'archived_at': 'archivedAt',
-        'field_groups': 'fieldGroups',
-        'configuration': 'configuration',
-        'display_options': 'displayOptions',
-        'legal_consent_options': 'legalConsentOptions'
+        "form_type": "formType",
+        "id": "id",
+        "name": "name",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
+        "archived_at": "archivedAt",
+        "field_groups": "fieldGroups",
+        "configuration": "configuration",
+        "display_options": "displayOptions",
+        "legal_consent_options": "legalConsentOptions",
     }
 
-    def __init__(self, form_type='hubspot', id=None, name=None, created_at=None, updated_at=None, archived=None, archived_at=None, field_groups=None, configuration=None, display_options=None, legal_consent_options=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        form_type="hubspot",
+        id=None,
+        name=None,
+        created_at=None,
+        updated_at=None,
+        archived=None,
+        archived_at=None,
+        field_groups=None,
+        configuration=None,
+        display_options=None,
+        legal_consent_options=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """HubSpotFormDefinitionAllOf - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -110,13 +124,21 @@ class HubSpotFormDefinitionAllOf(object):
         :param form_type: The form_type of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and form_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `form_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["hubspot"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and form_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and form_type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `form_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(form_type, allowed_values)
+                "Invalid value for `form_type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = ["hubspot"]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and form_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `form_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    form_type, allowed_values
+                )
             )
 
         self._form_type = form_type
@@ -139,7 +161,9 @@ class HubSpotFormDefinitionAllOf(object):
         :param id: The id of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -162,8 +186,12 @@ class HubSpotFormDefinitionAllOf(object):
         :param name: The name of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -185,8 +213,12 @@ class HubSpotFormDefinitionAllOf(object):
         :param created_at: The created_at of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -208,8 +240,12 @@ class HubSpotFormDefinitionAllOf(object):
         :param updated_at: The updated_at of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -231,8 +267,12 @@ class HubSpotFormDefinitionAllOf(object):
         :param archived: The archived of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archived is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived`, must not be `None`"
+            )  # noqa: E501
 
         self._archived = archived
 
@@ -275,8 +315,13 @@ class HubSpotFormDefinitionAllOf(object):
         :param field_groups: The field_groups of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: list[FieldGroup]
         """
-        if self.local_vars_configuration.client_side_validation and field_groups is None:  # noqa: E501
-            raise ValueError("Invalid value for `field_groups`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and field_groups is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `field_groups`, must not be `None`"
+            )  # noqa: E501
 
         self._field_groups = field_groups
 
@@ -298,8 +343,13 @@ class HubSpotFormDefinitionAllOf(object):
         :param configuration: The configuration of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: HubSpotFormConfiguration
         """
-        if self.local_vars_configuration.client_side_validation and configuration is None:  # noqa: E501
-            raise ValueError("Invalid value for `configuration`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and configuration is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `configuration`, must not be `None`"
+            )  # noqa: E501
 
         self._configuration = configuration
 
@@ -321,8 +371,13 @@ class HubSpotFormDefinitionAllOf(object):
         :param display_options: The display_options of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: FormDisplayOptions
         """
-        if self.local_vars_configuration.client_side_validation and display_options is None:  # noqa: E501
-            raise ValueError("Invalid value for `display_options`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and display_options is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `display_options`, must not be `None`"
+            )  # noqa: E501
 
         self._display_options = display_options
 
@@ -344,8 +399,13 @@ class HubSpotFormDefinitionAllOf(object):
         :param legal_consent_options: The legal_consent_options of this HubSpotFormDefinitionAllOf.  # noqa: E501
         :type: object
         """
-        if self.local_vars_configuration.client_side_validation and legal_consent_options is None:  # noqa: E501
-            raise ValueError("Invalid value for `legal_consent_options`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and legal_consent_options is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `legal_consent_options`, must not be `None`"
+            )  # noqa: E501
 
         self._legal_consent_options = legal_consent_options
 
@@ -356,18 +416,20 @@ class HubSpotFormDefinitionAllOf(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

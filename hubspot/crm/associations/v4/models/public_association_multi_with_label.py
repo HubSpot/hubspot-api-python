@@ -33,18 +33,16 @@ class PublicAssociationMultiWithLabel(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        '_from': 'PublicObjectId',
-        'to': 'list[MultiAssociatedObjectWithLabel]',
-        'paging': 'Paging'
+        "_from": "PublicObjectId",
+        "to": "list[MultiAssociatedObjectWithLabel]",
+        "paging": "Paging",
     }
 
-    attribute_map = {
-        '_from': 'from',
-        'to': 'to',
-        'paging': 'paging'
-    }
+    attribute_map = {"_from": "from", "to": "to", "paging": "paging"}
 
-    def __init__(self, _from=None, to=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, _from=None, to=None, paging=None, local_vars_configuration=None
+    ):  # noqa: E501
         """PublicAssociationMultiWithLabel - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,8 +76,12 @@ class PublicAssociationMultiWithLabel(object):
         :param _from: The _from of this PublicAssociationMultiWithLabel.  # noqa: E501
         :type: PublicObjectId
         """
-        if self.local_vars_configuration.client_side_validation and _from is None:  # noqa: E501
-            raise ValueError("Invalid value for `_from`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and _from is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `_from`, must not be `None`"
+            )  # noqa: E501
 
         self.__from = _from
 
@@ -101,7 +103,9 @@ class PublicAssociationMultiWithLabel(object):
         :param to: The to of this PublicAssociationMultiWithLabel.  # noqa: E501
         :type: list[MultiAssociatedObjectWithLabel]
         """
-        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and to is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
@@ -134,18 +138,20 @@ class PublicAssociationMultiWithLabel(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

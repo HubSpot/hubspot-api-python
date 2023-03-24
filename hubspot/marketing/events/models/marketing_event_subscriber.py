@@ -33,18 +33,24 @@ class MarketingEventSubscriber(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'interaction_date_time': 'int',
-        'properties': 'dict(str, str)',
-        'vid': 'int'
+        "interaction_date_time": "int",
+        "properties": "dict(str, str)",
+        "vid": "int",
     }
 
     attribute_map = {
-        'interaction_date_time': 'interactionDateTime',
-        'properties': 'properties',
-        'vid': 'vid'
+        "interaction_date_time": "interactionDateTime",
+        "properties": "properties",
+        "vid": "vid",
     }
 
-    def __init__(self, interaction_date_time=None, properties=None, vid=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        interaction_date_time=None,
+        properties=None,
+        vid=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """MarketingEventSubscriber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,8 +87,13 @@ class MarketingEventSubscriber(object):
         :param interaction_date_time: The interaction_date_time of this MarketingEventSubscriber.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and interaction_date_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and interaction_date_time is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `interaction_date_time`, must not be `None`"
+            )  # noqa: E501
 
         self._interaction_date_time = interaction_date_time
 
@@ -135,18 +146,20 @@ class MarketingEventSubscriber(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

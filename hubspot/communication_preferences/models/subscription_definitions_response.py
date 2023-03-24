@@ -32,15 +32,13 @@ class SubscriptionDefinitionsResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'subscription_definitions': 'list[SubscriptionDefinition]'
-    }
+    openapi_types = {"subscription_definitions": "list[SubscriptionDefinition]"}
 
-    attribute_map = {
-        'subscription_definitions': 'subscriptionDefinitions'
-    }
+    attribute_map = {"subscription_definitions": "subscriptionDefinitions"}
 
-    def __init__(self, subscription_definitions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, subscription_definitions=None, local_vars_configuration=None
+    ):  # noqa: E501
         """SubscriptionDefinitionsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,8 +69,13 @@ class SubscriptionDefinitionsResponse(object):
         :param subscription_definitions: The subscription_definitions of this SubscriptionDefinitionsResponse.  # noqa: E501
         :type: list[SubscriptionDefinition]
         """
-        if self.local_vars_configuration.client_side_validation and subscription_definitions is None:  # noqa: E501
-            raise ValueError("Invalid value for `subscription_definitions`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and subscription_definitions is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `subscription_definitions`, must not be `None`"
+            )  # noqa: E501
 
         self._subscription_definitions = subscription_definitions
 
@@ -83,18 +86,20 @@ class SubscriptionDefinitionsResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

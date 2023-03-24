@@ -33,28 +33,39 @@ class Pipeline(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'label': 'str',
-        'display_order': 'int',
-        'id': 'str',
-        'stages': 'list[PipelineStage]',
-        'created_at': 'datetime',
-        'archived_at': 'datetime',
-        'updated_at': 'datetime',
-        'archived': 'bool'
+        "label": "str",
+        "display_order": "int",
+        "id": "str",
+        "stages": "list[PipelineStage]",
+        "created_at": "datetime",
+        "archived_at": "datetime",
+        "updated_at": "datetime",
+        "archived": "bool",
     }
 
     attribute_map = {
-        'label': 'label',
-        'display_order': 'displayOrder',
-        'id': 'id',
-        'stages': 'stages',
-        'created_at': 'createdAt',
-        'archived_at': 'archivedAt',
-        'updated_at': 'updatedAt',
-        'archived': 'archived'
+        "label": "label",
+        "display_order": "displayOrder",
+        "id": "id",
+        "stages": "stages",
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
+        "updated_at": "updatedAt",
+        "archived": "archived",
     }
 
-    def __init__(self, label=None, display_order=None, id=None, stages=None, created_at=None, archived_at=None, updated_at=None, archived=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        label=None,
+        display_order=None,
+        id=None,
+        stages=None,
+        created_at=None,
+        archived_at=None,
+        updated_at=None,
+        archived=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Pipeline - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -100,8 +111,12 @@ class Pipeline(object):
         :param label: The label of this Pipeline.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -125,8 +140,13 @@ class Pipeline(object):
         :param display_order: The display_order of this Pipeline.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
-            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and display_order is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `display_order`, must not be `None`"
+            )  # noqa: E501
 
         self._display_order = display_order
 
@@ -150,7 +170,9 @@ class Pipeline(object):
         :param id: The id of this Pipeline.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -175,8 +197,12 @@ class Pipeline(object):
         :param stages: The stages of this Pipeline.  # noqa: E501
         :type: list[PipelineStage]
         """
-        if self.local_vars_configuration.client_side_validation and stages is None:  # noqa: E501
-            raise ValueError("Invalid value for `stages`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and stages is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `stages`, must not be `None`"
+            )  # noqa: E501
 
         self._stages = stages
 
@@ -200,8 +226,12 @@ class Pipeline(object):
         :param created_at: The created_at of this Pipeline.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -248,8 +278,12 @@ class Pipeline(object):
         :param updated_at: The updated_at of this Pipeline.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -273,8 +307,12 @@ class Pipeline(object):
         :param archived: The archived of this Pipeline.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archived is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived`, must not be `None`"
+            )  # noqa: E501
 
         self._archived = archived
 
@@ -285,18 +323,20 @@ class Pipeline(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

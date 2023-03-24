@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.events.api_client import ApiClient
-from hubspot.marketing.events.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError
 
 
 class MarketingEventsExternalApi(object):
@@ -58,10 +55,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.archive_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.archive_with_http_info(
+            external_event_id, external_account_id, **kwargs
+        )  # noqa: E501
 
-    def archive_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
+    def archive_with_http_info(
+        self, external_event_id, external_account_id, **kwargs
+    ):  # noqa: E501
         """archive  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -88,38 +89,52 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'external_account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive" % key
+                    "Got an unexpected keyword argument '%s'" " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `archive`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `archive`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -128,14 +143,16 @@ class MarketingEventsExternalApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}', 'DELETE',
+            "/marketing/v3/marketing-events/events/{externalEventId}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -144,13 +161,18 @@ class MarketingEventsExternalApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def archive_batch(self, batch_input_marketing_event_external_unique_identifier, **kwargs):  # noqa: E501
+    def archive_batch(
+        self, batch_input_marketing_event_external_unique_identifier, **kwargs
+    ):  # noqa: E501
         """archive_batch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -171,10 +193,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.archive_batch_with_http_info(batch_input_marketing_event_external_unique_identifier, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.archive_batch_with_http_info(
+            batch_input_marketing_event_external_unique_identifier, **kwargs
+        )  # noqa: E501
 
-    def archive_batch_with_http_info(self, batch_input_marketing_event_external_unique_identifier, **kwargs):  # noqa: E501
+    def archive_batch_with_http_info(
+        self, batch_input_marketing_event_external_unique_identifier, **kwargs
+    ):  # noqa: E501
         """archive_batch  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -200,24 +226,34 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['batch_input_marketing_event_external_unique_identifier']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "batch_input_marketing_event_external_unique_identifier"
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method archive_batch" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_marketing_event_external_unique_identifier' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_external_unique_identifier' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_external_unique_identifier'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_external_unique_identifier` when calling `archive_batch`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_external_unique_identifier"
+            not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_input_marketing_event_external_unique_identifier"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_external_unique_identifier` when calling `archive_batch`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -231,36 +267,52 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_external_unique_identifier' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_external_unique_identifier']
+        if "batch_input_marketing_event_external_unique_identifier" in local_var_params:
+            body_params = local_var_params[
+                "batch_input_marketing_event_external_unique_identifier"
+            ]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/delete', 'POST',
+            "/marketing/v3/marketing-events/events/delete",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Error',  # noqa: E501
+            response_type="Error",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def complete(self, external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs):  # noqa: E501
+    def complete(
+        self,
+        external_event_id,
+        external_account_id,
+        marketing_event_complete_request_params,
+        **kwargs
+    ):  # noqa: E501
         """complete  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -283,10 +335,21 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.complete_with_http_info(external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.complete_with_http_info(
+            external_event_id,
+            external_account_id,
+            marketing_event_complete_request_params,
+            **kwargs
+        )  # noqa: E501
 
-    def complete_with_http_info(self, external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs):  # noqa: E501
+    def complete_with_http_info(
+        self,
+        external_event_id,
+        external_account_id,
+        marketing_event_complete_request_params,
+        **kwargs
+    ):  # noqa: E501
         """complete  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -314,42 +377,66 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'external_account_id', 'marketing_event_complete_request_params']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "external_account_id",
+            "marketing_event_complete_request_params",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method complete" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `complete`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `complete`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `complete`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `complete`"
+            )  # noqa: E501
         # verify the required parameter 'marketing_event_complete_request_params' is set
-        if self.api_client.client_side_validation and ('marketing_event_complete_request_params' not in local_var_params or  # noqa: E501
-                                                        local_var_params['marketing_event_complete_request_params'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `marketing_event_complete_request_params` when calling `complete`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "marketing_event_complete_request_params" not in local_var_params
+            or local_var_params["marketing_event_complete_request_params"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `marketing_event_complete_request_params` when calling `complete`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -357,34 +444,42 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'marketing_event_complete_request_params' in local_var_params:
-            body_params = local_var_params['marketing_event_complete_request_params']
+        if "marketing_event_complete_request_params" in local_var_params:
+            body_params = local_var_params["marketing_event_complete_request_params"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}/complete', 'POST',
+            "/marketing/v3/marketing-events/events/{externalEventId}/complete",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventDefaultResponse',  # noqa: E501
+            response_type="MarketingEventDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def create(self, marketing_event_create_request_params, **kwargs):  # noqa: E501
         """create  # noqa: E501
@@ -407,10 +502,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_with_http_info(marketing_event_create_request_params, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_with_http_info(
+            marketing_event_create_request_params, **kwargs
+        )  # noqa: E501
 
-    def create_with_http_info(self, marketing_event_create_request_params, **kwargs):  # noqa: E501
+    def create_with_http_info(
+        self, marketing_event_create_request_params, **kwargs
+    ):  # noqa: E501
         """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -436,24 +535,28 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['marketing_event_create_request_params']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["marketing_event_create_request_params"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    "Got an unexpected keyword argument '%s'" " to method create" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and ('marketing_event_create_request_params' not in local_var_params or  # noqa: E501
-                                                        local_var_params['marketing_event_create_request_params'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `marketing_event_create_request_params` when calling `create`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "marketing_event_create_request_params" not in local_var_params
+            or local_var_params["marketing_event_create_request_params"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `marketing_event_create_request_params` when calling `create`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -467,34 +570,42 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'marketing_event_create_request_params' in local_var_params:
-            body_params = local_var_params['marketing_event_create_request_params']
+        if "marketing_event_create_request_params" in local_var_params:
+            body_params = local_var_params["marketing_event_create_request_params"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events', 'POST',
+            "/marketing/v3/marketing-events/events",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventDefaultResponse',  # noqa: E501
+            response_type="MarketingEventDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def do_cancel(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
         """do_cancel  # noqa: E501
@@ -518,10 +629,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.do_cancel_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.do_cancel_with_http_info(
+            external_event_id, external_account_id, **kwargs
+        )  # noqa: E501
 
-    def do_cancel_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
+    def do_cancel_with_http_info(
+        self, external_event_id, external_account_id, **kwargs
+    ):  # noqa: E501
         """do_cancel  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -548,38 +663,53 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'external_account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_cancel" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_cancel`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `do_cancel`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_cancel`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `do_cancel`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -588,29 +718,41 @@ class MarketingEventsExternalApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}/cancel', 'POST',
+            "/marketing/v3/marketing-events/events/{externalEventId}/cancel",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventDefaultResponse',  # noqa: E501
+            response_type="MarketingEventDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def do_email_upsert_by_id(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def do_email_upsert_by_id(
+        self,
+        external_event_id,
+        subscriber_state,
+        external_account_id,
+        batch_input_marketing_event_email_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """do_email_upsert_by_id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -634,10 +776,23 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.do_email_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.do_email_upsert_by_id_with_http_info(
+            external_event_id,
+            subscriber_state,
+            external_account_id,
+            batch_input_marketing_event_email_subscriber,
+            **kwargs
+        )  # noqa: E501
 
-    def do_email_upsert_by_id_with_http_info(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def do_email_upsert_by_id_with_http_info(
+        self,
+        external_event_id,
+        subscriber_state,
+        external_account_id,
+        batch_input_marketing_event_email_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """do_email_upsert_by_id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -666,48 +821,81 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'subscriber_state', 'external_account_id', 'batch_input_marketing_event_email_subscriber']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "subscriber_state",
+            "external_account_id",
+            "batch_input_marketing_event_email_subscriber",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_email_upsert_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_email_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `do_email_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ('subscriber_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscriber_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `do_email_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "subscriber_state" not in local_var_params
+            or local_var_params["subscriber_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `subscriber_state` when calling `do_email_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_email_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `do_email_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_email_subscriber' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_email_subscriber'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `do_email_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_email_subscriber" not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_input_marketing_event_email_subscriber"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `do_email_upsert_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
-        if 'subscriber_state' in local_var_params:
-            path_params['subscriberState'] = local_var_params['subscriber_state']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
+        if "subscriber_state" in local_var_params:
+            path_params["subscriberState"] = local_var_params[
+                "subscriber_state"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -715,36 +903,48 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_email_subscriber' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_email_subscriber']
+        if "batch_input_marketing_event_email_subscriber" in local_var_params:
+            body_params = local_var_params[
+                "batch_input_marketing_event_email_subscriber"
+            ]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/email-upsert', 'POST',
+            "/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/email-upsert",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Error',  # noqa: E501
+            response_type="Error",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def do_upsert(self, batch_input_marketing_event_create_request_params, **kwargs):  # noqa: E501
+    def do_upsert(
+        self, batch_input_marketing_event_create_request_params, **kwargs
+    ):  # noqa: E501
         """do_upsert  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -765,10 +965,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.do_upsert_with_http_info(batch_input_marketing_event_create_request_params, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.do_upsert_with_http_info(
+            batch_input_marketing_event_create_request_params, **kwargs
+        )  # noqa: E501
 
-    def do_upsert_with_http_info(self, batch_input_marketing_event_create_request_params, **kwargs):  # noqa: E501
+    def do_upsert_with_http_info(
+        self, batch_input_marketing_event_create_request_params, **kwargs
+    ):  # noqa: E501
         """do_upsert  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -794,24 +998,31 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['batch_input_marketing_event_create_request_params']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["batch_input_marketing_event_create_request_params"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_upsert" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_create_request_params' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_create_request_params'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_create_request_params` when calling `do_upsert`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_create_request_params" not in local_var_params
+            or local_var_params[  # noqa: E501
+                "batch_input_marketing_event_create_request_params"
+            ]
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_create_request_params` when calling `do_upsert`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -825,36 +1036,53 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_create_request_params' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_create_request_params']
+        if "batch_input_marketing_event_create_request_params" in local_var_params:
+            body_params = local_var_params[
+                "batch_input_marketing_event_create_request_params"
+            ]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/upsert', 'POST',
+            "/marketing/v3/marketing-events/events/upsert",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='BatchResponseMarketingEventPublicDefaultResponse',  # noqa: E501
+            response_type="BatchResponseMarketingEventPublicDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def do_upsert_by_id(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def do_upsert_by_id(
+        self,
+        external_event_id,
+        subscriber_state,
+        external_account_id,
+        batch_input_marketing_event_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """do_upsert_by_id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -878,10 +1106,23 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.do_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.do_upsert_by_id_with_http_info(
+            external_event_id,
+            subscriber_state,
+            external_account_id,
+            batch_input_marketing_event_subscriber,
+            **kwargs
+        )  # noqa: E501
 
-    def do_upsert_by_id_with_http_info(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def do_upsert_by_id_with_http_info(
+        self,
+        external_event_id,
+        subscriber_state,
+        external_account_id,
+        batch_input_marketing_event_subscriber,
+        **kwargs
+    ):  # noqa: E501
         """do_upsert_by_id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -910,48 +1151,79 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'subscriber_state', 'external_account_id', 'batch_input_marketing_event_subscriber']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "subscriber_state",
+            "external_account_id",
+            "batch_input_marketing_event_subscriber",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_upsert_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `do_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ('subscriber_state' not in local_var_params or  # noqa: E501
-                                                        local_var_params['subscriber_state'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `do_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "subscriber_state" not in local_var_params
+            or local_var_params["subscriber_state"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `subscriber_state` when calling `do_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `do_upsert_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if self.api_client.client_side_validation and ('batch_input_marketing_event_subscriber' not in local_var_params or  # noqa: E501
-                                                        local_var_params['batch_input_marketing_event_subscriber'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `do_upsert_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "batch_input_marketing_event_subscriber" not in local_var_params
+            or local_var_params["batch_input_marketing_event_subscriber"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `batch_input_marketing_event_subscriber` when calling `do_upsert_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
-        if 'subscriber_state' in local_var_params:
-            path_params['subscriberState'] = local_var_params['subscriber_state']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
+        if "subscriber_state" in local_var_params:
+            path_params["subscriberState"] = local_var_params[
+                "subscriber_state"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -959,34 +1231,42 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'batch_input_marketing_event_subscriber' in local_var_params:
-            body_params = local_var_params['batch_input_marketing_event_subscriber']
+        if "batch_input_marketing_event_subscriber" in local_var_params:
+            body_params = local_var_params["batch_input_marketing_event_subscriber"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/upsert', 'POST',
+            "/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/upsert",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Error',  # noqa: E501
+            response_type="Error",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def get_by_id(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
         """get_by_id  # noqa: E501
@@ -1010,10 +1290,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_by_id_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_by_id_with_http_info(
+            external_event_id, external_account_id, **kwargs
+        )  # noqa: E501
 
-    def get_by_id_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
+    def get_by_id_with_http_info(
+        self, external_event_id, external_account_id, **kwargs
+    ):  # noqa: E501
         """get_by_id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1040,38 +1324,53 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'external_account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_by_id" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `get_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `get_by_id`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `get_by_id`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `get_by_id`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1080,29 +1379,36 @@ class MarketingEventsExternalApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}', 'GET',
+            "/marketing/v3/marketing-events/events/{externalEventId}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventPublicReadResponse',  # noqa: E501
+            response_type="MarketingEventPublicReadResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def replace(self, external_event_id, marketing_event_create_request_params, **kwargs):  # noqa: E501
+    def replace(
+        self, external_event_id, marketing_event_create_request_params, **kwargs
+    ):  # noqa: E501
         """replace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1124,10 +1430,14 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.replace_with_http_info(external_event_id, marketing_event_create_request_params, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.replace_with_http_info(
+            external_event_id, marketing_event_create_request_params, **kwargs
+        )  # noqa: E501
 
-    def replace_with_http_info(self, external_event_id, marketing_event_create_request_params, **kwargs):  # noqa: E501
+    def replace_with_http_info(
+        self, external_event_id, marketing_event_create_request_params, **kwargs
+    ):  # noqa: E501
         """replace  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1154,34 +1464,47 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'marketing_event_create_request_params']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "marketing_event_create_request_params",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method replace" % key
+                    "Got an unexpected keyword argument '%s'" " to method replace" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `replace`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `replace`"
+            )  # noqa: E501
         # verify the required parameter 'marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and ('marketing_event_create_request_params' not in local_var_params or  # noqa: E501
-                                                        local_var_params['marketing_event_create_request_params'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `marketing_event_create_request_params` when calling `replace`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "marketing_event_create_request_params" not in local_var_params
+            or local_var_params["marketing_event_create_request_params"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `marketing_event_create_request_params` when calling `replace`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
 
@@ -1191,36 +1514,50 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'marketing_event_create_request_params' in local_var_params:
-            body_params = local_var_params['marketing_event_create_request_params']
+        if "marketing_event_create_request_params" in local_var_params:
+            body_params = local_var_params["marketing_event_create_request_params"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}', 'PUT',
+            "/marketing/v3/marketing-events/events/{externalEventId}",
+            "PUT",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventPublicDefaultResponse',  # noqa: E501
+            response_type="MarketingEventPublicDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
-    def update(self, external_event_id, external_account_id, marketing_event_update_request_params, **kwargs):  # noqa: E501
+    def update(
+        self,
+        external_event_id,
+        external_account_id,
+        marketing_event_update_request_params,
+        **kwargs
+    ):  # noqa: E501
         """update  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1243,10 +1580,21 @@ class MarketingEventsExternalApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.update_with_http_info(external_event_id, external_account_id, marketing_event_update_request_params, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.update_with_http_info(
+            external_event_id,
+            external_account_id,
+            marketing_event_update_request_params,
+            **kwargs
+        )  # noqa: E501
 
-    def update_with_http_info(self, external_event_id, external_account_id, marketing_event_update_request_params, **kwargs):  # noqa: E501
+    def update_with_http_info(
+        self,
+        external_event_id,
+        external_account_id,
+        marketing_event_update_request_params,
+        **kwargs
+    ):  # noqa: E501
         """update  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1274,42 +1622,65 @@ class MarketingEventsExternalApi(object):
 
         local_var_params = locals()
 
-        all_params = ['external_event_id', 'external_account_id', 'marketing_event_update_request_params']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            "external_event_id",
+            "external_account_id",
+            "marketing_event_update_request_params",
+        ]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    "Got an unexpected keyword argument '%s'" " to method update" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ('external_event_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_event_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_event_id" not in local_var_params
+            or local_var_params["external_event_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_event_id` when calling `update`"
+            )  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ('external_account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['external_account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "external_account_id" not in local_var_params
+            or local_var_params["external_account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `external_account_id` when calling `update`"
+            )  # noqa: E501
         # verify the required parameter 'marketing_event_update_request_params' is set
-        if self.api_client.client_side_validation and ('marketing_event_update_request_params' not in local_var_params or  # noqa: E501
-                                                        local_var_params['marketing_event_update_request_params'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `marketing_event_update_request_params` when calling `update`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "marketing_event_update_request_params" not in local_var_params
+            or local_var_params["marketing_event_update_request_params"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `marketing_event_update_request_params` when calling `update`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'external_event_id' in local_var_params:
-            path_params['externalEventId'] = local_var_params['external_event_id']  # noqa: E501
+        if "external_event_id" in local_var_params:
+            path_params["externalEventId"] = local_var_params[
+                "external_event_id"
+            ]  # noqa: E501
 
         query_params = []
-        if 'external_account_id' in local_var_params and local_var_params['external_account_id'] is not None:  # noqa: E501
-            query_params.append(('externalAccountId', local_var_params['external_account_id']))  # noqa: E501
+        if (
+            "external_account_id" in local_var_params
+            and local_var_params["external_account_id"] is not None
+        ):  # noqa: E501
+            query_params.append(
+                ("externalAccountId", local_var_params["external_account_id"])
+            )  # noqa: E501
 
         header_params = {}
 
@@ -1317,31 +1688,39 @@ class MarketingEventsExternalApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'marketing_event_update_request_params' in local_var_params:
-            body_params = local_var_params['marketing_event_update_request_params']
+        if "marketing_event_update_request_params" in local_var_params:
+            body_params = local_var_params["marketing_event_update_request_params"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/{externalEventId}', 'PATCH',
+            "/marketing/v3/marketing-events/events/{externalEventId}",
+            "PATCH",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MarketingEventPublicDefaultResponse',  # noqa: E501
+            response_type="MarketingEventPublicDefaultResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

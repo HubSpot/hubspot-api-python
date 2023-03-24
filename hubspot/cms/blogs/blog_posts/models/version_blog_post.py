@@ -33,20 +33,27 @@ class VersionBlogPost(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'object': 'BlogPost',
-        'user': 'VersionUser',
-        'id': 'str',
-        'updated_at': 'datetime'
+        "object": "BlogPost",
+        "user": "VersionUser",
+        "id": "str",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'object': 'object',
-        'user': 'user',
-        'id': 'id',
-        'updated_at': 'updatedAt'
+        "object": "object",
+        "user": "user",
+        "id": "id",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, object=None, user=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        object=None,
+        user=None,
+        id=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """VersionBlogPost - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,8 +88,12 @@ class VersionBlogPost(object):
         :param object: The object of this VersionBlogPost.  # noqa: E501
         :type: BlogPost
         """
-        if self.local_vars_configuration.client_side_validation and object is None:  # noqa: E501
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object`, must not be `None`"
+            )  # noqa: E501
 
         self._object = object
 
@@ -104,8 +115,12 @@ class VersionBlogPost(object):
         :param user: The user of this VersionBlogPost.  # noqa: E501
         :type: VersionUser
         """
-        if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
-            raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and user is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `user`, must not be `None`"
+            )  # noqa: E501
 
         self._user = user
 
@@ -129,7 +144,9 @@ class VersionBlogPost(object):
         :param id: The id of this VersionBlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -152,8 +169,12 @@ class VersionBlogPost(object):
         :param updated_at: The updated_at of this VersionBlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -164,18 +185,20 @@ class VersionBlogPost(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

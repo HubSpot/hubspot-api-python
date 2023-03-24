@@ -15,17 +15,29 @@ from __future__ import absolute_import
 
 # import models into model package
 from hubspot.crm.schemas.models.association_definition import AssociationDefinition
-from hubspot.crm.schemas.models.association_definition_egg import AssociationDefinitionEgg
-from hubspot.crm.schemas.models.collection_response_object_schema_no_paging import CollectionResponseObjectSchemaNoPaging
+from hubspot.crm.schemas.models.association_definition_egg import (
+    AssociationDefinitionEgg,
+)
+from hubspot.crm.schemas.models.collection_response_object_schema_no_paging import (
+    CollectionResponseObjectSchemaNoPaging,
+)
 from hubspot.crm.schemas.models.error import Error
 from hubspot.crm.schemas.models.error_detail import ErrorDetail
 from hubspot.crm.schemas.models.model_property import ModelProperty
 from hubspot.crm.schemas.models.object_schema import ObjectSchema
 from hubspot.crm.schemas.models.object_schema_egg import ObjectSchemaEgg
 from hubspot.crm.schemas.models.object_type_definition import ObjectTypeDefinition
-from hubspot.crm.schemas.models.object_type_definition_labels import ObjectTypeDefinitionLabels
-from hubspot.crm.schemas.models.object_type_definition_patch import ObjectTypeDefinitionPatch
-from hubspot.crm.schemas.models.object_type_property_create import ObjectTypePropertyCreate
+from hubspot.crm.schemas.models.object_type_definition_labels import (
+    ObjectTypeDefinitionLabels,
+)
+from hubspot.crm.schemas.models.object_type_definition_patch import (
+    ObjectTypeDefinitionPatch,
+)
+from hubspot.crm.schemas.models.object_type_property_create import (
+    ObjectTypePropertyCreate,
+)
 from hubspot.crm.schemas.models.option import Option
 from hubspot.crm.schemas.models.option_input import OptionInput
-from hubspot.crm.schemas.models.property_modification_metadata import PropertyModificationMetadata
+from hubspot.crm.schemas.models.property_modification_metadata import (
+    PropertyModificationMetadata,
+)

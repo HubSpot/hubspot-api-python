@@ -33,134 +33,198 @@ class BlogPost(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'slug': 'str',
-        'content_group_id': 'str',
-        'campaign': 'str',
-        'category_id': 'int',
-        'state': 'str',
-        'name': 'str',
-        'mab_experiment_id': 'str',
-        'archived': 'bool',
-        'author_name': 'str',
-        'ab_test_id': 'str',
-        'created_by_id': 'str',
-        'updated_by_id': 'str',
-        'domain': 'str',
-        'ab_status': 'str',
-        'folder_id': 'str',
-        'widget_containers': 'dict(str, object)',
-        'widgets': 'dict(str, object)',
-        'language': 'str',
-        'translated_from_id': 'str',
-        'translations': 'dict(str, ContentLanguageVariation)',
-        'dynamic_page_data_source_type': 'int',
-        'dynamic_page_data_source_id': 'str',
-        'blog_author_id': 'str',
-        'tag_ids': 'list[int]',
-        'html_title': 'str',
-        'enable_google_amp_output_override': 'bool',
-        'use_featured_image': 'bool',
-        'post_body': 'str',
-        'post_summary': 'str',
-        'rss_body': 'str',
-        'rss_summary': 'str',
-        'currently_published': 'bool',
-        'page_expiry_enabled': 'bool',
-        'page_expiry_redirect_id': 'int',
-        'page_expiry_redirect_url': 'str',
-        'page_expiry_date': 'int',
-        'include_default_custom_css': 'bool',
-        'enable_layout_stylesheets': 'bool',
-        'enable_domain_stylesheets': 'bool',
-        'publish_immediately': 'bool',
-        'featured_image': 'str',
-        'featured_image_alt_text': 'str',
-        'link_rel_canonical_url': 'str',
-        'content_type_category': 'str',
-        'attached_stylesheets': 'list[dict(str, object)]',
-        'meta_description': 'str',
-        'head_html': 'str',
-        'footer_html': 'str',
-        'archived_in_dashboard': 'bool',
-        'public_access_rules_enabled': 'bool',
-        'public_access_rules': 'list[object]',
-        'layout_sections': 'dict(str, LayoutSection)',
-        'theme_settings_values': 'dict(str, object)',
-        'url': 'str',
-        'password': 'str',
-        'current_state': 'str',
-        'publish_date': 'datetime',
-        'created': 'datetime',
-        'updated': 'datetime',
-        'deleted_at': 'datetime'
+        "id": "str",
+        "slug": "str",
+        "content_group_id": "str",
+        "campaign": "str",
+        "category_id": "int",
+        "state": "str",
+        "name": "str",
+        "mab_experiment_id": "str",
+        "archived": "bool",
+        "author_name": "str",
+        "ab_test_id": "str",
+        "created_by_id": "str",
+        "updated_by_id": "str",
+        "domain": "str",
+        "ab_status": "str",
+        "folder_id": "str",
+        "widget_containers": "dict(str, object)",
+        "widgets": "dict(str, object)",
+        "language": "str",
+        "translated_from_id": "str",
+        "translations": "dict(str, ContentLanguageVariation)",
+        "dynamic_page_data_source_type": "int",
+        "dynamic_page_data_source_id": "str",
+        "blog_author_id": "str",
+        "tag_ids": "list[int]",
+        "html_title": "str",
+        "enable_google_amp_output_override": "bool",
+        "use_featured_image": "bool",
+        "post_body": "str",
+        "post_summary": "str",
+        "rss_body": "str",
+        "rss_summary": "str",
+        "currently_published": "bool",
+        "page_expiry_enabled": "bool",
+        "page_expiry_redirect_id": "int",
+        "page_expiry_redirect_url": "str",
+        "page_expiry_date": "int",
+        "include_default_custom_css": "bool",
+        "enable_layout_stylesheets": "bool",
+        "enable_domain_stylesheets": "bool",
+        "publish_immediately": "bool",
+        "featured_image": "str",
+        "featured_image_alt_text": "str",
+        "link_rel_canonical_url": "str",
+        "content_type_category": "str",
+        "attached_stylesheets": "list[dict(str, object)]",
+        "meta_description": "str",
+        "head_html": "str",
+        "footer_html": "str",
+        "archived_in_dashboard": "bool",
+        "public_access_rules_enabled": "bool",
+        "public_access_rules": "list[object]",
+        "layout_sections": "dict(str, LayoutSection)",
+        "theme_settings_values": "dict(str, object)",
+        "url": "str",
+        "password": "str",
+        "current_state": "str",
+        "publish_date": "datetime",
+        "created": "datetime",
+        "updated": "datetime",
+        "deleted_at": "datetime",
     }
 
     attribute_map = {
-        'id': 'id',
-        'slug': 'slug',
-        'content_group_id': 'contentGroupId',
-        'campaign': 'campaign',
-        'category_id': 'categoryId',
-        'state': 'state',
-        'name': 'name',
-        'mab_experiment_id': 'mabExperimentId',
-        'archived': 'archived',
-        'author_name': 'authorName',
-        'ab_test_id': 'abTestId',
-        'created_by_id': 'createdById',
-        'updated_by_id': 'updatedById',
-        'domain': 'domain',
-        'ab_status': 'abStatus',
-        'folder_id': 'folderId',
-        'widget_containers': 'widgetContainers',
-        'widgets': 'widgets',
-        'language': 'language',
-        'translated_from_id': 'translatedFromId',
-        'translations': 'translations',
-        'dynamic_page_data_source_type': 'dynamicPageDataSourceType',
-        'dynamic_page_data_source_id': 'dynamicPageDataSourceId',
-        'blog_author_id': 'blogAuthorId',
-        'tag_ids': 'tagIds',
-        'html_title': 'htmlTitle',
-        'enable_google_amp_output_override': 'enableGoogleAmpOutputOverride',
-        'use_featured_image': 'useFeaturedImage',
-        'post_body': 'postBody',
-        'post_summary': 'postSummary',
-        'rss_body': 'rssBody',
-        'rss_summary': 'rssSummary',
-        'currently_published': 'currentlyPublished',
-        'page_expiry_enabled': 'pageExpiryEnabled',
-        'page_expiry_redirect_id': 'pageExpiryRedirectId',
-        'page_expiry_redirect_url': 'pageExpiryRedirectUrl',
-        'page_expiry_date': 'pageExpiryDate',
-        'include_default_custom_css': 'includeDefaultCustomCss',
-        'enable_layout_stylesheets': 'enableLayoutStylesheets',
-        'enable_domain_stylesheets': 'enableDomainStylesheets',
-        'publish_immediately': 'publishImmediately',
-        'featured_image': 'featuredImage',
-        'featured_image_alt_text': 'featuredImageAltText',
-        'link_rel_canonical_url': 'linkRelCanonicalUrl',
-        'content_type_category': 'contentTypeCategory',
-        'attached_stylesheets': 'attachedStylesheets',
-        'meta_description': 'metaDescription',
-        'head_html': 'headHtml',
-        'footer_html': 'footerHtml',
-        'archived_in_dashboard': 'archivedInDashboard',
-        'public_access_rules_enabled': 'publicAccessRulesEnabled',
-        'public_access_rules': 'publicAccessRules',
-        'layout_sections': 'layoutSections',
-        'theme_settings_values': 'themeSettingsValues',
-        'url': 'url',
-        'password': 'password',
-        'current_state': 'currentState',
-        'publish_date': 'publishDate',
-        'created': 'created',
-        'updated': 'updated',
-        'deleted_at': 'deletedAt'
+        "id": "id",
+        "slug": "slug",
+        "content_group_id": "contentGroupId",
+        "campaign": "campaign",
+        "category_id": "categoryId",
+        "state": "state",
+        "name": "name",
+        "mab_experiment_id": "mabExperimentId",
+        "archived": "archived",
+        "author_name": "authorName",
+        "ab_test_id": "abTestId",
+        "created_by_id": "createdById",
+        "updated_by_id": "updatedById",
+        "domain": "domain",
+        "ab_status": "abStatus",
+        "folder_id": "folderId",
+        "widget_containers": "widgetContainers",
+        "widgets": "widgets",
+        "language": "language",
+        "translated_from_id": "translatedFromId",
+        "translations": "translations",
+        "dynamic_page_data_source_type": "dynamicPageDataSourceType",
+        "dynamic_page_data_source_id": "dynamicPageDataSourceId",
+        "blog_author_id": "blogAuthorId",
+        "tag_ids": "tagIds",
+        "html_title": "htmlTitle",
+        "enable_google_amp_output_override": "enableGoogleAmpOutputOverride",
+        "use_featured_image": "useFeaturedImage",
+        "post_body": "postBody",
+        "post_summary": "postSummary",
+        "rss_body": "rssBody",
+        "rss_summary": "rssSummary",
+        "currently_published": "currentlyPublished",
+        "page_expiry_enabled": "pageExpiryEnabled",
+        "page_expiry_redirect_id": "pageExpiryRedirectId",
+        "page_expiry_redirect_url": "pageExpiryRedirectUrl",
+        "page_expiry_date": "pageExpiryDate",
+        "include_default_custom_css": "includeDefaultCustomCss",
+        "enable_layout_stylesheets": "enableLayoutStylesheets",
+        "enable_domain_stylesheets": "enableDomainStylesheets",
+        "publish_immediately": "publishImmediately",
+        "featured_image": "featuredImage",
+        "featured_image_alt_text": "featuredImageAltText",
+        "link_rel_canonical_url": "linkRelCanonicalUrl",
+        "content_type_category": "contentTypeCategory",
+        "attached_stylesheets": "attachedStylesheets",
+        "meta_description": "metaDescription",
+        "head_html": "headHtml",
+        "footer_html": "footerHtml",
+        "archived_in_dashboard": "archivedInDashboard",
+        "public_access_rules_enabled": "publicAccessRulesEnabled",
+        "public_access_rules": "publicAccessRules",
+        "layout_sections": "layoutSections",
+        "theme_settings_values": "themeSettingsValues",
+        "url": "url",
+        "password": "password",
+        "current_state": "currentState",
+        "publish_date": "publishDate",
+        "created": "created",
+        "updated": "updated",
+        "deleted_at": "deletedAt",
     }
 
-    def __init__(self, id=None, slug=None, content_group_id=None, campaign=None, category_id=None, state=None, name=None, mab_experiment_id=None, archived=None, author_name=None, ab_test_id=None, created_by_id=None, updated_by_id=None, domain=None, ab_status=None, folder_id=None, widget_containers=None, widgets=None, language=None, translated_from_id=None, translations=None, dynamic_page_data_source_type=None, dynamic_page_data_source_id=None, blog_author_id=None, tag_ids=None, html_title=None, enable_google_amp_output_override=None, use_featured_image=None, post_body=None, post_summary=None, rss_body=None, rss_summary=None, currently_published=None, page_expiry_enabled=None, page_expiry_redirect_id=None, page_expiry_redirect_url=None, page_expiry_date=None, include_default_custom_css=None, enable_layout_stylesheets=None, enable_domain_stylesheets=None, publish_immediately=None, featured_image=None, featured_image_alt_text=None, link_rel_canonical_url=None, content_type_category=None, attached_stylesheets=None, meta_description=None, head_html=None, footer_html=None, archived_in_dashboard=None, public_access_rules_enabled=None, public_access_rules=None, layout_sections=None, theme_settings_values=None, url=None, password=None, current_state=None, publish_date=None, created=None, updated=None, deleted_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        slug=None,
+        content_group_id=None,
+        campaign=None,
+        category_id=None,
+        state=None,
+        name=None,
+        mab_experiment_id=None,
+        archived=None,
+        author_name=None,
+        ab_test_id=None,
+        created_by_id=None,
+        updated_by_id=None,
+        domain=None,
+        ab_status=None,
+        folder_id=None,
+        widget_containers=None,
+        widgets=None,
+        language=None,
+        translated_from_id=None,
+        translations=None,
+        dynamic_page_data_source_type=None,
+        dynamic_page_data_source_id=None,
+        blog_author_id=None,
+        tag_ids=None,
+        html_title=None,
+        enable_google_amp_output_override=None,
+        use_featured_image=None,
+        post_body=None,
+        post_summary=None,
+        rss_body=None,
+        rss_summary=None,
+        currently_published=None,
+        page_expiry_enabled=None,
+        page_expiry_redirect_id=None,
+        page_expiry_redirect_url=None,
+        page_expiry_date=None,
+        include_default_custom_css=None,
+        enable_layout_stylesheets=None,
+        enable_domain_stylesheets=None,
+        publish_immediately=None,
+        featured_image=None,
+        featured_image_alt_text=None,
+        link_rel_canonical_url=None,
+        content_type_category=None,
+        attached_stylesheets=None,
+        meta_description=None,
+        head_html=None,
+        footer_html=None,
+        archived_in_dashboard=None,
+        public_access_rules_enabled=None,
+        public_access_rules=None,
+        layout_sections=None,
+        theme_settings_values=None,
+        url=None,
+        password=None,
+        current_state=None,
+        publish_date=None,
+        created=None,
+        updated=None,
+        deleted_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """BlogPost - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -311,7 +375,9 @@ class BlogPost(object):
         :param id: The id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -336,8 +402,12 @@ class BlogPost(object):
         :param slug: The slug of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
-            raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and slug is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `slug`, must not be `None`"
+            )  # noqa: E501
 
         self._slug = slug
 
@@ -361,8 +431,13 @@ class BlogPost(object):
         :param content_group_id: The content_group_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and content_group_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `content_group_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and content_group_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `content_group_id`, must not be `None`"
+            )  # noqa: E501
 
         self._content_group_id = content_group_id
 
@@ -386,8 +461,12 @@ class BlogPost(object):
         :param campaign: The campaign of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and campaign is None:  # noqa: E501
-            raise ValueError("Invalid value for `campaign`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and campaign is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `campaign`, must not be `None`"
+            )  # noqa: E501
 
         self._campaign = campaign
 
@@ -411,8 +490,12 @@ class BlogPost(object):
         :param category_id: The category_id of this BlogPost.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and category_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `category_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and category_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `category_id`, must not be `None`"
+            )  # noqa: E501
 
         self._category_id = category_id
 
@@ -436,11 +519,20 @@ class BlogPost(object):
         :param state: The state of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
-            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                state is not None and len(state) > 25):
-            raise ValueError("Invalid value for `state`, length must be less than or equal to `25`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and state is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `state`, must not be `None`"
+            )  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and state is not None
+            and len(state) > 25
+        ):
+            raise ValueError(
+                "Invalid value for `state`, length must be less than or equal to `25`"
+            )  # noqa: E501
 
         self._state = state
 
@@ -464,8 +556,12 @@ class BlogPost(object):
         :param name: The name of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -487,8 +583,13 @@ class BlogPost(object):
         :param mab_experiment_id: The mab_experiment_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and mab_experiment_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `mab_experiment_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and mab_experiment_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `mab_experiment_id`, must not be `None`"
+            )  # noqa: E501
 
         self._mab_experiment_id = mab_experiment_id
 
@@ -510,8 +611,12 @@ class BlogPost(object):
         :param archived: The archived of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archived is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived`, must not be `None`"
+            )  # noqa: E501
 
         self._archived = archived
 
@@ -535,8 +640,12 @@ class BlogPost(object):
         :param author_name: The author_name of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and author_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `author_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and author_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `author_name`, must not be `None`"
+            )  # noqa: E501
 
         self._author_name = author_name
 
@@ -558,8 +667,12 @@ class BlogPost(object):
         :param ab_test_id: The ab_test_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and ab_test_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `ab_test_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and ab_test_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `ab_test_id`, must not be `None`"
+            )  # noqa: E501
 
         self._ab_test_id = ab_test_id
 
@@ -583,8 +696,13 @@ class BlogPost(object):
         :param created_by_id: The created_by_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and created_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_by_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and created_by_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_by_id`, must not be `None`"
+            )  # noqa: E501
 
         self._created_by_id = created_by_id
 
@@ -608,8 +726,13 @@ class BlogPost(object):
         :param updated_by_id: The updated_by_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and updated_by_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_by_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and updated_by_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_by_id`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_by_id = updated_by_id
 
@@ -633,8 +756,12 @@ class BlogPost(object):
         :param domain: The domain of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and domain is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `domain`, must not be `None`"
+            )  # noqa: E501
 
         self._domain = domain
 
@@ -656,13 +783,30 @@ class BlogPost(object):
         :param ab_status: The ab_status of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and ab_status is None:  # noqa: E501
-            raise ValueError("Invalid value for `ab_status`, must not be `None`")  # noqa: E501
-        allowed_values = ["master", "variant", "loser_variant", "mab_master", "mab_variant", "automated_master", "automated_variant", "automated_loser_variant"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and ab_status not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and ab_status is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `ab_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(ab_status, allowed_values)
+                "Invalid value for `ab_status`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "master",
+            "variant",
+            "loser_variant",
+            "mab_master",
+            "mab_variant",
+            "automated_master",
+            "automated_variant",
+            "automated_loser_variant",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and ab_status not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `ab_status` ({0}), must be one of {1}".format(  # noqa: E501
+                    ab_status, allowed_values
+                )
             )
 
         self._ab_status = ab_status
@@ -685,8 +829,12 @@ class BlogPost(object):
         :param folder_id: The folder_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and folder_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `folder_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and folder_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `folder_id`, must not be `None`"
+            )  # noqa: E501
 
         self._folder_id = folder_id
 
@@ -710,8 +858,13 @@ class BlogPost(object):
         :param widget_containers: The widget_containers of this BlogPost.  # noqa: E501
         :type: dict(str, object)
         """
-        if self.local_vars_configuration.client_side_validation and widget_containers is None:  # noqa: E501
-            raise ValueError("Invalid value for `widget_containers`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and widget_containers is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `widget_containers`, must not be `None`"
+            )  # noqa: E501
 
         self._widget_containers = widget_containers
 
@@ -735,8 +888,12 @@ class BlogPost(object):
         :param widgets: The widgets of this BlogPost.  # noqa: E501
         :type: dict(str, object)
         """
-        if self.local_vars_configuration.client_side_validation and widgets is None:  # noqa: E501
-            raise ValueError("Invalid value for `widgets`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and widgets is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `widgets`, must not be `None`"
+            )  # noqa: E501
 
         self._widgets = widgets
 
@@ -760,13 +917,736 @@ class BlogPost(object):
         :param language: The language of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
-            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
-        allowed_values = ["af", "af-na", "af-za", "agq", "agq-cm", "ak", "ak-gh", "am", "am-et", "ar", "ar-001", "ar-ae", "ar-bh", "ar-dj", "ar-dz", "ar-eg", "ar-eh", "ar-er", "ar-il", "ar-iq", "ar-jo", "ar-km", "ar-kw", "ar-lb", "ar-ly", "ar-ma", "ar-mr", "ar-om", "ar-ps", "ar-qa", "ar-sa", "ar-sd", "ar-so", "ar-ss", "ar-sy", "ar-td", "ar-tn", "ar-ye", "as", "as-in", "asa", "asa-tz", "ast", "ast-es", "az", "az-az", "bas", "bas-cm", "be", "be-by", "bem", "bem-zm", "bez", "bez-tz", "bg", "bg-bg", "bm", "bm-ml", "bn", "bn-bd", "bn-in", "bo", "bo-cn", "bo-in", "br", "br-fr", "brx", "brx-in", "bs", "bs-ba", "ca", "ca-ad", "ca-es", "ca-fr", "ca-it", "ccp", "ccp-bd", "ccp-in", "ce", "ce-ru", "cgg", "cgg-ug", "chr", "chr-us", "ckb", "ckb-iq", "ckb-ir", "cs", "cs-cz", "cu", "cu-ru", "cy", "cy-gb", "da", "da-dk", "da-gl", "dav", "dav-ke", "de", "de-at", "de-be", "de-ch", "de-de", "de-gr", "de-it", "de-li", "de-lu", "dje", "dje-ne", "dsb", "dsb-de", "dua", "dua-cm", "dyo", "dyo-sn", "dz", "dz-bt", "ebu", "ebu-ke", "ee", "ee-gh", "ee-tg", "el", "el-cy", "el-gr", "en", "en-001", "en-150", "en-ae", "en-ag", "en-ai", "en-as", "en-at", "en-au", "en-bb", "en-be", "en-bi", "en-bm", "en-bs", "en-bw", "en-bz", "en-ca", "en-cc", "en-ch", "en-ck", "en-cm", "en-cx", "en-cy", "en-de", "en-dg", "en-dk", "en-dm", "en-er", "en-fi", "en-fj", "en-fk", "en-fm", "en-gb", "en-gd", "en-gg", "en-gh", "en-gi", "en-gm", "en-gu", "en-gy", "en-hk", "en-ie", "en-il", "en-im", "en-in", "en-io", "en-je", "en-jm", "en-ke", "en-ki", "en-kn", "en-ky", "en-lc", "en-lr", "en-ls", "en-lu", "en-mg", "en-mh", "en-mo", "en-mp", "en-ms", "en-mt", "en-mu", "en-mw", "en-my", "en-na", "en-nf", "en-ng", "en-nl", "en-nr", "en-nu", "en-nz", "en-pg", "en-ph", "en-pk", "en-pn", "en-pr", "en-pw", "en-rw", "en-sb", "en-sc", "en-sd", "en-se", "en-sg", "en-sh", "en-si", "en-sl", "en-ss", "en-sx", "en-sz", "en-tc", "en-tk", "en-to", "en-tt", "en-tv", "en-tz", "en-ug", "en-um", "en-us", "en-vc", "en-vg", "en-vi", "en-vu", "en-ws", "en-za", "en-zm", "en-zw", "eo", "eo-001", "es", "es-419", "es-ar", "es-bo", "es-br", "es-bz", "es-cl", "es-co", "es-cr", "es-cu", "es-do", "es-ea", "es-ec", "es-es", "es-gq", "es-gt", "es-hn", "es-ic", "es-mx", "es-ni", "es-pa", "es-pe", "es-ph", "es-pr", "es-py", "es-sv", "es-us", "es-uy", "es-ve", "et", "et-ee", "eu", "eu-es", "ewo", "ewo-cm", "fa", "fa-af", "fa-ir", "ff", "ff-cm", "ff-gn", "ff-mr", "ff-sn", "fi", "fi-fi", "fil", "fil-ph", "fo", "fo-dk", "fo-fo", "fr", "fr-be", "fr-bf", "fr-bi", "fr-bj", "fr-bl", "fr-ca", "fr-cd", "fr-cf", "fr-cg", "fr-ch", "fr-ci", "fr-cm", "fr-dj", "fr-dz", "fr-fr", "fr-ga", "fr-gf", "fr-gn", "fr-gp", "fr-gq", "fr-ht", "fr-km", "fr-lu", "fr-ma", "fr-mc", "fr-mf", "fr-mg", "fr-ml", "fr-mq", "fr-mr", "fr-mu", "fr-nc", "fr-ne", "fr-pf", "fr-pm", "fr-re", "fr-rw", "fr-sc", "fr-sn", "fr-sy", "fr-td", "fr-tg", "fr-tn", "fr-vu", "fr-wf", "fr-yt", "fur", "fur-it", "fy", "fy-nl", "ga", "ga-ie", "gd", "gd-gb", "gl", "gl-es", "gsw", "gsw-ch", "gsw-fr", "gsw-li", "gu", "gu-in", "guz", "guz-ke", "gv", "gv-im", "ha", "ha-gh", "ha-ne", "ha-ng", "haw", "haw-us", "he", "hi", "hi-in", "hr", "hr-ba", "hr-hr", "hsb", "hsb-de", "hu", "hu-hu", "hy", "hy-am", "id", "ig", "ig-ng", "ii", "ii-cn", "id-id", "is", "is-is", "it", "it-ch", "it-it", "it-sm", "it-va", "he-il", "ja", "ja-jp", "jgo", "jgo-cm", "yi", "yi-001", "jmc", "jmc-tz", "ka", "ka-ge", "kab", "kab-dz", "kam", "kam-ke", "kde", "kde-tz", "kea", "kea-cv", "khq", "khq-ml", "ki", "ki-ke", "kk", "kk-kz", "kkj", "kkj-cm", "kl", "kl-gl", "kln", "kln-ke", "km", "km-kh", "kn", "kn-in", "ko", "ko-kp", "ko-kr", "kok", "kok-in", "ks", "ks-in", "ksb", "ksb-tz", "ksf", "ksf-cm", "ksh", "ksh-de", "kw", "kw-gb", "ky", "ky-kg", "lag", "lag-tz", "lb", "lb-lu", "lg", "lg-ug", "lkt", "lkt-us", "ln", "ln-ao", "ln-cd", "ln-cf", "ln-cg", "lo", "lo-la", "lrc", "lrc-iq", "lrc-ir", "lt", "lt-lt", "lu", "lu-cd", "luo", "luo-ke", "luy", "luy-ke", "lv", "lv-lv", "mas", "mas-ke", "mas-tz", "mer", "mer-ke", "mfe", "mfe-mu", "mg", "mg-mg", "mgh", "mgh-mz", "mgo", "mgo-cm", "mk", "mk-mk", "ml", "ml-in", "mn", "mn-mn", "mr", "mr-in", "ms", "ms-bn", "ms-my", "ms-sg", "mt", "mt-mt", "mua", "mua-cm", "my", "my-mm", "mzn", "mzn-ir", "naq", "naq-na", "nb", "nb-no", "nb-sj", "nd", "nd-zw", "nds", "nds-de", "nds-nl", "ne", "ne-in", "ne-np", "nl", "nl-aw", "nl-be", "nl-ch", "nl-bq", "nl-cw", "nl-lu", "nl-nl", "nl-sr", "nl-sx", "nmg", "nmg-cm", "nn", "nn-no", "nnh", "nnh-cm", "no", "no-no", "nus", "nus-ss", "nyn", "nyn-ug", "om", "om-et", "om-ke", "or", "or-in", "os", "os-ge", "os-ru", "pa", "pa-in", "pa-pk", "pl", "pl-pl", "prg", "prg-001", "ps", "ps-af", "pt", "pt-ao", "pt-br", "pt-ch", "pt-cv", "pt-gq", "pt-gw", "pt-lu", "pt-mo", "pt-mz", "pt-pt", "pt-st", "pt-tl", "qu", "qu-bo", "qu-ec", "qu-pe", "rm", "rm-ch", "rn", "rn-bi", "ro", "ro-md", "ro-ro", "rof", "rof-tz", "ru", "ru-by", "ru-kg", "ru-kz", "ru-md", "ru-ru", "ru-ua", "rw", "rw-rw", "rwk", "rwk-tz", "sa", "sah", "sah-ru", "saq", "saq-ke", "sbp", "sbp-tz", "sd", "sd-pk", "se", "se-fi", "se-no", "se-se", "seh", "seh-mz", "ses", "ses-ml", "sg", "sg-cf", "shi", "shi-ma", "si", "si-lk", "sk", "sk-sk", "sl", "sl-si", "smn", "smn-fi", "sn", "sn-zw", "so", "so-dj", "so-et", "so-ke", "so-so", "sq", "sq-al", "sq-mk", "sq-xk", "sr", "sr-ba", "sr-cs", "sr-me", "sr-rs", "sr-xk", "sv", "sv-ax", "sv-fi", "sv-se", "sw", "sw-cd", "sw-ke", "sw-tz", "sw-ug", "sy", "ta", "ta-in", "ta-lk", "ta-my", "ta-sg", "te", "te-in", "teo", "teo-ke", "teo-ug", "tg", "tg-tj", "th", "th-th", "ti", "ti-er", "ti-et", "tk", "tk-tm", "to", "to-to", "tr", "tr-cy", "tr-tr", "tt", "tt-ru", "twq", "twq-ne", "tzm", "tzm-ma", "ug", "ug-cn", "uk", "uk-ua", "ur", "ur-in", "ur-pk", "uz", "uz-af", "uz-uz", "vai", "vai-lr", "vi", "vi-vn", "vo", "vo-001", "vun", "vun-tz", "wae", "wae-ch", "wo", "wo-sn", "xog", "xog-ug", "yav", "yav-cm", "yo", "yo-bj", "yo-ng", "yue", "yue-cn", "yue-hk", "zgh", "zgh-ma", "zh", "zh-cn", "zh-hk", "zh-mo", "zh-sg", "zh-tw", "zh-hans", "zh-hant", "zu", "zu-za"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and language is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `language` ({0}), must be one of {1}"  # noqa: E501
-                .format(language, allowed_values)
+                "Invalid value for `language`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "af",
+            "af-na",
+            "af-za",
+            "agq",
+            "agq-cm",
+            "ak",
+            "ak-gh",
+            "am",
+            "am-et",
+            "ar",
+            "ar-001",
+            "ar-ae",
+            "ar-bh",
+            "ar-dj",
+            "ar-dz",
+            "ar-eg",
+            "ar-eh",
+            "ar-er",
+            "ar-il",
+            "ar-iq",
+            "ar-jo",
+            "ar-km",
+            "ar-kw",
+            "ar-lb",
+            "ar-ly",
+            "ar-ma",
+            "ar-mr",
+            "ar-om",
+            "ar-ps",
+            "ar-qa",
+            "ar-sa",
+            "ar-sd",
+            "ar-so",
+            "ar-ss",
+            "ar-sy",
+            "ar-td",
+            "ar-tn",
+            "ar-ye",
+            "as",
+            "as-in",
+            "asa",
+            "asa-tz",
+            "ast",
+            "ast-es",
+            "az",
+            "az-az",
+            "bas",
+            "bas-cm",
+            "be",
+            "be-by",
+            "bem",
+            "bem-zm",
+            "bez",
+            "bez-tz",
+            "bg",
+            "bg-bg",
+            "bm",
+            "bm-ml",
+            "bn",
+            "bn-bd",
+            "bn-in",
+            "bo",
+            "bo-cn",
+            "bo-in",
+            "br",
+            "br-fr",
+            "brx",
+            "brx-in",
+            "bs",
+            "bs-ba",
+            "ca",
+            "ca-ad",
+            "ca-es",
+            "ca-fr",
+            "ca-it",
+            "ccp",
+            "ccp-bd",
+            "ccp-in",
+            "ce",
+            "ce-ru",
+            "cgg",
+            "cgg-ug",
+            "chr",
+            "chr-us",
+            "ckb",
+            "ckb-iq",
+            "ckb-ir",
+            "cs",
+            "cs-cz",
+            "cu",
+            "cu-ru",
+            "cy",
+            "cy-gb",
+            "da",
+            "da-dk",
+            "da-gl",
+            "dav",
+            "dav-ke",
+            "de",
+            "de-at",
+            "de-be",
+            "de-ch",
+            "de-de",
+            "de-gr",
+            "de-it",
+            "de-li",
+            "de-lu",
+            "dje",
+            "dje-ne",
+            "dsb",
+            "dsb-de",
+            "dua",
+            "dua-cm",
+            "dyo",
+            "dyo-sn",
+            "dz",
+            "dz-bt",
+            "ebu",
+            "ebu-ke",
+            "ee",
+            "ee-gh",
+            "ee-tg",
+            "el",
+            "el-cy",
+            "el-gr",
+            "en",
+            "en-001",
+            "en-150",
+            "en-ae",
+            "en-ag",
+            "en-ai",
+            "en-as",
+            "en-at",
+            "en-au",
+            "en-bb",
+            "en-be",
+            "en-bi",
+            "en-bm",
+            "en-bs",
+            "en-bw",
+            "en-bz",
+            "en-ca",
+            "en-cc",
+            "en-ch",
+            "en-ck",
+            "en-cm",
+            "en-cx",
+            "en-cy",
+            "en-de",
+            "en-dg",
+            "en-dk",
+            "en-dm",
+            "en-er",
+            "en-fi",
+            "en-fj",
+            "en-fk",
+            "en-fm",
+            "en-gb",
+            "en-gd",
+            "en-gg",
+            "en-gh",
+            "en-gi",
+            "en-gm",
+            "en-gu",
+            "en-gy",
+            "en-hk",
+            "en-ie",
+            "en-il",
+            "en-im",
+            "en-in",
+            "en-io",
+            "en-je",
+            "en-jm",
+            "en-ke",
+            "en-ki",
+            "en-kn",
+            "en-ky",
+            "en-lc",
+            "en-lr",
+            "en-ls",
+            "en-lu",
+            "en-mg",
+            "en-mh",
+            "en-mo",
+            "en-mp",
+            "en-ms",
+            "en-mt",
+            "en-mu",
+            "en-mw",
+            "en-my",
+            "en-na",
+            "en-nf",
+            "en-ng",
+            "en-nl",
+            "en-nr",
+            "en-nu",
+            "en-nz",
+            "en-pg",
+            "en-ph",
+            "en-pk",
+            "en-pn",
+            "en-pr",
+            "en-pw",
+            "en-rw",
+            "en-sb",
+            "en-sc",
+            "en-sd",
+            "en-se",
+            "en-sg",
+            "en-sh",
+            "en-si",
+            "en-sl",
+            "en-ss",
+            "en-sx",
+            "en-sz",
+            "en-tc",
+            "en-tk",
+            "en-to",
+            "en-tt",
+            "en-tv",
+            "en-tz",
+            "en-ug",
+            "en-um",
+            "en-us",
+            "en-vc",
+            "en-vg",
+            "en-vi",
+            "en-vu",
+            "en-ws",
+            "en-za",
+            "en-zm",
+            "en-zw",
+            "eo",
+            "eo-001",
+            "es",
+            "es-419",
+            "es-ar",
+            "es-bo",
+            "es-br",
+            "es-bz",
+            "es-cl",
+            "es-co",
+            "es-cr",
+            "es-cu",
+            "es-do",
+            "es-ea",
+            "es-ec",
+            "es-es",
+            "es-gq",
+            "es-gt",
+            "es-hn",
+            "es-ic",
+            "es-mx",
+            "es-ni",
+            "es-pa",
+            "es-pe",
+            "es-ph",
+            "es-pr",
+            "es-py",
+            "es-sv",
+            "es-us",
+            "es-uy",
+            "es-ve",
+            "et",
+            "et-ee",
+            "eu",
+            "eu-es",
+            "ewo",
+            "ewo-cm",
+            "fa",
+            "fa-af",
+            "fa-ir",
+            "ff",
+            "ff-cm",
+            "ff-gn",
+            "ff-mr",
+            "ff-sn",
+            "fi",
+            "fi-fi",
+            "fil",
+            "fil-ph",
+            "fo",
+            "fo-dk",
+            "fo-fo",
+            "fr",
+            "fr-be",
+            "fr-bf",
+            "fr-bi",
+            "fr-bj",
+            "fr-bl",
+            "fr-ca",
+            "fr-cd",
+            "fr-cf",
+            "fr-cg",
+            "fr-ch",
+            "fr-ci",
+            "fr-cm",
+            "fr-dj",
+            "fr-dz",
+            "fr-fr",
+            "fr-ga",
+            "fr-gf",
+            "fr-gn",
+            "fr-gp",
+            "fr-gq",
+            "fr-ht",
+            "fr-km",
+            "fr-lu",
+            "fr-ma",
+            "fr-mc",
+            "fr-mf",
+            "fr-mg",
+            "fr-ml",
+            "fr-mq",
+            "fr-mr",
+            "fr-mu",
+            "fr-nc",
+            "fr-ne",
+            "fr-pf",
+            "fr-pm",
+            "fr-re",
+            "fr-rw",
+            "fr-sc",
+            "fr-sn",
+            "fr-sy",
+            "fr-td",
+            "fr-tg",
+            "fr-tn",
+            "fr-vu",
+            "fr-wf",
+            "fr-yt",
+            "fur",
+            "fur-it",
+            "fy",
+            "fy-nl",
+            "ga",
+            "ga-ie",
+            "gd",
+            "gd-gb",
+            "gl",
+            "gl-es",
+            "gsw",
+            "gsw-ch",
+            "gsw-fr",
+            "gsw-li",
+            "gu",
+            "gu-in",
+            "guz",
+            "guz-ke",
+            "gv",
+            "gv-im",
+            "ha",
+            "ha-gh",
+            "ha-ne",
+            "ha-ng",
+            "haw",
+            "haw-us",
+            "he",
+            "hi",
+            "hi-in",
+            "hr",
+            "hr-ba",
+            "hr-hr",
+            "hsb",
+            "hsb-de",
+            "hu",
+            "hu-hu",
+            "hy",
+            "hy-am",
+            "id",
+            "ig",
+            "ig-ng",
+            "ii",
+            "ii-cn",
+            "id-id",
+            "is",
+            "is-is",
+            "it",
+            "it-ch",
+            "it-it",
+            "it-sm",
+            "it-va",
+            "he-il",
+            "ja",
+            "ja-jp",
+            "jgo",
+            "jgo-cm",
+            "yi",
+            "yi-001",
+            "jmc",
+            "jmc-tz",
+            "ka",
+            "ka-ge",
+            "kab",
+            "kab-dz",
+            "kam",
+            "kam-ke",
+            "kde",
+            "kde-tz",
+            "kea",
+            "kea-cv",
+            "khq",
+            "khq-ml",
+            "ki",
+            "ki-ke",
+            "kk",
+            "kk-kz",
+            "kkj",
+            "kkj-cm",
+            "kl",
+            "kl-gl",
+            "kln",
+            "kln-ke",
+            "km",
+            "km-kh",
+            "kn",
+            "kn-in",
+            "ko",
+            "ko-kp",
+            "ko-kr",
+            "kok",
+            "kok-in",
+            "ks",
+            "ks-in",
+            "ksb",
+            "ksb-tz",
+            "ksf",
+            "ksf-cm",
+            "ksh",
+            "ksh-de",
+            "kw",
+            "kw-gb",
+            "ky",
+            "ky-kg",
+            "lag",
+            "lag-tz",
+            "lb",
+            "lb-lu",
+            "lg",
+            "lg-ug",
+            "lkt",
+            "lkt-us",
+            "ln",
+            "ln-ao",
+            "ln-cd",
+            "ln-cf",
+            "ln-cg",
+            "lo",
+            "lo-la",
+            "lrc",
+            "lrc-iq",
+            "lrc-ir",
+            "lt",
+            "lt-lt",
+            "lu",
+            "lu-cd",
+            "luo",
+            "luo-ke",
+            "luy",
+            "luy-ke",
+            "lv",
+            "lv-lv",
+            "mas",
+            "mas-ke",
+            "mas-tz",
+            "mer",
+            "mer-ke",
+            "mfe",
+            "mfe-mu",
+            "mg",
+            "mg-mg",
+            "mgh",
+            "mgh-mz",
+            "mgo",
+            "mgo-cm",
+            "mk",
+            "mk-mk",
+            "ml",
+            "ml-in",
+            "mn",
+            "mn-mn",
+            "mr",
+            "mr-in",
+            "ms",
+            "ms-bn",
+            "ms-my",
+            "ms-sg",
+            "mt",
+            "mt-mt",
+            "mua",
+            "mua-cm",
+            "my",
+            "my-mm",
+            "mzn",
+            "mzn-ir",
+            "naq",
+            "naq-na",
+            "nb",
+            "nb-no",
+            "nb-sj",
+            "nd",
+            "nd-zw",
+            "nds",
+            "nds-de",
+            "nds-nl",
+            "ne",
+            "ne-in",
+            "ne-np",
+            "nl",
+            "nl-aw",
+            "nl-be",
+            "nl-ch",
+            "nl-bq",
+            "nl-cw",
+            "nl-lu",
+            "nl-nl",
+            "nl-sr",
+            "nl-sx",
+            "nmg",
+            "nmg-cm",
+            "nn",
+            "nn-no",
+            "nnh",
+            "nnh-cm",
+            "no",
+            "no-no",
+            "nus",
+            "nus-ss",
+            "nyn",
+            "nyn-ug",
+            "om",
+            "om-et",
+            "om-ke",
+            "or",
+            "or-in",
+            "os",
+            "os-ge",
+            "os-ru",
+            "pa",
+            "pa-in",
+            "pa-pk",
+            "pl",
+            "pl-pl",
+            "prg",
+            "prg-001",
+            "ps",
+            "ps-af",
+            "pt",
+            "pt-ao",
+            "pt-br",
+            "pt-ch",
+            "pt-cv",
+            "pt-gq",
+            "pt-gw",
+            "pt-lu",
+            "pt-mo",
+            "pt-mz",
+            "pt-pt",
+            "pt-st",
+            "pt-tl",
+            "qu",
+            "qu-bo",
+            "qu-ec",
+            "qu-pe",
+            "rm",
+            "rm-ch",
+            "rn",
+            "rn-bi",
+            "ro",
+            "ro-md",
+            "ro-ro",
+            "rof",
+            "rof-tz",
+            "ru",
+            "ru-by",
+            "ru-kg",
+            "ru-kz",
+            "ru-md",
+            "ru-ru",
+            "ru-ua",
+            "rw",
+            "rw-rw",
+            "rwk",
+            "rwk-tz",
+            "sa",
+            "sah",
+            "sah-ru",
+            "saq",
+            "saq-ke",
+            "sbp",
+            "sbp-tz",
+            "sd",
+            "sd-pk",
+            "se",
+            "se-fi",
+            "se-no",
+            "se-se",
+            "seh",
+            "seh-mz",
+            "ses",
+            "ses-ml",
+            "sg",
+            "sg-cf",
+            "shi",
+            "shi-ma",
+            "si",
+            "si-lk",
+            "sk",
+            "sk-sk",
+            "sl",
+            "sl-si",
+            "smn",
+            "smn-fi",
+            "sn",
+            "sn-zw",
+            "so",
+            "so-dj",
+            "so-et",
+            "so-ke",
+            "so-so",
+            "sq",
+            "sq-al",
+            "sq-mk",
+            "sq-xk",
+            "sr",
+            "sr-ba",
+            "sr-cs",
+            "sr-me",
+            "sr-rs",
+            "sr-xk",
+            "sv",
+            "sv-ax",
+            "sv-fi",
+            "sv-se",
+            "sw",
+            "sw-cd",
+            "sw-ke",
+            "sw-tz",
+            "sw-ug",
+            "sy",
+            "ta",
+            "ta-in",
+            "ta-lk",
+            "ta-my",
+            "ta-sg",
+            "te",
+            "te-in",
+            "teo",
+            "teo-ke",
+            "teo-ug",
+            "tg",
+            "tg-tj",
+            "th",
+            "th-th",
+            "ti",
+            "ti-er",
+            "ti-et",
+            "tk",
+            "tk-tm",
+            "to",
+            "to-to",
+            "tr",
+            "tr-cy",
+            "tr-tr",
+            "tt",
+            "tt-ru",
+            "twq",
+            "twq-ne",
+            "tzm",
+            "tzm-ma",
+            "ug",
+            "ug-cn",
+            "uk",
+            "uk-ua",
+            "ur",
+            "ur-in",
+            "ur-pk",
+            "uz",
+            "uz-af",
+            "uz-uz",
+            "vai",
+            "vai-lr",
+            "vi",
+            "vi-vn",
+            "vo",
+            "vo-001",
+            "vun",
+            "vun-tz",
+            "wae",
+            "wae-ch",
+            "wo",
+            "wo-sn",
+            "xog",
+            "xog-ug",
+            "yav",
+            "yav-cm",
+            "yo",
+            "yo-bj",
+            "yo-ng",
+            "yue",
+            "yue-cn",
+            "yue-hk",
+            "zgh",
+            "zgh-ma",
+            "zh",
+            "zh-cn",
+            "zh-hk",
+            "zh-mo",
+            "zh-sg",
+            "zh-tw",
+            "zh-hans",
+            "zh-hant",
+            "zu",
+            "zu-za",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and language not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `language` ({0}), must be one of {1}".format(  # noqa: E501
+                    language, allowed_values
+                )
             )
 
         self._language = language
@@ -791,8 +1671,13 @@ class BlogPost(object):
         :param translated_from_id: The translated_from_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and translated_from_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `translated_from_id`, must not be `None`"
+            )  # noqa: E501
 
         self._translated_from_id = translated_from_id
 
@@ -814,8 +1699,13 @@ class BlogPost(object):
         :param translations: The translations of this BlogPost.  # noqa: E501
         :type: dict(str, ContentLanguageVariation)
         """
-        if self.local_vars_configuration.client_side_validation and translations is None:  # noqa: E501
-            raise ValueError("Invalid value for `translations`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and translations is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `translations`, must not be `None`"
+            )  # noqa: E501
 
         self._translations = translations
 
@@ -837,8 +1727,13 @@ class BlogPost(object):
         :param dynamic_page_data_source_type: The dynamic_page_data_source_type of this BlogPost.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `dynamic_page_data_source_type`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and dynamic_page_data_source_type is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `dynamic_page_data_source_type`, must not be `None`"
+            )  # noqa: E501
 
         self._dynamic_page_data_source_type = dynamic_page_data_source_type
 
@@ -860,8 +1755,13 @@ class BlogPost(object):
         :param dynamic_page_data_source_id: The dynamic_page_data_source_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `dynamic_page_data_source_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and dynamic_page_data_source_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `dynamic_page_data_source_id`, must not be `None`"
+            )  # noqa: E501
 
         self._dynamic_page_data_source_id = dynamic_page_data_source_id
 
@@ -885,8 +1785,13 @@ class BlogPost(object):
         :param blog_author_id: The blog_author_id of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and blog_author_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `blog_author_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and blog_author_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `blog_author_id`, must not be `None`"
+            )  # noqa: E501
 
         self._blog_author_id = blog_author_id
 
@@ -910,8 +1815,12 @@ class BlogPost(object):
         :param tag_ids: The tag_ids of this BlogPost.  # noqa: E501
         :type: list[int]
         """
-        if self.local_vars_configuration.client_side_validation and tag_ids is None:  # noqa: E501
-            raise ValueError("Invalid value for `tag_ids`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and tag_ids is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `tag_ids`, must not be `None`"
+            )  # noqa: E501
 
         self._tag_ids = tag_ids
 
@@ -935,8 +1844,12 @@ class BlogPost(object):
         :param html_title: The html_title of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and html_title is None:  # noqa: E501
-            raise ValueError("Invalid value for `html_title`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and html_title is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `html_title`, must not be `None`"
+            )  # noqa: E501
 
         self._html_title = html_title
 
@@ -960,8 +1873,13 @@ class BlogPost(object):
         :param enable_google_amp_output_override: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and enable_google_amp_output_override is None:  # noqa: E501
-            raise ValueError("Invalid value for `enable_google_amp_output_override`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and enable_google_amp_output_override is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `enable_google_amp_output_override`, must not be `None`"
+            )  # noqa: E501
 
         self._enable_google_amp_output_override = enable_google_amp_output_override
 
@@ -985,8 +1903,13 @@ class BlogPost(object):
         :param use_featured_image: The use_featured_image of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and use_featured_image is None:  # noqa: E501
-            raise ValueError("Invalid value for `use_featured_image`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and use_featured_image is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `use_featured_image`, must not be `None`"
+            )  # noqa: E501
 
         self._use_featured_image = use_featured_image
 
@@ -1010,8 +1933,12 @@ class BlogPost(object):
         :param post_body: The post_body of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and post_body is None:  # noqa: E501
-            raise ValueError("Invalid value for `post_body`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and post_body is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `post_body`, must not be `None`"
+            )  # noqa: E501
 
         self._post_body = post_body
 
@@ -1035,8 +1962,13 @@ class BlogPost(object):
         :param post_summary: The post_summary of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and post_summary is None:  # noqa: E501
-            raise ValueError("Invalid value for `post_summary`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and post_summary is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `post_summary`, must not be `None`"
+            )  # noqa: E501
 
         self._post_summary = post_summary
 
@@ -1060,8 +1992,12 @@ class BlogPost(object):
         :param rss_body: The rss_body of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and rss_body is None:  # noqa: E501
-            raise ValueError("Invalid value for `rss_body`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and rss_body is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `rss_body`, must not be `None`"
+            )  # noqa: E501
 
         self._rss_body = rss_body
 
@@ -1085,8 +2021,12 @@ class BlogPost(object):
         :param rss_summary: The rss_summary of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and rss_summary is None:  # noqa: E501
-            raise ValueError("Invalid value for `rss_summary`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and rss_summary is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `rss_summary`, must not be `None`"
+            )  # noqa: E501
 
         self._rss_summary = rss_summary
 
@@ -1108,8 +2048,13 @@ class BlogPost(object):
         :param currently_published: The currently_published of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and currently_published is None:  # noqa: E501
-            raise ValueError("Invalid value for `currently_published`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and currently_published is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `currently_published`, must not be `None`"
+            )  # noqa: E501
 
         self._currently_published = currently_published
 
@@ -1131,8 +2076,13 @@ class BlogPost(object):
         :param page_expiry_enabled: The page_expiry_enabled of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and page_expiry_enabled is None:  # noqa: E501
-            raise ValueError("Invalid value for `page_expiry_enabled`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and page_expiry_enabled is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `page_expiry_enabled`, must not be `None`"
+            )  # noqa: E501
 
         self._page_expiry_enabled = page_expiry_enabled
 
@@ -1154,8 +2104,13 @@ class BlogPost(object):
         :param page_expiry_redirect_id: The page_expiry_redirect_id of this BlogPost.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and page_expiry_redirect_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `page_expiry_redirect_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and page_expiry_redirect_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `page_expiry_redirect_id`, must not be `None`"
+            )  # noqa: E501
 
         self._page_expiry_redirect_id = page_expiry_redirect_id
 
@@ -1177,8 +2132,13 @@ class BlogPost(object):
         :param page_expiry_redirect_url: The page_expiry_redirect_url of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and page_expiry_redirect_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `page_expiry_redirect_url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and page_expiry_redirect_url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `page_expiry_redirect_url`, must not be `None`"
+            )  # noqa: E501
 
         self._page_expiry_redirect_url = page_expiry_redirect_url
 
@@ -1200,8 +2160,13 @@ class BlogPost(object):
         :param page_expiry_date: The page_expiry_date of this BlogPost.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and page_expiry_date is None:  # noqa: E501
-            raise ValueError("Invalid value for `page_expiry_date`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and page_expiry_date is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `page_expiry_date`, must not be `None`"
+            )  # noqa: E501
 
         self._page_expiry_date = page_expiry_date
 
@@ -1225,8 +2190,13 @@ class BlogPost(object):
         :param include_default_custom_css: The include_default_custom_css of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and include_default_custom_css is None:  # noqa: E501
-            raise ValueError("Invalid value for `include_default_custom_css`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and include_default_custom_css is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `include_default_custom_css`, must not be `None`"
+            )  # noqa: E501
 
         self._include_default_custom_css = include_default_custom_css
 
@@ -1250,8 +2220,13 @@ class BlogPost(object):
         :param enable_layout_stylesheets: The enable_layout_stylesheets of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and enable_layout_stylesheets is None:  # noqa: E501
-            raise ValueError("Invalid value for `enable_layout_stylesheets`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and enable_layout_stylesheets is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `enable_layout_stylesheets`, must not be `None`"
+            )  # noqa: E501
 
         self._enable_layout_stylesheets = enable_layout_stylesheets
 
@@ -1275,8 +2250,13 @@ class BlogPost(object):
         :param enable_domain_stylesheets: The enable_domain_stylesheets of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and enable_domain_stylesheets is None:  # noqa: E501
-            raise ValueError("Invalid value for `enable_domain_stylesheets`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and enable_domain_stylesheets is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `enable_domain_stylesheets`, must not be `None`"
+            )  # noqa: E501
 
         self._enable_domain_stylesheets = enable_domain_stylesheets
 
@@ -1300,8 +2280,13 @@ class BlogPost(object):
         :param publish_immediately: The publish_immediately of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and publish_immediately is None:  # noqa: E501
-            raise ValueError("Invalid value for `publish_immediately`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and publish_immediately is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `publish_immediately`, must not be `None`"
+            )  # noqa: E501
 
         self._publish_immediately = publish_immediately
 
@@ -1325,8 +2310,13 @@ class BlogPost(object):
         :param featured_image: The featured_image of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and featured_image is None:  # noqa: E501
-            raise ValueError("Invalid value for `featured_image`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and featured_image is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `featured_image`, must not be `None`"
+            )  # noqa: E501
 
         self._featured_image = featured_image
 
@@ -1350,8 +2340,13 @@ class BlogPost(object):
         :param featured_image_alt_text: The featured_image_alt_text of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and featured_image_alt_text is None:  # noqa: E501
-            raise ValueError("Invalid value for `featured_image_alt_text`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and featured_image_alt_text is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `featured_image_alt_text`, must not be `None`"
+            )  # noqa: E501
 
         self._featured_image_alt_text = featured_image_alt_text
 
@@ -1375,8 +2370,13 @@ class BlogPost(object):
         :param link_rel_canonical_url: The link_rel_canonical_url of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and link_rel_canonical_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `link_rel_canonical_url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and link_rel_canonical_url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `link_rel_canonical_url`, must not be `None`"
+            )  # noqa: E501
 
         self._link_rel_canonical_url = link_rel_canonical_url
 
@@ -1400,13 +2400,33 @@ class BlogPost(object):
         :param content_type_category: The content_type_category of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and content_type_category is None:  # noqa: E501
-            raise ValueError("Invalid value for `content_type_category`, must not be `None`")  # noqa: E501
-        allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and content_type_category not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and content_type_category is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `content_type_category` ({0}), must be one of {1}"  # noqa: E501
-                .format(content_type_category, allowed_values)
+                "Invalid value for `content_type_category`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and content_type_category not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `content_type_category` ({0}), must be one of {1}".format(  # noqa: E501
+                    content_type_category, allowed_values
+                )
             )
 
         self._content_type_category = content_type_category
@@ -1431,8 +2451,13 @@ class BlogPost(object):
         :param attached_stylesheets: The attached_stylesheets of this BlogPost.  # noqa: E501
         :type: list[dict(str, object)]
         """
-        if self.local_vars_configuration.client_side_validation and attached_stylesheets is None:  # noqa: E501
-            raise ValueError("Invalid value for `attached_stylesheets`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and attached_stylesheets is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `attached_stylesheets`, must not be `None`"
+            )  # noqa: E501
 
         self._attached_stylesheets = attached_stylesheets
 
@@ -1456,8 +2481,13 @@ class BlogPost(object):
         :param meta_description: The meta_description of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and meta_description is None:  # noqa: E501
-            raise ValueError("Invalid value for `meta_description`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and meta_description is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `meta_description`, must not be `None`"
+            )  # noqa: E501
 
         self._meta_description = meta_description
 
@@ -1481,8 +2511,12 @@ class BlogPost(object):
         :param head_html: The head_html of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and head_html is None:  # noqa: E501
-            raise ValueError("Invalid value for `head_html`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and head_html is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `head_html`, must not be `None`"
+            )  # noqa: E501
 
         self._head_html = head_html
 
@@ -1506,8 +2540,12 @@ class BlogPost(object):
         :param footer_html: The footer_html of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and footer_html is None:  # noqa: E501
-            raise ValueError("Invalid value for `footer_html`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and footer_html is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `footer_html`, must not be `None`"
+            )  # noqa: E501
 
         self._footer_html = footer_html
 
@@ -1531,8 +2569,13 @@ class BlogPost(object):
         :param archived_in_dashboard: The archived_in_dashboard of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived_in_dashboard is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived_in_dashboard`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and archived_in_dashboard is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived_in_dashboard`, must not be `None`"
+            )  # noqa: E501
 
         self._archived_in_dashboard = archived_in_dashboard
 
@@ -1556,8 +2599,13 @@ class BlogPost(object):
         :param public_access_rules_enabled: The public_access_rules_enabled of this BlogPost.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and public_access_rules_enabled is None:  # noqa: E501
-            raise ValueError("Invalid value for `public_access_rules_enabled`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and public_access_rules_enabled is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `public_access_rules_enabled`, must not be `None`"
+            )  # noqa: E501
 
         self._public_access_rules_enabled = public_access_rules_enabled
 
@@ -1581,8 +2629,13 @@ class BlogPost(object):
         :param public_access_rules: The public_access_rules of this BlogPost.  # noqa: E501
         :type: list[object]
         """
-        if self.local_vars_configuration.client_side_validation and public_access_rules is None:  # noqa: E501
-            raise ValueError("Invalid value for `public_access_rules`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and public_access_rules is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `public_access_rules`, must not be `None`"
+            )  # noqa: E501
 
         self._public_access_rules = public_access_rules
 
@@ -1604,8 +2657,13 @@ class BlogPost(object):
         :param layout_sections: The layout_sections of this BlogPost.  # noqa: E501
         :type: dict(str, LayoutSection)
         """
-        if self.local_vars_configuration.client_side_validation and layout_sections is None:  # noqa: E501
-            raise ValueError("Invalid value for `layout_sections`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and layout_sections is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `layout_sections`, must not be `None`"
+            )  # noqa: E501
 
         self._layout_sections = layout_sections
 
@@ -1627,8 +2685,13 @@ class BlogPost(object):
         :param theme_settings_values: The theme_settings_values of this BlogPost.  # noqa: E501
         :type: dict(str, object)
         """
-        if self.local_vars_configuration.client_side_validation and theme_settings_values is None:  # noqa: E501
-            raise ValueError("Invalid value for `theme_settings_values`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and theme_settings_values is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `theme_settings_values`, must not be `None`"
+            )  # noqa: E501
 
         self._theme_settings_values = theme_settings_values
 
@@ -1652,8 +2715,12 @@ class BlogPost(object):
         :param url: The url of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and url is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `url`, must not be `None`"
+            )  # noqa: E501
 
         self._url = url
 
@@ -1677,8 +2744,12 @@ class BlogPost(object):
         :param password: The password of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
-            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and password is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `password`, must not be `None`"
+            )  # noqa: E501
 
         self._password = password
 
@@ -1702,13 +2773,54 @@ class BlogPost(object):
         :param current_state: The current_state of this BlogPost.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and current_state is None:  # noqa: E501
-            raise ValueError("Invalid value for `current_state`, must not be `None`")  # noqa: E501
-        allowed_values = ["AUTOMATED", "AUTOMATED_DRAFT", "AUTOMATED_SENDING", "AUTOMATED_FOR_FORM", "AUTOMATED_FOR_FORM_BUFFER", "AUTOMATED_FOR_FORM_DRAFT", "AUTOMATED_FOR_FORM_LEGACY", "BLOG_EMAIL_DRAFT", "BLOG_EMAIL_PUBLISHED", "DRAFT", "DRAFT_AB", "DRAFT_AB_VARIANT", "ERROR", "LOSER_AB_VARIANT", "PAGE_STUB", "PRE_PROCESSING", "PROCESSING", "PUBLISHED", "PUBLISHED_AB", "PUBLISHED_AB_VARIANT", "PUBLISHED_OR_SCHEDULED", "RSS_TO_EMAIL_DRAFT", "RSS_TO_EMAIL_PUBLISHED", "SCHEDULED", "SCHEDULED_AB", "SCHEDULED_OR_PUBLISHED", "AUTOMATED_AB", "AUTOMATED_AB_VARIANT", "AUTOMATED_DRAFT_AB", "AUTOMATED_DRAFT_ABVARIANT", "AUTOMATED_LOSER_ABVARIANT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and current_state not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and current_state is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `current_state` ({0}), must be one of {1}"  # noqa: E501
-                .format(current_state, allowed_values)
+                "Invalid value for `current_state`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "AUTOMATED",
+            "AUTOMATED_DRAFT",
+            "AUTOMATED_SENDING",
+            "AUTOMATED_FOR_FORM",
+            "AUTOMATED_FOR_FORM_BUFFER",
+            "AUTOMATED_FOR_FORM_DRAFT",
+            "AUTOMATED_FOR_FORM_LEGACY",
+            "BLOG_EMAIL_DRAFT",
+            "BLOG_EMAIL_PUBLISHED",
+            "DRAFT",
+            "DRAFT_AB",
+            "DRAFT_AB_VARIANT",
+            "ERROR",
+            "LOSER_AB_VARIANT",
+            "PAGE_STUB",
+            "PRE_PROCESSING",
+            "PROCESSING",
+            "PUBLISHED",
+            "PUBLISHED_AB",
+            "PUBLISHED_AB_VARIANT",
+            "PUBLISHED_OR_SCHEDULED",
+            "RSS_TO_EMAIL_DRAFT",
+            "RSS_TO_EMAIL_PUBLISHED",
+            "SCHEDULED",
+            "SCHEDULED_AB",
+            "SCHEDULED_OR_PUBLISHED",
+            "AUTOMATED_AB",
+            "AUTOMATED_AB_VARIANT",
+            "AUTOMATED_DRAFT_AB",
+            "AUTOMATED_DRAFT_ABVARIANT",
+            "AUTOMATED_LOSER_ABVARIANT",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and current_state not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `current_state` ({0}), must be one of {1}".format(  # noqa: E501
+                    current_state, allowed_values
+                )
             )
 
         self._current_state = current_state
@@ -1733,8 +2845,13 @@ class BlogPost(object):
         :param publish_date: The publish_date of this BlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and publish_date is None:  # noqa: E501
-            raise ValueError("Invalid value for `publish_date`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and publish_date is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `publish_date`, must not be `None`"
+            )  # noqa: E501
 
         self._publish_date = publish_date
 
@@ -1756,8 +2873,12 @@ class BlogPost(object):
         :param created: The created of this BlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
-            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created`, must not be `None`"
+            )  # noqa: E501
 
         self._created = created
 
@@ -1779,8 +2900,12 @@ class BlogPost(object):
         :param updated: The updated of this BlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated`, must not be `None`"
+            )  # noqa: E501
 
         self._updated = updated
 
@@ -1804,8 +2929,12 @@ class BlogPost(object):
         :param deleted_at: The deleted_at of this BlogPost.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and deleted_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `deleted_at`, must not be `None`"
+            )  # noqa: E501
 
         self._deleted_at = deleted_at
 
@@ -1816,18 +2945,20 @@ class BlogPost(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

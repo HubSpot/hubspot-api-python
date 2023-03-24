@@ -33,20 +33,27 @@ class FieldGroup(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'group_type': 'str',
-        'rich_text_type': 'str',
-        'rich_text': 'str',
-        'fields': 'list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]'
+        "group_type": "str",
+        "rich_text_type": "str",
+        "rich_text": "str",
+        "fields": "list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]",
     }
 
     attribute_map = {
-        'group_type': 'groupType',
-        'rich_text_type': 'richTextType',
-        'rich_text': 'richText',
-        'fields': 'fields'
+        "group_type": "groupType",
+        "rich_text_type": "richTextType",
+        "rich_text": "richText",
+        "fields": "fields",
     }
 
-    def __init__(self, group_type=None, rich_text_type=None, rich_text=None, fields=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        group_type=None,
+        rich_text_type=None,
+        rich_text=None,
+        fields=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """FieldGroup - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -85,10 +92,14 @@ class FieldGroup(object):
         :type: str
         """
         allowed_values = ["default_group", "progressive", "queued"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and group_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and group_type not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `group_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(group_type, allowed_values)
+                "Invalid value for `group_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    group_type, allowed_values
+                )
             )
 
         self._group_type = group_type
@@ -114,10 +125,14 @@ class FieldGroup(object):
         :type: str
         """
         allowed_values = ["text", "image"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and rich_text_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and rich_text_type not in allowed_values
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `rich_text_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(rich_text_type, allowed_values)
+                "Invalid value for `rich_text_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    rich_text_type, allowed_values
+                )
             )
 
         self._rich_text_type = rich_text_type
@@ -165,8 +180,12 @@ class FieldGroup(object):
         :param fields: The fields of this FieldGroup.  # noqa: E501
         :type: list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]
         """
-        if self.local_vars_configuration.client_side_validation and fields is None:  # noqa: E501
-            raise ValueError("Invalid value for `fields`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and fields is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `fields`, must not be `None`"
+            )  # noqa: E501
 
         self._fields = fields
 
@@ -177,18 +196,20 @@ class FieldGroup(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

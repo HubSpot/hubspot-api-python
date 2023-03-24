@@ -33,40 +33,57 @@ class Column(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'label': 'str',
-        'id': 'str',
-        'deleted': 'bool',
-        'options': 'list[Option]',
-        'width': 'int',
-        'foreign_table_id': 'int',
-        'foreign_column_id': 'int',
-        'description': 'str',
-        'foreign_ids': 'list[ForeignId]',
-        'type': 'str',
-        'foreign_ids_by_name': 'dict(str, ForeignId)',
-        'foreign_ids_by_id': 'dict(str, ForeignId)',
-        'option_count': 'int'
+        "name": "str",
+        "label": "str",
+        "id": "str",
+        "deleted": "bool",
+        "options": "list[Option]",
+        "width": "int",
+        "foreign_table_id": "int",
+        "foreign_column_id": "int",
+        "description": "str",
+        "foreign_ids": "list[ForeignId]",
+        "type": "str",
+        "foreign_ids_by_name": "dict(str, ForeignId)",
+        "foreign_ids_by_id": "dict(str, ForeignId)",
+        "option_count": "int",
     }
 
     attribute_map = {
-        'name': 'name',
-        'label': 'label',
-        'id': 'id',
-        'deleted': 'deleted',
-        'options': 'options',
-        'width': 'width',
-        'foreign_table_id': 'foreignTableId',
-        'foreign_column_id': 'foreignColumnId',
-        'description': 'description',
-        'foreign_ids': 'foreignIds',
-        'type': 'type',
-        'foreign_ids_by_name': 'foreignIdsByName',
-        'foreign_ids_by_id': 'foreignIdsById',
-        'option_count': 'optionCount'
+        "name": "name",
+        "label": "label",
+        "id": "id",
+        "deleted": "deleted",
+        "options": "options",
+        "width": "width",
+        "foreign_table_id": "foreignTableId",
+        "foreign_column_id": "foreignColumnId",
+        "description": "description",
+        "foreign_ids": "foreignIds",
+        "type": "type",
+        "foreign_ids_by_name": "foreignIdsByName",
+        "foreign_ids_by_id": "foreignIdsById",
+        "option_count": "optionCount",
     }
 
-    def __init__(self, name=None, label=None, id=None, deleted=None, options=None, width=None, foreign_table_id=None, foreign_column_id=None, description=None, foreign_ids=None, type=None, foreign_ids_by_name=None, foreign_ids_by_id=None, option_count=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        label=None,
+        id=None,
+        deleted=None,
+        options=None,
+        width=None,
+        foreign_table_id=None,
+        foreign_column_id=None,
+        description=None,
+        foreign_ids=None,
+        type=None,
+        foreign_ids_by_name=None,
+        foreign_ids_by_id=None,
+        option_count=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """Column - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -134,8 +151,12 @@ class Column(object):
         :param name: The name of this Column.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -159,8 +180,12 @@ class Column(object):
         :param label: The label of this Column.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -364,13 +389,39 @@ class Column(object):
         :param type: The type of this Column.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["NULL", "TEXT", "NUMBER", "URL", "IMAGE", "SELECT", "MULTISELECT", "BOOLEAN", "LOCATION", "DATE", "DATETIME", "CURRENCY", "RICHTEXT", "FOREIGN_ID", "VIDEO", "CTA", "FILE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
+                "Invalid value for `type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "NULL",
+            "TEXT",
+            "NUMBER",
+            "URL",
+            "IMAGE",
+            "SELECT",
+            "MULTISELECT",
+            "BOOLEAN",
+            "LOCATION",
+            "DATE",
+            "DATETIME",
+            "CURRENCY",
+            "RICHTEXT",
+            "FOREIGN_ID",
+            "VIDEO",
+            "CTA",
+            "FILE",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
+                    type, allowed_values
+                )
             )
 
         self._type = type
@@ -451,18 +502,20 @@ class Column(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

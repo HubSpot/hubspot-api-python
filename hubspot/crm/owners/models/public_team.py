@@ -32,19 +32,13 @@ class PublicTeam(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'primary': 'bool'
-    }
+    openapi_types = {"id": "str", "name": "str", "primary": "bool"}
 
-    attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'primary': 'primary'
-    }
+    attribute_map = {"id": "id", "name": "name", "primary": "primary"}
 
-    def __init__(self, id=None, name=None, primary=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, id=None, name=None, primary=None, local_vars_configuration=None
+    ):  # noqa: E501
         """PublicTeam - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -77,7 +71,9 @@ class PublicTeam(object):
         :param id: The id of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -100,8 +96,12 @@ class PublicTeam(object):
         :param name: The name of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -123,8 +123,12 @@ class PublicTeam(object):
         :param primary: The primary of this PublicTeam.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and primary is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and primary is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `primary`, must not be `None`"
+            )  # noqa: E501
 
         self._primary = primary
 
@@ -135,18 +139,20 @@ class PublicTeam(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

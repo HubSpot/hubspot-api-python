@@ -32,17 +32,19 @@ class PhoneFieldValidation(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        'min_allowed_digits': 'int',
-        'max_allowed_digits': 'int'
-    }
+    openapi_types = {"min_allowed_digits": "int", "max_allowed_digits": "int"}
 
     attribute_map = {
-        'min_allowed_digits': 'minAllowedDigits',
-        'max_allowed_digits': 'maxAllowedDigits'
+        "min_allowed_digits": "minAllowedDigits",
+        "max_allowed_digits": "maxAllowedDigits",
     }
 
-    def __init__(self, min_allowed_digits=None, max_allowed_digits=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        min_allowed_digits=None,
+        max_allowed_digits=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PhoneFieldValidation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,8 +75,13 @@ class PhoneFieldValidation(object):
         :param min_allowed_digits: The min_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and min_allowed_digits is None:  # noqa: E501
-            raise ValueError("Invalid value for `min_allowed_digits`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and min_allowed_digits is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `min_allowed_digits`, must not be `None`"
+            )  # noqa: E501
 
         self._min_allowed_digits = min_allowed_digits
 
@@ -96,8 +103,13 @@ class PhoneFieldValidation(object):
         :param max_allowed_digits: The max_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and max_allowed_digits is None:  # noqa: E501
-            raise ValueError("Invalid value for `max_allowed_digits`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and max_allowed_digits is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `max_allowed_digits`, must not be `None`"
+            )  # noqa: E501
 
         self._max_allowed_digits = max_allowed_digits
 
@@ -108,18 +120,20 @@ class PhoneFieldValidation(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

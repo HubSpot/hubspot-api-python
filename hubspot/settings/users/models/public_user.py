@@ -33,22 +33,30 @@ class PublicUser(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'email': 'str',
-        'role_id': 'str',
-        'primary_team_id': 'str',
-        'secondary_team_ids': 'list[str]'
+        "id": "str",
+        "email": "str",
+        "role_id": "str",
+        "primary_team_id": "str",
+        "secondary_team_ids": "list[str]",
     }
 
     attribute_map = {
-        'id': 'id',
-        'email': 'email',
-        'role_id': 'roleId',
-        'primary_team_id': 'primaryTeamId',
-        'secondary_team_ids': 'secondaryTeamIds'
+        "id": "id",
+        "email": "email",
+        "role_id": "roleId",
+        "primary_team_id": "primaryTeamId",
+        "secondary_team_ids": "secondaryTeamIds",
     }
 
-    def __init__(self, id=None, email=None, role_id=None, primary_team_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        email=None,
+        role_id=None,
+        primary_team_id=None,
+        secondary_team_ids=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicUser - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -90,7 +98,9 @@ class PublicUser(object):
         :param id: The id of this PublicUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -115,8 +125,12 @@ class PublicUser(object):
         :param email: The email of this PublicUser.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
-            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and email is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `email`, must not be `None`"
+            )  # noqa: E501
 
         self._email = email
 
@@ -196,18 +210,20 @@ class PublicUser(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

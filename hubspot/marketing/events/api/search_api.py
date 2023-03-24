@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.events.api_client import ApiClient
-from hubspot.marketing.events.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError
 
 
 class SearchApi(object):
@@ -58,7 +55,7 @@ class SearchApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.do_search_with_http_info(q, **kwargs)  # noqa: E501
 
     def do_search_with_http_info(self, q, **kwargs):  # noqa: E501
@@ -88,32 +85,35 @@ class SearchApi(object):
 
         local_var_params = locals()
 
-        all_params = ['q']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["q"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method do_search" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'q' is set
-        if self.api_client.client_side_validation and ('q' not in local_var_params or  # noqa: E501
-                                                        local_var_params['q'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `q` when calling `do_search`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "q" not in local_var_params or local_var_params["q"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `q` when calling `do_search`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
+        if "q" in local_var_params and local_var_params["q"] is not None:  # noqa: E501
+            query_params.append(("q", local_var_params["q"]))  # noqa: E501
 
         header_params = {}
 
@@ -122,24 +122,29 @@ class SearchApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['oauth2']  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/marketing/v3/marketing-events/events/search', 'GET',
+            "/marketing/v3/marketing-events/events/search",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging',  # noqa: E501
+            response_type="CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

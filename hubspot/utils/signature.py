@@ -16,11 +16,15 @@ class Signature:
         http_uri: str = None,
         http_method: str = "POST",
         signature_version: str = "v2",
-        timestamp: float = None
+        timestamp: float = None,
     ) -> bool:
         if signature_version == "v3":
             current_time = datetime.now()
-            if timestamp is None or current_time.timestamp() - timestamp > Signature.MAX_ALLOWED_TIMESTAMP:
+            if (
+                timestamp is None
+                or current_time.timestamp() - timestamp
+                > Signature.MAX_ALLOWED_TIMESTAMP
+            ):
                 raise Exception("Timestamp is invalid, reject request.")
         hashed_signature = Signature.get_signature(
             client_secret,
@@ -28,7 +32,7 @@ class Signature:
             signature_version,
             http_uri,
             http_method,
-            timestamp
+            timestamp,
         )
 
         return signature == hashed_signature
@@ -52,13 +56,11 @@ class Signature:
             source_string = f"{http_method}{http_uri}{request_body}{timestamp}"
             hashed_signature = base64.b64encode(
                 hmac.new(
-                        client_secret.encode("utf-8"),
-                        msg=source_string.encode("utf-8"),
-                        digestmod=hashlib.sha256
-                        ).digest()
+                    client_secret.encode("utf-8"),
+                    msg=source_string.encode("utf-8"),
+                    digestmod=hashlib.sha256,
+                ).digest()
             ).decode()
             return hashed_signature
         else:
-            raise ValueError(
-                f"Not supported signature version: {signature_version}"
-            )
+            raise ValueError(f"Not supported signature version: {signature_version}")

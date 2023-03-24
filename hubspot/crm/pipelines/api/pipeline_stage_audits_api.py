@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.pipelines.api_client import ApiClient
-from hubspot.crm.pipelines.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.crm.pipelines.exceptions import ApiTypeError, ApiValueError
 
 
 class PipelineStageAuditsApi(object):
@@ -59,8 +56,10 @@ class PipelineStageAuditsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_audit_with_http_info(object_type, stage_id, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_audit_with_http_info(
+            object_type, stage_id, **kwargs
+        )  # noqa: E501
 
     def get_audit_with_http_info(self, object_type, stage_id, **kwargs):  # noqa: E501
         """Return an audit of all changes to the pipeline stage  # noqa: E501
@@ -90,36 +89,44 @@ class PipelineStageAuditsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['object_type', 'stage_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["object_type", "stage_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
                     " to method get_audit" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
-                                                        local_var_params['object_type'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `get_audit`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "object_type" not in local_var_params
+            or local_var_params["object_type"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `object_type` when calling `get_audit`"
+            )  # noqa: E501
         # verify the required parameter 'stage_id' is set
-        if self.api_client.client_side_validation and ('stage_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['stage_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `stage_id` when calling `get_audit`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "stage_id" not in local_var_params
+            or local_var_params["stage_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `stage_id` when calling `get_audit`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'object_type' in local_var_params:
-            path_params['objectType'] = local_var_params['object_type']  # noqa: E501
-        if 'stage_id' in local_var_params:
-            path_params['stageId'] = local_var_params['stage_id']  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
+        if "stage_id" in local_var_params:
+            path_params["stageId"] = local_var_params["stage_id"]  # noqa: E501
 
         query_params = []
 
@@ -130,24 +137,29 @@ class PipelineStageAuditsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["application/json", "*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}/audit', 'GET',
+            "/crm/v3/pipelines/{objectType}/{pipelineId}/stages/{stageId}/audit",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CollectionResponsePublicAuditInfoNoPaging',  # noqa: E501
+            response_type="CollectionResponsePublicAuditInfoNoPaging",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

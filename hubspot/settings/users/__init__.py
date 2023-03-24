@@ -29,10 +29,17 @@ from hubspot.settings.users.exceptions import ApiTypeError
 from hubspot.settings.users.exceptions import ApiValueError
 from hubspot.settings.users.exceptions import ApiKeyError
 from hubspot.settings.users.exceptions import ApiException
+
 # import models into sdk package
-from hubspot.settings.users.models.collection_response_public_permission_set_no_paging import CollectionResponsePublicPermissionSetNoPaging
-from hubspot.settings.users.models.collection_response_public_team_no_paging import CollectionResponsePublicTeamNoPaging
-from hubspot.settings.users.models.collection_response_public_user_forward_paging import CollectionResponsePublicUserForwardPaging
+from hubspot.settings.users.models.collection_response_public_permission_set_no_paging import (
+    CollectionResponsePublicPermissionSetNoPaging,
+)
+from hubspot.settings.users.models.collection_response_public_team_no_paging import (
+    CollectionResponsePublicTeamNoPaging,
+)
+from hubspot.settings.users.models.collection_response_public_user_forward_paging import (
+    CollectionResponsePublicUserForwardPaging,
+)
 from hubspot.settings.users.models.error import Error
 from hubspot.settings.users.models.error_detail import ErrorDetail
 from hubspot.settings.users.models.forward_paging import ForwardPaging
@@ -42,4 +49,3 @@ from hubspot.settings.users.models.public_team import PublicTeam
 from hubspot.settings.users.models.public_user import PublicUser
 from hubspot.settings.users.models.public_user_update import PublicUserUpdate
 from hubspot.settings.users.models.user_provision_request import UserProvisionRequest
-

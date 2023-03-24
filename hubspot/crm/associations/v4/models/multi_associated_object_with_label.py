@@ -33,16 +33,18 @@ class MultiAssociatedObjectWithLabel(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'to_object_id': 'int',
-        'association_types': 'list[AssociationSpecWithLabel]'
+        "to_object_id": "int",
+        "association_types": "list[AssociationSpecWithLabel]",
     }
 
     attribute_map = {
-        'to_object_id': 'toObjectId',
-        'association_types': 'associationTypes'
+        "to_object_id": "toObjectId",
+        "association_types": "associationTypes",
     }
 
-    def __init__(self, to_object_id=None, association_types=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, to_object_id=None, association_types=None, local_vars_configuration=None
+    ):  # noqa: E501
         """MultiAssociatedObjectWithLabel - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,8 +75,13 @@ class MultiAssociatedObjectWithLabel(object):
         :param to_object_id: The to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and to_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and to_object_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `to_object_id`, must not be `None`"
+            )  # noqa: E501
 
         self._to_object_id = to_object_id
 
@@ -96,8 +103,13 @@ class MultiAssociatedObjectWithLabel(object):
         :param association_types: The association_types of this MultiAssociatedObjectWithLabel.  # noqa: E501
         :type: list[AssociationSpecWithLabel]
         """
-        if self.local_vars_configuration.client_side_validation and association_types is None:  # noqa: E501
-            raise ValueError("Invalid value for `association_types`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and association_types is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `association_types`, must not be `None`"
+            )  # noqa: E501
 
         self._association_types = association_types
 
@@ -108,18 +120,20 @@ class MultiAssociatedObjectWithLabel(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

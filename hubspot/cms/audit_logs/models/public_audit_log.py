@@ -33,26 +33,36 @@ class PublicAuditLog(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'object_id': 'str',
-        'user_id': 'str',
-        'timestamp': 'datetime',
-        'object_name': 'str',
-        'full_name': 'str',
-        'event': 'str',
-        'object_type': 'str'
+        "object_id": "str",
+        "user_id": "str",
+        "timestamp": "datetime",
+        "object_name": "str",
+        "full_name": "str",
+        "event": "str",
+        "object_type": "str",
     }
 
     attribute_map = {
-        'object_id': 'objectId',
-        'user_id': 'userId',
-        'timestamp': 'timestamp',
-        'object_name': 'objectName',
-        'full_name': 'fullName',
-        'event': 'event',
-        'object_type': 'objectType'
+        "object_id": "objectId",
+        "user_id": "userId",
+        "timestamp": "timestamp",
+        "object_name": "objectName",
+        "full_name": "fullName",
+        "event": "event",
+        "object_type": "objectType",
     }
 
-    def __init__(self, object_id=None, user_id=None, timestamp=None, object_name=None, full_name=None, event=None, object_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        object_id=None,
+        user_id=None,
+        timestamp=None,
+        object_name=None,
+        full_name=None,
+        event=None,
+        object_type=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicAuditLog - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,8 +105,12 @@ class PublicAuditLog(object):
         :param object_id: The object_id of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_id`, must not be `None`"
+            )  # noqa: E501
 
         self._object_id = object_id
 
@@ -120,8 +134,12 @@ class PublicAuditLog(object):
         :param user_id: The user_id of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and user_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `user_id`, must not be `None`"
+            )  # noqa: E501
 
         self._user_id = user_id
 
@@ -145,8 +163,12 @@ class PublicAuditLog(object):
         :param timestamp: The timestamp of this PublicAuditLog.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and timestamp is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `timestamp`, must not be `None`"
+            )  # noqa: E501
 
         self._timestamp = timestamp
 
@@ -170,8 +192,12 @@ class PublicAuditLog(object):
         :param object_name: The object_name of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_name`, must not be `None`"
+            )  # noqa: E501
 
         self._object_name = object_name
 
@@ -195,8 +221,12 @@ class PublicAuditLog(object):
         :param full_name: The full_name of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and full_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `full_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and full_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `full_name`, must not be `None`"
+            )  # noqa: E501
 
         self._full_name = full_name
 
@@ -220,13 +250,27 @@ class PublicAuditLog(object):
         :param event: The event of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and event is None:  # noqa: E501
-            raise ValueError("Invalid value for `event`, must not be `None`")  # noqa: E501
-        allowed_values = ["CREATED", "UPDATED", "PUBLISHED", "DELETED", "UNPUBLISHED"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and event not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and event is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `event` ({0}), must be one of {1}"  # noqa: E501
-                .format(event, allowed_values)
+                "Invalid value for `event`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "CREATED",
+            "UPDATED",
+            "PUBLISHED",
+            "DELETED",
+            "UNPUBLISHED",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and event not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `event` ({0}), must be one of {1}".format(  # noqa: E501
+                    event, allowed_values
+                )
             )
 
         self._event = event
@@ -251,13 +295,40 @@ class PublicAuditLog(object):
         :param object_type: The object_type of this PublicAuditLog.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["BLOG", "BLOG_POST", "LANDING_PAGE", "WEBSITE_PAGE", "TEMPLATE", "MODULE", "GLOBAL_MODULE", "SERVERLESS_FUNCTION", "DOMAIN", "URL_MAPPING", "EMAIL", "CONTENT_SETTINGS", "HUBDB_TABLE", "KNOWLEDGE_BASE_ARTICLE", "KNOWLEDGE_BASE", "THEME", "CSS", "JS"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and object_type is None
+        ):  # noqa: E501
             raise ValueError(
-                "Invalid value for `object_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(object_type, allowed_values)
+                "Invalid value for `object_type`, must not be `None`"
+            )  # noqa: E501
+        allowed_values = [
+            "BLOG",
+            "BLOG_POST",
+            "LANDING_PAGE",
+            "WEBSITE_PAGE",
+            "TEMPLATE",
+            "MODULE",
+            "GLOBAL_MODULE",
+            "SERVERLESS_FUNCTION",
+            "DOMAIN",
+            "URL_MAPPING",
+            "EMAIL",
+            "CONTENT_SETTINGS",
+            "HUBDB_TABLE",
+            "KNOWLEDGE_BASE_ARTICLE",
+            "KNOWLEDGE_BASE",
+            "THEME",
+            "CSS",
+            "JS",
+        ]  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and object_type not in allowed_values
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type` ({0}), must be one of {1}".format(  # noqa: E501
+                    object_type, allowed_values
+                )
             )
 
         self._object_type = object_type
@@ -269,18 +340,20 @@ class PublicAuditLog(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

@@ -33,32 +33,45 @@ class SubscriptionDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'str',
-        'name': 'str',
-        'description': 'str',
-        'purpose': 'str',
-        'communication_method': 'str',
-        'is_active': 'bool',
-        'is_default': 'bool',
-        'is_internal': 'bool',
-        'created_at': 'datetime',
-        'updated_at': 'datetime'
+        "id": "str",
+        "name": "str",
+        "description": "str",
+        "purpose": "str",
+        "communication_method": "str",
+        "is_active": "bool",
+        "is_default": "bool",
+        "is_internal": "bool",
+        "created_at": "datetime",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'description': 'description',
-        'purpose': 'purpose',
-        'communication_method': 'communicationMethod',
-        'is_active': 'isActive',
-        'is_default': 'isDefault',
-        'is_internal': 'isInternal',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt'
+        "id": "id",
+        "name": "name",
+        "description": "description",
+        "purpose": "purpose",
+        "communication_method": "communicationMethod",
+        "is_active": "isActive",
+        "is_default": "isDefault",
+        "is_internal": "isInternal",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, id=None, name=None, description=None, purpose=None, communication_method=None, is_active=None, is_default=None, is_internal=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        id=None,
+        name=None,
+        description=None,
+        purpose=None,
+        communication_method=None,
+        is_active=None,
+        is_default=None,
+        is_internal=None,
+        created_at=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """SubscriptionDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -109,7 +122,9 @@ class SubscriptionDefinition(object):
         :param id: The id of this SubscriptionDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -134,8 +149,12 @@ class SubscriptionDefinition(object):
         :param name: The name of this SubscriptionDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -159,8 +178,12 @@ class SubscriptionDefinition(object):
         :param description: The description of this SubscriptionDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and description is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `description`, must not be `None`"
+            )  # noqa: E501
 
         self._description = description
 
@@ -230,8 +253,12 @@ class SubscriptionDefinition(object):
         :param is_active: The is_active of this SubscriptionDefinition.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_active is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_active`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_active is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_active`, must not be `None`"
+            )  # noqa: E501
 
         self._is_active = is_active
 
@@ -255,8 +282,12 @@ class SubscriptionDefinition(object):
         :param is_default: The is_default of this SubscriptionDefinition.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_default is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_default`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_default is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_default`, must not be `None`"
+            )  # noqa: E501
 
         self._is_default = is_default
 
@@ -280,8 +311,12 @@ class SubscriptionDefinition(object):
         :param is_internal: The is_internal of this SubscriptionDefinition.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_internal is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_internal`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and is_internal is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `is_internal`, must not be `None`"
+            )  # noqa: E501
 
         self._is_internal = is_internal
 
@@ -305,8 +340,12 @@ class SubscriptionDefinition(object):
         :param created_at: The created_at of this SubscriptionDefinition.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and created_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `created_at`, must not be `None`"
+            )  # noqa: E501
 
         self._created_at = created_at
 
@@ -330,8 +369,12 @@ class SubscriptionDefinition(object):
         :param updated_at: The updated_at of this SubscriptionDefinition.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and updated_at is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `updated_at`, must not be `None`"
+            )  # noqa: E501
 
         self._updated_at = updated_at
 
@@ -342,18 +385,20 @@ class SubscriptionDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

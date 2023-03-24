@@ -33,28 +33,39 @@ class HubDbTableV3Request(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'label': 'str',
-        'use_for_pages': 'bool',
-        'allow_public_api_access': 'bool',
-        'allow_child_tables': 'bool',
-        'enable_child_table_pages': 'bool',
-        'columns': 'list[ColumnRequest]',
-        'dynamic_meta_tags': 'dict(str, int)'
+        "name": "str",
+        "label": "str",
+        "use_for_pages": "bool",
+        "allow_public_api_access": "bool",
+        "allow_child_tables": "bool",
+        "enable_child_table_pages": "bool",
+        "columns": "list[ColumnRequest]",
+        "dynamic_meta_tags": "dict(str, int)",
     }
 
     attribute_map = {
-        'name': 'name',
-        'label': 'label',
-        'use_for_pages': 'useForPages',
-        'allow_public_api_access': 'allowPublicApiAccess',
-        'allow_child_tables': 'allowChildTables',
-        'enable_child_table_pages': 'enableChildTablePages',
-        'columns': 'columns',
-        'dynamic_meta_tags': 'dynamicMetaTags'
+        "name": "name",
+        "label": "label",
+        "use_for_pages": "useForPages",
+        "allow_public_api_access": "allowPublicApiAccess",
+        "allow_child_tables": "allowChildTables",
+        "enable_child_table_pages": "enableChildTablePages",
+        "columns": "columns",
+        "dynamic_meta_tags": "dynamicMetaTags",
     }
 
-    def __init__(self, name=None, label=None, use_for_pages=None, allow_public_api_access=None, allow_child_tables=None, enable_child_table_pages=None, columns=None, dynamic_meta_tags=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        label=None,
+        use_for_pages=None,
+        allow_public_api_access=None,
+        allow_child_tables=None,
+        enable_child_table_pages=None,
+        columns=None,
+        dynamic_meta_tags=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """HubDbTableV3Request - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -105,8 +116,12 @@ class HubDbTableV3Request(object):
         :param name: The name of this HubDbTableV3Request.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -130,8 +145,12 @@ class HubDbTableV3Request(object):
         :param label: The label of this HubDbTableV3Request.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and label is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `label`, must not be `None`"
+            )  # noqa: E501
 
         self._label = label
 
@@ -280,18 +299,20 @@ class HubDbTableV3Request(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

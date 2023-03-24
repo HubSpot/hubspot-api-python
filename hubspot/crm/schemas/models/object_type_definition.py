@@ -33,38 +33,54 @@ class ObjectTypeDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'labels': 'ObjectTypeDefinitionLabels',
-        'required_properties': 'list[str]',
-        'searchable_properties': 'list[str]',
-        'primary_display_property': 'str',
-        'secondary_display_properties': 'list[str]',
-        'archived': 'bool',
-        'id': 'str',
-        'fully_qualified_name': 'str',
-        'created_at': 'datetime',
-        'updated_at': 'datetime',
-        'object_type_id': 'str',
-        'name': 'str',
-        'portal_id': 'int'
+        "labels": "ObjectTypeDefinitionLabels",
+        "required_properties": "list[str]",
+        "searchable_properties": "list[str]",
+        "primary_display_property": "str",
+        "secondary_display_properties": "list[str]",
+        "archived": "bool",
+        "id": "str",
+        "fully_qualified_name": "str",
+        "created_at": "datetime",
+        "updated_at": "datetime",
+        "object_type_id": "str",
+        "name": "str",
+        "portal_id": "int",
     }
 
     attribute_map = {
-        'labels': 'labels',
-        'required_properties': 'requiredProperties',
-        'searchable_properties': 'searchableProperties',
-        'primary_display_property': 'primaryDisplayProperty',
-        'secondary_display_properties': 'secondaryDisplayProperties',
-        'archived': 'archived',
-        'id': 'id',
-        'fully_qualified_name': 'fullyQualifiedName',
-        'created_at': 'createdAt',
-        'updated_at': 'updatedAt',
-        'object_type_id': 'objectTypeId',
-        'name': 'name',
-        'portal_id': 'portalId'
+        "labels": "labels",
+        "required_properties": "requiredProperties",
+        "searchable_properties": "searchableProperties",
+        "primary_display_property": "primaryDisplayProperty",
+        "secondary_display_properties": "secondaryDisplayProperties",
+        "archived": "archived",
+        "id": "id",
+        "fully_qualified_name": "fullyQualifiedName",
+        "created_at": "createdAt",
+        "updated_at": "updatedAt",
+        "object_type_id": "objectTypeId",
+        "name": "name",
+        "portal_id": "portalId",
     }
 
-    def __init__(self, labels=None, required_properties=None, searchable_properties=None, primary_display_property=None, secondary_display_properties=None, archived=None, id=None, fully_qualified_name=None, created_at=None, updated_at=None, object_type_id=None, name=None, portal_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        labels=None,
+        required_properties=None,
+        searchable_properties=None,
+        primary_display_property=None,
+        secondary_display_properties=None,
+        archived=None,
+        id=None,
+        fully_qualified_name=None,
+        created_at=None,
+        updated_at=None,
+        object_type_id=None,
+        name=None,
+        portal_id=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ObjectTypeDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -121,8 +137,12 @@ class ObjectTypeDefinition(object):
         :param labels: The labels of this ObjectTypeDefinition.  # noqa: E501
         :type: ObjectTypeDefinitionLabels
         """
-        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
-            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and labels is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `labels`, must not be `None`"
+            )  # noqa: E501
 
         self._labels = labels
 
@@ -146,8 +166,13 @@ class ObjectTypeDefinition(object):
         :param required_properties: The required_properties of this ObjectTypeDefinition.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and required_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `required_properties`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and required_properties is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `required_properties`, must not be `None`"
+            )  # noqa: E501
 
         self._required_properties = required_properties
 
@@ -171,8 +196,13 @@ class ObjectTypeDefinition(object):
         :param searchable_properties: The searchable_properties of this ObjectTypeDefinition.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and searchable_properties is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `searchable_properties`, must not be `None`"
+            )  # noqa: E501
 
         self._searchable_properties = searchable_properties
 
@@ -219,8 +249,13 @@ class ObjectTypeDefinition(object):
         :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
         :type: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and secondary_display_properties is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `secondary_display_properties`, must not be `None`"
+            )  # noqa: E501
 
         self._secondary_display_properties = secondary_display_properties
 
@@ -242,8 +277,12 @@ class ObjectTypeDefinition(object):
         :param archived: The archived of this ObjectTypeDefinition.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and archived is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `archived`, must not be `None`"
+            )  # noqa: E501
 
         self._archived = archived
 
@@ -267,7 +306,9 @@ class ObjectTypeDefinition(object):
         :param id: The id of this ObjectTypeDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and id is None
+        ):  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -290,8 +331,13 @@ class ObjectTypeDefinition(object):
         :param fully_qualified_name: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and fully_qualified_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `fully_qualified_name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and fully_qualified_name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `fully_qualified_name`, must not be `None`"
+            )  # noqa: E501
 
         self._fully_qualified_name = fully_qualified_name
 
@@ -359,8 +405,13 @@ class ObjectTypeDefinition(object):
         :param object_type_id: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type_id`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation
+            and object_type_id is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `object_type_id`, must not be `None`"
+            )  # noqa: E501
 
         self._object_type_id = object_type_id
 
@@ -384,8 +435,12 @@ class ObjectTypeDefinition(object):
         :param name: The name of this ObjectTypeDefinition.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (
+            self.local_vars_configuration.client_side_validation and name is None
+        ):  # noqa: E501
+            raise ValueError(
+                "Invalid value for `name`, must not be `None`"
+            )  # noqa: E501
 
         self._name = name
 
@@ -419,18 +474,20 @@ class ObjectTypeDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(
+                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
+                )
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(
+                    map(
+                        lambda item: (item[0], item[1].to_dict())
+                        if hasattr(item[1], "to_dict")
+                        else item,
+                        value.items(),
+                    )
+                )
             else:
                 result[attr] = value
 

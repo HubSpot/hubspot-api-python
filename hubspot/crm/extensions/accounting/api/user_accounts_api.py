@@ -18,10 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.extensions.accounting.api_client import ApiClient
-from hubspot.crm.extensions.accounting.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.crm.extensions.accounting.exceptions import ApiTypeError, ApiValueError
 
 
 class UserAccountsApi(object):
@@ -58,7 +55,7 @@ class UserAccountsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
+        kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(account_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, account_id, **kwargs):  # noqa: E501
@@ -88,30 +85,33 @@ class UserAccountsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['account_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["account_id"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method archive" % key
+                    "Got an unexpected keyword argument '%s'" " to method archive" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'account_id' is set
-        if self.api_client.client_side_validation and ('account_id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['account_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `account_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "account_id" not in local_var_params
+            or local_var_params["account_id"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `account_id` when calling `archive`"
+            )  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'account_id' in local_var_params:
-            path_params['accountId'] = local_var_params['account_id']  # noqa: E501
+        if "account_id" in local_var_params:
+            path_params["accountId"] = local_var_params["account_id"]  # noqa: E501
 
         query_params = []
 
@@ -122,14 +122,16 @@ class UserAccountsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/extensions/accounting/user-accounts/{accountId}', 'DELETE',
+            "/crm/v3/extensions/accounting/user-accounts/{accountId}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -138,11 +140,14 @@ class UserAccountsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
 
     def replace(self, create_user_account_request_external, **kwargs):  # noqa: E501
         """Create a user account  # noqa: E501
@@ -166,10 +171,14 @@ class UserAccountsApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.replace_with_http_info(create_user_account_request_external, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.replace_with_http_info(
+            create_user_account_request_external, **kwargs
+        )  # noqa: E501
 
-    def replace_with_http_info(self, create_user_account_request_external, **kwargs):  # noqa: E501
+    def replace_with_http_info(
+        self, create_user_account_request_external, **kwargs
+    ):  # noqa: E501
         """Create a user account  # noqa: E501
 
         Creates an account which contains the information about the account in the external accounting system.  This *must* be called after a user connects their HubSpot account to the external accounting system, as there is no other way for HubSpot to obtain the external account details.  # noqa: E501
@@ -196,24 +205,28 @@ class UserAccountsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['create_user_account_request_external']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["create_user_account_request_external"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
                 raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method replace" % key
+                    "Got an unexpected keyword argument '%s'" " to method replace" % key
                 )
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'create_user_account_request_external' is set
-        if self.api_client.client_side_validation and ('create_user_account_request_external' not in local_var_params or  # noqa: E501
-                                                        local_var_params['create_user_account_request_external'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `create_user_account_request_external` when calling `replace`")  # noqa: E501
+        if self.api_client.client_side_validation and (
+            "create_user_account_request_external" not in local_var_params
+            or local_var_params["create_user_account_request_external"]  # noqa: E501
+            is None
+        ):  # noqa: E501
+            raise ApiValueError(
+                "Missing the required parameter `create_user_account_request_external` when calling `replace`"
+            )  # noqa: E501
 
         collection_formats = {}
 
@@ -227,21 +240,26 @@ class UserAccountsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'create_user_account_request_external' in local_var_params:
-            body_params = local_var_params['create_user_account_request_external']
+        if "create_user_account_request_external" in local_var_params:
+            body_params = local_var_params["create_user_account_request_external"]
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(
+            ["*/*"]
+        )  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params[
+            "Content-Type"
+        ] = self.api_client.select_header_content_type(  # noqa: E501
+            ["application/json"]
+        )  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['hapikey', 'oauth2']  # noqa: E501
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
         return self.api_client.call_api(
-            '/crm/v3/extensions/accounting/user-accounts', 'PUT',
+            "/crm/v3/extensions/accounting/user-accounts",
+            "PUT",
             path_params,
             query_params,
             header_params,
@@ -250,8 +268,11 @@ class UserAccountsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get(
+                "_return_http_data_only"
+            ),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )
