@@ -95,36 +95,18 @@ class MetadataApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'environment' is set
-        if self.api_client.client_side_validation and (
-            "environment" not in local_var_params
-            or local_var_params["environment"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `environment` when calling `get`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("environment" not in local_var_params or local_var_params["environment"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `environment` when calling `get`")  # noqa: E501
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and (
-            "path" not in local_var_params
-            or local_var_params["path"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `path` when calling `get`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `path` when calling `get`")  # noqa: E501
 
-        if (
-            self.api_client.client_side_validation
-            and "path" in local_var_params
-            and not re.search(r".+", local_var_params["path"])
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Invalid value for parameter `path` when calling `get`, must conform to the pattern `/.+/`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `path` when calling `get`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -142,9 +124,7 @@ class MetadataApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -161,9 +141,7 @@ class MetadataApi(object):
             response_type="AssetFileMetadata",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

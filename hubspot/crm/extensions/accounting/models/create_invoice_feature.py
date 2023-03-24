@@ -36,9 +36,7 @@ class CreateInvoiceFeature(object):
 
     attribute_map = {"enabled": "enabled", "sub_features": "subFeatures"}
 
-    def __init__(
-        self, enabled=None, sub_features=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, enabled=None, sub_features=None, local_vars_configuration=None):  # noqa: E501
         """CreateInvoiceFeature - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,12 +69,8 @@ class CreateInvoiceFeature(object):
         :param enabled: The enabled of this CreateInvoiceFeature.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and enabled is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `enabled`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and enabled is None:  # noqa: E501
+            raise ValueError("Invalid value for `enabled`, must not be `None`")  # noqa: E501
 
         self._enabled = enabled
 
@@ -98,13 +92,8 @@ class CreateInvoiceFeature(object):
         :param sub_features: The sub_features of this CreateInvoiceFeature.  # noqa: E501
         :type: CreateInvoiceSubFeatures
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and sub_features is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `sub_features`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sub_features is None:  # noqa: E501
+            raise ValueError("Invalid value for `sub_features`, must not be `None`")  # noqa: E501
 
         self._sub_features = sub_features
 
@@ -115,17 +104,13 @@ class CreateInvoiceFeature(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

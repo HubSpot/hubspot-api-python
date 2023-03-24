@@ -7,9 +7,7 @@ class Discovery(DiscoveryBase):
     def attendance_subscriber_state_changes_api(
         self,
     ) -> api_client.AttendanceSubscriberStateChangesApi:
-        return self._configure_api_client(
-            api_client, "AttendanceSubscriberStateChangesApi"
-        )
+        return self._configure_api_client(api_client, "AttendanceSubscriberStateChangesApi")
 
     @property
     def marketing_events_external_api(self) -> api_client.MarketingEventsExternalApi:

@@ -92,12 +92,8 @@ class PublicSingleSendRequestEgg(object):
         :param email_id: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and email_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `email_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and email_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `email_id`, must not be `None`")  # noqa: E501
 
         self._email_id = email_id
 
@@ -119,12 +115,8 @@ class PublicSingleSendRequestEgg(object):
         :param message: The message of this PublicSingleSendRequestEgg.  # noqa: E501
         :type: PublicSingleSendEmail
         """
-        if (
-            self.local_vars_configuration.client_side_validation and message is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `message`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
 
@@ -181,17 +173,13 @@ class PublicSingleSendRequestEgg(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -107,9 +107,7 @@ class TokensApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -124,40 +122,24 @@ class TokensApi(object):
         form_params = []
         local_var_files = {}
         if "grant_type" in local_var_params:
-            form_params.append(
-                ("grant_type", local_var_params["grant_type"])
-            )  # noqa: E501
+            form_params.append(("grant_type", local_var_params["grant_type"]))  # noqa: E501
         if "code" in local_var_params:
             form_params.append(("code", local_var_params["code"]))  # noqa: E501
         if "redirect_uri" in local_var_params:
-            form_params.append(
-                ("redirect_uri", local_var_params["redirect_uri"])
-            )  # noqa: E501
+            form_params.append(("redirect_uri", local_var_params["redirect_uri"]))  # noqa: E501
         if "client_id" in local_var_params:
-            form_params.append(
-                ("client_id", local_var_params["client_id"])
-            )  # noqa: E501
+            form_params.append(("client_id", local_var_params["client_id"]))  # noqa: E501
         if "client_secret" in local_var_params:
-            form_params.append(
-                ("client_secret", local_var_params["client_secret"])
-            )  # noqa: E501
+            form_params.append(("client_secret", local_var_params["client_secret"]))  # noqa: E501
         if "refresh_token" in local_var_params:
-            form_params.append(
-                ("refresh_token", local_var_params["refresh_token"])
-            )  # noqa: E501
+            form_params.append(("refresh_token", local_var_params["refresh_token"]))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/x-www-form-urlencoded"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/x-www-form-urlencoded"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
@@ -174,9 +156,7 @@ class TokensApi(object):
             response_type="TokenResponseIF",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

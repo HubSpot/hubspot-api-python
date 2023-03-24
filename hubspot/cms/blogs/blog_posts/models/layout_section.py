@@ -133,9 +133,7 @@ class LayoutSection(object):
         :param x: The x of this LayoutSection.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and x is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and x is None:  # noqa: E501
             raise ValueError("Invalid value for `x`, must not be `None`")  # noqa: E501
 
         self._x = x
@@ -158,9 +156,7 @@ class LayoutSection(object):
         :param w: The w of this LayoutSection.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and w is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and w is None:  # noqa: E501
             raise ValueError("Invalid value for `w`, must not be `None`")  # noqa: E501
 
         self._w = w
@@ -183,12 +179,8 @@ class LayoutSection(object):
         :param name: The name of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -210,12 +202,8 @@ class LayoutSection(object):
         :param label: The label of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -237,12 +225,8 @@ class LayoutSection(object):
         :param type: The type of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 
@@ -266,12 +250,8 @@ class LayoutSection(object):
         :param params: The params of this LayoutSection.  # noqa: E501
         :type: dict(str, object)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and params is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `params`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and params is None:  # noqa: E501
+            raise ValueError("Invalid value for `params`, must not be `None`")  # noqa: E501
 
         self._params = params
 
@@ -293,12 +273,8 @@ class LayoutSection(object):
         :param rows: The rows of this LayoutSection.  # noqa: E501
         :type: list[dict(str, LayoutSection)]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and rows is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `rows`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and rows is None:  # noqa: E501
+            raise ValueError("Invalid value for `rows`, must not be `None`")  # noqa: E501
 
         self._rows = rows
 
@@ -320,13 +296,8 @@ class LayoutSection(object):
         :param row_meta_data: The row_meta_data of this LayoutSection.  # noqa: E501
         :type: list[RowMetaData]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and row_meta_data is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `row_meta_data`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and row_meta_data is None:  # noqa: E501
+            raise ValueError("Invalid value for `row_meta_data`, must not be `None`")  # noqa: E501
 
         self._row_meta_data = row_meta_data
 
@@ -348,12 +319,8 @@ class LayoutSection(object):
         :param cells: The cells of this LayoutSection.  # noqa: E501
         :type: list[LayoutSection]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and cells is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `cells`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and cells is None:  # noqa: E501
+            raise ValueError("Invalid value for `cells`, must not be `None`")  # noqa: E501
 
         self._cells = cells
 
@@ -375,12 +342,8 @@ class LayoutSection(object):
         :param css_class: The css_class of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and css_class is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `css_class`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and css_class is None:  # noqa: E501
+            raise ValueError("Invalid value for `css_class`, must not be `None`")  # noqa: E501
 
         self._css_class = css_class
 
@@ -402,12 +365,8 @@ class LayoutSection(object):
         :param css_style: The css_style of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and css_style is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `css_style`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and css_style is None:  # noqa: E501
+            raise ValueError("Invalid value for `css_style`, must not be `None`")  # noqa: E501
 
         self._css_style = css_style
 
@@ -429,12 +388,8 @@ class LayoutSection(object):
         :param css_id: The css_id of this LayoutSection.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and css_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `css_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and css_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `css_id`, must not be `None`")  # noqa: E501
 
         self._css_id = css_id
 
@@ -456,12 +411,8 @@ class LayoutSection(object):
         :param styles: The styles of this LayoutSection.  # noqa: E501
         :type: Styles
         """
-        if (
-            self.local_vars_configuration.client_side_validation and styles is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `styles`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and styles is None:  # noqa: E501
+            raise ValueError("Invalid value for `styles`, must not be `None`")  # noqa: E501
 
         self._styles = styles
 
@@ -472,17 +423,13 @@ class LayoutSection(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

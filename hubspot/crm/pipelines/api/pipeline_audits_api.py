@@ -57,13 +57,9 @@ class PipelineAuditsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_audit_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        return self.get_audit_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
-    def get_audit_with_http_info(
-        self, object_type, pipeline_id, **kwargs
-    ):  # noqa: E501
+    def get_audit_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return an audit of all changes to the pipeline  # noqa: E501
 
         Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.  # noqa: E501
@@ -99,28 +95,15 @@ class PipelineAuditsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_audit" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_audit" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_audit`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_audit`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `get_audit`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_audit`")  # noqa: E501
 
         collection_formats = {}
 
@@ -139,9 +122,7 @@ class PipelineAuditsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -158,9 +139,7 @@ class PipelineAuditsApi(object):
             response_type="CollectionResponsePublicAuditInfoNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

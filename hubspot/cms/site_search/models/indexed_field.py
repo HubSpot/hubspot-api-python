@@ -88,12 +88,8 @@ class IndexedField(object):
         :param name: The name of this IndexedField.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -115,12 +111,8 @@ class IndexedField(object):
         :param value: The value of this IndexedField.  # noqa: E501
         :type: object
         """
-        if (
-            self.local_vars_configuration.client_side_validation and value is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `value`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
 
@@ -142,12 +134,8 @@ class IndexedField(object):
         :param values: The values of this IndexedField.  # noqa: E501
         :type: list[object]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and values is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `values`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
 
         self._values = values
 
@@ -169,13 +157,8 @@ class IndexedField(object):
         :param metadata_field: The metadata_field of this IndexedField.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and metadata_field is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `metadata_field`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and metadata_field is None:  # noqa: E501
+            raise ValueError("Invalid value for `metadata_field`, must not be `None`")  # noqa: E501
 
         self._metadata_field = metadata_field
 
@@ -186,17 +169,13 @@ class IndexedField(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -96,13 +96,8 @@ class FormDisplayOptions(object):
         :param render_raw_html: The render_raw_html of this FormDisplayOptions.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and render_raw_html is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `render_raw_html`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and render_raw_html is None:  # noqa: E501
+            raise ValueError("Invalid value for `render_raw_html`, must not be `None`")  # noqa: E501
 
         self._render_raw_html = render_raw_html
 
@@ -126,12 +121,8 @@ class FormDisplayOptions(object):
         :param theme: The theme of this FormDisplayOptions.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and theme is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `theme`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and theme is None:  # noqa: E501
+            raise ValueError("Invalid value for `theme`, must not be `None`")  # noqa: E501
         allowed_values = [
             "default_style",
             "canvas",
@@ -139,15 +130,8 @@ class FormDisplayOptions(object):
             "round",
             "sharp",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and theme not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `theme` ({0}), must be one of {1}".format(  # noqa: E501
-                    theme, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and theme not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `theme` ({0}), must be one of {1}".format(theme, allowed_values))  # noqa: E501
 
         self._theme = theme
 
@@ -171,13 +155,8 @@ class FormDisplayOptions(object):
         :param submit_button_text: The submit_button_text of this FormDisplayOptions.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and submit_button_text is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `submit_button_text`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and submit_button_text is None:  # noqa: E501
+            raise ValueError("Invalid value for `submit_button_text`, must not be `None`")  # noqa: E501
 
         self._submit_button_text = submit_button_text
 
@@ -199,12 +178,8 @@ class FormDisplayOptions(object):
         :param style: The style of this FormDisplayOptions.  # noqa: E501
         :type: FormStyle
         """
-        if (
-            self.local_vars_configuration.client_side_validation and style is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `style`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and style is None:  # noqa: E501
+            raise ValueError("Invalid value for `style`, must not be `None`")  # noqa: E501
 
         self._style = style
 
@@ -236,17 +211,13 @@ class FormDisplayOptions(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

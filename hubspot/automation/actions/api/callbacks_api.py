@@ -33,9 +33,7 @@ class CallbacksApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def complete(
-        self, callback_id, callback_completion_request, **kwargs
-    ):  # noqa: E501
+    def complete(self, callback_id, callback_completion_request, **kwargs):  # noqa: E501
         """Complete a callback  # noqa: E501
 
         Completes the given action callback.  # noqa: E501
@@ -59,13 +57,9 @@ class CallbacksApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.complete_with_http_info(
-            callback_id, callback_completion_request, **kwargs
-        )  # noqa: E501
+        return self.complete_with_http_info(callback_id, callback_completion_request, **kwargs)  # noqa: E501
 
-    def complete_with_http_info(
-        self, callback_id, callback_completion_request, **kwargs
-    ):  # noqa: E501
+    def complete_with_http_info(self, callback_id, callback_completion_request, **kwargs):  # noqa: E501
         """Complete a callback  # noqa: E501
 
         Completes the given action callback.  # noqa: E501
@@ -101,28 +95,15 @@ class CallbacksApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method complete" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method complete" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'callback_id' is set
-        if self.api_client.client_side_validation and (
-            "callback_id" not in local_var_params
-            or local_var_params["callback_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `callback_id` when calling `complete`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("callback_id" not in local_var_params or local_var_params["callback_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `callback_id` when calling `complete`")  # noqa: E501
         # verify the required parameter 'callback_completion_request' is set
-        if self.api_client.client_side_validation and (
-            "callback_completion_request" not in local_var_params
-            or local_var_params["callback_completion_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `callback_completion_request` when calling `complete`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("callback_completion_request" not in local_var_params or local_var_params["callback_completion_request"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `callback_completion_request` when calling `complete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -141,16 +122,10 @@ class CallbacksApi(object):
         if "callback_completion_request" in local_var_params:
             body_params = local_var_params["callback_completion_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -167,17 +142,13 @@ class CallbacksApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def complete_batch(
-        self, batch_input_callback_completion_batch_request, **kwargs
-    ):  # noqa: E501
+    def complete_batch(self, batch_input_callback_completion_batch_request, **kwargs):  # noqa: E501
         """Complete a batch of callbacks  # noqa: E501
 
         Completes the given action callbacks.  # noqa: E501
@@ -200,13 +171,9 @@ class CallbacksApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.complete_batch_with_http_info(
-            batch_input_callback_completion_batch_request, **kwargs
-        )  # noqa: E501
+        return self.complete_batch_with_http_info(batch_input_callback_completion_batch_request, **kwargs)  # noqa: E501
 
-    def complete_batch_with_http_info(
-        self, batch_input_callback_completion_batch_request, **kwargs
-    ):  # noqa: E501
+    def complete_batch_with_http_info(self, batch_input_callback_completion_batch_request, **kwargs):  # noqa: E501
         """Complete a batch of callbacks  # noqa: E501
 
         Completes the given action callbacks.  # noqa: E501
@@ -241,23 +208,14 @@ class CallbacksApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method complete_batch" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method complete_batch" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_callback_completion_batch_request' is set
         if self.api_client.client_side_validation and (
-            "batch_input_callback_completion_batch_request" not in local_var_params
-            or local_var_params[  # noqa: E501
-                "batch_input_callback_completion_batch_request"
-            ]
-            is None
+            "batch_input_callback_completion_batch_request" not in local_var_params or local_var_params["batch_input_callback_completion_batch_request"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_callback_completion_batch_request` when calling `complete_batch`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_callback_completion_batch_request` when calling `complete_batch`")  # noqa: E501
 
         collection_formats = {}
 
@@ -272,20 +230,12 @@ class CallbacksApi(object):
 
         body_params = None
         if "batch_input_callback_completion_batch_request" in local_var_params:
-            body_params = local_var_params[
-                "batch_input_callback_completion_batch_request"
-            ]
+            body_params = local_var_params["batch_input_callback_completion_batch_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -302,9 +252,7 @@ class CallbacksApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

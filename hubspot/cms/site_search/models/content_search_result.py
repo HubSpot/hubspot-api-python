@@ -167,9 +167,7 @@ class ContentSearchResult(object):
         :param id: The id of this ContentSearchResult.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -194,12 +192,8 @@ class ContentSearchResult(object):
         :param score: The score of this ContentSearchResult.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation and score is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `score`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and score is None:  # noqa: E501
+            raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
 
         self._score = score
 
@@ -223,12 +217,8 @@ class ContentSearchResult(object):
         :param type: The type of this ContentSearchResult.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = [
             "LANDING_PAGE",
             "BLOG_POST",
@@ -236,15 +226,8 @@ class ContentSearchResult(object):
             "KNOWLEDGE_ARTICLE",
             "LISTING_PAGE",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
-                    type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -268,12 +251,8 @@ class ContentSearchResult(object):
         :param domain: The domain of this ContentSearchResult.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and domain is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `domain`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
+            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
 
         self._domain = domain
 
@@ -297,12 +276,8 @@ class ContentSearchResult(object):
         :param url: The url of this ContentSearchResult.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -1103,15 +1078,8 @@ class ContentSearchResult(object):
             "zu",
             "zu-za",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and language not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `language` ({0}), must be one of {1}".format(  # noqa: E501
-                    language, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `language` ({0}), must be one of {1}".format(language, allowed_values))  # noqa: E501
 
         self._language = language
 
@@ -1352,17 +1320,13 @@ class ContentSearchResult(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

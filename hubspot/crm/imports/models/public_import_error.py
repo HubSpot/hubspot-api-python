@@ -117,12 +117,8 @@ class PublicImportError(object):
         :param error_type: The error_type of this PublicImportError.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and error_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `error_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and error_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `error_type`, must not be `None`")  # noqa: E501
         allowed_values = [
             "INCORRECT_NUMBER_OF_COLUMNS",
             "INVALID_OBJECT_ID",
@@ -175,15 +171,8 @@ class PublicImportError(object):
             "UPDATE_ONLY_IMPORT",
             "COLUMN_TOO_LARGE",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and error_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `error_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    error_type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and error_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `error_type` ({0}), must be one of {1}".format(error_type, allowed_values))  # noqa: E501
 
         self._error_type = error_type
 
@@ -205,12 +194,8 @@ class PublicImportError(object):
         :param source_data: The source_data of this PublicImportError.  # noqa: E501
         :type: ImportRowCore
         """
-        if (
-            self.local_vars_configuration.client_side_validation and source_data is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `source_data`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and source_data is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_data`, must not be `None`")  # noqa: E501
 
         self._source_data = source_data
 
@@ -357,15 +342,8 @@ class PublicImportError(object):
             "CAMPAIGN_TEMPLATE_STEP",
             "UNKNOWN",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and object_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    object_type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `object_type` ({0}), must be one of {1}".format(object_type, allowed_values))  # noqa: E501
 
         self._object_type = object_type
 
@@ -450,13 +428,8 @@ class PublicImportError(object):
         :param known_column_number: The known_column_number of this PublicImportError.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and known_column_number is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `known_column_number`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and known_column_number is None:  # noqa: E501
+            raise ValueError("Invalid value for `known_column_number`, must not be `None`")  # noqa: E501
 
         self._known_column_number = known_column_number
 
@@ -478,12 +451,8 @@ class PublicImportError(object):
         :param created_at: The created_at of this PublicImportError.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -505,9 +474,7 @@ class PublicImportError(object):
         :param id: The id of this PublicImportError.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -519,17 +486,13 @@ class PublicImportError(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

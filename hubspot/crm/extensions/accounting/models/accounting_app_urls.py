@@ -154,13 +154,8 @@ class AccountingAppUrls(object):
         :param get_invoice_url: The get_invoice_url of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and get_invoice_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `get_invoice_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and get_invoice_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `get_invoice_url`, must not be `None`")  # noqa: E501
 
         self._get_invoice_url = get_invoice_url
 
@@ -184,13 +179,8 @@ class AccountingAppUrls(object):
         :param search_customer_url: The search_customer_url of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and search_customer_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `search_customer_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and search_customer_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `search_customer_url`, must not be `None`")  # noqa: E501
 
         self._search_customer_url = search_customer_url
 
@@ -214,13 +204,8 @@ class AccountingAppUrls(object):
         :param get_invoice_pdf_url: The get_invoice_pdf_url of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and get_invoice_pdf_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `get_invoice_pdf_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and get_invoice_pdf_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `get_invoice_pdf_url`, must not be `None`")  # noqa: E501
 
         self._get_invoice_pdf_url = get_invoice_pdf_url
 
@@ -244,13 +229,8 @@ class AccountingAppUrls(object):
         :param customer_url_template: The customer_url_template of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and customer_url_template is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `customer_url_template`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and customer_url_template is None:  # noqa: E501
+            raise ValueError("Invalid value for `customer_url_template`, must not be `None`")  # noqa: E501
 
         self._customer_url_template = customer_url_template
 
@@ -274,13 +254,8 @@ class AccountingAppUrls(object):
         :param product_url_template: The product_url_template of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and product_url_template is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `product_url_template`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and product_url_template is None:  # noqa: E501
+            raise ValueError("Invalid value for `product_url_template`, must not be `None`")  # noqa: E501
 
         self._product_url_template = product_url_template
 
@@ -304,13 +279,8 @@ class AccountingAppUrls(object):
         :param invoice_url_template: The invoice_url_template of this AccountingAppUrls.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and invoice_url_template is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `invoice_url_template`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and invoice_url_template is None:  # noqa: E501
+            raise ValueError("Invalid value for `invoice_url_template`, must not be `None`")  # noqa: E501
 
         self._invoice_url_template = invoice_url_template
 
@@ -524,17 +494,13 @@ class AccountingAppUrls(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

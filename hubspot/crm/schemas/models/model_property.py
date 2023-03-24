@@ -268,12 +268,8 @@ class ModelProperty(object):
         :param name: The name of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -297,12 +293,8 @@ class ModelProperty(object):
         :param label: The label of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -326,12 +318,8 @@ class ModelProperty(object):
         :param type: The type of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 
@@ -355,12 +343,8 @@ class ModelProperty(object):
         :param field_type: The field_type of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and field_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
 
         self._field_type = field_type
 
@@ -384,12 +368,8 @@ class ModelProperty(object):
         :param description: The description of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and description is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `description`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
@@ -413,12 +393,8 @@ class ModelProperty(object):
         :param group_name: The group_name of this ModelProperty.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and group_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `group_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and group_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `group_name`, must not be `None`")  # noqa: E501
 
         self._group_name = group_name
 
@@ -442,12 +418,8 @@ class ModelProperty(object):
         :param options: The options of this ModelProperty.  # noqa: E501
         :type: list[Option]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and options is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `options`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
+            raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
 
         self._options = options
 
@@ -753,17 +725,13 @@ class ModelProperty(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

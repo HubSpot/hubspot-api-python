@@ -89,12 +89,8 @@ class BatchReadInputSimplePublicObjectId(object):
         :param properties: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -116,13 +112,8 @@ class BatchReadInputSimplePublicObjectId(object):
         :param properties_with_history: The properties_with_history of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and properties_with_history is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties_with_history`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties_with_history is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties_with_history`, must not be `None`")  # noqa: E501
 
         self._properties_with_history = properties_with_history
 
@@ -165,12 +156,8 @@ class BatchReadInputSimplePublicObjectId(object):
         :param inputs: The inputs of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :type: list[SimplePublicObjectId]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and inputs is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `inputs`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and inputs is None:  # noqa: E501
+            raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
 
         self._inputs = inputs
 
@@ -181,17 +168,13 @@ class BatchReadInputSimplePublicObjectId(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -129,12 +129,8 @@ class HubDbTableCloneRequest(object):
         :param copy_rows: The copy_rows of this HubDbTableCloneRequest.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and copy_rows is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `copy_rows`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and copy_rows is None:  # noqa: E501
+            raise ValueError("Invalid value for `copy_rows`, must not be `None`")  # noqa: E501
 
         self._copy_rows = copy_rows
 
@@ -145,17 +141,13 @@ class HubDbTableCloneRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

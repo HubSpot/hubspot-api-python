@@ -116,10 +116,7 @@ class PublicPerformanceApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -128,39 +125,21 @@ class PublicPerformanceApi(object):
         path_params = {}
 
         query_params = []
-        if (
-            "domain" in local_var_params and local_var_params["domain"] is not None
-        ):  # noqa: E501
+        if "domain" in local_var_params and local_var_params["domain"] is not None:  # noqa: E501
             query_params.append(("domain", local_var_params["domain"]))  # noqa: E501
-        if (
-            "path" in local_var_params and local_var_params["path"] is not None
-        ):  # noqa: E501
+        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if (
-            "pad" in local_var_params and local_var_params["pad"] is not None
-        ):  # noqa: E501
+        if "pad" in local_var_params and local_var_params["pad"] is not None:  # noqa: E501
             query_params.append(("pad", local_var_params["pad"]))  # noqa: E501
-        if (
-            "sum" in local_var_params and local_var_params["sum"] is not None
-        ):  # noqa: E501
+        if "sum" in local_var_params and local_var_params["sum"] is not None:  # noqa: E501
             query_params.append(("sum", local_var_params["sum"]))  # noqa: E501
-        if (
-            "period" in local_var_params and local_var_params["period"] is not None
-        ):  # noqa: E501
+        if "period" in local_var_params and local_var_params["period"] is not None:  # noqa: E501
             query_params.append(("period", local_var_params["period"]))  # noqa: E501
-        if (
-            "interval" in local_var_params and local_var_params["interval"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("interval", local_var_params["interval"])
-            )  # noqa: E501
-        if (
-            "start" in local_var_params and local_var_params["start"] is not None
-        ):  # noqa: E501
+        if "interval" in local_var_params and local_var_params["interval"] is not None:  # noqa: E501
+            query_params.append(("interval", local_var_params["interval"]))  # noqa: E501
+        if "start" in local_var_params and local_var_params["start"] is not None:  # noqa: E501
             query_params.append(("start", local_var_params["start"]))  # noqa: E501
-        if (
-            "end" in local_var_params and local_var_params["end"] is not None
-        ):  # noqa: E501
+        if "end" in local_var_params and local_var_params["end"] is not None:  # noqa: E501
             query_params.append(("end", local_var_params["end"]))  # noqa: E501
 
         header_params = {}
@@ -170,9 +149,7 @@ class PublicPerformanceApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -189,9 +166,7 @@ class PublicPerformanceApi(object):
             response_type="PublicPerformanceResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -280,10 +255,7 @@ class PublicPerformanceApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_uptime" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_uptime" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -292,39 +264,21 @@ class PublicPerformanceApi(object):
         path_params = {}
 
         query_params = []
-        if (
-            "domain" in local_var_params and local_var_params["domain"] is not None
-        ):  # noqa: E501
+        if "domain" in local_var_params and local_var_params["domain"] is not None:  # noqa: E501
             query_params.append(("domain", local_var_params["domain"]))  # noqa: E501
-        if (
-            "path" in local_var_params and local_var_params["path"] is not None
-        ):  # noqa: E501
+        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if (
-            "pad" in local_var_params and local_var_params["pad"] is not None
-        ):  # noqa: E501
+        if "pad" in local_var_params and local_var_params["pad"] is not None:  # noqa: E501
             query_params.append(("pad", local_var_params["pad"]))  # noqa: E501
-        if (
-            "sum" in local_var_params and local_var_params["sum"] is not None
-        ):  # noqa: E501
+        if "sum" in local_var_params and local_var_params["sum"] is not None:  # noqa: E501
             query_params.append(("sum", local_var_params["sum"]))  # noqa: E501
-        if (
-            "period" in local_var_params and local_var_params["period"] is not None
-        ):  # noqa: E501
+        if "period" in local_var_params and local_var_params["period"] is not None:  # noqa: E501
             query_params.append(("period", local_var_params["period"]))  # noqa: E501
-        if (
-            "interval" in local_var_params and local_var_params["interval"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("interval", local_var_params["interval"])
-            )  # noqa: E501
-        if (
-            "start" in local_var_params and local_var_params["start"] is not None
-        ):  # noqa: E501
+        if "interval" in local_var_params and local_var_params["interval"] is not None:  # noqa: E501
+            query_params.append(("interval", local_var_params["interval"]))  # noqa: E501
+        if "start" in local_var_params and local_var_params["start"] is not None:  # noqa: E501
             query_params.append(("start", local_var_params["start"]))  # noqa: E501
-        if (
-            "end" in local_var_params and local_var_params["end"] is not None
-        ):  # noqa: E501
+        if "end" in local_var_params and local_var_params["end"] is not None:  # noqa: E501
             query_params.append(("end", local_var_params["end"]))  # noqa: E501
 
         header_params = {}
@@ -334,9 +288,7 @@ class PublicPerformanceApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -353,9 +305,7 @@ class PublicPerformanceApi(object):
             response_type="PublicPerformanceResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

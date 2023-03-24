@@ -173,12 +173,8 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         :param values: The values of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
         :type: dict(str, object)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and values is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `values`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
 
         self._values = values
 
@@ -223,9 +219,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         :param id: The id of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -237,17 +231,13 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

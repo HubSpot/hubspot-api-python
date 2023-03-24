@@ -105,9 +105,7 @@ class Tag(object):
         :param id: The id of this Tag.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -132,12 +130,8 @@ class Tag(object):
         :param name: The name of this Tag.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -161,12 +155,8 @@ class Tag(object):
         :param language: The language of this Tag.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and language is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `language`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
+            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
         allowed_values = [
             "af",
             "af-na",
@@ -883,15 +873,8 @@ class Tag(object):
             "zu",
             "zu-za",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and language not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `language` ({0}), must be one of {1}".format(  # noqa: E501
-                    language, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `language` ({0}), must be one of {1}".format(language, allowed_values))  # noqa: E501
 
         self._language = language
 
@@ -915,13 +898,8 @@ class Tag(object):
         :param translated_from_id: The translated_from_id of this Tag.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and translated_from_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `translated_from_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
 
         self._translated_from_id = translated_from_id
 
@@ -943,12 +921,8 @@ class Tag(object):
         :param created: The created of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
 
         self._created = created
 
@@ -970,12 +944,8 @@ class Tag(object):
         :param updated: The updated of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and updated is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
 
         self._updated = updated
 
@@ -999,12 +969,8 @@ class Tag(object):
         :param deleted_at: The deleted_at of this Tag.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and deleted_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `deleted_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
 
@@ -1015,17 +981,13 @@ class Tag(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

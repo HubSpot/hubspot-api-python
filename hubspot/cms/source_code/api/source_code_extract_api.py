@@ -55,9 +55,7 @@ class SourceCodeExtractApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.do_async_with_http_info(
-            file_extract_request, **kwargs
-        )  # noqa: E501
+        return self.do_async_with_http_info(file_extract_request, **kwargs)  # noqa: E501
 
     def do_async_with_http_info(self, file_extract_request, **kwargs):  # noqa: E501
         """do_async  # noqa: E501
@@ -93,20 +91,12 @@ class SourceCodeExtractApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method do_async" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method do_async" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_extract_request' is set
-        if self.api_client.client_side_validation and (
-            "file_extract_request" not in local_var_params
-            or local_var_params["file_extract_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `file_extract_request` when calling `do_async`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("file_extract_request" not in local_var_params or local_var_params["file_extract_request"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `file_extract_request` when calling `do_async`")  # noqa: E501
 
         collection_formats = {}
 
@@ -123,9 +113,7 @@ class SourceCodeExtractApi(object):
         if "file_extract_request" in local_var_params:
             body_params = local_var_params["file_extract_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -142,9 +130,7 @@ class SourceCodeExtractApi(object):
             response_type="TaskLocator",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -208,20 +194,12 @@ class SourceCodeExtractApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_async_status" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_async_status" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'task_id' is set
-        if self.api_client.client_side_validation and (
-            "task_id" not in local_var_params
-            or local_var_params["task_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `task_id` when calling `get_async_status`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("task_id" not in local_var_params or local_var_params["task_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `task_id` when calling `get_async_status`")  # noqa: E501
 
         collection_formats = {}
 
@@ -238,9 +216,7 @@ class SourceCodeExtractApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -257,9 +233,7 @@ class SourceCodeExtractApi(object):
             response_type="ActionResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

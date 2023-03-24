@@ -91,9 +91,7 @@ class AttachToLangPrimaryRequestVNext(object):
         :param id: The id of this AttachToLangPrimaryRequestVNext.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -118,12 +116,8 @@ class AttachToLangPrimaryRequestVNext(object):
         :param language: The language of this AttachToLangPrimaryRequestVNext.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and language is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `language`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
+            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
         allowed_values = [
             "af",
             "af-na",
@@ -840,15 +834,8 @@ class AttachToLangPrimaryRequestVNext(object):
             "zu",
             "zu-za",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and language not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `language` ({0}), must be one of {1}".format(  # noqa: E501
-                    language, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `language` ({0}), must be one of {1}".format(language, allowed_values))  # noqa: E501
 
         self._language = language
 
@@ -872,12 +859,8 @@ class AttachToLangPrimaryRequestVNext(object):
         :param primary_id: The primary_id of this AttachToLangPrimaryRequestVNext.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and primary_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `primary_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and primary_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `primary_id`, must not be `None`")  # noqa: E501
 
         self._primary_id = primary_id
 
@@ -1617,15 +1600,8 @@ class AttachToLangPrimaryRequestVNext(object):
             "zu",
             "zu-za",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and primary_language not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `primary_language` ({0}), must be one of {1}".format(  # noqa: E501
-                    primary_language, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and primary_language not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `primary_language` ({0}), must be one of {1}".format(primary_language, allowed_values))  # noqa: E501
 
         self._primary_language = primary_language
 
@@ -1636,17 +1612,13 @@ class AttachToLangPrimaryRequestVNext(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

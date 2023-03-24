@@ -40,9 +40,7 @@ class CollectionResponseWithTotalUrlMappingForwardPaging(object):
 
     attribute_map = {"total": "total", "results": "results", "paging": "paging"}
 
-    def __init__(
-        self, total=None, results=None, paging=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, total=None, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseWithTotalUrlMappingForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -76,12 +74,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging(object):
         :param total: The total of this CollectionResponseWithTotalUrlMappingForwardPaging.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and total is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `total`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and total is None:  # noqa: E501
+            raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
 
         self._total = total
 
@@ -103,12 +97,8 @@ class CollectionResponseWithTotalUrlMappingForwardPaging(object):
         :param results: The results of this CollectionResponseWithTotalUrlMappingForwardPaging.  # noqa: E501
         :type: list[UrlMapping]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and results is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `results`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
 
@@ -140,17 +130,13 @@ class CollectionResponseWithTotalUrlMappingForwardPaging(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

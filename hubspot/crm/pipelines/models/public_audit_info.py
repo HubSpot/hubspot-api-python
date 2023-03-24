@@ -107,12 +107,8 @@ class PublicAuditInfo(object):
         :param portal_id: The portal_id of this PublicAuditInfo.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and portal_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `portal_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
 
         self._portal_id = portal_id
 
@@ -134,12 +130,8 @@ class PublicAuditInfo(object):
         :param identifier: The identifier of this PublicAuditInfo.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and identifier is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `identifier`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and identifier is None:  # noqa: E501
+            raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
 
         self._identifier = identifier
 
@@ -161,12 +153,8 @@ class PublicAuditInfo(object):
         :param action: The action of this PublicAuditInfo.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and action is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `action`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and action is None:  # noqa: E501
+            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
 
         self._action = action
 
@@ -261,17 +249,13 @@ class PublicAuditInfo(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -20,11 +20,7 @@ class Signature:
     ) -> bool:
         if signature_version == "v3":
             current_time = datetime.now()
-            if (
-                timestamp is None
-                or current_time.timestamp() - timestamp
-                > Signature.MAX_ALLOWED_TIMESTAMP
-            ):
+            if timestamp is None or current_time.timestamp() - timestamp > Signature.MAX_ALLOWED_TIMESTAMP:
                 raise Exception("Timestamp is invalid, reject request.")
         hashed_signature = Signature.get_signature(
             client_secret,

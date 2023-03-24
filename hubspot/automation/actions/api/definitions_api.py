@@ -57,9 +57,7 @@ class DefinitionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(
-            definition_id, app_id, **kwargs
-        )  # noqa: E501
+        return self.archive_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
         """Archive a custom action  # noqa: E501
@@ -97,35 +95,21 @@ class DefinitionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and (
-            "definition_id" not in local_var_params
-            or local_var_params["definition_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `definition_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `definition_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "definition_id" in local_var_params:
-            path_params["definitionId"] = local_var_params[
-                "definition_id"
-            ]  # noqa: E501
+            path_params["definitionId"] = local_var_params["definition_id"]  # noqa: E501
         if "app_id" in local_var_params:
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
@@ -138,9 +122,7 @@ class DefinitionsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -157,9 +139,7 @@ class DefinitionsApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -189,13 +169,9 @@ class DefinitionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(
-            app_id, extension_action_definition_input, **kwargs
-        )  # noqa: E501
+        return self.create_with_http_info(app_id, extension_action_definition_input, **kwargs)  # noqa: E501
 
-    def create_with_http_info(
-        self, app_id, extension_action_definition_input, **kwargs
-    ):  # noqa: E501
+    def create_with_http_info(self, app_id, extension_action_definition_input, **kwargs):  # noqa: E501
         """Create new custom action  # noqa: E501
 
         Creates a new custom workflow action.  # noqa: E501
@@ -231,28 +207,17 @@ class DefinitionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'extension_action_definition_input' is set
         if self.api_client.client_side_validation and (
-            "extension_action_definition_input" not in local_var_params
-            or local_var_params["extension_action_definition_input"]  # noqa: E501
-            is None
+            "extension_action_definition_input" not in local_var_params or local_var_params["extension_action_definition_input"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `extension_action_definition_input` when calling `create`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `extension_action_definition_input` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -271,16 +236,10 @@ class DefinitionsApi(object):
         if "extension_action_definition_input" in local_var_params:
             body_params = local_var_params["extension_action_definition_input"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -297,9 +256,7 @@ class DefinitionsApi(object):
             response_type="ExtensionActionDefinition",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -330,9 +287,7 @@ class DefinitionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            definition_id, app_id, **kwargs
-        )  # noqa: E501
+        return self.get_by_id_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
         """Get a custom action  # noqa: E501
@@ -371,46 +326,27 @@ class DefinitionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and (
-            "definition_id" not in local_var_params
-            or local_var_params["definition_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `definition_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `definition_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "definition_id" in local_var_params:
-            path_params["definitionId"] = local_var_params[
-                "definition_id"
-            ]  # noqa: E501
+            path_params["definitionId"] = local_var_params["definition_id"]  # noqa: E501
         if "app_id" in local_var_params:
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -419,9 +355,7 @@ class DefinitionsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -438,9 +372,7 @@ class DefinitionsApi(object):
             response_type="ExtensionActionDefinition",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -512,20 +444,12 @@ class DefinitionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_page`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_page`")  # noqa: E501
 
         collection_formats = {}
 
@@ -534,20 +458,12 @@ class DefinitionsApi(object):
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
+        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
+        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -556,9 +472,7 @@ class DefinitionsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -575,17 +489,13 @@ class DefinitionsApi(object):
             response_type="CollectionResponseExtensionActionDefinitionForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def update(
-        self, definition_id, app_id, extension_action_definition_patch, **kwargs
-    ):  # noqa: E501
+    def update(self, definition_id, app_id, extension_action_definition_patch, **kwargs):  # noqa: E501
         """Update a custom action  # noqa: E501
 
         Updates a custom workflow action with new values for the specified fields.  # noqa: E501
@@ -610,13 +520,9 @@ class DefinitionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(
-            definition_id, app_id, extension_action_definition_patch, **kwargs
-        )  # noqa: E501
+        return self.update_with_http_info(definition_id, app_id, extension_action_definition_patch, **kwargs)  # noqa: E501
 
-    def update_with_http_info(
-        self, definition_id, app_id, extension_action_definition_patch, **kwargs
-    ):  # noqa: E501
+    def update_with_http_info(self, definition_id, app_id, extension_action_definition_patch, **kwargs):  # noqa: E501
         """Update a custom action  # noqa: E501
 
         Updates a custom workflow action with new values for the specified fields.  # noqa: E501
@@ -657,44 +563,26 @@ class DefinitionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and (
-            "definition_id" not in local_var_params
-            or local_var_params["definition_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `definition_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `definition_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'extension_action_definition_patch' is set
         if self.api_client.client_side_validation and (
-            "extension_action_definition_patch" not in local_var_params
-            or local_var_params["extension_action_definition_patch"]  # noqa: E501
-            is None
+            "extension_action_definition_patch" not in local_var_params or local_var_params["extension_action_definition_patch"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `extension_action_definition_patch` when calling `update`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `extension_action_definition_patch` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "definition_id" in local_var_params:
-            path_params["definitionId"] = local_var_params[
-                "definition_id"
-            ]  # noqa: E501
+            path_params["definitionId"] = local_var_params["definition_id"]  # noqa: E501
         if "app_id" in local_var_params:
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
@@ -709,16 +597,10 @@ class DefinitionsApi(object):
         if "extension_action_definition_patch" in local_var_params:
             body_params = local_var_params["extension_action_definition_patch"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -735,9 +617,7 @@ class DefinitionsApi(object):
             response_type="ExtensionActionDefinition",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

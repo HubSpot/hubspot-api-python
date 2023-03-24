@@ -90,12 +90,8 @@ class CardCreateRequest(object):
         :param title: The title of this CardCreateRequest.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and title is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `title`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
+            raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
 
         self._title = title
 
@@ -117,12 +113,8 @@ class CardCreateRequest(object):
         :param fetch: The fetch of this CardCreateRequest.  # noqa: E501
         :type: CardFetchBody
         """
-        if (
-            self.local_vars_configuration.client_side_validation and fetch is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `fetch`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and fetch is None:  # noqa: E501
+            raise ValueError("Invalid value for `fetch`, must not be `None`")  # noqa: E501
 
         self._fetch = fetch
 
@@ -144,12 +136,8 @@ class CardCreateRequest(object):
         :param display: The display of this CardCreateRequest.  # noqa: E501
         :type: CardDisplayBody
         """
-        if (
-            self.local_vars_configuration.client_side_validation and display is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `display`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and display is None:  # noqa: E501
+            raise ValueError("Invalid value for `display`, must not be `None`")  # noqa: E501
 
         self._display = display
 
@@ -171,12 +159,8 @@ class CardCreateRequest(object):
         :param actions: The actions of this CardCreateRequest.  # noqa: E501
         :type: CardActions
         """
-        if (
-            self.local_vars_configuration.client_side_validation and actions is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `actions`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and actions is None:  # noqa: E501
+            raise ValueError("Invalid value for `actions`, must not be `None`")  # noqa: E501
 
         self._actions = actions
 
@@ -187,17 +171,13 @@ class CardCreateRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

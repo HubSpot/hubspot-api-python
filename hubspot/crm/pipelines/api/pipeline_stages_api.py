@@ -58,13 +58,9 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(
-            object_type, pipeline_id, stage_id, **kwargs
-        )  # noqa: E501
+        return self.archive_with_http_info(object_type, pipeline_id, stage_id, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(
-        self, object_type, pipeline_id, stage_id, **kwargs
-    ):  # noqa: E501
+    def archive_with_http_info(self, object_type, pipeline_id, stage_id, **kwargs):  # noqa: E501
         """Delete a pipeline stage  # noqa: E501
 
         Delete the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.  # noqa: E501
@@ -101,35 +97,18 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'stage_id' is set
-        if self.api_client.client_side_validation and (
-            "stage_id" not in local_var_params
-            or local_var_params["stage_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `stage_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("stage_id" not in local_var_params or local_var_params["stage_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `stage_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -150,9 +129,7 @@ class PipelineStagesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -169,17 +146,13 @@ class PipelineStagesApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def create(
-        self, object_type, pipeline_id, pipeline_stage_input, **kwargs
-    ):  # noqa: E501
+    def create(self, object_type, pipeline_id, pipeline_stage_input, **kwargs):  # noqa: E501
         """Create a pipeline stage  # noqa: E501
 
         Create a new stage associated with the pipeline identified by `{pipelineId}`. The entire stage object, including its unique ID, will be returned in the response.  # noqa: E501
@@ -204,13 +177,9 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(
-            object_type, pipeline_id, pipeline_stage_input, **kwargs
-        )  # noqa: E501
+        return self.create_with_http_info(object_type, pipeline_id, pipeline_stage_input, **kwargs)  # noqa: E501
 
-    def create_with_http_info(
-        self, object_type, pipeline_id, pipeline_stage_input, **kwargs
-    ):  # noqa: E501
+    def create_with_http_info(self, object_type, pipeline_id, pipeline_stage_input, **kwargs):  # noqa: E501
         """Create a pipeline stage  # noqa: E501
 
         Create a new stage associated with the pipeline identified by `{pipelineId}`. The entire stage object, including its unique ID, will be returned in the response.  # noqa: E501
@@ -251,35 +220,18 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'pipeline_stage_input' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_stage_input" not in local_var_params
-            or local_var_params["pipeline_stage_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_stage_input` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_stage_input" not in local_var_params or local_var_params["pipeline_stage_input"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_stage_input` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -300,16 +252,10 @@ class PipelineStagesApi(object):
         if "pipeline_stage_input" in local_var_params:
             body_params = local_var_params["pipeline_stage_input"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -326,9 +272,7 @@ class PipelineStagesApi(object):
             response_type="PipelineStage",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -358,9 +302,7 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_all_with_http_info(
-            object_type, pipeline_id, **kwargs
-        )  # noqa: E501
+        return self.get_all_with_http_info(object_type, pipeline_id, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, object_type, pipeline_id, **kwargs):  # noqa: E501
         """Return all stages of a pipeline  # noqa: E501
@@ -398,27 +340,15 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_all`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
@@ -437,9 +367,7 @@ class PipelineStagesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -456,9 +384,7 @@ class PipelineStagesApi(object):
             response_type="CollectionResponsePipelineStageNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -489,13 +415,9 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            object_type, pipeline_id, stage_id, **kwargs
-        )  # noqa: E501
+        return self.get_by_id_with_http_info(object_type, pipeline_id, stage_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(
-        self, object_type, pipeline_id, stage_id, **kwargs
-    ):  # noqa: E501
+    def get_by_id_with_http_info(self, object_type, pipeline_id, stage_id, **kwargs):  # noqa: E501
         """Return a pipeline stage by ID  # noqa: E501
 
         Return the stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.  # noqa: E501
@@ -532,36 +454,18 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'stage_id' is set
-        if self.api_client.client_side_validation and (
-            "stage_id" not in local_var_params
-            or local_var_params["stage_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `stage_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("stage_id" not in local_var_params or local_var_params["stage_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `stage_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
@@ -582,9 +486,7 @@ class PipelineStagesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -601,17 +503,13 @@ class PipelineStagesApi(object):
             response_type="PipelineStage",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def replace(
-        self, object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs
-    ):  # noqa: E501
+    def replace(self, object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs):  # noqa: E501
         """Replace a pipeline stage  # noqa: E501
 
         Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.  # noqa: E501
@@ -637,13 +535,9 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.replace_with_http_info(
-            object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs
-        )  # noqa: E501
+        return self.replace_with_http_info(object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs)  # noqa: E501
 
-    def replace_with_http_info(
-        self, object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs
-    ):  # noqa: E501
+    def replace_with_http_info(self, object_type, pipeline_id, stage_id, pipeline_stage_input, **kwargs):  # noqa: E501
         """Replace a pipeline stage  # noqa: E501
 
         Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.  # noqa: E501
@@ -686,43 +580,21 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method replace" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method replace" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `replace`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'stage_id' is set
-        if self.api_client.client_side_validation and (
-            "stage_id" not in local_var_params
-            or local_var_params["stage_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `stage_id` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("stage_id" not in local_var_params or local_var_params["stage_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `stage_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'pipeline_stage_input' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_stage_input" not in local_var_params
-            or local_var_params["pipeline_stage_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_stage_input` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_stage_input" not in local_var_params or local_var_params["pipeline_stage_input"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_stage_input` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
@@ -745,16 +617,10 @@ class PipelineStagesApi(object):
         if "pipeline_stage_input" in local_var_params:
             body_params = local_var_params["pipeline_stage_input"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -771,17 +637,13 @@ class PipelineStagesApi(object):
             response_type="PipelineStage",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def update(
-        self, object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs
-    ):  # noqa: E501
+    def update(self, object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs):  # noqa: E501
         """Update a pipeline stage  # noqa: E501
 
         Perform a partial update of the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`. Any properties not included in this update will keep their existing values. The updated stage will be returned in the response.  # noqa: E501
@@ -807,13 +669,9 @@ class PipelineStagesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(
-            object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs
-        )  # noqa: E501
+        return self.update_with_http_info(object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs)  # noqa: E501
 
-    def update_with_http_info(
-        self, object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs
-    ):  # noqa: E501
+    def update_with_http_info(self, object_type, pipeline_id, stage_id, pipeline_stage_patch_input, **kwargs):  # noqa: E501
         """Update a pipeline stage  # noqa: E501
 
         Perform a partial update of the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`. Any properties not included in this update will keep their existing values. The updated stage will be returned in the response.  # noqa: E501
@@ -856,43 +714,21 @@ class PipelineStagesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'pipeline_id' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_id" not in local_var_params
-            or local_var_params["pipeline_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_id" not in local_var_params or local_var_params["pipeline_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'stage_id' is set
-        if self.api_client.client_side_validation and (
-            "stage_id" not in local_var_params
-            or local_var_params["stage_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `stage_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("stage_id" not in local_var_params or local_var_params["stage_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `stage_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'pipeline_stage_patch_input' is set
-        if self.api_client.client_side_validation and (
-            "pipeline_stage_patch_input" not in local_var_params
-            or local_var_params["pipeline_stage_patch_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `pipeline_stage_patch_input` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("pipeline_stage_patch_input" not in local_var_params or local_var_params["pipeline_stage_patch_input"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_stage_patch_input` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -915,16 +751,10 @@ class PipelineStagesApi(object):
         if "pipeline_stage_patch_input" in local_var_params:
             body_params = local_var_params["pipeline_stage_patch_input"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -941,9 +771,7 @@ class PipelineStagesApi(object):
             response_type="PipelineStage",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

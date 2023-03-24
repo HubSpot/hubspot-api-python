@@ -110,12 +110,8 @@ class EmailSendStatusView(object):
         :param status_id: The status_id of this EmailSendStatusView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and status_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `status_id`, must not be `None`")  # noqa: E501
 
         self._status_id = status_id
 
@@ -183,15 +179,8 @@ class EmailSendStatusView(object):
             "NON_MARKETABLE_CONTACT",
             "PREVIOUSLY_UNSUBSCRIBED_BUSINESS_UNIT",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and send_result not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `send_result` ({0}), must be one of {1}".format(  # noqa: E501
-                    send_result, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and send_result not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `send_result` ({0}), must be one of {1}".format(send_result, allowed_values))  # noqa: E501
 
         self._send_result = send_result
 
@@ -284,22 +273,11 @@ class EmailSendStatusView(object):
         :param status: The status of this EmailSendStatusView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and status is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and status not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}".format(  # noqa: E501
-                    status, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
 
         self._status = status
 
@@ -331,17 +309,13 @@ class EmailSendStatusView(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

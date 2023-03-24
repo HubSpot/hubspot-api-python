@@ -106,9 +106,7 @@ class SmtpApiTokenView(object):
         :param id: The id of this SmtpApiTokenView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -133,12 +131,8 @@ class SmtpApiTokenView(object):
         :param created_by: The created_by of this SmtpApiTokenView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_by is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_by`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_by is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_by`, must not be `None`")  # noqa: E501
 
         self._created_by = created_by
 
@@ -185,13 +179,8 @@ class SmtpApiTokenView(object):
         :param email_campaign_id: The email_campaign_id of this SmtpApiTokenView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and email_campaign_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `email_campaign_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and email_campaign_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `email_campaign_id`, must not be `None`")  # noqa: E501
 
         self._email_campaign_id = email_campaign_id
 
@@ -215,12 +204,8 @@ class SmtpApiTokenView(object):
         :param created_at: The created_at of this SmtpApiTokenView.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -244,13 +229,8 @@ class SmtpApiTokenView(object):
         :param create_contact: The create_contact of this SmtpApiTokenView.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and create_contact is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `create_contact`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and create_contact is None:  # noqa: E501
+            raise ValueError("Invalid value for `create_contact`, must not be `None`")  # noqa: E501
 
         self._create_contact = create_contact
 
@@ -274,13 +254,8 @@ class SmtpApiTokenView(object):
         :param campaign_name: The campaign_name of this SmtpApiTokenView.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and campaign_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `campaign_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and campaign_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `campaign_name`, must not be `None`")  # noqa: E501
 
         self._campaign_name = campaign_name
 
@@ -291,17 +266,13 @@ class SmtpApiTokenView(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

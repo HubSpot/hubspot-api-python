@@ -91,12 +91,8 @@ class SettingsResponse(object):
         :param target_url: The target_url of this SettingsResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and target_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `target_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
 
         self._target_url = target_url
 
@@ -118,12 +114,8 @@ class SettingsResponse(object):
         :param throttling: The throttling of this SettingsResponse.  # noqa: E501
         :type: ThrottlingSettings
         """
-        if (
-            self.local_vars_configuration.client_side_validation and throttling is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `throttling`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and throttling is None:  # noqa: E501
+            raise ValueError("Invalid value for `throttling`, must not be `None`")  # noqa: E501
 
         self._throttling = throttling
 
@@ -147,12 +139,8 @@ class SettingsResponse(object):
         :param created_at: The created_at of this SettingsResponse.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -186,17 +174,13 @@ class SettingsResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

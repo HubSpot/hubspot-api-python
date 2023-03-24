@@ -69,9 +69,7 @@ class RESTClientObject(object):
 
         addition_pool_args = {}
         if configuration.assert_hostname is not None:
-            addition_pool_args[
-                "assert_hostname"
-            ] = configuration.assert_hostname  # noqa: E501
+            addition_pool_args["assert_hostname"] = configuration.assert_hostname  # noqa: E501
 
         if configuration.retries is not None:
             addition_pool_args["retries"] = configuration.retries
@@ -97,13 +95,7 @@ class RESTClientObject(object):
             )
         else:
             self.pool_manager = urllib3.PoolManager(
-                num_pools=pools_size,
-                maxsize=maxsize,
-                cert_reqs=cert_reqs,
-                ca_certs=ca_certs,
-                cert_file=configuration.cert_file,
-                key_file=configuration.key_file,
-                **addition_pool_args
+                num_pools=pools_size, maxsize=maxsize, cert_reqs=cert_reqs, ca_certs=ca_certs, cert_file=configuration.cert_file, key_file=configuration.key_file, **addition_pool_args
             )
 
     def request(
@@ -139,23 +131,17 @@ class RESTClientObject(object):
         assert method in ["GET", "HEAD", "DELETE", "POST", "PUT", "PATCH", "OPTIONS"]
 
         if post_params and body:
-            raise ApiValueError(
-                "body parameter cannot be used with post_params parameter."
-            )
+            raise ApiValueError("body parameter cannot be used with post_params parameter.")
 
         post_params = post_params or {}
         headers = headers or {}
 
         timeout = None
         if _request_timeout:
-            if isinstance(
-                _request_timeout, (int,) if six.PY3 else (int, long)
-            ):  # noqa: E501,F821
+            if isinstance(_request_timeout, (int,) if six.PY3 else (int, long)):  # noqa: E501,F821
                 timeout = urllib3.Timeout(total=_request_timeout)
             elif isinstance(_request_timeout, tuple) and len(_request_timeout) == 2:
-                timeout = urllib3.Timeout(
-                    connect=_request_timeout[0], read=_request_timeout[1]
-                )
+                timeout = urllib3.Timeout(connect=_request_timeout[0], read=_request_timeout[1])
 
         if "Content-Type" not in headers:
             headers["Content-Type"] = "application/json"
@@ -177,9 +163,7 @@ class RESTClientObject(object):
                         timeout=timeout,
                         headers=headers,
                     )
-                elif (
-                    headers["Content-Type"] == "application/x-www-form-urlencoded"
-                ):  # noqa: E501
+                elif headers["Content-Type"] == "application/x-www-form-urlencoded":  # noqa: E501
                     r = self.pool_manager.request(
                         method,
                         url,

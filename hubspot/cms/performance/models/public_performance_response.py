@@ -106,12 +106,8 @@ class PublicPerformanceResponse(object):
         :param data: The data of this PublicPerformanceResponse.  # noqa: E501
         :type: list[PerformanceView]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and data is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `data`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and data is None:  # noqa: E501
+            raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501
 
         self._data = data
 
@@ -175,13 +171,8 @@ class PublicPerformanceResponse(object):
         :param start_interval: The start_interval of this PublicPerformanceResponse.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and start_interval is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `start_interval`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and start_interval is None:  # noqa: E501
+            raise ValueError("Invalid value for `start_interval`, must not be `None`")  # noqa: E501
 
         self._start_interval = start_interval
 
@@ -203,13 +194,8 @@ class PublicPerformanceResponse(object):
         :param end_interval: The end_interval of this PublicPerformanceResponse.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and end_interval is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `end_interval`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and end_interval is None:  # noqa: E501
+            raise ValueError("Invalid value for `end_interval`, must not be `None`")  # noqa: E501
 
         self._end_interval = end_interval
 
@@ -231,12 +217,8 @@ class PublicPerformanceResponse(object):
         :param interval: The interval of this PublicPerformanceResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and interval is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `interval`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and interval is None:  # noqa: E501
+            raise ValueError("Invalid value for `interval`, must not be `None`")  # noqa: E501
         allowed_values = [
             "ONE_MINUTE",
             "FIVE_MINUTES",
@@ -249,15 +231,8 @@ class PublicPerformanceResponse(object):
             "ONE_DAY",
             "ONE_WEEK",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and interval not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `interval` ({0}), must be one of {1}".format(  # noqa: E501
-                    interval, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and interval not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `interval` ({0}), must be one of {1}".format(interval, allowed_values))  # noqa: E501
 
         self._interval = interval
 
@@ -291,15 +266,8 @@ class PublicPerformanceResponse(object):
             "ONE_DAY",
             "ONE_WEEK",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and period not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `period` ({0}), must be one of {1}".format(  # noqa: E501
-                    period, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and period not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `period` ({0}), must be one of {1}".format(period, allowed_values))  # noqa: E501
 
         self._period = period
 
@@ -310,17 +278,13 @@ class PublicPerformanceResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

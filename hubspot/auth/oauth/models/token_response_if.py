@@ -93,13 +93,8 @@ class TokenResponseIF(object):
         :param access_token: The access_token of this TokenResponseIF.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and access_token is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `access_token`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and access_token is None:  # noqa: E501
+            raise ValueError("Invalid value for `access_token`, must not be `None`")  # noqa: E501
 
         self._access_token = access_token
 
@@ -121,12 +116,8 @@ class TokenResponseIF(object):
         :param expires_in: The expires_in of this TokenResponseIF.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and expires_in is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `expires_in`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and expires_in is None:  # noqa: E501
+            raise ValueError("Invalid value for `expires_in`, must not be `None`")  # noqa: E501
 
         self._expires_in = expires_in
 
@@ -148,13 +139,8 @@ class TokenResponseIF(object):
         :param refresh_token: The refresh_token of this TokenResponseIF.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and refresh_token is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `refresh_token`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and refresh_token is None:  # noqa: E501
+            raise ValueError("Invalid value for `refresh_token`, must not be `None`")  # noqa: E501
 
         self._refresh_token = refresh_token
 
@@ -176,12 +162,8 @@ class TokenResponseIF(object):
         :param token_type: The token_type of this TokenResponseIF.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and token_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `token_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
 
         self._token_type = token_type
 
@@ -213,17 +195,13 @@ class TokenResponseIF(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

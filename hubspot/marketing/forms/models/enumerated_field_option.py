@@ -91,12 +91,8 @@ class EnumeratedFieldOption(object):
         :param label: The label of this EnumeratedFieldOption.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -120,12 +116,8 @@ class EnumeratedFieldOption(object):
         :param value: The value of this EnumeratedFieldOption.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and value is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `value`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
 
@@ -170,13 +162,8 @@ class EnumeratedFieldOption(object):
         :param display_order: The display_order of this EnumeratedFieldOption.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and display_order is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `display_order`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
+            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
 
         self._display_order = display_order
 
@@ -187,17 +174,13 @@ class EnumeratedFieldOption(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

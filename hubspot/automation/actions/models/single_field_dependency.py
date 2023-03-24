@@ -83,23 +83,11 @@ class SingleFieldDependency(object):
         :param dependency_type: The dependency_type of this SingleFieldDependency.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and dependency_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `dependency_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and dependency_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `dependency_type`, must not be `None`")  # noqa: E501
         allowed_values = ["SINGLE_FIELD"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and dependency_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `dependency_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    dependency_type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and dependency_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `dependency_type` ({0}), must be one of {1}".format(dependency_type, allowed_values))  # noqa: E501
 
         self._dependency_type = dependency_type
 
@@ -121,13 +109,8 @@ class SingleFieldDependency(object):
         :param dependent_field_names: The dependent_field_names of this SingleFieldDependency.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and dependent_field_names is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `dependent_field_names`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and dependent_field_names is None:  # noqa: E501
+            raise ValueError("Invalid value for `dependent_field_names`, must not be `None`")  # noqa: E501
 
         self._dependent_field_names = dependent_field_names
 
@@ -149,13 +132,8 @@ class SingleFieldDependency(object):
         :param controlling_field_name: The controlling_field_name of this SingleFieldDependency.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and controlling_field_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `controlling_field_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and controlling_field_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `controlling_field_name`, must not be `None`")  # noqa: E501
 
         self._controlling_field_name = controlling_field_name
 
@@ -166,17 +144,13 @@ class SingleFieldDependency(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

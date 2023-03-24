@@ -85,13 +85,8 @@ class PublicImportMetadata(object):
         :param object_lists: The object_lists of this PublicImportMetadata.  # noqa: E501
         :type: list[PublicObjectListRecord]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and object_lists is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_lists`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_lists is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_lists`, must not be `None`")  # noqa: E501
 
         self._object_lists = object_lists
 
@@ -115,12 +110,8 @@ class PublicImportMetadata(object):
         :param counters: The counters of this PublicImportMetadata.  # noqa: E501
         :type: dict(str, int)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and counters is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `counters`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and counters is None:  # noqa: E501
+            raise ValueError("Invalid value for `counters`, must not be `None`")  # noqa: E501
 
         self._counters = counters
 
@@ -144,12 +135,8 @@ class PublicImportMetadata(object):
         :param file_ids: The file_ids of this PublicImportMetadata.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and file_ids is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `file_ids`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and file_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `file_ids`, must not be `None`")  # noqa: E501
 
         self._file_ids = file_ids
 
@@ -160,17 +147,13 @@ class PublicImportMetadata(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

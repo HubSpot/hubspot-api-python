@@ -88,12 +88,8 @@ class ActionRevision(object):
         :param definition: The definition of this ActionRevision.  # noqa: E501
         :type: ExtensionActionDefinition
         """
-        if (
-            self.local_vars_configuration.client_side_validation and definition is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `definition`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and definition is None:  # noqa: E501
+            raise ValueError("Invalid value for `definition`, must not be `None`")  # noqa: E501
 
         self._definition = definition
 
@@ -117,12 +113,8 @@ class ActionRevision(object):
         :param created_at: The created_at of this ActionRevision.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
 
@@ -144,9 +136,7 @@ class ActionRevision(object):
         :param id: The id of this ActionRevision.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -171,12 +161,8 @@ class ActionRevision(object):
         :param revision_id: The revision_id of this ActionRevision.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and revision_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `revision_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and revision_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `revision_id`, must not be `None`")  # noqa: E501
 
         self._revision_id = revision_id
 
@@ -187,17 +173,13 @@ class ActionRevision(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

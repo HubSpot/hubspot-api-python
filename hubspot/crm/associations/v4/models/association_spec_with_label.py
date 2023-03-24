@@ -36,9 +36,7 @@ class AssociationSpecWithLabel(object):
 
     attribute_map = {"category": "category", "type_id": "typeId", "label": "label"}
 
-    def __init__(
-        self, category=None, type_id=None, label=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, category=None, type_id=None, label=None, local_vars_configuration=None):  # noqa: E501
         """AssociationSpecWithLabel - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -72,26 +70,15 @@ class AssociationSpecWithLabel(object):
         :param category: The category of this AssociationSpecWithLabel.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and category is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `category`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
+            raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
         allowed_values = [
             "HUBSPOT_DEFINED",
             "USER_DEFINED",
             "INTEGRATOR_DEFINED",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and category not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `category` ({0}), must be one of {1}".format(  # noqa: E501
-                    category, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and category not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `category` ({0}), must be one of {1}".format(category, allowed_values))  # noqa: E501
 
         self._category = category
 
@@ -113,12 +100,8 @@ class AssociationSpecWithLabel(object):
         :param type_id: The type_id of this AssociationSpecWithLabel.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `type_id`, must not be `None`")  # noqa: E501
 
         self._type_id = type_id
 
@@ -150,17 +133,13 @@ class AssociationSpecWithLabel(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

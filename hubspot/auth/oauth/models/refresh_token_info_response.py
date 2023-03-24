@@ -109,12 +109,8 @@ class RefreshTokenInfoResponse(object):
         :param token: The token of this RefreshTokenInfoResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and token is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `token`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
+            raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
 
         self._token = token
 
@@ -178,12 +174,8 @@ class RefreshTokenInfoResponse(object):
         :param scopes: The scopes of this RefreshTokenInfoResponse.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and scopes is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `scopes`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and scopes is None:  # noqa: E501
+            raise ValueError("Invalid value for `scopes`, must not be `None`")  # noqa: E501
 
         self._scopes = scopes
 
@@ -205,12 +197,8 @@ class RefreshTokenInfoResponse(object):
         :param hub_id: The hub_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and hub_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `hub_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and hub_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `hub_id`, must not be `None`")  # noqa: E501
 
         self._hub_id = hub_id
 
@@ -232,12 +220,8 @@ class RefreshTokenInfoResponse(object):
         :param client_id: The client_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and client_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `client_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and client_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `client_id`, must not be `None`")  # noqa: E501
 
         self._client_id = client_id
 
@@ -259,12 +243,8 @@ class RefreshTokenInfoResponse(object):
         :param user_id: The user_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and user_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `user_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
 
         self._user_id = user_id
 
@@ -286,12 +266,8 @@ class RefreshTokenInfoResponse(object):
         :param token_type: The token_type of this RefreshTokenInfoResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and token_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `token_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
 
         self._token_type = token_type
 
@@ -302,17 +278,13 @@ class RefreshTokenInfoResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

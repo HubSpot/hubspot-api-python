@@ -91,9 +91,7 @@ class RolesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -110,9 +108,7 @@ class RolesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -129,9 +125,7 @@ class RolesApi(object):
             response_type="CollectionResponsePublicPermissionSetNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

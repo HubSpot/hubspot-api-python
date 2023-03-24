@@ -93,19 +93,12 @@ class EventsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'timeline_event' is set
-        if self.api_client.client_side_validation and (
-            "timeline_event" not in local_var_params
-            or local_var_params["timeline_event"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `timeline_event` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("timeline_event" not in local_var_params or local_var_params["timeline_event"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `timeline_event` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -122,16 +115,10 @@ class EventsApi(object):
         if "timeline_event" in local_var_params:
             body_params = local_var_params["timeline_event"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -148,9 +135,7 @@ class EventsApi(object):
             response_type="TimelineEventResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -179,13 +164,9 @@ class EventsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_batch_with_http_info(
-            batch_input_timeline_event, **kwargs
-        )  # noqa: E501
+        return self.create_batch_with_http_info(batch_input_timeline_event, **kwargs)  # noqa: E501
 
-    def create_batch_with_http_info(
-        self, batch_input_timeline_event, **kwargs
-    ):  # noqa: E501
+    def create_batch_with_http_info(self, batch_input_timeline_event, **kwargs):  # noqa: E501
         """Creates multiple events  # noqa: E501
 
         Creates multiple instances of timeline events based on an event template. Once created, these event are immutable on the object timeline and cannot be modified. If the event template was configured to update object properties via `objectPropertyName`, this call will also attempt to updates those properties, or add them if they don't exist.  # noqa: E501
@@ -220,20 +201,12 @@ class EventsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_batch" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_batch" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_timeline_event' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_timeline_event" not in local_var_params
-            or local_var_params["batch_input_timeline_event"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `batch_input_timeline_event` when calling `create_batch`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("batch_input_timeline_event" not in local_var_params or local_var_params["batch_input_timeline_event"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_timeline_event` when calling `create_batch`")  # noqa: E501
 
         collection_formats = {}
 
@@ -250,16 +223,10 @@ class EventsApi(object):
         if "batch_input_timeline_event" in local_var_params:
             body_params = local_var_params["batch_input_timeline_event"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -276,9 +243,7 @@ class EventsApi(object):
             response_type="BatchResponseTimelineEventResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -308,13 +273,9 @@ class EventsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            event_template_id, event_id, **kwargs
-        )  # noqa: E501
+        return self.get_by_id_with_http_info(event_template_id, event_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(
-        self, event_template_id, event_id, **kwargs
-    ):  # noqa: E501
+    def get_by_id_with_http_info(self, event_template_id, event_id, **kwargs):  # noqa: E501
         """Gets the event  # noqa: E501
 
         This returns the previously created event. It contains all existing info for the event, but not necessarily the CRM object.  # noqa: E501
@@ -350,36 +311,21 @@ class EventsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and (
-            "event_template_id" not in local_var_params
-            or local_var_params["event_template_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_template_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'event_id' is set
-        if self.api_client.client_side_validation and (
-            "event_id" not in local_var_params
-            or local_var_params["event_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_id" not in local_var_params or local_var_params["event_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params[
-                "event_template_id"
-            ]  # noqa: E501
+            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
         if "event_id" in local_var_params:
             path_params["eventId"] = local_var_params["event_id"]  # noqa: E501
 
@@ -392,9 +338,7 @@ class EventsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -411,9 +355,7 @@ class EventsApi(object):
             response_type="TimelineEventResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -443,13 +385,9 @@ class EventsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_detail_by_id_with_http_info(
-            event_template_id, event_id, **kwargs
-        )  # noqa: E501
+        return self.get_detail_by_id_with_http_info(event_template_id, event_id, **kwargs)  # noqa: E501
 
-    def get_detail_by_id_with_http_info(
-        self, event_template_id, event_id, **kwargs
-    ):  # noqa: E501
+    def get_detail_by_id_with_http_info(self, event_template_id, event_id, **kwargs):  # noqa: E501
         """Gets the detailTemplate as rendered  # noqa: E501
 
         This will take the `detailTemplate` from the event template and return an object rendering the specified event. If the template references `extraData` that isn't found in the event, it will be ignored and we'll render without it.  # noqa: E501
@@ -485,36 +423,21 @@ class EventsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_detail_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_detail_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and (
-            "event_template_id" not in local_var_params
-            or local_var_params["event_template_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_template_id` when calling `get_detail_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_detail_by_id`")  # noqa: E501
         # verify the required parameter 'event_id' is set
-        if self.api_client.client_side_validation and (
-            "event_id" not in local_var_params
-            or local_var_params["event_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_id` when calling `get_detail_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_id" not in local_var_params or local_var_params["event_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_id` when calling `get_detail_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params[
-                "event_template_id"
-            ]  # noqa: E501
+            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
         if "event_id" in local_var_params:
             path_params["eventId"] = local_var_params["event_id"]  # noqa: E501
 
@@ -527,9 +450,7 @@ class EventsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -546,9 +467,7 @@ class EventsApi(object):
             response_type="EventDetail",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -579,13 +498,9 @@ class EventsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_render_by_id_with_http_info(
-            event_template_id, event_id, **kwargs
-        )  # noqa: E501
+        return self.get_render_by_id_with_http_info(event_template_id, event_id, **kwargs)  # noqa: E501
 
-    def get_render_by_id_with_http_info(
-        self, event_template_id, event_id, **kwargs
-    ):  # noqa: E501
+    def get_render_by_id_with_http_info(self, event_template_id, event_id, **kwargs):  # noqa: E501
         """Renders the header or detail as HTML  # noqa: E501
 
         This will take either the `headerTemplate` or `detailTemplate` from the event template and render for the specified event as HTML. If the template references `extraData` that isn't found in the event, it will be ignored and we'll render without it.  # noqa: E501
@@ -622,43 +537,26 @@ class EventsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_render_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_render_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and (
-            "event_template_id" not in local_var_params
-            or local_var_params["event_template_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_template_id` when calling `get_render_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_render_by_id`")  # noqa: E501
         # verify the required parameter 'event_id' is set
-        if self.api_client.client_side_validation and (
-            "event_id" not in local_var_params
-            or local_var_params["event_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_id` when calling `get_render_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_id" not in local_var_params or local_var_params["event_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_id` when calling `get_render_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "event_template_id" in local_var_params:
-            path_params["eventTemplateId"] = local_var_params[
-                "event_template_id"
-            ]  # noqa: E501
+            path_params["eventTemplateId"] = local_var_params["event_template_id"]  # noqa: E501
         if "event_id" in local_var_params:
             path_params["eventId"] = local_var_params["event_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "detail" in local_var_params and local_var_params["detail"] is not None
-        ):  # noqa: E501
+        if "detail" in local_var_params and local_var_params["detail"] is not None:  # noqa: E501
             query_params.append(("detail", local_var_params["detail"]))  # noqa: E501
 
         header_params = {}
@@ -668,9 +566,7 @@ class EventsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["text/html", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["text/html", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -687,9 +583,7 @@ class EventsApi(object):
             response_type="str",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

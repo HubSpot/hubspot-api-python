@@ -93,29 +93,15 @@ class ExtractApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method extract_by_path" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method extract_by_path" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and (
-            "path" not in local_var_params
-            or local_var_params["path"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `path` when calling `extract_by_path`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `path` when calling `extract_by_path`")  # noqa: E501
 
-        if (
-            self.api_client.client_side_validation
-            and "path" in local_var_params
-            and not re.search(r".+", local_var_params["path"])
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Invalid value for parameter `path` when calling `extract_by_path`, must conform to the pattern `/.+/`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `path` when calling `extract_by_path`, must conform to the pattern `/.+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -131,9 +117,7 @@ class ExtractApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -150,9 +134,7 @@ class ExtractApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

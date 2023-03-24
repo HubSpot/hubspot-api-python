@@ -36,9 +36,7 @@ class PublicObjectApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def post_crm_v3_objects_feedback_submissions_merge(
-        self, public_merge_input, **kwargs
-    ):  # noqa: E501
+    def post_crm_v3_objects_feedback_submissions_merge(self, public_merge_input, **kwargs):  # noqa: E501
         """Merge two feedback submissions with same type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -60,13 +58,9 @@ class PublicObjectApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.post_crm_v3_objects_feedback_submissions_merge_with_http_info(
-            public_merge_input, **kwargs
-        )  # noqa: E501
+        return self.post_crm_v3_objects_feedback_submissions_merge_with_http_info(public_merge_input, **kwargs)  # noqa: E501
 
-    def post_crm_v3_objects_feedback_submissions_merge_with_http_info(
-        self, public_merge_input, **kwargs
-    ):  # noqa: E501
+    def post_crm_v3_objects_feedback_submissions_merge_with_http_info(self, public_merge_input, **kwargs):  # noqa: E501
         """Merge two feedback submissions with same type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -100,20 +94,12 @@ class PublicObjectApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_crm_v3_objects_feedback_submissions_merge" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method post_crm_v3_objects_feedback_submissions_merge" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'public_merge_input' is set
-        if self.api_client.client_side_validation and (
-            "public_merge_input" not in local_var_params
-            or local_var_params["public_merge_input"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `public_merge_input` when calling `post_crm_v3_objects_feedback_submissions_merge`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("public_merge_input" not in local_var_params or local_var_params["public_merge_input"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_merge_input` when calling `post_crm_v3_objects_feedback_submissions_merge`")  # noqa: E501
 
         collection_formats = {}
 
@@ -130,16 +116,10 @@ class PublicObjectApi(object):
         if "public_merge_input" in local_var_params:
             body_params = local_var_params["public_merge_input"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -156,9 +136,7 @@ class PublicObjectApi(object):
             response_type="SimplePublicObject",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

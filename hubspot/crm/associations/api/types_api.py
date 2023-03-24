@@ -57,13 +57,9 @@ class TypesApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_all_with_http_info(
-            from_object_type, to_object_type, **kwargs
-        )  # noqa: E501
+        return self.get_all_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
 
-    def get_all_with_http_info(
-        self, from_object_type, to_object_type, **kwargs
-    ):  # noqa: E501
+    def get_all_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
         """List association types  # noqa: E501
 
         List all the valid association types available between two object types  # noqa: E501
@@ -99,39 +95,23 @@ class TypesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'from_object_type' is set
-        if self.api_client.client_side_validation and (
-            "from_object_type" not in local_var_params
-            or local_var_params["from_object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `from_object_type` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("from_object_type" not in local_var_params or local_var_params["from_object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `from_object_type` when calling `get_all`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
-        if self.api_client.client_side_validation and (
-            "to_object_type" not in local_var_params
-            or local_var_params["to_object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `to_object_type` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "from_object_type" in local_var_params:
-            path_params["fromObjectType"] = local_var_params[
-                "from_object_type"
-            ]  # noqa: E501
+            path_params["fromObjectType"] = local_var_params["from_object_type"]  # noqa: E501
         if "to_object_type" in local_var_params:
-            path_params["toObjectType"] = local_var_params[
-                "to_object_type"
-            ]  # noqa: E501
+            path_params["toObjectType"] = local_var_params["to_object_type"]  # noqa: E501
 
         query_params = []
 
@@ -142,9 +122,7 @@ class TypesApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -161,9 +139,7 @@ class TypesApi(object):
             response_type="CollectionResponsePublicAssociationDefinitionNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

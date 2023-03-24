@@ -42,9 +42,7 @@ class PublicSubscriptionStatusesResponse(object):
         "subscription_statuses": "subscriptionStatuses",
     }
 
-    def __init__(
-        self, recipient=None, subscription_statuses=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, recipient=None, subscription_statuses=None, local_vars_configuration=None):  # noqa: E501
         """PublicSubscriptionStatusesResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -77,12 +75,8 @@ class PublicSubscriptionStatusesResponse(object):
         :param recipient: The recipient of this PublicSubscriptionStatusesResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and recipient is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `recipient`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and recipient is None:  # noqa: E501
+            raise ValueError("Invalid value for `recipient`, must not be `None`")  # noqa: E501
 
         self._recipient = recipient
 
@@ -106,13 +100,8 @@ class PublicSubscriptionStatusesResponse(object):
         :param subscription_statuses: The subscription_statuses of this PublicSubscriptionStatusesResponse.  # noqa: E501
         :type: list[PublicSubscriptionStatus]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and subscription_statuses is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `subscription_statuses`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and subscription_statuses is None:  # noqa: E501
+            raise ValueError("Invalid value for `subscription_statuses`, must not be `None`")  # noqa: E501
 
         self._subscription_statuses = subscription_statuses
 
@@ -123,17 +112,13 @@ class PublicSubscriptionStatusesResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -103,12 +103,8 @@ class FieldTypeDefinition(object):
         :param name: The name of this FieldTypeDefinition.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -132,12 +128,8 @@ class FieldTypeDefinition(object):
         :param type: The type of this FieldTypeDefinition.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = [
             "string",
             "number",
@@ -150,15 +142,8 @@ class FieldTypeDefinition(object):
             "json",
             "object_coordinates",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
-                    type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -199,15 +184,8 @@ class FieldTypeDefinition(object):
             "calculation_read_time",
             "unknown",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and field_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    field_type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and field_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `field_type` ({0}), must be one of {1}".format(field_type, allowed_values))  # noqa: E501
 
         self._field_type = field_type
 
@@ -231,12 +209,8 @@ class FieldTypeDefinition(object):
         :param options: The options of this FieldTypeDefinition.  # noqa: E501
         :type: list[Option]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and options is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `options`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
+            raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
 
         self._options = options
 
@@ -347,15 +321,8 @@ class FieldTypeDefinition(object):
             "TEMPLATE",
             "UNKNOWN",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and referenced_object_type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `referenced_object_type` ({0}), must be one of {1}".format(  # noqa: E501
-                    referenced_object_type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and referenced_object_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `referenced_object_type` ({0}), must be one of {1}".format(referenced_object_type, allowed_values))  # noqa: E501
 
         self._referenced_object_type = referenced_object_type
 
@@ -366,17 +333,13 @@ class FieldTypeDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

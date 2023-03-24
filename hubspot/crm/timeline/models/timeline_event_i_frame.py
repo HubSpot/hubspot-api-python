@@ -95,12 +95,8 @@ class TimelineEventIFrame(object):
         :param link_label: The link_label of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and link_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `link_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and link_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `link_label`, must not be `None`")  # noqa: E501
 
         self._link_label = link_label
 
@@ -124,13 +120,8 @@ class TimelineEventIFrame(object):
         :param header_label: The header_label of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and header_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `header_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and header_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `header_label`, must not be `None`")  # noqa: E501
 
         self._header_label = header_label
 
@@ -154,12 +145,8 @@ class TimelineEventIFrame(object):
         :param url: The url of this TimelineEventIFrame.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -183,12 +170,8 @@ class TimelineEventIFrame(object):
         :param width: The width of this TimelineEventIFrame.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and width is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `width`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
 
         self._width = width
 
@@ -212,12 +195,8 @@ class TimelineEventIFrame(object):
         :param height: The height of this TimelineEventIFrame.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and height is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `height`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
         self._height = height
 
@@ -228,17 +207,13 @@ class TimelineEventIFrame(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

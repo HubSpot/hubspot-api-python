@@ -93,19 +93,12 @@ class UserAccountsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'account_id' is set
-        if self.api_client.client_side_validation and (
-            "account_id" not in local_var_params
-            or local_var_params["account_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `account_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("account_id" not in local_var_params or local_var_params["account_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `account_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -122,9 +115,7 @@ class UserAccountsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -141,9 +132,7 @@ class UserAccountsApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -172,13 +161,9 @@ class UserAccountsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.replace_with_http_info(
-            create_user_account_request_external, **kwargs
-        )  # noqa: E501
+        return self.replace_with_http_info(create_user_account_request_external, **kwargs)  # noqa: E501
 
-    def replace_with_http_info(
-        self, create_user_account_request_external, **kwargs
-    ):  # noqa: E501
+    def replace_with_http_info(self, create_user_account_request_external, **kwargs):  # noqa: E501
         """Create a user account  # noqa: E501
 
         Creates an account which contains the information about the account in the external accounting system.  This *must* be called after a user connects their HubSpot account to the external accounting system, as there is no other way for HubSpot to obtain the external account details.  # noqa: E501
@@ -213,20 +198,14 @@ class UserAccountsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method replace" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method replace" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'create_user_account_request_external' is set
         if self.api_client.client_side_validation and (
-            "create_user_account_request_external" not in local_var_params
-            or local_var_params["create_user_account_request_external"]  # noqa: E501
-            is None
+            "create_user_account_request_external" not in local_var_params or local_var_params["create_user_account_request_external"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `create_user_account_request_external` when calling `replace`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `create_user_account_request_external` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
@@ -243,16 +222,10 @@ class UserAccountsApi(object):
         if "create_user_account_request_external" in local_var_params:
             body_params = local_var_params["create_user_account_request_external"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -269,9 +242,7 @@ class UserAccountsApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

@@ -94,9 +94,7 @@ class IntegratorObjectResult(object):
         :param id: The id of this IntegratorObjectResult.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -119,12 +117,8 @@ class IntegratorObjectResult(object):
         :param title: The title of this IntegratorObjectResult.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and title is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `title`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
+            raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
 
         self._title = title
 
@@ -167,12 +161,8 @@ class IntegratorObjectResult(object):
         :param tokens: The tokens of this IntegratorObjectResult.  # noqa: E501
         :type: list[ObjectToken]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and tokens is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `tokens`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
+            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
 
         self._tokens = tokens
 
@@ -194,12 +184,8 @@ class IntegratorObjectResult(object):
         :param actions: The actions of this IntegratorObjectResult.  # noqa: E501
         :type: list[OneOfActionHookActionBodyIFrameActionBody]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and actions is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `actions`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and actions is None:  # noqa: E501
+            raise ValueError("Invalid value for `actions`, must not be `None`")  # noqa: E501
 
         self._actions = actions
 
@@ -210,17 +196,13 @@ class IntegratorObjectResult(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -56,13 +56,9 @@ class SettingsExternalApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(
-            app_id, event_detail_settings_url, **kwargs
-        )  # noqa: E501
+        return self.create_with_http_info(app_id, event_detail_settings_url, **kwargs)  # noqa: E501
 
-    def create_with_http_info(
-        self, app_id, event_detail_settings_url, **kwargs
-    ):  # noqa: E501
+    def create_with_http_info(self, app_id, event_detail_settings_url, **kwargs):  # noqa: E501
         """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -97,27 +93,15 @@ class SettingsExternalApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'event_detail_settings_url' is set
-        if self.api_client.client_side_validation and (
-            "event_detail_settings_url" not in local_var_params
-            or local_var_params["event_detail_settings_url"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `event_detail_settings_url` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("event_detail_settings_url" not in local_var_params or local_var_params["event_detail_settings_url"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `event_detail_settings_url` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -136,16 +120,10 @@ class SettingsExternalApi(object):
         if "event_detail_settings_url" in local_var_params:
             body_params = local_var_params["event_detail_settings_url"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey", "hapikey"]  # noqa: E501
@@ -162,9 +140,7 @@ class SettingsExternalApi(object):
             response_type="EventDetailSettings",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -228,19 +204,12 @@ class SettingsExternalApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
@@ -257,9 +226,7 @@ class SettingsExternalApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey", "hapikey"]  # noqa: E501
@@ -276,9 +243,7 @@ class SettingsExternalApi(object):
             response_type="EventDetailSettings",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

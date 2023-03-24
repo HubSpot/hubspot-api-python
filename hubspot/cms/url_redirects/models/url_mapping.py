@@ -137,9 +137,7 @@ class UrlMapping(object):
         :param id: The id of this UrlMapping.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -164,13 +162,8 @@ class UrlMapping(object):
         :param route_prefix: The route_prefix of this UrlMapping.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and route_prefix is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `route_prefix`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
+            raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
 
         self._route_prefix = route_prefix
 
@@ -194,12 +187,8 @@ class UrlMapping(object):
         :param destination: The destination of this UrlMapping.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and destination is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `destination`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
+            raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
 
         self._destination = destination
 
@@ -223,13 +212,8 @@ class UrlMapping(object):
         :param redirect_style: The redirect_style of this UrlMapping.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and redirect_style is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `redirect_style`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
+            raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
 
         self._redirect_style = redirect_style
 
@@ -253,13 +237,8 @@ class UrlMapping(object):
         :param is_only_after_not_found: The is_only_after_not_found of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_only_after_not_found is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_only_after_not_found`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_only_after_not_found is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_only_after_not_found`, must not be `None`")  # noqa: E501
 
         self._is_only_after_not_found = is_only_after_not_found
 
@@ -283,13 +262,8 @@ class UrlMapping(object):
         :param is_match_full_url: The is_match_full_url of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_match_full_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_match_full_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_match_full_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_match_full_url`, must not be `None`")  # noqa: E501
 
         self._is_match_full_url = is_match_full_url
 
@@ -313,13 +287,8 @@ class UrlMapping(object):
         :param is_match_query_string: The is_match_query_string of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_match_query_string is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_match_query_string`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_match_query_string is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_match_query_string`, must not be `None`")  # noqa: E501
 
         self._is_match_query_string = is_match_query_string
 
@@ -343,12 +312,8 @@ class UrlMapping(object):
         :param is_pattern: The is_pattern of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and is_pattern is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_pattern`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_pattern is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_pattern`, must not be `None`")  # noqa: E501
 
         self._is_pattern = is_pattern
 
@@ -372,13 +337,8 @@ class UrlMapping(object):
         :param is_trailing_slash_optional: The is_trailing_slash_optional of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_trailing_slash_optional is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_trailing_slash_optional`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_trailing_slash_optional is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_trailing_slash_optional`, must not be `None`")  # noqa: E501
 
         self._is_trailing_slash_optional = is_trailing_slash_optional
 
@@ -402,13 +362,8 @@ class UrlMapping(object):
         :param is_protocol_agnostic: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_protocol_agnostic is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_protocol_agnostic`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_protocol_agnostic is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_protocol_agnostic`, must not be `None`")  # noqa: E501
 
         self._is_protocol_agnostic = is_protocol_agnostic
 
@@ -432,12 +387,8 @@ class UrlMapping(object):
         :param precedence: The precedence of this UrlMapping.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and precedence is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `precedence`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and precedence is None:  # noqa: E501
+            raise ValueError("Invalid value for `precedence`, must not be `None`")  # noqa: E501
 
         self._precedence = precedence
 
@@ -490,17 +441,13 @@ class UrlMapping(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -83,12 +83,8 @@ class ActionConfirmationBody(object):
         :param prompt: The prompt of this ActionConfirmationBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and prompt is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `prompt`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and prompt is None:  # noqa: E501
+            raise ValueError("Invalid value for `prompt`, must not be `None`")  # noqa: E501
 
         self._prompt = prompt
 
@@ -110,13 +106,8 @@ class ActionConfirmationBody(object):
         :param confirm_button_label: The confirm_button_label of this ActionConfirmationBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and confirm_button_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `confirm_button_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and confirm_button_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `confirm_button_label`, must not be `None`")  # noqa: E501
 
         self._confirm_button_label = confirm_button_label
 
@@ -138,13 +129,8 @@ class ActionConfirmationBody(object):
         :param cancel_button_label: The cancel_button_label of this ActionConfirmationBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and cancel_button_label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `cancel_button_label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and cancel_button_label is None:  # noqa: E501
+            raise ValueError("Invalid value for `cancel_button_label`, must not be `None`")  # noqa: E501
 
         self._cancel_button_label = cancel_button_label
 
@@ -155,17 +141,13 @@ class ActionConfirmationBody(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

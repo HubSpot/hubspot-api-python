@@ -75,9 +75,7 @@ class Configuration(object):
         self.logger = {}
         """Logging Settings
         """
-        self.logger["package_logger"] = logging.getLogger(
-            "hubspot.communication_preferences"
-        )
+        self.logger["package_logger"] = logging.getLogger("hubspot.communication_preferences")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         self.logger_format = "%(asctime)s %(levelname)s %(message)s"
         """Log format
@@ -242,9 +240,7 @@ class Configuration(object):
 
         :return: The token for basic HTTP authentication.
         """
-        return urllib3.util.make_headers(
-            basic_auth=self.username + ":" + self.password
-        ).get("authorization")
+        return urllib3.util.make_headers(basic_auth=self.username + ":" + self.password).get("authorization")
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -271,13 +267,7 @@ class Configuration(object):
 
         :return: The report for debugging.
         """
-        return (
-            "Python SDK Debug Report:\n"
-            "OS: {env}\n"
-            "Python Version: {pyversion}\n"
-            "Version of the API: v3\n"
-            "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
-        )
+        return "Python SDK Debug Report:\n" "OS: {env}\n" "Python Version: {pyversion}\n" "Version of the API: v3\n" "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
         """Gets an array of host settings
@@ -302,11 +292,7 @@ class Configuration(object):
 
         # check array index out of bound
         if index < 0 or index >= len(servers):
-            raise ValueError(
-                "Invalid index {} when selecting the host settings. Must be less than {}".format(  # noqa: E501
-                    index, len(servers)
-                )
-            )
+            raise ValueError("Invalid index {} when selecting the host settings. Must be less than {}".format(index, len(servers)))  # noqa: E501
 
         server = servers[index]
         url = server["url"]
@@ -314,13 +300,8 @@ class Configuration(object):
         # go through variable and assign a value
         for variable_name in server["variables"]:
             if variable_name in variables:
-                if (
-                    variables[variable_name]
-                    in server["variables"][variable_name]["enum_values"]
-                ):
-                    url = url.replace(
-                        "{" + variable_name + "}", variables[variable_name]
-                    )
+                if variables[variable_name] in server["variables"][variable_name]["enum_values"]:
+                    url = url.replace("{" + variable_name + "}", variables[variable_name])
                 else:
                     raise ValueError(
                         "The variable `{}` in the host URL has invalid value {}. Must be {}.".format(  # noqa: E501

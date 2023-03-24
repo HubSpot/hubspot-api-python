@@ -90,12 +90,8 @@ class ImportResult(object):
         :param errors: The errors of this ImportResult.  # noqa: E501
         :type: list[Error]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and errors is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `errors`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
+            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
 
         self._errors = errors
 
@@ -119,13 +115,8 @@ class ImportResult(object):
         :param rows_imported: The rows_imported of this ImportResult.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and rows_imported is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `rows_imported`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and rows_imported is None:  # noqa: E501
+            raise ValueError("Invalid value for `rows_imported`, must not be `None`")  # noqa: E501
 
         self._rows_imported = rows_imported
 
@@ -149,13 +140,8 @@ class ImportResult(object):
         :param duplicate_rows: The duplicate_rows of this ImportResult.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and duplicate_rows is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `duplicate_rows`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and duplicate_rows is None:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_rows`, must not be `None`")  # noqa: E501
 
         self._duplicate_rows = duplicate_rows
 
@@ -179,13 +165,8 @@ class ImportResult(object):
         :param row_limit_exceeded: The row_limit_exceeded of this ImportResult.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and row_limit_exceeded is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `row_limit_exceeded`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and row_limit_exceeded is None:  # noqa: E501
+            raise ValueError("Invalid value for `row_limit_exceeded`, must not be `None`")  # noqa: E501
 
         self._row_limit_exceeded = row_limit_exceeded
 
@@ -196,17 +177,13 @@ class ImportResult(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

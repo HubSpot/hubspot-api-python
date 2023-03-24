@@ -182,9 +182,7 @@ class Domain(object):
         :param id: The id of this Domain.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -209,12 +207,8 @@ class Domain(object):
         :param domain: The domain of this Domain.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and domain is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `domain`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
+            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
 
         self._domain = domain
 
@@ -364,13 +358,8 @@ class Domain(object):
         :param is_resolving: The is_resolving of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_resolving is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_resolving`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_resolving is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_resolving`, must not be `None`")  # noqa: E501
 
         self._is_resolving = is_resolving
 
@@ -457,13 +446,8 @@ class Domain(object):
         :param is_used_for_blog_post: The is_used_for_blog_post of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_used_for_blog_post is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_used_for_blog_post`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_used_for_blog_post is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_used_for_blog_post`, must not be `None`")  # noqa: E501
 
         self._is_used_for_blog_post = is_used_for_blog_post
 
@@ -487,13 +471,8 @@ class Domain(object):
         :param is_used_for_site_page: The is_used_for_site_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_used_for_site_page is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_used_for_site_page`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_used_for_site_page is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_used_for_site_page`, must not be `None`")  # noqa: E501
 
         self._is_used_for_site_page = is_used_for_site_page
 
@@ -517,13 +496,8 @@ class Domain(object):
         :param is_used_for_landing_page: The is_used_for_landing_page of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_used_for_landing_page is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_used_for_landing_page`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_used_for_landing_page is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_used_for_landing_page`, must not be `None`")  # noqa: E501
 
         self._is_used_for_landing_page = is_used_for_landing_page
 
@@ -547,13 +521,8 @@ class Domain(object):
         :param is_used_for_email: The is_used_for_email of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_used_for_email is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_used_for_email`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_used_for_email is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_used_for_email`, must not be `None`")  # noqa: E501
 
         self._is_used_for_email = is_used_for_email
 
@@ -577,13 +546,8 @@ class Domain(object):
         :param is_used_for_knowledge: The is_used_for_knowledge of this Domain.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and is_used_for_knowledge is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `is_used_for_knowledge`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_used_for_knowledge is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_used_for_knowledge`, must not be `None`")  # noqa: E501
 
         self._is_used_for_knowledge = is_used_for_knowledge
 
@@ -657,17 +621,13 @@ class Domain(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

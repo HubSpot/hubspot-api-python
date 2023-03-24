@@ -36,9 +36,7 @@ class TermsResponse(object):
 
     attribute_map = {"result": "@result", "terms": "terms"}
 
-    def __init__(
-        self, result=None, terms=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, result=None, terms=None, local_vars_configuration=None):  # noqa: E501
         """TermsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,15 +71,8 @@ class TermsResponse(object):
         :type: str
         """
         allowed_values = ["OK", "ERR"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and result not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `result` ({0}), must be one of {1}".format(  # noqa: E501
-                    result, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and result not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `result` ({0}), must be one of {1}".format(result, allowed_values))  # noqa: E501
 
         self._result = result
 
@@ -105,12 +96,8 @@ class TermsResponse(object):
         :param terms: The terms of this TermsResponse.  # noqa: E501
         :type: list[AccountingExtensionTerm]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and terms is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `terms`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and terms is None:  # noqa: E501
+            raise ValueError("Invalid value for `terms`, must not be `None`")  # noqa: E501
 
         self._terms = terms
 
@@ -121,17 +108,13 @@ class TermsResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

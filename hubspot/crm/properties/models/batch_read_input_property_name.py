@@ -36,9 +36,7 @@ class BatchReadInputPropertyName(object):
 
     attribute_map = {"archived": "archived", "inputs": "inputs"}
 
-    def __init__(
-        self, archived=None, inputs=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, archived=None, inputs=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputPropertyName - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -69,12 +67,8 @@ class BatchReadInputPropertyName(object):
         :param archived: The archived of this BatchReadInputPropertyName.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and archived is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `archived`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
 
@@ -96,12 +90,8 @@ class BatchReadInputPropertyName(object):
         :param inputs: The inputs of this BatchReadInputPropertyName.  # noqa: E501
         :type: list[PropertyName]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and inputs is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `inputs`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and inputs is None:  # noqa: E501
+            raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
 
         self._inputs = inputs
 
@@ -112,17 +102,13 @@ class BatchReadInputPropertyName(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

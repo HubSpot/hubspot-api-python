@@ -99,13 +99,8 @@ class PublicObjectSearchRequest(object):
         :param filter_groups: The filter_groups of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[FilterGroup]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and filter_groups is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `filter_groups`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and filter_groups is None:  # noqa: E501
+            raise ValueError("Invalid value for `filter_groups`, must not be `None`")  # noqa: E501
 
         self._filter_groups = filter_groups
 
@@ -127,12 +122,8 @@ class PublicObjectSearchRequest(object):
         :param sorts: The sorts of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and sorts is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `sorts`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sorts is None:  # noqa: E501
+            raise ValueError("Invalid value for `sorts`, must not be `None`")  # noqa: E501
 
         self._sorts = sorts
 
@@ -175,12 +166,8 @@ class PublicObjectSearchRequest(object):
         :param properties: The properties of this PublicObjectSearchRequest.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -202,12 +189,8 @@ class PublicObjectSearchRequest(object):
         :param limit: The limit of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and limit is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `limit`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and limit is None:  # noqa: E501
+            raise ValueError("Invalid value for `limit`, must not be `None`")  # noqa: E501
 
         self._limit = limit
 
@@ -229,12 +212,8 @@ class PublicObjectSearchRequest(object):
         :param after: The after of this PublicObjectSearchRequest.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and after is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `after`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and after is None:  # noqa: E501
+            raise ValueError("Invalid value for `after`, must not be `None`")  # noqa: E501
 
         self._after = after
 
@@ -245,17 +224,13 @@ class PublicObjectSearchRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

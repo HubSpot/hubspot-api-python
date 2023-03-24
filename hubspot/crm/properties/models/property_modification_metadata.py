@@ -89,12 +89,8 @@ class PropertyModificationMetadata(object):
         :param archivable: The archivable of this PropertyModificationMetadata.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and archivable is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `archivable`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and archivable is None:  # noqa: E501
+            raise ValueError("Invalid value for `archivable`, must not be `None`")  # noqa: E501
 
         self._archivable = archivable
 
@@ -116,13 +112,8 @@ class PropertyModificationMetadata(object):
         :param read_only_definition: The read_only_definition of this PropertyModificationMetadata.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and read_only_definition is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `read_only_definition`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and read_only_definition is None:  # noqa: E501
+            raise ValueError("Invalid value for `read_only_definition`, must not be `None`")  # noqa: E501
 
         self._read_only_definition = read_only_definition
 
@@ -165,13 +156,8 @@ class PropertyModificationMetadata(object):
         :param read_only_value: The read_only_value of this PropertyModificationMetadata.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and read_only_value is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `read_only_value`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and read_only_value is None:  # noqa: E501
+            raise ValueError("Invalid value for `read_only_value`, must not be `None`")  # noqa: E501
 
         self._read_only_value = read_only_value
 
@@ -182,17 +168,13 @@ class PropertyModificationMetadata(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

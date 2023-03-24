@@ -57,13 +57,9 @@ class SyncApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_contact_with_http_info(
-            app_id, sync_contacts_request, **kwargs
-        )  # noqa: E501
+        return self.create_contact_with_http_info(app_id, sync_contacts_request, **kwargs)  # noqa: E501
 
-    def create_contact_with_http_info(
-        self, app_id, sync_contacts_request, **kwargs
-    ):  # noqa: E501
+    def create_contact_with_http_info(self, app_id, sync_contacts_request, **kwargs):  # noqa: E501
         """Import contacts  # noqa: E501
 
         Imports contacts' properties from an external accounting system to HubSpot. Import details, including property mappings, must be configured previously in HubSpot infrastructure.  # noqa: E501
@@ -99,28 +95,15 @@ class SyncApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_contact" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_contact" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `create_contact`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create_contact`")  # noqa: E501
         # verify the required parameter 'sync_contacts_request' is set
-        if self.api_client.client_side_validation and (
-            "sync_contacts_request" not in local_var_params
-            or local_var_params["sync_contacts_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `sync_contacts_request` when calling `create_contact`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("sync_contacts_request" not in local_var_params or local_var_params["sync_contacts_request"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `sync_contacts_request` when calling `create_contact`")  # noqa: E501
 
         collection_formats = {}
 
@@ -139,16 +122,10 @@ class SyncApi(object):
         if "sync_contacts_request" in local_var_params:
             body_params = local_var_params["sync_contacts_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -165,9 +142,7 @@ class SyncApi(object):
             response_type="ActionResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -197,13 +172,9 @@ class SyncApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_product_with_http_info(
-            app_id, sync_products_request, **kwargs
-        )  # noqa: E501
+        return self.create_product_with_http_info(app_id, sync_products_request, **kwargs)  # noqa: E501
 
-    def create_product_with_http_info(
-        self, app_id, sync_products_request, **kwargs
-    ):  # noqa: E501
+    def create_product_with_http_info(self, app_id, sync_products_request, **kwargs):  # noqa: E501
         """Import products  # noqa: E501
 
         Imports products' properties from an external accounting system to HubSpot. Import details, including property mappings, must be configured previously in HubSpot infrastructure.  # noqa: E501
@@ -239,28 +210,15 @@ class SyncApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_product" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_product" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `create_product`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `create_product`")  # noqa: E501
         # verify the required parameter 'sync_products_request' is set
-        if self.api_client.client_side_validation and (
-            "sync_products_request" not in local_var_params
-            or local_var_params["sync_products_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `sync_products_request` when calling `create_product`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("sync_products_request" not in local_var_params or local_var_params["sync_products_request"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `sync_products_request` when calling `create_product`")  # noqa: E501
 
         collection_formats = {}
 
@@ -279,16 +237,10 @@ class SyncApi(object):
         if "sync_products_request" in local_var_params:
             body_params = local_var_params["sync_products_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -305,9 +257,7 @@ class SyncApi(object):
             response_type="ActionResponse",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

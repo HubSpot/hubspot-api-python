@@ -36,9 +36,7 @@ class UpdateLanguagesRequestVNext(object):
 
     attribute_map = {"primary_id": "primaryId", "languages": "languages"}
 
-    def __init__(
-        self, primary_id=None, languages=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, primary_id=None, languages=None, local_vars_configuration=None):  # noqa: E501
         """UpdateLanguagesRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,12 +69,8 @@ class UpdateLanguagesRequestVNext(object):
         :param primary_id: The primary_id of this UpdateLanguagesRequestVNext.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and primary_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `primary_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and primary_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `primary_id`, must not be `None`")  # noqa: E501
 
         self._primary_id = primary_id
 
@@ -100,12 +94,8 @@ class UpdateLanguagesRequestVNext(object):
         :param languages: The languages of this UpdateLanguagesRequestVNext.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and languages is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `languages`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and languages is None:  # noqa: E501
+            raise ValueError("Invalid value for `languages`, must not be `None`")  # noqa: E501
         allowed_values = [
             "af",
             "af-na",
@@ -822,16 +812,10 @@ class UpdateLanguagesRequestVNext(object):
             "zu",
             "zu-za",
         ]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and not set(
-            languages.keys()
-        ).issubset(
-            set(allowed_values)
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and not set(languages.keys()).issubset(set(allowed_values)):  # noqa: E501
             raise ValueError(
                 "Invalid keys in `languages` [{0}], must be a subset of [{1}]".format(  # noqa: E501
-                    ", ".join(
-                        map(str, set(languages.keys()) - set(allowed_values))
-                    ),  # noqa: E501
+                    ", ".join(map(str, set(languages.keys()) - set(allowed_values))),  # noqa: E501
                     ", ".join(map(str, allowed_values)),
                 )
             )
@@ -845,17 +829,13 @@ class UpdateLanguagesRequestVNext(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

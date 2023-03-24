@@ -139,9 +139,7 @@ class ContentLanguageVariation(object):
         :param id: The id of this ContentLanguageVariation.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -164,12 +162,8 @@ class ContentLanguageVariation(object):
         :param name: The name of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -191,12 +185,8 @@ class ContentLanguageVariation(object):
         :param slug: The slug of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and slug is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `slug`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
+            raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
 
         self._slug = slug
 
@@ -218,12 +208,8 @@ class ContentLanguageVariation(object):
         :param state: The state of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and state is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `state`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
 
         self._state = state
 
@@ -245,12 +231,8 @@ class ContentLanguageVariation(object):
         :param author_name: The author_name of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and author_name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `author_name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and author_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `author_name`, must not be `None`")  # noqa: E501
 
         self._author_name = author_name
 
@@ -272,12 +254,8 @@ class ContentLanguageVariation(object):
         :param password: The password of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and password is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `password`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
+            raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
 
         self._password = password
 
@@ -299,13 +277,8 @@ class ContentLanguageVariation(object):
         :param public_access_rules_enabled: The public_access_rules_enabled of this ContentLanguageVariation.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and public_access_rules_enabled is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `public_access_rules_enabled`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and public_access_rules_enabled is None:  # noqa: E501
+            raise ValueError("Invalid value for `public_access_rules_enabled`, must not be `None`")  # noqa: E501
 
         self._public_access_rules_enabled = public_access_rules_enabled
 
@@ -327,13 +300,8 @@ class ContentLanguageVariation(object):
         :param public_access_rules: The public_access_rules of this ContentLanguageVariation.  # noqa: E501
         :type: list[object]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and public_access_rules is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `public_access_rules`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and public_access_rules is None:  # noqa: E501
+            raise ValueError("Invalid value for `public_access_rules`, must not be `None`")  # noqa: E501
 
         self._public_access_rules = public_access_rules
 
@@ -355,12 +323,8 @@ class ContentLanguageVariation(object):
         :param campaign: The campaign of this ContentLanguageVariation.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and campaign is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `campaign`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and campaign is None:  # noqa: E501
+            raise ValueError("Invalid value for `campaign`, must not be `None`")  # noqa: E501
 
         self._campaign = campaign
 
@@ -403,13 +367,8 @@ class ContentLanguageVariation(object):
         :param archived_in_dashboard: The archived_in_dashboard of this ContentLanguageVariation.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and archived_in_dashboard is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `archived_in_dashboard`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and archived_in_dashboard is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived_in_dashboard`, must not be `None`")  # noqa: E501
 
         self._archived_in_dashboard = archived_in_dashboard
 
@@ -431,12 +390,8 @@ class ContentLanguageVariation(object):
         :param created: The created of this ContentLanguageVariation.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and created is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `created`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
 
         self._created = created
 
@@ -458,12 +413,8 @@ class ContentLanguageVariation(object):
         :param updated: The updated of this ContentLanguageVariation.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and updated is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `updated`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
 
         self._updated = updated
 
@@ -485,13 +436,8 @@ class ContentLanguageVariation(object):
         :param publish_date: The publish_date of this ContentLanguageVariation.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and publish_date is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `publish_date`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and publish_date is None:  # noqa: E501
+            raise ValueError("Invalid value for `publish_date`, must not be `None`")  # noqa: E501
 
         self._publish_date = publish_date
 
@@ -502,17 +448,13 @@ class ContentLanguageVariation(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

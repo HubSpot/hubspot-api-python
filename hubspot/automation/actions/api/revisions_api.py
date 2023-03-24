@@ -58,13 +58,9 @@ class RevisionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(
-            definition_id, revision_id, app_id, **kwargs
-        )  # noqa: E501
+        return self.get_by_id_with_http_info(definition_id, revision_id, app_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(
-        self, definition_id, revision_id, app_id, **kwargs
-    ):  # noqa: E501
+    def get_by_id_with_http_info(self, definition_id, revision_id, app_id, **kwargs):  # noqa: E501
         """Get a revision for a custom action  # noqa: E501
 
         Returns the given version of a custom workflow action.  # noqa: E501
@@ -101,44 +97,24 @@ class RevisionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and (
-            "definition_id" not in local_var_params
-            or local_var_params["definition_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `definition_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `definition_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'revision_id' is set
-        if self.api_client.client_side_validation and (
-            "revision_id" not in local_var_params
-            or local_var_params["revision_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `revision_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("revision_id" not in local_var_params or local_var_params["revision_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `revision_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "definition_id" in local_var_params:
-            path_params["definitionId"] = local_var_params[
-                "definition_id"
-            ]  # noqa: E501
+            path_params["definitionId"] = local_var_params["definition_id"]  # noqa: E501
         if "revision_id" in local_var_params:
             path_params["revisionId"] = local_var_params["revision_id"]  # noqa: E501
         if "app_id" in local_var_params:
@@ -153,9 +129,7 @@ class RevisionsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -172,9 +146,7 @@ class RevisionsApi(object):
             response_type="ActionRevision",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -206,9 +178,7 @@ class RevisionsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_page_with_http_info(
-            definition_id, app_id, **kwargs
-        )  # noqa: E501
+        return self.get_page_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
         """Get all revisions for a custom action  # noqa: E501
@@ -248,47 +218,28 @@ class RevisionsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and (
-            "definition_id" not in local_var_params
-            or local_var_params["definition_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `definition_id` when calling `get_page`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `definition_id` when calling `get_page`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and (
-            "app_id" not in local_var_params
-            or local_var_params["app_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `app_id` when calling `get_page`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_page`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if "definition_id" in local_var_params:
-            path_params["definitionId"] = local_var_params[
-                "definition_id"
-            ]  # noqa: E501
+            path_params["definitionId"] = local_var_params["definition_id"]  # noqa: E501
         if "app_id" in local_var_params:
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
+        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
+        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
 
         header_params = {}
@@ -298,9 +249,7 @@ class RevisionsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
@@ -317,9 +266,7 @@ class RevisionsApi(object):
             response_type="CollectionResponseActionRevisionForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

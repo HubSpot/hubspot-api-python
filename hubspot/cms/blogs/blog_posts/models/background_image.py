@@ -83,12 +83,8 @@ class BackgroundImage(object):
         :param image_url: The image_url of this BackgroundImage.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and image_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `image_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and image_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `image_url`, must not be `None`")  # noqa: E501
 
         self._image_url = image_url
 
@@ -110,13 +106,8 @@ class BackgroundImage(object):
         :param background_size: The background_size of this BackgroundImage.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and background_size is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `background_size`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and background_size is None:  # noqa: E501
+            raise ValueError("Invalid value for `background_size`, must not be `None`")  # noqa: E501
 
         self._background_size = background_size
 
@@ -138,13 +129,8 @@ class BackgroundImage(object):
         :param background_position: The background_position of this BackgroundImage.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and background_position is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `background_position`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and background_position is None:  # noqa: E501
+            raise ValueError("Invalid value for `background_position`, must not be `None`")  # noqa: E501
         allowed_values = [
             "TOP_LEFT",
             "TOP_CENTER",
@@ -156,15 +142,8 @@ class BackgroundImage(object):
             "BOTTOM_CENTER",
             "BOTTOM_RIGHT",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and background_position not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `background_position` ({0}), must be one of {1}".format(  # noqa: E501
-                    background_position, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and background_position not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `background_position` ({0}), must be one of {1}".format(background_position, allowed_values))  # noqa: E501
 
         self._background_position = background_position
 
@@ -175,17 +154,13 @@ class BackgroundImage(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -112,12 +112,8 @@ class SignedUrl(object):
         :param expires_at: The expires_at of this SignedUrl.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and expires_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `expires_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and expires_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `expires_at`, must not be `None`")  # noqa: E501
 
         self._expires_at = expires_at
 
@@ -141,12 +137,8 @@ class SignedUrl(object):
         :param url: The url of this SignedUrl.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -170,12 +162,8 @@ class SignedUrl(object):
         :param name: The name of this SignedUrl.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -199,12 +187,8 @@ class SignedUrl(object):
         :param extension: The extension of this SignedUrl.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and extension is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `extension`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and extension is None:  # noqa: E501
+            raise ValueError("Invalid value for `extension`, must not be `None`")  # noqa: E501
 
         self._extension = extension
 
@@ -228,12 +212,8 @@ class SignedUrl(object):
         :param type: The type of this SignedUrl.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 
@@ -257,12 +237,8 @@ class SignedUrl(object):
         :param size: The size of this SignedUrl.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation and size is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `size`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
+            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
 
         self._size = size
 
@@ -319,17 +295,13 @@ class SignedUrl(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

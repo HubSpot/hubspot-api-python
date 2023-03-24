@@ -100,22 +100,11 @@ class ActionHookActionBody(object):
         :param type: The type of this ActionHookActionBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = ["ACTION_HOOK"]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and type not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}".format(  # noqa: E501
-                    type, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -158,12 +147,8 @@ class ActionHookActionBody(object):
         :param http_method: The http_method of this ActionHookActionBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and http_method is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `http_method`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and http_method is None:  # noqa: E501
+            raise ValueError("Invalid value for `http_method`, must not be `None`")  # noqa: E501
         allowed_values = [
             "CONNECT",
             "DELETE",
@@ -175,15 +160,8 @@ class ActionHookActionBody(object):
             "PUT",
             "TRACE",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and http_method not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `http_method` ({0}), must be one of {1}".format(  # noqa: E501
-                    http_method, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and http_method not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `http_method` ({0}), must be one of {1}".format(http_method, allowed_values))  # noqa: E501
 
         self._http_method = http_method
 
@@ -205,12 +183,8 @@ class ActionHookActionBody(object):
         :param url: The url of this ActionHookActionBody.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
 
@@ -253,13 +227,8 @@ class ActionHookActionBody(object):
         :param property_names_included: The property_names_included of this ActionHookActionBody.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and property_names_included is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `property_names_included`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
+            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
 
         self._property_names_included = property_names_included
 
@@ -270,17 +239,13 @@ class ActionHookActionBody(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

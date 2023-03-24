@@ -93,19 +93,12 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'form_id' is set
-        if self.api_client.client_side_validation and (
-            "form_id" not in local_var_params
-            or local_var_params["form_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `form_id` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("form_id" not in local_var_params or local_var_params["form_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `form_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -122,9 +115,7 @@ class FormsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -141,9 +132,7 @@ class FormsApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -172,13 +161,9 @@ class FormsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(
-            form_definition_create_request_base, **kwargs
-        )  # noqa: E501
+        return self.create_with_http_info(form_definition_create_request_base, **kwargs)  # noqa: E501
 
-    def create_with_http_info(
-        self, form_definition_create_request_base, **kwargs
-    ):  # noqa: E501
+    def create_with_http_info(self, form_definition_create_request_base, **kwargs):  # noqa: E501
         """Create a form  # noqa: E501
 
         Add a new `hubspot` form  # noqa: E501
@@ -213,20 +198,14 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'form_definition_create_request_base' is set
         if self.api_client.client_side_validation and (
-            "form_definition_create_request_base" not in local_var_params
-            or local_var_params["form_definition_create_request_base"]  # noqa: E501
-            is None
+            "form_definition_create_request_base" not in local_var_params or local_var_params["form_definition_create_request_base"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `form_definition_create_request_base` when calling `create`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `form_definition_create_request_base` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -243,16 +222,10 @@ class FormsApi(object):
         if "form_definition_create_request_base" in local_var_params:
             body_params = local_var_params["form_definition_create_request_base"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -269,9 +242,7 @@ class FormsApi(object):
             response_type="FormDefinitionBase",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -339,20 +310,12 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'form_id' is set
-        if self.api_client.client_side_validation and (
-            "form_id" not in local_var_params
-            or local_var_params["form_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `form_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("form_id" not in local_var_params or local_var_params["form_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `form_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
@@ -361,12 +324,8 @@ class FormsApi(object):
             path_params["formId"] = local_var_params["form_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -375,9 +334,7 @@ class FormsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -394,9 +351,7 @@ class FormsApi(object):
             response_type="FormDefinitionBase",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -468,10 +423,7 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -480,27 +432,14 @@ class FormsApi(object):
         path_params = {}
 
         query_params = []
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
+        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
+        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
-        if (
-            "form_types" in local_var_params
-            and local_var_params["form_types"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("formTypes", local_var_params["form_types"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "form_types" in local_var_params and local_var_params["form_types"] is not None:  # noqa: E501
+            query_params.append(("formTypes", local_var_params["form_types"]))  # noqa: E501
             collection_formats["formTypes"] = "multi"  # noqa: E501
 
         header_params = {}
@@ -510,9 +449,7 @@ class FormsApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -529,9 +466,7 @@ class FormsApi(object):
             response_type="CollectionResponseFormDefinitionBaseForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -561,13 +496,9 @@ class FormsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.replace_with_http_info(
-            form_id, hub_spot_form_definition, **kwargs
-        )  # noqa: E501
+        return self.replace_with_http_info(form_id, hub_spot_form_definition, **kwargs)  # noqa: E501
 
-    def replace_with_http_info(
-        self, form_id, hub_spot_form_definition, **kwargs
-    ):  # noqa: E501
+    def replace_with_http_info(self, form_id, hub_spot_form_definition, **kwargs):  # noqa: E501
         """Update a form definition  # noqa: E501
 
         Update all fields of a hubspot form definition.  # noqa: E501
@@ -603,27 +534,15 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method replace" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method replace" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'form_id' is set
-        if self.api_client.client_side_validation and (
-            "form_id" not in local_var_params
-            or local_var_params["form_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `form_id` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("form_id" not in local_var_params or local_var_params["form_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `form_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'hub_spot_form_definition' is set
-        if self.api_client.client_side_validation and (
-            "hub_spot_form_definition" not in local_var_params
-            or local_var_params["hub_spot_form_definition"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `hub_spot_form_definition` when calling `replace`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("hub_spot_form_definition" not in local_var_params or local_var_params["hub_spot_form_definition"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `hub_spot_form_definition` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
 
@@ -642,16 +561,10 @@ class FormsApi(object):
         if "hub_spot_form_definition" in local_var_params:
             body_params = local_var_params["hub_spot_form_definition"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -668,17 +581,13 @@ class FormsApi(object):
             response_type="FormDefinitionBase",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def update(
-        self, form_id, hub_spot_form_definition_patch_request, **kwargs
-    ):  # noqa: E501
+    def update(self, form_id, hub_spot_form_definition_patch_request, **kwargs):  # noqa: E501
         """Partially update a form definition  # noqa: E501
 
         Update some of the form definition components  # noqa: E501
@@ -702,13 +611,9 @@ class FormsApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(
-            form_id, hub_spot_form_definition_patch_request, **kwargs
-        )  # noqa: E501
+        return self.update_with_http_info(form_id, hub_spot_form_definition_patch_request, **kwargs)  # noqa: E501
 
-    def update_with_http_info(
-        self, form_id, hub_spot_form_definition_patch_request, **kwargs
-    ):  # noqa: E501
+    def update_with_http_info(self, form_id, hub_spot_form_definition_patch_request, **kwargs):  # noqa: E501
         """Partially update a form definition  # noqa: E501
 
         Update some of the form definition components  # noqa: E501
@@ -744,28 +649,17 @@ class FormsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'form_id' is set
-        if self.api_client.client_side_validation and (
-            "form_id" not in local_var_params
-            or local_var_params["form_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `form_id` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("form_id" not in local_var_params or local_var_params["form_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `form_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'hub_spot_form_definition_patch_request' is set
         if self.api_client.client_side_validation and (
-            "hub_spot_form_definition_patch_request" not in local_var_params
-            or local_var_params["hub_spot_form_definition_patch_request"]  # noqa: E501
-            is None
+            "hub_spot_form_definition_patch_request" not in local_var_params or local_var_params["hub_spot_form_definition_patch_request"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `hub_spot_form_definition_patch_request` when calling `update`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `hub_spot_form_definition_patch_request` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -784,16 +678,10 @@ class FormsApi(object):
         if "hub_spot_form_definition_patch_request" in local_var_params:
             body_params = local_var_params["hub_spot_form_definition_patch_request"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -810,9 +698,7 @@ class FormsApi(object):
             response_type="FormDefinitionBase",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

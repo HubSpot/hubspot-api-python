@@ -75,13 +75,8 @@ class NumberFieldValidation(object):
         :param min_allowed_digits: The min_allowed_digits of this NumberFieldValidation.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and min_allowed_digits is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `min_allowed_digits`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and min_allowed_digits is None:  # noqa: E501
+            raise ValueError("Invalid value for `min_allowed_digits`, must not be `None`")  # noqa: E501
 
         self._min_allowed_digits = min_allowed_digits
 
@@ -103,13 +98,8 @@ class NumberFieldValidation(object):
         :param max_allowed_digits: The max_allowed_digits of this NumberFieldValidation.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and max_allowed_digits is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `max_allowed_digits`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and max_allowed_digits is None:  # noqa: E501
+            raise ValueError("Invalid value for `max_allowed_digits`, must not be `None`")  # noqa: E501
 
         self._max_allowed_digits = max_allowed_digits
 
@@ -120,17 +110,13 @@ class NumberFieldValidation(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

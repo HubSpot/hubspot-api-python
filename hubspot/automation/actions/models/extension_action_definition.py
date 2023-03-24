@@ -128,9 +128,7 @@ class ExtensionActionDefinition(object):
         :param id: The id of this ExtensionActionDefinition.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -153,12 +151,8 @@ class ExtensionActionDefinition(object):
         :param revision_id: The revision_id of this ExtensionActionDefinition.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and revision_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `revision_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and revision_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `revision_id`, must not be `None`")  # noqa: E501
 
         self._revision_id = revision_id
 
@@ -182,12 +176,8 @@ class ExtensionActionDefinition(object):
         :param functions: The functions of this ExtensionActionDefinition.  # noqa: E501
         :type: list[ActionFunctionIdentifier]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and functions is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `functions`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and functions is None:  # noqa: E501
+            raise ValueError("Invalid value for `functions`, must not be `None`")  # noqa: E501
 
         self._functions = functions
 
@@ -211,12 +201,8 @@ class ExtensionActionDefinition(object):
         :param action_url: The action_url of this ExtensionActionDefinition.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and action_url is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `action_url`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and action_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `action_url`, must not be `None`")  # noqa: E501
 
         self._action_url = action_url
 
@@ -240,12 +226,8 @@ class ExtensionActionDefinition(object):
         :param published: The published of this ExtensionActionDefinition.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and published is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `published`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and published is None:  # noqa: E501
+            raise ValueError("Invalid value for `published`, must not be `None`")  # noqa: E501
 
         self._published = published
 
@@ -292,13 +274,8 @@ class ExtensionActionDefinition(object):
         :param input_fields: The input_fields of this ExtensionActionDefinition.  # noqa: E501
         :type: list[InputFieldDefinition]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and input_fields is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `input_fields`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and input_fields is None:  # noqa: E501
+            raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
 
         self._input_fields = input_fields
 
@@ -366,12 +343,8 @@ class ExtensionActionDefinition(object):
         :param labels: The labels of this ExtensionActionDefinition.  # noqa: E501
         :type: dict(str, ActionLabels)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and labels is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `labels`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
+            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
         self._labels = labels
 
@@ -395,13 +368,8 @@ class ExtensionActionDefinition(object):
         :param object_types: The object_types of this ExtensionActionDefinition.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and object_types is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_types`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_types is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_types`, must not be `None`")  # noqa: E501
 
         self._object_types = object_types
 
@@ -412,17 +380,13 @@ class ExtensionActionDefinition(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

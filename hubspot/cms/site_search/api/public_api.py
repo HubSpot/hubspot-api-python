@@ -95,29 +95,15 @@ class PublicApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'content_id' is set
-        if self.api_client.client_side_validation and (
-            "content_id" not in local_var_params
-            or local_var_params["content_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `content_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("content_id" not in local_var_params or local_var_params["content_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `content_id` when calling `get_by_id`")  # noqa: E501
 
-        if (
-            self.api_client.client_side_validation
-            and "content_id" in local_var_params
-            and not re.search(r".*", local_var_params["content_id"])
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Invalid value for parameter `content_id` when calling `get_by_id`, must conform to the pattern `/.*/`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and "content_id" in local_var_params and not re.search(r".*", local_var_params["content_id"]):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `content_id` when calling `get_by_id`, must conform to the pattern `/.*/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -125,9 +111,7 @@ class PublicApi(object):
             path_params["contentId"] = local_var_params["content_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "type" in local_var_params and local_var_params["type"] is not None
-        ):  # noqa: E501
+        if "type" in local_var_params and local_var_params["type"] is not None:  # noqa: E501
             query_params.append(("type", local_var_params["type"]))  # noqa: E501
 
         header_params = {}
@@ -137,9 +121,7 @@ class PublicApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -156,9 +138,7 @@ class PublicApi(object):
             response_type="IndexedData",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -274,9 +254,7 @@ class PublicApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method search" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method search" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -287,99 +265,41 @@ class PublicApi(object):
         query_params = []
         if "q" in local_var_params and local_var_params["q"] is not None:  # noqa: E501
             query_params.append(("q", local_var_params["q"]))  # noqa: E501
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
+        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "offset" in local_var_params and local_var_params["offset"] is not None
-        ):  # noqa: E501
+        if "offset" in local_var_params and local_var_params["offset"] is not None:  # noqa: E501
             query_params.append(("offset", local_var_params["offset"]))  # noqa: E501
-        if (
-            "language" in local_var_params and local_var_params["language"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("language", local_var_params["language"])
-            )  # noqa: E501
-        if (
-            "match_prefix" in local_var_params
-            and local_var_params["match_prefix"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("matchPrefix", local_var_params["match_prefix"])
-            )  # noqa: E501
-        if (
-            "autocomplete" in local_var_params
-            and local_var_params["autocomplete"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("autocomplete", local_var_params["autocomplete"])
-            )  # noqa: E501
-        if (
-            "popularity_boost" in local_var_params
-            and local_var_params["popularity_boost"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("popularityBoost", local_var_params["popularity_boost"])
-            )  # noqa: E501
-        if (
-            "boost_limit" in local_var_params
-            and local_var_params["boost_limit"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("boostLimit", local_var_params["boost_limit"])
-            )  # noqa: E501
-        if (
-            "boost_recent" in local_var_params
-            and local_var_params["boost_recent"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("boostRecent", local_var_params["boost_recent"])
-            )  # noqa: E501
-        if (
-            "table_id" in local_var_params and local_var_params["table_id"] is not None
-        ):  # noqa: E501
+        if "language" in local_var_params and local_var_params["language"] is not None:  # noqa: E501
+            query_params.append(("language", local_var_params["language"]))  # noqa: E501
+        if "match_prefix" in local_var_params and local_var_params["match_prefix"] is not None:  # noqa: E501
+            query_params.append(("matchPrefix", local_var_params["match_prefix"]))  # noqa: E501
+        if "autocomplete" in local_var_params and local_var_params["autocomplete"] is not None:  # noqa: E501
+            query_params.append(("autocomplete", local_var_params["autocomplete"]))  # noqa: E501
+        if "popularity_boost" in local_var_params and local_var_params["popularity_boost"] is not None:  # noqa: E501
+            query_params.append(("popularityBoost", local_var_params["popularity_boost"]))  # noqa: E501
+        if "boost_limit" in local_var_params and local_var_params["boost_limit"] is not None:  # noqa: E501
+            query_params.append(("boostLimit", local_var_params["boost_limit"]))  # noqa: E501
+        if "boost_recent" in local_var_params and local_var_params["boost_recent"] is not None:  # noqa: E501
+            query_params.append(("boostRecent", local_var_params["boost_recent"]))  # noqa: E501
+        if "table_id" in local_var_params and local_var_params["table_id"] is not None:  # noqa: E501
             query_params.append(("tableId", local_var_params["table_id"]))  # noqa: E501
-        if (
-            "hubdb_query" in local_var_params
-            and local_var_params["hubdb_query"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("hubdbQuery", local_var_params["hubdb_query"])
-            )  # noqa: E501
-        if (
-            "domain" in local_var_params and local_var_params["domain"] is not None
-        ):  # noqa: E501
+        if "hubdb_query" in local_var_params and local_var_params["hubdb_query"] is not None:  # noqa: E501
+            query_params.append(("hubdbQuery", local_var_params["hubdb_query"]))  # noqa: E501
+        if "domain" in local_var_params and local_var_params["domain"] is not None:  # noqa: E501
             query_params.append(("domain", local_var_params["domain"]))  # noqa: E501
             collection_formats["domain"] = "multi"  # noqa: E501
-        if (
-            "type" in local_var_params and local_var_params["type"] is not None
-        ):  # noqa: E501
+        if "type" in local_var_params and local_var_params["type"] is not None:  # noqa: E501
             query_params.append(("type", local_var_params["type"]))  # noqa: E501
             collection_formats["type"] = "multi"  # noqa: E501
-        if (
-            "path_prefix" in local_var_params
-            and local_var_params["path_prefix"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("pathPrefix", local_var_params["path_prefix"])
-            )  # noqa: E501
+        if "path_prefix" in local_var_params and local_var_params["path_prefix"] is not None:  # noqa: E501
+            query_params.append(("pathPrefix", local_var_params["path_prefix"]))  # noqa: E501
             collection_formats["pathPrefix"] = "multi"  # noqa: E501
-        if (
-            "_property" in local_var_params
-            and local_var_params["_property"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("property", local_var_params["_property"])
-            )  # noqa: E501
+        if "_property" in local_var_params and local_var_params["_property"] is not None:  # noqa: E501
+            query_params.append(("property", local_var_params["_property"]))  # noqa: E501
             collection_formats["property"] = "multi"  # noqa: E501
-        if (
-            "length" in local_var_params and local_var_params["length"] is not None
-        ):  # noqa: E501
+        if "length" in local_var_params and local_var_params["length"] is not None:  # noqa: E501
             query_params.append(("length", local_var_params["length"]))  # noqa: E501
-        if (
-            "group_id" in local_var_params and local_var_params["group_id"] is not None
-        ):  # noqa: E501
+        if "group_id" in local_var_params and local_var_params["group_id"] is not None:  # noqa: E501
             query_params.append(("groupId", local_var_params["group_id"]))  # noqa: E501
             collection_formats["groupId"] = "multi"  # noqa: E501
 
@@ -390,9 +310,7 @@ class PublicApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -409,9 +327,7 @@ class PublicApi(object):
             response_type="PublicSearchResults",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

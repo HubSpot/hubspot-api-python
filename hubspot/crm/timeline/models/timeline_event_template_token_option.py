@@ -36,9 +36,7 @@ class TimelineEventTemplateTokenOption(object):
 
     attribute_map = {"value": "value", "label": "label"}
 
-    def __init__(
-        self, value=None, label=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, value=None, label=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateTokenOption - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -69,12 +67,8 @@ class TimelineEventTemplateTokenOption(object):
         :param value: The value of this TimelineEventTemplateTokenOption.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and value is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `value`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
 
@@ -96,12 +90,8 @@ class TimelineEventTemplateTokenOption(object):
         :param label: The label of this TimelineEventTemplateTokenOption.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -112,17 +102,13 @@ class TimelineEventTemplateTokenOption(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

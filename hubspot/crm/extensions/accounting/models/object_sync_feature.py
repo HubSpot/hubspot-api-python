@@ -67,12 +67,8 @@ class ObjectSyncFeature(object):
         :param to_hub_spot: The to_hub_spot of this ObjectSyncFeature.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and to_hub_spot is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `to_hub_spot`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and to_hub_spot is None:  # noqa: E501
+            raise ValueError("Invalid value for `to_hub_spot`, must not be `None`")  # noqa: E501
 
         self._to_hub_spot = to_hub_spot
 
@@ -83,17 +79,13 @@ class ObjectSyncFeature(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

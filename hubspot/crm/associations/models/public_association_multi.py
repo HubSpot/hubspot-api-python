@@ -40,9 +40,7 @@ class PublicAssociationMulti(object):
 
     attribute_map = {"_from": "from", "to": "to", "paging": "paging"}
 
-    def __init__(
-        self, _from=None, to=None, paging=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, _from=None, to=None, paging=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationMulti - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -76,12 +74,8 @@ class PublicAssociationMulti(object):
         :param _from: The _from of this PublicAssociationMulti.  # noqa: E501
         :type: PublicObjectId
         """
-        if (
-            self.local_vars_configuration.client_side_validation and _from is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `_from`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and _from is None:  # noqa: E501
+            raise ValueError("Invalid value for `_from`, must not be `None`")  # noqa: E501
 
         self.__from = _from
 
@@ -105,9 +99,7 @@ class PublicAssociationMulti(object):
         :param to: The to of this PublicAssociationMulti.  # noqa: E501
         :type: list[AssociatedId]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and to is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
@@ -140,17 +132,13 @@ class PublicAssociationMulti(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -100,12 +100,8 @@ class ExternalUnifiedEvent(object):
         :param object_type: The object_type of this ExternalUnifiedEvent.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and object_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
 
         self._object_type = object_type
 
@@ -129,12 +125,8 @@ class ExternalUnifiedEvent(object):
         :param object_id: The object_id of this ExternalUnifiedEvent.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and object_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
 
         self._object_id = object_id
 
@@ -158,12 +150,8 @@ class ExternalUnifiedEvent(object):
         :param event_type: The event_type of this ExternalUnifiedEvent.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and event_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `event_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and event_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
 
         self._event_type = event_type
 
@@ -187,12 +175,8 @@ class ExternalUnifiedEvent(object):
         :param occurred_at: The occurred_at of this ExternalUnifiedEvent.  # noqa: E501
         :type: datetime
         """
-        if (
-            self.local_vars_configuration.client_side_validation and occurred_at is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `occurred_at`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and occurred_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `occurred_at`, must not be `None`")  # noqa: E501
 
         self._occurred_at = occurred_at
 
@@ -216,9 +200,7 @@ class ExternalUnifiedEvent(object):
         :param id: The id of this ExternalUnifiedEvent.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -241,12 +223,8 @@ class ExternalUnifiedEvent(object):
         :param properties: The properties of this ExternalUnifiedEvent.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -257,17 +235,13 @@ class ExternalUnifiedEvent(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

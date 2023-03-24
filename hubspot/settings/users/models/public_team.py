@@ -90,9 +90,7 @@ class PublicTeam(object):
         :param id: The id of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -117,12 +115,8 @@ class PublicTeam(object):
         :param name: The name of this PublicTeam.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and name is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `name`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -146,12 +140,8 @@ class PublicTeam(object):
         :param user_ids: The user_ids of this PublicTeam.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation and user_ids is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `user_ids`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and user_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_ids`, must not be `None`")  # noqa: E501
 
         self._user_ids = user_ids
 
@@ -175,13 +165,8 @@ class PublicTeam(object):
         :param secondary_user_ids: The secondary_user_ids of this PublicTeam.  # noqa: E501
         :type: list[str]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and secondary_user_ids is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `secondary_user_ids`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and secondary_user_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `secondary_user_ids`, must not be `None`")  # noqa: E501
 
         self._secondary_user_ids = secondary_user_ids
 
@@ -192,17 +177,13 @@ class PublicTeam(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

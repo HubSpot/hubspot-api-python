@@ -138,9 +138,7 @@ class TimelineEventResponse(object):
         :param id: The id of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and id is None
-        ):  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
@@ -165,13 +163,8 @@ class TimelineEventResponse(object):
         :param event_template_id: The event_template_id of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and event_template_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `event_template_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and event_template_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `event_template_id`, must not be `None`")  # noqa: E501
 
         self._event_template_id = event_template_id
 
@@ -310,12 +303,8 @@ class TimelineEventResponse(object):
         :param tokens: The tokens of this TimelineEventResponse.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and tokens is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `tokens`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
+            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
 
         self._tokens = tokens
 
@@ -383,12 +372,8 @@ class TimelineEventResponse(object):
         :param object_type: The object_type of this TimelineEventResponse.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and object_type is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `object_type`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
 
         self._object_type = object_type
 
@@ -420,17 +405,13 @@ class TimelineEventResponse(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

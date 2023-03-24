@@ -39,9 +39,7 @@ class SimplePublicObjectInputForCreate(object):
 
     attribute_map = {"properties": "properties", "associations": "associations"}
 
-    def __init__(
-        self, properties=None, associations=None, local_vars_configuration=None
-    ):  # noqa: E501
+    def __init__(self, properties=None, associations=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectInputForCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -72,12 +70,8 @@ class SimplePublicObjectInputForCreate(object):
         :param properties: The properties of this SimplePublicObjectInputForCreate.  # noqa: E501
         :type: dict(str, str)
         """
-        if (
-            self.local_vars_configuration.client_side_validation and properties is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `properties`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -99,13 +93,8 @@ class SimplePublicObjectInputForCreate(object):
         :param associations: The associations of this SimplePublicObjectInputForCreate.  # noqa: E501
         :type: list[PublicAssociationsForObject]
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and associations is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `associations`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
+            raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
 
         self._associations = associations
 
@@ -116,17 +105,13 @@ class SimplePublicObjectInputForCreate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

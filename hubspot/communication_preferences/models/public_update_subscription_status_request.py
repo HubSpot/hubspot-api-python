@@ -92,13 +92,8 @@ class PublicUpdateSubscriptionStatusRequest(object):
         :param email_address: The email_address of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and email_address is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `email_address`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
+            raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
 
         self._email_address = email_address
 
@@ -122,13 +117,8 @@ class PublicUpdateSubscriptionStatusRequest(object):
         :param subscription_id: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and subscription_id is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `subscription_id`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
 
         self._subscription_id = subscription_id
 
@@ -161,15 +151,8 @@ class PublicUpdateSubscriptionStatusRequest(object):
             "PROCESS_AND_STORE",
             "LEGITIMATE_INTEREST_OTHER",
         ]  # noqa: E501
-        if (
-            self.local_vars_configuration.client_side_validation
-            and legal_basis not in allowed_values
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `legal_basis` ({0}), must be one of {1}".format(  # noqa: E501
-                    legal_basis, allowed_values
-                )
-            )
+        if self.local_vars_configuration.client_side_validation and legal_basis not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
 
         self._legal_basis = legal_basis
 
@@ -203,17 +186,13 @@ class PublicUpdateSubscriptionStatusRequest(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

@@ -57,13 +57,9 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(
-            object_type, property_name, **kwargs
-        )  # noqa: E501
+        return self.archive_with_http_info(object_type, property_name, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(
-        self, object_type, property_name, **kwargs
-    ):  # noqa: E501
+    def archive_with_http_info(self, object_type, property_name, **kwargs):  # noqa: E501
         """Archive a property  # noqa: E501
 
         Move a property identified by {propertyName} to the recycling bin.  # noqa: E501
@@ -99,27 +95,15 @@ class CoreApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method archive" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
         # verify the required parameter 'property_name' is set
-        if self.api_client.client_side_validation and (
-            "property_name" not in local_var_params
-            or local_var_params["property_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `property_name` when calling `archive`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("property_name" not in local_var_params or local_var_params["property_name"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `property_name` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -127,9 +111,7 @@ class CoreApi(object):
         if "object_type" in local_var_params:
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
         if "property_name" in local_var_params:
-            path_params["propertyName"] = local_var_params[
-                "property_name"
-            ]  # noqa: E501
+            path_params["propertyName"] = local_var_params["property_name"]  # noqa: E501
 
         query_params = []
 
@@ -140,9 +122,7 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -159,9 +139,7 @@ class CoreApi(object):
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -191,13 +169,9 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(
-            object_type, property_create, **kwargs
-        )  # noqa: E501
+        return self.create_with_http_info(object_type, property_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(
-        self, object_type, property_create, **kwargs
-    ):  # noqa: E501
+    def create_with_http_info(self, object_type, property_create, **kwargs):  # noqa: E501
         """Create a property  # noqa: E501
 
         Create and return a copy of a new property for the specified object type.  # noqa: E501
@@ -233,27 +207,15 @@ class CoreApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method create" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
         # verify the required parameter 'property_create' is set
-        if self.api_client.client_side_validation and (
-            "property_create" not in local_var_params
-            or local_var_params["property_create"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `property_create` when calling `create`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("property_create" not in local_var_params or local_var_params["property_create"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `property_create` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -272,16 +234,10 @@ class CoreApi(object):
         if "property_create" in local_var_params:
             body_params = local_var_params["property_create"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -298,9 +254,7 @@ class CoreApi(object):
             response_type="ModelProperty",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -370,19 +324,12 @@ class CoreApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method get_all" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_all`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
 
@@ -391,19 +338,10 @@ class CoreApi(object):
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
-        if (
-            "properties" in local_var_params
-            and local_var_params["properties"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("properties", local_var_params["properties"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
 
         header_params = {}
 
@@ -412,9 +350,7 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -431,9 +367,7 @@ class CoreApi(object):
             response_type="CollectionResponsePropertyNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -465,13 +399,9 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_name_with_http_info(
-            object_type, property_name, **kwargs
-        )  # noqa: E501
+        return self.get_by_name_with_http_info(object_type, property_name, **kwargs)  # noqa: E501
 
-    def get_by_name_with_http_info(
-        self, object_type, property_name, **kwargs
-    ):  # noqa: E501
+    def get_by_name_with_http_info(self, object_type, property_name, **kwargs):  # noqa: E501
         """Read a property  # noqa: E501
 
         Read a property identified by {propertyName}.  # noqa: E501
@@ -514,28 +444,15 @@ class CoreApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_name" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_name" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `get_by_name`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_name`")  # noqa: E501
         # verify the required parameter 'property_name' is set
-        if self.api_client.client_side_validation and (
-            "property_name" not in local_var_params
-            or local_var_params["property_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `property_name` when calling `get_by_name`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("property_name" not in local_var_params or local_var_params["property_name"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `property_name` when calling `get_by_name`")  # noqa: E501
 
         collection_formats = {}
 
@@ -543,24 +460,13 @@ class CoreApi(object):
         if "object_type" in local_var_params:
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
         if "property_name" in local_var_params:
-            path_params["propertyName"] = local_var_params[
-                "property_name"
-            ]  # noqa: E501
+            path_params["propertyName"] = local_var_params["property_name"]  # noqa: E501
 
         query_params = []
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
-        if (
-            "properties" in local_var_params
-            and local_var_params["properties"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("properties", local_var_params["properties"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
 
         header_params = {}
 
@@ -569,9 +475,7 @@ class CoreApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -588,17 +492,13 @@ class CoreApi(object):
             response_type="ModelProperty",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
         )
 
-    def update(
-        self, object_type, property_name, property_update, **kwargs
-    ):  # noqa: E501
+    def update(self, object_type, property_name, property_update, **kwargs):  # noqa: E501
         """Update a property  # noqa: E501
 
         Perform a partial update of a property identified by {propertyName}. Provided fields will be overwritten.  # noqa: E501
@@ -623,13 +523,9 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(
-            object_type, property_name, property_update, **kwargs
-        )  # noqa: E501
+        return self.update_with_http_info(object_type, property_name, property_update, **kwargs)  # noqa: E501
 
-    def update_with_http_info(
-        self, object_type, property_name, property_update, **kwargs
-    ):  # noqa: E501
+    def update_with_http_info(self, object_type, property_name, property_update, **kwargs):  # noqa: E501
         """Update a property  # noqa: E501
 
         Perform a partial update of a property identified by {propertyName}. Provided fields will be overwritten.  # noqa: E501
@@ -666,35 +562,18 @@ class CoreApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'" " to method update" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and (
-            "object_type" not in local_var_params
-            or local_var_params["object_type"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `object_type` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'property_name' is set
-        if self.api_client.client_side_validation and (
-            "property_name" not in local_var_params
-            or local_var_params["property_name"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `property_name` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("property_name" not in local_var_params or local_var_params["property_name"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `property_name` when calling `update`")  # noqa: E501
         # verify the required parameter 'property_update' is set
-        if self.api_client.client_side_validation and (
-            "property_update" not in local_var_params
-            or local_var_params["property_update"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `property_update` when calling `update`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("property_update" not in local_var_params or local_var_params["property_update"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `property_update` when calling `update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -702,9 +581,7 @@ class CoreApi(object):
         if "object_type" in local_var_params:
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
         if "property_name" in local_var_params:
-            path_params["propertyName"] = local_var_params[
-                "property_name"
-            ]  # noqa: E501
+            path_params["propertyName"] = local_var_params["property_name"]  # noqa: E501
 
         query_params = []
 
@@ -717,16 +594,10 @@ class CoreApi(object):
         if "property_update" in local_var_params:
             body_params = local_var_params["property_update"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -743,9 +614,7 @@ class CoreApi(object):
             response_type="ModelProperty",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

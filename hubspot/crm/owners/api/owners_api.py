@@ -95,20 +95,12 @@ class OwnersApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_by_id" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'owner_id' is set
-        if self.api_client.client_side_validation and (
-            "owner_id" not in local_var_params
-            or local_var_params["owner_id"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `owner_id` when calling `get_by_id`"
-            )  # noqa: E501
+        if self.api_client.client_side_validation and ("owner_id" not in local_var_params or local_var_params["owner_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `owner_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
@@ -117,19 +109,10 @@ class OwnersApi(object):
             path_params["ownerId"] = local_var_params["owner_id"]  # noqa: E501
 
         query_params = []
-        if (
-            "id_property" in local_var_params
-            and local_var_params["id_property"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("idProperty", local_var_params["id_property"])
-            )  # noqa: E501
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if "id_property" in local_var_params and local_var_params["id_property"] is not None:  # noqa: E501
+            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -138,9 +121,7 @@ class OwnersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -157,9 +138,7 @@ class OwnersApi(object):
             response_type="PublicOwner",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
@@ -229,10 +208,7 @@ class OwnersApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_page" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_page" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
 
@@ -241,24 +217,14 @@ class OwnersApi(object):
         path_params = {}
 
         query_params = []
-        if (
-            "email" in local_var_params and local_var_params["email"] is not None
-        ):  # noqa: E501
+        if "email" in local_var_params and local_var_params["email"] is not None:  # noqa: E501
             query_params.append(("email", local_var_params["email"]))  # noqa: E501
-        if (
-            "after" in local_var_params and local_var_params["after"] is not None
-        ):  # noqa: E501
+        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if (
-            "limit" in local_var_params and local_var_params["limit"] is not None
-        ):  # noqa: E501
+        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if (
-            "archived" in local_var_params and local_var_params["archived"] is not None
-        ):  # noqa: E501
-            query_params.append(
-                ("archived", local_var_params["archived"])
-            )  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -267,9 +233,7 @@ class OwnersApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -286,9 +250,7 @@ class OwnersApi(object):
             response_type="CollectionResponsePublicOwnerForwardPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,

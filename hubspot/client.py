@@ -2,16 +2,8 @@ from urllib3.util.retry import Retry
 
 
 class Client:
-    def __init__(
-        self,
-        api_key: str = None,
-        access_token: str = None,
-        retry: Retry = None,
-        **kwargs
-    ):
-        self.config = dict(
-            {"api_key": api_key, "access_token": access_token, "retry": retry}, **kwargs
-        )
+    def __init__(self, api_key: str = None, access_token: str = None, retry: Retry = None, **kwargs):
+        self.config = dict({"api_key": api_key, "access_token": access_token, "retry": retry}, **kwargs)
 
     @classmethod
     def create(cls, **kwargs):

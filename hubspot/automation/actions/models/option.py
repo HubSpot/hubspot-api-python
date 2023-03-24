@@ -105,12 +105,8 @@ class Option(object):
         :param label: The label of this Option.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and label is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `label`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
@@ -134,12 +130,8 @@ class Option(object):
         :param value: The value of this Option.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and value is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `value`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
 
@@ -161,13 +153,8 @@ class Option(object):
         :param display_order: The display_order of this Option.  # noqa: E501
         :type: int
         """
-        if (
-            self.local_vars_configuration.client_side_validation
-            and display_order is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `display_order`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
+            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
 
         self._display_order = display_order
 
@@ -189,12 +176,8 @@ class Option(object):
         :param double_data: The double_data of this Option.  # noqa: E501
         :type: float
         """
-        if (
-            self.local_vars_configuration.client_side_validation and double_data is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `double_data`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and double_data is None:  # noqa: E501
+            raise ValueError("Invalid value for `double_data`, must not be `None`")  # noqa: E501
 
         self._double_data = double_data
 
@@ -216,12 +199,8 @@ class Option(object):
         :param hidden: The hidden of this Option.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and hidden is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `hidden`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and hidden is None:  # noqa: E501
+            raise ValueError("Invalid value for `hidden`, must not be `None`")  # noqa: E501
 
         self._hidden = hidden
 
@@ -243,12 +222,8 @@ class Option(object):
         :param description: The description of this Option.  # noqa: E501
         :type: str
         """
-        if (
-            self.local_vars_configuration.client_side_validation and description is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `description`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
@@ -270,12 +245,8 @@ class Option(object):
         :param read_only: The read_only of this Option.  # noqa: E501
         :type: bool
         """
-        if (
-            self.local_vars_configuration.client_side_validation and read_only is None
-        ):  # noqa: E501
-            raise ValueError(
-                "Invalid value for `read_only`, must not be `None`"
-            )  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and read_only is None:  # noqa: E501
+            raise ValueError("Invalid value for `read_only`, must not be `None`")  # noqa: E501
 
         self._read_only = read_only
 
@@ -286,17 +257,13 @@ class Option(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(
-                    map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value)
-                )
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
                 result[attr] = dict(
                     map(
-                        lambda item: (item[0], item[1].to_dict())
-                        if hasattr(item[1], "to_dict")
-                        else item,
+                        lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item,
                         value.items(),
                     )
                 )

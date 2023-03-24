@@ -56,13 +56,9 @@ class SingleSendApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.send_email_with_http_info(
-            public_single_send_request_egg, **kwargs
-        )  # noqa: E501
+        return self.send_email_with_http_info(public_single_send_request_egg, **kwargs)  # noqa: E501
 
-    def send_email_with_http_info(
-        self, public_single_send_request_egg, **kwargs
-    ):  # noqa: E501
+    def send_email_with_http_info(self, public_single_send_request_egg, **kwargs):  # noqa: E501
         """Send a single transactional email asynchronously.  # noqa: E501
 
         Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.  # noqa: E501
@@ -97,20 +93,14 @@ class SingleSendApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method send_email" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method send_email" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'public_single_send_request_egg' is set
         if self.api_client.client_side_validation and (
-            "public_single_send_request_egg" not in local_var_params
-            or local_var_params["public_single_send_request_egg"] is None  # noqa: E501
+            "public_single_send_request_egg" not in local_var_params or local_var_params["public_single_send_request_egg"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError(
-                "Missing the required parameter `public_single_send_request_egg` when calling `send_email`"
-            )  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_single_send_request_egg` when calling `send_email`")  # noqa: E501
 
         collection_formats = {}
 
@@ -127,16 +117,10 @@ class SingleSendApi(object):
         if "public_single_send_request_egg" in local_var_params:
             body_params = local_var_params["public_single_send_request_egg"]
         # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json", "*/*"]
-        )  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params[
-            "Content-Type"
-        ] = self.api_client.select_header_content_type(  # noqa: E501
-            ["application/json"]
-        )  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
@@ -153,9 +137,7 @@ class SingleSendApi(object):
             response_type="EmailSendStatusView",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get(
-                "_return_http_data_only"
-            ),  # noqa: E501
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
