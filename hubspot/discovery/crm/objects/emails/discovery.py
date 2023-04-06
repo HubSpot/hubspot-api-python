@@ -8,10 +8,6 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BasicApi")
 
     @property
-    def associations_api(self) -> api_client.AssociationsApi:
-        return self._configure_api_client(api_client, "AssociationsApi")
-
-    @property
     def search_api(self) -> api_client.SearchApi:
         return self._configure_api_client(api_client, "SearchApi")
 
