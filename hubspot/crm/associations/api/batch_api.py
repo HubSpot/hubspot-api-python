@@ -33,19 +33,19 @@ class BatchApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def archive(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
         """Archive a batch of associations  # noqa: E501
 
         Remove the associations between all pairs of objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.archive(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicAssociation batch_input_public_association:
+        :param BatchInputPublicAssociation batch_input_public_association: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -58,21 +58,21 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(from_object_type, to_object_type, batch_input_public_association, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
         """Archive a batch of associations  # noqa: E501
 
         Remove the associations between all pairs of objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.archive_with_http_info(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicAssociation batch_input_public_association:
+        :param BatchInputPublicAssociation batch_input_public_association: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -106,6 +106,11 @@ class BatchApi(object):
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `to_object_type` when calling `archive`")  # noqa: E501
+        # verify the required parameter 'batch_input_public_association' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_public_association" not in local_var_params or local_var_params["batch_input_public_association"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_public_association` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
@@ -152,19 +157,19 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def create(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
         """Create a batch of associations  # noqa: E501
 
         Associate all pairs of objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.create(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicAssociation batch_input_public_association:
+        :param BatchInputPublicAssociation batch_input_public_association: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -177,21 +182,21 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
+        return self.create_with_http_info(from_object_type, to_object_type, batch_input_public_association, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def create_with_http_info(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
         """Create a batch of associations  # noqa: E501
 
         Associate all pairs of objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.create_with_http_info(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicAssociation batch_input_public_association:
+        :param BatchInputPublicAssociation batch_input_public_association: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -225,6 +230,11 @@ class BatchApi(object):
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `to_object_type` when calling `create`")  # noqa: E501
+        # verify the required parameter 'batch_input_public_association' is set
+        if self.api_client.client_side_validation and (
+            "batch_input_public_association" not in local_var_params or local_var_params["batch_input_public_association"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_public_association` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -271,19 +281,19 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def read(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def read(self, from_object_type, to_object_type, batch_input_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of associations  # noqa: E501
 
         Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.read(from_object_type, to_object_type, batch_input_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicObjectId batch_input_public_object_id:
+        :param BatchInputPublicObjectId batch_input_public_object_id: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -296,21 +306,21 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.read_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
+        return self.read_with_http_info(from_object_type, to_object_type, batch_input_public_object_id, **kwargs)  # noqa: E501
 
-    def read_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
+    def read_with_http_info(self, from_object_type, to_object_type, batch_input_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of associations  # noqa: E501
 
         Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.read_with_http_info(from_object_type, to_object_type, async_req=True)
+        >>> thread = api.read_with_http_info(from_object_type, to_object_type, batch_input_public_object_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str from_object_type: (required)
         :param str to_object_type: (required)
-        :param BatchInputPublicObjectId batch_input_public_object_id:
+        :param BatchInputPublicObjectId batch_input_public_object_id: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -344,6 +354,9 @@ class BatchApi(object):
         # verify the required parameter 'to_object_type' is set
         if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `to_object_type` when calling `read`")  # noqa: E501
+        # verify the required parameter 'batch_input_public_object_id' is set
+        if self.api_client.client_side_validation and ("batch_input_public_object_id" not in local_var_params or local_var_params["batch_input_public_object_id"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_public_object_id` when calling `read`")  # noqa: E501
 
         collection_formats = {}
 

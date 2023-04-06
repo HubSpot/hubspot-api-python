@@ -259,7 +259,7 @@ class Configuration(object):
         """
         return [
             {
-                "url": "https://api.hubapi.com/",
+                "url": "https://api.hubapi.com",
                 "description": "No description provided",
             }
         ]
