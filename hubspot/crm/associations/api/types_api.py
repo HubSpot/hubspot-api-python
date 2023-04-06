@@ -52,7 +52,7 @@ class TypesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponsePublicAssociationDefiniton
+        :return: CollectionResponsePublicAssociationDefinitionNoPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -80,7 +80,7 @@ class TypesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponsePublicAssociationDefiniton, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponsePublicAssociationDefinitionNoPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -136,7 +136,7 @@ class TypesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponsePublicAssociationDefiniton",  # noqa: E501
+            response_type="CollectionResponsePublicAssociationDefinitionNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501

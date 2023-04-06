@@ -33,60 +33,87 @@ class ModelProperty(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'updated_at': 'datetime',
-        'created_at': 'datetime',
-        'archived_at': 'datetime',
-        'name': 'str',
-        'label': 'str',
-        'type': 'str',
-        'field_type': 'str',
-        'description': 'str',
-        'group_name': 'str',
-        'options': 'list[Option]',
-        'created_user_id': 'str',
-        'updated_user_id': 'str',
-        'referenced_object_type': 'str',
-        'display_order': 'int',
-        'calculated': 'bool',
-        'external_options': 'bool',
-        'archived': 'bool',
-        'has_unique_value': 'bool',
-        'hidden': 'bool',
-        'hubspot_defined': 'bool',
-        'show_currency_symbol': 'bool',
-        'modification_metadata': 'PropertyModificationMetadata',
-        'form_field': 'bool',
-        'calculation_formula': 'str'
+        "updated_at": "datetime",
+        "created_at": "datetime",
+        "archived_at": "datetime",
+        "name": "str",
+        "label": "str",
+        "type": "str",
+        "field_type": "str",
+        "description": "str",
+        "group_name": "str",
+        "options": "list[Option]",
+        "created_user_id": "str",
+        "updated_user_id": "str",
+        "referenced_object_type": "str",
+        "display_order": "int",
+        "calculated": "bool",
+        "external_options": "bool",
+        "archived": "bool",
+        "has_unique_value": "bool",
+        "hidden": "bool",
+        "hubspot_defined": "bool",
+        "show_currency_symbol": "bool",
+        "modification_metadata": "PropertyModificationMetadata",
+        "form_field": "bool",
+        "calculation_formula": "str",
     }
 
     attribute_map = {
-        'updated_at': 'updatedAt',
-        'created_at': 'createdAt',
-        'archived_at': 'archivedAt',
-        'name': 'name',
-        'label': 'label',
-        'type': 'type',
-        'field_type': 'fieldType',
-        'description': 'description',
-        'group_name': 'groupName',
-        'options': 'options',
-        'created_user_id': 'createdUserId',
-        'updated_user_id': 'updatedUserId',
-        'referenced_object_type': 'referencedObjectType',
-        'display_order': 'displayOrder',
-        'calculated': 'calculated',
-        'external_options': 'externalOptions',
-        'archived': 'archived',
-        'has_unique_value': 'hasUniqueValue',
-        'hidden': 'hidden',
-        'hubspot_defined': 'hubspotDefined',
-        'show_currency_symbol': 'showCurrencySymbol',
-        'modification_metadata': 'modificationMetadata',
-        'form_field': 'formField',
-        'calculation_formula': 'calculationFormula'
+        "updated_at": "updatedAt",
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
+        "name": "name",
+        "label": "label",
+        "type": "type",
+        "field_type": "fieldType",
+        "description": "description",
+        "group_name": "groupName",
+        "options": "options",
+        "created_user_id": "createdUserId",
+        "updated_user_id": "updatedUserId",
+        "referenced_object_type": "referencedObjectType",
+        "display_order": "displayOrder",
+        "calculated": "calculated",
+        "external_options": "externalOptions",
+        "archived": "archived",
+        "has_unique_value": "hasUniqueValue",
+        "hidden": "hidden",
+        "hubspot_defined": "hubspotDefined",
+        "show_currency_symbol": "showCurrencySymbol",
+        "modification_metadata": "modificationMetadata",
+        "form_field": "formField",
+        "calculation_formula": "calculationFormula",
     }
 
-    def __init__(self, updated_at=None, created_at=None, archived_at=None, name=None, label=None, type=None, field_type=None, description=None, group_name=None, options=None, created_user_id=None, updated_user_id=None, referenced_object_type=None, display_order=None, calculated=None, external_options=None, archived=None, has_unique_value=None, hidden=None, hubspot_defined=None, show_currency_symbol=None, modification_metadata=None, form_field=None, calculation_formula=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        updated_at=None,
+        created_at=None,
+        archived_at=None,
+        name=None,
+        label=None,
+        type=None,
+        field_type=None,
+        description=None,
+        group_name=None,
+        options=None,
+        created_user_id=None,
+        updated_user_id=None,
+        referenced_object_type=None,
+        display_order=None,
+        calculated=None,
+        external_options=None,
+        archived=None,
+        has_unique_value=None,
+        hidden=None,
+        hubspot_defined=None,
+        show_currency_symbol=None,
+        modification_metadata=None,
+        form_field=None,
+        calculation_formula=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """ModelProperty - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -727,18 +754,11 @@ class ModelProperty(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

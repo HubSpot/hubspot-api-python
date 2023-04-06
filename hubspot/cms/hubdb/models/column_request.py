@@ -175,6 +175,7 @@ class ColumnRequest(object):
             "FOREIGN_ID",
             "VIDEO",
             "CTA",
+            "FILE",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501

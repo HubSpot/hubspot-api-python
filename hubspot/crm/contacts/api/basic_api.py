@@ -138,17 +138,17 @@ class BasicApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, simple_public_object_input, **kwargs):  # noqa: E501
+    def create(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
         Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contacts is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(simple_public_object_input, async_req=True)
+        >>> thread = api.create(simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SimplePublicObjectInput simple_public_object_input: (required)
+        :param SimplePublicObjectInputForCreate simple_public_object_input_for_create: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -161,19 +161,19 @@ class BasicApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(simple_public_object_input, **kwargs)  # noqa: E501
+        return self.create_with_http_info(simple_public_object_input_for_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, simple_public_object_input, **kwargs):  # noqa: E501
+    def create_with_http_info(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
         Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contacts is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(simple_public_object_input, async_req=True)
+        >>> thread = api.create_with_http_info(simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param SimplePublicObjectInput simple_public_object_input: (required)
+        :param SimplePublicObjectInputForCreate simple_public_object_input_for_create: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -190,7 +190,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["simple_public_object_input"]  # noqa: E501
+        all_params = ["simple_public_object_input_for_create"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -201,9 +201,11 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'simple_public_object_input' is set
-        if self.api_client.client_side_validation and ("simple_public_object_input" not in local_var_params or local_var_params["simple_public_object_input"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `simple_public_object_input` when calling `create`")  # noqa: E501
+        # verify the required parameter 'simple_public_object_input_for_create' is set
+        if self.api_client.client_side_validation and (
+            "simple_public_object_input_for_create" not in local_var_params or local_var_params["simple_public_object_input_for_create"] is None  # noqa: E501
+        ):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `simple_public_object_input_for_create` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -217,8 +219,8 @@ class BasicApi(object):
         local_var_files = {}
 
         body_params = None
-        if "simple_public_object_input" in local_var_params:
-            body_params = local_var_params["simple_public_object_input"]
+        if "simple_public_object_input_for_create" in local_var_params:
+            body_params = local_var_params["simple_public_object_input_for_create"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 

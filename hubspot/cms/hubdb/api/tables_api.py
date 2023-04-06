@@ -868,8 +868,8 @@ class TablesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to return. (required)
-        :param bool archived: Set this to `true` to return an archived table. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Set this to `true` to return an archived table. Defaults to `false`.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -895,8 +895,8 @@ class TablesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to return. (required)
-        :param bool archived: Set this to `true` to return an archived table. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Set this to `true` to return an archived table. Defaults to `false`.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -913,7 +913,7 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params = ["table_id_or_name", "include_foreign_ids", "archived"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -935,10 +935,10 @@ class TablesApi(object):
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
         if "include_foreign_ids" in local_var_params and local_var_params["include_foreign_ids"] is not None:  # noqa: E501
             query_params.append(("includeForeignIds", local_var_params["include_foreign_ids"]))  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -981,8 +981,8 @@ class TablesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to return. (required)
-        :param bool archived: Set this to `true` to return details for an archived table. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Set this to `true` to return details for an archived table. Defaults to `false`.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1008,8 +1008,8 @@ class TablesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to return. (required)
-        :param bool archived: Set this to `true` to return details for an archived table. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Set this to `true` to return details for an archived table. Defaults to `false`.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1026,7 +1026,7 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params = ["table_id_or_name", "include_foreign_ids", "archived"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -1048,10 +1048,10 @@ class TablesApi(object):
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
         if "include_foreign_ids" in local_var_params and local_var_params["include_foreign_ids"] is not None:  # noqa: E501
             query_params.append(("includeForeignIds", local_var_params["include_foreign_ids"]))  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 
@@ -1538,8 +1538,8 @@ class TablesApi(object):
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to update. (required)
         :param HubDbTableV3Request hub_db_table_v3_request: The JSON schema for the table being updated. (required)
-        :param bool archived: Specifies whether to return archived tables. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Specifies whether to return archived tables. Defaults to `false`.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1566,8 +1566,8 @@ class TablesApi(object):
         :param async_req bool: execute request asynchronously
         :param str table_id_or_name: The ID or name of the table to update. (required)
         :param HubDbTableV3Request hub_db_table_v3_request: The JSON schema for the table being updated. (required)
-        :param bool archived: Specifies whether to return archived tables. Defaults to `false`.
         :param bool include_foreign_ids: Set this to `true` to populate foreign ID values in the result.
+        :param bool archived: Specifies whether to return archived tables. Defaults to `false`.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1584,7 +1584,7 @@ class TablesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "hub_db_table_v3_request", "archived", "include_foreign_ids"]  # noqa: E501
+        all_params = ["table_id_or_name", "hub_db_table_v3_request", "include_foreign_ids", "archived"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -1609,10 +1609,10 @@ class TablesApi(object):
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
         if "include_foreign_ids" in local_var_params and local_var_params["include_foreign_ids"] is not None:  # noqa: E501
             query_params.append(("includeForeignIds", local_var_params["include_foreign_ids"]))  # noqa: E501
+        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = {}
 

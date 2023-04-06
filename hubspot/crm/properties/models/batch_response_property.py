@@ -32,29 +32,11 @@ class BatchResponseProperty(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        "status": "str",
-        "results": "list[ModelProperty]",
-        "num_errors": "int",
-        "errors": "list[StandardError]",
-        "requested_at": "datetime",
-        "started_at": "datetime",
-        "completed_at": "datetime",
-        "links": "dict(str, str)",
-    }
+    openapi_types = {"status": "str", "results": "list[ModelProperty]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict(str, str)"}
 
-    attribute_map = {
-        "status": "status",
-        "results": "results",
-        "num_errors": "numErrors",
-        "errors": "errors",
-        "requested_at": "requestedAt",
-        "started_at": "startedAt",
-        "completed_at": "completedAt",
-        "links": "links",
-    }
+    attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
 
-    def __init__(self, status=None, results=None, num_errors=None, errors=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseProperty - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -62,8 +44,6 @@ class BatchResponseProperty(object):
 
         self._status = None
         self._results = None
-        self._num_errors = None
-        self._errors = None
         self._requested_at = None
         self._started_at = None
         self._completed_at = None
@@ -72,10 +52,6 @@ class BatchResponseProperty(object):
 
         self.status = status
         self.results = results
-        if num_errors is not None:
-            self.num_errors = num_errors
-        if errors is not None:
-            self.errors = errors
         if requested_at is not None:
             self.requested_at = requested_at
         self.started_at = started_at
@@ -131,48 +107,6 @@ class BatchResponseProperty(object):
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
-
-    @property
-    def num_errors(self):
-        """Gets the num_errors of this BatchResponseProperty.  # noqa: E501
-
-
-        :return: The num_errors of this BatchResponseProperty.  # noqa: E501
-        :rtype: int
-        """
-        return self._num_errors
-
-    @num_errors.setter
-    def num_errors(self, num_errors):
-        """Sets the num_errors of this BatchResponseProperty.
-
-
-        :param num_errors: The num_errors of this BatchResponseProperty.  # noqa: E501
-        :type: int
-        """
-
-        self._num_errors = num_errors
-
-    @property
-    def errors(self):
-        """Gets the errors of this BatchResponseProperty.  # noqa: E501
-
-
-        :return: The errors of this BatchResponseProperty.  # noqa: E501
-        :rtype: list[StandardError]
-        """
-        return self._errors
-
-    @errors.setter
-    def errors(self, errors):
-        """Sets the errors of this BatchResponseProperty.
-
-
-        :param errors: The errors of this BatchResponseProperty.  # noqa: E501
-        :type: list[StandardError]
-        """
-
-        self._errors = errors
 
     @property
     def requested_at(self):
