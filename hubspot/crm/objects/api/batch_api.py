@@ -148,17 +148,17 @@ class BatchApi(object):
             collection_formats=collection_formats,
         )
 
-    def create(self, object_type, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
+    def create(self, object_type, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of objects  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(object_type, batch_input_simple_public_object_input, async_req=True)
+        >>> thread = api.create(object_type, batch_input_simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
+        :param BatchInputSimplePublicObjectInputForCreate batch_input_simple_public_object_input_for_create: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -171,19 +171,19 @@ class BatchApi(object):
                  returns the request thread.
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(object_type, batch_input_simple_public_object_input, **kwargs)  # noqa: E501
+        return self.create_with_http_info(object_type, batch_input_simple_public_object_input_for_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, object_type, batch_input_simple_public_object_input, **kwargs):  # noqa: E501
+    def create_with_http_info(self, object_type, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of objects  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(object_type, batch_input_simple_public_object_input, async_req=True)
+        >>> thread = api.create_with_http_info(object_type, batch_input_simple_public_object_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
-        :param BatchInputSimplePublicObjectInput batch_input_simple_public_object_input: (required)
+        :param BatchInputSimplePublicObjectInputForCreate batch_input_simple_public_object_input_for_create: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -200,7 +200,7 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "batch_input_simple_public_object_input"]  # noqa: E501
+        all_params = ["object_type", "batch_input_simple_public_object_input_for_create"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -214,11 +214,11 @@ class BatchApi(object):
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
-        # verify the required parameter 'batch_input_simple_public_object_input' is set
+        # verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
         if self.api_client.client_side_validation and (
-            "batch_input_simple_public_object_input" not in local_var_params or local_var_params["batch_input_simple_public_object_input"] is None  # noqa: E501
+            "batch_input_simple_public_object_input_for_create" not in local_var_params or local_var_params["batch_input_simple_public_object_input_for_create"] is None  # noqa: E501
         ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input` when calling `create`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input_for_create` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -234,8 +234,8 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_input" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_input"]
+        if "batch_input_simple_public_object_input_for_create" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_input_for_create"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 

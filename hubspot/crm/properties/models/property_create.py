@@ -33,40 +33,57 @@ class PropertyCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str',
-        'label': 'str',
-        'type': 'str',
-        'field_type': 'str',
-        'group_name': 'str',
-        'description': 'str',
-        'options': 'list[OptionInput]',
-        'display_order': 'int',
-        'has_unique_value': 'bool',
-        'hidden': 'bool',
-        'form_field': 'bool',
-        'external_options': 'bool',
-        'referenced_object_type': 'str',
-        'calculation_formula': 'str'
+        "name": "str",
+        "label": "str",
+        "type": "str",
+        "field_type": "str",
+        "group_name": "str",
+        "description": "str",
+        "options": "list[OptionInput]",
+        "display_order": "int",
+        "has_unique_value": "bool",
+        "hidden": "bool",
+        "form_field": "bool",
+        "external_options": "bool",
+        "referenced_object_type": "str",
+        "calculation_formula": "str",
     }
 
     attribute_map = {
-        'name': 'name',
-        'label': 'label',
-        'type': 'type',
-        'field_type': 'fieldType',
-        'group_name': 'groupName',
-        'description': 'description',
-        'options': 'options',
-        'display_order': 'displayOrder',
-        'has_unique_value': 'hasUniqueValue',
-        'hidden': 'hidden',
-        'form_field': 'formField',
-        'external_options': 'externalOptions',
-        'referenced_object_type': 'referencedObjectType',
-        'calculation_formula': 'calculationFormula'
+        "name": "name",
+        "label": "label",
+        "type": "type",
+        "field_type": "fieldType",
+        "group_name": "groupName",
+        "description": "description",
+        "options": "options",
+        "display_order": "displayOrder",
+        "has_unique_value": "hasUniqueValue",
+        "hidden": "hidden",
+        "form_field": "formField",
+        "external_options": "externalOptions",
+        "referenced_object_type": "referencedObjectType",
+        "calculation_formula": "calculationFormula",
     }
 
-    def __init__(self, name=None, label=None, type=None, field_type=None, group_name=None, description=None, options=None, display_order=None, has_unique_value=None, hidden=None, form_field=None, external_options=None, referenced_object_type=None, calculation_formula=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        name=None,
+        label=None,
+        type=None,
+        field_type=None,
+        group_name=None,
+        description=None,
+        options=None,
+        display_order=None,
+        has_unique_value=None,
+        hidden=None,
+        form_field=None,
+        external_options=None,
+        referenced_object_type=None,
+        calculation_formula=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PropertyCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -186,10 +203,7 @@ class PropertyCreate(object):
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = ["string", "number", "date", "datetime", "enumeration", "bool"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"  # noqa: E501
-                .format(type, allowed_values)
-            )
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
 
@@ -217,10 +231,7 @@ class PropertyCreate(object):
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
         allowed_values = ["textarea", "text", "date", "file", "number", "select", "radio", "checkbox", "booleancheckbox", "calculation_equation"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and field_type not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `field_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(field_type, allowed_values)
-            )
+            raise ValueError("Invalid value for `field_type` ({0}), must be one of {1}".format(field_type, allowed_values))  # noqa: E501
 
         self._field_type = field_type
 
@@ -463,18 +474,11 @@ class PropertyCreate(object):
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
             if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
+                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
             elif hasattr(value, "to_dict"):
                 result[attr] = value.to_dict()
             elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
+                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
             else:
                 result[attr] = value
 

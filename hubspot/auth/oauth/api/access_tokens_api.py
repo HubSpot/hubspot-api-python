@@ -17,10 +17,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.auth.oauth.api_client import ApiClient
-from hubspot.auth.oauth.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.auth.oauth.exceptions import ApiTypeError, ApiValueError
 
 
 class AccessTokensApi(object):
@@ -35,12 +32,12 @@ class AccessTokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_access_token(self, token, **kwargs):  # noqa: E501
-        """get_access_token  # noqa: E501
+    def get(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_access_token(token, async_req=True)
+        >>> thread = api.get(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -56,15 +53,15 @@ class AccessTokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_access_token_with_http_info(token, **kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.get_with_http_info(token, **kwargs)  # noqa: E501
 
-    def get_access_token_with_http_info(self, token, **kwargs):  # noqa: E501
-        """get_access_token  # noqa: E501
+    def get_with_http_info(self, token, **kwargs):  # noqa: E501
+        """get  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_access_token_with_http_info(token, async_req=True)
+        >>> thread = api.get_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -85,30 +82,26 @@ class AccessTokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['token']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["token"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_access_token" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
         # verify the required parameter 'token' is set
-        if self.api_client.client_side_validation and ('token' not in local_var_params or  # noqa: E501
-                                                        local_var_params['token'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `token` when calling `get_access_token`")  # noqa: E501
+        if self.api_client.client_side_validation and ("token" not in local_var_params or local_var_params["token"] is None):  # noqa: E501  # noqa: E501
+            raise ApiValueError("Missing the required parameter `token` when calling `get`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'token' in local_var_params:
-            path_params['token'] = local_var_params['token']  # noqa: E501
+        if "token" in local_var_params:
+            path_params["token"] = local_var_params["token"]  # noqa: E501
 
         query_params = []
 
@@ -119,24 +112,25 @@ class AccessTokensApi(object):
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/oauth/v1/access-tokens/{token}', 'GET',
+            "/oauth/v1/access-tokens/{token}",
+            "GET",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AccessTokenInfoResponse',  # noqa: E501
+            response_type="AccessTokenInfoResponse",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

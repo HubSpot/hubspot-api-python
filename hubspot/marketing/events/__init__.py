@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.marketing.events.api.attendance_subscriber_state_changes_api import AttendanceSubscriberStateChangesApi
 from hubspot.marketing.events.api.marketing_events_external_api import MarketingEventsExternalApi
+from hubspot.marketing.events.api.search_api import SearchApi
 from hubspot.marketing.events.api.settings_external_api import SettingsExternalApi
 
 # import ApiClient

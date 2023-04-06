@@ -38,18 +38,19 @@ class HubDbTableV3(object):
         "label": "str",
         "columns": "list[Column]",
         "published": "bool",
+        "deleted": "bool",
         "column_count": "int",
         "row_count": "int",
         "created_by": "SimpleUser",
         "updated_by": "SimpleUser",
-        "published_at": "datetime",
-        "dynamic_meta_tags": "dict(str, int)",
-        "created_at": "datetime",
-        "archived": "bool",
-        "allow_public_api_access": "bool",
         "use_for_pages": "bool",
-        "enable_child_table_pages": "bool",
         "allow_child_tables": "bool",
+        "enable_child_table_pages": "bool",
+        "is_ordered_manually": "bool",
+        "dynamic_meta_tags": "dict(str, int)",
+        "allow_public_api_access": "bool",
+        "created_at": "datetime",
+        "published_at": "datetime",
         "updated_at": "datetime",
     }
 
@@ -59,18 +60,19 @@ class HubDbTableV3(object):
         "label": "label",
         "columns": "columns",
         "published": "published",
+        "deleted": "deleted",
         "column_count": "columnCount",
         "row_count": "rowCount",
         "created_by": "createdBy",
         "updated_by": "updatedBy",
-        "published_at": "publishedAt",
-        "dynamic_meta_tags": "dynamicMetaTags",
-        "created_at": "createdAt",
-        "archived": "archived",
-        "allow_public_api_access": "allowPublicApiAccess",
         "use_for_pages": "useForPages",
-        "enable_child_table_pages": "enableChildTablePages",
         "allow_child_tables": "allowChildTables",
+        "enable_child_table_pages": "enableChildTablePages",
+        "is_ordered_manually": "isOrderedManually",
+        "dynamic_meta_tags": "dynamicMetaTags",
+        "allow_public_api_access": "allowPublicApiAccess",
+        "created_at": "createdAt",
+        "published_at": "publishedAt",
         "updated_at": "updatedAt",
     }
 
@@ -81,18 +83,19 @@ class HubDbTableV3(object):
         label=None,
         columns=None,
         published=None,
+        deleted=None,
         column_count=None,
         row_count=None,
         created_by=None,
         updated_by=None,
-        published_at=None,
-        dynamic_meta_tags=None,
-        created_at=None,
-        archived=None,
-        allow_public_api_access=None,
         use_for_pages=None,
-        enable_child_table_pages=None,
         allow_child_tables=None,
+        enable_child_table_pages=None,
+        is_ordered_manually=None,
+        dynamic_meta_tags=None,
+        allow_public_api_access=None,
+        created_at=None,
+        published_at=None,
         updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -106,18 +109,19 @@ class HubDbTableV3(object):
         self._label = None
         self._columns = None
         self._published = None
+        self._deleted = None
         self._column_count = None
         self._row_count = None
         self._created_by = None
         self._updated_by = None
-        self._published_at = None
-        self._dynamic_meta_tags = None
-        self._created_at = None
-        self._archived = None
-        self._allow_public_api_access = None
         self._use_for_pages = None
-        self._enable_child_table_pages = None
         self._allow_child_tables = None
+        self._enable_child_table_pages = None
+        self._is_ordered_manually = None
+        self._dynamic_meta_tags = None
+        self._allow_public_api_access = None
+        self._created_at = None
+        self._published_at = None
         self._updated_at = None
         self.discriminator = None
 
@@ -129,6 +133,8 @@ class HubDbTableV3(object):
             self.columns = columns
         if published is not None:
             self.published = published
+        if deleted is not None:
+            self.deleted = deleted
         if column_count is not None:
             self.column_count = column_count
         if row_count is not None:
@@ -137,22 +143,22 @@ class HubDbTableV3(object):
             self.created_by = created_by
         if updated_by is not None:
             self.updated_by = updated_by
-        if published_at is not None:
-            self.published_at = published_at
-        if dynamic_meta_tags is not None:
-            self.dynamic_meta_tags = dynamic_meta_tags
-        if created_at is not None:
-            self.created_at = created_at
-        if archived is not None:
-            self.archived = archived
-        if allow_public_api_access is not None:
-            self.allow_public_api_access = allow_public_api_access
         if use_for_pages is not None:
             self.use_for_pages = use_for_pages
-        if enable_child_table_pages is not None:
-            self.enable_child_table_pages = enable_child_table_pages
         if allow_child_tables is not None:
             self.allow_child_tables = allow_child_tables
+        if enable_child_table_pages is not None:
+            self.enable_child_table_pages = enable_child_table_pages
+        if is_ordered_manually is not None:
+            self.is_ordered_manually = is_ordered_manually
+        if dynamic_meta_tags is not None:
+            self.dynamic_meta_tags = dynamic_meta_tags
+        if allow_public_api_access is not None:
+            self.allow_public_api_access = allow_public_api_access
+        if created_at is not None:
+            self.created_at = created_at
+        if published_at is not None:
+            self.published_at = published_at
         if updated_at is not None:
             self.updated_at = updated_at
 
@@ -274,6 +280,27 @@ class HubDbTableV3(object):
         self._published = published
 
     @property
+    def deleted(self):
+        """Gets the deleted of this HubDbTableV3.  # noqa: E501
+
+
+        :return: The deleted of this HubDbTableV3.  # noqa: E501
+        :rtype: bool
+        """
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self, deleted):
+        """Sets the deleted of this HubDbTableV3.
+
+
+        :param deleted: The deleted of this HubDbTableV3.  # noqa: E501
+        :type: bool
+        """
+
+        self._deleted = deleted
+
+    @property
     def column_count(self):
         """Gets the column_count of this HubDbTableV3.  # noqa: E501
 
@@ -362,121 +389,6 @@ class HubDbTableV3(object):
         self._updated_by = updated_by
 
     @property
-    def published_at(self):
-        """Gets the published_at of this HubDbTableV3.  # noqa: E501
-
-        Timestamp at which the table is published recently  # noqa: E501
-
-        :return: The published_at of this HubDbTableV3.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._published_at
-
-    @published_at.setter
-    def published_at(self, published_at):
-        """Sets the published_at of this HubDbTableV3.
-
-        Timestamp at which the table is published recently  # noqa: E501
-
-        :param published_at: The published_at of this HubDbTableV3.  # noqa: E501
-        :type: datetime
-        """
-
-        self._published_at = published_at
-
-    @property
-    def dynamic_meta_tags(self):
-        """Gets the dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
-
-        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
-
-        :return: The dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
-        :rtype: dict(str, int)
-        """
-        return self._dynamic_meta_tags
-
-    @dynamic_meta_tags.setter
-    def dynamic_meta_tags(self, dynamic_meta_tags):
-        """Sets the dynamic_meta_tags of this HubDbTableV3.
-
-        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
-
-        :param dynamic_meta_tags: The dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
-        :type: dict(str, int)
-        """
-
-        self._dynamic_meta_tags = dynamic_meta_tags
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this HubDbTableV3.  # noqa: E501
-
-        Timestamp at which the table is created  # noqa: E501
-
-        :return: The created_at of this HubDbTableV3.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this HubDbTableV3.
-
-        Timestamp at which the table is created  # noqa: E501
-
-        :param created_at: The created_at of this HubDbTableV3.  # noqa: E501
-        :type: datetime
-        """
-
-        self._created_at = created_at
-
-    @property
-    def archived(self):
-        """Gets the archived of this HubDbTableV3.  # noqa: E501
-
-        Specifies whether table is archived or not  # noqa: E501
-
-        :return: The archived of this HubDbTableV3.  # noqa: E501
-        :rtype: bool
-        """
-        return self._archived
-
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this HubDbTableV3.
-
-        Specifies whether table is archived or not  # noqa: E501
-
-        :param archived: The archived of this HubDbTableV3.  # noqa: E501
-        :type: bool
-        """
-
-        self._archived = archived
-
-    @property
-    def allow_public_api_access(self):
-        """Gets the allow_public_api_access of this HubDbTableV3.  # noqa: E501
-
-        Specifies whether the table can be read by public without authorization  # noqa: E501
-
-        :return: The allow_public_api_access of this HubDbTableV3.  # noqa: E501
-        :rtype: bool
-        """
-        return self._allow_public_api_access
-
-    @allow_public_api_access.setter
-    def allow_public_api_access(self, allow_public_api_access):
-        """Sets the allow_public_api_access of this HubDbTableV3.
-
-        Specifies whether the table can be read by public without authorization  # noqa: E501
-
-        :param allow_public_api_access: The allow_public_api_access of this HubDbTableV3.  # noqa: E501
-        :type: bool
-        """
-
-        self._allow_public_api_access = allow_public_api_access
-
-    @property
     def use_for_pages(self):
         """Gets the use_for_pages of this HubDbTableV3.  # noqa: E501
 
@@ -498,6 +410,29 @@ class HubDbTableV3(object):
         """
 
         self._use_for_pages = use_for_pages
+
+    @property
+    def allow_child_tables(self):
+        """Gets the allow_child_tables of this HubDbTableV3.  # noqa: E501
+
+        Specifies whether child tables can be created  # noqa: E501
+
+        :return: The allow_child_tables of this HubDbTableV3.  # noqa: E501
+        :rtype: bool
+        """
+        return self._allow_child_tables
+
+    @allow_child_tables.setter
+    def allow_child_tables(self, allow_child_tables):
+        """Sets the allow_child_tables of this HubDbTableV3.
+
+        Specifies whether child tables can be created  # noqa: E501
+
+        :param allow_child_tables: The allow_child_tables of this HubDbTableV3.  # noqa: E501
+        :type: bool
+        """
+
+        self._allow_child_tables = allow_child_tables
 
     @property
     def enable_child_table_pages(self):
@@ -523,27 +458,117 @@ class HubDbTableV3(object):
         self._enable_child_table_pages = enable_child_table_pages
 
     @property
-    def allow_child_tables(self):
-        """Gets the allow_child_tables of this HubDbTableV3.  # noqa: E501
+    def is_ordered_manually(self):
+        """Gets the is_ordered_manually of this HubDbTableV3.  # noqa: E501
 
-        Specifies whether child tables can be created  # noqa: E501
 
-        :return: The allow_child_tables of this HubDbTableV3.  # noqa: E501
+        :return: The is_ordered_manually of this HubDbTableV3.  # noqa: E501
         :rtype: bool
         """
-        return self._allow_child_tables
+        return self._is_ordered_manually
 
-    @allow_child_tables.setter
-    def allow_child_tables(self, allow_child_tables):
-        """Sets the allow_child_tables of this HubDbTableV3.
+    @is_ordered_manually.setter
+    def is_ordered_manually(self, is_ordered_manually):
+        """Sets the is_ordered_manually of this HubDbTableV3.
 
-        Specifies whether child tables can be created  # noqa: E501
 
-        :param allow_child_tables: The allow_child_tables of this HubDbTableV3.  # noqa: E501
+        :param is_ordered_manually: The is_ordered_manually of this HubDbTableV3.  # noqa: E501
         :type: bool
         """
 
-        self._allow_child_tables = allow_child_tables
+        self._is_ordered_manually = is_ordered_manually
+
+    @property
+    def dynamic_meta_tags(self):
+        """Gets the dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
+
+        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
+
+        :return: The dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
+        :rtype: dict(str, int)
+        """
+        return self._dynamic_meta_tags
+
+    @dynamic_meta_tags.setter
+    def dynamic_meta_tags(self, dynamic_meta_tags):
+        """Sets the dynamic_meta_tags of this HubDbTableV3.
+
+        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
+
+        :param dynamic_meta_tags: The dynamic_meta_tags of this HubDbTableV3.  # noqa: E501
+        :type: dict(str, int)
+        """
+
+        self._dynamic_meta_tags = dynamic_meta_tags
+
+    @property
+    def allow_public_api_access(self):
+        """Gets the allow_public_api_access of this HubDbTableV3.  # noqa: E501
+
+        Specifies whether the table can be read by public without authorization  # noqa: E501
+
+        :return: The allow_public_api_access of this HubDbTableV3.  # noqa: E501
+        :rtype: bool
+        """
+        return self._allow_public_api_access
+
+    @allow_public_api_access.setter
+    def allow_public_api_access(self, allow_public_api_access):
+        """Sets the allow_public_api_access of this HubDbTableV3.
+
+        Specifies whether the table can be read by public without authorization  # noqa: E501
+
+        :param allow_public_api_access: The allow_public_api_access of this HubDbTableV3.  # noqa: E501
+        :type: bool
+        """
+
+        self._allow_public_api_access = allow_public_api_access
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this HubDbTableV3.  # noqa: E501
+
+        Timestamp at which the table is created  # noqa: E501
+
+        :return: The created_at of this HubDbTableV3.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this HubDbTableV3.
+
+        Timestamp at which the table is created  # noqa: E501
+
+        :param created_at: The created_at of this HubDbTableV3.  # noqa: E501
+        :type: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def published_at(self):
+        """Gets the published_at of this HubDbTableV3.  # noqa: E501
+
+        Timestamp at which the table is published recently  # noqa: E501
+
+        :return: The published_at of this HubDbTableV3.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._published_at
+
+    @published_at.setter
+    def published_at(self, published_at):
+        """Sets the published_at of this HubDbTableV3.
+
+        Timestamp at which the table is published recently  # noqa: E501
+
+        :param published_at: The published_at of this HubDbTableV3.  # noqa: E501
+        :type: datetime
+        """
+
+        self._published_at = published_at
 
     @property
     def updated_at(self):

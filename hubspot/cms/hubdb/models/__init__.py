@@ -14,8 +14,8 @@
 from __future__ import absolute_import
 
 # import models into model package
+from hubspot.cms.hubdb.models.batch_input_hub_db_table_row_v3_batch_update_request import BatchInputHubDbTableRowV3BatchUpdateRequest
 from hubspot.cms.hubdb.models.batch_input_hub_db_table_row_v3_request import BatchInputHubDbTableRowV3Request
-from hubspot.cms.hubdb.models.batch_input_json_node import BatchInputJsonNode
 from hubspot.cms.hubdb.models.batch_input_string import BatchInputString
 from hubspot.cms.hubdb.models.batch_response_hub_db_table_row_v3 import BatchResponseHubDbTableRowV3
 from hubspot.cms.hubdb.models.batch_response_hub_db_table_row_v3_with_errors import BatchResponseHubDbTableRowV3WithErrors
@@ -29,6 +29,7 @@ from hubspot.cms.hubdb.models.foreign_id import ForeignId
 from hubspot.cms.hubdb.models.forward_paging import ForwardPaging
 from hubspot.cms.hubdb.models.hub_db_table_clone_request import HubDbTableCloneRequest
 from hubspot.cms.hubdb.models.hub_db_table_row_v3 import HubDbTableRowV3
+from hubspot.cms.hubdb.models.hub_db_table_row_v3_batch_update_request import HubDbTableRowV3BatchUpdateRequest
 from hubspot.cms.hubdb.models.hub_db_table_row_v3_request import HubDbTableRowV3Request
 from hubspot.cms.hubdb.models.hub_db_table_v3 import HubDbTableV3
 from hubspot.cms.hubdb.models.hub_db_table_v3_request import HubDbTableV3Request

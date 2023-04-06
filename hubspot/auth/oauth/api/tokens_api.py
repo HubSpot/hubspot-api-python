@@ -17,10 +17,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.auth.oauth.api_client import ApiClient
-from hubspot.auth.oauth.exceptions import (
-    ApiTypeError,
-    ApiValueError
-)
+from hubspot.auth.oauth.exceptions import ApiTypeError, ApiValueError
 
 
 class TokensApi(object):
@@ -35,12 +32,12 @@ class TokensApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_token(self, **kwargs):  # noqa: E501
-        """create_token  # noqa: E501
+    def create(self, **kwargs):  # noqa: E501
+        """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token(async_req=True)
+        >>> thread = api.create(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -61,15 +58,15 @@ class TokensApi(object):
                  If the method is called asynchronously,
                  returns the request thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.create_token_with_http_info(**kwargs)  # noqa: E501
+        kwargs["_return_http_data_only"] = True
+        return self.create_with_http_info(**kwargs)  # noqa: E501
 
-    def create_token_with_http_info(self, **kwargs):  # noqa: E501
-        """create_token  # noqa: E501
+    def create_with_http_info(self, **kwargs):  # noqa: E501
+        """create  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_token_with_http_info(async_req=True)
+        >>> thread = api.create_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -95,20 +92,17 @@ class TokensApi(object):
 
         local_var_params = locals()
 
-        all_params = ['grant_type', 'code', 'redirect_uri', 'client_id', 'client_secret', 'refresh_token']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = ["grant_type", "code", "redirect_uri", "client_id", "client_secret", "refresh_token"]  # noqa: E501
+        all_params.append("async_req")
+        all_params.append("_return_http_data_only")
+        all_params.append("_preload_content")
+        all_params.append("_request_timeout")
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
+        for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_token" % key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
-        del local_var_params['kwargs']
+        del local_var_params["kwargs"]
 
         collection_formats = {}
 
@@ -120,43 +114,43 @@ class TokensApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'grant_type' in local_var_params:
-            form_params.append(('grant_type', local_var_params['grant_type']))  # noqa: E501
-        if 'code' in local_var_params:
-            form_params.append(('code', local_var_params['code']))  # noqa: E501
-        if 'redirect_uri' in local_var_params:
-            form_params.append(('redirect_uri', local_var_params['redirect_uri']))  # noqa: E501
-        if 'client_id' in local_var_params:
-            form_params.append(('client_id', local_var_params['client_id']))  # noqa: E501
-        if 'client_secret' in local_var_params:
-            form_params.append(('client_secret', local_var_params['client_secret']))  # noqa: E501
-        if 'refresh_token' in local_var_params:
-            form_params.append(('refresh_token', local_var_params['refresh_token']))  # noqa: E501
+        if "grant_type" in local_var_params:
+            form_params.append(("grant_type", local_var_params["grant_type"]))  # noqa: E501
+        if "code" in local_var_params:
+            form_params.append(("code", local_var_params["code"]))  # noqa: E501
+        if "redirect_uri" in local_var_params:
+            form_params.append(("redirect_uri", local_var_params["redirect_uri"]))  # noqa: E501
+        if "client_id" in local_var_params:
+            form_params.append(("client_id", local_var_params["client_id"]))  # noqa: E501
+        if "client_secret" in local_var_params:
+            form_params.append(("client_secret", local_var_params["client_secret"]))  # noqa: E501
+        if "refresh_token" in local_var_params:
+            form_params.append(("refresh_token", local_var_params["refresh_token"]))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', '*/*'])  # noqa: E501
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/x-www-form-urlencoded'])  # noqa: E501
+        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/x-www-form-urlencoded"])  # noqa: E501  # noqa: E501
 
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/oauth/v1/token', 'POST',
+            "/oauth/v1/token",
+            "POST",
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TokenResponseIF',  # noqa: E501
+            response_type="TokenResponseIF",  # noqa: E501
             auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+        )

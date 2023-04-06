@@ -272,6 +272,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
         :param bool archived: Whether to return only results that have been archived.
+        :param str properties:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -279,7 +280,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseProperty
+        :return: CollectionResponsePropertyNoPaging
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -298,6 +299,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str object_type: (required)
         :param bool archived: Whether to return only results that have been archived.
+        :param str properties:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -307,14 +309,14 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseProperty, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(CollectionResponsePropertyNoPaging, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "archived"]  # noqa: E501
+        all_params = ["object_type", "archived", "properties"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -338,6 +340,8 @@ class CoreApi(object):
         query_params = []
         if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
 
         header_params = {}
 
@@ -360,7 +364,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseProperty",  # noqa: E501
+            response_type="CollectionResponsePropertyNoPaging",  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
@@ -382,6 +386,7 @@ class CoreApi(object):
         :param str object_type: (required)
         :param str property_name: (required)
         :param bool archived: Whether to return only results that have been archived.
+        :param str properties:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -409,6 +414,7 @@ class CoreApi(object):
         :param str object_type: (required)
         :param str property_name: (required)
         :param bool archived: Whether to return only results that have been archived.
+        :param str properties:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -425,7 +431,7 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "property_name", "archived"]  # noqa: E501
+        all_params = ["object_type", "property_name", "archived", "properties"]  # noqa: E501
         all_params.append("async_req")
         all_params.append("_return_http_data_only")
         all_params.append("_preload_content")
@@ -454,6 +460,8 @@ class CoreApi(object):
         query_params = []
         if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
 
         header_params = {}
 
