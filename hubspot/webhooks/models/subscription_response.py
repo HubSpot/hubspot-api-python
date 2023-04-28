@@ -106,6 +106,23 @@ class SubscriptionResponse(object):
             "conversation.newMessage",
             "conversation.privacyDeletion",
             "conversation.propertyChange",
+            "contact.merge",
+            "company.merge",
+            "deal.merge",
+            "ticket.merge",
+            "product.merge",
+            "line_item.merge",
+            "contact.restore",
+            "company.restore",
+            "deal.restore",
+            "ticket.restore",
+            "product.restore",
+            "line_item.restore",
+            "contact.associationChange",
+            "company.associationChange",
+            "deal.associationChange",
+            "ticket.associationChange",
+            "line_item.associationChange",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501
