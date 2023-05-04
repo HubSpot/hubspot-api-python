@@ -27,6 +27,7 @@ from hubspot.webhooks.exceptions import OpenApiException
 from hubspot.webhooks.exceptions import ApiTypeError
 from hubspot.webhooks.exceptions import ApiValueError
 from hubspot.webhooks.exceptions import ApiKeyError
+from hubspot.webhooks.exceptions import ApiAttributeError
 from hubspot.webhooks.exceptions import ApiException
 
 # import models into sdk package

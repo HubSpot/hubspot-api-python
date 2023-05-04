@@ -29,6 +29,7 @@ from hubspot.crm.objects.postal_mail.exceptions import OpenApiException
 from hubspot.crm.objects.postal_mail.exceptions import ApiTypeError
 from hubspot.crm.objects.postal_mail.exceptions import ApiValueError
 from hubspot.crm.objects.postal_mail.exceptions import ApiKeyError
+from hubspot.crm.objects.postal_mail.exceptions import ApiAttributeError
 from hubspot.crm.objects.postal_mail.exceptions import ApiException
 
 # import models into sdk package

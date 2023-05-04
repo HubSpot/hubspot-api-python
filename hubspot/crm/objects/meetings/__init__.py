@@ -29,6 +29,7 @@ from hubspot.crm.objects.meetings.exceptions import OpenApiException
 from hubspot.crm.objects.meetings.exceptions import ApiTypeError
 from hubspot.crm.objects.meetings.exceptions import ApiValueError
 from hubspot.crm.objects.meetings.exceptions import ApiKeyError
+from hubspot.crm.objects.meetings.exceptions import ApiAttributeError
 from hubspot.crm.objects.meetings.exceptions import ApiException
 
 # import models into sdk package

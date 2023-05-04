@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -39,7 +42,7 @@ class InputFieldDefinition(object):
     def __init__(self, type_definition=None, supported_value_types=None, is_required=None, local_vars_configuration=None):  # noqa: E501
         """InputFieldDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._type_definition = None
@@ -68,7 +71,7 @@ class InputFieldDefinition(object):
 
 
         :param type_definition: The type_definition of this InputFieldDefinition.  # noqa: E501
-        :type: FieldTypeDefinition
+        :type type_definition: FieldTypeDefinition
         """
         if self.local_vars_configuration.client_side_validation and type_definition is None:  # noqa: E501
             raise ValueError("Invalid value for `type_definition`, must not be `None`")  # noqa: E501
@@ -93,7 +96,7 @@ class InputFieldDefinition(object):
         Controls what kind of input a customer can use to specify the field value. Must contain exactly one of `STATIC_VALUE` or `OBJECT_PROPERTY`. If `STATIC_VALUE`, the customer will be able to choose a value when configuring the custom action; if `OBJECT_PROPERTY`, the customer will be able to choose a property from the enrolled workflow object that the field value will be copied from. In the future we may support more than one input control type here.  # noqa: E501
 
         :param supported_value_types: The supported_value_types of this InputFieldDefinition.  # noqa: E501
-        :type: list[str]
+        :type supported_value_types: list[str]
         """
         allowed_values = ["STATIC_VALUE", "OBJECT_PROPERTY", "FIELD_DATA"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and not set(supported_value_types).issubset(set(allowed_values)):  # noqa: E501
@@ -123,27 +126,36 @@ class InputFieldDefinition(object):
         Whether the field is required for the custom action to be valid  # noqa: E501
 
         :param is_required: The is_required of this InputFieldDefinition.  # noqa: E501
-        :type: bool
+        :type is_required: bool
         """
         if self.local_vars_configuration.client_side_validation and is_required is None:  # noqa: E501
             raise ValueError("Invalid value for `is_required`, must not be `None`")  # noqa: E501
 
         self._is_required = is_required
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

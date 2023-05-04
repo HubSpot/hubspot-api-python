@@ -27,6 +27,7 @@ from hubspot.communication_preferences.exceptions import OpenApiException
 from hubspot.communication_preferences.exceptions import ApiTypeError
 from hubspot.communication_preferences.exceptions import ApiValueError
 from hubspot.communication_preferences.exceptions import ApiKeyError
+from hubspot.communication_preferences.exceptions import ApiAttributeError
 from hubspot.communication_preferences.exceptions import ApiException
 
 # import models into sdk package

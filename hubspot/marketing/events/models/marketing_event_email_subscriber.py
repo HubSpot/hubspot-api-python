@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.events.configuration import Configuration
@@ -32,14 +35,14 @@ class MarketingEventEmailSubscriber(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"interaction_date_time": "int", "properties": "dict(str, str)", "email": "str", "contact_properties": "dict(str, str)"}
+    openapi_types = {"interaction_date_time": "int", "properties": "dict[str, str]", "email": "str", "contact_properties": "dict[str, str]"}
 
     attribute_map = {"interaction_date_time": "interactionDateTime", "properties": "properties", "email": "email", "contact_properties": "contactProperties"}
 
     def __init__(self, interaction_date_time=None, properties=None, email=None, contact_properties=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventEmailSubscriber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._interaction_date_time = None
@@ -73,7 +76,7 @@ class MarketingEventEmailSubscriber(object):
         The date and time at which the contact subscribed to the event.  # noqa: E501
 
         :param interaction_date_time: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type: int
+        :type interaction_date_time: int
         """
         if self.local_vars_configuration.client_side_validation and interaction_date_time is None:  # noqa: E501
             raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
@@ -86,7 +89,7 @@ class MarketingEventEmailSubscriber(object):
 
 
         :return: The properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._properties
 
@@ -96,7 +99,7 @@ class MarketingEventEmailSubscriber(object):
 
 
         :param properties: The properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type: dict(str, str)
+        :type properties: dict[str, str]
         """
 
         self._properties = properties
@@ -119,7 +122,7 @@ class MarketingEventEmailSubscriber(object):
         The email address of the contact in HubSpot to associate with the event. Note that the contact must already exist in HubSpot; a contact will not be created.  # noqa: E501
 
         :param email: The email of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type: str
+        :type email: str
         """
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
@@ -132,7 +135,7 @@ class MarketingEventEmailSubscriber(object):
 
 
         :return: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._contact_properties
 
@@ -142,25 +145,34 @@ class MarketingEventEmailSubscriber(object):
 
 
         :param contact_properties: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type: dict(str, str)
+        :type contact_properties: dict[str, str]
         """
 
         self._contact_properties = contact_properties
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

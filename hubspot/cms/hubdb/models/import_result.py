@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.hubdb.configuration import Configuration
@@ -39,7 +42,7 @@ class ImportResult(object):
     def __init__(self, errors=None, rows_imported=None, duplicate_rows=None, row_limit_exceeded=None, local_vars_configuration=None):  # noqa: E501
         """ImportResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._errors = None
@@ -71,7 +74,7 @@ class ImportResult(object):
         List of errors during import  # noqa: E501
 
         :param errors: The errors of this ImportResult.  # noqa: E501
-        :type: list[Error]
+        :type errors: list[Error]
         """
         if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
             raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
@@ -96,7 +99,7 @@ class ImportResult(object):
         Specifies number of rows imported  # noqa: E501
 
         :param rows_imported: The rows_imported of this ImportResult.  # noqa: E501
-        :type: int
+        :type rows_imported: int
         """
         if self.local_vars_configuration.client_side_validation and rows_imported is None:  # noqa: E501
             raise ValueError("Invalid value for `rows_imported`, must not be `None`")  # noqa: E501
@@ -121,7 +124,7 @@ class ImportResult(object):
         Specifies number of duplicate rows  # noqa: E501
 
         :param duplicate_rows: The duplicate_rows of this ImportResult.  # noqa: E501
-        :type: int
+        :type duplicate_rows: int
         """
         if self.local_vars_configuration.client_side_validation and duplicate_rows is None:  # noqa: E501
             raise ValueError("Invalid value for `duplicate_rows`, must not be `None`")  # noqa: E501
@@ -146,27 +149,36 @@ class ImportResult(object):
         Specifies whether row limit exceeded during import  # noqa: E501
 
         :param row_limit_exceeded: The row_limit_exceeded of this ImportResult.  # noqa: E501
-        :type: bool
+        :type row_limit_exceeded: bool
         """
         if self.local_vars_configuration.client_side_validation and row_limit_exceeded is None:  # noqa: E501
             raise ValueError("Invalid value for `row_limit_exceeded`, must not be `None`")  # noqa: E501
 
         self._row_limit_exceeded = row_limit_exceeded
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

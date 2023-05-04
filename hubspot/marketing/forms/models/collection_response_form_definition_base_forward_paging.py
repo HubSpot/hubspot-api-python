@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -32,14 +35,14 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"results": "list[HubSpotFormDefinition]", "paging": "ForwardPaging"}
+    openapi_types = {"results": "list[CollectionResponseFormDefinitionBaseForwardPagingResultsInner]", "paging": "ForwardPaging"}
 
     attribute_map = {"results": "results", "paging": "paging"}
 
     def __init__(self, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseFormDefinitionBaseForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._results = None
@@ -56,7 +59,7 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
 
 
         :return: The results of this CollectionResponseFormDefinitionBaseForwardPaging.  # noqa: E501
-        :rtype: list[HubSpotFormDefinition]
+        :rtype: list[CollectionResponseFormDefinitionBaseForwardPagingResultsInner]
         """
         return self._results
 
@@ -66,7 +69,7 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
 
 
         :param results: The results of this CollectionResponseFormDefinitionBaseForwardPaging.  # noqa: E501
-        :type: list[HubSpotFormDefinition]
+        :type results: list[CollectionResponseFormDefinitionBaseForwardPagingResultsInner]
         """
         if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
@@ -89,25 +92,34 @@ class CollectionResponseFormDefinitionBaseForwardPaging(object):
 
 
         :param paging: The paging of this CollectionResponseFormDefinitionBaseForwardPaging.  # noqa: E501
-        :type: ForwardPaging
+        :type paging: ForwardPaging
         """
 
         self._paging = paging
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

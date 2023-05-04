@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class UpdatedContact(object):
     def __init__(self, sync_action=None, updated_at=None, email_address=None, id=None, customer_type=None, local_vars_configuration=None):  # noqa: E501
         """UpdatedContact - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._sync_action = None
@@ -74,7 +77,7 @@ class UpdatedContact(object):
         The operation to be performed.  # noqa: E501
 
         :param sync_action: The sync_action of this UpdatedContact.  # noqa: E501
-        :type: str
+        :type sync_action: str
         """
         if self.local_vars_configuration.client_side_validation and sync_action is None:  # noqa: E501
             raise ValueError("Invalid value for `sync_action`, must not be `None`")  # noqa: E501
@@ -102,7 +105,7 @@ class UpdatedContact(object):
         The timestamp (ISO8601 format) when the customer was updated in the external accounting system.  # noqa: E501
 
         :param updated_at: The updated_at of this UpdatedContact.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class UpdatedContact(object):
         The customer's email address  # noqa: E501
 
         :param email_address: The email_address of this UpdatedContact.  # noqa: E501
-        :type: str
+        :type email_address: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -152,7 +155,7 @@ class UpdatedContact(object):
         The ID of the customer in the external accounting system.  # noqa: E501
 
         :param id: The id of this UpdatedContact.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -177,7 +180,7 @@ class UpdatedContact(object):
         Designates the type of the customer object.  # noqa: E501
 
         :param customer_type: The customer_type of this UpdatedContact.  # noqa: E501
-        :type: str
+        :type customer_type: str
         """
         allowed_values = ["CONTACT", "COMPANY"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and customer_type not in allowed_values:  # noqa: E501
@@ -185,20 +188,29 @@ class UpdatedContact(object):
 
         self._customer_type = customer_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

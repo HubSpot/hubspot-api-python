@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.hubdb.configuration import Configuration
@@ -32,14 +35,14 @@ class HubDbTableRowV3BatchUpdateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"path": "str", "name": "str", "child_table_id": "int", "values": "dict(str, object)", "display_index": "int", "id": "int"}
+    openapi_types = {"path": "str", "name": "str", "child_table_id": "int", "values": "dict[str, object]", "display_index": "int", "id": "int"}
 
     attribute_map = {"path": "path", "name": "name", "child_table_id": "childTableId", "values": "values", "display_index": "displayIndex", "id": "id"}
 
     def __init__(self, path=None, name=None, child_table_id=None, values=None, display_index=None, id=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3BatchUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._path = None
@@ -79,7 +82,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages  # noqa: E501
 
         :param path: The path of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: str
+        :type path: str
         """
 
         self._path = path
@@ -102,7 +105,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         Specifies the value for `hs_name` column, which will be used as title in the dynamic pages  # noqa: E501
 
         :param name: The name of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -125,7 +128,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         Specifies the value for the column child table id  # noqa: E501
 
         :param child_table_id: The child_table_id of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: int
+        :type child_table_id: int
         """
 
         self._child_table_id = child_table_id
@@ -137,7 +140,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         List of key value pairs with the column name and column value  # noqa: E501
 
         :return: The values of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict[str, object]
         """
         return self._values
 
@@ -148,7 +151,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         List of key value pairs with the column name and column value  # noqa: E501
 
         :param values: The values of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: dict(str, object)
+        :type values: dict[str, object]
         """
         if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
             raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
@@ -171,7 +174,7 @@ class HubDbTableRowV3BatchUpdateRequest(object):
 
 
         :param display_index: The display_index of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: int
+        :type display_index: int
         """
 
         self._display_index = display_index
@@ -194,27 +197,36 @@ class HubDbTableRowV3BatchUpdateRequest(object):
         The id of the table row  # noqa: E501
 
         :param id: The id of this HubDbTableRowV3BatchUpdateRequest.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

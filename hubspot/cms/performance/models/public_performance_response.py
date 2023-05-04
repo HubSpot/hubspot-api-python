@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.performance.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicPerformanceResponse(object):
     def __init__(self, data=None, domain=None, path=None, start_interval=None, end_interval=None, interval=None, period=None, local_vars_configuration=None):  # noqa: E501
         """PublicPerformanceResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._data = None
@@ -78,7 +81,7 @@ class PublicPerformanceResponse(object):
 
 
         :param data: The data of this PublicPerformanceResponse.  # noqa: E501
-        :type: list[PerformanceView]
+        :type data: list[PerformanceView]
         """
         if self.local_vars_configuration.client_side_validation and data is None:  # noqa: E501
             raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501
@@ -101,7 +104,7 @@ class PublicPerformanceResponse(object):
 
 
         :param domain: The domain of this PublicPerformanceResponse.  # noqa: E501
-        :type: str
+        :type domain: str
         """
 
         self._domain = domain
@@ -122,7 +125,7 @@ class PublicPerformanceResponse(object):
 
 
         :param path: The path of this PublicPerformanceResponse.  # noqa: E501
-        :type: str
+        :type path: str
         """
 
         self._path = path
@@ -143,7 +146,7 @@ class PublicPerformanceResponse(object):
 
 
         :param start_interval: The start_interval of this PublicPerformanceResponse.  # noqa: E501
-        :type: int
+        :type start_interval: int
         """
         if self.local_vars_configuration.client_side_validation and start_interval is None:  # noqa: E501
             raise ValueError("Invalid value for `start_interval`, must not be `None`")  # noqa: E501
@@ -166,7 +169,7 @@ class PublicPerformanceResponse(object):
 
 
         :param end_interval: The end_interval of this PublicPerformanceResponse.  # noqa: E501
-        :type: int
+        :type end_interval: int
         """
         if self.local_vars_configuration.client_side_validation and end_interval is None:  # noqa: E501
             raise ValueError("Invalid value for `end_interval`, must not be `None`")  # noqa: E501
@@ -189,7 +192,7 @@ class PublicPerformanceResponse(object):
 
 
         :param interval: The interval of this PublicPerformanceResponse.  # noqa: E501
-        :type: str
+        :type interval: str
         """
         if self.local_vars_configuration.client_side_validation and interval is None:  # noqa: E501
             raise ValueError("Invalid value for `interval`, must not be `None`")  # noqa: E501
@@ -215,7 +218,7 @@ class PublicPerformanceResponse(object):
 
 
         :param period: The period of this PublicPerformanceResponse.  # noqa: E501
-        :type: str
+        :type period: str
         """
         allowed_values = ["ONE_MINUTE", "FIVE_MINUTES", "TEN_MINUTES", "FIFTEEN_MINUTES", "THIRTY_MINUTES", "ONE_HOUR", "FOUR_HOURS", "TWELVE_HOURS", "ONE_DAY", "ONE_WEEK"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and period not in allowed_values:  # noqa: E501
@@ -223,20 +226,29 @@ class PublicPerformanceResponse(object):
 
         self._period = period
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

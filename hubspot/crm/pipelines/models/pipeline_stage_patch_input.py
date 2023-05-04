@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.pipelines.configuration import Configuration
@@ -32,14 +35,14 @@ class PipelineStagePatchInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "archived": "bool", "display_order": "int", "metadata": "dict(str, str)"}
+    openapi_types = {"label": "str", "archived": "bool", "display_order": "int", "metadata": "dict[str, str]"}
 
     attribute_map = {"label": "label", "archived": "archived", "display_order": "displayOrder", "metadata": "metadata"}
 
     def __init__(self, label=None, archived=None, display_order=None, metadata=None, local_vars_configuration=None):  # noqa: E501
         """PipelineStagePatchInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._label = None
@@ -74,7 +77,7 @@ class PipelineStagePatchInput(object):
         A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.  # noqa: E501
 
         :param label: The label of this PipelineStagePatchInput.  # noqa: E501
-        :type: str
+        :type label: str
         """
 
         self._label = label
@@ -97,7 +100,7 @@ class PipelineStagePatchInput(object):
         Whether the pipeline is archived.  # noqa: E501
 
         :param archived: The archived of this PipelineStagePatchInput.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
 
         self._archived = archived
@@ -120,7 +123,7 @@ class PipelineStagePatchInput(object):
         The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.  # noqa: E501
 
         :param display_order: The display_order of this PipelineStagePatchInput.  # noqa: E501
-        :type: int
+        :type display_order: int
         """
 
         self._display_order = display_order
@@ -132,7 +135,7 @@ class PipelineStagePatchInput(object):
         A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
 
         :return: The metadata of this PipelineStagePatchInput.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._metadata
 
@@ -143,27 +146,36 @@ class PipelineStagePatchInput(object):
         A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
 
         :param metadata: The metadata of this PipelineStagePatchInput.  # noqa: E501
-        :type: dict(str, str)
+        :type metadata: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
             raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

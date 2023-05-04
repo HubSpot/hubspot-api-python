@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -47,7 +50,7 @@ class TimelineEventTemplateToken(object):
     def __init__(self, label=None, object_property_name=None, options=None, name=None, type=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateToken - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._label = None
@@ -88,7 +91,7 @@ class TimelineEventTemplateToken(object):
         Used for list segmentation and reporting.  # noqa: E501
 
         :param label: The label of this TimelineEventTemplateToken.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -113,7 +116,7 @@ class TimelineEventTemplateToken(object):
         The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.  # noqa: E501
 
         :param object_property_name: The object_property_name of this TimelineEventTemplateToken.  # noqa: E501
-        :type: str
+        :type object_property_name: str
         """
 
         self._object_property_name = object_property_name
@@ -136,7 +139,7 @@ class TimelineEventTemplateToken(object):
         If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
 
         :param options: The options of this TimelineEventTemplateToken.  # noqa: E501
-        :type: list[TimelineEventTemplateTokenOption]
+        :type options: list[TimelineEventTemplateTokenOption]
         """
         if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
@@ -161,7 +164,7 @@ class TimelineEventTemplateToken(object):
         The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).  # noqa: E501
 
         :param name: The name of this TimelineEventTemplateToken.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -186,7 +189,7 @@ class TimelineEventTemplateToken(object):
         The data type of the token. You can currently choose from [string, number, date, enumeration].  # noqa: E501
 
         :param type: The type of this TimelineEventTemplateToken.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -214,7 +217,7 @@ class TimelineEventTemplateToken(object):
         The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
 
         :param created_at: The created_at of this TimelineEventTemplateToken.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
 
         self._created_at = created_at
@@ -237,25 +240,34 @@ class TimelineEventTemplateToken(object):
         The date and time that the Event Template Token was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
 
         :param updated_at: The updated_at of this TimelineEventTemplateToken.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

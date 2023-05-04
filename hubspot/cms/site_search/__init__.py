@@ -26,6 +26,7 @@ from hubspot.cms.site_search.exceptions import OpenApiException
 from hubspot.cms.site_search.exceptions import ApiTypeError
 from hubspot.cms.site_search.exceptions import ApiValueError
 from hubspot.cms.site_search.exceptions import ApiKeyError
+from hubspot.cms.site_search.exceptions import ApiAttributeError
 from hubspot.cms.site_search.exceptions import ApiException
 
 # import models into sdk package

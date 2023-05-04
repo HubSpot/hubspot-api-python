@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.extensions.accounting.api_client import ApiClient
-from hubspot.crm.extensions.accounting.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.extensions.accounting.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class CallbacksApi(object):
@@ -39,22 +39,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a customer creation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_customer(request_id, result_id_accounting_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ResultIdAccountingResponse result_id_accounting_response: The ID of the created customer. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param result_id_accounting_response: The ID of the created customer. (required)
+        :type result_id_accounting_response: ResultIdAccountingResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.create_customer_with_http_info(request_id, result_id_accounting_response, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a customer creation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_customer_with_http_info(request_id, result_id_accounting_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ResultIdAccountingResponse result_id_accounting_response: The ID of the created customer. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param result_id_accounting_response: The ID of the created customer. (required)
+        :type result_id_accounting_response: ResultIdAccountingResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "result_id_accounting_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "result_id_accounting_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,12 +114,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `create_customer`")  # noqa: E501
         # verify the required parameter 'result_id_accounting_response' is set
-        if self.api_client.client_side_validation and (
-            "result_id_accounting_response" not in local_var_params or local_var_params["result_id_accounting_response"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("result_id_accounting_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `result_id_accounting_response` when calling `create_customer`")  # noqa: E501
 
         collection_formats = {}
@@ -115,7 +128,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -127,10 +140,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/customer-create/{requestId}",
@@ -141,13 +158,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_exchange_rate(self, request_id, exchange_rate_response, **kwargs):  # noqa: E501
@@ -156,22 +174,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to an exchange rate request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_exchange_rate(request_id, exchange_rate_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ExchangeRateResponse exchange_rate_response: The result of the exchange rate request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param exchange_rate_response: The result of the exchange rate request. (required)
+        :type exchange_rate_response: ExchangeRateResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.create_exchange_rate_with_http_info(request_id, exchange_rate_response, **kwargs)  # noqa: E501
@@ -182,33 +206,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to an exchange rate request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_exchange_rate_with_http_info(request_id, exchange_rate_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ExchangeRateResponse exchange_rate_response: The result of the exchange rate request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param exchange_rate_response: The result of the exchange rate request. (required)
+        :type exchange_rate_response: ExchangeRateResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "exchange_rate_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "exchange_rate_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -216,10 +249,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `create_exchange_rate`")  # noqa: E501
         # verify the required parameter 'exchange_rate_response' is set
-        if self.api_client.client_side_validation and ("exchange_rate_response" not in local_var_params or local_var_params["exchange_rate_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("exchange_rate_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `exchange_rate_response` when calling `create_exchange_rate`")  # noqa: E501
 
         collection_formats = {}
@@ -230,7 +263,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -242,10 +275,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/exchange-rate/{requestId}",
@@ -256,13 +293,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_invoice(self, request_id, result_id_accounting_response, **kwargs):  # noqa: E501
@@ -271,22 +309,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice creation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_invoice(request_id, result_id_accounting_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ResultIdAccountingResponse result_id_accounting_response: The ID of the created invoice. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param result_id_accounting_response: The ID of the created invoice. (required)
+        :type result_id_accounting_response: ResultIdAccountingResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.create_invoice_with_http_info(request_id, result_id_accounting_response, **kwargs)  # noqa: E501
@@ -297,33 +341,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice creation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_invoice_with_http_info(request_id, result_id_accounting_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ResultIdAccountingResponse result_id_accounting_response: The ID of the created invoice. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param result_id_accounting_response: The ID of the created invoice. (required)
+        :type result_id_accounting_response: ResultIdAccountingResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "result_id_accounting_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "result_id_accounting_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -331,12 +384,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `create_invoice`")  # noqa: E501
         # verify the required parameter 'result_id_accounting_response' is set
-        if self.api_client.client_side_validation and (
-            "result_id_accounting_response" not in local_var_params or local_var_params["result_id_accounting_response"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("result_id_accounting_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `result_id_accounting_response` when calling `create_invoice`")  # noqa: E501
 
         collection_formats = {}
@@ -347,7 +398,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -359,10 +410,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/invoice-create/{requestId}",
@@ -373,13 +428,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_term(self, request_id, terms_response, **kwargs):  # noqa: E501
@@ -388,22 +444,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a terms search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_term(request_id, terms_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param TermsResponse terms_response: The result of the terms search (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param terms_response: The result of the terms search (required)
+        :type terms_response: TermsResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.create_term_with_http_info(request_id, terms_response, **kwargs)  # noqa: E501
@@ -414,33 +476,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a terms search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_term_with_http_info(request_id, terms_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param TermsResponse terms_response: The result of the terms search (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param terms_response: The result of the terms search (required)
+        :type terms_response: TermsResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "terms_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "terms_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -448,10 +519,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `create_term`")  # noqa: E501
         # verify the required parameter 'terms_response' is set
-        if self.api_client.client_side_validation and ("terms_response" not in local_var_params or local_var_params["terms_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("terms_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `terms_response` when calling `create_term`")  # noqa: E501
 
         collection_formats = {}
@@ -462,7 +533,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -474,10 +545,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/terms/{requestId}",
@@ -488,13 +563,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_customer_search(self, request_id, customer_search_response_external, **kwargs):  # noqa: E501
@@ -503,22 +579,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a customer search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_customer_search(request_id, customer_search_response_external, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param CustomerSearchResponseExternal customer_search_response_external: The result of the customer search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param customer_search_response_external: The result of the customer search request. (required)
+        :type customer_search_response_external: CustomerSearchResponseExternal
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.do_customer_search_with_http_info(request_id, customer_search_response_external, **kwargs)  # noqa: E501
@@ -529,33 +611,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a customer search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_customer_search_with_http_info(request_id, customer_search_response_external, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param CustomerSearchResponseExternal customer_search_response_external: The result of the customer search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param customer_search_response_external: The result of the customer search request. (required)
+        :type customer_search_response_external: CustomerSearchResponseExternal
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "customer_search_response_external"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "customer_search_response_external"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -563,12 +654,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `do_customer_search`")  # noqa: E501
         # verify the required parameter 'customer_search_response_external' is set
-        if self.api_client.client_side_validation and (
-            "customer_search_response_external" not in local_var_params or local_var_params["customer_search_response_external"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("customer_search_response_external") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `customer_search_response_external` when calling `do_customer_search`")  # noqa: E501
 
         collection_formats = {}
@@ -579,7 +668,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -591,10 +680,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/customer-search/{requestId}",
@@ -605,13 +698,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_invoice_search(self, request_id, invoice_search_response, **kwargs):  # noqa: E501
@@ -620,22 +714,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_invoice_search(request_id, invoice_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoiceSearchResponse invoice_search_response: The result of the invoice search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoice_search_response: The result of the invoice search request. (required)
+        :type invoice_search_response: InvoiceSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.do_invoice_search_with_http_info(request_id, invoice_search_response, **kwargs)  # noqa: E501
@@ -646,33 +746,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_invoice_search_with_http_info(request_id, invoice_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoiceSearchResponse invoice_search_response: The result of the invoice search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoice_search_response: The result of the invoice search request. (required)
+        :type invoice_search_response: InvoiceSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoice_search_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "invoice_search_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -680,10 +789,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `do_invoice_search`")  # noqa: E501
         # verify the required parameter 'invoice_search_response' is set
-        if self.api_client.client_side_validation and ("invoice_search_response" not in local_var_params or local_var_params["invoice_search_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("invoice_search_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `invoice_search_response` when calling `do_invoice_search`")  # noqa: E501
 
         collection_formats = {}
@@ -694,7 +803,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -706,10 +815,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/invoice-search/{requestId}",
@@ -720,13 +833,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_product_search(self, request_id, product_search_response, **kwargs):  # noqa: E501
@@ -735,22 +849,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a product search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_product_search(request_id, product_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ProductSearchResponse product_search_response: The result of the product search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param product_search_response: The result of the product search request. (required)
+        :type product_search_response: ProductSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.do_product_search_with_http_info(request_id, product_search_response, **kwargs)  # noqa: E501
@@ -761,33 +881,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a product search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_product_search_with_http_info(request_id, product_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param ProductSearchResponse product_search_response: The result of the product search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param product_search_response: The result of the product search request. (required)
+        :type product_search_response: ProductSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "product_search_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "product_search_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -795,10 +924,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `do_product_search`")  # noqa: E501
         # verify the required parameter 'product_search_response' is set
-        if self.api_client.client_side_validation and ("product_search_response" not in local_var_params or local_var_params["product_search_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("product_search_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `product_search_response` when calling `do_product_search`")  # noqa: E501
 
         collection_formats = {}
@@ -809,7 +938,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -821,10 +950,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/product-search/{requestId}",
@@ -835,13 +968,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_tax_search(self, request_id, tax_search_response, **kwargs):  # noqa: E501
@@ -850,22 +984,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a taxes search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_tax_search(request_id, tax_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param TaxSearchResponse tax_search_response: The result of the taxes search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param tax_search_response: The result of the taxes search request. (required)
+        :type tax_search_response: TaxSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.do_tax_search_with_http_info(request_id, tax_search_response, **kwargs)  # noqa: E501
@@ -876,33 +1016,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a taxes search request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_tax_search_with_http_info(request_id, tax_search_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param TaxSearchResponse tax_search_response: The result of the taxes search request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param tax_search_response: The result of the taxes search request. (required)
+        :type tax_search_response: TaxSearchResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "tax_search_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "tax_search_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -910,10 +1059,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `do_tax_search`")  # noqa: E501
         # verify the required parameter 'tax_search_response' is set
-        if self.api_client.client_side_validation and ("tax_search_response" not in local_var_params or local_var_params["tax_search_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("tax_search_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `tax_search_response` when calling `do_tax_search`")  # noqa: E501
 
         collection_formats = {}
@@ -924,7 +1073,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -936,10 +1085,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/tax-search/{requestId}",
@@ -950,13 +1103,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, request_id, invoices_response_external, **kwargs):  # noqa: E501
@@ -965,22 +1119,28 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice get-by-id request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(request_id, invoices_response_external, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoicesResponseExternal invoices_response_external: The result of the invoice request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoices_response_external: The result of the invoice request. (required)
+        :type invoices_response_external: InvoicesResponseExternal
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(request_id, invoices_response_external, **kwargs)  # noqa: E501
@@ -991,33 +1151,42 @@ class CallbacksApi(object):
         Call this endpoint with the response to a invoice get-by-id request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(request_id, invoices_response_external, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoicesResponseExternal invoices_response_external: The result of the invoice request. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoices_response_external: The result of the invoice request. (required)
+        :type invoices_response_external: InvoicesResponseExternal
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoices_response_external"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "invoices_response_external"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1025,10 +1194,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'invoices_response_external' is set
-        if self.api_client.client_side_validation and ("invoices_response_external" not in local_var_params or local_var_params["invoices_response_external"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("invoices_response_external") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `invoices_response_external` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -1039,7 +1208,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1051,10 +1220,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/invoices/{requestId}",
@@ -1065,13 +1238,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def invoice_pdf(self, request_id, invoice_pdf_response, **kwargs):  # noqa: E501
@@ -1080,22 +1254,28 @@ class CallbacksApi(object):
         Call this endpoint with the PDF content of a requested invoice.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.invoice_pdf(request_id, invoice_pdf_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoicePdfResponse invoice_pdf_response: The bytes of the invoice PDF. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoice_pdf_response: The bytes of the invoice PDF. (required)
+        :type invoice_pdf_response: InvoicePdfResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.invoice_pdf_with_http_info(request_id, invoice_pdf_response, **kwargs)  # noqa: E501
@@ -1106,33 +1286,42 @@ class CallbacksApi(object):
         Call this endpoint with the PDF content of a requested invoice.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.invoice_pdf_with_http_info(request_id, invoice_pdf_response, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str request_id: The ID of the request that this response is for (required)
-        :param InvoicePdfResponse invoice_pdf_response: The bytes of the invoice PDF. (required)
+        :param request_id: The ID of the request that this response is for (required)
+        :type request_id: str
+        :param invoice_pdf_response: The bytes of the invoice PDF. (required)
+        :type invoice_pdf_response: InvoicePdfResponse
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["request_id", "invoice_pdf_response"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["request_id", "invoice_pdf_response"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1140,10 +1329,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'request_id' is set
-        if self.api_client.client_side_validation and ("request_id" not in local_var_params or local_var_params["request_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("request_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `request_id` when calling `invoice_pdf`")  # noqa: E501
         # verify the required parameter 'invoice_pdf_response' is set
-        if self.api_client.client_side_validation and ("invoice_pdf_response" not in local_var_params or local_var_params["invoice_pdf_response"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("invoice_pdf_response") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `invoice_pdf_response` when calling `invoice_pdf`")  # noqa: E501
 
         collection_formats = {}
@@ -1154,7 +1343,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1166,10 +1355,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/extensions/accounting/callback/invoice-pdf/{requestId}",
@@ -1180,11 +1373,12 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

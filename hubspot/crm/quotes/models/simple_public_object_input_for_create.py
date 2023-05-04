@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.quotes.configuration import Configuration
@@ -32,14 +35,14 @@ class SimplePublicObjectInputForCreate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"properties": "dict(str, str)", "associations": "list[PublicAssociationsForObject]"}
+    openapi_types = {"properties": "dict[str, str]", "associations": "list[PublicAssociationsForObject]"}
 
     attribute_map = {"properties": "properties", "associations": "associations"}
 
     def __init__(self, properties=None, associations=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectInputForCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._properties = None
@@ -55,7 +58,7 @@ class SimplePublicObjectInputForCreate(object):
 
 
         :return: The properties of this SimplePublicObjectInputForCreate.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._properties
 
@@ -65,7 +68,7 @@ class SimplePublicObjectInputForCreate(object):
 
 
         :param properties: The properties of this SimplePublicObjectInputForCreate.  # noqa: E501
-        :type: dict(str, str)
+        :type properties: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
@@ -88,27 +91,36 @@ class SimplePublicObjectInputForCreate(object):
 
 
         :param associations: The associations of this SimplePublicObjectInputForCreate.  # noqa: E501
-        :type: list[PublicAssociationsForObject]
+        :type associations: list[PublicAssociationsForObject]
         """
         if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
             raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
 
         self._associations = associations
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

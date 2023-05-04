@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.performance.configuration import Configuration
@@ -110,7 +113,7 @@ class PerformanceView(object):
     ):  # noqa: E501
         """PerformanceView - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self.__403 = None
@@ -178,7 +181,7 @@ class PerformanceView(object):
         The number of responses that had an http status code of 403.  # noqa: E501
 
         :param _403: The _403 of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _403: int
         """
         if self.local_vars_configuration.client_side_validation and _403 is None:  # noqa: E501
             raise ValueError("Invalid value for `_403`, must not be `None`")  # noqa: E501
@@ -203,7 +206,7 @@ class PerformanceView(object):
         The number of responses that had an http status code of 404.  # noqa: E501
 
         :param _404: The _404 of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _404: int
         """
         if self.local_vars_configuration.client_side_validation and _404 is None:  # noqa: E501
             raise ValueError("Invalid value for `_404`, must not be `None`")  # noqa: E501
@@ -228,7 +231,7 @@ class PerformanceView(object):
         The number of responses that had an http status code of 500.  # noqa: E501
 
         :param _500: The _500 of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _500: int
         """
         if self.local_vars_configuration.client_side_validation and _500 is None:  # noqa: E501
             raise ValueError("Invalid value for `_500`, must not be `None`")  # noqa: E501
@@ -253,7 +256,7 @@ class PerformanceView(object):
         The number of responses that had an http status code of 504.  # noqa: E501
 
         :param _504: The _504 of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _504: int
         """
         if self.local_vars_configuration.client_side_validation and _504 is None:  # noqa: E501
             raise ValueError("Invalid value for `_504`, must not be `None`")  # noqa: E501
@@ -278,7 +281,7 @@ class PerformanceView(object):
         The timestamp in milliseconds of the start of this interval.  # noqa: E501
 
         :param start_timestamp: The start_timestamp of this PerformanceView.  # noqa: E501
-        :type: int
+        :type start_timestamp: int
         """
         if self.local_vars_configuration.client_side_validation and start_timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `start_timestamp`, must not be `None`")  # noqa: E501
@@ -303,7 +306,7 @@ class PerformanceView(object):
         The timestamp in milliseconds of the end of this interval.  # noqa: E501
 
         :param end_timestamp: The end_timestamp of this PerformanceView.  # noqa: E501
-        :type: int
+        :type end_timestamp: int
         """
         if self.local_vars_configuration.client_side_validation and end_timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `end_timestamp`, must not be `None`")  # noqa: E501
@@ -326,7 +329,7 @@ class PerformanceView(object):
 
 
         :param start_datetime: The start_datetime of this PerformanceView.  # noqa: E501
-        :type: str
+        :type start_datetime: str
         """
         if self.local_vars_configuration.client_side_validation and start_datetime is None:  # noqa: E501
             raise ValueError("Invalid value for `start_datetime`, must not be `None`")  # noqa: E501
@@ -349,7 +352,7 @@ class PerformanceView(object):
 
 
         :param end_datetime: The end_datetime of this PerformanceView.  # noqa: E501
-        :type: str
+        :type end_datetime: str
         """
         if self.local_vars_configuration.client_side_validation and end_datetime is None:  # noqa: E501
             raise ValueError("Invalid value for `end_datetime`, must not be `None`")  # noqa: E501
@@ -374,7 +377,7 @@ class PerformanceView(object):
         The total number of requests received in this period.  # noqa: E501
 
         :param total_requests: The total_requests of this PerformanceView.  # noqa: E501
-        :type: int
+        :type total_requests: int
         """
         if self.local_vars_configuration.client_side_validation and total_requests is None:  # noqa: E501
             raise ValueError("Invalid value for `total_requests`, must not be `None`")  # noqa: E501
@@ -399,7 +402,7 @@ class PerformanceView(object):
         The total number of requests that were served cached responses.  # noqa: E501
 
         :param cache_hits: The cache_hits of this PerformanceView.  # noqa: E501
-        :type: int
+        :type cache_hits: int
         """
         if self.local_vars_configuration.client_side_validation and cache_hits is None:  # noqa: E501
             raise ValueError("Invalid value for `cache_hits`, must not be `None`")  # noqa: E501
@@ -424,7 +427,7 @@ class PerformanceView(object):
         The percentage of requests that were served cached responses.  # noqa: E501
 
         :param cache_hit_rate: The cache_hit_rate of this PerformanceView.  # noqa: E501
-        :type: float
+        :type cache_hit_rate: float
         """
         if self.local_vars_configuration.client_side_validation and cache_hit_rate is None:  # noqa: E501
             raise ValueError("Invalid value for `cache_hit_rate`, must not be `None`")  # noqa: E501
@@ -447,7 +450,7 @@ class PerformanceView(object):
 
 
         :param total_request_time: The total_request_time of this PerformanceView.  # noqa: E501
-        :type: int
+        :type total_request_time: int
         """
         if self.local_vars_configuration.client_side_validation and total_request_time is None:  # noqa: E501
             raise ValueError("Invalid value for `total_request_time`, must not be `None`")  # noqa: E501
@@ -472,7 +475,7 @@ class PerformanceView(object):
         The average response time in milliseconds from the origin to the edge.  # noqa: E501
 
         :param avg_origin_response_time: The avg_origin_response_time of this PerformanceView.  # noqa: E501
-        :type: int
+        :type avg_origin_response_time: int
         """
         if self.local_vars_configuration.client_side_validation and avg_origin_response_time is None:  # noqa: E501
             raise ValueError("Invalid value for `avg_origin_response_time`, must not be `None`")  # noqa: E501
@@ -497,7 +500,7 @@ class PerformanceView(object):
         The average response time in milliseconds.  # noqa: E501
 
         :param response_time_ms: The response_time_ms of this PerformanceView.  # noqa: E501
-        :type: int
+        :type response_time_ms: int
         """
         if self.local_vars_configuration.client_side_validation and response_time_ms is None:  # noqa: E501
             raise ValueError("Invalid value for `response_time_ms`, must not be `None`")  # noqa: E501
@@ -522,7 +525,7 @@ class PerformanceView(object):
         The number of responses that had an http status code between 1000-1999.  # noqa: E501
 
         :param _100_x: The _100_x of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _100_x: int
         """
         if self.local_vars_configuration.client_side_validation and _100_x is None:  # noqa: E501
             raise ValueError("Invalid value for `_100_x`, must not be `None`")  # noqa: E501
@@ -547,7 +550,7 @@ class PerformanceView(object):
         The number of responses that had an http status code between 200-299.  # noqa: E501
 
         :param _20_x: The _20_x of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _20_x: int
         """
         if self.local_vars_configuration.client_side_validation and _20_x is None:  # noqa: E501
             raise ValueError("Invalid value for `_20_x`, must not be `None`")  # noqa: E501
@@ -572,7 +575,7 @@ class PerformanceView(object):
         The number of responses that had an http status code between 300-399.  # noqa: E501
 
         :param _30_x: The _30_x of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _30_x: int
         """
         if self.local_vars_configuration.client_side_validation and _30_x is None:  # noqa: E501
             raise ValueError("Invalid value for `_30_x`, must not be `None`")  # noqa: E501
@@ -597,7 +600,7 @@ class PerformanceView(object):
         The number of responses that had an http status code between 400-499.  # noqa: E501
 
         :param _40_x: The _40_x of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _40_x: int
         """
         if self.local_vars_configuration.client_side_validation and _40_x is None:  # noqa: E501
             raise ValueError("Invalid value for `_40_x`, must not be `None`")  # noqa: E501
@@ -622,7 +625,7 @@ class PerformanceView(object):
         The number of responses that had an http status code between 500-599.  # noqa: E501
 
         :param _50_x: The _50_x of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _50_x: int
         """
         if self.local_vars_configuration.client_side_validation and _50_x is None:  # noqa: E501
             raise ValueError("Invalid value for `_50_x`, must not be `None`")  # noqa: E501
@@ -647,7 +650,7 @@ class PerformanceView(object):
         The 50th percentile response time.  # noqa: E501
 
         :param _50th: The _50th of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _50th: int
         """
         if self.local_vars_configuration.client_side_validation and _50th is None:  # noqa: E501
             raise ValueError("Invalid value for `_50th`, must not be `None`")  # noqa: E501
@@ -672,7 +675,7 @@ class PerformanceView(object):
         The 95th percentile response time.  # noqa: E501
 
         :param _95th: The _95th of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _95th: int
         """
         if self.local_vars_configuration.client_side_validation and _95th is None:  # noqa: E501
             raise ValueError("Invalid value for `_95th`, must not be `None`")  # noqa: E501
@@ -697,27 +700,36 @@ class PerformanceView(object):
         The 99th percentile response time.  # noqa: E501
 
         :param _99th: The _99th of this PerformanceView.  # noqa: E501
-        :type: int
+        :type _99th: int
         """
         if self.local_vars_configuration.client_side_validation and _99th is None:  # noqa: E501
             raise ValueError("Invalid value for `_99th`, must not be `None`")  # noqa: E501
 
         self.__99th = _99th
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

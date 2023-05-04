@@ -26,12 +26,15 @@ from hubspot.marketing.forms.exceptions import OpenApiException
 from hubspot.marketing.forms.exceptions import ApiTypeError
 from hubspot.marketing.forms.exceptions import ApiValueError
 from hubspot.marketing.forms.exceptions import ApiKeyError
+from hubspot.marketing.forms.exceptions import ApiAttributeError
 from hubspot.marketing.forms.exceptions import ApiException
 
 # import models into sdk package
 from hubspot.marketing.forms.models.collection_response_form_definition_base_forward_paging import CollectionResponseFormDefinitionBaseForwardPaging
+from hubspot.marketing.forms.models.collection_response_form_definition_base_forward_paging_results_inner import CollectionResponseFormDefinitionBaseForwardPagingResultsInner
 from hubspot.marketing.forms.models.datepicker_field import DatepickerField
 from hubspot.marketing.forms.models.dependent_field import DependentField
+from hubspot.marketing.forms.models.dependent_field_dependent_field import DependentFieldDependentField
 from hubspot.marketing.forms.models.dependent_field_filter import DependentFieldFilter
 from hubspot.marketing.forms.models.dropdown_field import DropdownField
 from hubspot.marketing.forms.models.email_field import EmailField
@@ -53,6 +56,7 @@ from hubspot.marketing.forms.models.hub_spot_form_definition_all_of import HubSp
 from hubspot.marketing.forms.models.hub_spot_form_definition_create_request import HubSpotFormDefinitionCreateRequest
 from hubspot.marketing.forms.models.hub_spot_form_definition_create_request_all_of import HubSpotFormDefinitionCreateRequestAllOf
 from hubspot.marketing.forms.models.hub_spot_form_definition_patch_request import HubSpotFormDefinitionPatchRequest
+from hubspot.marketing.forms.models.hub_spot_form_definition_patch_request_legal_consent_options import HubSpotFormDefinitionPatchRequestLegalConsentOptions
 from hubspot.marketing.forms.models.legal_consent_checkbox import LegalConsentCheckbox
 from hubspot.marketing.forms.models.legal_consent_options_explicit_consent_to_process import LegalConsentOptionsExplicitConsentToProcess
 from hubspot.marketing.forms.models.legal_consent_options_implicit_consent_to_process import LegalConsentOptionsImplicitConsentToProcess

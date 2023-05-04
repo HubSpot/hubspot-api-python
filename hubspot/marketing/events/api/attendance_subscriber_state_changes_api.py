@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.events.api_client import ApiClient
-from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError
+from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class AttendanceSubscriberStateChangesApi(object):
@@ -39,24 +39,32 @@ class AttendanceSubscriberStateChangesApi(object):
         Record a subscription state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: The id of the marketing event (required)
-        :param str subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
-        :param BatchInputMarketingEventSubscriber batch_input_marketing_event_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-        :param str external_account_id: The account id associated with the marketing event
+        :param external_event_id: The id of the marketing event (required)
+        :type external_event_id: str
+        :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
+        :type subscriber_state: str
+        :param batch_input_marketing_event_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
+        :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
+        :param external_account_id: The account id associated with the marketing event
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseSubscriberVidResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseSubscriberVidResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
@@ -67,35 +75,46 @@ class AttendanceSubscriberStateChangesApi(object):
         Record a subscription state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: The id of the marketing event (required)
-        :param str subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
-        :param BatchInputMarketingEventSubscriber batch_input_marketing_event_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-        :param str external_account_id: The account id associated with the marketing event
+        :param external_event_id: The id of the marketing event (required)
+        :type external_event_id: str
+        :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
+        :type subscriber_state: str
+        :param batch_input_marketing_event_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
+        :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
+        :param external_account_id: The account id associated with the marketing event
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseSubscriberVidResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseSubscriberVidResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "subscriber_state", "batch_input_marketing_event_subscriber", "external_account_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "subscriber_state", "batch_input_marketing_event_subscriber", "external_account_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -103,15 +122,13 @@ class AttendanceSubscriberStateChangesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ("subscriber_state" not in local_var_params or local_var_params["subscriber_state"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_subscriber" not in local_var_params or local_var_params["batch_input_marketing_event_subscriber"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_subscriber") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -123,10 +140,10 @@ class AttendanceSubscriberStateChangesApi(object):
             path_params["subscriberState"] = local_var_params["subscriber_state"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -138,10 +155,16 @@ class AttendanceSubscriberStateChangesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseSubscriberVidResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/create",
@@ -152,13 +175,14 @@ class AttendanceSubscriberStateChangesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSubscriberVidResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_by_email(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
@@ -167,24 +191,32 @@ class AttendanceSubscriberStateChangesApi(object):
         Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_by_email(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: The id of the marketing event (required)
-        :param str subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
-        :param BatchInputMarketingEventEmailSubscriber batch_input_marketing_event_email_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-        :param str external_account_id: The account id associated with the marketing event
+        :param external_event_id: The id of the marketing event (required)
+        :type external_event_id: str
+        :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
+        :type subscriber_state: str
+        :param batch_input_marketing_event_email_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
+        :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
+        :param external_account_id: The account id associated with the marketing event
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseSubscriberEmailResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseSubscriberEmailResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.create_by_email_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
@@ -195,35 +227,46 @@ class AttendanceSubscriberStateChangesApi(object):
         Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_by_email_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: The id of the marketing event (required)
-        :param str subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
-        :param BatchInputMarketingEventEmailSubscriber batch_input_marketing_event_email_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
-        :param str external_account_id: The account id associated with the marketing event
+        :param external_event_id: The id of the marketing event (required)
+        :type external_event_id: str
+        :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
+        :type subscriber_state: str
+        :param batch_input_marketing_event_email_subscriber: The details of the contacts to subscribe to the event. Parameters of join and left time if state is Attended. (required)
+        :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
+        :param external_account_id: The account id associated with the marketing event
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseSubscriberEmailResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseSubscriberEmailResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "subscriber_state", "batch_input_marketing_event_email_subscriber", "external_account_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "subscriber_state", "batch_input_marketing_event_email_subscriber", "external_account_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -231,15 +274,13 @@ class AttendanceSubscriberStateChangesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `create_by_email`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ("subscriber_state" not in local_var_params or local_var_params["subscriber_state"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create_by_email`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_email_subscriber" not in local_var_params or local_var_params["batch_input_marketing_event_email_subscriber"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_email_subscriber") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `create_by_email`")  # noqa: E501
 
         collection_formats = {}
@@ -251,10 +292,10 @@ class AttendanceSubscriberStateChangesApi(object):
             path_params["subscriberState"] = local_var_params["subscriber_state"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -266,10 +307,16 @@ class AttendanceSubscriberStateChangesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseSubscriberEmailResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/attendance/{externalEventId}/{subscriberState}/email-create",
@@ -280,11 +327,12 @@ class AttendanceSubscriberStateChangesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseSubscriberEmailResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

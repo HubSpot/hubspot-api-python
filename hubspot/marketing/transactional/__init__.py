@@ -27,6 +27,7 @@ from hubspot.marketing.transactional.exceptions import OpenApiException
 from hubspot.marketing.transactional.exceptions import ApiTypeError
 from hubspot.marketing.transactional.exceptions import ApiValueError
 from hubspot.marketing.transactional.exceptions import ApiKeyError
+from hubspot.marketing.transactional.exceptions import ApiAttributeError
 from hubspot.marketing.transactional.exceptions import ApiException
 
 # import models into sdk package

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.blog_posts.configuration import Configuration
@@ -39,7 +42,7 @@ class SideOrCorner(object):
     def __init__(self, vertical_side=None, horizontal_side=None, local_vars_configuration=None):  # noqa: E501
         """SideOrCorner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._vertical_side = None
@@ -65,7 +68,7 @@ class SideOrCorner(object):
 
 
         :param vertical_side: The vertical_side of this SideOrCorner.  # noqa: E501
-        :type: str
+        :type vertical_side: str
         """
         if self.local_vars_configuration.client_side_validation and vertical_side is None:  # noqa: E501
             raise ValueError("Invalid value for `vertical_side`, must not be `None`")  # noqa: E501
@@ -91,7 +94,7 @@ class SideOrCorner(object):
 
 
         :param horizontal_side: The horizontal_side of this SideOrCorner.  # noqa: E501
-        :type: str
+        :type horizontal_side: str
         """
         if self.local_vars_configuration.client_side_validation and horizontal_side is None:  # noqa: E501
             raise ValueError("Invalid value for `horizontal_side`, must not be `None`")  # noqa: E501
@@ -101,20 +104,29 @@ class SideOrCorner(object):
 
         self._horizontal_side = horizontal_side
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

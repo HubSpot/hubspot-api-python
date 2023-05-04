@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -39,7 +42,7 @@ class TimelineEventTemplateCreateRequest(object):
     def __init__(self, name=None, header_template=None, detail_template=None, tokens=None, object_type=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -75,7 +78,7 @@ class TimelineEventTemplateCreateRequest(object):
         The template name.  # noqa: E501
 
         :param name: The name of this TimelineEventTemplateCreateRequest.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -100,7 +103,7 @@ class TimelineEventTemplateCreateRequest(object):
         This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.  # noqa: E501
 
         :param header_template: The header_template of this TimelineEventTemplateCreateRequest.  # noqa: E501
-        :type: str
+        :type header_template: str
         """
 
         self._header_template = header_template
@@ -123,7 +126,7 @@ class TimelineEventTemplateCreateRequest(object):
         This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.  # noqa: E501
 
         :param detail_template: The detail_template of this TimelineEventTemplateCreateRequest.  # noqa: E501
-        :type: str
+        :type detail_template: str
         """
 
         self._detail_template = detail_template
@@ -146,7 +149,7 @@ class TimelineEventTemplateCreateRequest(object):
         A collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects.  # noqa: E501
 
         :param tokens: The tokens of this TimelineEventTemplateCreateRequest.  # noqa: E501
-        :type: list[TimelineEventTemplateToken]
+        :type tokens: list[TimelineEventTemplateToken]
         """
         if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
             raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
@@ -171,27 +174,36 @@ class TimelineEventTemplateCreateRequest(object):
         The type of CRM object this template is for. [Contacts, companies, tickets, and deals] are supported.  # noqa: E501
 
         :param object_type: The object_type of this TimelineEventTemplateCreateRequest.  # noqa: E501
-        :type: str
+        :type object_type: str
         """
         if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
 
         self._object_type = object_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.files.files.configuration import Configuration
@@ -39,7 +42,7 @@ class FileUpdateInput(object):
     def __init__(self, name=None, parent_folder_id=None, parent_folder_path=None, is_usable_in_content=None, access=None, local_vars_configuration=None):  # noqa: E501
         """FileUpdateInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -78,7 +81,7 @@ class FileUpdateInput(object):
         New name for the file.  # noqa: E501
 
         :param name: The name of this FileUpdateInput.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -101,7 +104,7 @@ class FileUpdateInput(object):
         Folder ID where the file should be moved to.  folderId and folderPath cannot be set at the same time.  # noqa: E501
 
         :param parent_folder_id: The parent_folder_id of this FileUpdateInput.  # noqa: E501
-        :type: str
+        :type parent_folder_id: str
         """
 
         self._parent_folder_id = parent_folder_id
@@ -124,7 +127,7 @@ class FileUpdateInput(object):
         Folder path where the file should be moved to. folderId and folderPath cannot be set at the same time.  # noqa: E501
 
         :param parent_folder_path: The parent_folder_path of this FileUpdateInput.  # noqa: E501
-        :type: str
+        :type parent_folder_path: str
         """
 
         self._parent_folder_path = parent_folder_path
@@ -147,7 +150,7 @@ class FileUpdateInput(object):
         Mark weather the file should be used in new content or not.  # noqa: E501
 
         :param is_usable_in_content: The is_usable_in_content of this FileUpdateInput.  # noqa: E501
-        :type: bool
+        :type is_usable_in_content: bool
         """
 
         self._is_usable_in_content = is_usable_in_content
@@ -170,7 +173,7 @@ class FileUpdateInput(object):
         NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
 
         :param access: The access of this FileUpdateInput.  # noqa: E501
-        :type: str
+        :type access: str
         """
         allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
@@ -178,20 +181,29 @@ class FileUpdateInput(object):
 
         self._access = access
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

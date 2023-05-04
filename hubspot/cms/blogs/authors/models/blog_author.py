@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.authors.configuration import Configuration
@@ -95,7 +98,7 @@ class BlogAuthor(object):
     ):  # noqa: E501
         """BlogAuthor - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -153,7 +156,7 @@ class BlogAuthor(object):
         The unique ID of the Blog Author.  # noqa: E501
 
         :param id: The id of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -176,7 +179,7 @@ class BlogAuthor(object):
 
 
         :param full_name: The full_name of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type full_name: str
         """
         if self.local_vars_configuration.client_side_validation and full_name is None:  # noqa: E501
             raise ValueError("Invalid value for `full_name`, must not be `None`")  # noqa: E501
@@ -201,7 +204,7 @@ class BlogAuthor(object):
         Email address of the Blog Author.  # noqa: E501
 
         :param email: The email of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type email: str
         """
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
@@ -224,7 +227,7 @@ class BlogAuthor(object):
 
 
         :param slug: The slug of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type slug: str
         """
         if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
             raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
@@ -249,7 +252,7 @@ class BlogAuthor(object):
         The explicitly defined ISO 639 language code of the blog author.  # noqa: E501
 
         :param language: The language of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type language: str
         """
         if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
             raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
@@ -992,7 +995,7 @@ class BlogAuthor(object):
         ID of the primary blog author this object was translated from.  # noqa: E501
 
         :param translated_from_id: The translated_from_id of this BlogAuthor.  # noqa: E501
-        :type: int
+        :type translated_from_id: int
         """
         if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
             raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
@@ -1015,7 +1018,7 @@ class BlogAuthor(object):
 
 
         :param name: The name of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -1040,7 +1043,7 @@ class BlogAuthor(object):
         The full name of the Blog Author to be displayed.  # noqa: E501
 
         :param display_name: The display_name of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type display_name: str
         """
         if self.local_vars_configuration.client_side_validation and display_name is None:  # noqa: E501
             raise ValueError("Invalid value for `display_name`, must not be `None`")  # noqa: E501
@@ -1065,7 +1068,7 @@ class BlogAuthor(object):
         A short biography of the blog author.  # noqa: E501
 
         :param bio: The bio of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type bio: str
         """
         if self.local_vars_configuration.client_side_validation and bio is None:  # noqa: E501
             raise ValueError("Invalid value for `bio`, must not be `None`")  # noqa: E501
@@ -1090,7 +1093,7 @@ class BlogAuthor(object):
         URL to the website of the Blog Author.  # noqa: E501
 
         :param website: The website of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type website: str
         """
         if self.local_vars_configuration.client_side_validation and website is None:  # noqa: E501
             raise ValueError("Invalid value for `website`, must not be `None`")  # noqa: E501
@@ -1115,7 +1118,7 @@ class BlogAuthor(object):
         URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.  # noqa: E501
 
         :param twitter: The twitter of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type twitter: str
         """
         if self.local_vars_configuration.client_side_validation and twitter is None:  # noqa: E501
             raise ValueError("Invalid value for `twitter`, must not be `None`")  # noqa: E501
@@ -1140,7 +1143,7 @@ class BlogAuthor(object):
         URL to the Blog Author's Facebook page.  # noqa: E501
 
         :param facebook: The facebook of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type facebook: str
         """
         if self.local_vars_configuration.client_side_validation and facebook is None:  # noqa: E501
             raise ValueError("Invalid value for `facebook`, must not be `None`")  # noqa: E501
@@ -1165,7 +1168,7 @@ class BlogAuthor(object):
         URL to the blog author's LinkedIn page.  # noqa: E501
 
         :param linkedin: The linkedin of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type linkedin: str
         """
         if self.local_vars_configuration.client_side_validation and linkedin is None:  # noqa: E501
             raise ValueError("Invalid value for `linkedin`, must not be `None`")  # noqa: E501
@@ -1190,7 +1193,7 @@ class BlogAuthor(object):
         URL to the blog author's avatar, if supplying a custom one.  # noqa: E501
 
         :param avatar: The avatar of this BlogAuthor.  # noqa: E501
-        :type: str
+        :type avatar: str
         """
         if self.local_vars_configuration.client_side_validation and avatar is None:  # noqa: E501
             raise ValueError("Invalid value for `avatar`, must not be `None`")  # noqa: E501
@@ -1213,7 +1216,7 @@ class BlogAuthor(object):
 
 
         :param created: The created of this BlogAuthor.  # noqa: E501
-        :type: datetime
+        :type created: datetime
         """
         if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
             raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
@@ -1236,7 +1239,7 @@ class BlogAuthor(object):
 
 
         :param updated: The updated of this BlogAuthor.  # noqa: E501
-        :type: datetime
+        :type updated: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
             raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
@@ -1261,27 +1264,36 @@ class BlogAuthor(object):
         The timestamp (ISO8601 format) when this Blog Author was deleted.  # noqa: E501
 
         :param deleted_at: The deleted_at of this BlogAuthor.  # noqa: E501
-        :type: datetime
+        :type deleted_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
             raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

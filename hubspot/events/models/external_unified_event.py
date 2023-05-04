@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.events.configuration import Configuration
@@ -32,14 +35,14 @@ class ExternalUnifiedEvent(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object_type": "str", "object_id": "str", "event_type": "str", "occurred_at": "datetime", "id": "str", "properties": "dict(str, str)"}
+    openapi_types = {"object_type": "str", "object_id": "str", "event_type": "str", "occurred_at": "datetime", "id": "str", "properties": "dict[str, str]"}
 
     attribute_map = {"object_type": "objectType", "object_id": "objectId", "event_type": "eventType", "occurred_at": "occurredAt", "id": "id", "properties": "properties"}
 
     def __init__(self, object_type=None, object_id=None, event_type=None, occurred_at=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """ExternalUnifiedEvent - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._object_type = None
@@ -75,7 +78,7 @@ class ExternalUnifiedEvent(object):
         The objectType for the object which did the event.  # noqa: E501
 
         :param object_type: The object_type of this ExternalUnifiedEvent.  # noqa: E501
-        :type: str
+        :type object_type: str
         """
         if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
@@ -100,7 +103,7 @@ class ExternalUnifiedEvent(object):
         The objectId of the object which did the event.  # noqa: E501
 
         :param object_id: The object_id of this ExternalUnifiedEvent.  # noqa: E501
-        :type: str
+        :type object_id: str
         """
         if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
             raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
@@ -125,7 +128,7 @@ class ExternalUnifiedEvent(object):
         The format of the `eventType` string is `ae{appId}_{eventTypeLabel}`, `pe{portalId}_{eventTypeLabel}`, or just `e_{eventTypeLabel}` for HubSpot events.  # noqa: E501
 
         :param event_type: The event_type of this ExternalUnifiedEvent.  # noqa: E501
-        :type: str
+        :type event_type: str
         """
         if self.local_vars_configuration.client_side_validation and event_type is None:  # noqa: E501
             raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
@@ -150,7 +153,7 @@ class ExternalUnifiedEvent(object):
         An ISO 8601 timestamp when the event occurred.  # noqa: E501
 
         :param occurred_at: The occurred_at of this ExternalUnifiedEvent.  # noqa: E501
-        :type: datetime
+        :type occurred_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and occurred_at is None:  # noqa: E501
             raise ValueError("Invalid value for `occurred_at`, must not be `None`")  # noqa: E501
@@ -175,7 +178,7 @@ class ExternalUnifiedEvent(object):
         A unique identifier for the event.  # noqa: E501
 
         :param id: The id of this ExternalUnifiedEvent.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -188,7 +191,7 @@ class ExternalUnifiedEvent(object):
 
 
         :return: The properties of this ExternalUnifiedEvent.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._properties
 
@@ -198,27 +201,36 @@ class ExternalUnifiedEvent(object):
 
 
         :param properties: The properties of this ExternalUnifiedEvent.  # noqa: E501
-        :type: dict(str, str)
+        :type properties: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

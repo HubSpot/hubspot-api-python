@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.audit_logs.api_client import ApiClient
-from hubspot.cms.audit_logs.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.audit_logs.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class AuditLogsApi(object):
@@ -39,28 +39,40 @@ class AuditLogsApi(object):
         Returns audit logs based on filters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] object_id: Comma separated list of object ids to filter by.
-        :param list[str] user_id: Comma separated list of user ids to filter by.
-        :param str after: Timestamp after which audit logs will be returned
-        :param str before: Timestamp before which audit logs will be returned
-        :param list[str] sort: The sort direction for the audit logs. (Can only sort by timestamp).
-        :param list[str] event_type: Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).
-        :param int limit: The number of logs to return.
-        :param list[str] object_type: Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+        :param object_id: Comma separated list of object ids to filter by.
+        :type object_id: list[str]
+        :param user_id: Comma separated list of user ids to filter by.
+        :type user_id: list[str]
+        :param after: Timestamp after which audit logs will be returned
+        :type after: str
+        :param before: Timestamp before which audit logs will be returned
+        :type before: str
+        :param sort: The sort direction for the audit logs. (Can only sort by timestamp).
+        :type sort: list[str]
+        :param event_type: Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).
+        :type event_type: list[str]
+        :param limit: The number of logs to return.
+        :type limit: int
+        :param object_type: Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+        :type object_type: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponsePublicAuditLog
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponsePublicAuditLog
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
@@ -71,39 +83,54 @@ class AuditLogsApi(object):
         Returns audit logs based on filters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] object_id: Comma separated list of object ids to filter by.
-        :param list[str] user_id: Comma separated list of user ids to filter by.
-        :param str after: Timestamp after which audit logs will be returned
-        :param str before: Timestamp before which audit logs will be returned
-        :param list[str] sort: The sort direction for the audit logs. (Can only sort by timestamp).
-        :param list[str] event_type: Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).
-        :param int limit: The number of logs to return.
-        :param list[str] object_type: Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+        :param object_id: Comma separated list of object ids to filter by.
+        :type object_id: list[str]
+        :param user_id: Comma separated list of user ids to filter by.
+        :type user_id: list[str]
+        :param after: Timestamp after which audit logs will be returned
+        :type after: str
+        :param before: Timestamp before which audit logs will be returned
+        :type before: str
+        :param sort: The sort direction for the audit logs. (Can only sort by timestamp).
+        :type sort: list[str]
+        :param event_type: Comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).
+        :type event_type: list[str]
+        :param limit: The number of logs to return.
+        :type limit: int
+        :param object_type: Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+        :type object_type: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponsePublicAuditLog, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponsePublicAuditLog, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "user_id", "after", "before", "sort", "event_type", "limit", "object_type"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "user_id", "after", "before", "sort", "event_type", "limit", "object_type"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -116,29 +143,29 @@ class AuditLogsApi(object):
         path_params = {}
 
         query_params = []
-        if "object_id" in local_var_params and local_var_params["object_id"] is not None:  # noqa: E501
+        if local_var_params.get("object_id") is not None:  # noqa: E501
             query_params.append(("objectId", local_var_params["object_id"]))  # noqa: E501
             collection_formats["objectId"] = "multi"  # noqa: E501
-        if "user_id" in local_var_params and local_var_params["user_id"] is not None:  # noqa: E501
+        if local_var_params.get("user_id") is not None:  # noqa: E501
             query_params.append(("userId", local_var_params["user_id"]))  # noqa: E501
             collection_formats["userId"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "before" in local_var_params and local_var_params["before"] is not None:  # noqa: E501
+        if local_var_params.get("before") is not None:  # noqa: E501
             query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
+        if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "event_type" in local_var_params and local_var_params["event_type"] is not None:  # noqa: E501
+        if local_var_params.get("event_type") is not None:  # noqa: E501
             query_params.append(("eventType", local_var_params["event_type"]))  # noqa: E501
             collection_formats["eventType"] = "multi"  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "object_type" in local_var_params and local_var_params["object_type"] is not None:  # noqa: E501
+        if local_var_params.get("object_type") is not None:  # noqa: E501
             query_params.append(("objectType", local_var_params["object_type"]))  # noqa: E501
             collection_formats["objectType"] = "multi"  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -150,6 +177,10 @@ class AuditLogsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponsePublicAuditLog",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/audit-logs/",
             "GET",
@@ -159,11 +190,12 @@ class AuditLogsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponsePublicAuditLog",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

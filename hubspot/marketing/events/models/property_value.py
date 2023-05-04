@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.events.configuration import Configuration
@@ -86,7 +89,7 @@ class PropertyValue(object):
     ):  # noqa: E501
         """PropertyValue - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -139,7 +142,7 @@ class PropertyValue(object):
 
 
         :param name: The name of this PropertyValue.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -162,7 +165,7 @@ class PropertyValue(object):
 
 
         :param value: The value of this PropertyValue.  # noqa: E501
-        :type: str
+        :type value: str
         """
         if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
@@ -185,7 +188,7 @@ class PropertyValue(object):
 
 
         :param timestamp: The timestamp of this PropertyValue.  # noqa: E501
-        :type: int
+        :type timestamp: int
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -208,7 +211,7 @@ class PropertyValue(object):
 
 
         :param source_id: The source_id of this PropertyValue.  # noqa: E501
-        :type: str
+        :type source_id: str
         """
         if self.local_vars_configuration.client_side_validation and source_id is None:  # noqa: E501
             raise ValueError("Invalid value for `source_id`, must not be `None`")  # noqa: E501
@@ -231,7 +234,7 @@ class PropertyValue(object):
 
 
         :param source_label: The source_label of this PropertyValue.  # noqa: E501
-        :type: str
+        :type source_label: str
         """
         if self.local_vars_configuration.client_side_validation and source_label is None:  # noqa: E501
             raise ValueError("Invalid value for `source_label`, must not be `None`")  # noqa: E501
@@ -254,7 +257,7 @@ class PropertyValue(object):
 
 
         :param source: The source of this PropertyValue.  # noqa: E501
-        :type: str
+        :type source: str
         """
         if self.local_vars_configuration.client_side_validation and source is None:  # noqa: E501
             raise ValueError("Invalid value for `source`, must not be `None`")  # noqa: E501
@@ -360,7 +363,7 @@ class PropertyValue(object):
 
 
         :param selected_by_user: The selected_by_user of this PropertyValue.  # noqa: E501
-        :type: bool
+        :type selected_by_user: bool
         """
         if self.local_vars_configuration.client_side_validation and selected_by_user is None:  # noqa: E501
             raise ValueError("Invalid value for `selected_by_user`, must not be `None`")  # noqa: E501
@@ -383,7 +386,7 @@ class PropertyValue(object):
 
 
         :param selected_by_user_timestamp: The selected_by_user_timestamp of this PropertyValue.  # noqa: E501
-        :type: int
+        :type selected_by_user_timestamp: int
         """
         if self.local_vars_configuration.client_side_validation and selected_by_user_timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `selected_by_user_timestamp`, must not be `None`")  # noqa: E501
@@ -406,7 +409,7 @@ class PropertyValue(object):
 
 
         :param source_vid: The source_vid of this PropertyValue.  # noqa: E501
-        :type: list[int]
+        :type source_vid: list[int]
         """
         if self.local_vars_configuration.client_side_validation and source_vid is None:  # noqa: E501
             raise ValueError("Invalid value for `source_vid`, must not be `None`")  # noqa: E501
@@ -431,7 +434,7 @@ class PropertyValue(object):
         Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`  # noqa: E501
 
         :param source_metadata: The source_metadata of this PropertyValue.  # noqa: E501
-        :type: str
+        :type source_metadata: str
         """
         if self.local_vars_configuration.client_side_validation and source_metadata is None:  # noqa: E501
             raise ValueError("Invalid value for `source_metadata`, must not be `None`")  # noqa: E501
@@ -454,7 +457,7 @@ class PropertyValue(object):
 
 
         :param request_id: The request_id of this PropertyValue.  # noqa: E501
-        :type: str
+        :type request_id: str
         """
         if self.local_vars_configuration.client_side_validation and request_id is None:  # noqa: E501
             raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
@@ -477,7 +480,7 @@ class PropertyValue(object):
 
 
         :param updated_by_user_id: The updated_by_user_id of this PropertyValue.  # noqa: E501
-        :type: int
+        :type updated_by_user_id: int
         """
 
         self._updated_by_user_id = updated_by_user_id
@@ -498,7 +501,7 @@ class PropertyValue(object):
 
 
         :param persistence_timestamp: The persistence_timestamp of this PropertyValue.  # noqa: E501
-        :type: int
+        :type persistence_timestamp: int
         """
 
         self._persistence_timestamp = persistence_timestamp
@@ -519,25 +522,34 @@ class PropertyValue(object):
 
 
         :param use_timestamp_as_persistence_timestamp: The use_timestamp_as_persistence_timestamp of this PropertyValue.  # noqa: E501
-        :type: bool
+        :type use_timestamp_as_persistence_timestamp: bool
         """
 
         self._use_timestamp_as_persistence_timestamp = use_timestamp_as_persistence_timestamp
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -30,6 +30,7 @@ from hubspot.crm.contacts.exceptions import OpenApiException
 from hubspot.crm.contacts.exceptions import ApiTypeError
 from hubspot.crm.contacts.exceptions import ApiValueError
 from hubspot.crm.contacts.exceptions import ApiKeyError
+from hubspot.crm.contacts.exceptions import ApiAttributeError
 from hubspot.crm.contacts.exceptions import ApiException
 
 # import models into sdk package

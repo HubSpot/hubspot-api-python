@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.files.files.configuration import Configuration
@@ -39,7 +42,7 @@ class SignedUrl(object):
     def __init__(self, expires_at=None, url=None, name=None, extension=None, type=None, size=None, height=None, width=None, local_vars_configuration=None):  # noqa: E501
         """SignedUrl - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._expires_at = None
@@ -81,7 +84,7 @@ class SignedUrl(object):
         Timestamp of when the URL will no longer grant access to the file.  # noqa: E501
 
         :param expires_at: The expires_at of this SignedUrl.  # noqa: E501
-        :type: datetime
+        :type expires_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and expires_at is None:  # noqa: E501
             raise ValueError("Invalid value for `expires_at`, must not be `None`")  # noqa: E501
@@ -106,7 +109,7 @@ class SignedUrl(object):
         Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.  # noqa: E501
 
         :param url: The url of this SignedUrl.  # noqa: E501
-        :type: str
+        :type url: str
         """
         if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -131,7 +134,7 @@ class SignedUrl(object):
         Name of the requested file.  # noqa: E501
 
         :param name: The name of this SignedUrl.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -156,7 +159,7 @@ class SignedUrl(object):
         Extension of the requested file.  # noqa: E501
 
         :param extension: The extension of this SignedUrl.  # noqa: E501
-        :type: str
+        :type extension: str
         """
         if self.local_vars_configuration.client_side_validation and extension is None:  # noqa: E501
             raise ValueError("Invalid value for `extension`, must not be `None`")  # noqa: E501
@@ -181,7 +184,7 @@ class SignedUrl(object):
         Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
 
         :param type: The type of this SignedUrl.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -206,7 +209,7 @@ class SignedUrl(object):
         Size in bytes of the requested file.  # noqa: E501
 
         :param size: The size of this SignedUrl.  # noqa: E501
-        :type: int
+        :type size: int
         """
         if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
             raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
@@ -231,7 +234,7 @@ class SignedUrl(object):
         For image and video files. The height of the file.  # noqa: E501
 
         :param height: The height of this SignedUrl.  # noqa: E501
-        :type: int
+        :type height: int
         """
 
         self._height = height
@@ -254,25 +257,34 @@ class SignedUrl(object):
         For image and video files. The width of the file.  # noqa: E501
 
         :param width: The width of this SignedUrl.  # noqa: E501
-        :type: int
+        :type width: int
         """
 
         self._width = width
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

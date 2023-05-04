@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.files.files.configuration import Configuration
@@ -98,7 +101,7 @@ class File(object):
     ):  # noqa: E501
         """File - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -171,7 +174,7 @@ class File(object):
         File ID.  # noqa: E501
 
         :param id: The id of this File.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -196,7 +199,7 @@ class File(object):
         Creation time of the file object.  # noqa: E501
 
         :param created_at: The created_at of this File.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -221,7 +224,7 @@ class File(object):
         Deletion time of the file object.  # noqa: E501
 
         :param archived_at: The archived_at of this File.  # noqa: E501
-        :type: datetime
+        :type archived_at: datetime
         """
 
         self._archived_at = archived_at
@@ -244,7 +247,7 @@ class File(object):
         Timestamp of the latest update to the file.  # noqa: E501
 
         :param updated_at: The updated_at of this File.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -269,7 +272,7 @@ class File(object):
         If the file is deleted.  # noqa: E501
 
         :param archived: The archived of this File.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -294,7 +297,7 @@ class File(object):
         Id of the folder the file is in.  # noqa: E501
 
         :param parent_folder_id: The parent_folder_id of this File.  # noqa: E501
-        :type: str
+        :type parent_folder_id: str
         """
 
         self._parent_folder_id = parent_folder_id
@@ -317,7 +320,7 @@ class File(object):
         Name of the file.  # noqa: E501
 
         :param name: The name of this File.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -340,7 +343,7 @@ class File(object):
         Path of the file in the file manager.  # noqa: E501
 
         :param path: The path of this File.  # noqa: E501
-        :type: str
+        :type path: str
         """
 
         self._path = path
@@ -363,7 +366,7 @@ class File(object):
         Size in bytes of the file.  # noqa: E501
 
         :param size: The size of this File.  # noqa: E501
-        :type: int
+        :type size: int
         """
 
         self._size = size
@@ -386,7 +389,7 @@ class File(object):
         For image and video files, the height of the content.  # noqa: E501
 
         :param height: The height of this File.  # noqa: E501
-        :type: int
+        :type height: int
         """
 
         self._height = height
@@ -409,7 +412,7 @@ class File(object):
         For image and video files, the width of the content.  # noqa: E501
 
         :param width: The width of this File.  # noqa: E501
-        :type: int
+        :type width: int
         """
 
         self._width = width
@@ -432,7 +435,7 @@ class File(object):
         Encoding of the file.  # noqa: E501
 
         :param encoding: The encoding of this File.  # noqa: E501
-        :type: str
+        :type encoding: str
         """
 
         self._encoding = encoding
@@ -455,7 +458,7 @@ class File(object):
         Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
 
         :param type: The type of this File.  # noqa: E501
-        :type: str
+        :type type: str
         """
 
         self._type = type
@@ -478,7 +481,7 @@ class File(object):
         Extension of the file. For example png.  # noqa: E501
 
         :param extension: The extension of this File.  # noqa: E501
-        :type: str
+        :type extension: str
         """
 
         self._extension = extension
@@ -501,7 +504,7 @@ class File(object):
         Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.  # noqa: E501
 
         :param default_hosting_url: The default_hosting_url of this File.  # noqa: E501
-        :type: str
+        :type default_hosting_url: str
         """
 
         self._default_hosting_url = default_hosting_url
@@ -524,7 +527,7 @@ class File(object):
         URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.  # noqa: E501
 
         :param url: The url of this File.  # noqa: E501
-        :type: str
+        :type url: str
         """
 
         self._url = url
@@ -547,7 +550,7 @@ class File(object):
         Previously \"archied\". Indicates if the file should be used when creating new content like web pages.  # noqa: E501
 
         :param is_usable_in_content: The is_usable_in_content of this File.  # noqa: E501
-        :type: bool
+        :type is_usable_in_content: bool
         """
 
         self._is_usable_in_content = is_usable_in_content
@@ -570,7 +573,7 @@ class File(object):
         File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.  # noqa: E501
 
         :param access: The access of this File.  # noqa: E501
-        :type: str
+        :type access: str
         """
         if self.local_vars_configuration.client_side_validation and access is None:  # noqa: E501
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
@@ -580,20 +583,29 @@ class File(object):
 
         self._access = access
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

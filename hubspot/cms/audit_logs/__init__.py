@@ -26,6 +26,7 @@ from hubspot.cms.audit_logs.exceptions import OpenApiException
 from hubspot.cms.audit_logs.exceptions import ApiTypeError
 from hubspot.cms.audit_logs.exceptions import ApiValueError
 from hubspot.cms.audit_logs.exceptions import ApiKeyError
+from hubspot.cms.audit_logs.exceptions import ApiAttributeError
 from hubspot.cms.audit_logs.exceptions import ApiException
 
 # import models into sdk package

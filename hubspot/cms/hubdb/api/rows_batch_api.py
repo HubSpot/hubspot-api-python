@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.hubdb.api_client import ApiClient
-from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class RowsBatchApi(object):
@@ -39,22 +39,28 @@ class RowsBatchApi(object):
         Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone_draft_table_rows(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: The JSON array of row ids (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: The JSON array of row ids (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.clone_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class RowsBatchApi(object):
         Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: The JSON array of row ids (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: The JSON array of row ids (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_string"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `clone_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `clone_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -113,7 +128,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -125,10 +140,16 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseHubDbTableRowV3",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/clone",
@@ -139,13 +160,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_request, **kwargs):  # noqa: E501
@@ -154,22 +176,28 @@ class RowsBatchApi(object):
         Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_draft_table_rows(table_id_or_name, batch_input_hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3Request batch_input_hub_db_table_row_v3_request: JSON array of row objects (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_request: JSON array of row objects (required)
+        :type batch_input_hub_db_table_row_v3_request: BatchInputHubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.create_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_request, **kwargs)  # noqa: E501
@@ -180,33 +208,42 @@ class RowsBatchApi(object):
         Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3Request batch_input_hub_db_table_row_v3_request: JSON array of row objects (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_request: JSON array of row objects (required)
+        :type batch_input_hub_db_table_row_v3_request: BatchInputHubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -214,12 +251,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `create_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_hub_db_table_row_v3_request' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_hub_db_table_row_v3_request" not in local_var_params or local_var_params["batch_input_hub_db_table_row_v3_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_hub_db_table_row_v3_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_hub_db_table_row_v3_request` when calling `create_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -230,7 +265,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -242,10 +277,17 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "BatchResponseHubDbTableRowV3",
+            207: "BatchResponseHubDbTableRowV3WithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/create",
@@ -256,13 +298,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def purge_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
@@ -271,22 +314,28 @@ class RowsBatchApi(object):
         Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.purge_draft_table_rows(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: JSON array of row ids. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: JSON array of row ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.purge_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
@@ -297,33 +346,42 @@ class RowsBatchApi(object):
         Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.purge_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: JSON array of row ids. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: JSON array of row ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_string"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -331,10 +389,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `purge_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `purge_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -345,7 +403,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -357,10 +415,14 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/purge",
@@ -371,13 +433,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def read_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
@@ -386,22 +449,28 @@ class RowsBatchApi(object):
         Returns rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_draft_table_rows(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: JSON array of row ids. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: JSON array of row ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.read_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
@@ -412,33 +481,42 @@ class RowsBatchApi(object):
         Returns rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_draft_table_rows_with_http_info(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputString batch_input_string: JSON array of row ids. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_string: JSON array of row ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_string"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -446,10 +524,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `read_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `read_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -460,7 +538,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -472,10 +550,17 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseHubDbTableRowV3",
+            207: "BatchResponseHubDbTableRowV3WithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/read",
@@ -486,13 +571,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def read_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
@@ -501,22 +587,28 @@ class RowsBatchApi(object):
         Returns rows in the `published` version of the specified table, given a set of row ids. **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_table_rows(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param BatchInputString batch_input_string: The JSON array of row ids (required)
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param batch_input_string: The JSON array of row ids (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.read_table_rows_with_http_info(table_id_or_name, batch_input_string, **kwargs)  # noqa: E501
@@ -527,33 +619,42 @@ class RowsBatchApi(object):
         Returns rows in the `published` version of the specified table, given a set of row ids. **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_table_rows_with_http_info(table_id_or_name, batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param BatchInputString batch_input_string: The JSON array of row ids (required)
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param batch_input_string: The JSON array of row ids (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_string"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -561,10 +662,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `read_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `read_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -575,7 +676,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -587,10 +688,17 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseHubDbTableRowV3",
+            207: "BatchResponseHubDbTableRowV3WithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/batch/read",
@@ -601,13 +709,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def replace_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
@@ -616,22 +725,28 @@ class RowsBatchApi(object):
         Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_draft_table_rows(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3BatchUpdateRequest batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :type batch_input_hub_db_table_row_v3_batch_update_request: BatchInputHubDbTableRowV3BatchUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.replace_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs)  # noqa: E501
@@ -642,33 +757,42 @@ class RowsBatchApi(object):
         Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3BatchUpdateRequest batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :type batch_input_hub_db_table_row_v3_batch_update_request: BatchInputHubDbTableRowV3BatchUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_batch_update_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_batch_update_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -676,12 +800,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `replace_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_hub_db_table_row_v3_batch_update_request" not in local_var_params or local_var_params["batch_input_hub_db_table_row_v3_batch_update_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_hub_db_table_row_v3_batch_update_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_hub_db_table_row_v3_batch_update_request` when calling `replace_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -692,7 +814,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -704,10 +826,17 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseHubDbTableRowV3",
+            207: "BatchResponseHubDbTableRowV3WithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/replace",
@@ -718,13 +847,14 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
@@ -733,22 +863,28 @@ class RowsBatchApi(object):
         Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft_table_rows(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3BatchUpdateRequest batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :type batch_input_hub_db_table_row_v3_batch_update_request: BatchInputHubDbTableRowV3BatchUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseHubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseHubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.update_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs)  # noqa: E501
@@ -759,33 +895,42 @@ class RowsBatchApi(object):
         Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft_table_rows_with_http_info(table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param BatchInputHubDbTableRowV3BatchUpdateRequest batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param batch_input_hub_db_table_row_v3_batch_update_request: JSON array of row objects. (required)
+        :type batch_input_hub_db_table_row_v3_batch_update_request: BatchInputHubDbTableRowV3BatchUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseHubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_batch_update_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "batch_input_hub_db_table_row_v3_batch_update_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -793,12 +938,10 @@ class RowsBatchApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `update_draft_table_rows`")  # noqa: E501
         # verify the required parameter 'batch_input_hub_db_table_row_v3_batch_update_request' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_hub_db_table_row_v3_batch_update_request" not in local_var_params or local_var_params["batch_input_hub_db_table_row_v3_batch_update_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_hub_db_table_row_v3_batch_update_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_hub_db_table_row_v3_batch_update_request` when calling `update_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -809,7 +952,7 @@ class RowsBatchApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -821,10 +964,17 @@ class RowsBatchApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseHubDbTableRowV3",
+            207: "BatchResponseHubDbTableRowV3WithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft/batch/update",
@@ -835,11 +985,12 @@ class RowsBatchApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseHubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

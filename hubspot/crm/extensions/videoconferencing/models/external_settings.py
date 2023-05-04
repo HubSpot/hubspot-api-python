@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.videoconferencing.configuration import Configuration
@@ -39,7 +42,7 @@ class ExternalSettings(object):
     def __init__(self, create_meeting_url=None, update_meeting_url=None, delete_meeting_url=None, user_verify_url=None, local_vars_configuration=None):  # noqa: E501
         """ExternalSettings - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._create_meeting_url = None
@@ -74,7 +77,7 @@ class ExternalSettings(object):
         The URL that HubSpot will send requests to create a new video conference.  # noqa: E501
 
         :param create_meeting_url: The create_meeting_url of this ExternalSettings.  # noqa: E501
-        :type: str
+        :type create_meeting_url: str
         """
         if self.local_vars_configuration.client_side_validation and create_meeting_url is None:  # noqa: E501
             raise ValueError("Invalid value for `create_meeting_url`, must not be `None`")  # noqa: E501
@@ -99,7 +102,7 @@ class ExternalSettings(object):
         The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.  # noqa: E501
 
         :param update_meeting_url: The update_meeting_url of this ExternalSettings.  # noqa: E501
-        :type: str
+        :type update_meeting_url: str
         """
 
         self._update_meeting_url = update_meeting_url
@@ -122,7 +125,7 @@ class ExternalSettings(object):
         The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot.  # noqa: E501
 
         :param delete_meeting_url: The delete_meeting_url of this ExternalSettings.  # noqa: E501
-        :type: str
+        :type delete_meeting_url: str
         """
 
         self._delete_meeting_url = delete_meeting_url
@@ -145,25 +148,34 @@ class ExternalSettings(object):
         The URL that HubSpot will use to verify that a user exists in the video conference application.  # noqa: E501
 
         :param user_verify_url: The user_verify_url of this ExternalSettings.  # noqa: E501
-        :type: str
+        :type user_verify_url: str
         """
 
         self._user_verify_url = user_verify_url
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

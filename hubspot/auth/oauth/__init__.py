@@ -27,6 +27,7 @@ from hubspot.auth.oauth.exceptions import OpenApiException
 from hubspot.auth.oauth.exceptions import ApiTypeError
 from hubspot.auth.oauth.exceptions import ApiValueError
 from hubspot.auth.oauth.exceptions import ApiKeyError
+from hubspot.auth.oauth.exceptions import ApiAttributeError
 from hubspot.auth.oauth.exceptions import ApiException
 
 # import models into sdk package

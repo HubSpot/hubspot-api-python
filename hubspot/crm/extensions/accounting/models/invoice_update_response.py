@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -92,7 +95,7 @@ class InvoiceUpdateResponse(object):
     ):  # noqa: E501
         """InvoiceUpdateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._external_invoice_number = None
@@ -150,7 +153,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param external_invoice_number: The external_invoice_number of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type external_invoice_number: str
         """
 
         self._external_invoice_number = external_invoice_number
@@ -171,7 +174,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param total_amount_billed: The total_amount_billed of this InvoiceUpdateResponse.  # noqa: E501
-        :type: float
+        :type total_amount_billed: float
         """
         if self.local_vars_configuration.client_side_validation and total_amount_billed is None:  # noqa: E501
             raise ValueError("Invalid value for `total_amount_billed`, must not be `None`")  # noqa: E501
@@ -194,7 +197,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param balance_due: The balance_due of this InvoiceUpdateResponse.  # noqa: E501
-        :type: float
+        :type balance_due: float
         """
         if self.local_vars_configuration.client_side_validation and balance_due is None:  # noqa: E501
             raise ValueError("Invalid value for `balance_due`, must not be `None`")  # noqa: E501
@@ -217,7 +220,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param currency_code: The currency_code of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type currency_code: str
         """
         if self.local_vars_configuration.client_side_validation and currency_code is None:  # noqa: E501
             raise ValueError("Invalid value for `currency_code`, must not be `None`")  # noqa: E501
@@ -240,7 +243,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param due_date: The due_date of this InvoiceUpdateResponse.  # noqa: E501
-        :type: date
+        :type due_date: date
         """
         if self.local_vars_configuration.client_side_validation and due_date is None:  # noqa: E501
             raise ValueError("Invalid value for `due_date`, must not be `None`")  # noqa: E501
@@ -263,7 +266,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param external_recipient_id: The external_recipient_id of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type external_recipient_id: str
         """
         if self.local_vars_configuration.client_side_validation and external_recipient_id is None:  # noqa: E501
             raise ValueError("Invalid value for `external_recipient_id`, must not be `None`")  # noqa: E501
@@ -286,7 +289,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param received_by_recipient_date: The received_by_recipient_date of this InvoiceUpdateResponse.  # noqa: E501
-        :type: int
+        :type received_by_recipient_date: int
         """
 
         self._received_by_recipient_date = received_by_recipient_date
@@ -307,7 +310,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param external_create_date_time: The external_create_date_time of this InvoiceUpdateResponse.  # noqa: E501
-        :type: int
+        :type external_create_date_time: int
         """
 
         self._external_create_date_time = external_create_date_time
@@ -328,7 +331,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param is_voided: The is_voided of this InvoiceUpdateResponse.  # noqa: E501
-        :type: bool
+        :type is_voided: bool
         """
         if self.local_vars_configuration.client_side_validation and is_voided is None:  # noqa: E501
             raise ValueError("Invalid value for `is_voided`, must not be `None`")  # noqa: E501
@@ -351,7 +354,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param created_at: The created_at of this InvoiceUpdateResponse.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -374,7 +377,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param updated_at: The updated_at of this InvoiceUpdateResponse.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -397,7 +400,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param archived_at: The archived_at of this InvoiceUpdateResponse.  # noqa: E501
-        :type: datetime
+        :type archived_at: datetime
         """
 
         self._archived_at = archived_at
@@ -418,7 +421,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param archived: The archived of this InvoiceUpdateResponse.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -441,7 +444,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param external_account_id: The external_account_id of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type external_account_id: str
         """
         if self.local_vars_configuration.client_side_validation and external_account_id is None:  # noqa: E501
             raise ValueError("Invalid value for `external_account_id`, must not be `None`")  # noqa: E501
@@ -464,7 +467,7 @@ class InvoiceUpdateResponse(object):
 
 
         :param invoice_status: The invoice_status of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type invoice_status: str
         """
         if self.local_vars_configuration.client_side_validation and invoice_status is None:  # noqa: E501
             raise ValueError("Invalid value for `invoice_status`, must not be `None`")  # noqa: E501
@@ -490,27 +493,36 @@ class InvoiceUpdateResponse(object):
 
 
         :param id: The id of this InvoiceUpdateResponse.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

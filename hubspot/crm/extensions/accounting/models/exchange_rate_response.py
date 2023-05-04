@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class ExchangeRateResponse(object):
     def __init__(self, result=None, exchange_rate=None, source_currency_code=None, target_currency_code=None, local_vars_configuration=None):  # noqa: E501
         """ExchangeRateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._result = None
@@ -71,7 +74,7 @@ class ExchangeRateResponse(object):
         Designates if the response is a success ('OK') or failure ('ERR').  # noqa: E501
 
         :param result: The result of this ExchangeRateResponse.  # noqa: E501
-        :type: str
+        :type result: str
         """
         if self.local_vars_configuration.client_side_validation and result is None:  # noqa: E501
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -99,7 +102,7 @@ class ExchangeRateResponse(object):
         The exchange rate between the 2 currencies  # noqa: E501
 
         :param exchange_rate: The exchange_rate of this ExchangeRateResponse.  # noqa: E501
-        :type: float
+        :type exchange_rate: float
         """
         if self.local_vars_configuration.client_side_validation and exchange_rate is None:  # noqa: E501
             raise ValueError("Invalid value for `exchange_rate`, must not be `None`")  # noqa: E501
@@ -124,7 +127,7 @@ class ExchangeRateResponse(object):
         The ISO 4217 currency code that represents the source currency of the exchange rate.  # noqa: E501
 
         :param source_currency_code: The source_currency_code of this ExchangeRateResponse.  # noqa: E501
-        :type: str
+        :type source_currency_code: str
         """
         if self.local_vars_configuration.client_side_validation and source_currency_code is None:  # noqa: E501
             raise ValueError("Invalid value for `source_currency_code`, must not be `None`")  # noqa: E501
@@ -149,27 +152,36 @@ class ExchangeRateResponse(object):
         The ISO 4217 currency code that represents the target currency of the exchange rate.  # noqa: E501
 
         :param target_currency_code: The target_currency_code of this ExchangeRateResponse.  # noqa: E501
-        :type: str
+        :type target_currency_code: str
         """
         if self.local_vars_configuration.client_side_validation and target_currency_code is None:  # noqa: E501
             raise ValueError("Invalid value for `target_currency_code`, must not be `None`")  # noqa: E501
 
         self._target_currency_code = target_currency_code
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

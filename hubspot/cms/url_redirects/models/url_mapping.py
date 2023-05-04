@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.url_redirects.configuration import Configuration
@@ -83,7 +86,7 @@ class UrlMapping(object):
     ):  # noqa: E501
         """UrlMapping - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -135,7 +138,7 @@ class UrlMapping(object):
         The unique ID of this URL redirect.  # noqa: E501
 
         :param id: The id of this UrlMapping.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -160,7 +163,7 @@ class UrlMapping(object):
         The target incoming URL, path, or pattern to match for redirection.  # noqa: E501
 
         :param route_prefix: The route_prefix of this UrlMapping.  # noqa: E501
-        :type: str
+        :type route_prefix: str
         """
         if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
             raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
@@ -185,7 +188,7 @@ class UrlMapping(object):
         The destination URL, where the target URL should be redirected if it matches the `routePrefix`.  # noqa: E501
 
         :param destination: The destination of this UrlMapping.  # noqa: E501
-        :type: str
+        :type destination: str
         """
         if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
             raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
@@ -210,7 +213,7 @@ class UrlMapping(object):
         The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).  # noqa: E501
 
         :param redirect_style: The redirect_style of this UrlMapping.  # noqa: E501
-        :type: int
+        :type redirect_style: int
         """
         if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
             raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
@@ -235,7 +238,7 @@ class UrlMapping(object):
         Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.  # noqa: E501
 
         :param is_only_after_not_found: The is_only_after_not_found of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_only_after_not_found: bool
         """
         if self.local_vars_configuration.client_side_validation and is_only_after_not_found is None:  # noqa: E501
             raise ValueError("Invalid value for `is_only_after_not_found`, must not be `None`")  # noqa: E501
@@ -260,7 +263,7 @@ class UrlMapping(object):
         Whether the `routePrefix` should match on the entire URL, including the domain.  # noqa: E501
 
         :param is_match_full_url: The is_match_full_url of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_match_full_url: bool
         """
         if self.local_vars_configuration.client_side_validation and is_match_full_url is None:  # noqa: E501
             raise ValueError("Invalid value for `is_match_full_url`, must not be `None`")  # noqa: E501
@@ -285,7 +288,7 @@ class UrlMapping(object):
         Whether the `routePrefix` should match on the entire URL path, including the query string.  # noqa: E501
 
         :param is_match_query_string: The is_match_query_string of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_match_query_string: bool
         """
         if self.local_vars_configuration.client_side_validation and is_match_query_string is None:  # noqa: E501
             raise ValueError("Invalid value for `is_match_query_string`, must not be `None`")  # noqa: E501
@@ -310,7 +313,7 @@ class UrlMapping(object):
         Whether the `routePrefix` should match based on pattern.  # noqa: E501
 
         :param is_pattern: The is_pattern of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_pattern: bool
         """
         if self.local_vars_configuration.client_side_validation and is_pattern is None:  # noqa: E501
             raise ValueError("Invalid value for `is_pattern`, must not be `None`")  # noqa: E501
@@ -335,7 +338,7 @@ class UrlMapping(object):
         Whether a trailing slash will be ignored.  # noqa: E501
 
         :param is_trailing_slash_optional: The is_trailing_slash_optional of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_trailing_slash_optional: bool
         """
         if self.local_vars_configuration.client_side_validation and is_trailing_slash_optional is None:  # noqa: E501
             raise ValueError("Invalid value for `is_trailing_slash_optional`, must not be `None`")  # noqa: E501
@@ -360,7 +363,7 @@ class UrlMapping(object):
         Whether the `routePrefix` should match both HTTP and HTTPS protocols.  # noqa: E501
 
         :param is_protocol_agnostic: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
-        :type: bool
+        :type is_protocol_agnostic: bool
         """
         if self.local_vars_configuration.client_side_validation and is_protocol_agnostic is None:  # noqa: E501
             raise ValueError("Invalid value for `is_protocol_agnostic`, must not be `None`")  # noqa: E501
@@ -385,7 +388,7 @@ class UrlMapping(object):
         Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.  # noqa: E501
 
         :param precedence: The precedence of this UrlMapping.  # noqa: E501
-        :type: int
+        :type precedence: int
         """
         if self.local_vars_configuration.client_side_validation and precedence is None:  # noqa: E501
             raise ValueError("Invalid value for `precedence`, must not be `None`")  # noqa: E501
@@ -408,7 +411,7 @@ class UrlMapping(object):
 
 
         :param created: The created of this UrlMapping.  # noqa: E501
-        :type: datetime
+        :type created: datetime
         """
 
         self._created = created
@@ -429,25 +432,34 @@ class UrlMapping(object):
 
 
         :param updated: The updated of this UrlMapping.  # noqa: E501
-        :type: datetime
+        :type updated: datetime
         """
 
         self._updated = updated
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class Address(object):
     def __init__(self, country=None, country_sub_division_code=None, city=None, postal_code=None, line_one=None, local_vars_configuration=None):  # noqa: E501
         """Address - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._country = None
@@ -78,7 +81,7 @@ class Address(object):
         The country of the address.  # noqa: E501
 
         :param country: The country of this Address.  # noqa: E501
-        :type: str
+        :type country: str
         """
 
         self._country = country
@@ -101,7 +104,7 @@ class Address(object):
         A region of the county of the address.  May represent county, state etc.  # noqa: E501
 
         :param country_sub_division_code: The country_sub_division_code of this Address.  # noqa: E501
-        :type: str
+        :type country_sub_division_code: str
         """
 
         self._country_sub_division_code = country_sub_division_code
@@ -124,7 +127,7 @@ class Address(object):
         The city of the address.  # noqa: E501
 
         :param city: The city of this Address.  # noqa: E501
-        :type: str
+        :type city: str
         """
 
         self._city = city
@@ -147,7 +150,7 @@ class Address(object):
         The postcode/zipcode of the address.  # noqa: E501
 
         :param postal_code: The postal_code of this Address.  # noqa: E501
-        :type: str
+        :type postal_code: str
         """
 
         self._postal_code = postal_code
@@ -170,25 +173,34 @@ class Address(object):
         The first line of the address.  # noqa: E501
 
         :param line_one: The line_one of this Address.  # noqa: E501
-        :type: str
+        :type line_one: str
         """
 
         self._line_one = line_one
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.schemas.configuration import Configuration
@@ -68,7 +71,7 @@ class ObjectSchemaEgg(object):
     ):  # noqa: E501
         """ObjectSchemaEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._labels = None
@@ -107,7 +110,7 @@ class ObjectSchemaEgg(object):
 
 
         :param labels: The labels of this ObjectSchemaEgg.  # noqa: E501
-        :type: ObjectTypeDefinitionLabels
+        :type labels: ObjectTypeDefinitionLabels
         """
         if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
@@ -132,7 +135,7 @@ class ObjectSchemaEgg(object):
         The names of properties that should be **required** when creating an object of this type.  # noqa: E501
 
         :param required_properties: The required_properties of this ObjectSchemaEgg.  # noqa: E501
-        :type: list[str]
+        :type required_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and required_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `required_properties`, must not be `None`")  # noqa: E501
@@ -157,7 +160,7 @@ class ObjectSchemaEgg(object):
         Names of properties that will be indexed for this object type in by HubSpot's product search.  # noqa: E501
 
         :param searchable_properties: The searchable_properties of this ObjectSchemaEgg.  # noqa: E501
-        :type: list[str]
+        :type searchable_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
@@ -182,7 +185,7 @@ class ObjectSchemaEgg(object):
         The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.  # noqa: E501
 
         :param primary_display_property: The primary_display_property of this ObjectSchemaEgg.  # noqa: E501
-        :type: str
+        :type primary_display_property: str
         """
 
         self._primary_display_property = primary_display_property
@@ -205,7 +208,7 @@ class ObjectSchemaEgg(object):
         The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
         :param secondary_display_properties: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
-        :type: list[str]
+        :type secondary_display_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
@@ -230,7 +233,7 @@ class ObjectSchemaEgg(object):
         Properties defined for this object type.  # noqa: E501
 
         :param properties: The properties of this ObjectSchemaEgg.  # noqa: E501
-        :type: list[ObjectTypePropertyCreate]
+        :type properties: list[ObjectTypePropertyCreate]
         """
         if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
@@ -255,7 +258,7 @@ class ObjectSchemaEgg(object):
         Associations defined for this object type.  # noqa: E501
 
         :param associated_objects: The associated_objects of this ObjectSchemaEgg.  # noqa: E501
-        :type: list[str]
+        :type associated_objects: list[str]
         """
         if self.local_vars_configuration.client_side_validation and associated_objects is None:  # noqa: E501
             raise ValueError("Invalid value for `associated_objects`, must not be `None`")  # noqa: E501
@@ -280,27 +283,36 @@ class ObjectSchemaEgg(object):
         A unique name for this object. For internal use only.  # noqa: E501
 
         :param name: The name of this ObjectSchemaEgg.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

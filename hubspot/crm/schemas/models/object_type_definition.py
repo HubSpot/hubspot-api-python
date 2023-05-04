@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.schemas.configuration import Configuration
@@ -83,7 +86,7 @@ class ObjectTypeDefinition(object):
     ):  # noqa: E501
         """ObjectTypeDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._labels = None
@@ -135,7 +138,7 @@ class ObjectTypeDefinition(object):
 
 
         :param labels: The labels of this ObjectTypeDefinition.  # noqa: E501
-        :type: ObjectTypeDefinitionLabels
+        :type labels: ObjectTypeDefinitionLabels
         """
         if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
@@ -160,7 +163,7 @@ class ObjectTypeDefinition(object):
         The names of properties that should be **required** when creating an object of this type.  # noqa: E501
 
         :param required_properties: The required_properties of this ObjectTypeDefinition.  # noqa: E501
-        :type: list[str]
+        :type required_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and required_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `required_properties`, must not be `None`")  # noqa: E501
@@ -185,7 +188,7 @@ class ObjectTypeDefinition(object):
         Names of properties that will be indexed for this object type in by HubSpot's product search.  # noqa: E501
 
         :param searchable_properties: The searchable_properties of this ObjectTypeDefinition.  # noqa: E501
-        :type: list[str]
+        :type searchable_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
@@ -210,7 +213,7 @@ class ObjectTypeDefinition(object):
         The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.  # noqa: E501
 
         :param primary_display_property: The primary_display_property of this ObjectTypeDefinition.  # noqa: E501
-        :type: str
+        :type primary_display_property: str
         """
 
         self._primary_display_property = primary_display_property
@@ -233,7 +236,7 @@ class ObjectTypeDefinition(object):
         The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
         :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
-        :type: list[str]
+        :type secondary_display_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
@@ -256,7 +259,7 @@ class ObjectTypeDefinition(object):
 
 
         :param archived: The archived of this ObjectTypeDefinition.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -281,7 +284,7 @@ class ObjectTypeDefinition(object):
         A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
 
         :param id: The id of this ObjectTypeDefinition.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -304,7 +307,7 @@ class ObjectTypeDefinition(object):
 
 
         :param fully_qualified_name: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
-        :type: str
+        :type fully_qualified_name: str
         """
         if self.local_vars_configuration.client_side_validation and fully_qualified_name is None:  # noqa: E501
             raise ValueError("Invalid value for `fully_qualified_name`, must not be `None`")  # noqa: E501
@@ -329,7 +332,7 @@ class ObjectTypeDefinition(object):
         When the object type was created.  # noqa: E501
 
         :param created_at: The created_at of this ObjectTypeDefinition.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
 
         self._created_at = created_at
@@ -352,7 +355,7 @@ class ObjectTypeDefinition(object):
         When the object type was last updated.  # noqa: E501
 
         :param updated_at: The updated_at of this ObjectTypeDefinition.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
@@ -373,7 +376,7 @@ class ObjectTypeDefinition(object):
 
 
         :param object_type_id: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
-        :type: str
+        :type object_type_id: str
         """
         if self.local_vars_configuration.client_side_validation and object_type_id is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type_id`, must not be `None`")  # noqa: E501
@@ -398,7 +401,7 @@ class ObjectTypeDefinition(object):
         A unique name for this object. For internal use only.  # noqa: E501
 
         :param name: The name of this ObjectTypeDefinition.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -423,25 +426,34 @@ class ObjectTypeDefinition(object):
         The ID of the account that this object type is specific to.  # noqa: E501
 
         :param portal_id: The portal_id of this ObjectTypeDefinition.  # noqa: E501
-        :type: int
+        :type portal_id: int
         """
 
         self._portal_id = portal_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

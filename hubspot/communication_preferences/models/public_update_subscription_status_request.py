@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.communication_preferences.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
     def __init__(self, email_address=None, subscription_id=None, legal_basis=None, legal_basis_explanation=None, local_vars_configuration=None):  # noqa: E501
         """PublicUpdateSubscriptionStatusRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._email_address = None
@@ -73,7 +76,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
         Contact's email address.  # noqa: E501
 
         :param email_address: The email_address of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :type: str
+        :type email_address: str
         """
         if self.local_vars_configuration.client_side_validation and email_address is None:  # noqa: E501
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
@@ -98,7 +101,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
         ID of the subscription being updated for the contact.  # noqa: E501
 
         :param subscription_id: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :type: str
+        :type subscription_id: str
         """
         if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
             raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
@@ -123,7 +126,7 @@ class PublicUpdateSubscriptionStatusRequest(object):
         Legal basis for updating the contact's status (required for GDPR enabled portals).  # noqa: E501
 
         :param legal_basis: The legal_basis of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :type: str
+        :type legal_basis: str
         """
         allowed_values = [
             "LEGITIMATE_INTEREST_PQL",
@@ -157,25 +160,34 @@ class PublicUpdateSubscriptionStatusRequest(object):
         A more detailed explanation to go with the legal basis (required for GDPR enabled portals).  # noqa: E501
 
         :param legal_basis_explanation: The legal_basis_explanation of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :type: str
+        :type legal_basis_explanation: str
         """
 
         self._legal_basis_explanation = legal_basis_explanation
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

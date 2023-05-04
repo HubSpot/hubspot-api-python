@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -32,19 +35,14 @@ class FieldGroup(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {
-        "group_type": "str",
-        "rich_text_type": "str",
-        "rich_text": "str",
-        "fields": "list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]",
-    }
+    openapi_types = {"group_type": "str", "rich_text_type": "str", "rich_text": "str", "fields": "list[DependentFieldDependentField]"}
 
     attribute_map = {"group_type": "groupType", "rich_text_type": "richTextType", "rich_text": "richText", "fields": "fields"}
 
     def __init__(self, group_type=None, rich_text_type=None, rich_text=None, fields=None, local_vars_configuration=None):  # noqa: E501
         """FieldGroup - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._group_type = None
@@ -77,7 +75,7 @@ class FieldGroup(object):
 
 
         :param group_type: The group_type of this FieldGroup.  # noqa: E501
-        :type: str
+        :type group_type: str
         """
         allowed_values = ["default_group", "progressive", "queued"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and group_type not in allowed_values:  # noqa: E501
@@ -103,7 +101,7 @@ class FieldGroup(object):
         The type of rich text included. The default value is text.  # noqa: E501
 
         :param rich_text_type: The rich_text_type of this FieldGroup.  # noqa: E501
-        :type: str
+        :type rich_text_type: str
         """
         allowed_values = ["text", "image"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and rich_text_type not in allowed_values:  # noqa: E501
@@ -129,7 +127,7 @@ class FieldGroup(object):
         A block of rich text or an image. Those can be used to add extra information for the customers filling in the form. If the field group includes fields, the rich text will be displayed before the fields.  # noqa: E501
 
         :param rich_text: The rich_text of this FieldGroup.  # noqa: E501
-        :type: str
+        :type rich_text: str
         """
 
         self._rich_text = rich_text
@@ -141,7 +139,7 @@ class FieldGroup(object):
         The form fields included in the group  # noqa: E501
 
         :return: The fields of this FieldGroup.  # noqa: E501
-        :rtype: list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]
+        :rtype: list[DependentFieldDependentField]
         """
         return self._fields
 
@@ -152,27 +150,36 @@ class FieldGroup(object):
         The form fields included in the group  # noqa: E501
 
         :param fields: The fields of this FieldGroup.  # noqa: E501
-        :type: list[OneOfEmailFieldPhoneFieldMobilePhoneFieldSingleLineTextFieldMultiLineTextFieldNumberFieldSingleCheckboxFieldMultipleCheckboxesFieldDropdownFieldRadioFieldDatepickerFieldFileField]
+        :type fields: list[DependentFieldDependentField]
         """
         if self.local_vars_configuration.client_side_validation and fields is None:  # noqa: E501
             raise ValueError("Invalid value for `fields`, must not be `None`")  # noqa: E501
 
         self._fields = fields
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

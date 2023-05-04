@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.tickets.configuration import Configuration
@@ -34,8 +37,8 @@ class SimplePublicObject(object):
     """
     openapi_types = {
         "id": "str",
-        "properties": "dict(str, str)",
-        "properties_with_history": "dict(str, list[ValueWithTimestamp])",
+        "properties": "dict[str, str]",
+        "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
         "created_at": "datetime",
         "updated_at": "datetime",
         "archived": "bool",
@@ -55,7 +58,7 @@ class SimplePublicObject(object):
     def __init__(self, id=None, properties=None, properties_with_history=None, created_at=None, updated_at=None, archived=None, archived_at=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObject - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -94,7 +97,7 @@ class SimplePublicObject(object):
 
 
         :param id: The id of this SimplePublicObject.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -107,7 +110,7 @@ class SimplePublicObject(object):
 
 
         :return: The properties of this SimplePublicObject.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._properties
 
@@ -117,7 +120,7 @@ class SimplePublicObject(object):
 
 
         :param properties: The properties of this SimplePublicObject.  # noqa: E501
-        :type: dict(str, str)
+        :type properties: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
@@ -130,7 +133,7 @@ class SimplePublicObject(object):
 
 
         :return: The properties_with_history of this SimplePublicObject.  # noqa: E501
-        :rtype: dict(str, list[ValueWithTimestamp])
+        :rtype: dict[str, list[ValueWithTimestamp]]
         """
         return self._properties_with_history
 
@@ -140,7 +143,7 @@ class SimplePublicObject(object):
 
 
         :param properties_with_history: The properties_with_history of this SimplePublicObject.  # noqa: E501
-        :type: dict(str, list[ValueWithTimestamp])
+        :type properties_with_history: dict[str, list[ValueWithTimestamp]]
         """
 
         self._properties_with_history = properties_with_history
@@ -161,7 +164,7 @@ class SimplePublicObject(object):
 
 
         :param created_at: The created_at of this SimplePublicObject.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -184,7 +187,7 @@ class SimplePublicObject(object):
 
 
         :param updated_at: The updated_at of this SimplePublicObject.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -207,7 +210,7 @@ class SimplePublicObject(object):
 
 
         :param archived: The archived of this SimplePublicObject.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
 
         self._archived = archived
@@ -228,25 +231,34 @@ class SimplePublicObject(object):
 
 
         :param archived_at: The archived_at of this SimplePublicObject.  # noqa: E501
-        :type: datetime
+        :type archived_at: datetime
         """
 
         self._archived_at = archived_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

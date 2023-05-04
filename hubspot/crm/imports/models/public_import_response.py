@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.imports.configuration import Configuration
@@ -59,7 +62,7 @@ class PublicImportResponse(object):
     ):  # noqa: E501
         """PublicImportResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._state = None
@@ -101,7 +104,7 @@ class PublicImportResponse(object):
         The status of the import.  # noqa: E501
 
         :param state: The state of this PublicImportResponse.  # noqa: E501
-        :type: str
+        :type state: str
         """
         if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
             raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class PublicImportResponse(object):
 
 
         :param import_request_json: The import_request_json of this PublicImportResponse.  # noqa: E501
-        :type: object
+        :type import_request_json: object
         """
 
         self._import_request_json = import_request_json
@@ -148,7 +151,7 @@ class PublicImportResponse(object):
 
 
         :param created_at: The created_at of this PublicImportResponse.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -171,7 +174,7 @@ class PublicImportResponse(object):
 
 
         :param metadata: The metadata of this PublicImportResponse.  # noqa: E501
-        :type: PublicImportMetadata
+        :type metadata: PublicImportMetadata
         """
         if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
             raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
@@ -194,7 +197,7 @@ class PublicImportResponse(object):
 
 
         :param import_name: The import_name of this PublicImportResponse.  # noqa: E501
-        :type: str
+        :type import_name: str
         """
 
         self._import_name = import_name
@@ -215,7 +218,7 @@ class PublicImportResponse(object):
 
 
         :param updated_at: The updated_at of this PublicImportResponse.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -240,7 +243,7 @@ class PublicImportResponse(object):
         Whether or not the import is a list of people disqualified from receiving emails.  # noqa: E501
 
         :param opt_out_import: The opt_out_import of this PublicImportResponse.  # noqa: E501
-        :type: bool
+        :type opt_out_import: bool
         """
         if self.local_vars_configuration.client_side_validation and opt_out_import is None:  # noqa: E501
             raise ValueError("Invalid value for `opt_out_import`, must not be `None`")  # noqa: E501
@@ -263,27 +266,36 @@ class PublicImportResponse(object):
 
 
         :param id: The id of this PublicImportResponse.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

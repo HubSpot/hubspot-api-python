@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.objects.postal_mail.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicMergeInput(object):
     def __init__(self, primary_object_id=None, object_id_to_merge=None, local_vars_configuration=None):  # noqa: E501
         """PublicMergeInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._primary_object_id = None
@@ -65,7 +68,7 @@ class PublicMergeInput(object):
 
 
         :param primary_object_id: The primary_object_id of this PublicMergeInput.  # noqa: E501
-        :type: str
+        :type primary_object_id: str
         """
         if self.local_vars_configuration.client_side_validation and primary_object_id is None:  # noqa: E501
             raise ValueError("Invalid value for `primary_object_id`, must not be `None`")  # noqa: E501
@@ -88,27 +91,36 @@ class PublicMergeInput(object):
 
 
         :param object_id_to_merge: The object_id_to_merge of this PublicMergeInput.  # noqa: E501
-        :type: str
+        :type object_id_to_merge: str
         """
         if self.local_vars_configuration.client_side_validation and object_id_to_merge is None:  # noqa: E501
             raise ValueError("Invalid value for `object_id_to_merge`, must not be `None`")  # noqa: E501
 
         self._object_id_to_merge = object_id_to_merge
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

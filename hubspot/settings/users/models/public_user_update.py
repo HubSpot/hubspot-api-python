@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.settings.users.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicUserUpdate(object):
     def __init__(self, role_id=None, primary_team_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
         """PublicUserUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._role_id = None
@@ -72,7 +75,7 @@ class PublicUserUpdate(object):
         The user's role  # noqa: E501
 
         :param role_id: The role_id of this PublicUserUpdate.  # noqa: E501
-        :type: str
+        :type role_id: str
         """
 
         self._role_id = role_id
@@ -95,7 +98,7 @@ class PublicUserUpdate(object):
         The user's primary team  # noqa: E501
 
         :param primary_team_id: The primary_team_id of this PublicUserUpdate.  # noqa: E501
-        :type: str
+        :type primary_team_id: str
         """
 
         self._primary_team_id = primary_team_id
@@ -118,25 +121,34 @@ class PublicUserUpdate(object):
         The user's additional teams  # noqa: E501
 
         :param secondary_team_ids: The secondary_team_ids of this PublicUserUpdate.  # noqa: E501
-        :type: list[str]
+        :type secondary_team_ids: list[str]
         """
 
         self._secondary_team_ids = secondary_team_ids
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

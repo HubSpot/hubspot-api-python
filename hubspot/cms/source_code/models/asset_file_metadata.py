@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.source_code.configuration import Configuration
@@ -39,7 +42,7 @@ class AssetFileMetadata(object):
     def __init__(self, id=None, name=None, folder=None, children=None, updated_at=None, created_at=None, archived_at=None, local_vars_configuration=None):  # noqa: E501
         """AssetFileMetadata - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -79,7 +82,7 @@ class AssetFileMetadata(object):
         The path of the file in the CMS Developer File System.  # noqa: E501
 
         :param id: The id of this AssetFileMetadata.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -104,7 +107,7 @@ class AssetFileMetadata(object):
         The name of the file.  # noqa: E501
 
         :param name: The name of this AssetFileMetadata.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -129,7 +132,7 @@ class AssetFileMetadata(object):
         Determines whether or not this path points to a folder.  # noqa: E501
 
         :param folder: The folder of this AssetFileMetadata.  # noqa: E501
-        :type: bool
+        :type folder: bool
         """
         if self.local_vars_configuration.client_side_validation and folder is None:  # noqa: E501
             raise ValueError("Invalid value for `folder`, must not be `None`")  # noqa: E501
@@ -154,7 +157,7 @@ class AssetFileMetadata(object):
         If the object is a folder, contains the filenames of the files within the folder.  # noqa: E501
 
         :param children: The children of this AssetFileMetadata.  # noqa: E501
-        :type: list[str]
+        :type children: list[str]
         """
 
         self._children = children
@@ -177,7 +180,7 @@ class AssetFileMetadata(object):
         Timestamp of when the object was last updated.  # noqa: E501
 
         :param updated_at: The updated_at of this AssetFileMetadata.  # noqa: E501
-        :type: int
+        :type updated_at: int
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -202,7 +205,7 @@ class AssetFileMetadata(object):
         Timestamp of when the object was first created.  # noqa: E501
 
         :param created_at: The created_at of this AssetFileMetadata.  # noqa: E501
-        :type: int
+        :type created_at: int
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -227,25 +230,34 @@ class AssetFileMetadata(object):
         Timestamp of when the object was archived (deleted).  # noqa: E501
 
         :param archived_at: The archived_at of this AssetFileMetadata.  # noqa: E501
-        :type: int
+        :type archived_at: int
         """
 
         self._archived_at = archived_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.url_redirects.configuration import Configuration
@@ -74,7 +77,7 @@ class UrlMappingCreateRequestBody(object):
     ):  # noqa: E501
         """UrlMappingCreateRequestBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._precedence = None
@@ -123,7 +126,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param precedence: The precedence of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: int
+        :type precedence: int
         """
 
         self._precedence = precedence
@@ -144,7 +147,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_only_after_not_found: The is_only_after_not_found of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_only_after_not_found: bool
         """
 
         self._is_only_after_not_found = is_only_after_not_found
@@ -165,7 +168,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_match_full_url: The is_match_full_url of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_match_full_url: bool
         """
 
         self._is_match_full_url = is_match_full_url
@@ -186,7 +189,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_match_query_string: The is_match_query_string of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_match_query_string: bool
         """
 
         self._is_match_query_string = is_match_query_string
@@ -207,7 +210,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_pattern: The is_pattern of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_pattern: bool
         """
 
         self._is_pattern = is_pattern
@@ -228,7 +231,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_trailing_slash_optional: The is_trailing_slash_optional of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_trailing_slash_optional: bool
         """
 
         self._is_trailing_slash_optional = is_trailing_slash_optional
@@ -249,7 +252,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param is_protocol_agnostic: The is_protocol_agnostic of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: bool
+        :type is_protocol_agnostic: bool
         """
 
         self._is_protocol_agnostic = is_protocol_agnostic
@@ -270,7 +273,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param route_prefix: The route_prefix of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: str
+        :type route_prefix: str
         """
         if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
             raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
@@ -293,7 +296,7 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param destination: The destination of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: str
+        :type destination: str
         """
         if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
             raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
@@ -316,27 +319,36 @@ class UrlMappingCreateRequestBody(object):
 
 
         :param redirect_style: The redirect_style of this UrlMappingCreateRequestBody.  # noqa: E501
-        :type: int
+        :type redirect_style: int
         """
         if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
             raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
 
         self._redirect_style = redirect_style
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

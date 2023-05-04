@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class CreateUserAccountRequestExternal(object):
     def __init__(self, account_id=None, account_name=None, currency_code=None, local_vars_configuration=None):  # noqa: E501
         """CreateUserAccountRequestExternal - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._account_id = None
@@ -69,7 +72,7 @@ class CreateUserAccountRequestExternal(object):
         The id of the account in your system.  # noqa: E501
 
         :param account_id: The account_id of this CreateUserAccountRequestExternal.  # noqa: E501
-        :type: str
+        :type account_id: str
         """
         if self.local_vars_configuration.client_side_validation and account_id is None:  # noqa: E501
             raise ValueError("Invalid value for `account_id`, must not be `None`")  # noqa: E501
@@ -94,7 +97,7 @@ class CreateUserAccountRequestExternal(object):
         The name of the account in your system. This is normally the name visible to your users.  # noqa: E501
 
         :param account_name: The account_name of this CreateUserAccountRequestExternal.  # noqa: E501
-        :type: str
+        :type account_name: str
         """
         if self.local_vars_configuration.client_side_validation and account_name is None:  # noqa: E501
             raise ValueError("Invalid value for `account_name`, must not be `None`")  # noqa: E501
@@ -119,27 +122,36 @@ class CreateUserAccountRequestExternal(object):
         The default currency that this account uses.  # noqa: E501
 
         :param currency_code: The currency_code of this CreateUserAccountRequestExternal.  # noqa: E501
-        :type: str
+        :type currency_code: str
         """
         if self.local_vars_configuration.client_side_validation and currency_code is None:  # noqa: E501
             raise ValueError("Invalid value for `currency_code`, must not be `None`")  # noqa: E501
 
         self._currency_code = currency_code
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

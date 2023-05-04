@@ -26,6 +26,7 @@ from hubspot.crm.owners.exceptions import OpenApiException
 from hubspot.crm.owners.exceptions import ApiTypeError
 from hubspot.crm.owners.exceptions import ApiValueError
 from hubspot.crm.owners.exceptions import ApiKeyError
+from hubspot.crm.owners.exceptions import ApiAttributeError
 from hubspot.crm.owners.exceptions import ApiException
 
 # import models into sdk package

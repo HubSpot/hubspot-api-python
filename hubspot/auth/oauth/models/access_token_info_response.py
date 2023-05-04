@@ -9,9 +9,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.auth.oauth.configuration import Configuration
@@ -79,7 +82,7 @@ class AccessTokenInfoResponse(object):
     ):  # noqa: E501
         """AccessTokenInfoResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._token = None
@@ -127,7 +130,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param token: The token of this AccessTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type token: str
         """
         if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
@@ -150,7 +153,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param user: The user of this AccessTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type user: str
         """
 
         self._user = user
@@ -171,7 +174,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param hub_domain: The hub_domain of this AccessTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type hub_domain: str
         """
 
         self._hub_domain = hub_domain
@@ -192,7 +195,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param scopes: The scopes of this AccessTokenInfoResponse.  # noqa: E501
-        :type: list[str]
+        :type scopes: list[str]
         """
         if self.local_vars_configuration.client_side_validation and scopes is None:  # noqa: E501
             raise ValueError("Invalid value for `scopes`, must not be `None`")  # noqa: E501
@@ -215,7 +218,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param scope_to_scope_group_pks: The scope_to_scope_group_pks of this AccessTokenInfoResponse.  # noqa: E501
-        :type: list[int]
+        :type scope_to_scope_group_pks: list[int]
         """
         if self.local_vars_configuration.client_side_validation and scope_to_scope_group_pks is None:  # noqa: E501
             raise ValueError("Invalid value for `scope_to_scope_group_pks`, must not be `None`")  # noqa: E501
@@ -238,7 +241,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param trial_scopes: The trial_scopes of this AccessTokenInfoResponse.  # noqa: E501
-        :type: list[str]
+        :type trial_scopes: list[str]
         """
         if self.local_vars_configuration.client_side_validation and trial_scopes is None:  # noqa: E501
             raise ValueError("Invalid value for `trial_scopes`, must not be `None`")  # noqa: E501
@@ -261,7 +264,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param trial_scope_to_scope_group_pks: The trial_scope_to_scope_group_pks of this AccessTokenInfoResponse.  # noqa: E501
-        :type: list[int]
+        :type trial_scope_to_scope_group_pks: list[int]
         """
         if self.local_vars_configuration.client_side_validation and trial_scope_to_scope_group_pks is None:  # noqa: E501
             raise ValueError("Invalid value for `trial_scope_to_scope_group_pks`, must not be `None`")  # noqa: E501
@@ -284,7 +287,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param hub_id: The hub_id of this AccessTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type hub_id: int
         """
         if self.local_vars_configuration.client_side_validation and hub_id is None:  # noqa: E501
             raise ValueError("Invalid value for `hub_id`, must not be `None`")  # noqa: E501
@@ -307,7 +310,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param app_id: The app_id of this AccessTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type app_id: int
         """
         if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
             raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
@@ -330,7 +333,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param expires_in: The expires_in of this AccessTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type expires_in: int
         """
         if self.local_vars_configuration.client_side_validation and expires_in is None:  # noqa: E501
             raise ValueError("Invalid value for `expires_in`, must not be `None`")  # noqa: E501
@@ -353,7 +356,7 @@ class AccessTokenInfoResponse(object):
 
 
         :param user_id: The user_id of this AccessTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type user_id: int
         """
         if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
             raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
@@ -376,27 +379,36 @@ class AccessTokenInfoResponse(object):
 
 
         :param token_type: The token_type of this AccessTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type token_type: str
         """
         if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
             raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
 
         self._token_type = token_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

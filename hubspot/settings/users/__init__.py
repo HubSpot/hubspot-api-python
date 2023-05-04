@@ -28,6 +28,7 @@ from hubspot.settings.users.exceptions import OpenApiException
 from hubspot.settings.users.exceptions import ApiTypeError
 from hubspot.settings.users.exceptions import ApiValueError
 from hubspot.settings.users.exceptions import ApiKeyError
+from hubspot.settings.users.exceptions import ApiAttributeError
 from hubspot.settings.users.exceptions import ApiException
 
 # import models into sdk package

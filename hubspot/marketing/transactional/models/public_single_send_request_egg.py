@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.transactional.configuration import Configuration
@@ -32,14 +35,14 @@ class PublicSingleSendRequestEgg(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"email_id": "int", "message": "PublicSingleSendEmail", "contact_properties": "dict(str, str)", "custom_properties": "dict(str, object)"}
+    openapi_types = {"email_id": "int", "message": "PublicSingleSendEmail", "contact_properties": "dict[str, str]", "custom_properties": "dict[str, object]"}
 
     attribute_map = {"email_id": "emailId", "message": "message", "contact_properties": "contactProperties", "custom_properties": "customProperties"}
 
     def __init__(self, email_id=None, message=None, contact_properties=None, custom_properties=None, local_vars_configuration=None):  # noqa: E501
         """PublicSingleSendRequestEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._email_id = None
@@ -73,7 +76,7 @@ class PublicSingleSendRequestEgg(object):
         The content ID for the transactional email, which can be found in email tool UI.  # noqa: E501
 
         :param email_id: The email_id of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: int
+        :type email_id: int
         """
         if self.local_vars_configuration.client_side_validation and email_id is None:  # noqa: E501
             raise ValueError("Invalid value for `email_id`, must not be `None`")  # noqa: E501
@@ -96,7 +99,7 @@ class PublicSingleSendRequestEgg(object):
 
 
         :param message: The message of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: PublicSingleSendEmail
+        :type message: PublicSingleSendEmail
         """
         if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
@@ -110,7 +113,7 @@ class PublicSingleSendRequestEgg(object):
         The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
 
         :return: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._contact_properties
 
@@ -121,7 +124,7 @@ class PublicSingleSendRequestEgg(object):
         The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.  # noqa: E501
 
         :param contact_properties: The contact_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: dict(str, str)
+        :type contact_properties: dict[str, str]
         """
 
         self._contact_properties = contact_properties
@@ -133,7 +136,7 @@ class PublicSingleSendRequestEgg(object):
         The customProperties field is a map of property values. Each property value contains a name and value property. Each property will be visible in the template under {{ custom.NAME }}. Note: Custom properties do not currently support arrays. To provide a listing in an email, one workaround is to build an HTML list (either with tables or ul) and specify it as a custom property.  # noqa: E501
 
         :return: The custom_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict[str, object]
         """
         return self._custom_properties
 
@@ -144,25 +147,34 @@ class PublicSingleSendRequestEgg(object):
         The customProperties field is a map of property values. Each property value contains a name and value property. Each property will be visible in the template under {{ custom.NAME }}. Note: Custom properties do not currently support arrays. To provide a listing in an email, one workaround is to build an HTML list (either with tables or ul) and specify it as a custom property.  # noqa: E501
 
         :param custom_properties: The custom_properties of this PublicSingleSendRequestEgg.  # noqa: E501
-        :type: dict(str, object)
+        :type custom_properties: dict[str, object]
         """
 
         self._custom_properties = custom_properties
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

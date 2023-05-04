@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.transactional.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicSingleSendEmail(object):
     def __init__(self, _from=None, to=None, send_id=None, reply_to=None, cc=None, bcc=None, local_vars_configuration=None):  # noqa: E501
         """PublicSingleSendEmail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self.__from = None
@@ -80,7 +83,7 @@ class PublicSingleSendEmail(object):
         The From header for the email.  # noqa: E501
 
         :param _from: The _from of this PublicSingleSendEmail.  # noqa: E501
-        :type: str
+        :type _from: str
         """
 
         self.__from = _from
@@ -103,7 +106,7 @@ class PublicSingleSendEmail(object):
         The recipient of the email.  # noqa: E501
 
         :param to: The to of this PublicSingleSendEmail.  # noqa: E501
-        :type: str
+        :type to: str
         """
         if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
@@ -128,7 +131,7 @@ class PublicSingleSendEmail(object):
         ID for a particular send. No more than one email will be sent per sendId.  # noqa: E501
 
         :param send_id: The send_id of this PublicSingleSendEmail.  # noqa: E501
-        :type: str
+        :type send_id: str
         """
 
         self._send_id = send_id
@@ -151,7 +154,7 @@ class PublicSingleSendEmail(object):
         List of Reply-To header values for the email.  # noqa: E501
 
         :param reply_to: The reply_to of this PublicSingleSendEmail.  # noqa: E501
-        :type: list[str]
+        :type reply_to: list[str]
         """
 
         self._reply_to = reply_to
@@ -174,7 +177,7 @@ class PublicSingleSendEmail(object):
         List of email addresses to send as Cc.  # noqa: E501
 
         :param cc: The cc of this PublicSingleSendEmail.  # noqa: E501
-        :type: list[str]
+        :type cc: list[str]
         """
 
         self._cc = cc
@@ -197,25 +200,34 @@ class PublicSingleSendEmail(object):
         List of email addresses to send as Bcc.  # noqa: E501
 
         :param bcc: The bcc of this PublicSingleSendEmail.  # noqa: E501
-        :type: list[str]
+        :type bcc: list[str]
         """
 
         self._bcc = bcc
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

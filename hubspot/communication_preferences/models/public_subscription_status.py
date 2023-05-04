@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.communication_preferences.configuration import Configuration
@@ -71,7 +74,7 @@ class PublicSubscriptionStatus(object):
     ):  # noqa: E501
         """PublicSubscriptionStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -117,7 +120,7 @@ class PublicSubscriptionStatus(object):
         The ID for the subscription.  # noqa: E501
 
         :param id: The id of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -142,7 +145,7 @@ class PublicSubscriptionStatus(object):
         The name of the subscription.  # noqa: E501
 
         :param name: The name of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -167,7 +170,7 @@ class PublicSubscriptionStatus(object):
         A description of the subscription.  # noqa: E501
 
         :param description: The description of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -192,7 +195,7 @@ class PublicSubscriptionStatus(object):
         Whether the contact is subscribed.  # noqa: E501
 
         :param status: The status of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -220,7 +223,7 @@ class PublicSubscriptionStatus(object):
         Where the status is determined from e.g. PORTAL_WIDE_STATUS if the contact opted out from the portal.  # noqa: E501
 
         :param source_of_status: The source_of_status of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type source_of_status: str
         """
         if self.local_vars_configuration.client_side_validation and source_of_status is None:  # noqa: E501
             raise ValueError("Invalid value for `source_of_status`, must not be `None`")  # noqa: E501
@@ -248,7 +251,7 @@ class PublicSubscriptionStatus(object):
         The ID of the brand that the subscription is associated with, if there is one.  # noqa: E501
 
         :param brand_id: The brand_id of this PublicSubscriptionStatus.  # noqa: E501
-        :type: int
+        :type brand_id: int
         """
 
         self._brand_id = brand_id
@@ -271,7 +274,7 @@ class PublicSubscriptionStatus(object):
         The name of the preferences group that the subscription is associated with.  # noqa: E501
 
         :param preference_group_name: The preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type preference_group_name: str
         """
 
         self._preference_group_name = preference_group_name
@@ -294,7 +297,7 @@ class PublicSubscriptionStatus(object):
         The legal reason for the current status of the subscription.  # noqa: E501
 
         :param legal_basis: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type legal_basis: str
         """
         allowed_values = [
             "LEGITIMATE_INTEREST_PQL",
@@ -328,25 +331,34 @@ class PublicSubscriptionStatus(object):
         A more detailed explanation to go with the legal basis.  # noqa: E501
 
         :param legal_basis_explanation: The legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
-        :type: str
+        :type legal_basis_explanation: str
         """
 
         self._legal_basis_explanation = legal_basis_explanation
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

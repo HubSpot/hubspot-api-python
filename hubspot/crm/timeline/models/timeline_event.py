@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -39,7 +42,7 @@ class TimelineEvent(object):
         "utk": "str",
         "domain": "str",
         "timestamp": "datetime",
-        "tokens": "dict(str, str)",
+        "tokens": "dict[str, str]",
         "extra_data": "object",
         "timeline_i_frame": "TimelineEventIFrame",
         "id": "str",
@@ -63,7 +66,7 @@ class TimelineEvent(object):
     ):  # noqa: E501
         """TimelineEvent - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._event_template_id = None
@@ -115,7 +118,7 @@ class TimelineEvent(object):
         The event template ID.  # noqa: E501
 
         :param event_template_id: The event_template_id of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type event_template_id: str
         """
         if self.local_vars_configuration.client_side_validation and event_template_id is None:  # noqa: E501
             raise ValueError("Invalid value for `event_template_id`, must not be `None`")  # noqa: E501
@@ -140,7 +143,7 @@ class TimelineEvent(object):
         The email address used for contact-specific events. This can be used to identify existing contacts, create new ones, or change the email for an existing contact (if paired with the `objectId`).  # noqa: E501
 
         :param email: The email of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type email: str
         """
 
         self._email = email
@@ -163,7 +166,7 @@ class TimelineEvent(object):
         The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).  # noqa: E501
 
         :param object_id: The object_id of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type object_id: str
         """
 
         self._object_id = object_id
@@ -186,7 +189,7 @@ class TimelineEvent(object):
         Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.  # noqa: E501
 
         :param utk: The utk of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type utk: str
         """
 
         self._utk = utk
@@ -209,7 +212,7 @@ class TimelineEvent(object):
         The event domain (often paired with utk).  # noqa: E501
 
         :param domain: The domain of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type domain: str
         """
 
         self._domain = domain
@@ -232,7 +235,7 @@ class TimelineEvent(object):
         The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.  # noqa: E501
 
         :param timestamp: The timestamp of this TimelineEvent.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
 
         self._timestamp = timestamp
@@ -244,7 +247,7 @@ class TimelineEvent(object):
         A collection of token keys and values associated with the template tokens.  # noqa: E501
 
         :return: The tokens of this TimelineEvent.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._tokens
 
@@ -255,7 +258,7 @@ class TimelineEvent(object):
         A collection of token keys and values associated with the template tokens.  # noqa: E501
 
         :param tokens: The tokens of this TimelineEvent.  # noqa: E501
-        :type: dict(str, str)
+        :type tokens: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
             raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
@@ -280,7 +283,7 @@ class TimelineEvent(object):
         Additional event-specific data that can be interpreted by the template's markdown.  # noqa: E501
 
         :param extra_data: The extra_data of this TimelineEvent.  # noqa: E501
-        :type: object
+        :type extra_data: object
         """
 
         self._extra_data = extra_data
@@ -301,7 +304,7 @@ class TimelineEvent(object):
 
 
         :param timeline_i_frame: The timeline_i_frame of this TimelineEvent.  # noqa: E501
-        :type: TimelineEventIFrame
+        :type timeline_i_frame: TimelineEventIFrame
         """
 
         self._timeline_i_frame = timeline_i_frame
@@ -324,25 +327,34 @@ class TimelineEvent(object):
         Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.  # noqa: E501
 
         :param id: The id of this TimelineEvent.  # noqa: E501
-        :type: str
+        :type id: str
         """
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

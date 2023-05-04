@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -32,14 +35,14 @@ class BatchResponseTimelineEventResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"status": "str", "results": "list[TimelineEventResponse]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict(str, str)"}
+    openapi_types = {"status": "str", "results": "list[TimelineEventResponse]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict[str, str]"}
 
     attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
 
     def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseTimelineEventResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
@@ -77,7 +80,7 @@ class BatchResponseTimelineEventResponse(object):
         The status of the batch response. Should always be COMPLETED if processed.  # noqa: E501
 
         :param status: The status of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -105,7 +108,7 @@ class BatchResponseTimelineEventResponse(object):
         Successfully created events.  # noqa: E501
 
         :param results: The results of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: list[TimelineEventResponse]
+        :type results: list[TimelineEventResponse]
         """
         if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
@@ -130,7 +133,7 @@ class BatchResponseTimelineEventResponse(object):
         The time the request occurred.  # noqa: E501
 
         :param requested_at: The requested_at of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: datetime
+        :type requested_at: datetime
         """
 
         self._requested_at = requested_at
@@ -153,7 +156,7 @@ class BatchResponseTimelineEventResponse(object):
         The time the request began processing.  # noqa: E501
 
         :param started_at: The started_at of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: datetime
+        :type started_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
             raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
@@ -178,7 +181,7 @@ class BatchResponseTimelineEventResponse(object):
         The time the request was completed.  # noqa: E501
 
         :param completed_at: The completed_at of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: datetime
+        :type completed_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
             raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
@@ -191,7 +194,7 @@ class BatchResponseTimelineEventResponse(object):
 
 
         :return: The links of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._links
 
@@ -201,25 +204,34 @@ class BatchResponseTimelineEventResponse(object):
 
 
         :param links: The links of this BatchResponseTimelineEventResponse.  # noqa: E501
-        :type: dict(str, str)
+        :type links: dict[str, str]
         """
 
         self._links = links
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

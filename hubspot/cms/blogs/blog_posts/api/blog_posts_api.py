@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.blogs.blog_posts.api_client import ApiClient
-from hubspot.cms.blogs.blog_posts.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.blogs.blog_posts.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class BlogPostsApi(object):
@@ -39,22 +39,28 @@ class BlogPostsApi(object):
         Delete the Blog Post object identified by the id in the path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Whether to return only results that have been archived.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class BlogPostsApi(object):
         Delete the Blog Post object identified by the id in the path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Whether to return only results that have been archived.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,7 +114,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -109,10 +124,10 @@ class BlogPostsApi(object):
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -124,6 +139,8 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}",
             "DELETE",
@@ -133,13 +150,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def archive_batch(self, batch_input_string, **kwargs):  # noqa: E501
@@ -148,21 +166,26 @@ class BlogPostsApi(object):
         Delete the Blog Post objects identified in the request body. Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_batch(batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputString batch_input_string: The JSON array of Blog Post ids. (required)
+        :param batch_input_string: The JSON array of Blog Post ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_batch_with_http_info(batch_input_string, **kwargs)  # noqa: E501
@@ -173,32 +196,40 @@ class BlogPostsApi(object):
         Delete the Blog Post objects identified in the request body. Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_batch_with_http_info(batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputString batch_input_string: The JSON array of Blog Post ids. (required)
+        :param batch_input_string: The JSON array of Blog Post ids. (required)
+        :type batch_input_string: BatchInputString
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_string"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_string"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -206,7 +237,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `archive_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -215,7 +246,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -227,10 +258,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/batch/archive",
@@ -241,13 +276,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def attach_to_lang_group(self, attach_to_lang_primary_request_v_next, **kwargs):  # noqa: E501
@@ -256,21 +292,26 @@ class BlogPostsApi(object):
         Attach a Blog Post to a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.attach_to_lang_group(attach_to_lang_primary_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :param attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :type attach_to_lang_primary_request_v_next: AttachToLangPrimaryRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, **kwargs)  # noqa: E501
@@ -281,32 +322,40 @@ class BlogPostsApi(object):
         Attach a Blog Post to a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param AttachToLangPrimaryRequestVNext attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :param attach_to_lang_primary_request_v_next: The JSON representation of the AttachToLangPrimaryRequest object. (required)
+        :type attach_to_lang_primary_request_v_next: AttachToLangPrimaryRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["attach_to_lang_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["attach_to_lang_primary_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -314,9 +363,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'attach_to_lang_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "attach_to_lang_primary_request_v_next" not in local_var_params or local_var_params["attach_to_lang_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("attach_to_lang_primary_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `attach_to_lang_primary_request_v_next` when calling `attach_to_lang_group`")  # noqa: E501
 
         collection_formats = {}
@@ -325,7 +372,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -337,10 +384,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/multi-language/attach-to-lang-group",
@@ -351,13 +402,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def clone(self, content_clone_request_v_next, **kwargs):  # noqa: E501
@@ -366,21 +418,26 @@ class BlogPostsApi(object):
         Clone a Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone(content_clone_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContentCloneRequestVNext content_clone_request_v_next: The JSON representation of the ContentCloneRequest object. (required)
+        :param content_clone_request_v_next: The JSON representation of the ContentCloneRequest object. (required)
+        :type content_clone_request_v_next: ContentCloneRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.clone_with_http_info(content_clone_request_v_next, **kwargs)  # noqa: E501
@@ -391,32 +448,40 @@ class BlogPostsApi(object):
         Clone a Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone_with_http_info(content_clone_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContentCloneRequestVNext content_clone_request_v_next: The JSON representation of the ContentCloneRequest object. (required)
+        :param content_clone_request_v_next: The JSON representation of the ContentCloneRequest object. (required)
+        :type content_clone_request_v_next: ContentCloneRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["content_clone_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["content_clone_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -424,7 +489,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'content_clone_request_v_next' is set
-        if self.api_client.client_side_validation and ("content_clone_request_v_next" not in local_var_params or local_var_params["content_clone_request_v_next"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("content_clone_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `content_clone_request_v_next` when calling `clone`")  # noqa: E501
 
         collection_formats = {}
@@ -433,7 +498,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -445,10 +510,16 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/clone",
@@ -459,13 +530,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, blog_post, **kwargs):  # noqa: E501
@@ -474,21 +546,26 @@ class BlogPostsApi(object):
         Create a new Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BlogPost blog_post: The JSON representation of a new Blog Post. (required)
+        :param blog_post: The JSON representation of a new Blog Post. (required)
+        :type blog_post: BlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(blog_post, **kwargs)  # noqa: E501
@@ -499,32 +576,40 @@ class BlogPostsApi(object):
         Create a new Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BlogPost blog_post: The JSON representation of a new Blog Post. (required)
+        :param blog_post: The JSON representation of a new Blog Post. (required)
+        :type blog_post: BlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["blog_post"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["blog_post"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -532,7 +617,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'blog_post' is set
-        if self.api_client.client_side_validation and ("blog_post" not in local_var_params or local_var_params["blog_post"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("blog_post") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_post` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -541,7 +626,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -553,10 +638,16 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts",
@@ -567,13 +658,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_batch(self, batch_input_blog_post, **kwargs):  # noqa: E501
@@ -582,21 +674,26 @@ class BlogPostsApi(object):
         Create the Blog Post objects detailed in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_batch(batch_input_blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputBlogPost batch_input_blog_post: The JSON array of new Blog Posts to create. (required)
+        :param batch_input_blog_post: The JSON array of new Blog Posts to create. (required)
+        :type batch_input_blog_post: BatchInputBlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseBlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseBlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.create_batch_with_http_info(batch_input_blog_post, **kwargs)  # noqa: E501
@@ -607,32 +704,40 @@ class BlogPostsApi(object):
         Create the Blog Post objects detailed in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_batch_with_http_info(batch_input_blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputBlogPost batch_input_blog_post: The JSON array of new Blog Posts to create. (required)
+        :param batch_input_blog_post: The JSON array of new Blog Posts to create. (required)
+        :type batch_input_blog_post: BatchInputBlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_blog_post"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_blog_post"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -640,7 +745,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_blog_post' is set
-        if self.api_client.client_side_validation and ("batch_input_blog_post" not in local_var_params or local_var_params["batch_input_blog_post"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_blog_post") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_blog_post` when calling `create_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -649,7 +754,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -661,10 +766,17 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "BatchResponseBlogPost",
+            207: "BatchResponseBlogPostWithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/batch/create",
@@ -675,13 +787,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_lang_variation(self, blog_post_language_clone_request_v_next, **kwargs):  # noqa: E501
@@ -690,21 +803,26 @@ class BlogPostsApi(object):
         Create a new language variation from an existing Blog Post  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_lang_variation(blog_post_language_clone_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BlogPostLanguageCloneRequestVNext blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :param blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :type blog_post_language_clone_request_v_next: BlogPostLanguageCloneRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.create_lang_variation_with_http_info(blog_post_language_clone_request_v_next, **kwargs)  # noqa: E501
@@ -715,32 +833,40 @@ class BlogPostsApi(object):
         Create a new language variation from an existing Blog Post  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_lang_variation_with_http_info(blog_post_language_clone_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BlogPostLanguageCloneRequestVNext blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :param blog_post_language_clone_request_v_next: The JSON representation of the BlogPostLanguageCloneRequestVNext object. (required)
+        :type blog_post_language_clone_request_v_next: BlogPostLanguageCloneRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["blog_post_language_clone_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["blog_post_language_clone_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -748,9 +874,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'blog_post_language_clone_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "blog_post_language_clone_request_v_next" not in local_var_params or local_var_params["blog_post_language_clone_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("blog_post_language_clone_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_post_language_clone_request_v_next` when calling `create_lang_variation`")  # noqa: E501
 
         collection_formats = {}
@@ -759,7 +883,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -771,10 +895,16 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/multi-language/create-language-variation",
@@ -785,13 +915,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def detach_from_lang_group(self, detach_from_lang_group_request_v_next, **kwargs):  # noqa: E501
@@ -800,21 +931,26 @@ class BlogPostsApi(object):
         Detach a Blog Post from a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.detach_from_lang_group(detach_from_lang_group_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :param detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :type detach_from_lang_group_request_v_next: DetachFromLangGroupRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, **kwargs)  # noqa: E501
@@ -825,32 +961,40 @@ class BlogPostsApi(object):
         Detach a Blog Post from a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param DetachFromLangGroupRequestVNext detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :param detach_from_lang_group_request_v_next: The JSON representation of the DetachFromLangGroupRequest object. (required)
+        :type detach_from_lang_group_request_v_next: DetachFromLangGroupRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["detach_from_lang_group_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["detach_from_lang_group_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -858,9 +1002,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'detach_from_lang_group_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "detach_from_lang_group_request_v_next" not in local_var_params or local_var_params["detach_from_lang_group_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("detach_from_lang_group_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `detach_from_lang_group_request_v_next` when calling `detach_from_lang_group`")  # noqa: E501
 
         collection_formats = {}
@@ -869,7 +1011,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -881,10 +1023,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/multi-language/detach-from-lang-group",
@@ -895,13 +1041,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, object_id, **kwargs):  # noqa: E501
@@ -910,22 +1057,28 @@ class BlogPostsApi(object):
         Retrieve the Blog Post object identified by the id in the path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -936,33 +1089,42 @@ class BlogPostsApi(object):
         Retrieve the Blog Post object identified by the id in the path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -970,7 +1132,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -980,10 +1142,10 @@ class BlogPostsApi(object):
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -994,6 +1156,10 @@ class BlogPostsApi(object):
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}",
@@ -1004,13 +1170,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_draft_by_id(self, object_id, **kwargs):  # noqa: E501
@@ -1019,21 +1186,26 @@ class BlogPostsApi(object):
         Retrieve the full draft version of the Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_draft_by_id(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.get_draft_by_id_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -1044,32 +1216,40 @@ class BlogPostsApi(object):
         Retrieve the full draft version of the Blog Post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_draft_by_id_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1077,7 +1257,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_draft_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -1088,7 +1268,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1100,6 +1280,10 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "BlogPost",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/draft",
             "GET",
@@ -1109,13 +1293,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_page(self, **kwargs):  # noqa: E501
@@ -1124,30 +1309,44 @@ class BlogPostsApi(object):
         Get the list of blog posts. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param datetime created_at: Only return Blog Posts created at exactly the specified time.
-        :param datetime created_after: Only return Blog Posts created after the specified time.
-        :param datetime created_before: Only return Blog Posts created before the specified time.
-        :param datetime updated_at: Only return Blog Posts last updated at exactly the specified time.
-        :param datetime updated_after: Only return Blog Posts last updated after the specified time.
-        :param datetime updated_before: Only return Blog Posts last updated before the specified time.
-        :param list[str] sort: Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is 20.
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param created_at: Only return Blog Posts created at exactly the specified time.
+        :type created_at: datetime
+        :param created_after: Only return Blog Posts created after the specified time.
+        :type created_after: datetime
+        :param created_before: Only return Blog Posts created before the specified time.
+        :type created_before: datetime
+        :param updated_at: Only return Blog Posts last updated at exactly the specified time.
+        :type updated_at: datetime
+        :param updated_after: Only return Blog Posts last updated after the specified time.
+        :type updated_after: datetime
+        :param updated_before: Only return Blog Posts last updated before the specified time.
+        :type updated_before: datetime
+        :param sort: Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is 20.
+        :type limit: int
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalBlogPostForwardPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseWithTotalBlogPostForwardPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
@@ -1158,41 +1357,58 @@ class BlogPostsApi(object):
         Get the list of blog posts. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param datetime created_at: Only return Blog Posts created at exactly the specified time.
-        :param datetime created_after: Only return Blog Posts created after the specified time.
-        :param datetime created_before: Only return Blog Posts created before the specified time.
-        :param datetime updated_at: Only return Blog Posts last updated at exactly the specified time.
-        :param datetime updated_after: Only return Blog Posts last updated after the specified time.
-        :param datetime updated_before: Only return Blog Posts last updated before the specified time.
-        :param list[str] sort: Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is 20.
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param created_at: Only return Blog Posts created at exactly the specified time.
+        :type created_at: datetime
+        :param created_after: Only return Blog Posts created after the specified time.
+        :type created_after: datetime
+        :param created_before: Only return Blog Posts created before the specified time.
+        :type created_before: datetime
+        :param updated_at: Only return Blog Posts last updated at exactly the specified time.
+        :type updated_at: datetime
+        :param updated_after: Only return Blog Posts last updated after the specified time.
+        :type updated_after: datetime
+        :param updated_before: Only return Blog Posts last updated before the specified time.
+        :type updated_before: datetime
+        :param sort: Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is 20.
+        :type limit: int
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalBlogPostForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseWithTotalBlogPostForwardPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1205,29 +1421,29 @@ class BlogPostsApi(object):
         path_params = {}
 
         query_params = []
-        if "created_at" in local_var_params and local_var_params["created_at"] is not None:  # noqa: E501
+        if local_var_params.get("created_at") is not None:  # noqa: E501
             query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
-        if "created_after" in local_var_params and local_var_params["created_after"] is not None:  # noqa: E501
+        if local_var_params.get("created_after") is not None:  # noqa: E501
             query_params.append(("createdAfter", local_var_params["created_after"]))  # noqa: E501
-        if "created_before" in local_var_params and local_var_params["created_before"] is not None:  # noqa: E501
+        if local_var_params.get("created_before") is not None:  # noqa: E501
             query_params.append(("createdBefore", local_var_params["created_before"]))  # noqa: E501
-        if "updated_at" in local_var_params and local_var_params["updated_at"] is not None:  # noqa: E501
+        if local_var_params.get("updated_at") is not None:  # noqa: E501
             query_params.append(("updatedAt", local_var_params["updated_at"]))  # noqa: E501
-        if "updated_after" in local_var_params and local_var_params["updated_after"] is not None:  # noqa: E501
+        if local_var_params.get("updated_after") is not None:  # noqa: E501
             query_params.append(("updatedAfter", local_var_params["updated_after"]))  # noqa: E501
-        if "updated_before" in local_var_params and local_var_params["updated_before"] is not None:  # noqa: E501
+        if local_var_params.get("updated_before") is not None:  # noqa: E501
             query_params.append(("updatedBefore", local_var_params["updated_before"]))  # noqa: E501
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
+        if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1239,6 +1455,10 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseWithTotalBlogPostForwardPaging",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts",
             "GET",
@@ -1248,13 +1468,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalBlogPostForwardPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_previous_version(self, object_id, revision_id, **kwargs):  # noqa: E501
@@ -1263,22 +1484,28 @@ class BlogPostsApi(object):
         Retrieves a previous version of a blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_previous_version(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str revision_id: The Blog Post version id. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id. (required)
+        :type revision_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: VersionBlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: VersionBlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.get_previous_version_with_http_info(object_id, revision_id, **kwargs)  # noqa: E501
@@ -1289,33 +1516,42 @@ class BlogPostsApi(object):
         Retrieves a previous version of a blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_previous_version_with_http_info(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str revision_id: The Blog Post version id. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id. (required)
+        :type revision_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(VersionBlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(VersionBlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "revision_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "revision_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1323,10 +1559,10 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_previous_version`")  # noqa: E501
         # verify the required parameter 'revision_id' is set
-        if self.api_client.client_side_validation and ("revision_id" not in local_var_params or local_var_params["revision_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("revision_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `revision_id` when calling `get_previous_version`")  # noqa: E501
 
         collection_formats = {}
@@ -1339,7 +1575,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1350,6 +1586,10 @@ class BlogPostsApi(object):
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "VersionBlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}",
@@ -1360,13 +1600,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="VersionBlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_previous_versions(self, object_id, **kwargs):  # noqa: E501
@@ -1375,24 +1616,32 @@ class BlogPostsApi(object):
         Retrieves all the previous versions of a blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_previous_versions(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param str before:
-        :param int limit: The maximum number of results to return. Default is 100.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param before:
+        :type before: str
+        :param limit: The maximum number of results to return. Default is 100.
+        :type limit: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalVersionBlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseWithTotalVersionBlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.get_previous_versions_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -1403,35 +1652,46 @@ class BlogPostsApi(object):
         Retrieves all the previous versions of a blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_previous_versions_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param str before:
-        :param int limit: The maximum number of results to return. Default is 100.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param before:
+        :type before: str
+        :param limit: The maximum number of results to return. Default is 100.
+        :type limit: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalVersionBlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseWithTotalVersionBlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "after", "before", "limit"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "after", "before", "limit"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1439,7 +1699,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_previous_versions`")  # noqa: E501
 
         collection_formats = {}
@@ -1449,14 +1709,14 @@ class BlogPostsApi(object):
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
 
         query_params = []
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "before" in local_var_params and local_var_params["before"] is not None:  # noqa: E501
+        if local_var_params.get("before") is not None:  # noqa: E501
             query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1468,6 +1728,10 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseWithTotalVersionBlogPost",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/revisions",
             "GET",
@@ -1477,13 +1741,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalVersionBlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def push_live(self, object_id, **kwargs):  # noqa: E501
@@ -1492,21 +1757,26 @@ class BlogPostsApi(object):
         Take any changes from the draft version of the Blog Post and apply them to the live version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.push_live(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The id of the Blog Post for which it's draft will be pushed live. (required)
+        :param object_id: The id of the Blog Post for which it's draft will be pushed live. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.push_live_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -1517,32 +1787,40 @@ class BlogPostsApi(object):
         Take any changes from the draft version of the Blog Post and apply them to the live version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.push_live_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The id of the Blog Post for which it's draft will be pushed live. (required)
+        :param object_id: The id of the Blog Post for which it's draft will be pushed live. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1550,7 +1828,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `push_live`")  # noqa: E501
 
         collection_formats = {}
@@ -1561,7 +1839,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1573,6 +1851,8 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/draft/push-live",
             "POST",
@@ -1582,13 +1862,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def read_batch(self, batch_input_string, **kwargs):  # noqa: E501
@@ -1597,22 +1878,28 @@ class BlogPostsApi(object):
         Retrieve the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_batch(batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputString batch_input_string: The JSON array of Blog Post ids. (required)
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param batch_input_string: The JSON array of Blog Post ids. (required)
+        :type batch_input_string: BatchInputString
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseBlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseBlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.read_batch_with_http_info(batch_input_string, **kwargs)  # noqa: E501
@@ -1623,33 +1910,42 @@ class BlogPostsApi(object):
         Retrieve the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_batch_with_http_info(batch_input_string, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputString batch_input_string: The JSON array of Blog Post ids. (required)
-        :param bool archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :param batch_input_string: The JSON array of Blog Post ids. (required)
+        :type batch_input_string: BatchInputString
+        :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_string", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_string", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1657,7 +1953,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_string' is set
-        if self.api_client.client_side_validation and ("batch_input_string" not in local_var_params or local_var_params["batch_input_string"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_string") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_string` when calling `read_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -1665,10 +1961,10 @@ class BlogPostsApi(object):
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1680,10 +1976,17 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseBlogPost",
+            207: "BatchResponseBlogPostWithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/batch/read",
@@ -1694,13 +1997,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def reset_draft(self, object_id, **kwargs):  # noqa: E501
@@ -1709,21 +2013,26 @@ class BlogPostsApi(object):
         Discards any edits and resets the draft to the live version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.reset_draft(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The id of the Blog Post for which it's draft will be reset. (required)
+        :param object_id: The id of the Blog Post for which it's draft will be reset. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.reset_draft_with_http_info(object_id, **kwargs)  # noqa: E501
@@ -1734,32 +2043,40 @@ class BlogPostsApi(object):
         Discards any edits and resets the draft to the live version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.reset_draft_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The id of the Blog Post for which it's draft will be reset. (required)
+        :param object_id: The id of the Blog Post for which it's draft will be reset. (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1767,7 +2084,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `reset_draft`")  # noqa: E501
 
         collection_formats = {}
@@ -1778,7 +2095,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1790,6 +2107,8 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/draft/reset",
             "POST",
@@ -1799,13 +2118,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def restore_previous_version(self, object_id, revision_id, **kwargs):  # noqa: E501
@@ -1814,22 +2134,28 @@ class BlogPostsApi(object):
         Takes a specified version of a blog post and restores it.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.restore_previous_version(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str revision_id: The Blog Post version id to restore. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id to restore. (required)
+        :type revision_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.restore_previous_version_with_http_info(object_id, revision_id, **kwargs)  # noqa: E501
@@ -1840,33 +2166,42 @@ class BlogPostsApi(object):
         Takes a specified version of a blog post and restores it.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.restore_previous_version_with_http_info(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param str revision_id: The Blog Post version id to restore. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id to restore. (required)
+        :type revision_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "revision_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "revision_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1874,10 +2209,10 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `restore_previous_version`")  # noqa: E501
         # verify the required parameter 'revision_id' is set
-        if self.api_client.client_side_validation and ("revision_id" not in local_var_params or local_var_params["revision_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("revision_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `revision_id` when calling `restore_previous_version`")  # noqa: E501
 
         collection_formats = {}
@@ -1890,7 +2225,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1902,6 +2237,10 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "BlogPost",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}/restore",
             "POST",
@@ -1911,13 +2250,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def restore_previous_version_to_draft(self, object_id, revision_id, **kwargs):  # noqa: E501
@@ -1926,22 +2266,28 @@ class BlogPostsApi(object):
         Takes a specified version of a blog post, sets it as the new draft version of the blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.restore_previous_version_to_draft(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param int revision_id: The Blog Post version id to restore. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id to restore. (required)
+        :type revision_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.restore_previous_version_to_draft_with_http_info(object_id, revision_id, **kwargs)  # noqa: E501
@@ -1952,33 +2298,42 @@ class BlogPostsApi(object):
         Takes a specified version of a blog post, sets it as the new draft version of the blog post.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.restore_previous_version_to_draft_with_http_info(object_id, revision_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param int revision_id: The Blog Post version id to restore. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param revision_id: The Blog Post version id to restore. (required)
+        :type revision_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "revision_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "revision_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1986,10 +2341,10 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `restore_previous_version_to_draft`")  # noqa: E501
         # verify the required parameter 'revision_id' is set
-        if self.api_client.client_side_validation and ("revision_id" not in local_var_params or local_var_params["revision_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("revision_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `revision_id` when calling `restore_previous_version_to_draft`")  # noqa: E501
 
         collection_formats = {}
@@ -2002,7 +2357,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2014,6 +2369,10 @@ class BlogPostsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "BlogPost",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/revisions/{revisionId}/restore-to-draft",
             "POST",
@@ -2023,13 +2382,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def schedule(self, content_schedule_request_v_next, **kwargs):  # noqa: E501
@@ -2038,21 +2398,26 @@ class BlogPostsApi(object):
         Schedule a Blog Post to be Published.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.schedule(content_schedule_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContentScheduleRequestVNext content_schedule_request_v_next: The JSON representation of the ContentScheduleRequestVNext object. (required)
+        :param content_schedule_request_v_next: The JSON representation of the ContentScheduleRequestVNext object. (required)
+        :type content_schedule_request_v_next: ContentScheduleRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.schedule_with_http_info(content_schedule_request_v_next, **kwargs)  # noqa: E501
@@ -2063,32 +2428,40 @@ class BlogPostsApi(object):
         Schedule a Blog Post to be Published.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.schedule_with_http_info(content_schedule_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ContentScheduleRequestVNext content_schedule_request_v_next: The JSON representation of the ContentScheduleRequestVNext object. (required)
+        :param content_schedule_request_v_next: The JSON representation of the ContentScheduleRequestVNext object. (required)
+        :type content_schedule_request_v_next: ContentScheduleRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["content_schedule_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["content_schedule_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2096,9 +2469,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'content_schedule_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "content_schedule_request_v_next" not in local_var_params or local_var_params["content_schedule_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("content_schedule_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `content_schedule_request_v_next` when calling `schedule`")  # noqa: E501
 
         collection_formats = {}
@@ -2107,7 +2478,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2119,10 +2490,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/schedule",
@@ -2133,13 +2508,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def set_lang_primary(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
@@ -2148,21 +2524,26 @@ class BlogPostsApi(object):
         Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.set_lang_primary(set_new_language_primary_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :type set_new_language_primary_request_v_next: SetNewLanguagePrimaryRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.set_lang_primary_with_http_info(set_new_language_primary_request_v_next, **kwargs)  # noqa: E501
@@ -2173,32 +2554,40 @@ class BlogPostsApi(object):
         Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.set_lang_primary_with_http_info(set_new_language_primary_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param SetNewLanguagePrimaryRequestVNext set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param set_new_language_primary_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :type set_new_language_primary_request_v_next: SetNewLanguagePrimaryRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["set_new_language_primary_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["set_new_language_primary_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2206,9 +2595,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'set_new_language_primary_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "set_new_language_primary_request_v_next" not in local_var_params or local_var_params["set_new_language_primary_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("set_new_language_primary_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `set_new_language_primary_request_v_next` when calling `set_lang_primary`")  # noqa: E501
 
         collection_formats = {}
@@ -2217,7 +2604,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2229,10 +2616,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/multi-language/set-new-lang-primary",
@@ -2243,13 +2634,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, object_id, blog_post, **kwargs):  # noqa: E501
@@ -2258,23 +2650,30 @@ class BlogPostsApi(object):
         Sparse updates a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param BlogPost blog_post: The JSON representation of the updated Blog Post. (required)
-        :param bool archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param blog_post: The JSON representation of the updated Blog Post. (required)
+        :type blog_post: BlogPost
+        :param archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(object_id, blog_post, **kwargs)  # noqa: E501
@@ -2285,34 +2684,44 @@ class BlogPostsApi(object):
         Sparse updates a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param BlogPost blog_post: The JSON representation of the updated Blog Post. (required)
-        :param bool archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param blog_post: The JSON representation of the updated Blog Post. (required)
+        :type blog_post: BlogPost
+        :param archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "blog_post", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "blog_post", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2320,10 +2729,10 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'blog_post' is set
-        if self.api_client.client_side_validation and ("blog_post" not in local_var_params or local_var_params["blog_post"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("blog_post") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_post` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -2333,10 +2742,10 @@ class BlogPostsApi(object):
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2348,10 +2757,16 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}",
@@ -2362,13 +2777,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_batch(self, batch_input_json_node, **kwargs):  # noqa: E501
@@ -2377,22 +2793,28 @@ class BlogPostsApi(object):
         Update the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_batch(batch_input_json_node, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputJsonNode batch_input_json_node: A JSON array of the JSON representations of the updated Blog Posts. (required)
-        :param bool archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :param batch_input_json_node: A JSON array of the JSON representations of the updated Blog Posts. (required)
+        :type batch_input_json_node: BatchInputJsonNode
+        :param archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseBlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseBlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.update_batch_with_http_info(batch_input_json_node, **kwargs)  # noqa: E501
@@ -2403,33 +2825,42 @@ class BlogPostsApi(object):
         Update the Blog Post objects identified in the request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_batch_with_http_info(batch_input_json_node, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputJsonNode batch_input_json_node: A JSON array of the JSON representations of the updated Blog Posts. (required)
-        :param bool archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :param batch_input_json_node: A JSON array of the JSON representations of the updated Blog Posts. (required)
+        :type batch_input_json_node: BatchInputJsonNode
+        :param archived: Specifies whether to update deleted Blog Posts. Defaults to `false`.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseBlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_json_node", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_json_node", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2437,7 +2868,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_json_node' is set
-        if self.api_client.client_side_validation and ("batch_input_json_node" not in local_var_params or local_var_params["batch_input_json_node"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_json_node") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_json_node` when calling `update_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -2445,10 +2876,10 @@ class BlogPostsApi(object):
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2460,10 +2891,17 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseBlogPost",
+            207: "BatchResponseBlogPostWithErrors",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/batch/update",
@@ -2474,13 +2912,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseBlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_draft(self, object_id, blog_post, **kwargs):  # noqa: E501
@@ -2489,22 +2928,28 @@ class BlogPostsApi(object):
         Sparse updates the draft version of a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param BlogPost blog_post: The JSON representation of the updated Blog Post to be applied to the draft. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param blog_post: The JSON representation of the updated Blog Post to be applied to the draft. (required)
+        :type blog_post: BlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BlogPost
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BlogPost
         """
         kwargs["_return_http_data_only"] = True
         return self.update_draft_with_http_info(object_id, blog_post, **kwargs)  # noqa: E501
@@ -2515,33 +2960,42 @@ class BlogPostsApi(object):
         Sparse updates the draft version of a single Blog Post object identified by the id in the path. All the column values need not be specified. Only the that need to be modified can be specified.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft_with_http_info(object_id, blog_post, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_id: The Blog Post id. (required)
-        :param BlogPost blog_post: The JSON representation of the updated Blog Post to be applied to the draft. (required)
+        :param object_id: The Blog Post id. (required)
+        :type object_id: str
+        :param blog_post: The JSON representation of the updated Blog Post to be applied to the draft. (required)
+        :type blog_post: BlogPost
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BlogPost, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_id", "blog_post"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_id", "blog_post"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2549,10 +3003,10 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_id' is set
-        if self.api_client.client_side_validation and ("object_id" not in local_var_params or local_var_params["object_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `update_draft`")  # noqa: E501
         # verify the required parameter 'blog_post' is set
-        if self.api_client.client_side_validation and ("blog_post" not in local_var_params or local_var_params["blog_post"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("blog_post") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `blog_post` when calling `update_draft`")  # noqa: E501
 
         collection_formats = {}
@@ -2563,7 +3017,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2575,10 +3029,16 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BlogPost",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/{objectId}/draft",
@@ -2589,13 +3049,14 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BlogPost",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_langs(self, update_languages_request_v_next, **kwargs):  # noqa: E501
@@ -2604,21 +3065,26 @@ class BlogPostsApi(object):
         Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_langs(update_languages_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :type update_languages_request_v_next: UpdateLanguagesRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.update_langs_with_http_info(update_languages_request_v_next, **kwargs)  # noqa: E501
@@ -2629,32 +3095,40 @@ class BlogPostsApi(object):
         Explicitly set new languages for each Blog Post in a multi-language group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_langs_with_http_info(update_languages_request_v_next, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param UpdateLanguagesRequestVNext update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :param update_languages_request_v_next: The JSON representation of the SetNewLanguagePrimaryRequest object. (required)
+        :type update_languages_request_v_next: UpdateLanguagesRequestVNext
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["update_languages_request_v_next"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["update_languages_request_v_next"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -2662,9 +3136,7 @@ class BlogPostsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'update_languages_request_v_next' is set
-        if self.api_client.client_side_validation and (
-            "update_languages_request_v_next" not in local_var_params or local_var_params["update_languages_request_v_next"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("update_languages_request_v_next") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `update_languages_request_v_next` when calling `update_langs`")  # noqa: E501
 
         collection_formats = {}
@@ -2673,7 +3145,7 @@ class BlogPostsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -2685,10 +3157,14 @@ class BlogPostsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/cms/v3/blogs/posts/multi-language/update-languages",
@@ -2699,11 +3175,12 @@ class BlogPostsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

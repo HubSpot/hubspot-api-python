@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -65,7 +68,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
     ):  # noqa: E501
         """LegalConsentOptionsExplicitConsentToProcess - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._type = None
@@ -105,7 +108,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param type: The type of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -131,7 +134,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param communication_consent_text: The communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type communication_consent_text: str
         """
 
         self._communication_consent_text = communication_consent_text
@@ -152,7 +155,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param communications_checkboxes: The communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: list[LegalConsentCheckbox]
+        :type communications_checkboxes: list[LegalConsentCheckbox]
         """
         if self.local_vars_configuration.client_side_validation and communications_checkboxes is None:  # noqa: E501
             raise ValueError("Invalid value for `communications_checkboxes`, must not be `None`")  # noqa: E501
@@ -175,7 +178,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param consent_to_process_text: The consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type consent_to_process_text: str
         """
 
         self._consent_to_process_text = consent_to_process_text
@@ -196,7 +199,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param consent_to_process_checkbox_label: The consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type consent_to_process_checkbox_label: str
         """
 
         self._consent_to_process_checkbox_label = consent_to_process_checkbox_label
@@ -217,7 +220,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param consent_to_process_footer_text: The consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type consent_to_process_footer_text: str
         """
 
         self._consent_to_process_footer_text = consent_to_process_footer_text
@@ -238,27 +241,36 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
 
 
         :param privacy_text: The privacy_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type: str
+        :type privacy_text: str
         """
         if self.local_vars_configuration.client_side_validation and privacy_text is None:  # noqa: E501
             raise ValueError("Invalid value for `privacy_text`, must not be `None`")  # noqa: E501
 
         self._privacy_text = privacy_text
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

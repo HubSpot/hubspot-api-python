@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.webhooks.configuration import Configuration
@@ -39,7 +42,7 @@ class SettingsResponse(object):
     def __init__(self, target_url=None, throttling=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SettingsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._target_url = None
@@ -72,7 +75,7 @@ class SettingsResponse(object):
         A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.  # noqa: E501
 
         :param target_url: The target_url of this SettingsResponse.  # noqa: E501
-        :type: str
+        :type target_url: str
         """
         if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
             raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
@@ -95,7 +98,7 @@ class SettingsResponse(object):
 
 
         :param throttling: The throttling of this SettingsResponse.  # noqa: E501
-        :type: ThrottlingSettings
+        :type throttling: ThrottlingSettings
         """
         if self.local_vars_configuration.client_side_validation and throttling is None:  # noqa: E501
             raise ValueError("Invalid value for `throttling`, must not be `None`")  # noqa: E501
@@ -120,7 +123,7 @@ class SettingsResponse(object):
         When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
 
         :param created_at: The created_at of this SettingsResponse.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -145,25 +148,34 @@ class SettingsResponse(object):
         When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
 
         :param updated_at: The updated_at of this SettingsResponse.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

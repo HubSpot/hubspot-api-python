@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class ObjectSyncFeature(object):
     def __init__(self, to_hub_spot=None, local_vars_configuration=None):  # noqa: E501
         """ObjectSyncFeature - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._to_hub_spot = None
@@ -65,27 +68,36 @@ class ObjectSyncFeature(object):
         Indicates if syncing the object type from the external accounting system into HubSpot is supported.  # noqa: E501
 
         :param to_hub_spot: The to_hub_spot of this ObjectSyncFeature.  # noqa: E501
-        :type: bool
+        :type to_hub_spot: bool
         """
         if self.local_vars_configuration.client_side_validation and to_hub_spot is None:  # noqa: E501
             raise ValueError("Invalid value for `to_hub_spot`, must not be `None`")  # noqa: E501
 
         self._to_hub_spot = to_hub_spot
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

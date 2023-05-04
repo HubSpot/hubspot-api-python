@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -39,7 +42,7 @@ class FormDisplayOptions(object):
     def __init__(self, render_raw_html=None, theme=None, submit_button_text=None, style=None, css_class=None, local_vars_configuration=None):  # noqa: E501
         """FormDisplayOptions - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._render_raw_html = None
@@ -74,7 +77,7 @@ class FormDisplayOptions(object):
         Whether the form will render as raw HTML as opposed to inside an iFrame.  # noqa: E501
 
         :param render_raw_html: The render_raw_html of this FormDisplayOptions.  # noqa: E501
-        :type: bool
+        :type render_raw_html: bool
         """
         if self.local_vars_configuration.client_side_validation and render_raw_html is None:  # noqa: E501
             raise ValueError("Invalid value for `render_raw_html`, must not be `None`")  # noqa: E501
@@ -99,7 +102,7 @@ class FormDisplayOptions(object):
         The theme used for styling the input fields. This will not apply if the form is added to a HubSpot CMS page.  # noqa: E501
 
         :param theme: The theme of this FormDisplayOptions.  # noqa: E501
-        :type: str
+        :type theme: str
         """
         if self.local_vars_configuration.client_side_validation and theme is None:  # noqa: E501
             raise ValueError("Invalid value for `theme`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class FormDisplayOptions(object):
         The text displayed on the form submit button.  # noqa: E501
 
         :param submit_button_text: The submit_button_text of this FormDisplayOptions.  # noqa: E501
-        :type: str
+        :type submit_button_text: str
         """
         if self.local_vars_configuration.client_side_validation and submit_button_text is None:  # noqa: E501
             raise ValueError("Invalid value for `submit_button_text`, must not be `None`")  # noqa: E501
@@ -150,7 +153,7 @@ class FormDisplayOptions(object):
 
 
         :param style: The style of this FormDisplayOptions.  # noqa: E501
-        :type: FormStyle
+        :type style: FormStyle
         """
         if self.local_vars_configuration.client_side_validation and style is None:  # noqa: E501
             raise ValueError("Invalid value for `style`, must not be `None`")  # noqa: E501
@@ -173,25 +176,34 @@ class FormDisplayOptions(object):
 
 
         :param css_class: The css_class of this FormDisplayOptions.  # noqa: E501
-        :type: str
+        :type css_class: str
         """
 
         self._css_class = css_class
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

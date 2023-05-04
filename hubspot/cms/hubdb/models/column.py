@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.hubdb.configuration import Configuration
@@ -44,8 +47,8 @@ class Column(object):
         "description": "str",
         "foreign_ids": "list[ForeignId]",
         "type": "str",
-        "foreign_ids_by_name": "dict(str, ForeignId)",
-        "foreign_ids_by_id": "dict(str, ForeignId)",
+        "foreign_ids_by_name": "dict[str, ForeignId]",
+        "foreign_ids_by_id": "dict[str, ForeignId]",
         "option_count": "int",
     }
 
@@ -86,7 +89,7 @@ class Column(object):
     ):  # noqa: E501
         """Column - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -149,7 +152,7 @@ class Column(object):
         Name of the column  # noqa: E501
 
         :param name: The name of this Column.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -174,7 +177,7 @@ class Column(object):
         Label of the column  # noqa: E501
 
         :param label: The label of this Column.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -199,7 +202,7 @@ class Column(object):
         Column Id  # noqa: E501
 
         :param id: The id of this Column.  # noqa: E501
-        :type: str
+        :type id: str
         """
 
         self._id = id
@@ -220,7 +223,7 @@ class Column(object):
 
 
         :param deleted: The deleted of this Column.  # noqa: E501
-        :type: bool
+        :type deleted: bool
         """
 
         self._deleted = deleted
@@ -243,7 +246,7 @@ class Column(object):
         Options to choose for select and multi-select columns  # noqa: E501
 
         :param options: The options of this Column.  # noqa: E501
-        :type: list[Option]
+        :type options: list[Option]
         """
 
         self._options = options
@@ -266,7 +269,7 @@ class Column(object):
         Column width for HubDB UI  # noqa: E501
 
         :param width: The width of this Column.  # noqa: E501
-        :type: int
+        :type width: int
         """
 
         self._width = width
@@ -289,7 +292,7 @@ class Column(object):
         Foreign table id referenced  # noqa: E501
 
         :param foreign_table_id: The foreign_table_id of this Column.  # noqa: E501
-        :type: int
+        :type foreign_table_id: int
         """
 
         self._foreign_table_id = foreign_table_id
@@ -312,7 +315,7 @@ class Column(object):
         Foreign Column id  # noqa: E501
 
         :param foreign_column_id: The foreign_column_id of this Column.  # noqa: E501
-        :type: int
+        :type foreign_column_id: int
         """
 
         self._foreign_column_id = foreign_column_id
@@ -333,7 +336,7 @@ class Column(object):
 
 
         :param description: The description of this Column.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -356,7 +359,7 @@ class Column(object):
         Foreign Ids  # noqa: E501
 
         :param foreign_ids: The foreign_ids of this Column.  # noqa: E501
-        :type: list[ForeignId]
+        :type foreign_ids: list[ForeignId]
         """
 
         self._foreign_ids = foreign_ids
@@ -379,7 +382,7 @@ class Column(object):
         Type of the column  # noqa: E501
 
         :param type: The type of this Column.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -414,7 +417,7 @@ class Column(object):
         Foreign ids by name  # noqa: E501
 
         :return: The foreign_ids_by_name of this Column.  # noqa: E501
-        :rtype: dict(str, ForeignId)
+        :rtype: dict[str, ForeignId]
         """
         return self._foreign_ids_by_name
 
@@ -425,7 +428,7 @@ class Column(object):
         Foreign ids by name  # noqa: E501
 
         :param foreign_ids_by_name: The foreign_ids_by_name of this Column.  # noqa: E501
-        :type: dict(str, ForeignId)
+        :type foreign_ids_by_name: dict[str, ForeignId]
         """
 
         self._foreign_ids_by_name = foreign_ids_by_name
@@ -437,7 +440,7 @@ class Column(object):
         Foreign ids  # noqa: E501
 
         :return: The foreign_ids_by_id of this Column.  # noqa: E501
-        :rtype: dict(str, ForeignId)
+        :rtype: dict[str, ForeignId]
         """
         return self._foreign_ids_by_id
 
@@ -448,7 +451,7 @@ class Column(object):
         Foreign ids  # noqa: E501
 
         :param foreign_ids_by_id: The foreign_ids_by_id of this Column.  # noqa: E501
-        :type: dict(str, ForeignId)
+        :type foreign_ids_by_id: dict[str, ForeignId]
         """
 
         self._foreign_ids_by_id = foreign_ids_by_id
@@ -471,25 +474,34 @@ class Column(object):
         Number of options available  # noqa: E501
 
         :param option_count: The option_count of this Column.  # noqa: E501
-        :type: int
+        :type option_count: int
         """
 
         self._option_count = option_count
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

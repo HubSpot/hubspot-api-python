@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.owners.configuration import Configuration
@@ -32,14 +35,14 @@ class Error(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"message": "str", "correlation_id": "str", "category": "str", "sub_category": "str", "errors": "list[ErrorDetail]", "context": "dict(str, list[str])", "links": "dict(str, str)"}
+    openapi_types = {"message": "str", "correlation_id": "str", "category": "str", "sub_category": "str", "errors": "list[ErrorDetail]", "context": "dict[str, list[str]]", "links": "dict[str, str]"}
 
     attribute_map = {"message": "message", "correlation_id": "correlationId", "category": "category", "sub_category": "subCategory", "errors": "errors", "context": "context", "links": "links"}
 
     def __init__(self, message=None, correlation_id=None, category=None, sub_category=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """Error - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._message = None
@@ -81,7 +84,7 @@ class Error(object):
         A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
 
         :param message: The message of this Error.  # noqa: E501
-        :type: str
+        :type message: str
         """
         if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
@@ -106,7 +109,7 @@ class Error(object):
         A unique identifier for the request. Include this value with any error reports or support tickets  # noqa: E501
 
         :param correlation_id: The correlation_id of this Error.  # noqa: E501
-        :type: str
+        :type correlation_id: str
         """
         if self.local_vars_configuration.client_side_validation and correlation_id is None:  # noqa: E501
             raise ValueError("Invalid value for `correlation_id`, must not be `None`")  # noqa: E501
@@ -131,7 +134,7 @@ class Error(object):
         The error category  # noqa: E501
 
         :param category: The category of this Error.  # noqa: E501
-        :type: str
+        :type category: str
         """
         if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
             raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
@@ -156,7 +159,7 @@ class Error(object):
         A specific category that contains more specific detail about the error  # noqa: E501
 
         :param sub_category: The sub_category of this Error.  # noqa: E501
-        :type: str
+        :type sub_category: str
         """
 
         self._sub_category = sub_category
@@ -179,7 +182,7 @@ class Error(object):
         further information about the error  # noqa: E501
 
         :param errors: The errors of this Error.  # noqa: E501
-        :type: list[ErrorDetail]
+        :type errors: list[ErrorDetail]
         """
 
         self._errors = errors
@@ -191,7 +194,7 @@ class Error(object):
         Context about the error condition  # noqa: E501
 
         :return: The context of this Error.  # noqa: E501
-        :rtype: dict(str, list[str])
+        :rtype: dict[str, list[str]]
         """
         return self._context
 
@@ -202,7 +205,7 @@ class Error(object):
         Context about the error condition  # noqa: E501
 
         :param context: The context of this Error.  # noqa: E501
-        :type: dict(str, list[str])
+        :type context: dict[str, list[str]]
         """
 
         self._context = context
@@ -214,7 +217,7 @@ class Error(object):
         A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
 
         :return: The links of this Error.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._links
 
@@ -225,25 +228,34 @@ class Error(object):
         A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
 
         :param links: The links of this Error.  # noqa: E501
-        :type: dict(str, str)
+        :type links: dict[str, str]
         """
 
         self._links = links
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

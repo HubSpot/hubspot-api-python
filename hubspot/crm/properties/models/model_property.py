@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.properties.configuration import Configuration
@@ -116,7 +119,7 @@ class ModelProperty(object):
     ):  # noqa: E501
         """ModelProperty - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._updated_at = None
@@ -203,7 +206,7 @@ class ModelProperty(object):
 
 
         :param updated_at: The updated_at of this ModelProperty.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
@@ -224,7 +227,7 @@ class ModelProperty(object):
 
 
         :param created_at: The created_at of this ModelProperty.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
 
         self._created_at = created_at
@@ -247,7 +250,7 @@ class ModelProperty(object):
         When the property was archived.  # noqa: E501
 
         :param archived_at: The archived_at of this ModelProperty.  # noqa: E501
-        :type: datetime
+        :type archived_at: datetime
         """
 
         self._archived_at = archived_at
@@ -270,7 +273,7 @@ class ModelProperty(object):
         The internal property name, which must be used when referencing the property via the API.  # noqa: E501
 
         :param name: The name of this ModelProperty.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -295,7 +298,7 @@ class ModelProperty(object):
         A human-readable property label that will be shown in HubSpot.  # noqa: E501
 
         :param label: The label of this ModelProperty.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -320,7 +323,7 @@ class ModelProperty(object):
         The property data type.  # noqa: E501
 
         :param type: The type of this ModelProperty.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -345,7 +348,7 @@ class ModelProperty(object):
         Controls how the property appears in HubSpot.  # noqa: E501
 
         :param field_type: The field_type of this ModelProperty.  # noqa: E501
-        :type: str
+        :type field_type: str
         """
         if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
@@ -370,7 +373,7 @@ class ModelProperty(object):
         A description of the property that will be shown as help text in HubSpot.  # noqa: E501
 
         :param description: The description of this ModelProperty.  # noqa: E501
-        :type: str
+        :type description: str
         """
         if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
@@ -395,7 +398,7 @@ class ModelProperty(object):
         The name of the property group the property belongs to.  # noqa: E501
 
         :param group_name: The group_name of this ModelProperty.  # noqa: E501
-        :type: str
+        :type group_name: str
         """
         if self.local_vars_configuration.client_side_validation and group_name is None:  # noqa: E501
             raise ValueError("Invalid value for `group_name`, must not be `None`")  # noqa: E501
@@ -420,7 +423,7 @@ class ModelProperty(object):
         A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.  # noqa: E501
 
         :param options: The options of this ModelProperty.  # noqa: E501
-        :type: list[Option]
+        :type options: list[Option]
         """
         if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
@@ -445,7 +448,7 @@ class ModelProperty(object):
         The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.  # noqa: E501
 
         :param created_user_id: The created_user_id of this ModelProperty.  # noqa: E501
-        :type: str
+        :type created_user_id: str
         """
 
         self._created_user_id = created_user_id
@@ -468,7 +471,7 @@ class ModelProperty(object):
         The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.  # noqa: E501
 
         :param updated_user_id: The updated_user_id of this ModelProperty.  # noqa: E501
-        :type: str
+        :type updated_user_id: str
         """
 
         self._updated_user_id = updated_user_id
@@ -491,7 +494,7 @@ class ModelProperty(object):
         If this property is related to other object(s), they'll be listed here.  # noqa: E501
 
         :param referenced_object_type: The referenced_object_type of this ModelProperty.  # noqa: E501
-        :type: str
+        :type referenced_object_type: str
         """
 
         self._referenced_object_type = referenced_object_type
@@ -514,7 +517,7 @@ class ModelProperty(object):
         Properties are shown in order, starting with the lowest positive integer value.  # noqa: E501
 
         :param display_order: The display_order of this ModelProperty.  # noqa: E501
-        :type: int
+        :type display_order: int
         """
 
         self._display_order = display_order
@@ -537,7 +540,7 @@ class ModelProperty(object):
         For default properties, true indicates that the property is calculated by a HubSpot process. It has no effect for custom properties.  # noqa: E501
 
         :param calculated: The calculated of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type calculated: bool
         """
 
         self._calculated = calculated
@@ -560,7 +563,7 @@ class ModelProperty(object):
         For default properties, true indicates that the options are stored externally to the property settings.  # noqa: E501
 
         :param external_options: The external_options of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type external_options: bool
         """
 
         self._external_options = external_options
@@ -583,7 +586,7 @@ class ModelProperty(object):
         Whether or not the property is archived.  # noqa: E501
 
         :param archived: The archived of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
 
         self._archived = archived
@@ -606,7 +609,7 @@ class ModelProperty(object):
         Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
 
         :param has_unique_value: The has_unique_value of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type has_unique_value: bool
         """
 
         self._has_unique_value = has_unique_value
@@ -629,7 +632,7 @@ class ModelProperty(object):
         Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.  # noqa: E501
 
         :param hidden: The hidden of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type hidden: bool
         """
 
         self._hidden = hidden
@@ -652,7 +655,7 @@ class ModelProperty(object):
         This will be true for default object properties built into HubSpot.  # noqa: E501
 
         :param hubspot_defined: The hubspot_defined of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type hubspot_defined: bool
         """
 
         self._hubspot_defined = hubspot_defined
@@ -675,7 +678,7 @@ class ModelProperty(object):
         Whether or not the property will display the currency symbol set in the account settings.  # noqa: E501
 
         :param show_currency_symbol: The show_currency_symbol of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type show_currency_symbol: bool
         """
 
         self._show_currency_symbol = show_currency_symbol
@@ -696,7 +699,7 @@ class ModelProperty(object):
 
 
         :param modification_metadata: The modification_metadata of this ModelProperty.  # noqa: E501
-        :type: PropertyModificationMetadata
+        :type modification_metadata: PropertyModificationMetadata
         """
 
         self._modification_metadata = modification_metadata
@@ -719,7 +722,7 @@ class ModelProperty(object):
         Whether or not the property can be used in a HubSpot form.  # noqa: E501
 
         :param form_field: The form_field of this ModelProperty.  # noqa: E501
-        :type: bool
+        :type form_field: bool
         """
 
         self._form_field = form_field
@@ -742,25 +745,34 @@ class ModelProperty(object):
         Represents a formula that is used to compute a calculated property.  # noqa: E501
 
         :param calculation_formula: The calculation_formula of this ModelProperty.  # noqa: E501
-        :type: str
+        :type calculation_formula: str
         """
 
         self._calculation_formula = calculation_formula
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

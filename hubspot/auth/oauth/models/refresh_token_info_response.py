@@ -9,9 +9,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.auth.oauth.configuration import Configuration
@@ -38,7 +41,7 @@ class RefreshTokenInfoResponse(object):
     def __init__(self, token=None, user=None, hub_domain=None, scopes=None, hub_id=None, client_id=None, user_id=None, token_type=None, local_vars_configuration=None):  # noqa: E501
         """RefreshTokenInfoResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._token = None
@@ -78,7 +81,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param token: The token of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type token: str
         """
         if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
@@ -101,7 +104,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param user: The user of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type user: str
         """
 
         self._user = user
@@ -122,7 +125,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param hub_domain: The hub_domain of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type hub_domain: str
         """
 
         self._hub_domain = hub_domain
@@ -143,7 +146,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param scopes: The scopes of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: list[str]
+        :type scopes: list[str]
         """
         if self.local_vars_configuration.client_side_validation and scopes is None:  # noqa: E501
             raise ValueError("Invalid value for `scopes`, must not be `None`")  # noqa: E501
@@ -166,7 +169,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param hub_id: The hub_id of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type hub_id: int
         """
         if self.local_vars_configuration.client_side_validation and hub_id is None:  # noqa: E501
             raise ValueError("Invalid value for `hub_id`, must not be `None`")  # noqa: E501
@@ -189,7 +192,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param client_id: The client_id of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type client_id: str
         """
         if self.local_vars_configuration.client_side_validation and client_id is None:  # noqa: E501
             raise ValueError("Invalid value for `client_id`, must not be `None`")  # noqa: E501
@@ -212,7 +215,7 @@ class RefreshTokenInfoResponse(object):
 
 
         :param user_id: The user_id of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: int
+        :type user_id: int
         """
         if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
             raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
@@ -235,27 +238,36 @@ class RefreshTokenInfoResponse(object):
 
 
         :param token_type: The token_type of this RefreshTokenInfoResponse.  # noqa: E501
-        :type: str
+        :type token_type: str
         """
         if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
             raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
 
         self._token_type = token_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

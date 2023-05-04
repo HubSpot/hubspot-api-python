@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class AccountingExtensionTerm(object):
     def __init__(self, due_date=None, name=None, id=None, due_days=None, local_vars_configuration=None):  # noqa: E501
         """AccountingExtensionTerm - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._due_date = None
@@ -73,7 +76,7 @@ class AccountingExtensionTerm(object):
         The due date for payment of the invoice, in ISO-8601 date format (yyyy-MM-dd)  # noqa: E501
 
         :param due_date: The due_date of this AccountingExtensionTerm.  # noqa: E501
-        :type: date
+        :type due_date: date
         """
 
         self._due_date = due_date
@@ -96,7 +99,7 @@ class AccountingExtensionTerm(object):
         The display name of the payment terms.  # noqa: E501
 
         :param name: The name of this AccountingExtensionTerm.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -121,7 +124,7 @@ class AccountingExtensionTerm(object):
         The ID of the payment terms in the external accounting system.  # noqa: E501
 
         :param id: The id of this AccountingExtensionTerm.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -146,25 +149,34 @@ class AccountingExtensionTerm(object):
         The number of days that these payment terms represent.  # noqa: E501
 
         :param due_days: The due_days of this AccountingExtensionTerm.  # noqa: E501
-        :type: int
+        :type due_days: int
         """
 
         self._due_days = due_days
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

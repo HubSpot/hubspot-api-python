@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -39,7 +42,7 @@ class ActionFunction(object):
     def __init__(self, function_source=None, function_type=None, id=None, local_vars_configuration=None):  # noqa: E501
         """ActionFunction - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._function_source = None
@@ -70,7 +73,7 @@ class ActionFunction(object):
         The function source code.  # noqa: E501
 
         :param function_source: The function_source of this ActionFunction.  # noqa: E501
-        :type: str
+        :type function_source: str
         """
         if self.local_vars_configuration.client_side_validation and function_source is None:  # noqa: E501
             raise ValueError("Invalid value for `function_source`, must not be `None`")  # noqa: E501
@@ -95,7 +98,7 @@ class ActionFunction(object):
         The type of function. This determines when the function will be called.  # noqa: E501
 
         :param function_type: The function_type of this ActionFunction.  # noqa: E501
-        :type: str
+        :type function_type: str
         """
         if self.local_vars_configuration.client_side_validation and function_type is None:  # noqa: E501
             raise ValueError("Invalid value for `function_type`, must not be `None`")  # noqa: E501
@@ -123,25 +126,34 @@ class ActionFunction(object):
         The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types.  # noqa: E501
 
         :param id: The id of this ActionFunction.  # noqa: E501
-        :type: str
+        :type id: str
         """
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

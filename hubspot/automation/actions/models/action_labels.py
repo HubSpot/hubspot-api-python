@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -33,8 +36,8 @@ class ActionLabels(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "input_field_labels": "dict(str, str)",
-        "input_field_descriptions": "dict(str, str)",
+        "input_field_labels": "dict[str, str]",
+        "input_field_descriptions": "dict[str, str]",
         "action_name": "str",
         "action_description": "str",
         "app_display_name": "str",
@@ -55,7 +58,7 @@ class ActionLabels(object):
     ):  # noqa: E501
         """ActionLabels - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._input_field_labels = None
@@ -85,7 +88,7 @@ class ActionLabels(object):
         A map of input field names to the user-facing labels.  # noqa: E501
 
         :return: The input_field_labels of this ActionLabels.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._input_field_labels
 
@@ -96,7 +99,7 @@ class ActionLabels(object):
         A map of input field names to the user-facing labels.  # noqa: E501
 
         :param input_field_labels: The input_field_labels of this ActionLabels.  # noqa: E501
-        :type: dict(str, str)
+        :type input_field_labels: dict[str, str]
         """
 
         self._input_field_labels = input_field_labels
@@ -108,7 +111,7 @@ class ActionLabels(object):
         A map of input field names to descriptions for the fields. These will show up as tooltips when users are editing your action.  # noqa: E501
 
         :return: The input_field_descriptions of this ActionLabels.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._input_field_descriptions
 
@@ -119,7 +122,7 @@ class ActionLabels(object):
         A map of input field names to descriptions for the fields. These will show up as tooltips when users are editing your action.  # noqa: E501
 
         :param input_field_descriptions: The input_field_descriptions of this ActionLabels.  # noqa: E501
-        :type: dict(str, str)
+        :type input_field_descriptions: dict[str, str]
         """
 
         self._input_field_descriptions = input_field_descriptions
@@ -142,7 +145,7 @@ class ActionLabels(object):
         The name of this custom action. This is what will show up when users are selecting an action in the workflows app.  # noqa: E501
 
         :param action_name: The action_name of this ActionLabels.  # noqa: E501
-        :type: str
+        :type action_name: str
         """
         if self.local_vars_configuration.client_side_validation and action_name is None:  # noqa: E501
             raise ValueError("Invalid value for `action_name`, must not be `None`")  # noqa: E501
@@ -167,7 +170,7 @@ class ActionLabels(object):
         A description for this custom action. This will show up in the action editor along with the input fields.  # noqa: E501
 
         :param action_description: The action_description of this ActionLabels.  # noqa: E501
-        :type: str
+        :type action_description: str
         """
 
         self._action_description = action_description
@@ -190,7 +193,7 @@ class ActionLabels(object):
         The name to be displayed at the top of the action editor in the workflows app.  # noqa: E501
 
         :param app_display_name: The app_display_name of this ActionLabels.  # noqa: E501
-        :type: str
+        :type app_display_name: str
         """
 
         self._app_display_name = app_display_name
@@ -213,25 +216,34 @@ class ActionLabels(object):
         The label to be displayed in the action card of the workflow editor once this custom action has been added to a workflow.  # noqa: E501
 
         :param action_card_content: The action_card_content of this ActionLabels.  # noqa: E501
-        :type: str
+        :type action_card_content: str
         """
 
         self._action_card_content = action_card_content
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

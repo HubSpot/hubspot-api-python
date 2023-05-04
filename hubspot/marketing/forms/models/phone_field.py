@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -80,7 +83,7 @@ class PhoneField(object):
     ):  # noqa: E501
         """PhoneField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._field_type = None
@@ -139,7 +142,7 @@ class PhoneField(object):
         Determines how the field will be displayed and validated.  # noqa: E501
 
         :param field_type: The field_type of this PhoneField.  # noqa: E501
-        :type: str
+        :type field_type: str
         """
         if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
@@ -167,7 +170,7 @@ class PhoneField(object):
         A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.  # noqa: E501
 
         :param object_type_id: The object_type_id of this PhoneField.  # noqa: E501
-        :type: str
+        :type object_type_id: str
         """
 
         self._object_type_id = object_type_id
@@ -190,7 +193,7 @@ class PhoneField(object):
         The identifier of the field. In combination with the object type ID, it must be unique.  # noqa: E501
 
         :param name: The name of this PhoneField.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -213,7 +216,7 @@ class PhoneField(object):
         The main label for the form field.  # noqa: E501
 
         :param label: The label of this PhoneField.  # noqa: E501
-        :type: str
+        :type label: str
         """
 
         self._label = label
@@ -236,7 +239,7 @@ class PhoneField(object):
         Additional text helping the customer to complete the field.  # noqa: E501
 
         :param description: The description of this PhoneField.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -259,7 +262,7 @@ class PhoneField(object):
         Whether a value for this field is required when submitting the form.  # noqa: E501
 
         :param required: The required of this PhoneField.  # noqa: E501
-        :type: bool
+        :type required: bool
         """
 
         self._required = required
@@ -282,7 +285,7 @@ class PhoneField(object):
         Whether a field should be hidden or not. Hidden fields won't appear on the form, but can be used to pass a value to a property without requiring the customer to fill it in.  # noqa: E501
 
         :param hidden: The hidden of this PhoneField.  # noqa: E501
-        :type: bool
+        :type hidden: bool
         """
 
         self._hidden = hidden
@@ -305,7 +308,7 @@ class PhoneField(object):
         A list of other fields to make visible based on the value filled in for this field.  # noqa: E501
 
         :param dependent_fields: The dependent_fields of this PhoneField.  # noqa: E501
-        :type: list[DependentField]
+        :type dependent_fields: list[DependentField]
         """
 
         self._dependent_fields = dependent_fields
@@ -328,7 +331,7 @@ class PhoneField(object):
         The prompt text showing when the field isn't filled in.  # noqa: E501
 
         :param placeholder: The placeholder of this PhoneField.  # noqa: E501
-        :type: str
+        :type placeholder: str
         """
 
         self._placeholder = placeholder
@@ -351,7 +354,7 @@ class PhoneField(object):
         The value filled in by default. This value will be submitted unless the customer modifies it.  # noqa: E501
 
         :param default_value: The default_value of this PhoneField.  # noqa: E501
-        :type: str
+        :type default_value: str
         """
 
         self._default_value = default_value
@@ -374,7 +377,7 @@ class PhoneField(object):
         Whether to display a country code drop down next to the phone field.  # noqa: E501
 
         :param use_country_code_select: The use_country_code_select of this PhoneField.  # noqa: E501
-        :type: bool
+        :type use_country_code_select: bool
         """
 
         self._use_country_code_select = use_country_code_select
@@ -395,25 +398,34 @@ class PhoneField(object):
 
 
         :param validation: The validation of this PhoneField.  # noqa: E501
-        :type: PhoneFieldValidation
+        :type validation: PhoneFieldValidation
         """
 
         self._validation = validation
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

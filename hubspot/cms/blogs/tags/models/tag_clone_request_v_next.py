@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.tags.configuration import Configuration
@@ -39,7 +42,7 @@ class TagCloneRequestVNext(object):
     def __init__(self, id=None, language=None, primary_language=None, name=None, local_vars_configuration=None):  # noqa: E501
         """TagCloneRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -73,7 +76,7 @@ class TagCloneRequestVNext(object):
         ID of the object to be cloned.  # noqa: E501
 
         :param id: The id of this TagCloneRequestVNext.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -98,7 +101,7 @@ class TagCloneRequestVNext(object):
         Target language of new variant.  # noqa: E501
 
         :param language: The language of this TagCloneRequestVNext.  # noqa: E501
-        :type: str
+        :type language: str
         """
 
         self._language = language
@@ -121,7 +124,7 @@ class TagCloneRequestVNext(object):
         Language of primary blog tag to clone.  # noqa: E501
 
         :param primary_language: The primary_language of this TagCloneRequestVNext.  # noqa: E501
-        :type: str
+        :type primary_language: str
         """
 
         self._primary_language = primary_language
@@ -144,27 +147,36 @@ class TagCloneRequestVNext(object):
         Name of newly cloned blog tag.  # noqa: E501
 
         :param name: The name of this TagCloneRequestVNext.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

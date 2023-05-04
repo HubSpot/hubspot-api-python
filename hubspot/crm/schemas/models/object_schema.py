@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.schemas.configuration import Configuration
@@ -86,7 +89,7 @@ class ObjectSchema(object):
     ):  # noqa: E501
         """ObjectSchema - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._labels = None
@@ -139,7 +142,7 @@ class ObjectSchema(object):
 
 
         :param labels: The labels of this ObjectSchema.  # noqa: E501
-        :type: ObjectTypeDefinitionLabels
+        :type labels: ObjectTypeDefinitionLabels
         """
         if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
@@ -164,7 +167,7 @@ class ObjectSchema(object):
         The names of properties that should be **required** when creating an object of this type.  # noqa: E501
 
         :param required_properties: The required_properties of this ObjectSchema.  # noqa: E501
-        :type: list[str]
+        :type required_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and required_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `required_properties`, must not be `None`")  # noqa: E501
@@ -189,7 +192,7 @@ class ObjectSchema(object):
         Names of properties that will be indexed for this object type in by HubSpot's product search.  # noqa: E501
 
         :param searchable_properties: The searchable_properties of this ObjectSchema.  # noqa: E501
-        :type: list[str]
+        :type searchable_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
@@ -214,7 +217,7 @@ class ObjectSchema(object):
         The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.  # noqa: E501
 
         :param primary_display_property: The primary_display_property of this ObjectSchema.  # noqa: E501
-        :type: str
+        :type primary_display_property: str
         """
 
         self._primary_display_property = primary_display_property
@@ -237,7 +240,7 @@ class ObjectSchema(object):
         The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
         :param secondary_display_properties: The secondary_display_properties of this ObjectSchema.  # noqa: E501
-        :type: list[str]
+        :type secondary_display_properties: list[str]
         """
         if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
             raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
@@ -260,7 +263,7 @@ class ObjectSchema(object):
 
 
         :param archived: The archived of this ObjectSchema.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -285,7 +288,7 @@ class ObjectSchema(object):
         A unique ID for this schema's object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
 
         :param id: The id of this ObjectSchema.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -310,7 +313,7 @@ class ObjectSchema(object):
         An assigned unique ID for the object, including portal ID and object name.  # noqa: E501
 
         :param fully_qualified_name: The fully_qualified_name of this ObjectSchema.  # noqa: E501
-        :type: str
+        :type fully_qualified_name: str
         """
         if self.local_vars_configuration.client_side_validation and fully_qualified_name is None:  # noqa: E501
             raise ValueError("Invalid value for `fully_qualified_name`, must not be `None`")  # noqa: E501
@@ -335,7 +338,7 @@ class ObjectSchema(object):
         When the object schema was created.  # noqa: E501
 
         :param created_at: The created_at of this ObjectSchema.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
 
         self._created_at = created_at
@@ -358,7 +361,7 @@ class ObjectSchema(object):
         When the object schema was last updated.  # noqa: E501
 
         :param updated_at: The updated_at of this ObjectSchema.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
@@ -379,7 +382,7 @@ class ObjectSchema(object):
 
 
         :param object_type_id: The object_type_id of this ObjectSchema.  # noqa: E501
-        :type: str
+        :type object_type_id: str
         """
         if self.local_vars_configuration.client_side_validation and object_type_id is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type_id`, must not be `None`")  # noqa: E501
@@ -404,7 +407,7 @@ class ObjectSchema(object):
         Properties defined for this object type.  # noqa: E501
 
         :param properties: The properties of this ObjectSchema.  # noqa: E501
-        :type: list[ModelProperty]
+        :type properties: list[ModelProperty]
         """
         if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
             raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
@@ -429,7 +432,7 @@ class ObjectSchema(object):
         Associations defined for a given object type.  # noqa: E501
 
         :param associations: The associations of this ObjectSchema.  # noqa: E501
-        :type: list[AssociationDefinition]
+        :type associations: list[AssociationDefinition]
         """
         if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
             raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
@@ -454,27 +457,36 @@ class ObjectSchema(object):
         A unique name for the schema's object type.  # noqa: E501
 
         :param name: The name of this ObjectSchema.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

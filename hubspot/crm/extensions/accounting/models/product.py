@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -39,7 +42,7 @@ class Product(object):
     def __init__(self, unit_price=None, tax_exempt=None, sales_tax_type=None, name=None, description=None, id=None, local_vars_configuration=None):  # noqa: E501
         """Product - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._unit_price = None
@@ -75,7 +78,7 @@ class Product(object):
 
 
         :param unit_price: The unit_price of this Product.  # noqa: E501
-        :type: UnitPrice
+        :type unit_price: UnitPrice
         """
         if self.local_vars_configuration.client_side_validation and unit_price is None:  # noqa: E501
             raise ValueError("Invalid value for `unit_price`, must not be `None`")  # noqa: E501
@@ -100,7 +103,7 @@ class Product(object):
         Identifies if the product is tax exempt or not.  # noqa: E501
 
         :param tax_exempt: The tax_exempt of this Product.  # noqa: E501
-        :type: bool
+        :type tax_exempt: bool
         """
         if self.local_vars_configuration.client_side_validation and tax_exempt is None:  # noqa: E501
             raise ValueError("Invalid value for `tax_exempt`, must not be `None`")  # noqa: E501
@@ -123,7 +126,7 @@ class Product(object):
 
 
         :param sales_tax_type: The sales_tax_type of this Product.  # noqa: E501
-        :type: TaxType
+        :type sales_tax_type: TaxType
         """
 
         self._sales_tax_type = sales_tax_type
@@ -146,7 +149,7 @@ class Product(object):
         The display name of the product.  # noqa: E501
 
         :param name: The name of this Product.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -171,7 +174,7 @@ class Product(object):
         The description of the product.  # noqa: E501
 
         :param description: The description of this Product.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -194,27 +197,36 @@ class Product(object):
         The ID of the product in the external accounting system.  # noqa: E501
 
         :param id: The id of this Product.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

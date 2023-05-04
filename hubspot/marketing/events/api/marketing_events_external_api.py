@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.marketing.events.api_client import ApiClient
-from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError
+from hubspot.marketing.events.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class MarketingEventsExternalApi(object):
@@ -38,22 +38,28 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
@@ -63,33 +69,42 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "external_account_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -97,10 +112,10 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -110,10 +125,10 @@ class MarketingEventsExternalApi(object):
             path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -125,6 +140,8 @@ class MarketingEventsExternalApi(object):
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}",
             "DELETE",
@@ -134,13 +151,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def archive_batch(self, batch_input_marketing_event_external_unique_identifier, **kwargs):  # noqa: E501
@@ -148,21 +166,26 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_batch(batch_input_marketing_event_external_unique_identifier, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputMarketingEventExternalUniqueIdentifier batch_input_marketing_event_external_unique_identifier: (required)
+        :param batch_input_marketing_event_external_unique_identifier: (required)
+        :type batch_input_marketing_event_external_unique_identifier: BatchInputMarketingEventExternalUniqueIdentifier
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_batch_with_http_info(batch_input_marketing_event_external_unique_identifier, **kwargs)  # noqa: E501
@@ -172,32 +195,40 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_batch_with_http_info(batch_input_marketing_event_external_unique_identifier, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputMarketingEventExternalUniqueIdentifier batch_input_marketing_event_external_unique_identifier: (required)
+        :param batch_input_marketing_event_external_unique_identifier: (required)
+        :type batch_input_marketing_event_external_unique_identifier: BatchInputMarketingEventExternalUniqueIdentifier
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_marketing_event_external_unique_identifier"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_marketing_event_external_unique_identifier"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -205,9 +236,7 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_marketing_event_external_unique_identifier' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_external_unique_identifier" not in local_var_params or local_var_params["batch_input_marketing_event_external_unique_identifier"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_external_unique_identifier") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_external_unique_identifier` when calling `archive_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -216,7 +245,7 @@ class MarketingEventsExternalApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -228,10 +257,14 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/delete",
@@ -242,13 +275,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def complete(self, external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs):  # noqa: E501
@@ -256,23 +290,30 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete(external_event_id, external_account_id, marketing_event_complete_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
-        :param MarketingEventCompleteRequestParams marketing_event_complete_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param marketing_event_complete_request_params: (required)
+        :type marketing_event_complete_request_params: MarketingEventCompleteRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.complete_with_http_info(external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs)  # noqa: E501
@@ -282,34 +323,44 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete_with_http_info(external_event_id, external_account_id, marketing_event_complete_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
-        :param MarketingEventCompleteRequestParams marketing_event_complete_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param marketing_event_complete_request_params: (required)
+        :type marketing_event_complete_request_params: MarketingEventCompleteRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "external_account_id", "marketing_event_complete_request_params"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "external_account_id", "marketing_event_complete_request_params"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -317,15 +368,13 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `complete`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `complete`")  # noqa: E501
         # verify the required parameter 'marketing_event_complete_request_params' is set
-        if self.api_client.client_side_validation and (
-            "marketing_event_complete_request_params" not in local_var_params or local_var_params["marketing_event_complete_request_params"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("marketing_event_complete_request_params") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `marketing_event_complete_request_params` when calling `complete`")  # noqa: E501
 
         collection_formats = {}
@@ -335,10 +384,10 @@ class MarketingEventsExternalApi(object):
             path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -350,10 +399,16 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventDefaultResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}/complete",
@@ -364,13 +419,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, marketing_event_create_request_params, **kwargs):  # noqa: E501
@@ -378,21 +434,26 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param MarketingEventCreateRequestParams marketing_event_create_request_params: (required)
+        :param marketing_event_create_request_params: (required)
+        :type marketing_event_create_request_params: MarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(marketing_event_create_request_params, **kwargs)  # noqa: E501
@@ -402,32 +463,40 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param MarketingEventCreateRequestParams marketing_event_create_request_params: (required)
+        :param marketing_event_create_request_params: (required)
+        :type marketing_event_create_request_params: MarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["marketing_event_create_request_params"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["marketing_event_create_request_params"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -435,9 +504,7 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and (
-            "marketing_event_create_request_params" not in local_var_params or local_var_params["marketing_event_create_request_params"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("marketing_event_create_request_params") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `marketing_event_create_request_params` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -446,7 +513,7 @@ class MarketingEventsExternalApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -458,10 +525,16 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventDefaultResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events",
@@ -472,13 +545,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_cancel(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
@@ -486,22 +560,28 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_cancel(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.do_cancel_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
@@ -511,33 +591,42 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_cancel_with_http_info(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "external_account_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -545,10 +634,10 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_cancel`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_cancel`")  # noqa: E501
 
         collection_formats = {}
@@ -558,10 +647,10 @@ class MarketingEventsExternalApi(object):
             path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -573,6 +662,10 @@ class MarketingEventsExternalApi(object):
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "MarketingEventDefaultResponse",
+        }
+
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}/cancel",
             "POST",
@@ -582,13 +675,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_email_upsert_by_id(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
@@ -596,24 +690,32 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_email_upsert_by_id(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str subscriber_state: (required)
-        :param str external_account_id: (required)
-        :param BatchInputMarketingEventEmailSubscriber batch_input_marketing_event_email_subscriber: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param subscriber_state: (required)
+        :type subscriber_state: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param batch_input_marketing_event_email_subscriber: (required)
+        :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.do_email_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
@@ -623,35 +725,46 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_email_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str subscriber_state: (required)
-        :param str external_account_id: (required)
-        :param BatchInputMarketingEventEmailSubscriber batch_input_marketing_event_email_subscriber: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param subscriber_state: (required)
+        :type subscriber_state: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param batch_input_marketing_event_email_subscriber: (required)
+        :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "subscriber_state", "external_account_id", "batch_input_marketing_event_email_subscriber"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "subscriber_state", "external_account_id", "batch_input_marketing_event_email_subscriber"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -659,18 +772,16 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_email_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ("subscriber_state" not in local_var_params or local_var_params["subscriber_state"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscriber_state` when calling `do_email_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_email_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_email_subscriber" not in local_var_params or local_var_params["batch_input_marketing_event_email_subscriber"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_email_subscriber") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `do_email_upsert_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -682,10 +793,10 @@ class MarketingEventsExternalApi(object):
             path_params["subscriberState"] = local_var_params["subscriber_state"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -697,10 +808,14 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/email-upsert",
@@ -711,13 +826,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_upsert(self, batch_input_marketing_event_create_request_params, **kwargs):  # noqa: E501
@@ -725,21 +841,26 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_upsert(batch_input_marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputMarketingEventCreateRequestParams batch_input_marketing_event_create_request_params: (required)
+        :param batch_input_marketing_event_create_request_params: (required)
+        :type batch_input_marketing_event_create_request_params: BatchInputMarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: BatchResponseMarketingEventPublicDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: BatchResponseMarketingEventPublicDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.do_upsert_with_http_info(batch_input_marketing_event_create_request_params, **kwargs)  # noqa: E501
@@ -749,32 +870,40 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_upsert_with_http_info(batch_input_marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputMarketingEventCreateRequestParams batch_input_marketing_event_create_request_params: (required)
+        :param batch_input_marketing_event_create_request_params: (required)
+        :type batch_input_marketing_event_create_request_params: BatchInputMarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(BatchResponseMarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(BatchResponseMarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_marketing_event_create_request_params"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_marketing_event_create_request_params"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -782,9 +911,7 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_create_request_params" not in local_var_params or local_var_params["batch_input_marketing_event_create_request_params"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_create_request_params") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_create_request_params` when calling `do_upsert`")  # noqa: E501
 
         collection_formats = {}
@@ -793,7 +920,7 @@ class MarketingEventsExternalApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -805,10 +932,16 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "BatchResponseMarketingEventPublicDefaultResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/upsert",
@@ -819,13 +952,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="BatchResponseMarketingEventPublicDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_upsert_by_id(self, external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
@@ -833,24 +967,32 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_upsert_by_id(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str subscriber_state: (required)
-        :param str external_account_id: (required)
-        :param BatchInputMarketingEventSubscriber batch_input_marketing_event_subscriber: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param subscriber_state: (required)
+        :type subscriber_state: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param batch_input_marketing_event_subscriber: (required)
+        :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.do_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
@@ -860,35 +1002,46 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_upsert_by_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str subscriber_state: (required)
-        :param str external_account_id: (required)
-        :param BatchInputMarketingEventSubscriber batch_input_marketing_event_subscriber: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param subscriber_state: (required)
+        :type subscriber_state: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param batch_input_marketing_event_subscriber: (required)
+        :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "subscriber_state", "external_account_id", "batch_input_marketing_event_subscriber"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "subscriber_state", "external_account_id", "batch_input_marketing_event_subscriber"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -896,18 +1049,16 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `do_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
-        if self.api_client.client_side_validation and ("subscriber_state" not in local_var_params or local_var_params["subscriber_state"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `subscriber_state` when calling `do_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `do_upsert_by_id`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_subscriber' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_marketing_event_subscriber" not in local_var_params or local_var_params["batch_input_marketing_event_subscriber"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_subscriber") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `do_upsert_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -919,10 +1070,10 @@ class MarketingEventsExternalApi(object):
             path_params["subscriberState"] = local_var_params["subscriber_state"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -934,10 +1085,14 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}/{subscriberState}/upsert",
@@ -948,13 +1103,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
@@ -962,22 +1118,28 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventPublicReadResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventPublicReadResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
@@ -987,33 +1149,42 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventPublicReadResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventPublicReadResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "external_account_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "external_account_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1021,10 +1192,10 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -1034,10 +1205,10 @@ class MarketingEventsExternalApi(object):
             path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1049,6 +1220,10 @@ class MarketingEventsExternalApi(object):
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "MarketingEventPublicReadResponse",
+        }
+
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}",
             "GET",
@@ -1058,13 +1233,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventPublicReadResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def replace(self, external_event_id, marketing_event_create_request_params, **kwargs):  # noqa: E501
@@ -1072,22 +1248,28 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace(external_event_id, marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param MarketingEventCreateRequestParams marketing_event_create_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param marketing_event_create_request_params: (required)
+        :type marketing_event_create_request_params: MarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventPublicDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventPublicDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.replace_with_http_info(external_event_id, marketing_event_create_request_params, **kwargs)  # noqa: E501
@@ -1097,33 +1279,42 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_with_http_info(external_event_id, marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param MarketingEventCreateRequestParams marketing_event_create_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param marketing_event_create_request_params: (required)
+        :type marketing_event_create_request_params: MarketingEventCreateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "marketing_event_create_request_params"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "marketing_event_create_request_params"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1131,12 +1322,10 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `replace`")  # noqa: E501
         # verify the required parameter 'marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and (
-            "marketing_event_create_request_params" not in local_var_params or local_var_params["marketing_event_create_request_params"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("marketing_event_create_request_params") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `marketing_event_create_request_params` when calling `replace`")  # noqa: E501
 
         collection_formats = {}
@@ -1147,7 +1336,7 @@ class MarketingEventsExternalApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1159,10 +1348,16 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventPublicDefaultResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}",
@@ -1173,13 +1368,14 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventPublicDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, external_event_id, external_account_id, marketing_event_update_request_params, **kwargs):  # noqa: E501
@@ -1187,23 +1383,30 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(external_event_id, external_account_id, marketing_event_update_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
-        :param MarketingEventUpdateRequestParams marketing_event_update_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param marketing_event_update_request_params: (required)
+        :type marketing_event_update_request_params: MarketingEventUpdateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: MarketingEventPublicDefaultResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: MarketingEventPublicDefaultResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(external_event_id, external_account_id, marketing_event_update_request_params, **kwargs)  # noqa: E501
@@ -1213,34 +1416,44 @@ class MarketingEventsExternalApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(external_event_id, external_account_id, marketing_event_update_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str external_event_id: (required)
-        :param str external_account_id: (required)
-        :param MarketingEventUpdateRequestParams marketing_event_update_request_params: (required)
+        :param external_event_id: (required)
+        :type external_event_id: str
+        :param external_account_id: (required)
+        :type external_account_id: str
+        :param marketing_event_update_request_params: (required)
+        :type marketing_event_update_request_params: MarketingEventUpdateRequestParams
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(MarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(MarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["external_event_id", "external_account_id", "marketing_event_update_request_params"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["external_event_id", "external_account_id", "marketing_event_update_request_params"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1248,15 +1461,13 @@ class MarketingEventsExternalApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and ("external_event_id" not in local_var_params or local_var_params["external_event_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_event_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and ("external_account_id" not in local_var_params or local_var_params["external_account_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `external_account_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'marketing_event_update_request_params' is set
-        if self.api_client.client_side_validation and (
-            "marketing_event_update_request_params" not in local_var_params or local_var_params["marketing_event_update_request_params"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("marketing_event_update_request_params") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `marketing_event_update_request_params` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -1266,10 +1477,10 @@ class MarketingEventsExternalApi(object):
             path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
 
         query_params = []
-        if "external_account_id" in local_var_params and local_var_params["external_account_id"] is not None:  # noqa: E501
+        if local_var_params.get("external_account_id") is not None:  # noqa: E501
             query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1281,10 +1492,16 @@ class MarketingEventsExternalApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventPublicDefaultResponse",
+        }
 
         return self.api_client.call_api(
             "/marketing/v3/marketing-events/events/{externalEventId}",
@@ -1295,11 +1512,12 @@ class MarketingEventsExternalApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="MarketingEventPublicDefaultResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

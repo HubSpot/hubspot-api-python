@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.properties.configuration import Configuration
@@ -86,7 +89,7 @@ class PropertyCreate(object):
     ):  # noqa: E501
         """PropertyCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -147,7 +150,7 @@ class PropertyCreate(object):
         The internal property name, which must be used when referencing the property via the API.  # noqa: E501
 
         :param name: The name of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -172,7 +175,7 @@ class PropertyCreate(object):
         A human-readable property label that will be shown in HubSpot.  # noqa: E501
 
         :param label: The label of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -197,7 +200,7 @@ class PropertyCreate(object):
         The data type of the property.  # noqa: E501
 
         :param type: The type of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -225,7 +228,7 @@ class PropertyCreate(object):
         Controls how the property appears in HubSpot.  # noqa: E501
 
         :param field_type: The field_type of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type field_type: str
         """
         if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
@@ -253,7 +256,7 @@ class PropertyCreate(object):
         The name of the property group the property belongs to.  # noqa: E501
 
         :param group_name: The group_name of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type group_name: str
         """
         if self.local_vars_configuration.client_side_validation and group_name is None:  # noqa: E501
             raise ValueError("Invalid value for `group_name`, must not be `None`")  # noqa: E501
@@ -278,7 +281,7 @@ class PropertyCreate(object):
         A description of the property that will be shown as help text in HubSpot.  # noqa: E501
 
         :param description: The description of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -301,7 +304,7 @@ class PropertyCreate(object):
         A list of valid options for the property. This field is required for enumerated properties.  # noqa: E501
 
         :param options: The options of this PropertyCreate.  # noqa: E501
-        :type: list[OptionInput]
+        :type options: list[OptionInput]
         """
 
         self._options = options
@@ -324,7 +327,7 @@ class PropertyCreate(object):
         Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.  # noqa: E501
 
         :param display_order: The display_order of this PropertyCreate.  # noqa: E501
-        :type: int
+        :type display_order: int
         """
 
         self._display_order = display_order
@@ -347,7 +350,7 @@ class PropertyCreate(object):
         Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
 
         :param has_unique_value: The has_unique_value of this PropertyCreate.  # noqa: E501
-        :type: bool
+        :type has_unique_value: bool
         """
 
         self._has_unique_value = has_unique_value
@@ -370,7 +373,7 @@ class PropertyCreate(object):
         If true, the property won't be visible and can't be used in HubSpot.  # noqa: E501
 
         :param hidden: The hidden of this PropertyCreate.  # noqa: E501
-        :type: bool
+        :type hidden: bool
         """
 
         self._hidden = hidden
@@ -393,7 +396,7 @@ class PropertyCreate(object):
         Whether or not the property can be used in a HubSpot form.  # noqa: E501
 
         :param form_field: The form_field of this PropertyCreate.  # noqa: E501
-        :type: bool
+        :type form_field: bool
         """
 
         self._form_field = form_field
@@ -416,7 +419,7 @@ class PropertyCreate(object):
         Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.  # noqa: E501
 
         :param external_options: The external_options of this PropertyCreate.  # noqa: E501
-        :type: bool
+        :type external_options: bool
         """
 
         self._external_options = external_options
@@ -439,7 +442,7 @@ class PropertyCreate(object):
         Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.  # noqa: E501
 
         :param referenced_object_type: The referenced_object_type of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type referenced_object_type: str
         """
 
         self._referenced_object_type = referenced_object_type
@@ -462,25 +465,34 @@ class PropertyCreate(object):
         Represents a formula that is used to compute a calculated property.  # noqa: E501
 
         :param calculation_formula: The calculation_formula of this PropertyCreate.  # noqa: E501
-        :type: str
+        :type calculation_formula: str
         """
 
         self._calculation_formula = calculation_formula
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

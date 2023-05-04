@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.blog_posts.configuration import Configuration
@@ -49,11 +52,11 @@ class BlogPost(object):
         "domain": "str",
         "ab_status": "str",
         "folder_id": "str",
-        "widget_containers": "dict(str, object)",
-        "widgets": "dict(str, object)",
+        "widget_containers": "dict[str, object]",
+        "widgets": "dict[str, object]",
         "language": "str",
         "translated_from_id": "str",
-        "translations": "dict(str, ContentLanguageVariation)",
+        "translations": "dict[str, ContentLanguageVariation]",
         "dynamic_page_data_source_type": "int",
         "dynamic_page_data_source_id": "str",
         "blog_author_id": "str",
@@ -78,15 +81,15 @@ class BlogPost(object):
         "featured_image_alt_text": "str",
         "link_rel_canonical_url": "str",
         "content_type_category": "str",
-        "attached_stylesheets": "list[dict(str, object)]",
+        "attached_stylesheets": "list[dict[str, object]]",
         "meta_description": "str",
         "head_html": "str",
         "footer_html": "str",
         "archived_in_dashboard": "bool",
         "public_access_rules_enabled": "bool",
         "public_access_rules": "list[object]",
-        "layout_sections": "dict(str, LayoutSection)",
-        "theme_settings_values": "dict(str, object)",
+        "layout_sections": "dict[str, LayoutSection]",
+        "theme_settings_values": "dict[str, object]",
         "url": "str",
         "password": "str",
         "current_state": "str",
@@ -227,7 +230,7 @@ class BlogPost(object):
     ):  # noqa: E501
         """BlogPost - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -373,7 +376,7 @@ class BlogPost(object):
         The unique ID of the Blog Post.  # noqa: E501
 
         :param id: The id of this BlogPost.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -398,7 +401,7 @@ class BlogPost(object):
         The path of the this blog post. This field is appended to the domain to construct the url of this post.  # noqa: E501
 
         :param slug: The slug of this BlogPost.  # noqa: E501
-        :type: str
+        :type slug: str
         """
         if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
             raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
@@ -423,7 +426,7 @@ class BlogPost(object):
         The ID of the parent Blog this Blog Post is associated with.  # noqa: E501
 
         :param content_group_id: The content_group_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type content_group_id: str
         """
         if self.local_vars_configuration.client_side_validation and content_group_id is None:  # noqa: E501
             raise ValueError("Invalid value for `content_group_id`, must not be `None`")  # noqa: E501
@@ -448,7 +451,7 @@ class BlogPost(object):
         The GUID of the marketing campaign this Blog Post is a part of.  # noqa: E501
 
         :param campaign: The campaign of this BlogPost.  # noqa: E501
-        :type: str
+        :type campaign: str
         """
         if self.local_vars_configuration.client_side_validation and campaign is None:  # noqa: E501
             raise ValueError("Invalid value for `campaign`, must not be `None`")  # noqa: E501
@@ -473,7 +476,7 @@ class BlogPost(object):
         ID of the type of object this is. Should always .  # noqa: E501
 
         :param category_id: The category_id of this BlogPost.  # noqa: E501
-        :type: int
+        :type category_id: int
         """
         if self.local_vars_configuration.client_side_validation and category_id is None:  # noqa: E501
             raise ValueError("Invalid value for `category_id`, must not be `None`")  # noqa: E501
@@ -498,7 +501,7 @@ class BlogPost(object):
         An ENUM descibing the current state of this Blog Post.  # noqa: E501
 
         :param state: The state of this BlogPost.  # noqa: E501
-        :type: str
+        :type state: str
         """
         if self.local_vars_configuration.client_side_validation and state is None:  # noqa: E501
             raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
@@ -525,7 +528,7 @@ class BlogPost(object):
         The internal name of the Blog Post.  # noqa: E501
 
         :param name: The name of this BlogPost.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -548,7 +551,7 @@ class BlogPost(object):
 
 
         :param mab_experiment_id: The mab_experiment_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type mab_experiment_id: str
         """
         if self.local_vars_configuration.client_side_validation and mab_experiment_id is None:  # noqa: E501
             raise ValueError("Invalid value for `mab_experiment_id`, must not be `None`")  # noqa: E501
@@ -571,7 +574,7 @@ class BlogPost(object):
 
 
         :param archived: The archived of this BlogPost.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -596,7 +599,7 @@ class BlogPost(object):
         The name of the user that updated this Blog Post.  # noqa: E501
 
         :param author_name: The author_name of this BlogPost.  # noqa: E501
-        :type: str
+        :type author_name: str
         """
         if self.local_vars_configuration.client_side_validation and author_name is None:  # noqa: E501
             raise ValueError("Invalid value for `author_name`, must not be `None`")  # noqa: E501
@@ -619,7 +622,7 @@ class BlogPost(object):
 
 
         :param ab_test_id: The ab_test_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type ab_test_id: str
         """
         if self.local_vars_configuration.client_side_validation and ab_test_id is None:  # noqa: E501
             raise ValueError("Invalid value for `ab_test_id`, must not be `None`")  # noqa: E501
@@ -644,7 +647,7 @@ class BlogPost(object):
         The ID of the user that created this Blog Post.  # noqa: E501
 
         :param created_by_id: The created_by_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type created_by_id: str
         """
         if self.local_vars_configuration.client_side_validation and created_by_id is None:  # noqa: E501
             raise ValueError("Invalid value for `created_by_id`, must not be `None`")  # noqa: E501
@@ -669,7 +672,7 @@ class BlogPost(object):
         The ID of the user that updated this Blog Post.  # noqa: E501
 
         :param updated_by_id: The updated_by_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type updated_by_id: str
         """
         if self.local_vars_configuration.client_side_validation and updated_by_id is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_by_id`, must not be `None`")  # noqa: E501
@@ -694,7 +697,7 @@ class BlogPost(object):
         The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.  # noqa: E501
 
         :param domain: The domain of this BlogPost.  # noqa: E501
-        :type: str
+        :type domain: str
         """
         if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
             raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
@@ -717,7 +720,7 @@ class BlogPost(object):
 
 
         :param ab_status: The ab_status of this BlogPost.  # noqa: E501
-        :type: str
+        :type ab_status: str
         """
         if self.local_vars_configuration.client_side_validation and ab_status is None:  # noqa: E501
             raise ValueError("Invalid value for `ab_status`, must not be `None`")  # noqa: E501
@@ -743,7 +746,7 @@ class BlogPost(object):
 
 
         :param folder_id: The folder_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type folder_id: str
         """
         if self.local_vars_configuration.client_side_validation and folder_id is None:  # noqa: E501
             raise ValueError("Invalid value for `folder_id`, must not be `None`")  # noqa: E501
@@ -757,7 +760,7 @@ class BlogPost(object):
         A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.  # noqa: E501
 
         :return: The widget_containers of this BlogPost.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict[str, object]
         """
         return self._widget_containers
 
@@ -768,7 +771,7 @@ class BlogPost(object):
         A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.  # noqa: E501
 
         :param widget_containers: The widget_containers of this BlogPost.  # noqa: E501
-        :type: dict(str, object)
+        :type widget_containers: dict[str, object]
         """
         if self.local_vars_configuration.client_side_validation and widget_containers is None:  # noqa: E501
             raise ValueError("Invalid value for `widget_containers`, must not be `None`")  # noqa: E501
@@ -782,7 +785,7 @@ class BlogPost(object):
         A data structure containing the data for all the modules for this page.  # noqa: E501
 
         :return: The widgets of this BlogPost.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict[str, object]
         """
         return self._widgets
 
@@ -793,7 +796,7 @@ class BlogPost(object):
         A data structure containing the data for all the modules for this page.  # noqa: E501
 
         :param widgets: The widgets of this BlogPost.  # noqa: E501
-        :type: dict(str, object)
+        :type widgets: dict[str, object]
         """
         if self.local_vars_configuration.client_side_validation and widgets is None:  # noqa: E501
             raise ValueError("Invalid value for `widgets`, must not be `None`")  # noqa: E501
@@ -818,7 +821,7 @@ class BlogPost(object):
         The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.  # noqa: E501
 
         :param language: The language of this BlogPost.  # noqa: E501
-        :type: str
+        :type language: str
         """
         if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
             raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
@@ -1561,7 +1564,7 @@ class BlogPost(object):
         ID of the primary blog post this object was translated from.  # noqa: E501
 
         :param translated_from_id: The translated_from_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type translated_from_id: str
         """
         if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
             raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
@@ -1574,7 +1577,7 @@ class BlogPost(object):
 
 
         :return: The translations of this BlogPost.  # noqa: E501
-        :rtype: dict(str, ContentLanguageVariation)
+        :rtype: dict[str, ContentLanguageVariation]
         """
         return self._translations
 
@@ -1584,7 +1587,7 @@ class BlogPost(object):
 
 
         :param translations: The translations of this BlogPost.  # noqa: E501
-        :type: dict(str, ContentLanguageVariation)
+        :type translations: dict[str, ContentLanguageVariation]
         """
         if self.local_vars_configuration.client_side_validation and translations is None:  # noqa: E501
             raise ValueError("Invalid value for `translations`, must not be `None`")  # noqa: E501
@@ -1607,7 +1610,7 @@ class BlogPost(object):
 
 
         :param dynamic_page_data_source_type: The dynamic_page_data_source_type of this BlogPost.  # noqa: E501
-        :type: int
+        :type dynamic_page_data_source_type: int
         """
         if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_type is None:  # noqa: E501
             raise ValueError("Invalid value for `dynamic_page_data_source_type`, must not be `None`")  # noqa: E501
@@ -1630,7 +1633,7 @@ class BlogPost(object):
 
 
         :param dynamic_page_data_source_id: The dynamic_page_data_source_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type dynamic_page_data_source_id: str
         """
         if self.local_vars_configuration.client_side_validation and dynamic_page_data_source_id is None:  # noqa: E501
             raise ValueError("Invalid value for `dynamic_page_data_source_id`, must not be `None`")  # noqa: E501
@@ -1655,7 +1658,7 @@ class BlogPost(object):
         The ID of the Blog Author associated with this Blog Post.  # noqa: E501
 
         :param blog_author_id: The blog_author_id of this BlogPost.  # noqa: E501
-        :type: str
+        :type blog_author_id: str
         """
         if self.local_vars_configuration.client_side_validation and blog_author_id is None:  # noqa: E501
             raise ValueError("Invalid value for `blog_author_id`, must not be `None`")  # noqa: E501
@@ -1680,7 +1683,7 @@ class BlogPost(object):
         List of IDs for the tags associated with this Blog Post.  # noqa: E501
 
         :param tag_ids: The tag_ids of this BlogPost.  # noqa: E501
-        :type: list[int]
+        :type tag_ids: list[int]
         """
         if self.local_vars_configuration.client_side_validation and tag_ids is None:  # noqa: E501
             raise ValueError("Invalid value for `tag_ids`, must not be `None`")  # noqa: E501
@@ -1705,7 +1708,7 @@ class BlogPost(object):
         The html title of this Blog Post.  # noqa: E501
 
         :param html_title: The html_title of this BlogPost.  # noqa: E501
-        :type: str
+        :type html_title: str
         """
         if self.local_vars_configuration.client_side_validation and html_title is None:  # noqa: E501
             raise ValueError("Invalid value for `html_title`, must not be `None`")  # noqa: E501
@@ -1730,7 +1733,7 @@ class BlogPost(object):
         Boolean to allow overriding the AMP settings for the blog.  # noqa: E501
 
         :param enable_google_amp_output_override: The enable_google_amp_output_override of this BlogPost.  # noqa: E501
-        :type: bool
+        :type enable_google_amp_output_override: bool
         """
         if self.local_vars_configuration.client_side_validation and enable_google_amp_output_override is None:  # noqa: E501
             raise ValueError("Invalid value for `enable_google_amp_output_override`, must not be `None`")  # noqa: E501
@@ -1755,7 +1758,7 @@ class BlogPost(object):
         Boolean to determine if this post should use a featuredImage.  # noqa: E501
 
         :param use_featured_image: The use_featured_image of this BlogPost.  # noqa: E501
-        :type: bool
+        :type use_featured_image: bool
         """
         if self.local_vars_configuration.client_side_validation and use_featured_image is None:  # noqa: E501
             raise ValueError("Invalid value for `use_featured_image`, must not be `None`")  # noqa: E501
@@ -1780,7 +1783,7 @@ class BlogPost(object):
         The HTML of the main post body.  # noqa: E501
 
         :param post_body: The post_body of this BlogPost.  # noqa: E501
-        :type: str
+        :type post_body: str
         """
         if self.local_vars_configuration.client_side_validation and post_body is None:  # noqa: E501
             raise ValueError("Invalid value for `post_body`, must not be `None`")  # noqa: E501
@@ -1805,7 +1808,7 @@ class BlogPost(object):
         The summary of the blog post that will appear on the main listing page.  # noqa: E501
 
         :param post_summary: The post_summary of this BlogPost.  # noqa: E501
-        :type: str
+        :type post_summary: str
         """
         if self.local_vars_configuration.client_side_validation and post_summary is None:  # noqa: E501
             raise ValueError("Invalid value for `post_summary`, must not be `None`")  # noqa: E501
@@ -1830,7 +1833,7 @@ class BlogPost(object):
         The contents of the RSS body for this Blog Post.  # noqa: E501
 
         :param rss_body: The rss_body of this BlogPost.  # noqa: E501
-        :type: str
+        :type rss_body: str
         """
         if self.local_vars_configuration.client_side_validation and rss_body is None:  # noqa: E501
             raise ValueError("Invalid value for `rss_body`, must not be `None`")  # noqa: E501
@@ -1855,7 +1858,7 @@ class BlogPost(object):
         The contents of the RSS summary for this Blog Post.  # noqa: E501
 
         :param rss_summary: The rss_summary of this BlogPost.  # noqa: E501
-        :type: str
+        :type rss_summary: str
         """
         if self.local_vars_configuration.client_side_validation and rss_summary is None:  # noqa: E501
             raise ValueError("Invalid value for `rss_summary`, must not be `None`")  # noqa: E501
@@ -1878,7 +1881,7 @@ class BlogPost(object):
 
 
         :param currently_published: The currently_published of this BlogPost.  # noqa: E501
-        :type: bool
+        :type currently_published: bool
         """
         if self.local_vars_configuration.client_side_validation and currently_published is None:  # noqa: E501
             raise ValueError("Invalid value for `currently_published`, must not be `None`")  # noqa: E501
@@ -1901,7 +1904,7 @@ class BlogPost(object):
 
 
         :param page_expiry_enabled: The page_expiry_enabled of this BlogPost.  # noqa: E501
-        :type: bool
+        :type page_expiry_enabled: bool
         """
         if self.local_vars_configuration.client_side_validation and page_expiry_enabled is None:  # noqa: E501
             raise ValueError("Invalid value for `page_expiry_enabled`, must not be `None`")  # noqa: E501
@@ -1924,7 +1927,7 @@ class BlogPost(object):
 
 
         :param page_expiry_redirect_id: The page_expiry_redirect_id of this BlogPost.  # noqa: E501
-        :type: int
+        :type page_expiry_redirect_id: int
         """
         if self.local_vars_configuration.client_side_validation and page_expiry_redirect_id is None:  # noqa: E501
             raise ValueError("Invalid value for `page_expiry_redirect_id`, must not be `None`")  # noqa: E501
@@ -1947,7 +1950,7 @@ class BlogPost(object):
 
 
         :param page_expiry_redirect_url: The page_expiry_redirect_url of this BlogPost.  # noqa: E501
-        :type: str
+        :type page_expiry_redirect_url: str
         """
         if self.local_vars_configuration.client_side_validation and page_expiry_redirect_url is None:  # noqa: E501
             raise ValueError("Invalid value for `page_expiry_redirect_url`, must not be `None`")  # noqa: E501
@@ -1970,7 +1973,7 @@ class BlogPost(object):
 
 
         :param page_expiry_date: The page_expiry_date of this BlogPost.  # noqa: E501
-        :type: int
+        :type page_expiry_date: int
         """
         if self.local_vars_configuration.client_side_validation and page_expiry_date is None:  # noqa: E501
             raise ValueError("Invalid value for `page_expiry_date`, must not be `None`")  # noqa: E501
@@ -1995,7 +1998,7 @@ class BlogPost(object):
         Boolean to determine whether or not the Primary CSS Files should be applied.  # noqa: E501
 
         :param include_default_custom_css: The include_default_custom_css of this BlogPost.  # noqa: E501
-        :type: bool
+        :type include_default_custom_css: bool
         """
         if self.local_vars_configuration.client_side_validation and include_default_custom_css is None:  # noqa: E501
             raise ValueError("Invalid value for `include_default_custom_css`, must not be `None`")  # noqa: E501
@@ -2020,7 +2023,7 @@ class BlogPost(object):
         Boolean to determine whether or not the styles from the template should be applied.  # noqa: E501
 
         :param enable_layout_stylesheets: The enable_layout_stylesheets of this BlogPost.  # noqa: E501
-        :type: bool
+        :type enable_layout_stylesheets: bool
         """
         if self.local_vars_configuration.client_side_validation and enable_layout_stylesheets is None:  # noqa: E501
             raise ValueError("Invalid value for `enable_layout_stylesheets`, must not be `None`")  # noqa: E501
@@ -2045,7 +2048,7 @@ class BlogPost(object):
         Boolean to determine whether or not the styles from the template should be applied.  # noqa: E501
 
         :param enable_domain_stylesheets: The enable_domain_stylesheets of this BlogPost.  # noqa: E501
-        :type: bool
+        :type enable_domain_stylesheets: bool
         """
         if self.local_vars_configuration.client_side_validation and enable_domain_stylesheets is None:  # noqa: E501
             raise ValueError("Invalid value for `enable_domain_stylesheets`, must not be `None`")  # noqa: E501
@@ -2070,7 +2073,7 @@ class BlogPost(object):
         Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.  # noqa: E501
 
         :param publish_immediately: The publish_immediately of this BlogPost.  # noqa: E501
-        :type: bool
+        :type publish_immediately: bool
         """
         if self.local_vars_configuration.client_side_validation and publish_immediately is None:  # noqa: E501
             raise ValueError("Invalid value for `publish_immediately`, must not be `None`")  # noqa: E501
@@ -2095,7 +2098,7 @@ class BlogPost(object):
         The featuredImage of this Blog Post.  # noqa: E501
 
         :param featured_image: The featured_image of this BlogPost.  # noqa: E501
-        :type: str
+        :type featured_image: str
         """
         if self.local_vars_configuration.client_side_validation and featured_image is None:  # noqa: E501
             raise ValueError("Invalid value for `featured_image`, must not be `None`")  # noqa: E501
@@ -2120,7 +2123,7 @@ class BlogPost(object):
         Alt Text of the featuredImage.  # noqa: E501
 
         :param featured_image_alt_text: The featured_image_alt_text of this BlogPost.  # noqa: E501
-        :type: str
+        :type featured_image_alt_text: str
         """
         if self.local_vars_configuration.client_side_validation and featured_image_alt_text is None:  # noqa: E501
             raise ValueError("Invalid value for `featured_image_alt_text`, must not be `None`")  # noqa: E501
@@ -2145,7 +2148,7 @@ class BlogPost(object):
         Optional override to set the URL to be used in the rel=canonical link tag on the page.  # noqa: E501
 
         :param link_rel_canonical_url: The link_rel_canonical_url of this BlogPost.  # noqa: E501
-        :type: str
+        :type link_rel_canonical_url: str
         """
         if self.local_vars_configuration.client_side_validation and link_rel_canonical_url is None:  # noqa: E501
             raise ValueError("Invalid value for `link_rel_canonical_url`, must not be `None`")  # noqa: E501
@@ -2170,7 +2173,7 @@ class BlogPost(object):
         An ENUM descibing the type of this object. Should always be BLOG_POST.  # noqa: E501
 
         :param content_type_category: The content_type_category of this BlogPost.  # noqa: E501
-        :type: str
+        :type content_type_category: str
         """
         if self.local_vars_configuration.client_side_validation and content_type_category is None:  # noqa: E501
             raise ValueError("Invalid value for `content_type_category`, must not be `None`")  # noqa: E501
@@ -2187,7 +2190,7 @@ class BlogPost(object):
         List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.  # noqa: E501
 
         :return: The attached_stylesheets of this BlogPost.  # noqa: E501
-        :rtype: list[dict(str, object)]
+        :rtype: list[dict[str, object]]
         """
         return self._attached_stylesheets
 
@@ -2198,7 +2201,7 @@ class BlogPost(object):
         List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.  # noqa: E501
 
         :param attached_stylesheets: The attached_stylesheets of this BlogPost.  # noqa: E501
-        :type: list[dict(str, object)]
+        :type attached_stylesheets: list[dict[str, object]]
         """
         if self.local_vars_configuration.client_side_validation and attached_stylesheets is None:  # noqa: E501
             raise ValueError("Invalid value for `attached_stylesheets`, must not be `None`")  # noqa: E501
@@ -2223,7 +2226,7 @@ class BlogPost(object):
         A description that goes in <meta> tag on the page.  # noqa: E501
 
         :param meta_description: The meta_description of this BlogPost.  # noqa: E501
-        :type: str
+        :type meta_description: str
         """
         if self.local_vars_configuration.client_side_validation and meta_description is None:  # noqa: E501
             raise ValueError("Invalid value for `meta_description`, must not be `None`")  # noqa: E501
@@ -2248,7 +2251,7 @@ class BlogPost(object):
         Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.  # noqa: E501
 
         :param head_html: The head_html of this BlogPost.  # noqa: E501
-        :type: str
+        :type head_html: str
         """
         if self.local_vars_configuration.client_side_validation and head_html is None:  # noqa: E501
             raise ValueError("Invalid value for `head_html`, must not be `None`")  # noqa: E501
@@ -2273,7 +2276,7 @@ class BlogPost(object):
         Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.  # noqa: E501
 
         :param footer_html: The footer_html of this BlogPost.  # noqa: E501
-        :type: str
+        :type footer_html: str
         """
         if self.local_vars_configuration.client_side_validation and footer_html is None:  # noqa: E501
             raise ValueError("Invalid value for `footer_html`, must not be `None`")  # noqa: E501
@@ -2298,7 +2301,7 @@ class BlogPost(object):
         If True, the post will not show up in your dashboard, although the post could still be live.  # noqa: E501
 
         :param archived_in_dashboard: The archived_in_dashboard of this BlogPost.  # noqa: E501
-        :type: bool
+        :type archived_in_dashboard: bool
         """
         if self.local_vars_configuration.client_side_validation and archived_in_dashboard is None:  # noqa: E501
             raise ValueError("Invalid value for `archived_in_dashboard`, must not be `None`")  # noqa: E501
@@ -2323,7 +2326,7 @@ class BlogPost(object):
         Boolean to determine whether or not to respect publicAccessRules.  # noqa: E501
 
         :param public_access_rules_enabled: The public_access_rules_enabled of this BlogPost.  # noqa: E501
-        :type: bool
+        :type public_access_rules_enabled: bool
         """
         if self.local_vars_configuration.client_side_validation and public_access_rules_enabled is None:  # noqa: E501
             raise ValueError("Invalid value for `public_access_rules_enabled`, must not be `None`")  # noqa: E501
@@ -2348,7 +2351,7 @@ class BlogPost(object):
         Rules for require member registration to access private content.  # noqa: E501
 
         :param public_access_rules: The public_access_rules of this BlogPost.  # noqa: E501
-        :type: list[object]
+        :type public_access_rules: list[object]
         """
         if self.local_vars_configuration.client_side_validation and public_access_rules is None:  # noqa: E501
             raise ValueError("Invalid value for `public_access_rules`, must not be `None`")  # noqa: E501
@@ -2361,7 +2364,7 @@ class BlogPost(object):
 
 
         :return: The layout_sections of this BlogPost.  # noqa: E501
-        :rtype: dict(str, LayoutSection)
+        :rtype: dict[str, LayoutSection]
         """
         return self._layout_sections
 
@@ -2371,7 +2374,7 @@ class BlogPost(object):
 
 
         :param layout_sections: The layout_sections of this BlogPost.  # noqa: E501
-        :type: dict(str, LayoutSection)
+        :type layout_sections: dict[str, LayoutSection]
         """
         if self.local_vars_configuration.client_side_validation and layout_sections is None:  # noqa: E501
             raise ValueError("Invalid value for `layout_sections`, must not be `None`")  # noqa: E501
@@ -2384,7 +2387,7 @@ class BlogPost(object):
 
 
         :return: The theme_settings_values of this BlogPost.  # noqa: E501
-        :rtype: dict(str, object)
+        :rtype: dict[str, object]
         """
         return self._theme_settings_values
 
@@ -2394,7 +2397,7 @@ class BlogPost(object):
 
 
         :param theme_settings_values: The theme_settings_values of this BlogPost.  # noqa: E501
-        :type: dict(str, object)
+        :type theme_settings_values: dict[str, object]
         """
         if self.local_vars_configuration.client_side_validation and theme_settings_values is None:  # noqa: E501
             raise ValueError("Invalid value for `theme_settings_values`, must not be `None`")  # noqa: E501
@@ -2419,7 +2422,7 @@ class BlogPost(object):
         A generated field representing the URL of this blog post.  # noqa: E501
 
         :param url: The url of this BlogPost.  # noqa: E501
-        :type: str
+        :type url: str
         """
         if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -2444,7 +2447,7 @@ class BlogPost(object):
         Set this to create a password protected page. Entering the password will be required to view the page.  # noqa: E501
 
         :param password: The password of this BlogPost.  # noqa: E501
-        :type: str
+        :type password: str
         """
         if self.local_vars_configuration.client_side_validation and password is None:  # noqa: E501
             raise ValueError("Invalid value for `password`, must not be `None`")  # noqa: E501
@@ -2469,7 +2472,7 @@ class BlogPost(object):
         A generated ENUM descibing the current state of this Blog Post. Should always match state.  # noqa: E501
 
         :param current_state: The current_state of this BlogPost.  # noqa: E501
-        :type: str
+        :type current_state: str
         """
         if self.local_vars_configuration.client_side_validation and current_state is None:  # noqa: E501
             raise ValueError("Invalid value for `current_state`, must not be `None`")  # noqa: E501
@@ -2529,7 +2532,7 @@ class BlogPost(object):
         The date (ISO8601 format) the blog post is to be published at.  # noqa: E501
 
         :param publish_date: The publish_date of this BlogPost.  # noqa: E501
-        :type: datetime
+        :type publish_date: datetime
         """
         if self.local_vars_configuration.client_side_validation and publish_date is None:  # noqa: E501
             raise ValueError("Invalid value for `publish_date`, must not be `None`")  # noqa: E501
@@ -2552,7 +2555,7 @@ class BlogPost(object):
 
 
         :param created: The created of this BlogPost.  # noqa: E501
-        :type: datetime
+        :type created: datetime
         """
         if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
             raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
@@ -2575,7 +2578,7 @@ class BlogPost(object):
 
 
         :param updated: The updated of this BlogPost.  # noqa: E501
-        :type: datetime
+        :type updated: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
             raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
@@ -2600,27 +2603,36 @@ class BlogPost(object):
         The timestamp (ISO8601 format) when this Blog Post was deleted.  # noqa: E501
 
         :param deleted_at: The deleted_at of this BlogPost.  # noqa: E501
-        :type: datetime
+        :type deleted_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
             raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 
