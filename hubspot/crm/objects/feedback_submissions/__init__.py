@@ -29,6 +29,7 @@ from hubspot.crm.objects.feedback_submissions.exceptions import OpenApiException
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiTypeError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiValueError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiKeyError
+from hubspot.crm.objects.feedback_submissions.exceptions import ApiAttributeError
 from hubspot.crm.objects.feedback_submissions.exceptions import ApiException
 
 # import models into sdk package

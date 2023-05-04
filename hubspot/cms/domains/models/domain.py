@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.domains.configuration import Configuration
@@ -104,7 +107,7 @@ class Domain(object):
     ):  # noqa: E501
         """Domain - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -180,7 +183,7 @@ class Domain(object):
         The unique ID of this domain.  # noqa: E501
 
         :param id: The id of this Domain.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -205,7 +208,7 @@ class Domain(object):
         The actual domain or sub-domain. e.g. www.hubspot.com  # noqa: E501
 
         :param domain: The domain of this Domain.  # noqa: E501
-        :type: str
+        :type domain: str
         """
         if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
             raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
@@ -228,7 +231,7 @@ class Domain(object):
 
 
         :param primary_landing_page: The primary_landing_page of this Domain.  # noqa: E501
-        :type: bool
+        :type primary_landing_page: bool
         """
 
         self._primary_landing_page = primary_landing_page
@@ -249,7 +252,7 @@ class Domain(object):
 
 
         :param primary_email: The primary_email of this Domain.  # noqa: E501
-        :type: bool
+        :type primary_email: bool
         """
 
         self._primary_email = primary_email
@@ -270,7 +273,7 @@ class Domain(object):
 
 
         :param primary_blog_post: The primary_blog_post of this Domain.  # noqa: E501
-        :type: bool
+        :type primary_blog_post: bool
         """
 
         self._primary_blog_post = primary_blog_post
@@ -291,7 +294,7 @@ class Domain(object):
 
 
         :param primary_site_page: The primary_site_page of this Domain.  # noqa: E501
-        :type: bool
+        :type primary_site_page: bool
         """
 
         self._primary_site_page = primary_site_page
@@ -312,7 +315,7 @@ class Domain(object):
 
 
         :param primary_knowledge: The primary_knowledge of this Domain.  # noqa: E501
-        :type: bool
+        :type primary_knowledge: bool
         """
 
         self._primary_knowledge = primary_knowledge
@@ -333,7 +336,7 @@ class Domain(object):
 
 
         :param secondary_to_domain: The secondary_to_domain of this Domain.  # noqa: E501
-        :type: str
+        :type secondary_to_domain: str
         """
 
         self._secondary_to_domain = secondary_to_domain
@@ -356,7 +359,7 @@ class Domain(object):
         Whether the DNS for this domain is optimally configured for use with HubSpot.  # noqa: E501
 
         :param is_resolving: The is_resolving of this Domain.  # noqa: E501
-        :type: bool
+        :type is_resolving: bool
         """
         if self.local_vars_configuration.client_side_validation and is_resolving is None:  # noqa: E501
             raise ValueError("Invalid value for `is_resolving`, must not be `None`")  # noqa: E501
@@ -379,7 +382,7 @@ class Domain(object):
 
 
         :param manually_marked_as_resolving: The manually_marked_as_resolving of this Domain.  # noqa: E501
-        :type: bool
+        :type manually_marked_as_resolving: bool
         """
 
         self._manually_marked_as_resolving = manually_marked_as_resolving
@@ -400,7 +403,7 @@ class Domain(object):
 
 
         :param is_ssl_enabled: The is_ssl_enabled of this Domain.  # noqa: E501
-        :type: bool
+        :type is_ssl_enabled: bool
         """
 
         self._is_ssl_enabled = is_ssl_enabled
@@ -421,7 +424,7 @@ class Domain(object):
 
 
         :param is_ssl_only: The is_ssl_only of this Domain.  # noqa: E501
-        :type: bool
+        :type is_ssl_only: bool
         """
 
         self._is_ssl_only = is_ssl_only
@@ -444,7 +447,7 @@ class Domain(object):
         Whether the domain is used for CMS blog posts.  # noqa: E501
 
         :param is_used_for_blog_post: The is_used_for_blog_post of this Domain.  # noqa: E501
-        :type: bool
+        :type is_used_for_blog_post: bool
         """
         if self.local_vars_configuration.client_side_validation and is_used_for_blog_post is None:  # noqa: E501
             raise ValueError("Invalid value for `is_used_for_blog_post`, must not be `None`")  # noqa: E501
@@ -469,7 +472,7 @@ class Domain(object):
         Whether the domain is used for CMS site pages.  # noqa: E501
 
         :param is_used_for_site_page: The is_used_for_site_page of this Domain.  # noqa: E501
-        :type: bool
+        :type is_used_for_site_page: bool
         """
         if self.local_vars_configuration.client_side_validation and is_used_for_site_page is None:  # noqa: E501
             raise ValueError("Invalid value for `is_used_for_site_page`, must not be `None`")  # noqa: E501
@@ -494,7 +497,7 @@ class Domain(object):
         Whether the domain is used for CMS landing pages.  # noqa: E501
 
         :param is_used_for_landing_page: The is_used_for_landing_page of this Domain.  # noqa: E501
-        :type: bool
+        :type is_used_for_landing_page: bool
         """
         if self.local_vars_configuration.client_side_validation and is_used_for_landing_page is None:  # noqa: E501
             raise ValueError("Invalid value for `is_used_for_landing_page`, must not be `None`")  # noqa: E501
@@ -519,7 +522,7 @@ class Domain(object):
         Whether the domain is used for CMS email web pages.  # noqa: E501
 
         :param is_used_for_email: The is_used_for_email of this Domain.  # noqa: E501
-        :type: bool
+        :type is_used_for_email: bool
         """
         if self.local_vars_configuration.client_side_validation and is_used_for_email is None:  # noqa: E501
             raise ValueError("Invalid value for `is_used_for_email`, must not be `None`")  # noqa: E501
@@ -544,7 +547,7 @@ class Domain(object):
         Whether the domain is used for CMS knowledge pages.  # noqa: E501
 
         :param is_used_for_knowledge: The is_used_for_knowledge of this Domain.  # noqa: E501
-        :type: bool
+        :type is_used_for_knowledge: bool
         """
         if self.local_vars_configuration.client_side_validation and is_used_for_knowledge is None:  # noqa: E501
             raise ValueError("Invalid value for `is_used_for_knowledge`, must not be `None`")  # noqa: E501
@@ -567,7 +570,7 @@ class Domain(object):
 
 
         :param correct_cname: The correct_cname of this Domain.  # noqa: E501
-        :type: str
+        :type correct_cname: str
         """
 
         self._correct_cname = correct_cname
@@ -588,7 +591,7 @@ class Domain(object):
 
 
         :param created: The created of this Domain.  # noqa: E501
-        :type: datetime
+        :type created: datetime
         """
 
         self._created = created
@@ -609,25 +612,34 @@ class Domain(object):
 
 
         :param updated: The updated of this Domain.  # noqa: E501
-        :type: datetime
+        :type updated: datetime
         """
 
         self._updated = updated
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

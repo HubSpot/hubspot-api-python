@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -39,7 +42,7 @@ class EmailFieldValidation(object):
     def __init__(self, blocked_email_domains=None, use_default_block_list=None, local_vars_configuration=None):  # noqa: E501
         """EmailFieldValidation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._blocked_email_domains = None
@@ -67,7 +70,7 @@ class EmailFieldValidation(object):
         A list of email domains to block.  # noqa: E501
 
         :param blocked_email_domains: The blocked_email_domains of this EmailFieldValidation.  # noqa: E501
-        :type: list[str]
+        :type blocked_email_domains: list[str]
         """
         if self.local_vars_configuration.client_side_validation and blocked_email_domains is None:  # noqa: E501
             raise ValueError("Invalid value for `blocked_email_domains`, must not be `None`")  # noqa: E501
@@ -92,27 +95,36 @@ class EmailFieldValidation(object):
         Whether to block the free email providers.  # noqa: E501
 
         :param use_default_block_list: The use_default_block_list of this EmailFieldValidation.  # noqa: E501
-        :type: bool
+        :type use_default_block_list: bool
         """
         if self.local_vars_configuration.client_side_validation and use_default_block_list is None:  # noqa: E501
             raise ValueError("Invalid value for `use_default_block_list`, must not be `None`")  # noqa: E501
 
         self._use_default_block_list = use_default_block_list
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

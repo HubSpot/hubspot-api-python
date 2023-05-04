@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.hubdb.configuration import Configuration
@@ -40,7 +43,7 @@ class HubDbTableV3Request(object):
         "allow_child_tables": "bool",
         "enable_child_table_pages": "bool",
         "columns": "list[ColumnRequest]",
-        "dynamic_meta_tags": "dict(str, int)",
+        "dynamic_meta_tags": "dict[str, int]",
     }
 
     attribute_map = {
@@ -68,7 +71,7 @@ class HubDbTableV3Request(object):
     ):  # noqa: E501
         """HubDbTableV3Request - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -114,7 +117,7 @@ class HubDbTableV3Request(object):
         Name of the table  # noqa: E501
 
         :param name: The name of this HubDbTableV3Request.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -139,7 +142,7 @@ class HubDbTableV3Request(object):
         Label of the table  # noqa: E501
 
         :param label: The label of this HubDbTableV3Request.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -164,7 +167,7 @@ class HubDbTableV3Request(object):
         Specifies whether the table can be used for creation of dynamic pages  # noqa: E501
 
         :param use_for_pages: The use_for_pages of this HubDbTableV3Request.  # noqa: E501
-        :type: bool
+        :type use_for_pages: bool
         """
 
         self._use_for_pages = use_for_pages
@@ -187,7 +190,7 @@ class HubDbTableV3Request(object):
         Specifies whether the table can be read by public without authorization  # noqa: E501
 
         :param allow_public_api_access: The allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
-        :type: bool
+        :type allow_public_api_access: bool
         """
 
         self._allow_public_api_access = allow_public_api_access
@@ -210,7 +213,7 @@ class HubDbTableV3Request(object):
         Specifies whether child tables can be created  # noqa: E501
 
         :param allow_child_tables: The allow_child_tables of this HubDbTableV3Request.  # noqa: E501
-        :type: bool
+        :type allow_child_tables: bool
         """
 
         self._allow_child_tables = allow_child_tables
@@ -233,7 +236,7 @@ class HubDbTableV3Request(object):
         Specifies creation of multi-level dynamic pages using child tables  # noqa: E501
 
         :param enable_child_table_pages: The enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
-        :type: bool
+        :type enable_child_table_pages: bool
         """
 
         self._enable_child_table_pages = enable_child_table_pages
@@ -256,7 +259,7 @@ class HubDbTableV3Request(object):
         List of columns in the table  # noqa: E501
 
         :param columns: The columns of this HubDbTableV3Request.  # noqa: E501
-        :type: list[ColumnRequest]
+        :type columns: list[ColumnRequest]
         """
 
         self._columns = columns
@@ -268,7 +271,7 @@ class HubDbTableV3Request(object):
         Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
 
         :return: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
-        :rtype: dict(str, int)
+        :rtype: dict[str, int]
         """
         return self._dynamic_meta_tags
 
@@ -279,25 +282,34 @@ class HubDbTableV3Request(object):
         Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
 
         :param dynamic_meta_tags: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
-        :type: dict(str, int)
+        :type dynamic_meta_tags: dict[str, int]
         """
 
         self._dynamic_meta_tags = dynamic_meta_tags
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

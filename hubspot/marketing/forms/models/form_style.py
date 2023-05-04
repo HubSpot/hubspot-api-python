@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -80,7 +83,7 @@ class FormStyle(object):
     ):  # noqa: E501
         """FormStyle - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._font_family = None
@@ -126,7 +129,7 @@ class FormStyle(object):
 
 
         :param font_family: The font_family of this FormStyle.  # noqa: E501
-        :type: str
+        :type font_family: str
         """
         if self.local_vars_configuration.client_side_validation and font_family is None:  # noqa: E501
             raise ValueError("Invalid value for `font_family`, must not be `None`")  # noqa: E501
@@ -149,7 +152,7 @@ class FormStyle(object):
 
 
         :param background_width: The background_width of this FormStyle.  # noqa: E501
-        :type: str
+        :type background_width: str
         """
         if self.local_vars_configuration.client_side_validation and background_width is None:  # noqa: E501
             raise ValueError("Invalid value for `background_width`, must not be `None`")  # noqa: E501
@@ -172,7 +175,7 @@ class FormStyle(object):
 
 
         :param label_text_color: The label_text_color of this FormStyle.  # noqa: E501
-        :type: str
+        :type label_text_color: str
         """
         if self.local_vars_configuration.client_side_validation and label_text_color is None:  # noqa: E501
             raise ValueError("Invalid value for `label_text_color`, must not be `None`")  # noqa: E501
@@ -195,7 +198,7 @@ class FormStyle(object):
 
 
         :param label_text_size: The label_text_size of this FormStyle.  # noqa: E501
-        :type: str
+        :type label_text_size: str
         """
         if self.local_vars_configuration.client_side_validation and label_text_size is None:  # noqa: E501
             raise ValueError("Invalid value for `label_text_size`, must not be `None`")  # noqa: E501
@@ -218,7 +221,7 @@ class FormStyle(object):
 
 
         :param help_text_color: The help_text_color of this FormStyle.  # noqa: E501
-        :type: str
+        :type help_text_color: str
         """
         if self.local_vars_configuration.client_side_validation and help_text_color is None:  # noqa: E501
             raise ValueError("Invalid value for `help_text_color`, must not be `None`")  # noqa: E501
@@ -241,7 +244,7 @@ class FormStyle(object):
 
 
         :param help_text_size: The help_text_size of this FormStyle.  # noqa: E501
-        :type: str
+        :type help_text_size: str
         """
         if self.local_vars_configuration.client_side_validation and help_text_size is None:  # noqa: E501
             raise ValueError("Invalid value for `help_text_size`, must not be `None`")  # noqa: E501
@@ -264,7 +267,7 @@ class FormStyle(object):
 
 
         :param legal_consent_text_color: The legal_consent_text_color of this FormStyle.  # noqa: E501
-        :type: str
+        :type legal_consent_text_color: str
         """
         if self.local_vars_configuration.client_side_validation and legal_consent_text_color is None:  # noqa: E501
             raise ValueError("Invalid value for `legal_consent_text_color`, must not be `None`")  # noqa: E501
@@ -287,7 +290,7 @@ class FormStyle(object):
 
 
         :param legal_consent_text_size: The legal_consent_text_size of this FormStyle.  # noqa: E501
-        :type: str
+        :type legal_consent_text_size: str
         """
         if self.local_vars_configuration.client_side_validation and legal_consent_text_size is None:  # noqa: E501
             raise ValueError("Invalid value for `legal_consent_text_size`, must not be `None`")  # noqa: E501
@@ -310,7 +313,7 @@ class FormStyle(object):
 
 
         :param submit_color: The submit_color of this FormStyle.  # noqa: E501
-        :type: str
+        :type submit_color: str
         """
         if self.local_vars_configuration.client_side_validation and submit_color is None:  # noqa: E501
             raise ValueError("Invalid value for `submit_color`, must not be `None`")  # noqa: E501
@@ -333,7 +336,7 @@ class FormStyle(object):
 
 
         :param submit_alignment: The submit_alignment of this FormStyle.  # noqa: E501
-        :type: str
+        :type submit_alignment: str
         """
         if self.local_vars_configuration.client_side_validation and submit_alignment is None:  # noqa: E501
             raise ValueError("Invalid value for `submit_alignment`, must not be `None`")  # noqa: E501
@@ -359,7 +362,7 @@ class FormStyle(object):
 
 
         :param submit_font_color: The submit_font_color of this FormStyle.  # noqa: E501
-        :type: str
+        :type submit_font_color: str
         """
         if self.local_vars_configuration.client_side_validation and submit_font_color is None:  # noqa: E501
             raise ValueError("Invalid value for `submit_font_color`, must not be `None`")  # noqa: E501
@@ -382,27 +385,36 @@ class FormStyle(object):
 
 
         :param submit_size: The submit_size of this FormStyle.  # noqa: E501
-        :type: str
+        :type submit_size: str
         """
         if self.local_vars_configuration.client_side_validation and submit_size is None:  # noqa: E501
             raise ValueError("Invalid value for `submit_size`, must not be `None`")  # noqa: E501
 
         self._submit_size = submit_size
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

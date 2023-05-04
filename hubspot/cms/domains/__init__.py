@@ -26,6 +26,7 @@ from hubspot.cms.domains.exceptions import OpenApiException
 from hubspot.cms.domains.exceptions import ApiTypeError
 from hubspot.cms.domains.exceptions import ApiValueError
 from hubspot.cms.domains.exceptions import ApiKeyError
+from hubspot.cms.domains.exceptions import ApiAttributeError
 from hubspot.cms.domains.exceptions import ApiException
 
 # import models into sdk package

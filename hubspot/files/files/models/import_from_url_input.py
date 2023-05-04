@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.files.files.configuration import Configuration
@@ -71,7 +74,7 @@ class ImportFromUrlInput(object):
     ):  # noqa: E501
         """ImportFromUrlInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._access = None
@@ -117,7 +120,7 @@ class ImportFromUrlInput(object):
         PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.   # noqa: E501
 
         :param access: The access of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type access: str
         """
         if self.local_vars_configuration.client_side_validation and access is None:  # noqa: E501
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
@@ -145,7 +148,7 @@ class ImportFromUrlInput(object):
         Time to live. If specified the file will be deleted after the given time frame.  # noqa: E501
 
         :param ttl: The ttl of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type ttl: str
         """
 
         self._ttl = ttl
@@ -168,7 +171,7 @@ class ImportFromUrlInput(object):
         Name to give the resulting file in the file manager.  # noqa: E501
 
         :param name: The name of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -191,7 +194,7 @@ class ImportFromUrlInput(object):
         URL to download the new file from.  # noqa: E501
 
         :param url: The url of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type url: str
         """
         if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -216,7 +219,7 @@ class ImportFromUrlInput(object):
         One of folderId or folderPath is required. Destination folder ID for the uploaded file.  # noqa: E501
 
         :param folder_id: The folder_id of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type folder_id: str
         """
 
         self._folder_id = folder_id
@@ -239,7 +242,7 @@ class ImportFromUrlInput(object):
         One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.  # noqa: E501
 
         :param folder_path: The folder_path of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type folder_path: str
         """
 
         self._folder_path = folder_path
@@ -262,7 +265,7 @@ class ImportFromUrlInput(object):
         NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
 
         :param duplicate_validation_strategy: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type duplicate_validation_strategy: str
         """
         if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy is None:  # noqa: E501
             raise ValueError("Invalid value for `duplicate_validation_strategy`, must not be `None`")  # noqa: E501
@@ -290,7 +293,7 @@ class ImportFromUrlInput(object):
         ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.   # noqa: E501
 
         :param duplicate_validation_scope: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
-        :type: str
+        :type duplicate_validation_scope: str
         """
         if self.local_vars_configuration.client_side_validation and duplicate_validation_scope is None:  # noqa: E501
             raise ValueError("Invalid value for `duplicate_validation_scope`, must not be `None`")  # noqa: E501
@@ -318,27 +321,36 @@ class ImportFromUrlInput(object):
         If true, it will overwrite existing files if a file with the same name exists in the given folder.  # noqa: E501
 
         :param overwrite: The overwrite of this ImportFromUrlInput.  # noqa: E501
-        :type: bool
+        :type overwrite: bool
         """
         if self.local_vars_configuration.client_side_validation and overwrite is None:  # noqa: E501
             raise ValueError("Invalid value for `overwrite`, must not be `None`")  # noqa: E501
 
         self._overwrite = overwrite
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

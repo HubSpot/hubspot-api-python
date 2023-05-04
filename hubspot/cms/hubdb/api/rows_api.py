@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.hubdb.api_client import ApiClient
-from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.hubdb.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class RowsApi(object):
@@ -39,22 +39,28 @@ class RowsApi(object):
         Clones a single row in the `draft` version of the table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone_draft_table_row(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.clone_draft_table_row_with_http_info(table_id_or_name, row_id, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class RowsApi(object):
         Clones a single row in the `draft` version of the table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.clone_draft_table_row_with_http_info(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `clone_draft_table_row`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `clone_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -117,7 +132,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -129,6 +144,10 @@ class RowsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "HubDbTableRowV3",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft/clone",
             "POST",
@@ -138,13 +157,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_table_row(self, table_id_or_name, hub_db_table_row_v3_request, **kwargs):  # noqa: E501
@@ -153,22 +173,28 @@ class RowsApi(object):
         Add a new row to a HubDB table. New rows will be added to the `draft` version of the table. Use `publish` endpoint to push these changes to published version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_table_row(table_id_or_name, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the target table. (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The row definition JSON, formatted as described above. (required)
+        :param table_id_or_name: The ID or name of the target table. (required)
+        :type table_id_or_name: str
+        :param hub_db_table_row_v3_request: The row definition JSON, formatted as described above. (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.create_table_row_with_http_info(table_id_or_name, hub_db_table_row_v3_request, **kwargs)  # noqa: E501
@@ -179,33 +205,42 @@ class RowsApi(object):
         Add a new row to a HubDB table. New rows will be added to the `draft` version of the table. Use `publish` endpoint to push these changes to published version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_table_row_with_http_info(table_id_or_name, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the target table. (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The row definition JSON, formatted as described above. (required)
+        :param table_id_or_name: The ID or name of the target table. (required)
+        :type table_id_or_name: str
+        :param hub_db_table_row_v3_request: The row definition JSON, formatted as described above. (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "hub_db_table_row_v3_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "hub_db_table_row_v3_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -213,10 +248,10 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `create_table_row`")  # noqa: E501
         # verify the required parameter 'hub_db_table_row_v3_request' is set
-        if self.api_client.client_side_validation and ("hub_db_table_row_v3_request" not in local_var_params or local_var_params["hub_db_table_row_v3_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("hub_db_table_row_v3_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `hub_db_table_row_v3_request` when calling `create_table_row`")  # noqa: E501
 
         collection_formats = {}
@@ -227,7 +262,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -239,10 +274,16 @@ class RowsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "HubDbTableRowV3",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows",
@@ -253,13 +294,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_draft_table_row_by_id(self, table_id_or_name, row_id, **kwargs):  # noqa: E501
@@ -268,22 +310,28 @@ class RowsApi(object):
         Get a single row by ID from a table's `draft` version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_draft_table_row_by_id(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.get_draft_table_row_by_id_with_http_info(table_id_or_name, row_id, **kwargs)  # noqa: E501
@@ -294,33 +342,42 @@ class RowsApi(object):
         Get a single row by ID from a table's `draft` version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_draft_table_row_by_id_with_http_info(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -328,10 +385,10 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `get_draft_table_row_by_id`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `get_draft_table_row_by_id`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -346,7 +403,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -358,6 +415,10 @@ class RowsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "HubDbTableRowV3",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft",
             "GET",
@@ -367,13 +428,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_table_row(self, table_id_or_name, row_id, **kwargs):  # noqa: E501
@@ -382,22 +444,28 @@ class RowsApi(object):
         Get a single row by ID from a table's `published` version. **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_table_row(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.get_table_row_with_http_info(table_id_or_name, row_id, **kwargs)  # noqa: E501
@@ -408,33 +476,42 @@ class RowsApi(object):
         Get a single row by ID from a table's `published` version. **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_table_row_with_http_info(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -442,10 +519,10 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `get_table_row`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `get_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -460,7 +537,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -471,6 +548,10 @@ class RowsApi(object):
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "HubDbTableRowV3",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}",
@@ -481,13 +562,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_table_rows(self, table_id_or_name, **kwargs):  # noqa: E501
@@ -496,25 +578,34 @@ class RowsApi(object):
         Returns a set of rows in the `published` version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options. **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_table_rows(table_id_or_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param list[str] sort: Specifies the column names to sort the results by. See the above description for more details.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is `1000`.
-        :param list[str] properties: Specify the column names to get results containing only the required columns instead of all column details.
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param sort: Specifies the column names to sort the results by. See the above description for more details.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is `1000`.
+        :type limit: int
+        :param properties: Specify the column names to get results containing only the required columns instead of all column details.
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_table_rows_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
@@ -525,36 +616,48 @@ class RowsApi(object):
         Returns a set of rows in the `published` version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options. **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_table_rows_with_http_info(table_id_or_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param list[str] sort: Specifies the column names to sort the results by. See the above description for more details.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is `1000`.
-        :param list[str] properties: Specify the column names to get results containing only the required columns instead of all column details.
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param sort: Specifies the column names to sort the results by. See the above description for more details.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is `1000`.
+        :type limit: int
+        :param properties: Specify the column names to get results containing only the required columns instead of all column details.
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalHubDbTableRowV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseWithTotalHubDbTableRowV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "sort", "after", "limit", "properties"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "sort", "after", "limit", "properties"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -562,7 +665,7 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `get_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -572,18 +675,18 @@ class RowsApi(object):
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
 
         query_params = []
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
+        if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+        if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -595,6 +698,10 @@ class RowsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseWithTotalHubDbTableRowV3ForwardPaging",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows",
             "GET",
@@ -604,13 +711,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalHubDbTableRowV3ForwardPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def purge_draft_table_row(self, table_id_or_name, row_id, **kwargs):  # noqa: E501
@@ -619,22 +727,28 @@ class RowsApi(object):
         Permanently deletes a row from a table's `draft` version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.purge_draft_table_row(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.purge_draft_table_row_with_http_info(table_id_or_name, row_id, **kwargs)  # noqa: E501
@@ -645,33 +759,42 @@ class RowsApi(object):
         Permanently deletes a row from a table's `draft` version.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.purge_draft_table_row_with_http_info(table_id_or_name, row_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -679,10 +802,10 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `purge_draft_table_row`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `purge_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -697,7 +820,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -709,6 +832,8 @@ class RowsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft",
             "DELETE",
@@ -718,13 +843,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def read_draft_table_rows(self, table_id_or_name, **kwargs):  # noqa: E501
@@ -733,25 +859,34 @@ class RowsApi(object):
         Returns rows in the `draft` version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_draft_table_rows(table_id_or_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param list[str] sort: Specifies the column names to sort the results by.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is `1000`.
-        :param list[str] properties: Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param sort: Specifies the column names to sort the results by.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is `1000`.
+        :type limit: int
+        :param properties: Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseWithTotalHubDbTableRowV3ForwardPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.read_draft_table_rows_with_http_info(table_id_or_name, **kwargs)  # noqa: E501
@@ -762,36 +897,48 @@ class RowsApi(object):
         Returns rows in the `draft` version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.read_draft_table_rows_with_http_info(table_id_or_name, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table to query. (required)
-        :param list[str] sort: Specifies the column names to sort the results by.
-        :param str after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-        :param int limit: The maximum number of results to return. Default is `1000`.
-        :param list[str] properties: Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+        :param table_id_or_name: The ID or name of the table to query. (required)
+        :type table_id_or_name: str
+        :param sort: Specifies the column names to sort the results by.
+        :type sort: list[str]
+        :param after: The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param limit: The maximum number of results to return. Default is `1000`.
+        :type limit: int
+        :param properties: Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseWithTotalHubDbTableRowV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseWithTotalHubDbTableRowV3ForwardPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "sort", "after", "limit", "properties"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "sort", "after", "limit", "properties"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -799,7 +946,7 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `read_draft_table_rows`")  # noqa: E501
 
         collection_formats = {}
@@ -809,18 +956,18 @@ class RowsApi(object):
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
 
         query_params = []
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
+        if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+        if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -832,6 +979,10 @@ class RowsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseWithTotalHubDbTableRowV3ForwardPaging",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft",
             "GET",
@@ -841,13 +992,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseWithTotalHubDbTableRowV3ForwardPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def replace_draft_table_row(self, table_id_or_name, row_id, hub_db_table_row_v3_request, **kwargs):  # noqa: E501
@@ -856,23 +1008,30 @@ class RowsApi(object):
         Replace a single row in the table's `draft` version. All the column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted. See the `Create a row` endpoint for instructions on how to format the JSON row definitions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_draft_table_row(table_id_or_name, row_id, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The JSON object of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param hub_db_table_row_v3_request: The JSON object of the row (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.replace_draft_table_row_with_http_info(table_id_or_name, row_id, hub_db_table_row_v3_request, **kwargs)  # noqa: E501
@@ -883,34 +1042,44 @@ class RowsApi(object):
         Replace a single row in the table's `draft` version. All the column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted. See the `Create a row` endpoint for instructions on how to format the JSON row definitions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_draft_table_row_with_http_info(table_id_or_name, row_id, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The JSON object of the row (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param hub_db_table_row_v3_request: The JSON object of the row (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id", "hub_db_table_row_v3_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id", "hub_db_table_row_v3_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -918,13 +1087,13 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `replace_draft_table_row`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `replace_draft_table_row`")  # noqa: E501
         # verify the required parameter 'hub_db_table_row_v3_request' is set
-        if self.api_client.client_side_validation and ("hub_db_table_row_v3_request" not in local_var_params or local_var_params["hub_db_table_row_v3_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("hub_db_table_row_v3_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `hub_db_table_row_v3_request` when calling `replace_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -939,7 +1108,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -951,10 +1120,16 @@ class RowsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "HubDbTableRowV3",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft",
@@ -965,13 +1140,14 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_draft_table_row(self, table_id_or_name, row_id, hub_db_table_row_v3_request, **kwargs):  # noqa: E501
@@ -980,23 +1156,30 @@ class RowsApi(object):
         Sparse updates a single row in the table's `draft` version. All the column values need not be specified. Only the columns or fields that needs to be modified can be specified. See the `Create a row` endpoint for instructions on how to format the JSON row definitions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft_table_row(table_id_or_name, row_id, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The JSON object of the row with necessary fields that needs to be updated. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param hub_db_table_row_v3_request: The JSON object of the row with necessary fields that needs to be updated. (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: HubDbTableRowV3
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: HubDbTableRowV3
         """
         kwargs["_return_http_data_only"] = True
         return self.update_draft_table_row_with_http_info(table_id_or_name, row_id, hub_db_table_row_v3_request, **kwargs)  # noqa: E501
@@ -1007,34 +1190,44 @@ class RowsApi(object):
         Sparse updates a single row in the table's `draft` version. All the column values need not be specified. Only the columns or fields that needs to be modified can be specified. See the `Create a row` endpoint for instructions on how to format the JSON row definitions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_draft_table_row_with_http_info(table_id_or_name, row_id, hub_db_table_row_v3_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str table_id_or_name: The ID or name of the table (required)
-        :param str row_id: The ID of the row (required)
-        :param HubDbTableRowV3Request hub_db_table_row_v3_request: The JSON object of the row with necessary fields that needs to be updated. (required)
+        :param table_id_or_name: The ID or name of the table (required)
+        :type table_id_or_name: str
+        :param row_id: The ID of the row (required)
+        :type row_id: str
+        :param hub_db_table_row_v3_request: The JSON object of the row with necessary fields that needs to be updated. (required)
+        :type hub_db_table_row_v3_request: HubDbTableRowV3Request
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(HubDbTableRowV3, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "row_id", "hub_db_table_row_v3_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["table_id_or_name", "row_id", "hub_db_table_row_v3_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1042,13 +1235,13 @@ class RowsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'table_id_or_name' is set
-        if self.api_client.client_side_validation and ("table_id_or_name" not in local_var_params or local_var_params["table_id_or_name"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("table_id_or_name") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `table_id_or_name` when calling `update_draft_table_row`")  # noqa: E501
         # verify the required parameter 'row_id' is set
-        if self.api_client.client_side_validation and ("row_id" not in local_var_params or local_var_params["row_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("row_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `row_id` when calling `update_draft_table_row`")  # noqa: E501
         # verify the required parameter 'hub_db_table_row_v3_request' is set
-        if self.api_client.client_side_validation and ("hub_db_table_row_v3_request" not in local_var_params or local_var_params["hub_db_table_row_v3_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("hub_db_table_row_v3_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `hub_db_table_row_v3_request` when calling `update_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
@@ -1063,7 +1256,7 @@ class RowsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1075,10 +1268,16 @@ class RowsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "HubDbTableRowV3",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft",
@@ -1089,11 +1288,12 @@ class RowsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="HubDbTableRowV3",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

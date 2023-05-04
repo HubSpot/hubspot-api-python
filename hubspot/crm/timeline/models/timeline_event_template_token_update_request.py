@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -39,7 +42,7 @@ class TimelineEventTemplateTokenUpdateRequest(object):
     def __init__(self, label=None, object_property_name=None, options=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateTokenUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._label = None
@@ -70,7 +73,7 @@ class TimelineEventTemplateTokenUpdateRequest(object):
         Used for list segmentation and reporting.  # noqa: E501
 
         :param label: The label of this TimelineEventTemplateTokenUpdateRequest.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -95,7 +98,7 @@ class TimelineEventTemplateTokenUpdateRequest(object):
         The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.  # noqa: E501
 
         :param object_property_name: The object_property_name of this TimelineEventTemplateTokenUpdateRequest.  # noqa: E501
-        :type: str
+        :type object_property_name: str
         """
 
         self._object_property_name = object_property_name
@@ -118,27 +121,36 @@ class TimelineEventTemplateTokenUpdateRequest(object):
         If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
 
         :param options: The options of this TimelineEventTemplateTokenUpdateRequest.  # noqa: E501
-        :type: list[TimelineEventTemplateTokenOption]
+        :type options: list[TimelineEventTemplateTokenOption]
         """
         if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
 
         self._options = options
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

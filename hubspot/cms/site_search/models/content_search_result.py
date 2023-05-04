@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.site_search.configuration import Configuration
@@ -95,7 +98,7 @@ class ContentSearchResult(object):
     ):  # noqa: E501
         """ContentSearchResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -165,7 +168,7 @@ class ContentSearchResult(object):
         The ID of the content.  # noqa: E501
 
         :param id: The id of this ContentSearchResult.  # noqa: E501
-        :type: int
+        :type id: int
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -190,7 +193,7 @@ class ContentSearchResult(object):
         The matching score of the document.  # noqa: E501
 
         :param score: The score of this ContentSearchResult.  # noqa: E501
-        :type: float
+        :type score: float
         """
         if self.local_vars_configuration.client_side_validation and score is None:  # noqa: E501
             raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
@@ -215,7 +218,7 @@ class ContentSearchResult(object):
         The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.  # noqa: E501
 
         :param type: The type of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -243,7 +246,7 @@ class ContentSearchResult(object):
         The domain the document is hosted on.  # noqa: E501
 
         :param domain: The domain of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type domain: str
         """
         if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
             raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
@@ -268,7 +271,7 @@ class ContentSearchResult(object):
         The url of the document.  # noqa: E501
 
         :param url: The url of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type url: str
         """
         if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -293,7 +296,7 @@ class ContentSearchResult(object):
         URL of the featured image.  # noqa: E501
 
         :param featured_image_url: The featured_image_url of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type featured_image_url: str
         """
 
         self._featured_image_url = featured_image_url
@@ -316,7 +319,7 @@ class ContentSearchResult(object):
         The document's language.  # noqa: E501
 
         :param language: The language of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type language: str
         """
         allowed_values = [
             "af",
@@ -1095,7 +1098,7 @@ class ContentSearchResult(object):
         The title of the returned document.  # noqa: E501
 
         :param title: The title of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type title: str
         """
 
         self._title = title
@@ -1118,7 +1121,7 @@ class ContentSearchResult(object):
         The result's description. The content will be determined by the value of `length` in the request.  # noqa: E501
 
         :param description: The description of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -1141,7 +1144,7 @@ class ContentSearchResult(object):
         For knowledge articles, the category of the article.  # noqa: E501
 
         :param category: The category of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type category: str
         """
 
         self._category = category
@@ -1164,7 +1167,7 @@ class ContentSearchResult(object):
         For knowledge articles, the subcategory of the article.  # noqa: E501
 
         :param subcategory: The subcategory of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type subcategory: str
         """
 
         self._subcategory = subcategory
@@ -1187,7 +1190,7 @@ class ContentSearchResult(object):
         Name of the author.  # noqa: E501
 
         :param author_full_name: The author_full_name of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type author_full_name: str
         """
 
         self._author_full_name = author_full_name
@@ -1210,7 +1213,7 @@ class ContentSearchResult(object):
         If a blog post, the tags associated with it.  # noqa: E501
 
         :param tags: The tags of this ContentSearchResult.  # noqa: E501
-        :type: list[str]
+        :type tags: list[str]
         """
 
         self._tags = tags
@@ -1233,7 +1236,7 @@ class ContentSearchResult(object):
         If a dynamic page, the ID of the HubDB table.  # noqa: E501
 
         :param table_id: The table_id of this ContentSearchResult.  # noqa: E501
-        :type: int
+        :type table_id: int
         """
 
         self._table_id = table_id
@@ -1256,7 +1259,7 @@ class ContentSearchResult(object):
         If a dynamic page, the row ID in the HubDB table.  # noqa: E501
 
         :param row_id: The row_id of this ContentSearchResult.  # noqa: E501
-        :type: int
+        :type row_id: int
         """
 
         self._row_id = row_id
@@ -1279,7 +1282,7 @@ class ContentSearchResult(object):
         The date the content was published.  # noqa: E501
 
         :param published_date: The published_date of this ContentSearchResult.  # noqa: E501
-        :type: int
+        :type published_date: int
         """
 
         self._published_date = published_date
@@ -1302,25 +1305,34 @@ class ContentSearchResult(object):
         The ID of the document in HubSpot.  # noqa: E501
 
         :param combined_id: The combined_id of this ContentSearchResult.  # noqa: E501
-        :type: str
+        :type combined_id: str
         """
 
         self._combined_id = combined_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

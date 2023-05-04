@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -37,7 +40,7 @@ class HubSpotFormDefinitionPatchRequest(object):
         "field_groups": "list[FieldGroup]",
         "configuration": "HubSpotFormConfiguration",
         "display_options": "FormDisplayOptions",
-        "legal_consent_options": "OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess",
+        "legal_consent_options": "HubSpotFormDefinitionPatchRequestLegalConsentOptions",
         "archived": "bool",
     }
 
@@ -53,7 +56,7 @@ class HubSpotFormDefinitionPatchRequest(object):
     def __init__(self, name=None, field_groups=None, configuration=None, display_options=None, legal_consent_options=None, archived=None, local_vars_configuration=None):  # noqa: E501
         """HubSpotFormDefinitionPatchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -95,7 +98,7 @@ class HubSpotFormDefinitionPatchRequest(object):
         The name of the form. Expected to be unique for a hub.  # noqa: E501
 
         :param name: The name of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -118,7 +121,7 @@ class HubSpotFormDefinitionPatchRequest(object):
         The fields in the form, grouped in rows.  # noqa: E501
 
         :param field_groups: The field_groups of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: list[FieldGroup]
+        :type field_groups: list[FieldGroup]
         """
 
         self._field_groups = field_groups
@@ -139,7 +142,7 @@ class HubSpotFormDefinitionPatchRequest(object):
 
 
         :param configuration: The configuration of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: HubSpotFormConfiguration
+        :type configuration: HubSpotFormConfiguration
         """
 
         self._configuration = configuration
@@ -160,7 +163,7 @@ class HubSpotFormDefinitionPatchRequest(object):
 
 
         :param display_options: The display_options of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: FormDisplayOptions
+        :type display_options: FormDisplayOptions
         """
 
         self._display_options = display_options
@@ -171,7 +174,7 @@ class HubSpotFormDefinitionPatchRequest(object):
 
 
         :return: The legal_consent_options of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :rtype: OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess
+        :rtype: HubSpotFormDefinitionPatchRequestLegalConsentOptions
         """
         return self._legal_consent_options
 
@@ -181,7 +184,7 @@ class HubSpotFormDefinitionPatchRequest(object):
 
 
         :param legal_consent_options: The legal_consent_options of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: OneOfLegalConsentOptionsNoneLegalConsentOptionsLegitimateInterestLegalConsentOptionsExplicitConsentToProcessLegalConsentOptionsImplicitConsentToProcess
+        :type legal_consent_options: HubSpotFormDefinitionPatchRequestLegalConsentOptions
         """
 
         self._legal_consent_options = legal_consent_options
@@ -204,25 +207,34 @@ class HubSpotFormDefinitionPatchRequest(object):
         Whether this form is archived.  # noqa: E501
 
         :param archived: The archived of this HubSpotFormDefinitionPatchRequest.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
 
         self._archived = archived
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

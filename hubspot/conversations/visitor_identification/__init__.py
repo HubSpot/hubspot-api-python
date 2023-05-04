@@ -26,6 +26,7 @@ from hubspot.conversations.visitor_identification.exceptions import OpenApiExcep
 from hubspot.conversations.visitor_identification.exceptions import ApiTypeError
 from hubspot.conversations.visitor_identification.exceptions import ApiValueError
 from hubspot.conversations.visitor_identification.exceptions import ApiKeyError
+from hubspot.conversations.visitor_identification.exceptions import ApiAttributeError
 from hubspot.conversations.visitor_identification.exceptions import ApiException
 
 # import models into sdk package

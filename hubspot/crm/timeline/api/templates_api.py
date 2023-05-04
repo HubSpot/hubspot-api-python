@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.timeline.api_client import ApiClient
-from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.timeline.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class TemplatesApi(object):
@@ -39,22 +39,28 @@ class TemplatesApi(object):
         This will delete the event template. All associated events will be removed from search results and the timeline UI.  This action can't be undone, so it's highly recommended that you stop using any associated events before deleting a template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class TemplatesApi(object):
         This will delete the event template. All associated events will be removed from search results and the timeline UI.  This action can't be undone, so it's highly recommended that you stop using any associated events before deleting a template.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["event_template_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class TemplatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("event_template_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -115,7 +130,7 @@ class TemplatesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -127,6 +142,8 @@ class TemplatesApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}",
             "DELETE",
@@ -136,13 +153,14 @@ class TemplatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, app_id, timeline_event_template_create_request, **kwargs):  # noqa: E501
@@ -151,22 +169,28 @@ class TemplatesApi(object):
         Event templates define the general structure for a custom timeline event. This includes formatted copy for its heading and details, as well as any custom property definitions. The event could be something like viewing a video, registering for a webinar, or filling out a survey. A single app can define multiple event templates.  Event templates will be created for contacts by default, but they can be created for companies, tickets, and deals as well.  Each event template contains its own set of tokens and `Markdown` templates. These tokens can be associated with any CRM object properties via the `objectPropertyName` field to fully build out CRM objects.  You must create an event template before you can create events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(app_id, timeline_event_template_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param TimelineEventTemplateCreateRequest timeline_event_template_create_request: The new event template definition. (required)
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param timeline_event_template_create_request: The new event template definition. (required)
+        :type timeline_event_template_create_request: TimelineEventTemplateCreateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TimelineEventTemplate
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TimelineEventTemplate
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(app_id, timeline_event_template_create_request, **kwargs)  # noqa: E501
@@ -177,33 +201,42 @@ class TemplatesApi(object):
         Event templates define the general structure for a custom timeline event. This includes formatted copy for its heading and details, as well as any custom property definitions. The event could be something like viewing a video, registering for a webinar, or filling out a survey. A single app can define multiple event templates.  Event templates will be created for contacts by default, but they can be created for companies, tickets, and deals as well.  Each event template contains its own set of tokens and `Markdown` templates. These tokens can be associated with any CRM object properties via the `objectPropertyName` field to fully build out CRM objects.  You must create an event template before you can create events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(app_id, timeline_event_template_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
-        :param TimelineEventTemplateCreateRequest timeline_event_template_create_request: The new event template definition. (required)
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param timeline_event_template_create_request: The new event template definition. (required)
+        :type timeline_event_template_create_request: TimelineEventTemplateCreateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id", "timeline_event_template_create_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "timeline_event_template_create_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -211,12 +244,10 @@ class TemplatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'timeline_event_template_create_request' is set
-        if self.api_client.client_side_validation and (
-            "timeline_event_template_create_request" not in local_var_params or local_var_params["timeline_event_template_create_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("timeline_event_template_create_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `timeline_event_template_create_request` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -227,7 +258,7 @@ class TemplatesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -239,10 +270,16 @@ class TemplatesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            201: "TimelineEventTemplate",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/timeline/{appId}/event-templates",
@@ -253,13 +290,14 @@ class TemplatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TimelineEventTemplate",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_all(self, app_id, **kwargs):  # noqa: E501
@@ -268,21 +306,26 @@ class TemplatesApi(object):
         Use this to list all event templates owned by your app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseTimelineEventTemplateNoPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseTimelineEventTemplateNoPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
@@ -293,32 +336,40 @@ class TemplatesApi(object):
         Use this to list all event templates owned by your app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: The ID of the target app. (required)
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseTimelineEventTemplateNoPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseTimelineEventTemplateNoPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -326,7 +377,7 @@ class TemplatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
@@ -337,7 +388,7 @@ class TemplatesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -349,6 +400,10 @@ class TemplatesApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseTimelineEventTemplateNoPaging",
+        }
+
         return self.api_client.call_api(
             "/crm/v3/timeline/{appId}/event-templates",
             "GET",
@@ -358,13 +413,14 @@ class TemplatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseTimelineEventTemplateNoPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, event_template_id, app_id, **kwargs):  # noqa: E501
@@ -373,22 +429,28 @@ class TemplatesApi(object):
         View the current state of a specific template and its tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TimelineEventTemplate
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TimelineEventTemplate
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(event_template_id, app_id, **kwargs)  # noqa: E501
@@ -399,33 +461,42 @@ class TemplatesApi(object):
         View the current state of a specific template and its tokens.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(event_template_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["event_template_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -433,10 +504,10 @@ class TemplatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("event_template_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -449,7 +520,7 @@ class TemplatesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -461,6 +532,10 @@ class TemplatesApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "TimelineEventTemplate",
+        }
+
         return self.api_client.call_api(
             "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}",
             "GET",
@@ -470,13 +545,14 @@ class TemplatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TimelineEventTemplate",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, event_template_id, app_id, timeline_event_template_update_request, **kwargs):  # noqa: E501
@@ -485,23 +561,30 @@ class TemplatesApi(object):
         Updates an existing template and its tokens. This is primarily used to update the headerTemplate/detailTemplate, and those changes will take effect for existing events.  You can also update or replace all the tokens in the template here instead of doing individual API calls on the `/tokens` endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(event_template_id, app_id, timeline_event_template_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
-        :param TimelineEventTemplateUpdateRequest timeline_event_template_update_request: The updated event template definition. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param timeline_event_template_update_request: The updated event template definition. (required)
+        :type timeline_event_template_update_request: TimelineEventTemplateUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TimelineEventTemplate
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TimelineEventTemplate
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(event_template_id, app_id, timeline_event_template_update_request, **kwargs)  # noqa: E501
@@ -512,34 +595,44 @@ class TemplatesApi(object):
         Updates an existing template and its tokens. This is primarily used to update the headerTemplate/detailTemplate, and those changes will take effect for existing events.  You can also update or replace all the tokens in the template here instead of doing individual API calls on the `/tokens` endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(event_template_id, app_id, timeline_event_template_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str event_template_id: The event template ID. (required)
-        :param int app_id: The ID of the target app. (required)
-        :param TimelineEventTemplateUpdateRequest timeline_event_template_update_request: The updated event template definition. (required)
+        :param event_template_id: The event template ID. (required)
+        :type event_template_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
+        :param timeline_event_template_update_request: The updated event template definition. (required)
+        :type timeline_event_template_update_request: TimelineEventTemplateUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TimelineEventTemplate, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["event_template_id", "app_id", "timeline_event_template_update_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["event_template_id", "app_id", "timeline_event_template_update_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -547,15 +640,13 @@ class TemplatesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'event_template_id' is set
-        if self.api_client.client_side_validation and ("event_template_id" not in local_var_params or local_var_params["event_template_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("event_template_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `event_template_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'timeline_event_template_update_request' is set
-        if self.api_client.client_side_validation and (
-            "timeline_event_template_update_request" not in local_var_params or local_var_params["timeline_event_template_update_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("timeline_event_template_update_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `timeline_event_template_update_request` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -568,7 +659,7 @@ class TemplatesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -580,10 +671,16 @@ class TemplatesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            200: "TimelineEventTemplate",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}",
@@ -594,11 +691,12 @@ class TemplatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TimelineEventTemplate",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

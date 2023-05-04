@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -68,7 +71,7 @@ class InvoiceUpdateRequest(object):
     ):  # noqa: E501
         """InvoiceUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._external_invoice_number = None
@@ -114,7 +117,7 @@ class InvoiceUpdateRequest(object):
 
 
         :param external_invoice_number: The external_invoice_number of this InvoiceUpdateRequest.  # noqa: E501
-        :type: str
+        :type external_invoice_number: str
         """
 
         self._external_invoice_number = external_invoice_number
@@ -137,7 +140,7 @@ class InvoiceUpdateRequest(object):
         The ISO 4217 currency code that represents the currency used in the invoice to bill the recipient  # noqa: E501
 
         :param currency_code: The currency_code of this InvoiceUpdateRequest.  # noqa: E501
-        :type: str
+        :type currency_code: str
         """
 
         self._currency_code = currency_code
@@ -160,7 +163,7 @@ class InvoiceUpdateRequest(object):
         The ISO-8601 due date of the invoice.  # noqa: E501
 
         :param due_date: The due_date of this InvoiceUpdateRequest.  # noqa: E501
-        :type: date
+        :type due_date: date
         """
 
         self._due_date = due_date
@@ -183,7 +186,7 @@ class InvoiceUpdateRequest(object):
         The ID of the invoice recipient. This is the recipient ID from the external accounting system.  # noqa: E501
 
         :param external_recipient_id: The external_recipient_id of this InvoiceUpdateRequest.  # noqa: E501
-        :type: str
+        :type external_recipient_id: str
         """
 
         self._external_recipient_id = external_recipient_id
@@ -204,7 +207,7 @@ class InvoiceUpdateRequest(object):
 
 
         :param received_by_recipient_date: The received_by_recipient_date of this InvoiceUpdateRequest.  # noqa: E501
-        :type: int
+        :type received_by_recipient_date: int
         """
 
         self._received_by_recipient_date = received_by_recipient_date
@@ -227,7 +230,7 @@ class InvoiceUpdateRequest(object):
         States if the invoice is voided or not.  # noqa: E501
 
         :param is_voided: The is_voided of this InvoiceUpdateRequest.  # noqa: E501
-        :type: bool
+        :type is_voided: bool
         """
 
         self._is_voided = is_voided
@@ -250,7 +253,7 @@ class InvoiceUpdateRequest(object):
         The ISO-8601 datetime of when the customer received the invoice.  # noqa: E501
 
         :param received_by_customer_date: The received_by_customer_date of this InvoiceUpdateRequest.  # noqa: E501
-        :type: str
+        :type received_by_customer_date: str
         """
 
         self._received_by_customer_date = received_by_customer_date
@@ -273,25 +276,34 @@ class InvoiceUpdateRequest(object):
         The number / name of the invoice.  # noqa: E501
 
         :param invoice_number: The invoice_number of this InvoiceUpdateRequest.  # noqa: E501
-        :type: str
+        :type invoice_number: str
         """
 
         self._invoice_number = invoice_number
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

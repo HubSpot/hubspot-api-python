@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.webhooks.configuration import Configuration
@@ -39,7 +42,7 @@ class SubscriptionResponse(object):
     def __init__(self, event_type=None, property_name=None, active=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._event_type = None
@@ -77,7 +80,7 @@ class SubscriptionResponse(object):
         Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.  # noqa: E501
 
         :param event_type: The event_type of this SubscriptionResponse.  # noqa: E501
-        :type: str
+        :type event_type: str
         """
         if self.local_vars_configuration.client_side_validation and event_type is None:  # noqa: E501
             raise ValueError("Invalid value for `event_type`, must not be `None`")  # noqa: E501
@@ -147,7 +150,7 @@ class SubscriptionResponse(object):
         The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
 
         :param property_name: The property_name of this SubscriptionResponse.  # noqa: E501
-        :type: str
+        :type property_name: str
         """
 
         self._property_name = property_name
@@ -170,7 +173,7 @@ class SubscriptionResponse(object):
         Determines if the subscription is active or paused.  # noqa: E501
 
         :param active: The active of this SubscriptionResponse.  # noqa: E501
-        :type: bool
+        :type active: bool
         """
         if self.local_vars_configuration.client_side_validation and active is None:  # noqa: E501
             raise ValueError("Invalid value for `active`, must not be `None`")  # noqa: E501
@@ -195,7 +198,7 @@ class SubscriptionResponse(object):
         The unique ID of the subscription.  # noqa: E501
 
         :param id: The id of this SubscriptionResponse.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -220,7 +223,7 @@ class SubscriptionResponse(object):
         When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
 
         :param created_at: The created_at of this SubscriptionResponse.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -245,25 +248,34 @@ class SubscriptionResponse(object):
         When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
 
         :param updated_at: The updated_at of this SubscriptionResponse.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

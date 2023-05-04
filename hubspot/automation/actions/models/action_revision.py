@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -39,7 +42,7 @@ class ActionRevision(object):
     def __init__(self, definition=None, created_at=None, id=None, revision_id=None, local_vars_configuration=None):  # noqa: E501
         """ActionRevision - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._definition = None
@@ -69,7 +72,7 @@ class ActionRevision(object):
 
 
         :param definition: The definition of this ActionRevision.  # noqa: E501
-        :type: ExtensionActionDefinition
+        :type definition: ExtensionActionDefinition
         """
         if self.local_vars_configuration.client_side_validation and definition is None:  # noqa: E501
             raise ValueError("Invalid value for `definition`, must not be `None`")  # noqa: E501
@@ -94,7 +97,7 @@ class ActionRevision(object):
         The date the revision was created.  # noqa: E501
 
         :param created_at: The created_at of this ActionRevision.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -117,7 +120,7 @@ class ActionRevision(object):
 
 
         :param id: The id of this ActionRevision.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -142,27 +145,36 @@ class ActionRevision(object):
         The version number of the custom action.  # noqa: E501
 
         :param revision_id: The revision_id of this ActionRevision.  # noqa: E501
-        :type: str
+        :type revision_id: str
         """
         if self.local_vars_configuration.client_side_validation and revision_id is None:  # noqa: E501
             raise ValueError("Invalid value for `revision_id`, must not be `None`")  # noqa: E501
 
         self._revision_id = revision_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

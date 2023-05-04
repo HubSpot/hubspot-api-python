@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -89,7 +92,7 @@ class AccountingAppUrls(object):
     ):  # noqa: E501
         """AccountingAppUrls - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._get_invoice_url = None
@@ -152,7 +155,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where invoices can be retrieved.  # noqa: E501
 
         :param get_invoice_url: The get_invoice_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type get_invoice_url: str
         """
         if self.local_vars_configuration.client_side_validation and get_invoice_url is None:  # noqa: E501
             raise ValueError("Invalid value for `get_invoice_url`, must not be `None`")  # noqa: E501
@@ -177,7 +180,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where a customer search can be performed.  # noqa: E501
 
         :param search_customer_url: The search_customer_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_customer_url: str
         """
         if self.local_vars_configuration.client_side_validation and search_customer_url is None:  # noqa: E501
             raise ValueError("Invalid value for `search_customer_url`, must not be `None`")  # noqa: E501
@@ -202,7 +205,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where an invoice PDF can be retrieved.  # noqa: E501
 
         :param get_invoice_pdf_url: The get_invoice_pdf_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type get_invoice_pdf_url: str
         """
         if self.local_vars_configuration.client_side_validation and get_invoice_pdf_url is None:  # noqa: E501
             raise ValueError("Invalid value for `get_invoice_pdf_url`, must not be `None`")  # noqa: E501
@@ -227,7 +230,7 @@ class AccountingAppUrls(object):
         A template URL that indicates the endpoint where a customer can be fetched by ID. Note that ${CUSTOMER_ID} in this URL will be replaced by the actual customer ID. For example: https://myapp.com/api/customers/${CUSTOMER_ID}  # noqa: E501
 
         :param customer_url_template: The customer_url_template of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type customer_url_template: str
         """
         if self.local_vars_configuration.client_side_validation and customer_url_template is None:  # noqa: E501
             raise ValueError("Invalid value for `customer_url_template`, must not be `None`")  # noqa: E501
@@ -252,7 +255,7 @@ class AccountingAppUrls(object):
         A template URL that indicates the endpoint where a product can be fetched by ID. Note that ${PRODUCT_ID} in this URL will be replaced by the actual product ID. For example: https://myapp.com/api/products/${PRODUCT_ID}  # noqa: E501
 
         :param product_url_template: The product_url_template of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type product_url_template: str
         """
         if self.local_vars_configuration.client_side_validation and product_url_template is None:  # noqa: E501
             raise ValueError("Invalid value for `product_url_template`, must not be `None`")  # noqa: E501
@@ -277,7 +280,7 @@ class AccountingAppUrls(object):
         A template URL that indicates the endpoint where an invoice can be fetched by ID. Note that ${INVOICE_ID} in this URL will be replaced by the actual invoice ID. For example: https://myapp.com/api/invoices/${INVOICE_ID}  # noqa: E501
 
         :param invoice_url_template: The invoice_url_template of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type invoice_url_template: str
         """
         if self.local_vars_configuration.client_side_validation and invoice_url_template is None:  # noqa: E501
             raise ValueError("Invalid value for `invoice_url_template`, must not be `None`")  # noqa: E501
@@ -302,7 +305,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where an invoices can be created.  # noqa: E501
 
         :param create_invoice_url: The create_invoice_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type create_invoice_url: str
         """
 
         self._create_invoice_url = create_invoice_url
@@ -325,7 +328,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where an invoice search can be performed.  # noqa: E501
 
         :param search_invoice_url: The search_invoice_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_invoice_url: str
         """
 
         self._search_invoice_url = search_invoice_url
@@ -348,7 +351,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where a product search can be performed.  # noqa: E501
 
         :param search_product_url: The search_product_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_product_url: str
         """
 
         self._search_product_url = search_product_url
@@ -371,7 +374,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where payment terms can be retrieved.  # noqa: E501
 
         :param get_terms_url: The get_terms_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type get_terms_url: str
         """
 
         self._get_terms_url = get_terms_url
@@ -394,7 +397,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where a new customer can be created.  # noqa: E501
 
         :param create_customer_url: The create_customer_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type create_customer_url: str
         """
 
         self._create_customer_url = create_customer_url
@@ -417,7 +420,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where a tax search can be performed.  # noqa: E501
 
         :param search_tax_url: The search_tax_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_tax_url: str
         """
 
         self._search_tax_url = search_tax_url
@@ -440,7 +443,7 @@ class AccountingAppUrls(object):
         A URL that specifies the endpoint where exchange rates can be queried.  # noqa: E501
 
         :param exchange_rate_url: The exchange_rate_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type exchange_rate_url: str
         """
 
         self._exchange_rate_url = exchange_rate_url
@@ -461,7 +464,7 @@ class AccountingAppUrls(object):
 
 
         :param search_url: The search_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_url: str
         """
 
         self._search_url = search_url
@@ -482,25 +485,34 @@ class AccountingAppUrls(object):
 
 
         :param search_count_url: The search_count_url of this AccountingAppUrls.  # noqa: E501
-        :type: str
+        :type search_count_url: str
         """
 
         self._search_count_url = search_count_url
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

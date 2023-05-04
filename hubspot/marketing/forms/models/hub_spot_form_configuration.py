@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -77,7 +80,7 @@ class HubSpotFormConfiguration(object):
     ):  # noqa: E501
         """HubSpotFormConfiguration - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._language = None
@@ -123,7 +126,7 @@ class HubSpotFormConfiguration(object):
         The language of the form.  # noqa: E501
 
         :param language: The language of this HubSpotFormConfiguration.  # noqa: E501
-        :type: str
+        :type language: str
         """
         if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
             raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
@@ -187,7 +190,7 @@ class HubSpotFormConfiguration(object):
         Whether the form can be cloned.  # noqa: E501
 
         :param cloneable: The cloneable of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type cloneable: bool
         """
         if self.local_vars_configuration.client_side_validation and cloneable is None:  # noqa: E501
             raise ValueError("Invalid value for `cloneable`, must not be `None`")  # noqa: E501
@@ -210,7 +213,7 @@ class HubSpotFormConfiguration(object):
 
 
         :param post_submit_action: The post_submit_action of this HubSpotFormConfiguration.  # noqa: E501
-        :type: FormPostSubmitAction
+        :type post_submit_action: FormPostSubmitAction
         """
         if self.local_vars_configuration.client_side_validation and post_submit_action is None:  # noqa: E501
             raise ValueError("Invalid value for `post_submit_action`, must not be `None`")  # noqa: E501
@@ -235,7 +238,7 @@ class HubSpotFormConfiguration(object):
         Whether the form can be edited.  # noqa: E501
 
         :param editable: The editable of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type editable: bool
         """
         if self.local_vars_configuration.client_side_validation and editable is None:  # noqa: E501
             raise ValueError("Invalid value for `editable`, must not be `None`")  # noqa: E501
@@ -260,7 +263,7 @@ class HubSpotFormConfiguration(object):
         Whether the form can be archived.  # noqa: E501
 
         :param archivable: The archivable of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type archivable: bool
         """
         if self.local_vars_configuration.client_side_validation and archivable is None:  # noqa: E501
             raise ValueError("Invalid value for `archivable`, must not be `None`")  # noqa: E501
@@ -285,7 +288,7 @@ class HubSpotFormConfiguration(object):
         Whether CAPTCHA (spam prevention) is enabled.  # noqa: E501
 
         :param recaptcha_enabled: The recaptcha_enabled of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type recaptcha_enabled: bool
         """
         if self.local_vars_configuration.client_side_validation and recaptcha_enabled is None:  # noqa: E501
             raise ValueError("Invalid value for `recaptcha_enabled`, must not be `None`")  # noqa: E501
@@ -310,7 +313,7 @@ class HubSpotFormConfiguration(object):
         Whether to send a notification email to the contact owner when a submission is received.  # noqa: E501
 
         :param notify_contact_owner: The notify_contact_owner of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type notify_contact_owner: bool
         """
         if self.local_vars_configuration.client_side_validation and notify_contact_owner is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_contact_owner`, must not be `None`")  # noqa: E501
@@ -335,7 +338,7 @@ class HubSpotFormConfiguration(object):
         The list of user IDs to receive a notification email when a submission is received.  # noqa: E501
 
         :param notify_recipients: The notify_recipients of this HubSpotFormConfiguration.  # noqa: E501
-        :type: list[str]
+        :type notify_recipients: list[str]
         """
         if self.local_vars_configuration.client_side_validation and notify_recipients is None:  # noqa: E501
             raise ValueError("Invalid value for `notify_recipients`, must not be `None`")  # noqa: E501
@@ -360,7 +363,7 @@ class HubSpotFormConfiguration(object):
         Whether to create a new contact when a form is submitted with an email address that doesn’t match any in your existing contacts records.  # noqa: E501
 
         :param create_new_contact_for_new_email: The create_new_contact_for_new_email of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type create_new_contact_for_new_email: bool
         """
         if self.local_vars_configuration.client_side_validation and create_new_contact_for_new_email is None:  # noqa: E501
             raise ValueError("Invalid value for `create_new_contact_for_new_email`, must not be `None`")  # noqa: E501
@@ -385,7 +388,7 @@ class HubSpotFormConfiguration(object):
         Whether contact fields should pre-populate with known information when a contact returns to your site.  # noqa: E501
 
         :param pre_populate_known_values: The pre_populate_known_values of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type pre_populate_known_values: bool
         """
         if self.local_vars_configuration.client_side_validation and pre_populate_known_values is None:  # noqa: E501
             raise ValueError("Invalid value for `pre_populate_known_values`, must not be `None`")  # noqa: E501
@@ -410,27 +413,36 @@ class HubSpotFormConfiguration(object):
         Whether to add a reset link to the form. This removes any pre-populated content on the form and creates a new contact on submission.  # noqa: E501
 
         :param allow_link_to_reset_known_values: The allow_link_to_reset_known_values of this HubSpotFormConfiguration.  # noqa: E501
-        :type: bool
+        :type allow_link_to_reset_known_values: bool
         """
         if self.local_vars_configuration.client_side_validation and allow_link_to_reset_known_values is None:  # noqa: E501
             raise ValueError("Invalid value for `allow_link_to_reset_known_values`, must not be `None`")  # noqa: E501
 
         self._allow_link_to_reset_known_values = allow_link_to_reset_known_values
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

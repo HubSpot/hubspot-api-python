@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class SourceCodeExtractApi(object):
@@ -38,21 +38,26 @@ class SourceCodeExtractApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_async(file_extract_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param FileExtractRequest file_extract_request: (required)
+        :param file_extract_request: (required)
+        :type file_extract_request: FileExtractRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TaskLocator
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: TaskLocator
         """
         kwargs["_return_http_data_only"] = True
         return self.do_async_with_http_info(file_extract_request, **kwargs)  # noqa: E501
@@ -62,32 +67,40 @@ class SourceCodeExtractApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_async_with_http_info(file_extract_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param FileExtractRequest file_extract_request: (required)
+        :param file_extract_request: (required)
+        :type file_extract_request: FileExtractRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TaskLocator, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(TaskLocator, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file_extract_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_extract_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -95,7 +108,7 @@ class SourceCodeExtractApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_extract_request' is set
-        if self.api_client.client_side_validation and ("file_extract_request" not in local_var_params or local_var_params["file_extract_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_extract_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_extract_request` when calling `do_async`")  # noqa: E501
 
         collection_formats = {}
@@ -104,7 +117,7 @@ class SourceCodeExtractApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -118,6 +131,10 @@ class SourceCodeExtractApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            202: "TaskLocator",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/source-code/extract/async",
             "POST",
@@ -127,13 +144,14 @@ class SourceCodeExtractApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="TaskLocator",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_async_status(self, task_id, **kwargs):  # noqa: E501
@@ -141,21 +159,26 @@ class SourceCodeExtractApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_async_status(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int task_id: (required)
+        :param task_id: (required)
+        :type task_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ActionResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ActionResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.get_async_status_with_http_info(task_id, **kwargs)  # noqa: E501
@@ -165,32 +188,40 @@ class SourceCodeExtractApi(object):
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_async_status_with_http_info(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int task_id: (required)
+        :param task_id: (required)
+        :type task_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ActionResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ActionResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["task_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["task_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -198,7 +229,7 @@ class SourceCodeExtractApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'task_id' is set
-        if self.api_client.client_side_validation and ("task_id" not in local_var_params or local_var_params["task_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("task_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `task_id` when calling `get_async_status`")  # noqa: E501
 
         collection_formats = {}
@@ -209,7 +240,7 @@ class SourceCodeExtractApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -221,6 +252,10 @@ class SourceCodeExtractApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "ActionResponse",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/source-code/extract/async/tasks/{taskId}/status",
             "GET",
@@ -230,11 +265,12 @@ class SourceCodeExtractApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

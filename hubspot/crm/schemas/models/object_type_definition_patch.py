@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.schemas.configuration import Configuration
@@ -55,7 +58,7 @@ class ObjectTypeDefinitionPatch(object):
     ):  # noqa: E501
         """ObjectTypeDefinitionPatch - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._labels = None
@@ -95,7 +98,7 @@ class ObjectTypeDefinitionPatch(object):
 
 
         :param labels: The labels of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: ObjectTypeDefinitionLabels
+        :type labels: ObjectTypeDefinitionLabels
         """
 
         self._labels = labels
@@ -118,7 +121,7 @@ class ObjectTypeDefinitionPatch(object):
         The names of properties that should be **required** when creating an object of this type.  # noqa: E501
 
         :param required_properties: The required_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: list[str]
+        :type required_properties: list[str]
         """
 
         self._required_properties = required_properties
@@ -141,7 +144,7 @@ class ObjectTypeDefinitionPatch(object):
         Names of properties that will be indexed for this object type in by HubSpot's product search.  # noqa: E501
 
         :param searchable_properties: The searchable_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: list[str]
+        :type searchable_properties: list[str]
         """
 
         self._searchable_properties = searchable_properties
@@ -164,7 +167,7 @@ class ObjectTypeDefinitionPatch(object):
         The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.  # noqa: E501
 
         :param primary_display_property: The primary_display_property of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: str
+        :type primary_display_property: str
         """
 
         self._primary_display_property = primary_display_property
@@ -187,7 +190,7 @@ class ObjectTypeDefinitionPatch(object):
         The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
         :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: list[str]
+        :type secondary_display_properties: list[str]
         """
 
         self._secondary_display_properties = secondary_display_properties
@@ -208,25 +211,34 @@ class ObjectTypeDefinitionPatch(object):
 
 
         :param restorable: The restorable of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type: bool
+        :type restorable: bool
         """
 
         self._restorable = restorable
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

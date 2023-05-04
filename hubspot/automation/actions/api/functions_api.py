@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.automation.actions.api_client import ApiClient
-from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError
+from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class FunctionsApi(object):
@@ -39,24 +39,32 @@ class FunctionsApi(object):
         Delete a function for a custom workflow action. This will remove the function itself as well as removing the association between the function and the custom action. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(definition_id, function_type, function_id, app_id, **kwargs)  # noqa: E501
@@ -67,35 +75,46 @@ class FunctionsApi(object):
         Delete a function for a custom workflow action. This will remove the function itself as well as removing the association between the function and the custom action. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "function_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "function_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -103,16 +122,16 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `archive`")  # noqa: E501
         # verify the required parameter 'function_id' is set
-        if self.api_client.client_side_validation and ("function_id" not in local_var_params or local_var_params["function_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -129,7 +148,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -141,6 +160,8 @@ class FunctionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
             "DELETE",
@@ -150,13 +171,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def archive_by_function_type(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
@@ -165,23 +187,30 @@ class FunctionsApi(object):
         Delete a function for a custom workflow action. This will remove the function itself as well as removing the association between the function and the custom action. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_by_function_type(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_by_function_type_with_http_info(definition_id, function_type, app_id, **kwargs)  # noqa: E501
@@ -192,34 +221,44 @@ class FunctionsApi(object):
         Delete a function for a custom workflow action. This will remove the function itself as well as removing the association between the function and the custom action. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_by_function_type_with_http_info(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -227,13 +266,13 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `archive_by_function_type`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `archive_by_function_type`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive_by_function_type`")  # noqa: E501
 
         collection_formats = {}
@@ -248,7 +287,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -260,6 +299,8 @@ class FunctionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
             "DELETE",
@@ -269,13 +310,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_or_replace(self, definition_id, function_type, function_id, app_id, body, **kwargs):  # noqa: E501
@@ -284,25 +326,34 @@ class FunctionsApi(object):
         Creates or replaces a function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_or_replace(definition_id, function_type, function_id, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
-        :param str body: The function source code. Must be valid JavaScript code. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param body: The function source code. Must be valid JavaScript code. (required)
+        :type body: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ActionFunctionIdentifier
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ActionFunctionIdentifier
         """
         kwargs["_return_http_data_only"] = True
         return self.create_or_replace_with_http_info(definition_id, function_type, function_id, app_id, body, **kwargs)  # noqa: E501
@@ -313,36 +364,48 @@ class FunctionsApi(object):
         Creates or replaces a function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_or_replace_with_http_info(definition_id, function_type, function_id, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
-        :param str body: The function source code. Must be valid JavaScript code. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param body: The function source code. Must be valid JavaScript code. (required)
+        :type body: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ActionFunctionIdentifier, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ActionFunctionIdentifier, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "function_id", "app_id", "body"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "function_id", "app_id", "body"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -350,19 +413,19 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `create_or_replace`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `create_or_replace`")  # noqa: E501
         # verify the required parameter 'function_id' is set
-        if self.api_client.client_side_validation and ("function_id" not in local_var_params or local_var_params["function_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_id` when calling `create_or_replace`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `create_or_replace`")  # noqa: E501
         # verify the required parameter 'body' is set
-        if self.api_client.client_side_validation and ("body" not in local_var_params or local_var_params["body"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("body") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `body` when calling `create_or_replace`")  # noqa: E501
 
         collection_formats = {}
@@ -379,7 +442,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -391,10 +454,16 @@ class FunctionsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["text/plain"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["text/plain"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            200: "ActionFunctionIdentifier",
+        }
 
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
@@ -405,13 +474,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionFunctionIdentifier",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_or_replace_by_function_type(self, definition_id, function_type, app_id, body, **kwargs):  # noqa: E501
@@ -420,24 +490,32 @@ class FunctionsApi(object):
         Creates or replaces a function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_or_replace_by_function_type(definition_id, function_type, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
-        :param str body: The function source code. Must be valid JavaScript code. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param body: The function source code. Must be valid JavaScript code. (required)
+        :type body: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ActionFunctionIdentifier
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ActionFunctionIdentifier
         """
         kwargs["_return_http_data_only"] = True
         return self.create_or_replace_by_function_type_with_http_info(definition_id, function_type, app_id, body, **kwargs)  # noqa: E501
@@ -448,35 +526,46 @@ class FunctionsApi(object):
         Creates or replaces a function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_or_replace_by_function_type_with_http_info(definition_id, function_type, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
-        :param str body: The function source code. Must be valid JavaScript code. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param body: The function source code. Must be valid JavaScript code. (required)
+        :type body: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ActionFunctionIdentifier, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ActionFunctionIdentifier, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "app_id", "body"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "app_id", "body"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -484,16 +573,16 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `create_or_replace_by_function_type`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `create_or_replace_by_function_type`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `create_or_replace_by_function_type`")  # noqa: E501
         # verify the required parameter 'body' is set
-        if self.api_client.client_side_validation and ("body" not in local_var_params or local_var_params["body"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("body") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `body` when calling `create_or_replace_by_function_type`")  # noqa: E501
 
         collection_formats = {}
@@ -508,7 +597,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -520,10 +609,16 @@ class FunctionsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["text/plain"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["text/plain"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            200: "ActionFunctionIdentifier",
+        }
 
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
@@ -534,13 +629,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionFunctionIdentifier",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_function_type(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
@@ -549,23 +645,30 @@ class FunctionsApi(object):
         Returns the given function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_function_type(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ActionFunction
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ActionFunction
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_function_type_with_http_info(definition_id, function_type, app_id, **kwargs)  # noqa: E501
@@ -576,34 +679,44 @@ class FunctionsApi(object):
         Returns the given function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_function_type_with_http_info(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ActionFunction, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ActionFunction, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -611,13 +724,13 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `get_by_function_type`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `get_by_function_type`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_function_type`")  # noqa: E501
 
         collection_formats = {}
@@ -632,7 +745,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -644,6 +757,10 @@ class FunctionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "ActionFunction",
+        }
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
             "GET",
@@ -653,13 +770,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionFunction",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, definition_id, function_type, function_id, app_id, **kwargs):  # noqa: E501
@@ -668,24 +786,32 @@ class FunctionsApi(object):
         Returns the given function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ActionFunction
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ActionFunction
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(definition_id, function_type, function_id, app_id, **kwargs)  # noqa: E501
@@ -696,35 +822,46 @@ class FunctionsApi(object):
         Returns the given function for a custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param str function_type: The type of function. This determines when the function will be called. (required)
-        :param str function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param function_type: The type of function. This determines when the function will be called. (required)
+        :type function_type: str
+        :param function_id: The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types. (required)
+        :type function_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ActionFunction, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ActionFunction, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "function_type", "function_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "function_type", "function_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -732,16 +869,16 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'function_type' is set
-        if self.api_client.client_side_validation and ("function_type" not in local_var_params or local_var_params["function_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_type` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'function_id' is set
-        if self.api_client.client_side_validation and ("function_id" not in local_var_params or local_var_params["function_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("function_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `function_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -758,7 +895,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -770,6 +907,10 @@ class FunctionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "ActionFunction",
+        }
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
             "GET",
@@ -779,13 +920,14 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ActionFunction",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_page(self, definition_id, app_id, **kwargs):  # noqa: E501
@@ -794,22 +936,28 @@ class FunctionsApi(object):
         Returns a list of all functions that are associated with the given custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseActionFunctionIdentifierNoPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseActionFunctionIdentifierNoPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
@@ -820,33 +968,42 @@ class FunctionsApi(object):
         Returns a list of all functions that are associated with the given custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseActionFunctionIdentifierNoPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseActionFunctionIdentifierNoPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -854,10 +1011,10 @@ class FunctionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `get_page`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_page`")  # noqa: E501
 
         collection_formats = {}
@@ -870,7 +1027,7 @@ class FunctionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -882,6 +1039,10 @@ class FunctionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseActionFunctionIdentifierNoPaging",
+        }
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}/functions",
             "GET",
@@ -891,11 +1052,12 @@ class FunctionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseActionFunctionIdentifierNoPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

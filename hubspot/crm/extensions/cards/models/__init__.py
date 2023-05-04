@@ -32,5 +32,6 @@ from hubspot.crm.extensions.cards.models.error_detail import ErrorDetail
 from hubspot.crm.extensions.cards.models.i_frame_action_body import IFrameActionBody
 from hubspot.crm.extensions.cards.models.integrator_card_payload_response import IntegratorCardPayloadResponse
 from hubspot.crm.extensions.cards.models.integrator_object_result import IntegratorObjectResult
+from hubspot.crm.extensions.cards.models.integrator_object_result_actions_inner import IntegratorObjectResultActionsInner
 from hubspot.crm.extensions.cards.models.object_token import ObjectToken
 from hubspot.crm.extensions.cards.models.top_level_actions import TopLevelActions

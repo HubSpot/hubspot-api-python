@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -46,7 +49,7 @@ class CreateInvoiceSubFeatures(object):
     def __init__(self, create_customer=None, taxes=None, exchange_rates=None, terms=None, invoice_comments=None, invoice_discounts=None, local_vars_configuration=None):  # noqa: E501
         """CreateInvoiceSubFeatures - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._create_customer = None
@@ -82,7 +85,7 @@ class CreateInvoiceSubFeatures(object):
         Indicates if a new customer can be created in the external accounting system.  # noqa: E501
 
         :param create_customer: The create_customer of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type create_customer: bool
         """
         if self.local_vars_configuration.client_side_validation and create_customer is None:  # noqa: E501
             raise ValueError("Invalid value for `create_customer`, must not be `None`")  # noqa: E501
@@ -107,7 +110,7 @@ class CreateInvoiceSubFeatures(object):
         Indicates if taxes can be specified by the HubSpot user for line items.  # noqa: E501
 
         :param taxes: The taxes of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type taxes: bool
         """
         if self.local_vars_configuration.client_side_validation and taxes is None:  # noqa: E501
             raise ValueError("Invalid value for `taxes`, must not be `None`")  # noqa: E501
@@ -132,7 +135,7 @@ class CreateInvoiceSubFeatures(object):
         Indicates if the external accounting system supports fetching exchange rates when create an invoice in HubSpot for a customer billed in a different currency.  # noqa: E501
 
         :param exchange_rates: The exchange_rates of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type exchange_rates: bool
         """
         if self.local_vars_configuration.client_side_validation and exchange_rates is None:  # noqa: E501
             raise ValueError("Invalid value for `exchange_rates`, must not be `None`")  # noqa: E501
@@ -157,7 +160,7 @@ class CreateInvoiceSubFeatures(object):
         Indicates if the external accounting system supports fetching payment terms.  # noqa: E501
 
         :param terms: The terms of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type terms: bool
         """
         if self.local_vars_configuration.client_side_validation and terms is None:  # noqa: E501
             raise ValueError("Invalid value for `terms`, must not be `None`")  # noqa: E501
@@ -182,7 +185,7 @@ class CreateInvoiceSubFeatures(object):
         Indicates if a visible comment can be added to invoices.  # noqa: E501
 
         :param invoice_comments: The invoice_comments of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type invoice_comments: bool
         """
         if self.local_vars_configuration.client_side_validation and invoice_comments is None:  # noqa: E501
             raise ValueError("Invalid value for `invoice_comments`, must not be `None`")  # noqa: E501
@@ -207,27 +210,36 @@ class CreateInvoiceSubFeatures(object):
         Indicates if invoice-level discounts can be added to invoices.  # noqa: E501
 
         :param invoice_discounts: The invoice_discounts of this CreateInvoiceSubFeatures.  # noqa: E501
-        :type: bool
+        :type invoice_discounts: bool
         """
         if self.local_vars_configuration.client_side_validation and invoice_discounts is None:  # noqa: E501
             raise ValueError("Invalid value for `invoice_discounts`, must not be `None`")  # noqa: E501
 
         self._invoice_discounts = invoice_discounts
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.audit_logs.configuration import Configuration
@@ -39,7 +42,7 @@ class PublicAuditLog(object):
     def __init__(self, object_id=None, user_id=None, timestamp=None, object_name=None, full_name=None, event=None, object_type=None, local_vars_configuration=None):  # noqa: E501
         """PublicAuditLog - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._object_id = None
@@ -77,7 +80,7 @@ class PublicAuditLog(object):
         The ID of the object.  # noqa: E501
 
         :param object_id: The object_id of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type object_id: str
         """
         if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
             raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
@@ -102,7 +105,7 @@ class PublicAuditLog(object):
         The ID of the user who caused the event.  # noqa: E501
 
         :param user_id: The user_id of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type user_id: str
         """
         if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
             raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class PublicAuditLog(object):
         The timestamp at which the event occurred.  # noqa: E501
 
         :param timestamp: The timestamp of this PublicAuditLog.  # noqa: E501
-        :type: datetime
+        :type timestamp: datetime
         """
         if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
@@ -152,7 +155,7 @@ class PublicAuditLog(object):
         The internal name of the object in HubSpot.  # noqa: E501
 
         :param object_name: The object_name of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type object_name: str
         """
         if self.local_vars_configuration.client_side_validation and object_name is None:  # noqa: E501
             raise ValueError("Invalid value for `object_name`, must not be `None`")  # noqa: E501
@@ -177,7 +180,7 @@ class PublicAuditLog(object):
         The name of the user who caused the event.  # noqa: E501
 
         :param full_name: The full_name of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type full_name: str
         """
         if self.local_vars_configuration.client_side_validation and full_name is None:  # noqa: E501
             raise ValueError("Invalid value for `full_name`, must not be `None`")  # noqa: E501
@@ -202,7 +205,7 @@ class PublicAuditLog(object):
         The type of event that took place (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).  # noqa: E501
 
         :param event: The event of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type event: str
         """
         if self.local_vars_configuration.client_side_validation and event is None:  # noqa: E501
             raise ValueError("Invalid value for `event`, must not be `None`")  # noqa: E501
@@ -230,7 +233,7 @@ class PublicAuditLog(object):
         The type of the object (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)  # noqa: E501
 
         :param object_type: The object_type of this PublicAuditLog.  # noqa: E501
-        :type: str
+        :type object_type: str
         """
         if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
@@ -259,20 +262,29 @@ class PublicAuditLog(object):
 
         self._object_type = object_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

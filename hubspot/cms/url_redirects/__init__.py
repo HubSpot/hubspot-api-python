@@ -26,6 +26,7 @@ from hubspot.cms.url_redirects.exceptions import OpenApiException
 from hubspot.cms.url_redirects.exceptions import ApiTypeError
 from hubspot.cms.url_redirects.exceptions import ApiValueError
 from hubspot.cms.url_redirects.exceptions import ApiKeyError
+from hubspot.cms.url_redirects.exceptions import ApiAttributeError
 from hubspot.cms.url_redirects.exceptions import ApiException
 
 # import models into sdk package

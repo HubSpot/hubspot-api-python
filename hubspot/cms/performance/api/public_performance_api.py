@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.performance.api_client import ApiClient
-from hubspot.cms.performance.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.performance.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class PublicPerformanceApi(object):
@@ -39,28 +39,40 @@ class PublicPerformanceApi(object):
         Returns time series data website performance data for the given domain and/or path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str domain: The domain to search return data for.
-        :param str path: The url path of the domain to return data for.
-        :param bool pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
-        :param bool sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
-        :param str period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param str interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param int start: A timestamp in milliseconds that indicates the start of the time period.
-        :param int end: A timestamp in milliseconds that indicates the end of the time period.
+        :param domain: The domain to search return data for.
+        :type domain: str
+        :param path: The url path of the domain to return data for.
+        :type path: str
+        :param pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
+        :type pad: bool
+        :param sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
+        :type sum: bool
+        :param period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type period: str
+        :param interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type interval: str
+        :param start: A timestamp in milliseconds that indicates the start of the time period.
+        :type start: int
+        :param end: A timestamp in milliseconds that indicates the end of the time period.
+        :type end: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PublicPerformanceResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PublicPerformanceResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
@@ -71,39 +83,54 @@ class PublicPerformanceApi(object):
         Returns time series data website performance data for the given domain and/or path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str domain: The domain to search return data for.
-        :param str path: The url path of the domain to return data for.
-        :param bool pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
-        :param bool sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
-        :param str period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param str interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param int start: A timestamp in milliseconds that indicates the start of the time period.
-        :param int end: A timestamp in milliseconds that indicates the end of the time period.
+        :param domain: The domain to search return data for.
+        :type domain: str
+        :param path: The url path of the domain to return data for.
+        :type path: str
+        :param pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
+        :type pad: bool
+        :param sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
+        :type sum: bool
+        :param period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type period: str
+        :param interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type interval: str
+        :param start: A timestamp in milliseconds that indicates the start of the time period.
+        :type start: int
+        :param end: A timestamp in milliseconds that indicates the end of the time period.
+        :type end: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PublicPerformanceResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PublicPerformanceResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["domain", "path", "pad", "sum", "period", "interval", "start", "end"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["domain", "path", "pad", "sum", "period", "interval", "start", "end"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -116,24 +143,24 @@ class PublicPerformanceApi(object):
         path_params = {}
 
         query_params = []
-        if "domain" in local_var_params and local_var_params["domain"] is not None:  # noqa: E501
+        if local_var_params.get("domain") is not None:  # noqa: E501
             query_params.append(("domain", local_var_params["domain"]))  # noqa: E501
-        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
+        if local_var_params.get("path") is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if "pad" in local_var_params and local_var_params["pad"] is not None:  # noqa: E501
+        if local_var_params.get("pad") is not None:  # noqa: E501
             query_params.append(("pad", local_var_params["pad"]))  # noqa: E501
-        if "sum" in local_var_params and local_var_params["sum"] is not None:  # noqa: E501
+        if local_var_params.get("sum") is not None:  # noqa: E501
             query_params.append(("sum", local_var_params["sum"]))  # noqa: E501
-        if "period" in local_var_params and local_var_params["period"] is not None:  # noqa: E501
+        if local_var_params.get("period") is not None:  # noqa: E501
             query_params.append(("period", local_var_params["period"]))  # noqa: E501
-        if "interval" in local_var_params and local_var_params["interval"] is not None:  # noqa: E501
+        if local_var_params.get("interval") is not None:  # noqa: E501
             query_params.append(("interval", local_var_params["interval"]))  # noqa: E501
-        if "start" in local_var_params and local_var_params["start"] is not None:  # noqa: E501
+        if local_var_params.get("start") is not None:  # noqa: E501
             query_params.append(("start", local_var_params["start"]))  # noqa: E501
-        if "end" in local_var_params and local_var_params["end"] is not None:  # noqa: E501
+        if local_var_params.get("end") is not None:  # noqa: E501
             query_params.append(("end", local_var_params["end"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -145,6 +172,10 @@ class PublicPerformanceApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "PublicPerformanceResponse",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/performance/",
             "GET",
@@ -154,13 +185,14 @@ class PublicPerformanceApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicPerformanceResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_uptime(self, **kwargs):  # noqa: E501
@@ -169,28 +201,40 @@ class PublicPerformanceApi(object):
         Returns uptime time series website performance data for the given domain.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_uptime(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str domain: The domain to search return data for.
-        :param str path:
-        :param bool pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
-        :param bool sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
-        :param str period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param str interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param int start: A timestamp in milliseconds that indicates the start of the time period.
-        :param int end: A timestamp in milliseconds that indicates the end of the time period.
+        :param domain: The domain to search return data for.
+        :type domain: str
+        :param path:
+        :type path: str
+        :param pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
+        :type pad: bool
+        :param sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
+        :type sum: bool
+        :param period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type period: str
+        :param interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type interval: str
+        :param start: A timestamp in milliseconds that indicates the start of the time period.
+        :type start: int
+        :param end: A timestamp in milliseconds that indicates the end of the time period.
+        :type end: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: PublicPerformanceResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: PublicPerformanceResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.get_uptime_with_http_info(**kwargs)  # noqa: E501
@@ -201,39 +245,54 @@ class PublicPerformanceApi(object):
         Returns uptime time series website performance data for the given domain.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_uptime_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str domain: The domain to search return data for.
-        :param str path:
-        :param bool pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
-        :param bool sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
-        :param str period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param str interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
-        :param int start: A timestamp in milliseconds that indicates the start of the time period.
-        :param int end: A timestamp in milliseconds that indicates the end of the time period.
+        :param domain: The domain to search return data for.
+        :type domain: str
+        :param path:
+        :type path: str
+        :param pad: Specifies whether the time series data should have empty intervals if performance data is not present to create a continuous set.
+        :type pad: bool
+        :param sum: Specifies whether the time series data should be summated for the given period. Defaults to false.
+        :type sum: bool
+        :param period: A relative period to return time series data for. This value is ignored if start and/or end are provided. Valid periods: [15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type period: str
+        :param interval: The time series interval to group data by. Valid intervals: [1m, 5m, 15m, 30m, 1h, 4h, 12h, 1d, 1w]
+        :type interval: str
+        :param start: A timestamp in milliseconds that indicates the start of the time period.
+        :type start: int
+        :param end: A timestamp in milliseconds that indicates the end of the time period.
+        :type end: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(PublicPerformanceResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(PublicPerformanceResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["domain", "path", "pad", "sum", "period", "interval", "start", "end"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["domain", "path", "pad", "sum", "period", "interval", "start", "end"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -246,24 +305,24 @@ class PublicPerformanceApi(object):
         path_params = {}
 
         query_params = []
-        if "domain" in local_var_params and local_var_params["domain"] is not None:  # noqa: E501
+        if local_var_params.get("domain") is not None:  # noqa: E501
             query_params.append(("domain", local_var_params["domain"]))  # noqa: E501
-        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
+        if local_var_params.get("path") is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if "pad" in local_var_params and local_var_params["pad"] is not None:  # noqa: E501
+        if local_var_params.get("pad") is not None:  # noqa: E501
             query_params.append(("pad", local_var_params["pad"]))  # noqa: E501
-        if "sum" in local_var_params and local_var_params["sum"] is not None:  # noqa: E501
+        if local_var_params.get("sum") is not None:  # noqa: E501
             query_params.append(("sum", local_var_params["sum"]))  # noqa: E501
-        if "period" in local_var_params and local_var_params["period"] is not None:  # noqa: E501
+        if local_var_params.get("period") is not None:  # noqa: E501
             query_params.append(("period", local_var_params["period"]))  # noqa: E501
-        if "interval" in local_var_params and local_var_params["interval"] is not None:  # noqa: E501
+        if local_var_params.get("interval") is not None:  # noqa: E501
             query_params.append(("interval", local_var_params["interval"]))  # noqa: E501
-        if "start" in local_var_params and local_var_params["start"] is not None:  # noqa: E501
+        if local_var_params.get("start") is not None:  # noqa: E501
             query_params.append(("start", local_var_params["start"]))  # noqa: E501
-        if "end" in local_var_params and local_var_params["end"] is not None:  # noqa: E501
+        if local_var_params.get("end") is not None:  # noqa: E501
             query_params.append(("end", local_var_params["end"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -275,6 +334,10 @@ class PublicPerformanceApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "PublicPerformanceResponse",
+        }
+
         return self.api_client.call_api(
             "/cms/v3/performance/uptime",
             "GET",
@@ -284,11 +347,12 @@ class PublicPerformanceApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="PublicPerformanceResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

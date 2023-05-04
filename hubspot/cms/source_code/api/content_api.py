@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class ContentApi(object):
@@ -39,22 +39,28 @@ class ContentApi(object):
         Deletes the file at the specified path in the specified environment.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(environment, path, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class ContentApi(object):
         Deletes the file at the specified path in the specified environment.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["environment", "path"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["environment", "path"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class ContentApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'environment' is set
-        if self.api_client.client_side_validation and ("environment" not in local_var_params or local_var_params["environment"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("environment") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `environment` when calling `archive`")  # noqa: E501
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("path") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `archive`")  # noqa: E501
 
         if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
@@ -117,7 +132,7 @@ class ContentApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -129,6 +144,8 @@ class ContentApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/source-code/{environment}/content/{path}",
             "DELETE",
@@ -138,13 +155,14 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, environment, path, **kwargs):  # noqa: E501
@@ -153,23 +171,30 @@ class ContentApi(object):
         Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
-        :param file file: The file to upload.
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param file: The file to upload.
+        :type file: file
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AssetFileMetadata
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AssetFileMetadata
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(environment, path, **kwargs)  # noqa: E501
@@ -180,34 +205,44 @@ class ContentApi(object):
         Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
-        :param file file: The file to upload.
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param file: The file to upload.
+        :type file: file
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AssetFileMetadata, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AssetFileMetadata, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["environment", "path", "file"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["environment", "path", "file"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -215,10 +250,10 @@ class ContentApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'environment' is set
-        if self.api_client.client_side_validation and ("environment" not in local_var_params or local_var_params["environment"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("environment") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `environment` when calling `create`")  # noqa: E501
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("path") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `create`")  # noqa: E501
 
         if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
@@ -233,7 +268,7 @@ class ContentApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -245,10 +280,16 @@ class ContentApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["multipart/form-data"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "AssetFileMetadata",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/source-code/{environment}/content/{path}",
@@ -259,13 +300,14 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="AssetFileMetadata",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get(self, environment, path, **kwargs):  # noqa: E501
@@ -274,22 +316,28 @@ class ContentApi(object):
         Downloads the byte contents of the file at the specified path in the specified environment.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Error
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: Error
         """
         kwargs["_return_http_data_only"] = True
         return self.get_with_http_info(environment, path, **kwargs)  # noqa: E501
@@ -300,33 +348,42 @@ class ContentApi(object):
         Downloads the byte contents of the file at the specified path in the specified environment.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_with_http_info(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["environment", "path"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["environment", "path"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -334,10 +391,10 @@ class ContentApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'environment' is set
-        if self.api_client.client_side_validation and ("environment" not in local_var_params or local_var_params["environment"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("environment") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `environment` when calling `get`")  # noqa: E501
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("path") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `get`")  # noqa: E501
 
         if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
@@ -352,7 +409,7 @@ class ContentApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -364,6 +421,8 @@ class ContentApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/source-code/{environment}/content/{path}",
             "GET",
@@ -373,13 +432,14 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="Error",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def replace(self, environment, path, **kwargs):  # noqa: E501
@@ -388,23 +448,30 @@ class ContentApi(object):
         Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
-        :param file file: The file to upload.
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param file: The file to upload.
+        :type file: file
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AssetFileMetadata
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AssetFileMetadata
         """
         kwargs["_return_http_data_only"] = True
         return self.replace_with_http_info(environment, path, **kwargs)  # noqa: E501
@@ -415,34 +482,44 @@ class ContentApi(object):
         Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_with_http_info(environment, path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str environment: The environment of the file (\"draft\" or \"published\"). (required)
-        :param str path: The file system location of the file. (required)
-        :param file file: The file to upload.
+        :param environment: The environment of the file (\"draft\" or \"published\"). (required)
+        :type environment: str
+        :param path: The file system location of the file. (required)
+        :type path: str
+        :param file: The file to upload.
+        :type file: file
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AssetFileMetadata, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AssetFileMetadata, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["environment", "path", "file"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["environment", "path", "file"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -450,10 +527,10 @@ class ContentApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'environment' is set
-        if self.api_client.client_side_validation and ("environment" not in local_var_params or local_var_params["environment"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("environment") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `environment` when calling `replace`")  # noqa: E501
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("path") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `replace`")  # noqa: E501
 
         if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
@@ -468,7 +545,7 @@ class ContentApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -480,10 +557,16 @@ class ContentApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["multipart/form-data"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "AssetFileMetadata",
+        }
 
         return self.api_client.call_api(
             "/cms/v3/source-code/{environment}/content/{path}",
@@ -494,11 +577,12 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="AssetFileMetadata",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

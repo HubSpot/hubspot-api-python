@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.accounting.configuration import Configuration
@@ -61,7 +64,7 @@ class AccountingExtensionInvoice(object):
     ):  # noqa: E501
         """AccountingExtensionInvoice - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._amount_due = None
@@ -106,7 +109,7 @@ class AccountingExtensionInvoice(object):
         The total amount due.  # noqa: E501
 
         :param amount_due: The amount_due of this AccountingExtensionInvoice.  # noqa: E501
-        :type: float
+        :type amount_due: float
         """
         if self.local_vars_configuration.client_side_validation and amount_due is None:  # noqa: E501
             raise ValueError("Invalid value for `amount_due`, must not be `None`")  # noqa: E501
@@ -131,7 +134,7 @@ class AccountingExtensionInvoice(object):
         The remaining outstanding balance due.  # noqa: E501
 
         :param balance: The balance of this AccountingExtensionInvoice.  # noqa: E501
-        :type: float
+        :type balance: float
         """
 
         self._balance = balance
@@ -154,7 +157,7 @@ class AccountingExtensionInvoice(object):
         The due date for payment of the invoice, in ISO-8601 date format (yyyy-MM-dd)  # noqa: E501
 
         :param due_date: The due_date of this AccountingExtensionInvoice.  # noqa: E501
-        :type: date
+        :type due_date: date
         """
         if self.local_vars_configuration.client_side_validation and due_date is None:  # noqa: E501
             raise ValueError("Invalid value for `due_date`, must not be `None`")  # noqa: E501
@@ -179,7 +182,7 @@ class AccountingExtensionInvoice(object):
         The invoice number  # noqa: E501
 
         :param invoice_number: The invoice_number of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type invoice_number: str
         """
 
         self._invoice_number = invoice_number
@@ -202,7 +205,7 @@ class AccountingExtensionInvoice(object):
         The ID of the customer that this invoice is for.  # noqa: E501
 
         :param customer_id: The customer_id of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type customer_id: str
         """
 
         self._customer_id = customer_id
@@ -225,7 +228,7 @@ class AccountingExtensionInvoice(object):
         The ISO 4217 currency code that represents the currency of this invoice.  # noqa: E501
 
         :param currency: The currency of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type currency: str
         """
         if self.local_vars_configuration.client_side_validation and currency is None:  # noqa: E501
             raise ValueError("Invalid value for `currency`, must not be `None`")  # noqa: E501
@@ -250,7 +253,7 @@ class AccountingExtensionInvoice(object):
         A link to the invoice in the external accounting system.  # noqa: E501
 
         :param invoice_link: The invoice_link of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type invoice_link: str
         """
         if self.local_vars_configuration.client_side_validation and invoice_link is None:  # noqa: E501
             raise ValueError("Invalid value for `invoice_link`, must not be `None`")  # noqa: E501
@@ -275,7 +278,7 @@ class AccountingExtensionInvoice(object):
         The name of the customer that this invoice is for.  # noqa: E501
 
         :param customer_name: The customer_name of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type customer_name: str
         """
         if self.local_vars_configuration.client_side_validation and customer_name is None:  # noqa: E501
             raise ValueError("Invalid value for `customer_name`, must not be `None`")  # noqa: E501
@@ -300,7 +303,7 @@ class AccountingExtensionInvoice(object):
         The currency status of the invoice.  # noqa: E501
 
         :param status: The status of this AccountingExtensionInvoice.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -310,20 +313,29 @@ class AccountingExtensionInvoice(object):
 
         self._status = status
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

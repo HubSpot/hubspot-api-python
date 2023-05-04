@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.files.files.api_client import ApiClient
-from hubspot.files.files.exceptions import ApiTypeError, ApiValueError
+from hubspot.files.files.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class FilesApi(object):
@@ -39,21 +39,26 @@ class FilesApi(object):
         Delete file by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: File ID to delete (required)
+        :param file_id: File ID to delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(file_id, **kwargs)  # noqa: E501
@@ -64,32 +69,40 @@ class FilesApi(object):
         Delete file by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: File ID to delete (required)
+        :param file_id: File ID to delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -97,7 +110,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `archive`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -110,7 +123,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -122,6 +135,8 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
             "DELETE",
@@ -131,13 +146,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def archive_gdpr(self, file_id, **kwargs):  # noqa: E501
@@ -146,21 +162,26 @@ class FilesApi(object):
         GDRP delete file  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_gdpr(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file to GDPR delete (required)
+        :param file_id: ID of file to GDPR delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_gdpr_with_http_info(file_id, **kwargs)  # noqa: E501
@@ -171,32 +192,40 @@ class FilesApi(object):
         GDRP delete file  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_gdpr_with_http_info(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file to GDPR delete (required)
+        :param file_id: ID of file to GDPR delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -204,7 +233,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `archive_gdpr`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -217,7 +246,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -229,6 +258,8 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/files/v3/files/{fileId}/gdpr-delete",
             "DELETE",
@@ -238,13 +269,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def check_import(self, task_id, **kwargs):  # noqa: E501
@@ -253,21 +285,26 @@ class FilesApi(object):
         Check the status of requested import.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.check_import(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str task_id: Import by URL task ID (required)
+        :param task_id: Import by URL task ID (required)
+        :type task_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: FileActionResponse
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: FileActionResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.check_import_with_http_info(task_id, **kwargs)  # noqa: E501
@@ -278,32 +315,40 @@ class FilesApi(object):
         Check the status of requested import.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.check_import_with_http_info(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str task_id: Import by URL task ID (required)
+        :param task_id: Import by URL task ID (required)
+        :type task_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(FileActionResponse, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(FileActionResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["task_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["task_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -311,7 +356,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'task_id' is set
-        if self.api_client.client_side_validation and ("task_id" not in local_var_params or local_var_params["task_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("task_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `task_id` when calling `check_import`")  # noqa: E501
 
         collection_formats = {}
@@ -322,7 +367,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -334,6 +379,10 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "FileActionResponse",
+        }
+
         return self.api_client.call_api(
             "/files/v3/files/import-from-url/async/tasks/{taskId}/status",
             "GET",
@@ -343,13 +392,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="FileActionResponse",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def do_search(self, **kwargs):  # noqa: E501
@@ -358,44 +408,72 @@ class FilesApi(object):
         Search through files in the file manager. Does not display hidden or archived files.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_search(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] properties: Desired file properties in the return object.
-        :param str after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
-        :param str before:
-        :param int limit: Number of items to return. Maximum limit is 100.
-        :param list[str] sort: Sort files by a given field.
-        :param str id: Search files by given ID.
-        :param datetime created_at: Search files by time of creation.
-        :param datetime created_at_lte:
-        :param datetime created_at_gte:
-        :param datetime updated_at: Search files by time of latest updated.
-        :param datetime updated_at_lte:
-        :param datetime updated_at_gte:
-        :param str name: Search for files containing the given name.
-        :param str path: Search files by path.
-        :param int parent_folder_id: Search files within given folder ID.
-        :param int size: Query by file size.
-        :param int height: Search files by height of image or video.
-        :param int width: Search files by width of image or video.
-        :param str encoding: Search files with specified encoding.
-        :param str type: Filter by provided file type.
-        :param str extension: Search files by given extension.
-        :param str url: Search for given URL
-        :param bool is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
-        :param bool allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :param properties: Desired file properties in the return object.
+        :type properties: list[str]
+        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :type after: str
+        :param before:
+        :type before: str
+        :param limit: Number of items to return. Maximum limit is 100.
+        :type limit: int
+        :param sort: Sort files by a given field.
+        :type sort: list[str]
+        :param id: Search files by given ID.
+        :type id: str
+        :param created_at: Search files by time of creation.
+        :type created_at: datetime
+        :param created_at_lte:
+        :type created_at_lte: datetime
+        :param created_at_gte:
+        :type created_at_gte: datetime
+        :param updated_at: Search files by time of latest updated.
+        :type updated_at: datetime
+        :param updated_at_lte:
+        :type updated_at_lte: datetime
+        :param updated_at_gte:
+        :type updated_at_gte: datetime
+        :param name: Search for files containing the given name.
+        :type name: str
+        :param path: Search files by path.
+        :type path: str
+        :param parent_folder_id: Search files within given folder ID.
+        :type parent_folder_id: int
+        :param size: Query by file size.
+        :type size: int
+        :param height: Search files by height of image or video.
+        :type height: int
+        :param width: Search files by width of image or video.
+        :type width: int
+        :param encoding: Search files with specified encoding.
+        :type encoding: str
+        :param type: Filter by provided file type.
+        :type type: str
+        :param extension: Search files by given extension.
+        :type extension: str
+        :param url: Search for given URL
+        :type url: str
+        :param is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
+        :type is_usable_in_content: bool
+        :param allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :type allows_anonymous_access: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseFile
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseFile
         """
         kwargs["_return_http_data_only"] = True
         return self.do_search_with_http_info(**kwargs)  # noqa: E501
@@ -406,46 +484,80 @@ class FilesApi(object):
         Search through files in the file manager. Does not display hidden or archived files.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.do_search_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param list[str] properties: Desired file properties in the return object.
-        :param str after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
-        :param str before:
-        :param int limit: Number of items to return. Maximum limit is 100.
-        :param list[str] sort: Sort files by a given field.
-        :param str id: Search files by given ID.
-        :param datetime created_at: Search files by time of creation.
-        :param datetime created_at_lte:
-        :param datetime created_at_gte:
-        :param datetime updated_at: Search files by time of latest updated.
-        :param datetime updated_at_lte:
-        :param datetime updated_at_gte:
-        :param str name: Search for files containing the given name.
-        :param str path: Search files by path.
-        :param int parent_folder_id: Search files within given folder ID.
-        :param int size: Query by file size.
-        :param int height: Search files by height of image or video.
-        :param int width: Search files by width of image or video.
-        :param str encoding: Search files with specified encoding.
-        :param str type: Filter by provided file type.
-        :param str extension: Search files by given extension.
-        :param str url: Search for given URL
-        :param bool is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
-        :param bool allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :param properties: Desired file properties in the return object.
+        :type properties: list[str]
+        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :type after: str
+        :param before:
+        :type before: str
+        :param limit: Number of items to return. Maximum limit is 100.
+        :type limit: int
+        :param sort: Sort files by a given field.
+        :type sort: list[str]
+        :param id: Search files by given ID.
+        :type id: str
+        :param created_at: Search files by time of creation.
+        :type created_at: datetime
+        :param created_at_lte:
+        :type created_at_lte: datetime
+        :param created_at_gte:
+        :type created_at_gte: datetime
+        :param updated_at: Search files by time of latest updated.
+        :type updated_at: datetime
+        :param updated_at_lte:
+        :type updated_at_lte: datetime
+        :param updated_at_gte:
+        :type updated_at_gte: datetime
+        :param name: Search for files containing the given name.
+        :type name: str
+        :param path: Search files by path.
+        :type path: str
+        :param parent_folder_id: Search files within given folder ID.
+        :type parent_folder_id: int
+        :param size: Query by file size.
+        :type size: int
+        :param height: Search files by height of image or video.
+        :type height: int
+        :param width: Search files by width of image or video.
+        :type width: int
+        :param encoding: Search files with specified encoding.
+        :type encoding: str
+        :param type: Filter by provided file type.
+        :type type: str
+        :param extension: Search files by given extension.
+        :type extension: str
+        :param url: Search for given URL
+        :type url: str
+        :param is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
+        :type is_usable_in_content: bool
+        :param allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :type allows_anonymous_access: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseFile, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseFile, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -475,11 +587,8 @@ class FilesApi(object):
             "url",
             "is_usable_in_content",
             "allows_anonymous_access",
-        ]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        ]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -492,58 +601,58 @@ class FilesApi(object):
         path_params = {}
 
         query_params = []
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+        if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "before" in local_var_params and local_var_params["before"] is not None:  # noqa: E501
+        if local_var_params.get("before") is not None:  # noqa: E501
             query_params.append(("before", local_var_params["before"]))  # noqa: E501
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "sort" in local_var_params and local_var_params["sort"] is not None:  # noqa: E501
+        if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if "id" in local_var_params and local_var_params["id"] is not None:  # noqa: E501
+        if local_var_params.get("id") is not None:  # noqa: E501
             query_params.append(("id", local_var_params["id"]))  # noqa: E501
-        if "created_at" in local_var_params and local_var_params["created_at"] is not None:  # noqa: E501
+        if local_var_params.get("created_at") is not None:  # noqa: E501
             query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
-        if "created_at_lte" in local_var_params and local_var_params["created_at_lte"] is not None:  # noqa: E501
+        if local_var_params.get("created_at_lte") is not None:  # noqa: E501
             query_params.append(("createdAtLte", local_var_params["created_at_lte"]))  # noqa: E501
-        if "created_at_gte" in local_var_params and local_var_params["created_at_gte"] is not None:  # noqa: E501
+        if local_var_params.get("created_at_gte") is not None:  # noqa: E501
             query_params.append(("createdAtGte", local_var_params["created_at_gte"]))  # noqa: E501
-        if "updated_at" in local_var_params and local_var_params["updated_at"] is not None:  # noqa: E501
+        if local_var_params.get("updated_at") is not None:  # noqa: E501
             query_params.append(("updatedAt", local_var_params["updated_at"]))  # noqa: E501
-        if "updated_at_lte" in local_var_params and local_var_params["updated_at_lte"] is not None:  # noqa: E501
+        if local_var_params.get("updated_at_lte") is not None:  # noqa: E501
             query_params.append(("updatedAtLte", local_var_params["updated_at_lte"]))  # noqa: E501
-        if "updated_at_gte" in local_var_params and local_var_params["updated_at_gte"] is not None:  # noqa: E501
+        if local_var_params.get("updated_at_gte") is not None:  # noqa: E501
             query_params.append(("updatedAtGte", local_var_params["updated_at_gte"]))  # noqa: E501
-        if "name" in local_var_params and local_var_params["name"] is not None:  # noqa: E501
+        if local_var_params.get("name") is not None:  # noqa: E501
             query_params.append(("name", local_var_params["name"]))  # noqa: E501
-        if "path" in local_var_params and local_var_params["path"] is not None:  # noqa: E501
+        if local_var_params.get("path") is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if "parent_folder_id" in local_var_params and local_var_params["parent_folder_id"] is not None:  # noqa: E501
+        if local_var_params.get("parent_folder_id") is not None:  # noqa: E501
             query_params.append(("parentFolderId", local_var_params["parent_folder_id"]))  # noqa: E501
-        if "size" in local_var_params and local_var_params["size"] is not None:  # noqa: E501
+        if local_var_params.get("size") is not None:  # noqa: E501
             query_params.append(("size", local_var_params["size"]))  # noqa: E501
-        if "height" in local_var_params and local_var_params["height"] is not None:  # noqa: E501
+        if local_var_params.get("height") is not None:  # noqa: E501
             query_params.append(("height", local_var_params["height"]))  # noqa: E501
-        if "width" in local_var_params and local_var_params["width"] is not None:  # noqa: E501
+        if local_var_params.get("width") is not None:  # noqa: E501
             query_params.append(("width", local_var_params["width"]))  # noqa: E501
-        if "encoding" in local_var_params and local_var_params["encoding"] is not None:  # noqa: E501
+        if local_var_params.get("encoding") is not None:  # noqa: E501
             query_params.append(("encoding", local_var_params["encoding"]))  # noqa: E501
-        if "type" in local_var_params and local_var_params["type"] is not None:  # noqa: E501
+        if local_var_params.get("type") is not None:  # noqa: E501
             query_params.append(("type", local_var_params["type"]))  # noqa: E501
-        if "extension" in local_var_params and local_var_params["extension"] is not None:  # noqa: E501
+        if local_var_params.get("extension") is not None:  # noqa: E501
             query_params.append(("extension", local_var_params["extension"]))  # noqa: E501
-        if "url" in local_var_params and local_var_params["url"] is not None:  # noqa: E501
+        if local_var_params.get("url") is not None:  # noqa: E501
             query_params.append(("url", local_var_params["url"]))  # noqa: E501
-        if "is_usable_in_content" in local_var_params and local_var_params["is_usable_in_content"] is not None:  # noqa: E501
+        if local_var_params.get("is_usable_in_content") is not None:  # noqa: E501
             query_params.append(("isUsableInContent", local_var_params["is_usable_in_content"]))  # noqa: E501
-        if "allows_anonymous_access" in local_var_params and local_var_params["allows_anonymous_access"] is not None:  # noqa: E501
+        if local_var_params.get("allows_anonymous_access") is not None:  # noqa: E501
             query_params.append(("allowsAnonymousAccess", local_var_params["allows_anonymous_access"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -555,6 +664,10 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseFile",
+        }
+
         return self.api_client.call_api(
             "/files/v3/files/search",
             "GET",
@@ -564,13 +677,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseFile",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, file_id, **kwargs):  # noqa: E501
@@ -579,22 +693,28 @@ class FilesApi(object):
         Get file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: Id of the desired file. (required)
-        :param list[str] properties:
+        :param file_id: Id of the desired file. (required)
+        :type file_id: str
+        :param properties:
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: File
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: File
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(file_id, **kwargs)  # noqa: E501
@@ -605,33 +725,42 @@ class FilesApi(object):
         Get file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: Id of the desired file. (required)
-        :param list[str] properties:
+        :param file_id: Id of the desired file. (required)
+        :type file_id: str
+        :param properties:
+        :type properties: list[str]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(File, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(File, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id", "properties"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id", "properties"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -639,7 +768,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `get_by_id`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -651,11 +780,11 @@ class FilesApi(object):
             path_params["fileId"] = local_var_params["file_id"]  # noqa: E501
 
         query_params = []
-        if "properties" in local_var_params and local_var_params["properties"] is not None:  # noqa: E501
+        if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -667,6 +796,10 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "File",
+        }
+
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
             "GET",
@@ -676,13 +809,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="File",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_signed_url(self, file_id, **kwargs):  # noqa: E501
@@ -691,24 +825,32 @@ class FilesApi(object):
         Generates signed URL that allows temporary access to a private file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_signed_url(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file. (required)
-        :param str size: For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
-        :param int expiration_seconds: How long in seconds the link will provide access to the file.
-        :param bool upscale: If size is provided, this will upscale the image to fit the size dimensions.
+        :param file_id: ID of file. (required)
+        :type file_id: str
+        :param size: For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
+        :type size: str
+        :param expiration_seconds: How long in seconds the link will provide access to the file.
+        :type expiration_seconds: int
+        :param upscale: If size is provided, this will upscale the image to fit the size dimensions.
+        :type upscale: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: SignedUrl
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: SignedUrl
         """
         kwargs["_return_http_data_only"] = True
         return self.get_signed_url_with_http_info(file_id, **kwargs)  # noqa: E501
@@ -719,35 +861,46 @@ class FilesApi(object):
         Generates signed URL that allows temporary access to a private file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_signed_url_with_http_info(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file. (required)
-        :param str size: For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
-        :param int expiration_seconds: How long in seconds the link will provide access to the file.
-        :param bool upscale: If size is provided, this will upscale the image to fit the size dimensions.
+        :param file_id: ID of file. (required)
+        :type file_id: str
+        :param size: For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
+        :type size: str
+        :param expiration_seconds: How long in seconds the link will provide access to the file.
+        :type expiration_seconds: int
+        :param upscale: If size is provided, this will upscale the image to fit the size dimensions.
+        :type upscale: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(SignedUrl, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(SignedUrl, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id", "size", "expiration_seconds", "upscale"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id", "size", "expiration_seconds", "upscale"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -755,7 +908,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `get_signed_url`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -767,14 +920,14 @@ class FilesApi(object):
             path_params["fileId"] = local_var_params["file_id"]  # noqa: E501
 
         query_params = []
-        if "size" in local_var_params and local_var_params["size"] is not None:  # noqa: E501
+        if local_var_params.get("size") is not None:  # noqa: E501
             query_params.append(("size", local_var_params["size"]))  # noqa: E501
-        if "expiration_seconds" in local_var_params and local_var_params["expiration_seconds"] is not None:  # noqa: E501
+        if local_var_params.get("expiration_seconds") is not None:  # noqa: E501
             query_params.append(("expirationSeconds", local_var_params["expiration_seconds"]))  # noqa: E501
-        if "upscale" in local_var_params and local_var_params["upscale"] is not None:  # noqa: E501
+        if local_var_params.get("upscale") is not None:  # noqa: E501
             query_params.append(("upscale", local_var_params["upscale"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -786,6 +939,10 @@ class FilesApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "SignedUrl",
+        }
+
         return self.api_client.call_api(
             "/files/v3/files/{fileId}/signed-url",
             "GET",
@@ -795,13 +952,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="SignedUrl",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def import_from_url(self, import_from_url_input, **kwargs):  # noqa: E501
@@ -810,21 +968,26 @@ class FilesApi(object):
         Asynchronously imports the file at the given URL into the file manager.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.import_from_url(import_from_url_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ImportFromUrlInput import_from_url_input: (required)
+        :param import_from_url_input: (required)
+        :type import_from_url_input: ImportFromUrlInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ImportFromUrlTaskLocator
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ImportFromUrlTaskLocator
         """
         kwargs["_return_http_data_only"] = True
         return self.import_from_url_with_http_info(import_from_url_input, **kwargs)  # noqa: E501
@@ -835,32 +998,40 @@ class FilesApi(object):
         Asynchronously imports the file at the given URL into the file manager.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.import_from_url_with_http_info(import_from_url_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ImportFromUrlInput import_from_url_input: (required)
+        :param import_from_url_input: (required)
+        :type import_from_url_input: ImportFromUrlInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ImportFromUrlTaskLocator, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ImportFromUrlTaskLocator, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["import_from_url_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["import_from_url_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -868,7 +1039,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'import_from_url_input' is set
-        if self.api_client.client_side_validation and ("import_from_url_input" not in local_var_params or local_var_params["import_from_url_input"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("import_from_url_input") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `import_from_url_input` when calling `import_from_url`")  # noqa: E501
 
         collection_formats = {}
@@ -877,7 +1048,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -889,10 +1060,16 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            202: "ImportFromUrlTaskLocator",
+        }
 
         return self.api_client.call_api(
             "/files/v3/files/import-from-url/async",
@@ -903,13 +1080,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ImportFromUrlTaskLocator",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def replace(self, file_id, **kwargs):  # noqa: E501
@@ -918,24 +1096,32 @@ class FilesApi(object):
         Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: Id of the desired file. (required)
-        :param file file: File data that will replace existing file in the file manager.
-        :param str charset_hunch: Character set of given file data.
-        :param str options: JSON String representing FileReplaceOptions
+        :param file_id: Id of the desired file. (required)
+        :type file_id: str
+        :param file: File data that will replace existing file in the file manager.
+        :type file: file
+        :param charset_hunch: Character set of given file data.
+        :type charset_hunch: str
+        :param options: JSON String representing FileReplaceOptions
+        :type options: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: File
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: File
         """
         kwargs["_return_http_data_only"] = True
         return self.replace_with_http_info(file_id, **kwargs)  # noqa: E501
@@ -946,35 +1132,46 @@ class FilesApi(object):
         Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.replace_with_http_info(file_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: Id of the desired file. (required)
-        :param file file: File data that will replace existing file in the file manager.
-        :param str charset_hunch: Character set of given file data.
-        :param str options: JSON String representing FileReplaceOptions
+        :param file_id: Id of the desired file. (required)
+        :type file_id: str
+        :param file: File data that will replace existing file in the file manager.
+        :type file: file
+        :param charset_hunch: Character set of given file data.
+        :type charset_hunch: str
+        :param options: JSON String representing FileReplaceOptions
+        :type options: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(File, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(File, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id", "file", "charset_hunch", "options"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id", "file", "charset_hunch", "options"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -982,7 +1179,7 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `replace`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -995,7 +1192,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1011,10 +1208,16 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["multipart/form-data"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "File",
+        }
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -1025,13 +1228,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="File",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update_properties(self, file_id, file_update_input, **kwargs):  # noqa: E501
@@ -1040,22 +1244,28 @@ class FilesApi(object):
         Update properties of file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_properties(file_id, file_update_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file to update (required)
-        :param FileUpdateInput file_update_input: Options to update. (required)
+        :param file_id: ID of file to update (required)
+        :type file_id: str
+        :param file_update_input: Options to update. (required)
+        :type file_update_input: FileUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: File
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: File
         """
         kwargs["_return_http_data_only"] = True
         return self.update_properties_with_http_info(file_id, file_update_input, **kwargs)  # noqa: E501
@@ -1066,33 +1276,42 @@ class FilesApi(object):
         Update properties of file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_properties_with_http_info(file_id, file_update_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str file_id: ID of file to update (required)
-        :param FileUpdateInput file_update_input: Options to update. (required)
+        :param file_id: ID of file to update (required)
+        :type file_id: str
+        :param file_update_input: Options to update. (required)
+        :type file_update_input: FileUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(File, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(File, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file_id", "file_update_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file_id", "file_update_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1100,10 +1319,10 @@ class FilesApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and ("file_id" not in local_var_params or local_var_params["file_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_id` when calling `update_properties`")  # noqa: E501
         # verify the required parameter 'file_update_input' is set
-        if self.api_client.client_side_validation and ("file_update_input" not in local_var_params or local_var_params["file_update_input"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("file_update_input") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `file_update_input` when calling `update_properties`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
@@ -1116,7 +1335,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1128,10 +1347,16 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "File",
+        }
 
         return self.api_client.call_api(
             "/files/v3/files/{fileId}",
@@ -1142,13 +1367,14 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="File",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def upload(self, **kwargs):  # noqa: E501
@@ -1157,26 +1383,36 @@ class FilesApi(object):
         Upload a single file with content specified in request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.upload(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param file file: File to be uploaded.
-        :param str folder_id: Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
-        :param str folder_path: Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
-        :param str file_name: Desired name for the uploaded file.
-        :param str charset_hunch: Character set of the uploaded file.
-        :param str options: JSON string representing FileUploadOptions.
+        :param file: File to be uploaded.
+        :type file: file
+        :param folder_id: Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
+        :type folder_id: str
+        :param folder_path: Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
+        :type folder_path: str
+        :param file_name: Desired name for the uploaded file.
+        :type file_name: str
+        :param charset_hunch: Character set of the uploaded file.
+        :type charset_hunch: str
+        :param options: JSON string representing FileUploadOptions.
+        :type options: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: File
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: File
         """
         kwargs["_return_http_data_only"] = True
         return self.upload_with_http_info(**kwargs)  # noqa: E501
@@ -1187,37 +1423,50 @@ class FilesApi(object):
         Upload a single file with content specified in request body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.upload_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param file file: File to be uploaded.
-        :param str folder_id: Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
-        :param str folder_path: Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
-        :param str file_name: Desired name for the uploaded file.
-        :param str charset_hunch: Character set of the uploaded file.
-        :param str options: JSON string representing FileUploadOptions.
+        :param file: File to be uploaded.
+        :type file: file
+        :param folder_id: Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
+        :type folder_id: str
+        :param folder_path: Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
+        :type folder_path: str
+        :param file_name: Desired name for the uploaded file.
+        :type file_name: str
+        :param charset_hunch: Character set of the uploaded file.
+        :type charset_hunch: str
+        :param options: JSON string representing FileUploadOptions.
+        :type options: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(File, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(File, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["file", "folder_id", "folder_path", "file_name", "charset_hunch", "options"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["file", "folder_id", "folder_path", "file_name", "charset_hunch", "options"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -1231,7 +1480,7 @@ class FilesApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -1253,10 +1502,16 @@ class FilesApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["multipart/form-data"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["multipart/form-data"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "File",
+        }
 
         return self.api_client.call_api(
             "/files/v3/files",
@@ -1267,11 +1522,12 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="File",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

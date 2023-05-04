@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -39,8 +42,8 @@ class ExtensionActionDefinitionInput(object):
         "archived_at": "int",
         "input_fields": "list[InputFieldDefinition]",
         "object_request_options": "ObjectRequestOptions",
-        "input_field_dependencies": "list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]",
-        "labels": "dict(str, ActionLabels)",
+        "input_field_dependencies": "list[ExtensionActionDefinitionPatchInputFieldDependenciesInner]",
+        "labels": "dict[str, ActionLabels]",
         "object_types": "list[str]",
     }
 
@@ -71,7 +74,7 @@ class ExtensionActionDefinitionInput(object):
     ):  # noqa: E501
         """ExtensionActionDefinitionInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._functions = None
@@ -116,7 +119,7 @@ class ExtensionActionDefinitionInput(object):
         A list of functions associated with the custom workflow action.  # noqa: E501
 
         :param functions: The functions of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: list[ActionFunction]
+        :type functions: list[ActionFunction]
         """
         if self.local_vars_configuration.client_side_validation and functions is None:  # noqa: E501
             raise ValueError("Invalid value for `functions`, must not be `None`")  # noqa: E501
@@ -141,7 +144,7 @@ class ExtensionActionDefinitionInput(object):
         The URL that will accept an HTTPS request each time workflows executes the custom action.  # noqa: E501
 
         :param action_url: The action_url of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: str
+        :type action_url: str
         """
         if self.local_vars_configuration.client_side_validation and action_url is None:  # noqa: E501
             raise ValueError("Invalid value for `action_url`, must not be `None`")  # noqa: E501
@@ -166,7 +169,7 @@ class ExtensionActionDefinitionInput(object):
         Whether this custom action is published to customers.  # noqa: E501
 
         :param published: The published of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: bool
+        :type published: bool
         """
         if self.local_vars_configuration.client_side_validation and published is None:  # noqa: E501
             raise ValueError("Invalid value for `published`, must not be `None`")  # noqa: E501
@@ -191,7 +194,7 @@ class ExtensionActionDefinitionInput(object):
         The date that this custom action was archived, if the custom action is archived.  # noqa: E501
 
         :param archived_at: The archived_at of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: int
+        :type archived_at: int
         """
 
         self._archived_at = archived_at
@@ -214,7 +217,7 @@ class ExtensionActionDefinitionInput(object):
         The list of input fields to display in this custom action.  # noqa: E501
 
         :param input_fields: The input_fields of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: list[InputFieldDefinition]
+        :type input_fields: list[InputFieldDefinition]
         """
         if self.local_vars_configuration.client_side_validation and input_fields is None:  # noqa: E501
             raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
@@ -237,7 +240,7 @@ class ExtensionActionDefinitionInput(object):
 
 
         :param object_request_options: The object_request_options of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: ObjectRequestOptions
+        :type object_request_options: ObjectRequestOptions
         """
 
         self._object_request_options = object_request_options
@@ -249,7 +252,7 @@ class ExtensionActionDefinitionInput(object):
         A list of dependencies between the input fields. These configure when the input fields should be visible.  # noqa: E501
 
         :return: The input_field_dependencies of this ExtensionActionDefinitionInput.  # noqa: E501
-        :rtype: list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]
+        :rtype: list[ExtensionActionDefinitionPatchInputFieldDependenciesInner]
         """
         return self._input_field_dependencies
 
@@ -260,7 +263,7 @@ class ExtensionActionDefinitionInput(object):
         A list of dependencies between the input fields. These configure when the input fields should be visible.  # noqa: E501
 
         :param input_field_dependencies: The input_field_dependencies of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: list[OneOfSingleFieldDependencyConditionalSingleFieldDependency]
+        :type input_field_dependencies: list[ExtensionActionDefinitionPatchInputFieldDependenciesInner]
         """
 
         self._input_field_dependencies = input_field_dependencies
@@ -272,7 +275,7 @@ class ExtensionActionDefinitionInput(object):
         The user-facing labels for the custom action.  # noqa: E501
 
         :return: The labels of this ExtensionActionDefinitionInput.  # noqa: E501
-        :rtype: dict(str, ActionLabels)
+        :rtype: dict[str, ActionLabels]
         """
         return self._labels
 
@@ -283,7 +286,7 @@ class ExtensionActionDefinitionInput(object):
         The user-facing labels for the custom action.  # noqa: E501
 
         :param labels: The labels of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: dict(str, ActionLabels)
+        :type labels: dict[str, ActionLabels]
         """
         if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
@@ -308,27 +311,36 @@ class ExtensionActionDefinitionInput(object):
         The object types that this custom action supports.  # noqa: E501
 
         :param object_types: The object_types of this ExtensionActionDefinitionInput.  # noqa: E501
-        :type: list[str]
+        :type object_types: list[str]
         """
         if self.local_vars_configuration.client_side_validation and object_types is None:  # noqa: E501
             raise ValueError("Invalid value for `object_types`, must not be `None`")  # noqa: E501
 
         self._object_types = object_types
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

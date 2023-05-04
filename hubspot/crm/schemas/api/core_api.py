@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.crm.schemas.api_client import ApiClient
-from hubspot.crm.schemas.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.schemas.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class CoreApi(object):
@@ -39,22 +39,28 @@ class CoreApi(object):
         Deletes a schema. Any existing records of this schema must be deleted **first**. Otherwise this call will fail.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param bool archived: Whether to return only results that have been archived.
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(object_type, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class CoreApi(object):
         Deletes a schema. Any existing records of this schema must be deleted **first**. Otherwise this call will fail.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param bool archived: Whether to return only results that have been archived.
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_type", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,7 +114,7 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -109,10 +124,10 @@ class CoreApi(object):
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -124,6 +139,8 @@ class CoreApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/crm/v3/schemas/{objectType}",
             "DELETE",
@@ -133,13 +150,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def archive_association(self, object_type, association_identifier, **kwargs):  # noqa: E501
@@ -148,22 +166,28 @@ class CoreApi(object):
         Removes an existing association from a schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_association(object_type, association_identifier, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param str association_identifier: Unique ID of the association to remove. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param association_identifier: Unique ID of the association to remove. (required)
+        :type association_identifier: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_association_with_http_info(object_type, association_identifier, **kwargs)  # noqa: E501
@@ -174,33 +198,42 @@ class CoreApi(object):
         Removes an existing association from a schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_association_with_http_info(object_type, association_identifier, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param str association_identifier: Unique ID of the association to remove. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param association_identifier: Unique ID of the association to remove. (required)
+        :type association_identifier: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "association_identifier"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_type", "association_identifier"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -208,10 +241,10 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `archive_association`")  # noqa: E501
         # verify the required parameter 'association_identifier' is set
-        if self.api_client.client_side_validation and ("association_identifier" not in local_var_params or local_var_params["association_identifier"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("association_identifier") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `association_identifier` when calling `archive_association`")  # noqa: E501
 
         collection_formats = {}
@@ -224,7 +257,7 @@ class CoreApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -236,6 +269,8 @@ class CoreApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/crm/v3/schemas/{objectType}/associations/{associationIdentifier}",
             "DELETE",
@@ -245,13 +280,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, object_schema_egg, **kwargs):  # noqa: E501
@@ -260,21 +296,26 @@ class CoreApi(object):
         Define a new object schema, along with custom properties and associations. The entire object schema, including its object type ID, properties, and associations will be returned in the response.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(object_schema_egg, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ObjectSchemaEgg object_schema_egg: Object schema definition, including properties and associations. (required)
+        :param object_schema_egg: Object schema definition, including properties and associations. (required)
+        :type object_schema_egg: ObjectSchemaEgg
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ObjectSchema
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ObjectSchema
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(object_schema_egg, **kwargs)  # noqa: E501
@@ -285,32 +326,40 @@ class CoreApi(object):
         Define a new object schema, along with custom properties and associations. The entire object schema, including its object type ID, properties, and associations will be returned in the response.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(object_schema_egg, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param ObjectSchemaEgg object_schema_egg: Object schema definition, including properties and associations. (required)
+        :param object_schema_egg: Object schema definition, including properties and associations. (required)
+        :type object_schema_egg: ObjectSchemaEgg
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ObjectSchema, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ObjectSchema, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_schema_egg"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_schema_egg"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -318,7 +367,7 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_schema_egg' is set
-        if self.api_client.client_side_validation and ("object_schema_egg" not in local_var_params or local_var_params["object_schema_egg"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_schema_egg") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_schema_egg` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -327,7 +376,7 @@ class CoreApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -339,10 +388,16 @@ class CoreApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "ObjectSchema",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/schemas",
@@ -353,13 +408,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ObjectSchema",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create_association(self, object_type, association_definition_egg, **kwargs):  # noqa: E501
@@ -368,22 +424,28 @@ class CoreApi(object):
         Defines a new association between the primary schema's object type and other object types.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_association(object_type, association_definition_egg, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param AssociationDefinitionEgg association_definition_egg: Attributes that define the association. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param association_definition_egg: Attributes that define the association. (required)
+        :type association_definition_egg: AssociationDefinitionEgg
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: AssociationDefinition
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: AssociationDefinition
         """
         kwargs["_return_http_data_only"] = True
         return self.create_association_with_http_info(object_type, association_definition_egg, **kwargs)  # noqa: E501
@@ -394,33 +456,42 @@ class CoreApi(object):
         Defines a new association between the primary schema's object type and other object types.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_association_with_http_info(object_type, association_definition_egg, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param AssociationDefinitionEgg association_definition_egg: Attributes that define the association. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param association_definition_egg: Attributes that define the association. (required)
+        :type association_definition_egg: AssociationDefinitionEgg
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(AssociationDefinition, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(AssociationDefinition, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "association_definition_egg"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_type", "association_definition_egg"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -428,10 +499,10 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `create_association`")  # noqa: E501
         # verify the required parameter 'association_definition_egg' is set
-        if self.api_client.client_side_validation and ("association_definition_egg" not in local_var_params or local_var_params["association_definition_egg"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("association_definition_egg") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `association_definition_egg` when calling `create_association`")  # noqa: E501
 
         collection_formats = {}
@@ -442,7 +513,7 @@ class CoreApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -454,10 +525,16 @@ class CoreApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            201: "AssociationDefinition",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/schemas/{objectType}/associations",
@@ -468,13 +545,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="AssociationDefinition",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_all(self, **kwargs):  # noqa: E501
@@ -483,21 +561,26 @@ class CoreApi(object):
         Returns all object schemas that have been defined for your account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param bool archived: Whether to return only results that have been archived.
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseObjectSchemaNoPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseObjectSchemaNoPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_all_with_http_info(**kwargs)  # noqa: E501
@@ -508,32 +591,40 @@ class CoreApi(object):
         Returns all object schemas that have been defined for your account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param bool archived: Whether to return only results that have been archived.
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseObjectSchemaNoPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseObjectSchemaNoPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -546,10 +637,10 @@ class CoreApi(object):
         path_params = {}
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -560,6 +651,10 @@ class CoreApi(object):
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "CollectionResponseObjectSchemaNoPaging",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/schemas",
@@ -570,13 +665,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseObjectSchemaNoPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, object_type, **kwargs):  # noqa: E501
@@ -585,21 +681,26 @@ class CoreApi(object):
         Returns an existing object schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ObjectSchema
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ObjectSchema
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(object_type, **kwargs)  # noqa: E501
@@ -610,32 +711,40 @@ class CoreApi(object):
         Returns an existing object schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ObjectSchema, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ObjectSchema, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_type"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -643,7 +752,7 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -654,7 +763,7 @@ class CoreApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -666,6 +775,10 @@ class CoreApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "ObjectSchema",
+        }
+
         return self.api_client.call_api(
             "/crm/v3/schemas/{objectType}",
             "GET",
@@ -675,13 +788,14 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ObjectSchema",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, object_type, object_type_definition_patch, **kwargs):  # noqa: E501
@@ -690,22 +804,28 @@ class CoreApi(object):
         Update the details for an existing object schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(object_type, object_type_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param ObjectTypeDefinitionPatch object_type_definition_patch: Attributes to update in your schema. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param object_type_definition_patch: Attributes to update in your schema. (required)
+        :type object_type_definition_patch: ObjectTypeDefinitionPatch
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ObjectTypeDefinition
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ObjectTypeDefinition
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(object_type, object_type_definition_patch, **kwargs)  # noqa: E501
@@ -716,33 +836,42 @@ class CoreApi(object):
         Update the details for an existing object schema.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(object_type, object_type_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str object_type: Fully qualified name or object type ID of your schema. (required)
-        :param ObjectTypeDefinitionPatch object_type_definition_patch: Attributes to update in your schema. (required)
+        :param object_type: Fully qualified name or object type ID of your schema. (required)
+        :type object_type: str
+        :param object_type_definition_patch: Attributes to update in your schema. (required)
+        :type object_type_definition_patch: ObjectTypeDefinitionPatch
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ObjectTypeDefinition, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ObjectTypeDefinition, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_type_definition_patch"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["object_type", "object_type_definition_patch"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -750,10 +879,10 @@ class CoreApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and ("object_type" not in local_var_params or local_var_params["object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'object_type_definition_patch' is set
-        if self.api_client.client_side_validation and ("object_type_definition_patch" not in local_var_params or local_var_params["object_type_definition_patch"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("object_type_definition_patch") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type_definition_patch` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -764,7 +893,7 @@ class CoreApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -776,10 +905,16 @@ class CoreApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "ObjectTypeDefinition",
+        }
 
         return self.api_client.call_api(
             "/crm/v3/schemas/{objectType}",
@@ -790,11 +925,12 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ObjectTypeDefinition",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

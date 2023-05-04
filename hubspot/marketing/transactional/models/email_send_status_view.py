@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.transactional.configuration import Configuration
@@ -47,7 +50,7 @@ class EmailSendStatusView(object):
     def __init__(self, status_id=None, send_result=None, requested_at=None, started_at=None, completed_at=None, status=None, event_id=None, local_vars_configuration=None):  # noqa: E501
         """EmailSendStatusView - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._status_id = None
@@ -90,7 +93,7 @@ class EmailSendStatusView(object):
         Identifier used to query the status of the send.  # noqa: E501
 
         :param status_id: The status_id of this EmailSendStatusView.  # noqa: E501
-        :type: str
+        :type status_id: str
         """
         if self.local_vars_configuration.client_side_validation and status_id is None:  # noqa: E501
             raise ValueError("Invalid value for `status_id`, must not be `None`")  # noqa: E501
@@ -115,7 +118,7 @@ class EmailSendStatusView(object):
         Result of the send.  # noqa: E501
 
         :param send_result: The send_result of this EmailSendStatusView.  # noqa: E501
-        :type: str
+        :type send_result: str
         """
         allowed_values = [
             "SENT",
@@ -184,7 +187,7 @@ class EmailSendStatusView(object):
         Time when the send was requested.  # noqa: E501
 
         :param requested_at: The requested_at of this EmailSendStatusView.  # noqa: E501
-        :type: datetime
+        :type requested_at: datetime
         """
 
         self._requested_at = requested_at
@@ -207,7 +210,7 @@ class EmailSendStatusView(object):
         Time when the send began processing.  # noqa: E501
 
         :param started_at: The started_at of this EmailSendStatusView.  # noqa: E501
-        :type: datetime
+        :type started_at: datetime
         """
 
         self._started_at = started_at
@@ -230,7 +233,7 @@ class EmailSendStatusView(object):
         Time when the send was completed.  # noqa: E501
 
         :param completed_at: The completed_at of this EmailSendStatusView.  # noqa: E501
-        :type: datetime
+        :type completed_at: datetime
         """
 
         self._completed_at = completed_at
@@ -253,7 +256,7 @@ class EmailSendStatusView(object):
         Status of the send request.  # noqa: E501
 
         :param status: The status of this EmailSendStatusView.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -279,25 +282,34 @@ class EmailSendStatusView(object):
 
 
         :param event_id: The event_id of this EmailSendStatusView.  # noqa: E501
-        :type: EventIdView
+        :type event_id: EventIdView
         """
 
         self._event_id = event_id
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

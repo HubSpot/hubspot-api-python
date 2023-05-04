@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.pipelines.configuration import Configuration
@@ -39,7 +42,7 @@ class PipelineInput(object):
     def __init__(self, label=None, display_order=None, stages=None, local_vars_configuration=None):  # noqa: E501
         """PipelineInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._label = None
@@ -69,7 +72,7 @@ class PipelineInput(object):
         A unique label used to organize pipelines in HubSpot's UI  # noqa: E501
 
         :param label: The label of this PipelineInput.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
@@ -94,7 +97,7 @@ class PipelineInput(object):
         The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.  # noqa: E501
 
         :param display_order: The display_order of this PipelineInput.  # noqa: E501
-        :type: int
+        :type display_order: int
         """
         if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
             raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
@@ -119,27 +122,36 @@ class PipelineInput(object):
         Pipeline stage inputs used to create the new or replacement pipeline.  # noqa: E501
 
         :param stages: The stages of this PipelineInput.  # noqa: E501
-        :type: list[PipelineStageInput]
+        :type stages: list[PipelineStageInput]
         """
         if self.local_vars_configuration.client_side_validation and stages is None:  # noqa: E501
             raise ValueError("Invalid value for `stages`, must not be `None`")  # noqa: E501
 
         self._stages = stages
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

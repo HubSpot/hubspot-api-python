@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.tags.configuration import Configuration
@@ -32,14 +35,14 @@ class BatchResponseTag(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"status": "str", "results": "list[Tag]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict(str, str)"}
+    openapi_types = {"status": "str", "results": "list[Tag]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict[str, str]"}
 
     attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
 
     def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseTag - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
@@ -77,7 +80,7 @@ class BatchResponseTag(object):
         Status of batch operation.  # noqa: E501
 
         :param status: The status of this BatchResponseTag.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -105,7 +108,7 @@ class BatchResponseTag(object):
         Results of batch operation.  # noqa: E501
 
         :param results: The results of this BatchResponseTag.  # noqa: E501
-        :type: list[Tag]
+        :type results: list[Tag]
         """
         if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
@@ -130,7 +133,7 @@ class BatchResponseTag(object):
         Time of batch operation request.  # noqa: E501
 
         :param requested_at: The requested_at of this BatchResponseTag.  # noqa: E501
-        :type: datetime
+        :type requested_at: datetime
         """
 
         self._requested_at = requested_at
@@ -153,7 +156,7 @@ class BatchResponseTag(object):
         Time of batch operation start.  # noqa: E501
 
         :param started_at: The started_at of this BatchResponseTag.  # noqa: E501
-        :type: datetime
+        :type started_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
             raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
@@ -178,7 +181,7 @@ class BatchResponseTag(object):
         Time of batch operation completion.  # noqa: E501
 
         :param completed_at: The completed_at of this BatchResponseTag.  # noqa: E501
-        :type: datetime
+        :type completed_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
             raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
@@ -192,7 +195,7 @@ class BatchResponseTag(object):
         Links associated with batch operation.  # noqa: E501
 
         :return: The links of this BatchResponseTag.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._links
 
@@ -203,25 +206,34 @@ class BatchResponseTag(object):
         Links associated with batch operation.  # noqa: E501
 
         :param links: The links of this BatchResponseTag.  # noqa: E501
-        :type: dict(str, str)
+        :type links: dict[str, str]
         """
 
         self._links = links
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

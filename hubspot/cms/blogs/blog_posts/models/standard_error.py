@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.blog_posts.configuration import Configuration
@@ -39,8 +42,8 @@ class StandardError(object):
         "sub_category": "object",
         "message": "str",
         "errors": "list[ErrorDetail]",
-        "context": "dict(str, list[str])",
-        "links": "dict(str, str)",
+        "context": "dict[str, list[str]]",
+        "links": "dict[str, str]",
     }
 
     attribute_map = {"status": "status", "id": "id", "category": "category", "sub_category": "subCategory", "message": "message", "errors": "errors", "context": "context", "links": "links"}
@@ -48,7 +51,7 @@ class StandardError(object):
     def __init__(self, status=None, id=None, category=None, sub_category=None, message=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
         """StandardError - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
@@ -90,7 +93,7 @@ class StandardError(object):
         Error status.  # noqa: E501
 
         :param status: The status of this StandardError.  # noqa: E501
-        :type: str
+        :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
@@ -115,7 +118,7 @@ class StandardError(object):
         Error ID.  # noqa: E501
 
         :param id: The id of this StandardError.  # noqa: E501
-        :type: str
+        :type id: str
         """
 
         self._id = id
@@ -138,7 +141,7 @@ class StandardError(object):
         Model definition for an error category.  # noqa: E501
 
         :param category: The category of this StandardError.  # noqa: E501
-        :type: object
+        :type category: object
         """
         if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
             raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
@@ -163,7 +166,7 @@ class StandardError(object):
         Error subcategory.  # noqa: E501
 
         :param sub_category: The sub_category of this StandardError.  # noqa: E501
-        :type: object
+        :type sub_category: object
         """
 
         self._sub_category = sub_category
@@ -186,7 +189,7 @@ class StandardError(object):
         Error message.  # noqa: E501
 
         :param message: The message of this StandardError.  # noqa: E501
-        :type: str
+        :type message: str
         """
         if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
@@ -211,7 +214,7 @@ class StandardError(object):
         List of error details.  # noqa: E501
 
         :param errors: The errors of this StandardError.  # noqa: E501
-        :type: list[ErrorDetail]
+        :type errors: list[ErrorDetail]
         """
         if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
             raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
@@ -225,7 +228,7 @@ class StandardError(object):
         Error context.  # noqa: E501
 
         :return: The context of this StandardError.  # noqa: E501
-        :rtype: dict(str, list[str])
+        :rtype: dict[str, list[str]]
         """
         return self._context
 
@@ -236,7 +239,7 @@ class StandardError(object):
         Error context.  # noqa: E501
 
         :param context: The context of this StandardError.  # noqa: E501
-        :type: dict(str, list[str])
+        :type context: dict[str, list[str]]
         """
         if self.local_vars_configuration.client_side_validation and context is None:  # noqa: E501
             raise ValueError("Invalid value for `context`, must not be `None`")  # noqa: E501
@@ -250,7 +253,7 @@ class StandardError(object):
         Error links.  # noqa: E501
 
         :return: The links of this StandardError.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: dict[str, str]
         """
         return self._links
 
@@ -261,27 +264,36 @@ class StandardError(object):
         Error links.  # noqa: E501
 
         :param links: The links of this StandardError.  # noqa: E501
-        :type: dict(str, str)
+        :type links: dict[str, str]
         """
         if self.local_vars_configuration.client_side_validation and links is None:  # noqa: E501
             raise ValueError("Invalid value for `links`, must not be `None`")  # noqa: E501
 
         self._links = links
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

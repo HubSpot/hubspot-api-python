@@ -29,6 +29,7 @@ from hubspot.marketing.events.exceptions import OpenApiException
 from hubspot.marketing.events.exceptions import ApiTypeError
 from hubspot.marketing.events.exceptions import ApiValueError
 from hubspot.marketing.events.exceptions import ApiKeyError
+from hubspot.marketing.events.exceptions import ApiAttributeError
 from hubspot.marketing.events.exceptions import ApiException
 
 # import models into sdk package

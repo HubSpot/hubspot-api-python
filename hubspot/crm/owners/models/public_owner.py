@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.owners.configuration import Configuration
@@ -59,7 +62,7 @@ class PublicOwner(object):
     def __init__(self, id=None, email=None, first_name=None, last_name=None, user_id=None, created_at=None, updated_at=None, archived=None, teams=None, local_vars_configuration=None):  # noqa: E501
         """PublicOwner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -104,7 +107,7 @@ class PublicOwner(object):
 
 
         :param id: The id of this PublicOwner.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class PublicOwner(object):
 
 
         :param email: The email of this PublicOwner.  # noqa: E501
-        :type: str
+        :type email: str
         """
 
         self._email = email
@@ -148,7 +151,7 @@ class PublicOwner(object):
 
 
         :param first_name: The first_name of this PublicOwner.  # noqa: E501
-        :type: str
+        :type first_name: str
         """
 
         self._first_name = first_name
@@ -169,7 +172,7 @@ class PublicOwner(object):
 
 
         :param last_name: The last_name of this PublicOwner.  # noqa: E501
-        :type: str
+        :type last_name: str
         """
 
         self._last_name = last_name
@@ -190,7 +193,7 @@ class PublicOwner(object):
 
 
         :param user_id: The user_id of this PublicOwner.  # noqa: E501
-        :type: int
+        :type user_id: int
         """
 
         self._user_id = user_id
@@ -211,7 +214,7 @@ class PublicOwner(object):
 
 
         :param created_at: The created_at of this PublicOwner.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -234,7 +237,7 @@ class PublicOwner(object):
 
 
         :param updated_at: The updated_at of this PublicOwner.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -257,7 +260,7 @@ class PublicOwner(object):
 
 
         :param archived: The archived of this PublicOwner.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -280,25 +283,34 @@ class PublicOwner(object):
 
 
         :param teams: The teams of this PublicOwner.  # noqa: E501
-        :type: list[PublicTeam]
+        :type teams: list[PublicTeam]
         """
 
         self._teams = teams
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

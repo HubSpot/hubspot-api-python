@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.files.files.configuration import Configuration
@@ -48,7 +51,7 @@ class Folder(object):
     def __init__(self, id=None, created_at=None, archived_at=None, updated_at=None, archived=None, parent_folder_id=None, name=None, path=None, local_vars_configuration=None):  # noqa: E501
         """Folder - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -92,7 +95,7 @@ class Folder(object):
         Id of the folder.  # noqa: E501
 
         :param id: The id of this Folder.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -117,7 +120,7 @@ class Folder(object):
         Timestamp of folder creation.  # noqa: E501
 
         :param created_at: The created_at of this Folder.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
@@ -142,7 +145,7 @@ class Folder(object):
         Timestamp of folder deletion.  # noqa: E501
 
         :param archived_at: The archived_at of this Folder.  # noqa: E501
-        :type: datetime
+        :type archived_at: datetime
         """
 
         self._archived_at = archived_at
@@ -165,7 +168,7 @@ class Folder(object):
         Timestamp of the latest update to the folder.  # noqa: E501
 
         :param updated_at: The updated_at of this Folder.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
         if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
@@ -190,7 +193,7 @@ class Folder(object):
         Marks weather the folder is deleted or not.  # noqa: E501
 
         :param archived: The archived of this Folder.  # noqa: E501
-        :type: bool
+        :type archived: bool
         """
         if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
@@ -215,7 +218,7 @@ class Folder(object):
         Id of the parent folder.  # noqa: E501
 
         :param parent_folder_id: The parent_folder_id of this Folder.  # noqa: E501
-        :type: str
+        :type parent_folder_id: str
         """
 
         self._parent_folder_id = parent_folder_id
@@ -238,7 +241,7 @@ class Folder(object):
         Name of the folder.  # noqa: E501
 
         :param name: The name of this Folder.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -261,25 +264,34 @@ class Folder(object):
         Path of the folder in the file manager.  # noqa: E501
 
         :param path: The path of this Folder.  # noqa: E501
-        :type: str
+        :type path: str
         """
 
         self._path = path
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

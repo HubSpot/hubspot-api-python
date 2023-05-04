@@ -9,9 +9,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.auth.oauth.configuration import Configuration
@@ -38,7 +41,7 @@ class TokenResponseIF(object):
     def __init__(self, access_token=None, expires_in=None, refresh_token=None, token_type=None, id_token=None, local_vars_configuration=None):  # noqa: E501
         """TokenResponseIF - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._access_token = None
@@ -71,7 +74,7 @@ class TokenResponseIF(object):
 
 
         :param access_token: The access_token of this TokenResponseIF.  # noqa: E501
-        :type: str
+        :type access_token: str
         """
         if self.local_vars_configuration.client_side_validation and access_token is None:  # noqa: E501
             raise ValueError("Invalid value for `access_token`, must not be `None`")  # noqa: E501
@@ -94,7 +97,7 @@ class TokenResponseIF(object):
 
 
         :param expires_in: The expires_in of this TokenResponseIF.  # noqa: E501
-        :type: int
+        :type expires_in: int
         """
         if self.local_vars_configuration.client_side_validation and expires_in is None:  # noqa: E501
             raise ValueError("Invalid value for `expires_in`, must not be `None`")  # noqa: E501
@@ -117,7 +120,7 @@ class TokenResponseIF(object):
 
 
         :param refresh_token: The refresh_token of this TokenResponseIF.  # noqa: E501
-        :type: str
+        :type refresh_token: str
         """
         if self.local_vars_configuration.client_side_validation and refresh_token is None:  # noqa: E501
             raise ValueError("Invalid value for `refresh_token`, must not be `None`")  # noqa: E501
@@ -140,7 +143,7 @@ class TokenResponseIF(object):
 
 
         :param token_type: The token_type of this TokenResponseIF.  # noqa: E501
-        :type: str
+        :type token_type: str
         """
         if self.local_vars_configuration.client_side_validation and token_type is None:  # noqa: E501
             raise ValueError("Invalid value for `token_type`, must not be `None`")  # noqa: E501
@@ -163,25 +166,34 @@ class TokenResponseIF(object):
 
 
         :param id_token: The id_token of this TokenResponseIF.  # noqa: E501
-        :type: str
+        :type id_token: str
         """
 
         self._id_token = id_token
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

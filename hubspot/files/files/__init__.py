@@ -27,6 +27,7 @@ from hubspot.files.files.exceptions import OpenApiException
 from hubspot.files.files.exceptions import ApiTypeError
 from hubspot.files.files.exceptions import ApiValueError
 from hubspot.files.files.exceptions import ApiKeyError
+from hubspot.files.files.exceptions import ApiAttributeError
 from hubspot.files.files.exceptions import ApiException
 
 # import models into sdk package

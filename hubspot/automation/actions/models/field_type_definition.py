@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.automation.actions.configuration import Configuration
@@ -39,7 +42,7 @@ class FieldTypeDefinition(object):
     def __init__(self, name=None, type=None, field_type=None, options=None, options_url=None, referenced_object_type=None, local_vars_configuration=None):  # noqa: E501
         """FieldTypeDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
@@ -78,7 +81,7 @@ class FieldTypeDefinition(object):
         The input field name.  # noqa: E501
 
         :param name: The name of this FieldTypeDefinition.  # noqa: E501
-        :type: str
+        :type name: str
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
@@ -103,7 +106,7 @@ class FieldTypeDefinition(object):
         The data type of the field.  # noqa: E501
 
         :param type: The type of this FieldTypeDefinition.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -131,7 +134,7 @@ class FieldTypeDefinition(object):
         Controls how the field appears in HubSpot.  # noqa: E501
 
         :param field_type: The field_type of this FieldTypeDefinition.  # noqa: E501
-        :type: str
+        :type field_type: str
         """
         allowed_values = [
             "booleancheckbox",
@@ -173,7 +176,7 @@ class FieldTypeDefinition(object):
         A list of valid options for the field value.  # noqa: E501
 
         :param options: The options of this FieldTypeDefinition.  # noqa: E501
-        :type: list[Option]
+        :type options: list[Option]
         """
         if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
@@ -198,7 +201,7 @@ class FieldTypeDefinition(object):
         A URL that will accept HTTPS requests when the valid options for the field are fetched.  # noqa: E501
 
         :param options_url: The options_url of this FieldTypeDefinition.  # noqa: E501
-        :type: str
+        :type options_url: str
         """
 
         self._options_url = options_url
@@ -221,7 +224,7 @@ class FieldTypeDefinition(object):
         This can be set to `OWNER` if the field should contain a HubSpot owner value.  # noqa: E501
 
         :param referenced_object_type: The referenced_object_type of this FieldTypeDefinition.  # noqa: E501
-        :type: str
+        :type referenced_object_type: str
         """
         allowed_values = [
             "CONTACT",
@@ -292,20 +295,29 @@ class FieldTypeDefinition(object):
 
         self._referenced_object_type = referenced_object_type
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

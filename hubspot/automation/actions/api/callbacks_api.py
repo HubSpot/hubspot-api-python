@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.automation.actions.api_client import ApiClient
-from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError
+from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class CallbacksApi(object):
@@ -39,22 +39,28 @@ class CallbacksApi(object):
         Completes the given action callback.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete(callback_id, callback_completion_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str callback_id: The ID of the target app. (required)
-        :param CallbackCompletionRequest callback_completion_request: The result of the completed action. (required)
+        :param callback_id: The ID of the target app. (required)
+        :type callback_id: str
+        :param callback_completion_request: The result of the completed action. (required)
+        :type callback_completion_request: CallbackCompletionRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.complete_with_http_info(callback_id, callback_completion_request, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class CallbacksApi(object):
         Completes the given action callback.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete_with_http_info(callback_id, callback_completion_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str callback_id: The ID of the target app. (required)
-        :param CallbackCompletionRequest callback_completion_request: The result of the completed action. (required)
+        :param callback_id: The ID of the target app. (required)
+        :type callback_id: str
+        :param callback_completion_request: The result of the completed action. (required)
+        :type callback_completion_request: CallbackCompletionRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["callback_id", "callback_completion_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["callback_id", "callback_completion_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'callback_id' is set
-        if self.api_client.client_side_validation and ("callback_id" not in local_var_params or local_var_params["callback_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("callback_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `callback_id` when calling `complete`")  # noqa: E501
         # verify the required parameter 'callback_completion_request' is set
-        if self.api_client.client_side_validation and ("callback_completion_request" not in local_var_params or local_var_params["callback_completion_request"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("callback_completion_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `callback_completion_request` when calling `complete`")  # noqa: E501
 
         collection_formats = {}
@@ -113,7 +128,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -125,10 +140,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/automation/v4/actions/callbacks/{callbackId}/complete",
@@ -139,13 +158,14 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def complete_batch(self, batch_input_callback_completion_batch_request, **kwargs):  # noqa: E501
@@ -154,21 +174,26 @@ class CallbacksApi(object):
         Completes the given action callbacks.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete_batch(batch_input_callback_completion_batch_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputCallbackCompletionBatchRequest batch_input_callback_completion_batch_request: The result of the completed action. (required)
+        :param batch_input_callback_completion_batch_request: The result of the completed action. (required)
+        :type batch_input_callback_completion_batch_request: BatchInputCallbackCompletionBatchRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.complete_batch_with_http_info(batch_input_callback_completion_batch_request, **kwargs)  # noqa: E501
@@ -179,32 +204,40 @@ class CallbacksApi(object):
         Completes the given action callbacks.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.complete_batch_with_http_info(batch_input_callback_completion_batch_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param BatchInputCallbackCompletionBatchRequest batch_input_callback_completion_batch_request: The result of the completed action. (required)
+        :param batch_input_callback_completion_batch_request: The result of the completed action. (required)
+        :type batch_input_callback_completion_batch_request: BatchInputCallbackCompletionBatchRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_callback_completion_batch_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["batch_input_callback_completion_batch_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -212,9 +245,7 @@ class CallbacksApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'batch_input_callback_completion_batch_request' is set
-        if self.api_client.client_side_validation and (
-            "batch_input_callback_completion_batch_request" not in local_var_params or local_var_params["batch_input_callback_completion_batch_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_callback_completion_batch_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `batch_input_callback_completion_batch_request` when calling `complete_batch`")  # noqa: E501
 
         collection_formats = {}
@@ -223,7 +254,7 @@ class CallbacksApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -235,10 +266,14 @@ class CallbacksApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/automation/v4/actions/callbacks/complete",
@@ -249,11 +284,12 @@ class CallbacksApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

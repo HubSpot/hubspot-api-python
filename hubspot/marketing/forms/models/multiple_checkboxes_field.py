@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -74,7 +77,7 @@ class MultipleCheckboxesField(object):
     ):  # noqa: E501
         """MultipleCheckboxesField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._field_type = None
@@ -127,7 +130,7 @@ class MultipleCheckboxesField(object):
         Determines how the field will be displayed and validated.  # noqa: E501
 
         :param field_type: The field_type of this MultipleCheckboxesField.  # noqa: E501
-        :type: str
+        :type field_type: str
         """
         if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
             raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
@@ -155,7 +158,7 @@ class MultipleCheckboxesField(object):
         A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.  # noqa: E501
 
         :param object_type_id: The object_type_id of this MultipleCheckboxesField.  # noqa: E501
-        :type: str
+        :type object_type_id: str
         """
 
         self._object_type_id = object_type_id
@@ -178,7 +181,7 @@ class MultipleCheckboxesField(object):
         The identifier of the field. In combination with the object type ID, it must be unique.  # noqa: E501
 
         :param name: The name of this MultipleCheckboxesField.  # noqa: E501
-        :type: str
+        :type name: str
         """
 
         self._name = name
@@ -201,7 +204,7 @@ class MultipleCheckboxesField(object):
         The main label for the form field.  # noqa: E501
 
         :param label: The label of this MultipleCheckboxesField.  # noqa: E501
-        :type: str
+        :type label: str
         """
 
         self._label = label
@@ -224,7 +227,7 @@ class MultipleCheckboxesField(object):
         Additional text helping the customer to complete the field.  # noqa: E501
 
         :param description: The description of this MultipleCheckboxesField.  # noqa: E501
-        :type: str
+        :type description: str
         """
 
         self._description = description
@@ -247,7 +250,7 @@ class MultipleCheckboxesField(object):
         Whether a value for this field is required when submitting the form.  # noqa: E501
 
         :param required: The required of this MultipleCheckboxesField.  # noqa: E501
-        :type: bool
+        :type required: bool
         """
 
         self._required = required
@@ -270,7 +273,7 @@ class MultipleCheckboxesField(object):
         Whether a field should be hidden or not. Hidden fields won't appear on the form, but can be used to pass a value to a property without requiring the customer to fill it in.  # noqa: E501
 
         :param hidden: The hidden of this MultipleCheckboxesField.  # noqa: E501
-        :type: bool
+        :type hidden: bool
         """
 
         self._hidden = hidden
@@ -293,7 +296,7 @@ class MultipleCheckboxesField(object):
         A list of other fields to make visible based on the value filled in for this field.  # noqa: E501
 
         :param dependent_fields: The dependent_fields of this MultipleCheckboxesField.  # noqa: E501
-        :type: list[DependentField]
+        :type dependent_fields: list[DependentField]
         """
 
         self._dependent_fields = dependent_fields
@@ -316,7 +319,7 @@ class MultipleCheckboxesField(object):
         The values selected by default. Those values will be submitted unless the customer modifies them.  # noqa: E501
 
         :param default_values: The default_values of this MultipleCheckboxesField.  # noqa: E501
-        :type: list[str]
+        :type default_values: list[str]
         """
 
         self._default_values = default_values
@@ -339,25 +342,34 @@ class MultipleCheckboxesField(object):
         The list of available choices for this field.  # noqa: E501
 
         :param options: The options of this MultipleCheckboxesField.  # noqa: E501
-        :type: list[EnumeratedFieldOption]
+        :type options: list[EnumeratedFieldOption]
         """
 
         self._options = options
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

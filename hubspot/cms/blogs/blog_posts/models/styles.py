@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.cms.blogs.blog_posts.configuration import Configuration
@@ -65,7 +68,7 @@ class Styles(object):
     ):  # noqa: E501
         """Styles - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._vertical_alignment = None
@@ -101,7 +104,7 @@ class Styles(object):
 
 
         :param vertical_alignment: The vertical_alignment of this Styles.  # noqa: E501
-        :type: str
+        :type vertical_alignment: str
         """
         if self.local_vars_configuration.client_side_validation and vertical_alignment is None:  # noqa: E501
             raise ValueError("Invalid value for `vertical_alignment`, must not be `None`")  # noqa: E501
@@ -127,7 +130,7 @@ class Styles(object):
 
 
         :param background_color: The background_color of this Styles.  # noqa: E501
-        :type: RGBAColor
+        :type background_color: RGBAColor
         """
         if self.local_vars_configuration.client_side_validation and background_color is None:  # noqa: E501
             raise ValueError("Invalid value for `background_color`, must not be `None`")  # noqa: E501
@@ -150,7 +153,7 @@ class Styles(object):
 
 
         :param background_image: The background_image of this Styles.  # noqa: E501
-        :type: BackgroundImage
+        :type background_image: BackgroundImage
         """
         if self.local_vars_configuration.client_side_validation and background_image is None:  # noqa: E501
             raise ValueError("Invalid value for `background_image`, must not be `None`")  # noqa: E501
@@ -173,7 +176,7 @@ class Styles(object):
 
 
         :param background_gradient: The background_gradient of this Styles.  # noqa: E501
-        :type: Gradient
+        :type background_gradient: Gradient
         """
         if self.local_vars_configuration.client_side_validation and background_gradient is None:  # noqa: E501
             raise ValueError("Invalid value for `background_gradient`, must not be `None`")  # noqa: E501
@@ -196,7 +199,7 @@ class Styles(object):
 
 
         :param max_width_section_centering: The max_width_section_centering of this Styles.  # noqa: E501
-        :type: int
+        :type max_width_section_centering: int
         """
         if self.local_vars_configuration.client_side_validation and max_width_section_centering is None:  # noqa: E501
             raise ValueError("Invalid value for `max_width_section_centering`, must not be `None`")  # noqa: E501
@@ -219,7 +222,7 @@ class Styles(object):
 
 
         :param force_full_width_section: The force_full_width_section of this Styles.  # noqa: E501
-        :type: bool
+        :type force_full_width_section: bool
         """
         if self.local_vars_configuration.client_side_validation and force_full_width_section is None:  # noqa: E501
             raise ValueError("Invalid value for `force_full_width_section`, must not be `None`")  # noqa: E501
@@ -242,7 +245,7 @@ class Styles(object):
 
 
         :param flexbox_positioning: The flexbox_positioning of this Styles.  # noqa: E501
-        :type: str
+        :type flexbox_positioning: str
         """
         if self.local_vars_configuration.client_side_validation and flexbox_positioning is None:  # noqa: E501
             raise ValueError("Invalid value for `flexbox_positioning`, must not be `None`")  # noqa: E501
@@ -252,20 +255,29 @@ class Styles(object):
 
         self._flexbox_positioning = flexbox_positioning
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -39,7 +42,7 @@ class DependentFieldFilter(object):
     def __init__(self, operator=None, value=None, values=None, range_start=None, range_end=None, local_vars_configuration=None):  # noqa: E501
         """DependentFieldFilter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._operator = None
@@ -71,7 +74,7 @@ class DependentFieldFilter(object):
 
 
         :param operator: The operator of this DependentFieldFilter.  # noqa: E501
-        :type: str
+        :type operator: str
         """
         if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
             raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
@@ -119,7 +122,7 @@ class DependentFieldFilter(object):
 
 
         :param value: The value of this DependentFieldFilter.  # noqa: E501
-        :type: str
+        :type value: str
         """
         if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
@@ -142,7 +145,7 @@ class DependentFieldFilter(object):
 
 
         :param values: The values of this DependentFieldFilter.  # noqa: E501
-        :type: list[str]
+        :type values: list[str]
         """
         if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
             raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
@@ -165,7 +168,7 @@ class DependentFieldFilter(object):
 
 
         :param range_start: The range_start of this DependentFieldFilter.  # noqa: E501
-        :type: str
+        :type range_start: str
         """
         if self.local_vars_configuration.client_side_validation and range_start is None:  # noqa: E501
             raise ValueError("Invalid value for `range_start`, must not be `None`")  # noqa: E501
@@ -188,27 +191,36 @@ class DependentFieldFilter(object):
 
 
         :param range_end: The range_end of this DependentFieldFilter.  # noqa: E501
-        :type: str
+        :type range_end: str
         """
         if self.local_vars_configuration.client_side_validation and range_end is None:  # noqa: E501
             raise ValueError("Invalid value for `range_end`, must not be `None`")  # noqa: E501
 
         self._range_end = range_end
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

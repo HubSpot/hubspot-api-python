@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.contacts.configuration import Configuration
@@ -32,14 +35,14 @@ class ErrorDetail(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"message": "str", "_in": "str", "code": "str", "sub_category": "str", "context": "dict(str, list[str])"}
+    openapi_types = {"message": "str", "_in": "str", "code": "str", "sub_category": "str", "context": "dict[str, list[str]]"}
 
     attribute_map = {"message": "message", "_in": "in", "code": "code", "sub_category": "subCategory", "context": "context"}
 
     def __init__(self, message=None, _in=None, code=None, sub_category=None, context=None, local_vars_configuration=None):  # noqa: E501
         """ErrorDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._message = None
@@ -77,7 +80,7 @@ class ErrorDetail(object):
         A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
 
         :param message: The message of this ErrorDetail.  # noqa: E501
-        :type: str
+        :type message: str
         """
         if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
@@ -102,7 +105,7 @@ class ErrorDetail(object):
         The name of the field or parameter in which the error was found.  # noqa: E501
 
         :param _in: The _in of this ErrorDetail.  # noqa: E501
-        :type: str
+        :type _in: str
         """
 
         self.__in = _in
@@ -125,7 +128,7 @@ class ErrorDetail(object):
         The status code associated with the error detail  # noqa: E501
 
         :param code: The code of this ErrorDetail.  # noqa: E501
-        :type: str
+        :type code: str
         """
 
         self._code = code
@@ -148,7 +151,7 @@ class ErrorDetail(object):
         A specific category that contains more specific detail about the error  # noqa: E501
 
         :param sub_category: The sub_category of this ErrorDetail.  # noqa: E501
-        :type: str
+        :type sub_category: str
         """
 
         self._sub_category = sub_category
@@ -160,7 +163,7 @@ class ErrorDetail(object):
         Context about the error condition  # noqa: E501
 
         :return: The context of this ErrorDetail.  # noqa: E501
-        :rtype: dict(str, list[str])
+        :rtype: dict[str, list[str]]
         """
         return self._context
 
@@ -171,25 +174,34 @@ class ErrorDetail(object):
         Context about the error condition  # noqa: E501
 
         :param context: The context of this ErrorDetail.  # noqa: E501
-        :type: dict(str, list[str])
+        :type context: dict[str, list[str]]
         """
 
         self._context = context
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.cms.source_code.api_client import ApiClient
-from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError
+from hubspot.cms.source_code.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class ExtractApi(object):
@@ -39,21 +39,26 @@ class ExtractApi(object):
         Extracts a zip file in the file system. The zip file will be extracted in-place and not be deleted automatically.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.extract_by_path(path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str path: The file system location of the zip file. (required)
+        :param path: The file system location of the zip file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.extract_by_path_with_http_info(path, **kwargs)  # noqa: E501
@@ -64,32 +69,40 @@ class ExtractApi(object):
         Extracts a zip file in the file system. The zip file will be extracted in-place and not be deleted automatically.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.extract_by_path_with_http_info(path, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str path: The file system location of the zip file. (required)
+        :param path: The file system location of the zip file. (required)
+        :type path: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["path"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["path"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -97,7 +110,7 @@ class ExtractApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'path' is set
-        if self.api_client.client_side_validation and ("path" not in local_var_params or local_var_params["path"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("path") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `path` when calling `extract_by_path`")  # noqa: E501
 
         if self.api_client.client_side_validation and "path" in local_var_params and not re.search(r".+", local_var_params["path"]):  # noqa: E501
@@ -110,7 +123,7 @@ class ExtractApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -122,6 +135,8 @@ class ExtractApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/cms/v3/source-code/extract/{path}",
             "POST",
@@ -131,11 +146,12 @@ class ExtractApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.cards.configuration import Configuration
@@ -53,7 +56,7 @@ class IntegratorCardPayloadResponse(object):
     def __init__(self, total_count=None, all_items_link_url=None, card_label=None, top_level_actions=None, sections=None, response_version=None, local_vars_configuration=None):  # noqa: E501
         """IntegratorCardPayloadResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._total_count = None
@@ -94,7 +97,7 @@ class IntegratorCardPayloadResponse(object):
         The total number of card properties that will be sent in this response.  # noqa: E501
 
         :param total_count: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: int
+        :type total_count: int
         """
         if self.local_vars_configuration.client_side_validation and total_count is None:  # noqa: E501
             raise ValueError("Invalid value for `total_count`, must not be `None`")  # noqa: E501
@@ -119,7 +122,7 @@ class IntegratorCardPayloadResponse(object):
         URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.  # noqa: E501
 
         :param all_items_link_url: The all_items_link_url of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: str
+        :type all_items_link_url: str
         """
 
         self._all_items_link_url = all_items_link_url
@@ -142,7 +145,7 @@ class IntegratorCardPayloadResponse(object):
         The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.  # noqa: E501
 
         :param card_label: The card_label of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: str
+        :type card_label: str
         """
 
         self._card_label = card_label
@@ -163,7 +166,7 @@ class IntegratorCardPayloadResponse(object):
 
 
         :param top_level_actions: The top_level_actions of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: TopLevelActions
+        :type top_level_actions: TopLevelActions
         """
 
         self._top_level_actions = top_level_actions
@@ -186,7 +189,7 @@ class IntegratorCardPayloadResponse(object):
         A list of up to five valid card sub categories.  # noqa: E501
 
         :param sections: The sections of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: list[IntegratorObjectResult]
+        :type sections: list[IntegratorObjectResult]
         """
 
         self._sections = sections
@@ -207,7 +210,7 @@ class IntegratorCardPayloadResponse(object):
 
 
         :param response_version: The response_version of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type: str
+        :type response_version: str
         """
         allowed_values = ["v1", "v3"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and response_version not in allowed_values:  # noqa: E501
@@ -215,20 +218,29 @@ class IntegratorCardPayloadResponse(object):
 
         self._response_version = response_version
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.timeline.configuration import Configuration
@@ -39,7 +42,7 @@ class TimelineEventIFrame(object):
     def __init__(self, link_label=None, header_label=None, url=None, width=None, height=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventIFrame - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._link_label = None
@@ -73,7 +76,7 @@ class TimelineEventIFrame(object):
         The text displaying the link that will display the iframe.  # noqa: E501
 
         :param link_label: The link_label of this TimelineEventIFrame.  # noqa: E501
-        :type: str
+        :type link_label: str
         """
         if self.local_vars_configuration.client_side_validation and link_label is None:  # noqa: E501
             raise ValueError("Invalid value for `link_label`, must not be `None`")  # noqa: E501
@@ -98,7 +101,7 @@ class TimelineEventIFrame(object):
         The label of the modal window that displays the iframe contents.  # noqa: E501
 
         :param header_label: The header_label of this TimelineEventIFrame.  # noqa: E501
-        :type: str
+        :type header_label: str
         """
         if self.local_vars_configuration.client_side_validation and header_label is None:  # noqa: E501
             raise ValueError("Invalid value for `header_label`, must not be `None`")  # noqa: E501
@@ -123,7 +126,7 @@ class TimelineEventIFrame(object):
         The URI of the iframe contents.  # noqa: E501
 
         :param url: The url of this TimelineEventIFrame.  # noqa: E501
-        :type: str
+        :type url: str
         """
         if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -148,7 +151,7 @@ class TimelineEventIFrame(object):
         The width of the modal window in pixels.  # noqa: E501
 
         :param width: The width of this TimelineEventIFrame.  # noqa: E501
-        :type: int
+        :type width: int
         """
         if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
             raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
@@ -173,27 +176,36 @@ class TimelineEventIFrame(object):
         The height of the modal window in pixels.  # noqa: E501
 
         :param height: The height of this TimelineEventIFrame.  # noqa: E501
-        :type: int
+        :type height: int
         """
         if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
         self._height = height
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

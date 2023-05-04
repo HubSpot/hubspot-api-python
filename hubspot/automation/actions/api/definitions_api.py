@@ -18,7 +18,7 @@ import re  # noqa: F401
 import six
 
 from hubspot.automation.actions.api_client import ApiClient
-from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError
+from hubspot.automation.actions.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class DefinitionsApi(object):
@@ -39,22 +39,28 @@ class DefinitionsApi(object):
         Archives a single custom workflow action with the specified ID. Workflows that currently use this custom action will stop attempting to execute the action, and all future executions will be marked as a failure.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.archive_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
@@ -65,33 +71,42 @@ class DefinitionsApi(object):
         Archives a single custom workflow action with the specified ID. Workflows that currently use this custom action will stop attempting to execute the action, and all future executions will be marked as a failure.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.archive_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "app_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -99,10 +114,10 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
@@ -115,7 +130,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -127,6 +142,8 @@ class DefinitionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}",
             "DELETE",
@@ -136,13 +153,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def create(self, app_id, extension_action_definition_input, **kwargs):  # noqa: E501
@@ -151,22 +169,28 @@ class DefinitionsApi(object):
         Creates a new custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create(app_id, extension_action_definition_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: (required)
-        :param ExtensionActionDefinitionInput extension_action_definition_input: The custom workflow action to create. (required)
+        :param app_id: (required)
+        :type app_id: int
+        :param extension_action_definition_input: The custom workflow action to create. (required)
+        :type extension_action_definition_input: ExtensionActionDefinitionInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ExtensionActionDefinition
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ExtensionActionDefinition
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(app_id, extension_action_definition_input, **kwargs)  # noqa: E501
@@ -177,33 +201,42 @@ class DefinitionsApi(object):
         Creates a new custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.create_with_http_info(app_id, extension_action_definition_input, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: (required)
-        :param ExtensionActionDefinitionInput extension_action_definition_input: The custom workflow action to create. (required)
+        :param app_id: (required)
+        :type app_id: int
+        :param extension_action_definition_input: The custom workflow action to create. (required)
+        :type extension_action_definition_input: ExtensionActionDefinitionInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id", "extension_action_definition_input"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "extension_action_definition_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -211,12 +244,10 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `create`")  # noqa: E501
         # verify the required parameter 'extension_action_definition_input' is set
-        if self.api_client.client_side_validation and (
-            "extension_action_definition_input" not in local_var_params or local_var_params["extension_action_definition_input"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("extension_action_definition_input") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `extension_action_definition_input` when calling `create`")  # noqa: E501
 
         collection_formats = {}
@@ -227,7 +258,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -239,10 +270,16 @@ class DefinitionsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            201: "ExtensionActionDefinition",
+        }
 
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}",
@@ -253,13 +290,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ExtensionActionDefinition",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_by_id(self, definition_id, app_id, **kwargs):  # noqa: E501
@@ -268,23 +306,30 @@ class DefinitionsApi(object):
         Returns a single custom workflow action with the specified ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
-        :param bool archived: Whether to include archived custom actions.
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param archived: Whether to include archived custom actions.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ExtensionActionDefinition
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ExtensionActionDefinition
         """
         kwargs["_return_http_data_only"] = True
         return self.get_by_id_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
@@ -295,34 +340,44 @@ class DefinitionsApi(object):
         Returns a single custom workflow action with the specified ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_by_id_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
-        :param bool archived: Whether to include archived custom actions.
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param archived: Whether to include archived custom actions.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "app_id", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "app_id", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -330,10 +385,10 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
@@ -345,10 +400,10 @@ class DefinitionsApi(object):
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -359,6 +414,10 @@ class DefinitionsApi(object):
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            200: "ExtensionActionDefinition",
+        }
 
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}",
@@ -369,13 +428,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ExtensionActionDefinition",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_page(self, app_id, **kwargs):  # noqa: E501
@@ -384,24 +444,32 @@ class DefinitionsApi(object):
         Returns a list of all custom workflow actions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: (required)
-        :param int limit: Maximum number of results per page.
-        :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-        :param bool archived: Whether to include archived custom actions.
+        :param app_id: (required)
+        :type app_id: int
+        :param limit: Maximum number of results per page.
+        :type limit: int
+        :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param archived: Whether to include archived custom actions.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseExtensionActionDefinitionForwardPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseExtensionActionDefinitionForwardPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(app_id, **kwargs)  # noqa: E501
@@ -412,35 +480,46 @@ class DefinitionsApi(object):
         Returns a list of all custom workflow actions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_page_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int app_id: (required)
-        :param int limit: Maximum number of results per page.
-        :param str after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-        :param bool archived: Whether to include archived custom actions.
+        :param app_id: (required)
+        :type app_id: int
+        :param limit: Maximum number of results per page.
+        :type limit: int
+        :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+        :type after: str
+        :param archived: Whether to include archived custom actions.
+        :type archived: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseExtensionActionDefinitionForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseExtensionActionDefinitionForwardPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id", "limit", "after", "archived"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["app_id", "limit", "after", "archived"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -448,7 +527,7 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `get_page`")  # noqa: E501
 
         collection_formats = {}
@@ -458,14 +537,14 @@ class DefinitionsApi(object):
             path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
-        if "limit" in local_var_params and local_var_params["limit"] is not None:  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
-        if "after" in local_var_params and local_var_params["after"] is not None:  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
-        if "archived" in local_var_params and local_var_params["archived"] is not None:  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -477,6 +556,10 @@ class DefinitionsApi(object):
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseExtensionActionDefinitionForwardPaging",
+        }
+
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}",
             "GET",
@@ -486,13 +569,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseExtensionActionDefinitionForwardPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, definition_id, app_id, extension_action_definition_patch, **kwargs):  # noqa: E501
@@ -501,23 +585,30 @@ class DefinitionsApi(object):
         Updates a custom workflow action with new values for the specified fields.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(definition_id, app_id, extension_action_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
-        :param ExtensionActionDefinitionPatch extension_action_definition_patch: The custom workflow action fields to be updated. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param extension_action_definition_patch: The custom workflow action fields to be updated. (required)
+        :type extension_action_definition_patch: ExtensionActionDefinitionPatch
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ExtensionActionDefinition
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: ExtensionActionDefinition
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(definition_id, app_id, extension_action_definition_patch, **kwargs)  # noqa: E501
@@ -528,34 +619,44 @@ class DefinitionsApi(object):
         Updates a custom workflow action with new values for the specified fields.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(definition_id, app_id, extension_action_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str definition_id: The ID of the custom workflow action. (required)
-        :param int app_id: (required)
-        :param ExtensionActionDefinitionPatch extension_action_definition_patch: The custom workflow action fields to be updated. (required)
+        :param definition_id: The ID of the custom workflow action. (required)
+        :type definition_id: str
+        :param app_id: (required)
+        :type app_id: int
+        :param extension_action_definition_patch: The custom workflow action fields to be updated. (required)
+        :type extension_action_definition_patch: ExtensionActionDefinitionPatch
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(ExtensionActionDefinition, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["definition_id", "app_id", "extension_action_definition_patch"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["definition_id", "app_id", "extension_action_definition_patch"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -563,15 +664,13 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'definition_id' is set
-        if self.api_client.client_side_validation and ("definition_id" not in local_var_params or local_var_params["definition_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("definition_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `definition_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and ("app_id" not in local_var_params or local_var_params["app_id"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'extension_action_definition_patch' is set
-        if self.api_client.client_side_validation and (
-            "extension_action_definition_patch" not in local_var_params or local_var_params["extension_action_definition_patch"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("extension_action_definition_patch") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `extension_action_definition_patch` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -584,7 +683,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -596,10 +695,16 @@ class DefinitionsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {
+            200: "ExtensionActionDefinition",
+        }
 
         return self.api_client.call_api(
             "/automation/v4/actions/{appId}/{definitionId}",
@@ -610,11 +715,12 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="ExtensionActionDefinition",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )

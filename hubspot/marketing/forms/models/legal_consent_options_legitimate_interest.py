@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -39,7 +42,7 @@ class LegalConsentOptionsLegitimateInterest(object):
     def __init__(self, type="legitimate_interest", subscription_type_ids=None, lawful_basis=None, privacy_text=None, local_vars_configuration=None):  # noqa: E501
         """LegalConsentOptionsLegitimateInterest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._type = None
@@ -69,7 +72,7 @@ class LegalConsentOptionsLegitimateInterest(object):
 
 
         :param type: The type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :type: str
+        :type type: str
         """
         if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
@@ -95,7 +98,7 @@ class LegalConsentOptionsLegitimateInterest(object):
 
 
         :param subscription_type_ids: The subscription_type_ids of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :type: list[int]
+        :type subscription_type_ids: list[int]
         """
         if self.local_vars_configuration.client_side_validation and subscription_type_ids is None:  # noqa: E501
             raise ValueError("Invalid value for `subscription_type_ids`, must not be `None`")  # noqa: E501
@@ -118,7 +121,7 @@ class LegalConsentOptionsLegitimateInterest(object):
 
 
         :param lawful_basis: The lawful_basis of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :type: str
+        :type lawful_basis: str
         """
         if self.local_vars_configuration.client_side_validation and lawful_basis is None:  # noqa: E501
             raise ValueError("Invalid value for `lawful_basis`, must not be `None`")  # noqa: E501
@@ -144,27 +147,36 @@ class LegalConsentOptionsLegitimateInterest(object):
 
 
         :param privacy_text: The privacy_text of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :type: str
+        :type privacy_text: str
         """
         if self.local_vars_configuration.client_side_validation and privacy_text is None:  # noqa: E501
             raise ValueError("Invalid value for `privacy_text`, must not be `None`")  # noqa: E501
 
         self._privacy_text = privacy_text
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.forms.configuration import Configuration
@@ -39,7 +42,7 @@ class LegalConsentCheckbox(object):
     def __init__(self, required=None, subscription_type_id=None, label=None, local_vars_configuration=None):  # noqa: E501
         """LegalConsentCheckbox - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._required = None
@@ -69,7 +72,7 @@ class LegalConsentCheckbox(object):
         Whether this checkbox is required when submitting the form.  # noqa: E501
 
         :param required: The required of this LegalConsentCheckbox.  # noqa: E501
-        :type: bool
+        :type required: bool
         """
         if self.local_vars_configuration.client_side_validation and required is None:  # noqa: E501
             raise ValueError("Invalid value for `required`, must not be `None`")  # noqa: E501
@@ -92,7 +95,7 @@ class LegalConsentCheckbox(object):
 
 
         :param subscription_type_id: The subscription_type_id of this LegalConsentCheckbox.  # noqa: E501
-        :type: int
+        :type subscription_type_id: int
         """
         if self.local_vars_configuration.client_side_validation and subscription_type_id is None:  # noqa: E501
             raise ValueError("Invalid value for `subscription_type_id`, must not be `None`")  # noqa: E501
@@ -117,27 +120,36 @@ class LegalConsentCheckbox(object):
         The main label for the form field.  # noqa: E501
 
         :param label: The label of this LegalConsentCheckbox.  # noqa: E501
-        :type: str
+        :type label: str
         """
         if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

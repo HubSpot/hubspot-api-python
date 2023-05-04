@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.crm.extensions.cards.configuration import Configuration
@@ -39,7 +42,7 @@ class CardResponse(object):
     def __init__(self, id=None, created_at=None, updated_at=None, title=None, fetch=None, display=None, actions=None, local_vars_configuration=None):  # noqa: E501
         """CardResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
@@ -79,7 +82,7 @@ class CardResponse(object):
         Generated unique ID for card.  # noqa: E501
 
         :param id: The id of this CardResponse.  # noqa: E501
-        :type: str
+        :type id: str
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
@@ -104,7 +107,7 @@ class CardResponse(object):
         When this card was created.  # noqa: E501
 
         :param created_at: The created_at of this CardResponse.  # noqa: E501
-        :type: datetime
+        :type created_at: datetime
         """
 
         self._created_at = created_at
@@ -127,7 +130,7 @@ class CardResponse(object):
         The last time this card was updated.  # noqa: E501
 
         :param updated_at: The updated_at of this CardResponse.  # noqa: E501
-        :type: datetime
+        :type updated_at: datetime
         """
 
         self._updated_at = updated_at
@@ -150,7 +153,7 @@ class CardResponse(object):
         Displayed title of this card.  # noqa: E501
 
         :param title: The title of this CardResponse.  # noqa: E501
-        :type: str
+        :type title: str
         """
         if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
             raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
@@ -173,7 +176,7 @@ class CardResponse(object):
 
 
         :param fetch: The fetch of this CardResponse.  # noqa: E501
-        :type: CardFetchBody
+        :type fetch: CardFetchBody
         """
         if self.local_vars_configuration.client_side_validation and fetch is None:  # noqa: E501
             raise ValueError("Invalid value for `fetch`, must not be `None`")  # noqa: E501
@@ -196,7 +199,7 @@ class CardResponse(object):
 
 
         :param display: The display of this CardResponse.  # noqa: E501
-        :type: CardDisplayBody
+        :type display: CardDisplayBody
         """
         if self.local_vars_configuration.client_side_validation and display is None:  # noqa: E501
             raise ValueError("Invalid value for `display`, must not be `None`")  # noqa: E501
@@ -219,27 +222,36 @@ class CardResponse(object):
 
 
         :param actions: The actions of this CardResponse.  # noqa: E501
-        :type: CardActions
+        :type actions: CardActions
         """
         if self.local_vars_configuration.client_side_validation and actions is None:  # noqa: E501
             raise ValueError("Invalid value for `actions`, must not be `None`")  # noqa: E501
 
         self._actions = actions
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

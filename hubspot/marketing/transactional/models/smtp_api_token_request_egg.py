@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.transactional.configuration import Configuration
@@ -39,7 +42,7 @@ class SmtpApiTokenRequestEgg(object):
     def __init__(self, create_contact=None, campaign_name=None, local_vars_configuration=None):  # noqa: E501
         """SmtpApiTokenRequestEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._create_contact = None
@@ -67,7 +70,7 @@ class SmtpApiTokenRequestEgg(object):
         Indicates whether a contact should be created for email recipients.  # noqa: E501
 
         :param create_contact: The create_contact of this SmtpApiTokenRequestEgg.  # noqa: E501
-        :type: bool
+        :type create_contact: bool
         """
         if self.local_vars_configuration.client_side_validation and create_contact is None:  # noqa: E501
             raise ValueError("Invalid value for `create_contact`, must not be `None`")  # noqa: E501
@@ -92,27 +95,36 @@ class SmtpApiTokenRequestEgg(object):
         A name for the campaign tied to the SMTP API token.  # noqa: E501
 
         :param campaign_name: The campaign_name of this SmtpApiTokenRequestEgg.  # noqa: E501
-        :type: str
+        :type campaign_name: str
         """
         if self.local_vars_configuration.client_side_validation and campaign_name is None:  # noqa: E501
             raise ValueError("Invalid value for `campaign_name`, must not be `None`")  # noqa: E501
 
         self._campaign_name = campaign_name
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 

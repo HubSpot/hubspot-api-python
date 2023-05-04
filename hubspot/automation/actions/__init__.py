@@ -29,6 +29,7 @@ from hubspot.automation.actions.exceptions import OpenApiException
 from hubspot.automation.actions.exceptions import ApiTypeError
 from hubspot.automation.actions.exceptions import ApiValueError
 from hubspot.automation.actions.exceptions import ApiKeyError
+from hubspot.automation.actions.exceptions import ApiAttributeError
 from hubspot.automation.actions.exceptions import ApiException
 
 # import models into sdk package
@@ -48,6 +49,7 @@ from hubspot.automation.actions.models.error_detail import ErrorDetail
 from hubspot.automation.actions.models.extension_action_definition import ExtensionActionDefinition
 from hubspot.automation.actions.models.extension_action_definition_input import ExtensionActionDefinitionInput
 from hubspot.automation.actions.models.extension_action_definition_patch import ExtensionActionDefinitionPatch
+from hubspot.automation.actions.models.extension_action_definition_patch_input_field_dependencies_inner import ExtensionActionDefinitionPatchInputFieldDependenciesInner
 from hubspot.automation.actions.models.field_type_definition import FieldTypeDefinition
 from hubspot.automation.actions.models.forward_paging import ForwardPaging
 from hubspot.automation.actions.models.input_field_definition import InputFieldDefinition

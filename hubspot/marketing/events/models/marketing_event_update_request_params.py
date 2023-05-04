@@ -10,9 +10,12 @@
 """
 
 
+try:
+    from inspect import getfullargspec
+except ImportError:
+    from inspect import getargspec as getfullargspec
 import pprint
 import re  # noqa: F401
-
 import six
 
 from hubspot.marketing.events.configuration import Configuration
@@ -71,7 +74,7 @@ class MarketingEventUpdateRequestParams(object):
     ):  # noqa: E501
         """MarketingEventUpdateRequestParams - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
-            local_vars_configuration = Configuration()
+            local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._event_name = None
@@ -122,7 +125,7 @@ class MarketingEventUpdateRequestParams(object):
         The name of the marketing event.  # noqa: E501
 
         :param event_name: The event_name of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: str
+        :type event_name: str
         """
 
         self._event_name = event_name
@@ -145,7 +148,7 @@ class MarketingEventUpdateRequestParams(object):
         Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`  # noqa: E501
 
         :param event_type: The event_type of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: str
+        :type event_type: str
         """
 
         self._event_type = event_type
@@ -168,7 +171,7 @@ class MarketingEventUpdateRequestParams(object):
         The start date and time of the marketing event.  # noqa: E501
 
         :param start_date_time: The start_date_time of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: datetime
+        :type start_date_time: datetime
         """
 
         self._start_date_time = start_date_time
@@ -191,7 +194,7 @@ class MarketingEventUpdateRequestParams(object):
         The end date and time of the marketing event.  # noqa: E501
 
         :param end_date_time: The end_date_time of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: datetime
+        :type end_date_time: datetime
         """
 
         self._end_date_time = end_date_time
@@ -214,7 +217,7 @@ class MarketingEventUpdateRequestParams(object):
         The name of the organizer of the marketing event.  # noqa: E501
 
         :param event_organizer: The event_organizer of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: str
+        :type event_organizer: str
         """
 
         self._event_organizer = event_organizer
@@ -237,7 +240,7 @@ class MarketingEventUpdateRequestParams(object):
         The description of the marketing event.  # noqa: E501
 
         :param event_description: The event_description of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: str
+        :type event_description: str
         """
 
         self._event_description = event_description
@@ -260,7 +263,7 @@ class MarketingEventUpdateRequestParams(object):
         A URL in the external event application where the marketing event can be managed.  # noqa: E501
 
         :param event_url: The event_url of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: str
+        :type event_url: str
         """
 
         self._event_url = event_url
@@ -283,7 +286,7 @@ class MarketingEventUpdateRequestParams(object):
         Indicates if the marketing event has been cancelled. Defaults to `false`  # noqa: E501
 
         :param event_cancelled: The event_cancelled of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: bool
+        :type event_cancelled: bool
         """
 
         self._event_cancelled = event_cancelled
@@ -306,25 +309,34 @@ class MarketingEventUpdateRequestParams(object):
         A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set. In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.   # noqa: E501
 
         :param custom_properties: The custom_properties of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type: list[PropertyValue]
+        :type custom_properties: list[PropertyValue]
         """
 
         self._custom_properties = custom_properties
 
-    def to_dict(self):
+    def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
         result = {}
 
+        def convert(x):
+            if hasattr(x, "to_dict"):
+                args = getfullargspec(x.to_dict).args
+                if len(args) == 1:
+                    return x.to_dict()
+                else:
+                    return x.to_dict(serialize)
+            else:
+                return x
+
         for attr, _ in six.iteritems(self.openapi_types):
             value = getattr(self, attr)
+            attr = self.attribute_map.get(attr, attr) if serialize else attr
             if isinstance(value, list):
-                result[attr] = list(map(lambda x: x.to_dict() if hasattr(x, "to_dict") else x, value))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
+                result[attr] = list(map(lambda x: convert(x), value))
             elif isinstance(value, dict):
-                result[attr] = dict(map(lambda item: (item[0], item[1].to_dict()) if hasattr(item[1], "to_dict") else item, value.items()))
+                result[attr] = dict(map(lambda item: (item[0], convert(item[1])), value.items()))
             else:
-                result[attr] = value
+                result[attr] = convert(value)
 
         return result
 
