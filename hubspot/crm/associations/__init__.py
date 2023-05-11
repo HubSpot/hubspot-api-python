@@ -18,7 +18,6 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.crm.associations.api.batch_api import BatchApi
-from hubspot.crm.associations.api.types_api import TypesApi
 
 # import ApiClient
 from hubspot.crm.associations.api_client import ApiClient
@@ -27,6 +26,7 @@ from hubspot.crm.associations.exceptions import OpenApiException
 from hubspot.crm.associations.exceptions import ApiTypeError
 from hubspot.crm.associations.exceptions import ApiValueError
 from hubspot.crm.associations.exceptions import ApiKeyError
+from hubspot.crm.associations.exceptions import ApiAttributeError
 from hubspot.crm.associations.exceptions import ApiException
 
 # import models into sdk package
