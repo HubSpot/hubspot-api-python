@@ -17,8 +17,8 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from hubspot.crm.associations.v4.api_client import ApiClient
-from hubspot.crm.associations.v4.exceptions import ApiTypeError, ApiValueError
+from hubspot.crm.associations.v4.schema.api_client import ApiClient
+from hubspot.crm.associations.v4.schema.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class DefinitionsApi(object):
@@ -33,82 +33,245 @@ class DefinitionsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, from_object_type, to_object_type, association_type_id, **kwargs):  # noqa: E501
-        """Delete  # noqa: E501
+    def create(self, from_object_type, to_object_type, public_association_definition_create_request, **kwargs):  # noqa: E501
+        """Create  # noqa: E501
 
-        Deletes an association definition  # noqa: E501
+        Create a user defined association definition  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive(from_object_type, to_object_type, association_type_id, async_req=True)
+
+        >>> thread = api.create(from_object_type, to_object_type, public_association_definition_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param int association_type_id: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param public_association_definition_create_request: (required)
+        :type public_association_definition_create_request: PublicAssociationDefinitionCreateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseAssociationSpecWithLabelNoPaging
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(from_object_type, to_object_type, association_type_id, **kwargs)  # noqa: E501
+        return self.create_with_http_info(from_object_type, to_object_type, public_association_definition_create_request, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, from_object_type, to_object_type, association_type_id, **kwargs):  # noqa: E501
-        """Delete  # noqa: E501
+    def create_with_http_info(self, from_object_type, to_object_type, public_association_definition_create_request, **kwargs):  # noqa: E501
+        """Create  # noqa: E501
 
-        Deletes an association definition  # noqa: E501
+        Create a user defined association definition  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.archive_with_http_info(from_object_type, to_object_type, association_type_id, async_req=True)
+
+        >>> thread = api.create_with_http_info(from_object_type, to_object_type, public_association_definition_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param int association_type_id: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param public_association_definition_create_request: (required)
+        :type public_association_definition_create_request: PublicAssociationDefinitionCreateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseAssociationSpecWithLabelNoPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["from_object_type", "to_object_type", "association_type_id"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["from_object_type", "to_object_type", "public_association_definition_create_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'from_object_type' is set
-        if self.api_client.client_side_validation and ("from_object_type" not in local_var_params or local_var_params["from_object_type"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `from_object_type` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("from_object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `from_object_type` when calling `create`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
-        if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("to_object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `create`")  # noqa: E501
+        # verify the required parameter 'public_association_definition_create_request' is set
+        if self.api_client.client_side_validation and local_var_params.get("public_association_definition_create_request") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_association_definition_create_request` when calling `create`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "from_object_type" in local_var_params:
+            path_params["fromObjectType"] = local_var_params["from_object_type"]  # noqa: E501
+        if "to_object_type" in local_var_params:
+            path_params["toObjectType"] = local_var_params["to_object_type"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "public_association_definition_create_request" in local_var_params:
+            body_params = local_var_params["public_association_definition_create_request"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
+
+        # Authentication setting
+        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "CollectionResponseAssociationSpecWithLabelNoPaging",
+        }
+
+        return self.api_client.call_api(
+            "/crm/v4/associations/{fromObjectType}/{toObjectType}/labels",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def delete(self, from_object_type, to_object_type, association_type_id, **kwargs):  # noqa: E501
+        """Delete  # noqa: E501
+
+        Deletes an association definition  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete(from_object_type, to_object_type, association_type_id, async_req=True)
+        >>> result = thread.get()
+
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param association_type_id: (required)
+        :type association_type_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.delete_with_http_info(from_object_type, to_object_type, association_type_id, **kwargs)  # noqa: E501
+
+    def delete_with_http_info(self, from_object_type, to_object_type, association_type_id, **kwargs):  # noqa: E501
+        """Delete  # noqa: E501
+
+        Deletes an association definition  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_with_http_info(from_object_type, to_object_type, association_type_id, async_req=True)
+        >>> result = thread.get()
+
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param association_type_id: (required)
+        :type association_type_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = ["from_object_type", "to_object_type", "association_type_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method delete" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'from_object_type' is set
+        if self.api_client.client_side_validation and local_var_params.get("from_object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `from_object_type` when calling `delete`")  # noqa: E501
+        # verify the required parameter 'to_object_type' is set
+        if self.api_client.client_side_validation and local_var_params.get("to_object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to_object_type` when calling `delete`")  # noqa: E501
         # verify the required parameter 'association_type_id' is set
-        if self.api_client.client_side_validation and ("association_type_id" not in local_var_params or local_var_params["association_type_id"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `association_type_id` when calling `archive`")  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("association_type_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `association_type_id` when calling `delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -122,7 +285,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -134,6 +297,8 @@ class DefinitionsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {}
+
         return self.api_client.call_api(
             "/crm/v4/associations/{fromObjectType}/{toObjectType}/labels/{associationTypeId}",
             "DELETE",
@@ -143,137 +308,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
-        )
-
-    def create(self, from_object_type, to_object_type, public_association_definition_create_request, **kwargs):  # noqa: E501
-        """Create  # noqa: E501
-
-        Create a user defined association definition  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create(from_object_type, to_object_type, public_association_definition_create_request, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param PublicAssociationDefinitionCreateRequest public_association_definition_create_request: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: CollectionResponseAssociationSpecWithLabelNoPaging
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(from_object_type, to_object_type, public_association_definition_create_request, **kwargs)  # noqa: E501
-
-    def create_with_http_info(self, from_object_type, to_object_type, public_association_definition_create_request, **kwargs):  # noqa: E501
-        """Create  # noqa: E501
-
-        Create a user defined association definition  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_with_http_info(from_object_type, to_object_type, public_association_definition_create_request, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param PublicAssociationDefinitionCreateRequest public_association_definition_create_request: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(CollectionResponseAssociationSpecWithLabelNoPaging, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ["from_object_type", "to_object_type", "public_association_definition_create_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'from_object_type' is set
-        if self.api_client.client_side_validation and ("from_object_type" not in local_var_params or local_var_params["from_object_type"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `from_object_type` when calling `create`")  # noqa: E501
-        # verify the required parameter 'to_object_type' is set
-        if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
-            raise ApiValueError("Missing the required parameter `to_object_type` when calling `create`")  # noqa: E501
-        # verify the required parameter 'public_association_definition_create_request' is set
-        if self.api_client.client_side_validation and (
-            "public_association_definition_create_request" not in local_var_params or local_var_params["public_association_definition_create_request"] is None  # noqa: E501
-        ):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `public_association_definition_create_request` when calling `create`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if "from_object_type" in local_var_params:
-            path_params["fromObjectType"] = local_var_params["from_object_type"]  # noqa: E501
-        if "to_object_type" in local_var_params:
-            path_params["toObjectType"] = local_var_params["to_object_type"]  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "public_association_definition_create_request" in local_var_params:
-            body_params = local_var_params["public_association_definition_create_request"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
-
-        return self.api_client.call_api(
-            "/crm/v4/associations/{fromObjectType}/{toObjectType}/labels",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type="CollectionResponseAssociationSpecWithLabelNoPaging",  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def get_all(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
@@ -282,22 +324,28 @@ class DefinitionsApi(object):
         Returns all association types between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all(from_object_type, to_object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: CollectionResponseAssociationSpecWithLabelNoPaging
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: CollectionResponseAssociationSpecWithLabelNoPaging
         """
         kwargs["_return_http_data_only"] = True
         return self.get_all_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
@@ -308,33 +356,42 @@ class DefinitionsApi(object):
         Returns all association types between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all_with_http_info(from_object_type, to_object_type, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(CollectionResponseAssociationSpecWithLabelNoPaging, status_code(int), headers(HTTPHeaderDict))
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: tuple(CollectionResponseAssociationSpecWithLabelNoPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["from_object_type", "to_object_type"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["from_object_type", "to_object_type"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -342,10 +399,10 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'from_object_type' is set
-        if self.api_client.client_side_validation and ("from_object_type" not in local_var_params or local_var_params["from_object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("from_object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `from_object_type` when calling `get_all`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
-        if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("to_object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `to_object_type` when calling `get_all`")  # noqa: E501
 
         collection_formats = {}
@@ -358,7 +415,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -370,6 +427,10 @@ class DefinitionsApi(object):
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
 
+        response_types_map = {
+            200: "CollectionResponseAssociationSpecWithLabelNoPaging",
+        }
+
         return self.api_client.call_api(
             "/crm/v4/associations/{fromObjectType}/{toObjectType}/labels",
             "GET",
@@ -379,13 +440,14 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type="CollectionResponseAssociationSpecWithLabelNoPaging",  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
 
     def update(self, from_object_type, to_object_type, public_association_definition_update_request, **kwargs):  # noqa: E501
@@ -394,23 +456,30 @@ class DefinitionsApi(object):
         Update a user defined association definition  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update(from_object_type, to_object_type, public_association_definition_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param PublicAssociationDefinitionUpdateRequest public_association_definition_update_request: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param public_association_definition_update_request: (required)
+        :type public_association_definition_update_request: PublicAssociationDefinitionUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.update_with_http_info(from_object_type, to_object_type, public_association_definition_update_request, **kwargs)  # noqa: E501
@@ -421,34 +490,44 @@ class DefinitionsApi(object):
         Update a user defined association definition  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.update_with_http_info(from_object_type, to_object_type, public_association_definition_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str from_object_type: (required)
-        :param str to_object_type: (required)
-        :param PublicAssociationDefinitionUpdateRequest public_association_definition_update_request: (required)
+        :param from_object_type: (required)
+        :type from_object_type: str
+        :param to_object_type: (required)
+        :type to_object_type: str
+        :param public_association_definition_update_request: (required)
+        :type public_association_definition_update_request: PublicAssociationDefinitionUpdateRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
                                        and headers
+        :type _return_http_data_only: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
+        :type _preload_content: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["from_object_type", "to_object_type", "public_association_definition_update_request"]  # noqa: E501
-        all_params.append("async_req")
-        all_params.append("_return_http_data_only")
-        all_params.append("_preload_content")
-        all_params.append("_request_timeout")
+        all_params = ["from_object_type", "to_object_type", "public_association_definition_update_request"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
@@ -456,15 +535,13 @@ class DefinitionsApi(object):
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'from_object_type' is set
-        if self.api_client.client_side_validation and ("from_object_type" not in local_var_params or local_var_params["from_object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("from_object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `from_object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'to_object_type' is set
-        if self.api_client.client_side_validation and ("to_object_type" not in local_var_params or local_var_params["to_object_type"] is None):  # noqa: E501  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("to_object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `to_object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'public_association_definition_update_request' is set
-        if self.api_client.client_side_validation and (
-            "public_association_definition_update_request" not in local_var_params or local_var_params["public_association_definition_update_request"] is None  # noqa: E501
-        ):  # noqa: E501
+        if self.api_client.client_side_validation and local_var_params.get("public_association_definition_update_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `public_association_definition_update_request` when calling `update`")  # noqa: E501
 
         collection_formats = {}
@@ -477,7 +554,7 @@ class DefinitionsApi(object):
 
         query_params = []
 
-        header_params = {}
+        header_params = dict(local_var_params.get("_headers", {}))
 
         form_params = []
         local_var_files = {}
@@ -489,10 +566,14 @@ class DefinitionsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params["Content-Type"] = self.api_client.select_header_content_type(["application/json"])  # noqa: E501  # noqa: E501
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PUT", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v4/associations/{fromObjectType}/{toObjectType}/labels",
@@ -503,11 +584,12 @@ class DefinitionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_types_map=response_types_map,
             auth_settings=auth_settings,
             async_req=local_var_params.get("async_req"),
             _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
             _preload_content=local_var_params.get("_preload_content", True),
             _request_timeout=local_var_params.get("_request_timeout"),
             collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
         )
