@@ -4,6 +4,8 @@ import hashlib
 
 from datetime import datetime
 
+from hubspot.exceptions import InvalidSignatureVersionError, InvalidSignatureTimestampError
+
 
 class Signature:
     MAX_ALLOWED_TIMESTAMP = 3000
@@ -21,7 +23,7 @@ class Signature:
         if signature_version == "v3":
             current_time = datetime.now()
             if timestamp is None or current_time.timestamp() - timestamp > Signature.MAX_ALLOWED_TIMESTAMP:
-                raise Exception("Timestamp is invalid, reject request.")
+                raise InvalidSignatureTimestampError(timestamp=timestamp)
         hashed_signature = Signature.get_signature(
             client_secret,
             request_body,
@@ -59,6 +61,4 @@ class Signature:
             ).decode()
             return hashed_signature
         else:
-            raise ValueError(
-                f"Not supported signature version: {signature_version}"
-            )
+            raise InvalidSignatureVersionError(signature_version=signature_version)

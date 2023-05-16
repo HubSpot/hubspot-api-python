@@ -1,10 +1,15 @@
-class InvalidSignatureError(Exception):
+class InvalidSignatureVersionError(Exception):
     def __init__(
-        self, msg=None, signature=None, signature_version=None, hash_result=None
+        self, signature_version
     ):
-        self.signature = signature
-        self.signature_version = signature_version
-        self.hash_result = hash_result
-        if msg is None:
-            msg = "Invalid signature passed to request"
-        super(InvalidSignatureError, self).__init__(msg)
+        super().__init__(f"Invalid signature version passed to request: {signature_version}")
+
+
+class InvalidSignatureTimestampError(Exception):
+    def __init__(
+        self, timestamp
+    ):
+        self.timestamp = timestamp
+        super().__init__(
+            f"Signature timestamp is invalid: {timestamp}."
+        )
