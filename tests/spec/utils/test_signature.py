@@ -1,6 +1,8 @@
 import pytest
 
 from datetime import datetime
+
+from hubspot.exceptions import InvalidSignatureVersionError, InvalidSignatureTimestampError
 from hubspot.utils.signature import Signature
 
 
@@ -65,7 +67,7 @@ def test_get_signature__v3():
 
 def test_get_signature__wrong_version():
 
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidSignatureVersionError):
         Signature.get_signature(
             TEST_DATA["client_secret"],
             TEST_DATA["request_body"],
@@ -147,7 +149,7 @@ def test_is_valid__none_timestamp():
         http_uri=TEST_DATA["url"]
     )
 
-    with pytest.raises(Exception):
+    with pytest.raises(InvalidSignatureTimestampError):
         Signature.is_valid(
             signature,
             TEST_DATA["client_secret"],
@@ -168,7 +170,7 @@ def test_is_valid__expired_timestamp():
         timestamp=timestamp
     )
 
-    with pytest.raises(Exception):
+    with pytest.raises(InvalidSignatureTimestampError):
         Signature.is_valid(
             signature,
             TEST_DATA["client_secret"],
