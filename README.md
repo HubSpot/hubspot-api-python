@@ -183,21 +183,20 @@ auth_url = get_auth_url(
 
 ```python
 import os
+
+from datetime import datetime
 from flask import request
-from hubspot.utils.webhooks import validate_signature
-from hubspot.exceptions import InvalidSignatureError
+from hubspot.utils.signature import Signature
 
-try:
-    validate_signature(
+Signature.is_valid(
         signature=request.headers["X-HubSpot-Signature"],
-        signature_version=request.headers["X-HubSpot-Signature-Version"],
-        http_uri=request.base_url,
-        request_body=request.data.decode("utf-8"),
         client_secret=os.getenv("HUBSPOT_CLIENT_SECRET"),
-    )
-except InvalidSignatureError:
-    print("Request signature is not valid")
+        request_body=request.data.decode("utf-8"),
+        http_uri=request.base_url,
+        signature_version=request.headers["X-HubSpot-Signature-Version"],
+        timestamp=datetime.now().timestamp()
 
+)
 ```
 
 ### Retry middleware
