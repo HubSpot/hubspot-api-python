@@ -50,7 +50,7 @@ Please, note that hapikey is no longer supported after v5.1.0. You can get more 
 from hubspot.auth.oauth import ApiException
 
 try:
-    tokens = api_client.auth.oauth.tokens_api.create_token(
+    tokens = api_client.auth.oauth.tokens_api.create(
         grant_type="authorization_code",
         redirect_uri='http://localhost',
         client_id='client_id',
