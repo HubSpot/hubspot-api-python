@@ -656,7 +656,7 @@ class RowsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["table_id_or_name", "sort", "after", "limit", "properties"]
+        all_params = ["table_id_or_name", "sort", "after", "limit", "properties", "get_params"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -673,6 +673,9 @@ class RowsApi(object):
         path_params = {}
         if "table_id_or_name" in local_var_params:
             path_params["tableIdOrName"] = local_var_params["table_id_or_name"]  # noqa: E501
+
+        if "get_params" in local_var_params:
+            path_params["get_params"] = local_var_params["get_params"]  # noqa: E501
 
         query_params = []
         if local_var_params.get("sort") is not None:  # noqa: E501
@@ -703,7 +706,7 @@ class RowsApi(object):
         }
 
         return self.api_client.call_api(
-            "/cms/v3/hubdb/tables/{tableIdOrName}/rows",
+            "/cms/v3/hubdb/tables/{tableIdOrName}/rows{get_params}",
             "GET",
             path_params,
             query_params,
