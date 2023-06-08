@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0-beta.6...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0...HEAD)
+
+
+## [8.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0-beta.5...v8.0.0) - 2023-06-08
+
+## Updated
+
+- Fix `utils.get_auth_url()` (don't add empty scopes or optional scopes to OAuth url)
 
 ## [8.0.0-beta.6](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0-beta.5...v8.0.0-beta.6) - 2023-05-17
 
