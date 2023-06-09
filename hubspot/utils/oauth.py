@@ -11,7 +11,7 @@ def get_auth_url(
 ):
     query_params = {
         "client_id": client_id,
-        "redirect_uri": redirect_uri,
+        "redirect_uri": redirect_uri
     }
 
     if scopes:
@@ -26,4 +26,4 @@ def get_auth_url(
         quote_via=urllib.parse.quote,
     )
 
-    return f"{AUTHORIZE_URL}?{params}"
+    return f"{AUTHORIZE_URL}?{params}&state="

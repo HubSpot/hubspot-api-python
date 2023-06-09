@@ -13,10 +13,12 @@ DATA = {
 
 def test_get_auth_url__empty_scope():
     params = {
-        'client_id': DATA["client_id"],
-        'redirect_uri': DATA["redirect_uri"],
+        "client_id": DATA["client_id"],
+        "redirect_uri": DATA["redirect_uri"],
+        "state": ""
+
     }
-    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='',quote_via=urllib.parse.quote,)}"
+    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='',quote_via=urllib.parse.quote)}"
 
     result = get_auth_url(
         DATA["client_id"],
@@ -28,11 +30,12 @@ def test_get_auth_url__empty_scope():
 
 def test_get_auth_url__scope():
     params = {
-        'client_id': DATA["client_id"],
-        'redirect_uri': DATA["redirect_uri"],
-        'scope': ' '.join(DATA["scope"]),
+        "client_id": DATA["client_id"],
+        "redirect_uri": DATA["redirect_uri"],
+        "scope": " ".join(DATA["scope"]),
+        "state": ""
     }
-    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote,)}"
+    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote)}"
 
     result = get_auth_url(
         DATA["client_id"],
@@ -45,11 +48,12 @@ def test_get_auth_url__scope():
 
 def test_get_auth_url__optional_scope():
     params = {
-        'client_id': DATA["client_id"],
-        'redirect_uri': DATA["redirect_uri"],
-        'optional_scope': ' '.join(DATA["optional_scope"]),
+        "client_id": DATA["client_id"],
+        "redirect_uri": DATA["redirect_uri"],
+        "optional_scope": " ".join(DATA["optional_scope"]),
+        "state": ""
     }
-    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote, )}"
+    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote)}"
 
     result = get_auth_url(
         DATA["client_id"],
