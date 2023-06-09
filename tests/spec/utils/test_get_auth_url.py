@@ -58,7 +58,7 @@ def test_get_auth_url__optional_scope():
     result = get_auth_url(
         DATA["client_id"],
         DATA["redirect_uri"],
-        optional_scopes=DATA["optional_scope"]
+        optional_scope=DATA["optional_scope"]
     )
 
     assert result == expected_url
