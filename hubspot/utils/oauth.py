@@ -8,7 +8,7 @@ def get_auth_url(
     redirect_uri: str,
     scope: tuple = None,
     optional_scope: tuple = None,
-    state: str = ""
+    state: str = None
 ) -> str:
     query_params = {
         "client_id": client_id,
@@ -17,9 +17,10 @@ def get_auth_url(
 
     if scope:
         query_params["scope"] = " ".join(scope)
-
     if optional_scope:
         query_params["optional_scope"] = " ".join(optional_scope)
+    if state:
+        query_params.setdefault("state", state)
 
     params = urllib.parse.urlencode(
         query_params,
@@ -27,4 +28,4 @@ def get_auth_url(
         quote_via=urllib.parse.quote,
     )
 
-    return f"{AUTHORIZE_URL}?{params}&state={state}"
+    return f"{AUTHORIZE_URL}?{params}"

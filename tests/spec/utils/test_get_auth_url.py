@@ -15,7 +15,6 @@ def test_get_auth_url__empty_scope():
     params = {
         "client_id": DATA["client_id"],
         "redirect_uri": DATA["redirect_uri"],
-        "state": ""
 
     }
     expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='',quote_via=urllib.parse.quote)}"
@@ -33,7 +32,6 @@ def test_get_auth_url__scope():
         "client_id": DATA["client_id"],
         "redirect_uri": DATA["redirect_uri"],
         "scope": " ".join(DATA["scope"]),
-        "state": ""
     }
     expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote)}"
 
@@ -51,7 +49,6 @@ def test_get_auth_url__optional_scope():
         "client_id": DATA["client_id"],
         "redirect_uri": DATA["redirect_uri"],
         "optional_scope": " ".join(DATA["optional_scope"]),
-        "state": ""
     }
     expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote)}"
 
@@ -59,6 +56,28 @@ def test_get_auth_url__optional_scope():
         DATA["client_id"],
         DATA["redirect_uri"],
         optional_scope=DATA["optional_scope"]
+    )
+
+    assert result == expected_url
+
+
+def test_get_auth_url__state():
+
+    params = {
+        "client_id": DATA["client_id"],
+        "redirect_uri": DATA["redirect_uri"],
+        "scope": " ".join(DATA["scope"]),
+        "optional_scope": " ".join(DATA["optional_scope"]),
+        "state": "test_state"
+    }
+    expected_url = f"{AUTHORIZE_URL}?{urllib.parse.urlencode(params, safe='', quote_via=urllib.parse.quote)}"
+
+    result = get_auth_url(
+        DATA["client_id"],
+        DATA["redirect_uri"],
+        DATA["scope"],
+        DATA["optional_scope"],
+        state=params["state"]
     )
 
     assert result == expected_url
