@@ -35,45 +35,22 @@ class ErrorCategory(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "http_status": "str"}
+    openapi_types = {"http_status": "str", "name": "str"}
 
-    attribute_map = {"name": "name", "http_status": "httpStatus"}
+    attribute_map = {"http_status": "httpStatus", "name": "name"}
 
-    def __init__(self, name=None, http_status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, http_status=None, name=None, local_vars_configuration=None):  # noqa: E501
         """ErrorCategory - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
         self._http_status = None
+        self._name = None
         self.discriminator = None
 
-        self.name = name
         self.http_status = http_status
-
-    @property
-    def name(self):
-        """Gets the name of this ErrorCategory.  # noqa: E501
-
-
-        :return: The name of this ErrorCategory.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ErrorCategory.
-
-
-        :param name: The name of this ErrorCategory.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
+        self.name = name
 
     @property
     def http_status(self):
@@ -163,6 +140,29 @@ class ErrorCategory(object):
             raise ValueError("Invalid value for `http_status` ({0}), must be one of {1}".format(http_status, allowed_values))  # noqa: E501
 
         self._http_status = http_status
+
+    @property
+    def name(self):
+        """Gets the name of this ErrorCategory.  # noqa: E501
+
+
+        :return: The name of this ErrorCategory.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ErrorCategory.
+
+
+        :param name: The name of this ErrorCategory.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

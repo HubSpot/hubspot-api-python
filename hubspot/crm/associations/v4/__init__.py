@@ -80,4 +80,5 @@ from hubspot.crm.associations.v4.models.simple_public_object_input import Simple
 from hubspot.crm.associations.v4.models.simple_public_object_input_for_create import SimplePublicObjectInputForCreate
 from hubspot.crm.associations.v4.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
 from hubspot.crm.associations.v4.models.standard_error import StandardError
+from hubspot.crm.associations.v4.models.standard_error1 import StandardError1
 from hubspot.crm.associations.v4.models.value_with_timestamp import ValueWithTimestamp

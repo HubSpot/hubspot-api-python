@@ -35,45 +35,22 @@ class MultiAssociatedObjectWithLabel(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"to_object_id": "int", "association_types": "list[AssociationSpecWithLabel]"}
+    openapi_types = {"association_types": "list[AssociationSpecWithLabel]", "to_object_id": "int"}
 
-    attribute_map = {"to_object_id": "toObjectId", "association_types": "associationTypes"}
+    attribute_map = {"association_types": "associationTypes", "to_object_id": "toObjectId"}
 
-    def __init__(self, to_object_id=None, association_types=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, association_types=None, to_object_id=None, local_vars_configuration=None):  # noqa: E501
         """MultiAssociatedObjectWithLabel - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._to_object_id = None
         self._association_types = None
+        self._to_object_id = None
         self.discriminator = None
 
-        self.to_object_id = to_object_id
         self.association_types = association_types
-
-    @property
-    def to_object_id(self):
-        """Gets the to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
-
-
-        :return: The to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
-        :rtype: int
-        """
-        return self._to_object_id
-
-    @to_object_id.setter
-    def to_object_id(self, to_object_id):
-        """Sets the to_object_id of this MultiAssociatedObjectWithLabel.
-
-
-        :param to_object_id: The to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
-        :type to_object_id: int
-        """
-        if self.local_vars_configuration.client_side_validation and to_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_id`, must not be `None`")  # noqa: E501
-
-        self._to_object_id = to_object_id
+        self.to_object_id = to_object_id
 
     @property
     def association_types(self):
@@ -97,6 +74,29 @@ class MultiAssociatedObjectWithLabel(object):
             raise ValueError("Invalid value for `association_types`, must not be `None`")  # noqa: E501
 
         self._association_types = association_types
+
+    @property
+    def to_object_id(self):
+        """Gets the to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
+
+
+        :return: The to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
+        :rtype: int
+        """
+        return self._to_object_id
+
+    @to_object_id.setter
+    def to_object_id(self, to_object_id):
+        """Sets the to_object_id of this MultiAssociatedObjectWithLabel.
+
+
+        :param to_object_id: The to_object_id of this MultiAssociatedObjectWithLabel.  # noqa: E501
+        :type to_object_id: int
+        """
+        if self.local_vars_configuration.client_side_validation and to_object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `to_object_id`, must not be `None`")  # noqa: E501
+
+        self._to_object_id = to_object_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

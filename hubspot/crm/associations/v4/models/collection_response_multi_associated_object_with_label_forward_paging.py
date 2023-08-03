@@ -35,23 +35,44 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"results": "list[MultiAssociatedObjectWithLabel]", "paging": "ForwardPaging"}
+    openapi_types = {"paging": "ForwardPaging", "results": "list[MultiAssociatedObjectWithLabel]"}
 
-    attribute_map = {"results": "results", "paging": "paging"}
+    attribute_map = {"paging": "paging", "results": "results"}
 
-    def __init__(self, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, paging=None, results=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseMultiAssociatedObjectWithLabelForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._results = None
         self._paging = None
+        self._results = None
         self.discriminator = None
 
-        self.results = results
         if paging is not None:
             self.paging = paging
+        self.results = results
+
+    @property
+    def paging(self):
+        """Gets the paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
+
+
+        :return: The paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
+        :rtype: ForwardPaging
+        """
+        return self._paging
+
+    @paging.setter
+    def paging(self, paging):
+        """Sets the paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.
+
+
+        :param paging: The paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
+        :type paging: ForwardPaging
+        """
+
+        self._paging = paging
 
     @property
     def results(self):
@@ -75,27 +96,6 @@ class CollectionResponseMultiAssociatedObjectWithLabelForwardPaging(object):
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
-
-    @property
-    def paging(self):
-        """Gets the paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
-
-
-        :return: The paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
-        :rtype: ForwardPaging
-        """
-        return self._paging
-
-    @paging.setter
-    def paging(self, paging):
-        """Sets the paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.
-
-
-        :param paging: The paging of this CollectionResponseMultiAssociatedObjectWithLabelForwardPaging.  # noqa: E501
-        :type paging: ForwardPaging
-        """
-
-        self._paging = paging
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

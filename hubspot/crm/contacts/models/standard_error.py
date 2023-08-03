@@ -38,7 +38,7 @@ class StandardError(object):
     openapi_types = {
         "status": "str",
         "id": "str",
-        "category": "ErrorCategory",
+        "category": "str",
         "sub_category": "object",
         "message": "str",
         "errors": "list[ErrorDetail]",
@@ -125,7 +125,7 @@ class StandardError(object):
 
 
         :return: The category of this StandardError.  # noqa: E501
-        :rtype: ErrorCategory
+        :rtype: str
         """
         return self._category
 
@@ -135,7 +135,7 @@ class StandardError(object):
 
 
         :param category: The category of this StandardError.  # noqa: E501
-        :type category: ErrorCategory
+        :type category: str
         """
         if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
             raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501

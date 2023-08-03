@@ -35,45 +35,22 @@ class PublicAssociationDefinitionUpdateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "association_type_id": "int"}
+    openapi_types = {"association_type_id": "int", "label": "str"}
 
-    attribute_map = {"label": "label", "association_type_id": "associationTypeId"}
+    attribute_map = {"association_type_id": "associationTypeId", "label": "label"}
 
-    def __init__(self, label=None, association_type_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, association_type_id=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationDefinitionUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._label = None
         self._association_type_id = None
+        self._label = None
         self.discriminator = None
 
-        self.label = label
         self.association_type_id = association_type_id
-
-    @property
-    def label(self):
-        """Gets the label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
-
-
-        :return: The label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this PublicAssociationDefinitionUpdateRequest.
-
-
-        :param label: The label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
-        :type label: str
-        """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
-
-        self._label = label
+        self.label = label
 
     @property
     def association_type_id(self):
@@ -97,6 +74,29 @@ class PublicAssociationDefinitionUpdateRequest(object):
             raise ValueError("Invalid value for `association_type_id`, must not be `None`")  # noqa: E501
 
         self._association_type_id = association_type_id
+
+    @property
+    def label(self):
+        """Gets the label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
+
+
+        :return: The label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this PublicAssociationDefinitionUpdateRequest.
+
+
+        :param label: The label of this PublicAssociationDefinitionUpdateRequest.  # noqa: E501
+        :type label: str
+        """
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

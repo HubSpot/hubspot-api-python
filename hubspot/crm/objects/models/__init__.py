@@ -27,7 +27,6 @@ from hubspot.crm.objects.models.collection_response_associated_id_forward_paging
 from hubspot.crm.objects.models.collection_response_simple_public_object_with_associations_forward_paging import CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
 from hubspot.crm.objects.models.collection_response_with_total_simple_public_object_forward_paging import CollectionResponseWithTotalSimplePublicObjectForwardPaging
 from hubspot.crm.objects.models.error import Error
-from hubspot.crm.objects.models.error_category import ErrorCategory
 from hubspot.crm.objects.models.error_detail import ErrorDetail
 from hubspot.crm.objects.models.filter import Filter
 from hubspot.crm.objects.models.filter_group import FilterGroup

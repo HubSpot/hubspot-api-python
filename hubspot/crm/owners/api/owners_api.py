@@ -141,7 +141,7 @@ class OwnersApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "PublicOwner",
@@ -277,7 +277,7 @@ class OwnersApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "CollectionResponsePublicOwnerForwardPaging",

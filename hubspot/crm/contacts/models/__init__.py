@@ -26,7 +26,6 @@ from hubspot.crm.contacts.models.collection_response_associated_id import Collec
 from hubspot.crm.contacts.models.collection_response_simple_public_object_with_associations_forward_paging import CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
 from hubspot.crm.contacts.models.collection_response_with_total_simple_public_object_forward_paging import CollectionResponseWithTotalSimplePublicObjectForwardPaging
 from hubspot.crm.contacts.models.error import Error
-from hubspot.crm.contacts.models.error_category import ErrorCategory
 from hubspot.crm.contacts.models.error_detail import ErrorDetail
 from hubspot.crm.contacts.models.filter import Filter
 from hubspot.crm.contacts.models.filter_group import FilterGroup

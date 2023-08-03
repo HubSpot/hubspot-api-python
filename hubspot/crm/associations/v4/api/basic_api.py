@@ -158,7 +158,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {}
 
@@ -320,7 +320,7 @@ class BasicApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             201: "LabelsBetweenObjectPair",
@@ -470,7 +470,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponsePublicDefaultAssociation",
@@ -498,7 +498,7 @@ class BasicApi(object):
     def get_page(self, object_type, object_id, to_object_type, **kwargs):  # noqa: E501
         """List  # noqa: E501
 
-        List all associations of an object by object type. Limit 1000 per call.  # noqa: E501
+        List all associations of an object by object type. Limit 500 per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -536,7 +536,7 @@ class BasicApi(object):
     def get_page_with_http_info(self, object_type, object_id, to_object_type, **kwargs):  # noqa: E501
         """List  # noqa: E501
 
-        List all associations of an object by object type. Limit 1000 per call.  # noqa: E501
+        List all associations of an object by object type. Limit 500 per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -623,7 +623,7 @@ class BasicApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "CollectionResponseMultiAssociatedObjectWithLabelForwardPaging",
