@@ -36,7 +36,7 @@ class RowsBatchApi(object):
     def clone_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Clone rows in batch  # noqa: E501
 
-        Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
+        Clones rows in the `draft` version of the specified table, given a set of row ids. Maximum of 100 row ids per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -68,7 +68,7 @@ class RowsBatchApi(object):
     def clone_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Clone rows in batch  # noqa: E501
 
-        Clones rows in the `draft` version of the specified table, given a set of row ids.  # noqa: E501
+        Clones rows in the `draft` version of the specified table, given a set of row ids. Maximum of 100 row ids per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -145,7 +145,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseHubDbTableRowV3",
@@ -173,7 +173,7 @@ class RowsBatchApi(object):
     def create_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_request, **kwargs):  # noqa: E501
         """Create rows in batch  # noqa: E501
 
-        Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
+        Creates rows in the `draft` version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -205,7 +205,7 @@ class RowsBatchApi(object):
     def create_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_hub_db_table_row_v3_request, **kwargs):  # noqa: E501
         """Create rows in batch  # noqa: E501
 
-        Creates rows in the `draft` version of the specified table, given an array of row objects. See the overview section for more details with an example.  # noqa: E501
+        Creates rows in the `draft` version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -282,7 +282,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             201: "BatchResponseHubDbTableRowV3",
@@ -311,7 +311,7 @@ class RowsBatchApi(object):
     def purge_draft_table_rows(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Permanently deletes rows  # noqa: E501
 
-        Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
+        Permanently deletes rows from the `draft` version of the table, given a set of row ids. Maximum of 100 row ids per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -343,7 +343,7 @@ class RowsBatchApi(object):
     def purge_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_string, **kwargs):  # noqa: E501
         """Permanently deletes rows  # noqa: E501
 
-        Permanently deletes rows from the `draft` version of the table, given a set of row ids.  # noqa: E501
+        Permanently deletes rows from the `draft` version of the table, given a set of row ids. Maximum of 100 row ids per call.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -420,7 +420,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {}
 
@@ -555,7 +555,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseHubDbTableRowV3",
@@ -693,7 +693,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseHubDbTableRowV3",
@@ -722,7 +722,7 @@ class RowsBatchApi(object):
     def replace_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
         """Replace rows in batch in draft table  # noqa: E501
 
-        Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
+        Replaces multiple rows as a batch in the `draft` version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -754,7 +754,7 @@ class RowsBatchApi(object):
     def replace_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
         """Replace rows in batch in draft table  # noqa: E501
 
-        Replaces multiple rows as a batch in the `draft` version of the table. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
+        Replaces multiple rows as a batch in the `draft` version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -831,7 +831,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseHubDbTableRowV3",
@@ -860,7 +860,7 @@ class RowsBatchApi(object):
     def update_draft_table_rows(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
         """Update rows in batch in draft table  # noqa: E501
 
-        Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
+        Updates multiple rows as a batch in the `draft` version of the table, with a maximum of 100 rows per call. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -892,7 +892,7 @@ class RowsBatchApi(object):
     def update_draft_table_rows_with_http_info(self, table_id_or_name, batch_input_hub_db_table_row_v3_batch_update_request, **kwargs):  # noqa: E501
         """Update rows in batch in draft table  # noqa: E501
 
-        Updates multiple rows as a batch in the `draft` version of the table. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
+        Updates multiple rows as a batch in the `draft` version of the table, with a maximum of 100 rows per call. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -969,7 +969,7 @@ class RowsBatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseHubDbTableRowV3",

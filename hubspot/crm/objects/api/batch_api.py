@@ -143,7 +143,7 @@ class BatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {}
 
@@ -276,7 +276,7 @@ class BatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             201: "BatchResponseSimplePublicObject",
@@ -418,7 +418,7 @@ class BatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseSimplePublicObject",
@@ -554,7 +554,7 @@ class BatchApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "BatchResponseSimplePublicObject",

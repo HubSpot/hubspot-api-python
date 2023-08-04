@@ -35,27 +35,27 @@ class LabelsBetweenObjectPair(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"from_object_type_id": "str", "from_object_id": "int", "to_object_type_id": "str", "to_object_id": "int", "labels": "list[str]"}
+    openapi_types = {"from_object_type_id": "str", "to_object_id": "int", "to_object_type_id": "str", "from_object_id": "int", "labels": "list[str]"}
 
-    attribute_map = {"from_object_type_id": "fromObjectTypeId", "from_object_id": "fromObjectId", "to_object_type_id": "toObjectTypeId", "to_object_id": "toObjectId", "labels": "labels"}
+    attribute_map = {"from_object_type_id": "fromObjectTypeId", "to_object_id": "toObjectId", "to_object_type_id": "toObjectTypeId", "from_object_id": "fromObjectId", "labels": "labels"}
 
-    def __init__(self, from_object_type_id=None, from_object_id=None, to_object_type_id=None, to_object_id=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, from_object_type_id=None, to_object_id=None, to_object_type_id=None, from_object_id=None, labels=None, local_vars_configuration=None):  # noqa: E501
         """LabelsBetweenObjectPair - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._from_object_type_id = None
-        self._from_object_id = None
-        self._to_object_type_id = None
         self._to_object_id = None
+        self._to_object_type_id = None
+        self._from_object_id = None
         self._labels = None
         self.discriminator = None
 
         self.from_object_type_id = from_object_type_id
-        self.from_object_id = from_object_id
-        self.to_object_type_id = to_object_type_id
         self.to_object_id = to_object_id
+        self.to_object_type_id = to_object_type_id
+        self.from_object_id = from_object_id
         self.labels = labels
 
     @property
@@ -82,27 +82,27 @@ class LabelsBetweenObjectPair(object):
         self._from_object_type_id = from_object_type_id
 
     @property
-    def from_object_id(self):
-        """Gets the from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+    def to_object_id(self):
+        """Gets the to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
 
 
-        :return: The from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+        :return: The to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
         :rtype: int
         """
-        return self._from_object_id
+        return self._to_object_id
 
-    @from_object_id.setter
-    def from_object_id(self, from_object_id):
-        """Sets the from_object_id of this LabelsBetweenObjectPair.
+    @to_object_id.setter
+    def to_object_id(self, to_object_id):
+        """Sets the to_object_id of this LabelsBetweenObjectPair.
 
 
-        :param from_object_id: The from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
-        :type from_object_id: int
+        :param to_object_id: The to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+        :type to_object_id: int
         """
-        if self.local_vars_configuration.client_side_validation and from_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `from_object_id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and to_object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `to_object_id`, must not be `None`")  # noqa: E501
 
-        self._from_object_id = from_object_id
+        self._to_object_id = to_object_id
 
     @property
     def to_object_type_id(self):
@@ -128,27 +128,27 @@ class LabelsBetweenObjectPair(object):
         self._to_object_type_id = to_object_type_id
 
     @property
-    def to_object_id(self):
-        """Gets the to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+    def from_object_id(self):
+        """Gets the from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
 
 
-        :return: The to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+        :return: The from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
         :rtype: int
         """
-        return self._to_object_id
+        return self._from_object_id
 
-    @to_object_id.setter
-    def to_object_id(self, to_object_id):
-        """Sets the to_object_id of this LabelsBetweenObjectPair.
+    @from_object_id.setter
+    def from_object_id(self, from_object_id):
+        """Sets the from_object_id of this LabelsBetweenObjectPair.
 
 
-        :param to_object_id: The to_object_id of this LabelsBetweenObjectPair.  # noqa: E501
-        :type to_object_id: int
+        :param from_object_id: The from_object_id of this LabelsBetweenObjectPair.  # noqa: E501
+        :type from_object_id: int
         """
-        if self.local_vars_configuration.client_side_validation and to_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and from_object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `from_object_id`, must not be `None`")  # noqa: E501
 
-        self._to_object_id = to_object_id
+        self._from_object_id = from_object_id
 
     @property
     def labels(self):

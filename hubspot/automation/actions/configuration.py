@@ -392,15 +392,6 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if "hapikey" in self.api_key:
-            auth["hapikey"] = {
-                "type": "api_key",
-                "in": "query",
-                "key": "hapikey",
-                "value": self.get_api_key_with_prefix(
-                    "hapikey",
-                ),
-            }
         if "developer_hapikey" in self.api_key:
             auth["developer_hapikey"] = {
                 "type": "api_key",

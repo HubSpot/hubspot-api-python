@@ -26,7 +26,6 @@ from hubspot.crm.companies.models.collection_response_associated_id import Colle
 from hubspot.crm.companies.models.collection_response_simple_public_object_with_associations_forward_paging import CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
 from hubspot.crm.companies.models.collection_response_with_total_simple_public_object_forward_paging import CollectionResponseWithTotalSimplePublicObjectForwardPaging
 from hubspot.crm.companies.models.error import Error
-from hubspot.crm.companies.models.error_category import ErrorCategory
 from hubspot.crm.companies.models.error_detail import ErrorDetail
 from hubspot.crm.companies.models.filter import Filter
 from hubspot.crm.companies.models.filter_group import FilterGroup

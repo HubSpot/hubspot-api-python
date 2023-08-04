@@ -40,7 +40,6 @@ from hubspot.crm.properties.models.batch_response_property_with_errors import Ba
 from hubspot.crm.properties.models.collection_response_property_group_no_paging import CollectionResponsePropertyGroupNoPaging
 from hubspot.crm.properties.models.collection_response_property_no_paging import CollectionResponsePropertyNoPaging
 from hubspot.crm.properties.models.error import Error
-from hubspot.crm.properties.models.error_category import ErrorCategory
 from hubspot.crm.properties.models.error_detail import ErrorDetail
 from hubspot.crm.properties.models.model_property import ModelProperty
 from hubspot.crm.properties.models.option import Option

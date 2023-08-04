@@ -131,7 +131,7 @@ class FormsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {}
 
@@ -257,7 +257,7 @@ class FormsApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             201: "FormDefinitionBase",
@@ -386,7 +386,7 @@ class FormsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "FormDefinitionBase",
@@ -525,7 +525,7 @@ class FormsApi(object):
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "CollectionResponseFormDefinitionBaseForwardPaging",
@@ -662,7 +662,7 @@ class FormsApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "FormDefinitionBase",
@@ -799,7 +799,7 @@ class FormsApi(object):
             header_params["Content-Type"] = content_types_list
 
         # Authentication setting
-        auth_settings = ["hapikey", "oauth2"]  # noqa: E501
+        auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
             200: "FormDefinitionBase",

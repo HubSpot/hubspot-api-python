@@ -18,7 +18,6 @@ from hubspot.webhooks.models.batch_input_subscription_batch_update_request impor
 from hubspot.webhooks.models.batch_response_subscription_response import BatchResponseSubscriptionResponse
 from hubspot.webhooks.models.batch_response_subscription_response_with_errors import BatchResponseSubscriptionResponseWithErrors
 from hubspot.webhooks.models.error import Error
-from hubspot.webhooks.models.error_category import ErrorCategory
 from hubspot.webhooks.models.error_detail import ErrorDetail
 from hubspot.webhooks.models.settings_change_request import SettingsChangeRequest
 from hubspot.webhooks.models.settings_response import SettingsResponse

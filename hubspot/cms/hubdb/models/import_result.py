@@ -35,26 +35,26 @@ class ImportResult(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"errors": "list[Error]", "rows_imported": "int", "duplicate_rows": "int", "row_limit_exceeded": "bool"}
+    openapi_types = {"errors": "list[Error]", "duplicate_rows": "int", "row_limit_exceeded": "bool", "rows_imported": "int"}
 
-    attribute_map = {"errors": "errors", "rows_imported": "rowsImported", "duplicate_rows": "duplicateRows", "row_limit_exceeded": "rowLimitExceeded"}
+    attribute_map = {"errors": "errors", "duplicate_rows": "duplicateRows", "row_limit_exceeded": "rowLimitExceeded", "rows_imported": "rowsImported"}
 
-    def __init__(self, errors=None, rows_imported=None, duplicate_rows=None, row_limit_exceeded=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, errors=None, duplicate_rows=None, row_limit_exceeded=None, rows_imported=None, local_vars_configuration=None):  # noqa: E501
         """ImportResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._errors = None
-        self._rows_imported = None
         self._duplicate_rows = None
         self._row_limit_exceeded = None
+        self._rows_imported = None
         self.discriminator = None
 
         self.errors = errors
-        self.rows_imported = rows_imported
         self.duplicate_rows = duplicate_rows
         self.row_limit_exceeded = row_limit_exceeded
+        self.rows_imported = rows_imported
 
     @property
     def errors(self):
@@ -80,31 +80,6 @@ class ImportResult(object):
             raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
 
         self._errors = errors
-
-    @property
-    def rows_imported(self):
-        """Gets the rows_imported of this ImportResult.  # noqa: E501
-
-        Specifies number of rows imported  # noqa: E501
-
-        :return: The rows_imported of this ImportResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._rows_imported
-
-    @rows_imported.setter
-    def rows_imported(self, rows_imported):
-        """Sets the rows_imported of this ImportResult.
-
-        Specifies number of rows imported  # noqa: E501
-
-        :param rows_imported: The rows_imported of this ImportResult.  # noqa: E501
-        :type rows_imported: int
-        """
-        if self.local_vars_configuration.client_side_validation and rows_imported is None:  # noqa: E501
-            raise ValueError("Invalid value for `rows_imported`, must not be `None`")  # noqa: E501
-
-        self._rows_imported = rows_imported
 
     @property
     def duplicate_rows(self):
@@ -155,6 +130,31 @@ class ImportResult(object):
             raise ValueError("Invalid value for `row_limit_exceeded`, must not be `None`")  # noqa: E501
 
         self._row_limit_exceeded = row_limit_exceeded
+
+    @property
+    def rows_imported(self):
+        """Gets the rows_imported of this ImportResult.  # noqa: E501
+
+        Specifies number of rows imported  # noqa: E501
+
+        :return: The rows_imported of this ImportResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._rows_imported
+
+    @rows_imported.setter
+    def rows_imported(self, rows_imported):
+        """Sets the rows_imported of this ImportResult.
+
+        Specifies number of rows imported  # noqa: E501
+
+        :param rows_imported: The rows_imported of this ImportResult.  # noqa: E501
+        :type rows_imported: int
+        """
+        if self.local_vars_configuration.client_side_validation and rows_imported is None:  # noqa: E501
+            raise ValueError("Invalid value for `rows_imported`, must not be `None`")  # noqa: E501
+
+        self._rows_imported = rows_imported
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

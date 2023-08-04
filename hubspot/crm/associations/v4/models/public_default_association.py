@@ -35,24 +35,47 @@ class PublicDefaultAssociation(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"_from": "PublicObjectId", "to": "PublicObjectId", "association_spec": "AssociationSpec"}
+    openapi_types = {"association_spec": "AssociationSpec", "_from": "PublicObjectId", "to": "PublicObjectId"}
 
-    attribute_map = {"_from": "from", "to": "to", "association_spec": "associationSpec"}
+    attribute_map = {"association_spec": "associationSpec", "_from": "from", "to": "to"}
 
-    def __init__(self, _from=None, to=None, association_spec=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, association_spec=None, _from=None, to=None, local_vars_configuration=None):  # noqa: E501
         """PublicDefaultAssociation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._association_spec = None
         self.__from = None
         self._to = None
-        self._association_spec = None
         self.discriminator = None
 
+        self.association_spec = association_spec
         self._from = _from
         self.to = to
-        self.association_spec = association_spec
+
+    @property
+    def association_spec(self):
+        """Gets the association_spec of this PublicDefaultAssociation.  # noqa: E501
+
+
+        :return: The association_spec of this PublicDefaultAssociation.  # noqa: E501
+        :rtype: AssociationSpec
+        """
+        return self._association_spec
+
+    @association_spec.setter
+    def association_spec(self, association_spec):
+        """Sets the association_spec of this PublicDefaultAssociation.
+
+
+        :param association_spec: The association_spec of this PublicDefaultAssociation.  # noqa: E501
+        :type association_spec: AssociationSpec
+        """
+        if self.local_vars_configuration.client_side_validation and association_spec is None:  # noqa: E501
+            raise ValueError("Invalid value for `association_spec`, must not be `None`")  # noqa: E501
+
+        self._association_spec = association_spec
 
     @property
     def _from(self):
@@ -99,29 +122,6 @@ class PublicDefaultAssociation(object):
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
-
-    @property
-    def association_spec(self):
-        """Gets the association_spec of this PublicDefaultAssociation.  # noqa: E501
-
-
-        :return: The association_spec of this PublicDefaultAssociation.  # noqa: E501
-        :rtype: AssociationSpec
-        """
-        return self._association_spec
-
-    @association_spec.setter
-    def association_spec(self, association_spec):
-        """Sets the association_spec of this PublicDefaultAssociation.
-
-
-        :param association_spec: The association_spec of this PublicDefaultAssociation.  # noqa: E501
-        :type association_spec: AssociationSpec
-        """
-        if self.local_vars_configuration.client_side_validation and association_spec is None:  # noqa: E501
-            raise ValueError("Invalid value for `association_spec`, must not be `None`")  # noqa: E501
-
-        self._association_spec = association_spec
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -35,81 +35,55 @@ class BatchResponseLabelsBetweenObjectPair(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"status": "str", "results": "list[LabelsBetweenObjectPair]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict[str, str]"}
+    openapi_types = {"completed_at": "datetime", "requested_at": "datetime", "started_at": "datetime", "links": "dict[str, str]", "results": "list[LabelsBetweenObjectPair]", "status": "str"}
 
-    attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
+    attribute_map = {"completed_at": "completedAt", "requested_at": "requestedAt", "started_at": "startedAt", "links": "links", "results": "results", "status": "status"}
 
-    def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, completed_at=None, requested_at=None, started_at=None, links=None, results=None, status=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseLabelsBetweenObjectPair - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._status = None
-        self._results = None
+        self._completed_at = None
         self._requested_at = None
         self._started_at = None
-        self._completed_at = None
         self._links = None
+        self._results = None
+        self._status = None
         self.discriminator = None
 
-        self.status = status
-        self.results = results
+        self.completed_at = completed_at
         if requested_at is not None:
             self.requested_at = requested_at
         self.started_at = started_at
-        self.completed_at = completed_at
         if links is not None:
             self.links = links
+        self.results = results
+        self.status = status
 
     @property
-    def status(self):
-        """Gets the status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+    def completed_at(self):
+        """Gets the completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
 
 
-        :return: The status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :rtype: str
+        :return: The completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :rtype: datetime
         """
-        return self._status
+        return self._completed_at
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this BatchResponseLabelsBetweenObjectPair.
+    @completed_at.setter
+    def completed_at(self, completed_at):
+        """Sets the completed_at of this BatchResponseLabelsBetweenObjectPair.
 
 
-        :param status: The status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :type status: str
+        :param completed_at: The completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :type completed_at: datetime
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
 
-        self._status = status
-
-    @property
-    def results(self):
-        """Gets the results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-
-
-        :return: The results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :rtype: list[LabelsBetweenObjectPair]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this BatchResponseLabelsBetweenObjectPair.
-
-
-        :param results: The results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :type results: list[LabelsBetweenObjectPair]
-        """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
-
-        self._results = results
+        self._completed_at = completed_at
 
     @property
     def requested_at(self):
@@ -156,29 +130,6 @@ class BatchResponseLabelsBetweenObjectPair(object):
         self._started_at = started_at
 
     @property
-    def completed_at(self):
-        """Gets the completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-
-
-        :return: The completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._completed_at
-
-    @completed_at.setter
-    def completed_at(self, completed_at):
-        """Sets the completed_at of this BatchResponseLabelsBetweenObjectPair.
-
-
-        :param completed_at: The completed_at of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
-        :type completed_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
-
-        self._completed_at = completed_at
-
-    @property
     def links(self):
         """Gets the links of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
 
@@ -198,6 +149,55 @@ class BatchResponseLabelsBetweenObjectPair(object):
         """
 
         self._links = links
+
+    @property
+    def results(self):
+        """Gets the results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+
+
+        :return: The results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :rtype: list[LabelsBetweenObjectPair]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this BatchResponseLabelsBetweenObjectPair.
+
+
+        :param results: The results of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :type results: list[LabelsBetweenObjectPair]
+        """
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+
+        self._results = results
+
+    @property
+    def status(self):
+        """Gets the status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+
+
+        :return: The status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this BatchResponseLabelsBetweenObjectPair.
+
+
+        :param status: The status of this BatchResponseLabelsBetweenObjectPair.  # noqa: E501
+        :type status: str
+        """
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+
+        self._status = status
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
