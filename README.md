@@ -67,15 +67,15 @@ except ApiException as e:
 #### Create contact:
 
 ```python
-from hubspot.crm.contacts import SimplePublicObjectInput
+from hubspot.crm.contacts import SimplePublicObjectInputForCreate
 from hubspot.crm.contacts.exceptions import ApiException
 
 try:
-    simple_public_object_input = SimplePublicObjectInput(
+    simple_public_object_input_for_create = SimplePublicObjectInputForCreate(
         properties={"email": "email@example.com"}
     )
     api_response = api_client.crm.contacts.basic_api.create(
-        simple_public_object_input=simple_public_object_input
+        simple_public_object_input_for_create=simple_public_object_input_for_create
     )
 except ApiException as e:
     print("Exception when creating contact: %s\n" % e)
