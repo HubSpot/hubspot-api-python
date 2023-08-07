@@ -5,7 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.1.0...HEAD)
+
+
+## [8.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0...v8.1.0) - 2023-08-07
+
+## Removed `hapikey` from
+
+- `automation.actions.callbacks_api` Api.
+- `cms` (all Api clients).
+- `communication_preferences` (all Api clients).
+- `conversations` (all API clients).
+- `crm` (all Api clients).
+- `events` (all Api clients).
+- `files` (all Api clients).
+- `marketing.events.settings_external_api` Api.
+- `marketing.transactional` Api client.
+
+## Updated
+
+- Change type from `object` to `string` in `cms/hubdb/models/StandardError.category`.
+- Change type from `StandardError[]` to `StandardError1[]` in `crm/associations/v4/models/BatchResponseSimplePublicObjectWithErrors.errors`.
+- Change type from `ErrorCategory` to `string` in `crm/companies/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/contacts/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/deals/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/lineitems/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/calls/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/communications/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/emails/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/feedback_submissions/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/meetings/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/notes/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/postal_mail/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/objects/tasks/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/products/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/properties/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/quotes/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `crm/tickets/models/StandardError.category`.
+- Change type from `ErrorCategory` to `string` in `webhooks/models/StandardError.category`.
+- example in README(SimplePublicObjectInputForCreate)
 
 
 ## [8.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.0.0-beta.5...v8.0.0) - 2023-06-12
