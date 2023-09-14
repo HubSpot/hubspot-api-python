@@ -18,4 +18,6 @@ jobs:
       with:
         python-version: 3.x
     - name: Integration tests with pytest
-      run: make integration_test HUBSPOT_ACCESS_TOKEN="${{ secrets.HUBSPOT_ACCESS_TOKEN }}"
+      env:
+        HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+      run: make integration_test

@@ -12,7 +12,7 @@ test: venv
 	@${VENV_NAME}/bin/python -m pytest ./tests/spec
 
 integration_test: venv
-	@${VENV_NAME}/bin/python -m pytest --secret $(HUBSPOT_ACCESS_TOKEN) ./tests/integration
+	@${VENV_NAME}/bin/python -m pytest ./tests/integration
 
 fmt: venv
 	@${VENV_NAME}/bin/python -m black ./
