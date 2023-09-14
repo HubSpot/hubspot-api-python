@@ -40,7 +40,7 @@ class SyncApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_contact(app_id)
+        >>> thread = api.create_contact(app_id, sync_contacts_request, async_req=True)
         >>> result = thread.get()
 
         :param app_id: The ID of the accounting app. This is the identifier of the application created in your HubSpot developer portal. (required)
