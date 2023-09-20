@@ -1,5 +1,3 @@
-import hubspot
-import os
 import pytest
 
 from hubspot.crm.contacts import PublicObjectSearchRequest
@@ -9,12 +7,6 @@ CONTACT_PROPERTIES = {
     "lastname": "Cooper",
     "firstname": "Bryan"
 }
-
-
-@pytest.fixture
-def api_client():
-    client = hubspot.Client.create(access_token=os.getenv("HUBSPOT_ACCESS_TOKEN"))
-    yield client
 
 
 @pytest.fixture
@@ -55,28 +47,24 @@ def get_or_create_contact_associated_with_company(api_client, create_company):
         ],
         "properties": CONTACT_PROPERTIES
     }
-
-    try:
-        public_object_search_request = PublicObjectSearchRequest(
-            filter_groups=[
-                {
-                    "filters": [
-                        {
-                            "value": contact_data["properties"]["email"],
-                            "propertyName": "email",
-                            "operator": "EQ"
-                        }
-                    ]
-                }
-            ]
-        )
-        contact = api_client.crm.contacts.search_api.do_search(public_object_search_request)
-        return contact.results[0]
-    except Exception as e:
-        print(e)
-    contact = api_client.crm.contacts.basic_api.create(contact_data)
-
-    return contact
+    public_object_search_request = PublicObjectSearchRequest(
+        filter_groups=[
+            {
+                "filters": [
+                    {
+                        "value": contact_data["properties"]["email"],
+                        "propertyName": "email",
+                        "operator": "EQ"
+                    }
+                ]
+            }
+        ]
+    )
+    contact_response = api_client.crm.contacts.search_api.do_search(public_object_search_request)
+    if contact_response.results:
+        return contact_response.results[0]
+    else:
+        return api_client.crm.contacts.basic_api.create(contact_data)
 
 
 def test_create_contact_with_company_association(api_client, create_company):
