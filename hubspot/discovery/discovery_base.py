@@ -14,7 +14,7 @@ class DiscoveryBase:
     def _default_api_factory(api_client_package, api_name, config):
         configuration = api_client_package.Configuration()
         if "api_key" in config:
-            configuration.api_key["hapikey"] = config["api_key"]
+            configuration.api_key["developer_hapikey"] = config["api_key"]
         if "access_token" in config:
             configuration.access_token = config["access_token"]
         if "retry" in config:
