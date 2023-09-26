@@ -21,4 +21,6 @@ jobs:
     - name: Integration tests with pytest
       env:
         HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+        HUBSPOT_DEVELOPER_API_KEY: ${{ secrets.HUBSPOT_DEVELOPER_API_KEY }}
+        HUBSPOT_APP_ID: ${{ secrets.HUBSPOT_APP_ID }}
       run: make integration_test
