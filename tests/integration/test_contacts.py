@@ -3,9 +3,9 @@ import pytest
 from hubspot.crm.contacts import PublicObjectSearchRequest
 
 CONTACT_PROPERTIES = {
-    "email": "bcooper@biglytics.net",
-    "lastname": "Cooper",
-    "firstname": "Bryan"
+    "email": "rRocket@TestCompany.net",
+    "lastname": "Rocket",
+    "firstname": "Racoon"
 }
 
 
@@ -21,8 +21,8 @@ def create_contact(api_client):
 @pytest.fixture
 def create_company(api_client):
     properties = {
-        "domain": "biglytics.net",
-        "name": "Biglytics",
+        "domain": "TestCompany.net",
+        "name": "TestCompany",
     }
 
     company = api_client.crm.companies.basic_api.create(properties)
@@ -123,7 +123,7 @@ def test_contact__do_search(api_client, create_contact):
             {
                 "filters": [
                     {
-                        "value": "bcooper@biglytics.net",
+                        "value": "rRocket@TestCompany.net",
                         "propertyName": "email",
                         "operator": "EQ"
                     }
