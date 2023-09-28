@@ -1,0 +1,26 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python integration tests
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+    - name: Integration tests with pytest
+      env:
+        HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+        HUBSPOT_DEVELOPER_API_KEY: ${{ secrets.HUBSPOT_DEVELOPER_API_KEY }}
+        HUBSPOT_APP_ID: ${{ secrets.HUBSPOT_APP_ID }}
+      run: make integration_test

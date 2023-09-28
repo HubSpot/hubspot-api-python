@@ -9,7 +9,10 @@ $(VENV_NAME)/bin/activate: setup.py
 	@touch $(VENV_NAME)/bin/activate
 
 test: venv
-	@${VENV_NAME}/bin/python -m pytest
+	@${VENV_NAME}/bin/python -m pytest ./tests/spec
+
+integration_test: venv
+	@${VENV_NAME}/bin/python -m pytest ./tests/integration
 
 fmt: venv
 	@${VENV_NAME}/bin/python -m black ./
