@@ -1333,6 +1333,8 @@ class BlogPostsApi(object):
         :type limit: int
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param state: Specifies whether to return DRAFT, PUBLISHED, or SCHEDULED Blog Posts.
+        :type state: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1381,6 +1383,8 @@ class BlogPostsApi(object):
         :type limit: int
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param state: Specifies whether to return DRAFT, PUBLISHED, or SCHEDULED Blog Posts.
+        :type state: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1407,7 +1411,7 @@ class BlogPostsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]
+        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived", "state"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -1442,6 +1446,8 @@ class BlogPostsApi(object):
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
         if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if local_var_params.get("state") is not None:  # noqa: E501
+            query_params.append(("state", local_var_params["state"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
