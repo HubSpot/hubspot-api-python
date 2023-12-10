@@ -1,5 +1,6 @@
 import pytest
 import os
+import time
 
 from hubspot.cms.hubdb import HubDbTableV3Request
 from hubspot.cms.hubdb.exceptions import NotFoundException
@@ -33,6 +34,7 @@ def get_or_create_table(api_client):
     except NotFoundException:
         table = api_client.cms.hubdb.tables_api.create_table(HUB_DB_TABLE_REQUEST)
 
+    time.sleep(3)
     yield table
 
     api_client.cms.hubdb.tables_api.archive_table(table_id_or_name=table.name)
@@ -44,12 +46,9 @@ def test_hub_db__get_all_tables(api_client):
     assert result
 
 
-def test_hub_db__create_table(api_client):
-    table = api_client.cms.hubdb.tables_api.create_table(HUB_DB_TABLE_REQUEST)
+def test_hub_db__get_or_create_table(api_client, get_or_create_table):
 
-    assert table
-
-    api_client.cms.hubdb.tables_api.archive_table(table_id_or_name=table.name)
+    assert get_or_create_table
 
 
 def test_hub_db__archive_table(api_client):
