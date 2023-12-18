@@ -47,6 +47,11 @@ class Discovery(DiscoveryBase):
         return FeedbackSubmissionsDiscovery(self.config)
 
     @property
+    def goals(self):
+        from .goals.discovery import Discovery as GoalsDiscovery
+        return GoalsDiscovery(self.config)
+
+    @property
     def meetings(self):
         from .meetings.discovery import Discovery as MeetingsDiscovery
         return MeetingsDiscovery(self.config)
