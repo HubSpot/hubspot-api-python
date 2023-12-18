@@ -66,6 +66,11 @@ class Discovery(DiscoveryBase):
         from .tasks.discovery import Discovery as TasksDiscovery
         return TasksDiscovery(self.config)
 
+    @property
+    def taxes(self):
+        from .taxes.discovery import Discovery as TaxesDiscovery
+        return TaxesDiscovery(self.config)
+
     def get_all(self, object_type, **kwargs):
         return self.fetch_all(object_type, **kwargs)
 
