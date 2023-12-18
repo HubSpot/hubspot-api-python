@@ -22,6 +22,11 @@ class Discovery(DiscoveryBase):
         return HubdbDiscovery(self.config)
 
     @property
+    def pages(self):
+        from .pages.discovery import Discovery as PagesDiscovery
+        return PagesDiscovery(self.config)
+
+    @property
     def performance(self):
         from .performance.discovery import Discovery as PerformanceDiscovery
         return PerformanceDiscovery(self.config)
