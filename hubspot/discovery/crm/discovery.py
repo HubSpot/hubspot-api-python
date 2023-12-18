@@ -37,6 +37,11 @@ class Discovery(DiscoveryBase):
         return LineItemsDiscovery(self.config)
 
     @property
+    def lists(self):
+        from .lists.discovery import Discovery as ListsDiscovery
+        return ListsDiscovery(self.config)
+
+    @property
     def objects(self):
         from .objects.discovery import Discovery as ObjectsDiscovery
         return ObjectsDiscovery(self.config)
