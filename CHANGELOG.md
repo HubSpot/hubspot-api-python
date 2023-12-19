@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.1.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...HEAD)
+
+## [8.2.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.1.1...v8.2.0) - 2023-12-19
+
+## Added
+
+- `cms.pages` Api client.
+- `crm.lists` Api client.
+- `crm.objects.goals` Api client.
+- `crm.objects.taxes` Api client.
+- `events.send` Api client.
+- `settings.business_units` Api client.
 
 ## [8.1.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.1.0...v8.1.1) - 2023-09-25
 
