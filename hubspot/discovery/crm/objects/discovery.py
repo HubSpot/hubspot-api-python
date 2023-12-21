@@ -47,6 +47,11 @@ class Discovery(DiscoveryBase):
         return FeedbackSubmissionsDiscovery(self.config)
 
     @property
+    def goals(self):
+        from .goals.discovery import Discovery as GoalsDiscovery
+        return GoalsDiscovery(self.config)
+
+    @property
     def meetings(self):
         from .meetings.discovery import Discovery as MeetingsDiscovery
         return MeetingsDiscovery(self.config)
@@ -65,6 +70,11 @@ class Discovery(DiscoveryBase):
     def tasks(self):
         from .tasks.discovery import Discovery as TasksDiscovery
         return TasksDiscovery(self.config)
+
+    @property
+    def taxes(self):
+        from .taxes.discovery import Discovery as TaxesDiscovery
+        return TaxesDiscovery(self.config)
 
     def get_all(self, object_type, **kwargs):
         return self.fetch_all(object_type, **kwargs)
