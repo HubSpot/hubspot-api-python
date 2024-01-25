@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Users
+    Settings User Provisioning
 
     Add, manage, and remove users from your account  # noqa: E501
 
@@ -35,31 +35,171 @@ class PublicUser(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "email": "str", "role_id": "str", "primary_team_id": "str", "secondary_team_ids": "list[str]"}
+    openapi_types = {
+        "primary_team_id": "str",
+        "role_ids": "list[str]",
+        "send_welcome_email": "bool",
+        "role_id": "str",
+        "secondary_team_ids": "list[str]",
+        "id": "str",
+        "super_admin": "bool",
+        "email": "str",
+    }
 
-    attribute_map = {"id": "id", "email": "email", "role_id": "roleId", "primary_team_id": "primaryTeamId", "secondary_team_ids": "secondaryTeamIds"}
+    attribute_map = {
+        "primary_team_id": "primaryTeamId",
+        "role_ids": "roleIds",
+        "send_welcome_email": "sendWelcomeEmail",
+        "role_id": "roleId",
+        "secondary_team_ids": "secondaryTeamIds",
+        "id": "id",
+        "super_admin": "superAdmin",
+        "email": "email",
+    }
 
-    def __init__(self, id=None, email=None, role_id=None, primary_team_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, primary_team_id=None, role_ids=None, send_welcome_email=None, role_id=None, secondary_team_ids=None, id=None, super_admin=None, email=None, local_vars_configuration=None
+    ):  # noqa: E501
         """PublicUser - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._email = None
-        self._role_id = None
         self._primary_team_id = None
+        self._role_ids = None
+        self._send_welcome_email = None
+        self._role_id = None
         self._secondary_team_ids = None
+        self._id = None
+        self._super_admin = None
+        self._email = None
         self.discriminator = None
 
-        self.id = id
-        self.email = email
-        if role_id is not None:
-            self.role_id = role_id
         if primary_team_id is not None:
             self.primary_team_id = primary_team_id
+        if role_ids is not None:
+            self.role_ids = role_ids
+        if send_welcome_email is not None:
+            self.send_welcome_email = send_welcome_email
+        if role_id is not None:
+            self.role_id = role_id
         if secondary_team_ids is not None:
             self.secondary_team_ids = secondary_team_ids
+        self.id = id
+        if super_admin is not None:
+            self.super_admin = super_admin
+        self.email = email
+
+    @property
+    def primary_team_id(self):
+        """Gets the primary_team_id of this PublicUser.  # noqa: E501
+
+        The user's primary team  # noqa: E501
+
+        :return: The primary_team_id of this PublicUser.  # noqa: E501
+        :rtype: str
+        """
+        return self._primary_team_id
+
+    @primary_team_id.setter
+    def primary_team_id(self, primary_team_id):
+        """Sets the primary_team_id of this PublicUser.
+
+        The user's primary team  # noqa: E501
+
+        :param primary_team_id: The primary_team_id of this PublicUser.  # noqa: E501
+        :type primary_team_id: str
+        """
+
+        self._primary_team_id = primary_team_id
+
+    @property
+    def role_ids(self):
+        """Gets the role_ids of this PublicUser.  # noqa: E501
+
+
+        :return: The role_ids of this PublicUser.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._role_ids
+
+    @role_ids.setter
+    def role_ids(self, role_ids):
+        """Sets the role_ids of this PublicUser.
+
+
+        :param role_ids: The role_ids of this PublicUser.  # noqa: E501
+        :type role_ids: list[str]
+        """
+
+        self._role_ids = role_ids
+
+    @property
+    def send_welcome_email(self):
+        """Gets the send_welcome_email of this PublicUser.  # noqa: E501
+
+
+        :return: The send_welcome_email of this PublicUser.  # noqa: E501
+        :rtype: bool
+        """
+        return self._send_welcome_email
+
+    @send_welcome_email.setter
+    def send_welcome_email(self, send_welcome_email):
+        """Sets the send_welcome_email of this PublicUser.
+
+
+        :param send_welcome_email: The send_welcome_email of this PublicUser.  # noqa: E501
+        :type send_welcome_email: bool
+        """
+
+        self._send_welcome_email = send_welcome_email
+
+    @property
+    def role_id(self):
+        """Gets the role_id of this PublicUser.  # noqa: E501
+
+        The user's role  # noqa: E501
+
+        :return: The role_id of this PublicUser.  # noqa: E501
+        :rtype: str
+        """
+        return self._role_id
+
+    @role_id.setter
+    def role_id(self, role_id):
+        """Sets the role_id of this PublicUser.
+
+        The user's role  # noqa: E501
+
+        :param role_id: The role_id of this PublicUser.  # noqa: E501
+        :type role_id: str
+        """
+
+        self._role_id = role_id
+
+    @property
+    def secondary_team_ids(self):
+        """Gets the secondary_team_ids of this PublicUser.  # noqa: E501
+
+        The user's additional teams  # noqa: E501
+
+        :return: The secondary_team_ids of this PublicUser.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._secondary_team_ids
+
+    @secondary_team_ids.setter
+    def secondary_team_ids(self, secondary_team_ids):
+        """Sets the secondary_team_ids of this PublicUser.
+
+        The user's additional teams  # noqa: E501
+
+        :param secondary_team_ids: The secondary_team_ids of this PublicUser.  # noqa: E501
+        :type secondary_team_ids: list[str]
+        """
+
+        self._secondary_team_ids = secondary_team_ids
 
     @property
     def id(self):
@@ -87,6 +227,27 @@ class PublicUser(object):
         self._id = id
 
     @property
+    def super_admin(self):
+        """Gets the super_admin of this PublicUser.  # noqa: E501
+
+
+        :return: The super_admin of this PublicUser.  # noqa: E501
+        :rtype: bool
+        """
+        return self._super_admin
+
+    @super_admin.setter
+    def super_admin(self, super_admin):
+        """Sets the super_admin of this PublicUser.
+
+
+        :param super_admin: The super_admin of this PublicUser.  # noqa: E501
+        :type super_admin: bool
+        """
+
+        self._super_admin = super_admin
+
+    @property
     def email(self):
         """Gets the email of this PublicUser.  # noqa: E501
 
@@ -110,75 +271,6 @@ class PublicUser(object):
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
 
         self._email = email
-
-    @property
-    def role_id(self):
-        """Gets the role_id of this PublicUser.  # noqa: E501
-
-        The user's role  # noqa: E501
-
-        :return: The role_id of this PublicUser.  # noqa: E501
-        :rtype: str
-        """
-        return self._role_id
-
-    @role_id.setter
-    def role_id(self, role_id):
-        """Sets the role_id of this PublicUser.
-
-        The user's role  # noqa: E501
-
-        :param role_id: The role_id of this PublicUser.  # noqa: E501
-        :type role_id: str
-        """
-
-        self._role_id = role_id
-
-    @property
-    def primary_team_id(self):
-        """Gets the primary_team_id of this PublicUser.  # noqa: E501
-
-        The user's primary team  # noqa: E501
-
-        :return: The primary_team_id of this PublicUser.  # noqa: E501
-        :rtype: str
-        """
-        return self._primary_team_id
-
-    @primary_team_id.setter
-    def primary_team_id(self, primary_team_id):
-        """Sets the primary_team_id of this PublicUser.
-
-        The user's primary team  # noqa: E501
-
-        :param primary_team_id: The primary_team_id of this PublicUser.  # noqa: E501
-        :type primary_team_id: str
-        """
-
-        self._primary_team_id = primary_team_id
-
-    @property
-    def secondary_team_ids(self):
-        """Gets the secondary_team_ids of this PublicUser.  # noqa: E501
-
-        The user's additional teams  # noqa: E501
-
-        :return: The secondary_team_ids of this PublicUser.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._secondary_team_ids
-
-    @secondary_team_ids.setter
-    def secondary_team_ids(self, secondary_team_ids):
-        """Sets the secondary_team_ids of this PublicUser.
-
-        The user's additional teams  # noqa: E501
-
-        :param secondary_team_ids: The secondary_team_ids of this PublicUser.  # noqa: E501
-        :type secondary_team_ids: list[str]
-        """
-
-        self._secondary_team_ids = secondary_team_ids
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

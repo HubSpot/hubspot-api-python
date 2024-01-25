@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Users
+    Settings User Provisioning
 
     Add, manage, and remove users from your account  # noqa: E501
 
@@ -35,49 +35,49 @@ class PublicPermissionSet(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "requires_billing_write": "bool"}
+    openapi_types = {"requires_billing_write": "bool", "name": "str", "id": "str"}
 
-    attribute_map = {"id": "id", "name": "name", "requires_billing_write": "requiresBillingWrite"}
+    attribute_map = {"requires_billing_write": "requiresBillingWrite", "name": "name", "id": "id"}
 
-    def __init__(self, id=None, name=None, requires_billing_write=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, requires_billing_write=None, name=None, id=None, local_vars_configuration=None):  # noqa: E501
         """PublicPermissionSet - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._name = None
         self._requires_billing_write = None
+        self._name = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
-        self.name = name
         self.requires_billing_write = requires_billing_write
+        self.name = name
+        self.id = id
 
     @property
-    def id(self):
-        """Gets the id of this PublicPermissionSet.  # noqa: E501
+    def requires_billing_write(self):
+        """Gets the requires_billing_write of this PublicPermissionSet.  # noqa: E501
 
-        The role's unique ID  # noqa: E501
+        Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users  # noqa: E501
 
-        :return: The id of this PublicPermissionSet.  # noqa: E501
-        :rtype: str
+        :return: The requires_billing_write of this PublicPermissionSet.  # noqa: E501
+        :rtype: bool
         """
-        return self._id
+        return self._requires_billing_write
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicPermissionSet.
+    @requires_billing_write.setter
+    def requires_billing_write(self, requires_billing_write):
+        """Sets the requires_billing_write of this PublicPermissionSet.
 
-        The role's unique ID  # noqa: E501
+        Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users  # noqa: E501
 
-        :param id: The id of this PublicPermissionSet.  # noqa: E501
-        :type id: str
+        :param requires_billing_write: The requires_billing_write of this PublicPermissionSet.  # noqa: E501
+        :type requires_billing_write: bool
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and requires_billing_write is None:  # noqa: E501
+            raise ValueError("Invalid value for `requires_billing_write`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._requires_billing_write = requires_billing_write
 
     @property
     def name(self):
@@ -105,29 +105,29 @@ class PublicPermissionSet(object):
         self._name = name
 
     @property
-    def requires_billing_write(self):
-        """Gets the requires_billing_write of this PublicPermissionSet.  # noqa: E501
+    def id(self):
+        """Gets the id of this PublicPermissionSet.  # noqa: E501
 
-        Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users  # noqa: E501
+        The role's unique ID  # noqa: E501
 
-        :return: The requires_billing_write of this PublicPermissionSet.  # noqa: E501
-        :rtype: bool
+        :return: The id of this PublicPermissionSet.  # noqa: E501
+        :rtype: str
         """
-        return self._requires_billing_write
+        return self._id
 
-    @requires_billing_write.setter
-    def requires_billing_write(self, requires_billing_write):
-        """Sets the requires_billing_write of this PublicPermissionSet.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicPermissionSet.
 
-        Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users  # noqa: E501
+        The role's unique ID  # noqa: E501
 
-        :param requires_billing_write: The requires_billing_write of this PublicPermissionSet.  # noqa: E501
-        :type requires_billing_write: bool
+        :param id: The id of this PublicPermissionSet.  # noqa: E501
+        :type id: str
         """
-        if self.local_vars_configuration.client_side_validation and requires_billing_write is None:  # noqa: E501
-            raise ValueError("Invalid value for `requires_billing_write`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._requires_billing_write = requires_billing_write
+        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

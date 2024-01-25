@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Users
+    Settings User Provisioning
 
     Add, manage, and remove users from your account  # noqa: E501
 
@@ -35,79 +35,32 @@ class UserProvisionRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"email": "str", "role_id": "str", "primary_team_id": "str", "secondary_team_ids": "list[str]", "send_welcome_email": "bool"}
+    openapi_types = {"primary_team_id": "str", "send_welcome_email": "bool", "role_id": "str", "secondary_team_ids": "list[str]", "email": "str"}
 
-    attribute_map = {"email": "email", "role_id": "roleId", "primary_team_id": "primaryTeamId", "secondary_team_ids": "secondaryTeamIds", "send_welcome_email": "sendWelcomeEmail"}
+    attribute_map = {"primary_team_id": "primaryTeamId", "send_welcome_email": "sendWelcomeEmail", "role_id": "roleId", "secondary_team_ids": "secondaryTeamIds", "email": "email"}
 
-    def __init__(self, email=None, role_id=None, primary_team_id=None, secondary_team_ids=None, send_welcome_email=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, primary_team_id=None, send_welcome_email=None, role_id=None, secondary_team_ids=None, email=None, local_vars_configuration=None):  # noqa: E501
         """UserProvisionRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._email = None
-        self._role_id = None
         self._primary_team_id = None
-        self._secondary_team_ids = None
         self._send_welcome_email = None
+        self._role_id = None
+        self._secondary_team_ids = None
+        self._email = None
         self.discriminator = None
 
-        self.email = email
-        if role_id is not None:
-            self.role_id = role_id
         if primary_team_id is not None:
             self.primary_team_id = primary_team_id
+        if send_welcome_email is not None:
+            self.send_welcome_email = send_welcome_email
+        if role_id is not None:
+            self.role_id = role_id
         if secondary_team_ids is not None:
             self.secondary_team_ids = secondary_team_ids
-        self.send_welcome_email = send_welcome_email
-
-    @property
-    def email(self):
-        """Gets the email of this UserProvisionRequest.  # noqa: E501
-
-        The created user's email  # noqa: E501
-
-        :return: The email of this UserProvisionRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._email
-
-    @email.setter
-    def email(self, email):
-        """Sets the email of this UserProvisionRequest.
-
-        The created user's email  # noqa: E501
-
-        :param email: The email of this UserProvisionRequest.  # noqa: E501
-        :type email: str
-        """
-        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
-            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
-
-        self._email = email
-
-    @property
-    def role_id(self):
-        """Gets the role_id of this UserProvisionRequest.  # noqa: E501
-
-        The user's role  # noqa: E501
-
-        :return: The role_id of this UserProvisionRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._role_id
-
-    @role_id.setter
-    def role_id(self, role_id):
-        """Sets the role_id of this UserProvisionRequest.
-
-        The user's role  # noqa: E501
-
-        :param role_id: The role_id of this UserProvisionRequest.  # noqa: E501
-        :type role_id: str
-        """
-
-        self._role_id = role_id
+        self.email = email
 
     @property
     def primary_team_id(self):
@@ -133,6 +86,52 @@ class UserProvisionRequest(object):
         self._primary_team_id = primary_team_id
 
     @property
+    def send_welcome_email(self):
+        """Gets the send_welcome_email of this UserProvisionRequest.  # noqa: E501
+
+        Whether to send a welcome email  # noqa: E501
+
+        :return: The send_welcome_email of this UserProvisionRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._send_welcome_email
+
+    @send_welcome_email.setter
+    def send_welcome_email(self, send_welcome_email):
+        """Sets the send_welcome_email of this UserProvisionRequest.
+
+        Whether to send a welcome email  # noqa: E501
+
+        :param send_welcome_email: The send_welcome_email of this UserProvisionRequest.  # noqa: E501
+        :type send_welcome_email: bool
+        """
+
+        self._send_welcome_email = send_welcome_email
+
+    @property
+    def role_id(self):
+        """Gets the role_id of this UserProvisionRequest.  # noqa: E501
+
+        The user's role  # noqa: E501
+
+        :return: The role_id of this UserProvisionRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._role_id
+
+    @role_id.setter
+    def role_id(self, role_id):
+        """Sets the role_id of this UserProvisionRequest.
+
+        The user's role  # noqa: E501
+
+        :param role_id: The role_id of this UserProvisionRequest.  # noqa: E501
+        :type role_id: str
+        """
+
+        self._role_id = role_id
+
+    @property
     def secondary_team_ids(self):
         """Gets the secondary_team_ids of this UserProvisionRequest.  # noqa: E501
 
@@ -156,29 +155,29 @@ class UserProvisionRequest(object):
         self._secondary_team_ids = secondary_team_ids
 
     @property
-    def send_welcome_email(self):
-        """Gets the send_welcome_email of this UserProvisionRequest.  # noqa: E501
+    def email(self):
+        """Gets the email of this UserProvisionRequest.  # noqa: E501
 
-        Whether to send a welcome email  # noqa: E501
+        The created user's email  # noqa: E501
 
-        :return: The send_welcome_email of this UserProvisionRequest.  # noqa: E501
-        :rtype: bool
+        :return: The email of this UserProvisionRequest.  # noqa: E501
+        :rtype: str
         """
-        return self._send_welcome_email
+        return self._email
 
-    @send_welcome_email.setter
-    def send_welcome_email(self, send_welcome_email):
-        """Sets the send_welcome_email of this UserProvisionRequest.
+    @email.setter
+    def email(self, email):
+        """Sets the email of this UserProvisionRequest.
 
-        Whether to send a welcome email  # noqa: E501
+        The created user's email  # noqa: E501
 
-        :param send_welcome_email: The send_welcome_email of this UserProvisionRequest.  # noqa: E501
-        :type send_welcome_email: bool
+        :param email: The email of this UserProvisionRequest.  # noqa: E501
+        :type email: str
         """
-        if self.local_vars_configuration.client_side_validation and send_welcome_email is None:  # noqa: E501
-            raise ValueError("Invalid value for `send_welcome_email`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
+            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
 
-        self._send_welcome_email = send_welcome_email
+        self._email = email
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
