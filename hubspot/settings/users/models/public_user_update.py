@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Users
+    Settings User Provisioning
 
     Add, manage, and remove users from your account  # noqa: E501
 
@@ -35,50 +35,27 @@ class PublicUserUpdate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"role_id": "str", "primary_team_id": "str", "secondary_team_ids": "list[str]"}
+    openapi_types = {"primary_team_id": "str", "role_id": "str", "secondary_team_ids": "list[str]"}
 
-    attribute_map = {"role_id": "roleId", "primary_team_id": "primaryTeamId", "secondary_team_ids": "secondaryTeamIds"}
+    attribute_map = {"primary_team_id": "primaryTeamId", "role_id": "roleId", "secondary_team_ids": "secondaryTeamIds"}
 
-    def __init__(self, role_id=None, primary_team_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, primary_team_id=None, role_id=None, secondary_team_ids=None, local_vars_configuration=None):  # noqa: E501
         """PublicUserUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._role_id = None
         self._primary_team_id = None
+        self._role_id = None
         self._secondary_team_ids = None
         self.discriminator = None
 
-        if role_id is not None:
-            self.role_id = role_id
         if primary_team_id is not None:
             self.primary_team_id = primary_team_id
+        if role_id is not None:
+            self.role_id = role_id
         if secondary_team_ids is not None:
             self.secondary_team_ids = secondary_team_ids
-
-    @property
-    def role_id(self):
-        """Gets the role_id of this PublicUserUpdate.  # noqa: E501
-
-        The user's role  # noqa: E501
-
-        :return: The role_id of this PublicUserUpdate.  # noqa: E501
-        :rtype: str
-        """
-        return self._role_id
-
-    @role_id.setter
-    def role_id(self, role_id):
-        """Sets the role_id of this PublicUserUpdate.
-
-        The user's role  # noqa: E501
-
-        :param role_id: The role_id of this PublicUserUpdate.  # noqa: E501
-        :type role_id: str
-        """
-
-        self._role_id = role_id
 
     @property
     def primary_team_id(self):
@@ -102,6 +79,29 @@ class PublicUserUpdate(object):
         """
 
         self._primary_team_id = primary_team_id
+
+    @property
+    def role_id(self):
+        """Gets the role_id of this PublicUserUpdate.  # noqa: E501
+
+        The user's role  # noqa: E501
+
+        :return: The role_id of this PublicUserUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._role_id
+
+    @role_id.setter
+    def role_id(self, role_id):
+        """Sets the role_id of this PublicUserUpdate.
+
+        The user's role  # noqa: E501
+
+        :param role_id: The role_id of this PublicUserUpdate.  # noqa: E501
+        :type role_id: str
+        """
+
+        self._role_id = role_id
 
     @property
     def secondary_team_ids(self):

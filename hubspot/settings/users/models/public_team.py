@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Users
+    Settings User Provisioning
 
     Add, manage, and remove users from your account  # noqa: E501
 
@@ -35,51 +35,51 @@ class PublicTeam(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "user_ids": "list[str]", "secondary_user_ids": "list[str]"}
+    openapi_types = {"user_ids": "list[str]", "name": "str", "id": "str", "secondary_user_ids": "list[str]"}
 
-    attribute_map = {"id": "id", "name": "name", "user_ids": "userIds", "secondary_user_ids": "secondaryUserIds"}
+    attribute_map = {"user_ids": "userIds", "name": "name", "id": "id", "secondary_user_ids": "secondaryUserIds"}
 
-    def __init__(self, id=None, name=None, user_ids=None, secondary_user_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, user_ids=None, name=None, id=None, secondary_user_ids=None, local_vars_configuration=None):  # noqa: E501
         """PublicTeam - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._name = None
         self._user_ids = None
+        self._name = None
+        self._id = None
         self._secondary_user_ids = None
         self.discriminator = None
 
-        self.id = id
-        self.name = name
         self.user_ids = user_ids
+        self.name = name
+        self.id = id
         self.secondary_user_ids = secondary_user_ids
 
     @property
-    def id(self):
-        """Gets the id of this PublicTeam.  # noqa: E501
+    def user_ids(self):
+        """Gets the user_ids of this PublicTeam.  # noqa: E501
 
-        The team's unique ID  # noqa: E501
+        Primary members of this team  # noqa: E501
 
-        :return: The id of this PublicTeam.  # noqa: E501
-        :rtype: str
+        :return: The user_ids of this PublicTeam.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._id
+        return self._user_ids
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicTeam.
+    @user_ids.setter
+    def user_ids(self, user_ids):
+        """Sets the user_ids of this PublicTeam.
 
-        The team's unique ID  # noqa: E501
+        Primary members of this team  # noqa: E501
 
-        :param id: The id of this PublicTeam.  # noqa: E501
-        :type id: str
+        :param user_ids: The user_ids of this PublicTeam.  # noqa: E501
+        :type user_ids: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and user_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_ids`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._user_ids = user_ids
 
     @property
     def name(self):
@@ -107,29 +107,29 @@ class PublicTeam(object):
         self._name = name
 
     @property
-    def user_ids(self):
-        """Gets the user_ids of this PublicTeam.  # noqa: E501
+    def id(self):
+        """Gets the id of this PublicTeam.  # noqa: E501
 
-        Primary members of this team  # noqa: E501
+        The team's unique ID  # noqa: E501
 
-        :return: The user_ids of this PublicTeam.  # noqa: E501
-        :rtype: list[str]
+        :return: The id of this PublicTeam.  # noqa: E501
+        :rtype: str
         """
-        return self._user_ids
+        return self._id
 
-    @user_ids.setter
-    def user_ids(self, user_ids):
-        """Sets the user_ids of this PublicTeam.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicTeam.
 
-        Primary members of this team  # noqa: E501
+        The team's unique ID  # noqa: E501
 
-        :param user_ids: The user_ids of this PublicTeam.  # noqa: E501
-        :type user_ids: list[str]
+        :param id: The id of this PublicTeam.  # noqa: E501
+        :type id: str
         """
-        if self.local_vars_configuration.client_side_validation and user_ids is None:  # noqa: E501
-            raise ValueError("Invalid value for `user_ids`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._user_ids = user_ids
+        self._id = id
 
     @property
     def secondary_user_ids(self):
