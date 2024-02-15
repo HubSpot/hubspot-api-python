@@ -36,40 +36,40 @@ class PublicSubscriptionStatus(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
+        "brand_id": "int",
         "name": "str",
         "description": "str",
+        "legal_basis": "str",
+        "preference_group_name": "str",
+        "id": "str",
+        "legal_basis_explanation": "str",
         "status": "str",
         "source_of_status": "str",
-        "brand_id": "int",
-        "preference_group_name": "str",
-        "legal_basis": "str",
-        "legal_basis_explanation": "str",
     }
 
     attribute_map = {
-        "id": "id",
+        "brand_id": "brandId",
         "name": "name",
         "description": "description",
+        "legal_basis": "legalBasis",
+        "preference_group_name": "preferenceGroupName",
+        "id": "id",
+        "legal_basis_explanation": "legalBasisExplanation",
         "status": "status",
         "source_of_status": "sourceOfStatus",
-        "brand_id": "brandId",
-        "preference_group_name": "preferenceGroupName",
-        "legal_basis": "legalBasis",
-        "legal_basis_explanation": "legalBasisExplanation",
     }
 
     def __init__(
         self,
-        id=None,
+        brand_id=None,
         name=None,
         description=None,
+        legal_basis=None,
+        preference_group_name=None,
+        id=None,
+        legal_basis_explanation=None,
         status=None,
         source_of_status=None,
-        brand_id=None,
-        preference_group_name=None,
-        legal_basis=None,
-        legal_basis_explanation=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PublicSubscriptionStatus - a model defined in OpenAPI"""  # noqa: E501
@@ -77,55 +77,53 @@ class PublicSubscriptionStatus(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
+        self._brand_id = None
         self._name = None
         self._description = None
+        self._legal_basis = None
+        self._preference_group_name = None
+        self._id = None
+        self._legal_basis_explanation = None
         self._status = None
         self._source_of_status = None
-        self._brand_id = None
-        self._preference_group_name = None
-        self._legal_basis = None
-        self._legal_basis_explanation = None
         self.discriminator = None
 
-        self.id = id
-        self.name = name
-        self.description = description
-        self.status = status
-        self.source_of_status = source_of_status
         if brand_id is not None:
             self.brand_id = brand_id
-        if preference_group_name is not None:
-            self.preference_group_name = preference_group_name
+        self.name = name
+        self.description = description
         if legal_basis is not None:
             self.legal_basis = legal_basis
+        if preference_group_name is not None:
+            self.preference_group_name = preference_group_name
+        self.id = id
         if legal_basis_explanation is not None:
             self.legal_basis_explanation = legal_basis_explanation
+        self.status = status
+        self.source_of_status = source_of_status
 
     @property
-    def id(self):
-        """Gets the id of this PublicSubscriptionStatus.  # noqa: E501
+    def brand_id(self):
+        """Gets the brand_id of this PublicSubscriptionStatus.  # noqa: E501
 
-        The ID for the subscription.  # noqa: E501
+        The ID of the brand that the subscription is associated with, if there is one.  # noqa: E501
 
-        :return: The id of this PublicSubscriptionStatus.  # noqa: E501
-        :rtype: str
+        :return: The brand_id of this PublicSubscriptionStatus.  # noqa: E501
+        :rtype: int
         """
-        return self._id
+        return self._brand_id
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicSubscriptionStatus.
+    @brand_id.setter
+    def brand_id(self, brand_id):
+        """Sets the brand_id of this PublicSubscriptionStatus.
 
-        The ID for the subscription.  # noqa: E501
+        The ID of the brand that the subscription is associated with, if there is one.  # noqa: E501
 
-        :param id: The id of this PublicSubscriptionStatus.  # noqa: E501
-        :type id: str
+        :param brand_id: The brand_id of this PublicSubscriptionStatus.  # noqa: E501
+        :type brand_id: int
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._brand_id = brand_id
 
     @property
     def name(self):
@@ -176,6 +174,111 @@ class PublicSubscriptionStatus(object):
             raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
+
+    @property
+    def legal_basis(self):
+        """Gets the legal_basis of this PublicSubscriptionStatus.  # noqa: E501
+
+        The legal reason for the current status of the subscription.  # noqa: E501
+
+        :return: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
+        :rtype: str
+        """
+        return self._legal_basis
+
+    @legal_basis.setter
+    def legal_basis(self, legal_basis):
+        """Sets the legal_basis of this PublicSubscriptionStatus.
+
+        The legal reason for the current status of the subscription.  # noqa: E501
+
+        :param legal_basis: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
+        :type legal_basis: str
+        """
+        allowed_values = [
+            "LEGITIMATE_INTEREST_PQL",
+            "LEGITIMATE_INTEREST_CLIENT",
+            "PERFORMANCE_OF_CONTRACT",
+            "CONSENT_WITH_NOTICE",
+            "NON_GDPR",
+            "PROCESS_AND_STORE",
+            "LEGITIMATE_INTEREST_OTHER",
+        ]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and legal_basis not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
+
+        self._legal_basis = legal_basis
+
+    @property
+    def preference_group_name(self):
+        """Gets the preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
+
+        The name of the preferences group that the subscription is associated with.  # noqa: E501
+
+        :return: The preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
+        :rtype: str
+        """
+        return self._preference_group_name
+
+    @preference_group_name.setter
+    def preference_group_name(self, preference_group_name):
+        """Sets the preference_group_name of this PublicSubscriptionStatus.
+
+        The name of the preferences group that the subscription is associated with.  # noqa: E501
+
+        :param preference_group_name: The preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
+        :type preference_group_name: str
+        """
+
+        self._preference_group_name = preference_group_name
+
+    @property
+    def id(self):
+        """Gets the id of this PublicSubscriptionStatus.  # noqa: E501
+
+        The ID for the subscription.  # noqa: E501
+
+        :return: The id of this PublicSubscriptionStatus.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicSubscriptionStatus.
+
+        The ID for the subscription.  # noqa: E501
+
+        :param id: The id of this PublicSubscriptionStatus.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def legal_basis_explanation(self):
+        """Gets the legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
+
+        A more detailed explanation to go with the legal basis.  # noqa: E501
+
+        :return: The legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
+        :rtype: str
+        """
+        return self._legal_basis_explanation
+
+    @legal_basis_explanation.setter
+    def legal_basis_explanation(self, legal_basis_explanation):
+        """Sets the legal_basis_explanation of this PublicSubscriptionStatus.
+
+        A more detailed explanation to go with the legal basis.  # noqa: E501
+
+        :param legal_basis_explanation: The legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
+        :type legal_basis_explanation: str
+        """
+
+        self._legal_basis_explanation = legal_basis_explanation
 
     @property
     def status(self):
@@ -232,109 +335,6 @@ class PublicSubscriptionStatus(object):
             raise ValueError("Invalid value for `source_of_status` ({0}), must be one of {1}".format(source_of_status, allowed_values))  # noqa: E501
 
         self._source_of_status = source_of_status
-
-    @property
-    def brand_id(self):
-        """Gets the brand_id of this PublicSubscriptionStatus.  # noqa: E501
-
-        The ID of the brand that the subscription is associated with, if there is one.  # noqa: E501
-
-        :return: The brand_id of this PublicSubscriptionStatus.  # noqa: E501
-        :rtype: int
-        """
-        return self._brand_id
-
-    @brand_id.setter
-    def brand_id(self, brand_id):
-        """Sets the brand_id of this PublicSubscriptionStatus.
-
-        The ID of the brand that the subscription is associated with, if there is one.  # noqa: E501
-
-        :param brand_id: The brand_id of this PublicSubscriptionStatus.  # noqa: E501
-        :type brand_id: int
-        """
-
-        self._brand_id = brand_id
-
-    @property
-    def preference_group_name(self):
-        """Gets the preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
-
-        The name of the preferences group that the subscription is associated with.  # noqa: E501
-
-        :return: The preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
-        :rtype: str
-        """
-        return self._preference_group_name
-
-    @preference_group_name.setter
-    def preference_group_name(self, preference_group_name):
-        """Sets the preference_group_name of this PublicSubscriptionStatus.
-
-        The name of the preferences group that the subscription is associated with.  # noqa: E501
-
-        :param preference_group_name: The preference_group_name of this PublicSubscriptionStatus.  # noqa: E501
-        :type preference_group_name: str
-        """
-
-        self._preference_group_name = preference_group_name
-
-    @property
-    def legal_basis(self):
-        """Gets the legal_basis of this PublicSubscriptionStatus.  # noqa: E501
-
-        The legal reason for the current status of the subscription.  # noqa: E501
-
-        :return: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
-        :rtype: str
-        """
-        return self._legal_basis
-
-    @legal_basis.setter
-    def legal_basis(self, legal_basis):
-        """Sets the legal_basis of this PublicSubscriptionStatus.
-
-        The legal reason for the current status of the subscription.  # noqa: E501
-
-        :param legal_basis: The legal_basis of this PublicSubscriptionStatus.  # noqa: E501
-        :type legal_basis: str
-        """
-        allowed_values = [
-            "LEGITIMATE_INTEREST_PQL",
-            "LEGITIMATE_INTEREST_CLIENT",
-            "PERFORMANCE_OF_CONTRACT",
-            "CONSENT_WITH_NOTICE",
-            "NON_GDPR",
-            "PROCESS_AND_STORE",
-            "LEGITIMATE_INTEREST_OTHER",
-        ]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and legal_basis not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
-
-        self._legal_basis = legal_basis
-
-    @property
-    def legal_basis_explanation(self):
-        """Gets the legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
-
-        A more detailed explanation to go with the legal basis.  # noqa: E501
-
-        :return: The legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
-        :rtype: str
-        """
-        return self._legal_basis_explanation
-
-    @legal_basis_explanation.setter
-    def legal_basis_explanation(self, legal_basis_explanation):
-        """Sets the legal_basis_explanation of this PublicSubscriptionStatus.
-
-        A more detailed explanation to go with the legal basis.  # noqa: E501
-
-        :param legal_basis_explanation: The legal_basis_explanation of this PublicSubscriptionStatus.  # noqa: E501
-        :type legal_basis_explanation: str
-        """
-
-        self._legal_basis_explanation = legal_basis_explanation
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
