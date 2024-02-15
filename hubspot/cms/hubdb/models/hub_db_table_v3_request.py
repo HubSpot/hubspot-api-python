@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -36,37 +36,37 @@ class HubDbTableV3Request(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "label": "str",
-        "use_for_pages": "bool",
-        "allow_public_api_access": "bool",
-        "allow_child_tables": "bool",
-        "enable_child_table_pages": "bool",
-        "columns": "list[ColumnRequest]",
         "dynamic_meta_tags": "dict[str, int]",
+        "allow_public_api_access": "bool",
+        "use_for_pages": "bool",
+        "columns": "list[ColumnRequest]",
+        "name": "str",
+        "enable_child_table_pages": "bool",
+        "label": "str",
+        "allow_child_tables": "bool",
     }
 
     attribute_map = {
-        "name": "name",
-        "label": "label",
-        "use_for_pages": "useForPages",
-        "allow_public_api_access": "allowPublicApiAccess",
-        "allow_child_tables": "allowChildTables",
-        "enable_child_table_pages": "enableChildTablePages",
-        "columns": "columns",
         "dynamic_meta_tags": "dynamicMetaTags",
+        "allow_public_api_access": "allowPublicApiAccess",
+        "use_for_pages": "useForPages",
+        "columns": "columns",
+        "name": "name",
+        "enable_child_table_pages": "enableChildTablePages",
+        "label": "label",
+        "allow_child_tables": "allowChildTables",
     }
 
     def __init__(
         self,
-        name=None,
-        label=None,
-        use_for_pages=None,
-        allow_public_api_access=None,
-        allow_child_tables=None,
-        enable_child_table_pages=None,
-        columns=None,
         dynamic_meta_tags=None,
+        allow_public_api_access=None,
+        use_for_pages=None,
+        columns=None,
+        name=None,
+        enable_child_table_pages=None,
+        label=None,
+        allow_child_tables=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """HubDbTableV3Request - a model defined in OpenAPI"""  # noqa: E501
@@ -74,30 +74,122 @@ class HubDbTableV3Request(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._label = None
-        self._use_for_pages = None
-        self._allow_public_api_access = None
-        self._allow_child_tables = None
-        self._enable_child_table_pages = None
-        self._columns = None
         self._dynamic_meta_tags = None
+        self._allow_public_api_access = None
+        self._use_for_pages = None
+        self._columns = None
+        self._name = None
+        self._enable_child_table_pages = None
+        self._label = None
+        self._allow_child_tables = None
         self.discriminator = None
 
-        self.name = name
-        self.label = label
-        if use_for_pages is not None:
-            self.use_for_pages = use_for_pages
-        if allow_public_api_access is not None:
-            self.allow_public_api_access = allow_public_api_access
-        if allow_child_tables is not None:
-            self.allow_child_tables = allow_child_tables
-        if enable_child_table_pages is not None:
-            self.enable_child_table_pages = enable_child_table_pages
-        if columns is not None:
-            self.columns = columns
         if dynamic_meta_tags is not None:
             self.dynamic_meta_tags = dynamic_meta_tags
+        if allow_public_api_access is not None:
+            self.allow_public_api_access = allow_public_api_access
+        if use_for_pages is not None:
+            self.use_for_pages = use_for_pages
+        if columns is not None:
+            self.columns = columns
+        self.name = name
+        if enable_child_table_pages is not None:
+            self.enable_child_table_pages = enable_child_table_pages
+        self.label = label
+        if allow_child_tables is not None:
+            self.allow_child_tables = allow_child_tables
+
+    @property
+    def dynamic_meta_tags(self):
+        """Gets the dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
+
+        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
+
+        :return: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
+        :rtype: dict[str, int]
+        """
+        return self._dynamic_meta_tags
+
+    @dynamic_meta_tags.setter
+    def dynamic_meta_tags(self, dynamic_meta_tags):
+        """Sets the dynamic_meta_tags of this HubDbTableV3Request.
+
+        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
+
+        :param dynamic_meta_tags: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
+        :type dynamic_meta_tags: dict[str, int]
+        """
+
+        self._dynamic_meta_tags = dynamic_meta_tags
+
+    @property
+    def allow_public_api_access(self):
+        """Gets the allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
+
+        Specifies whether the table can be read by public without authorization  # noqa: E501
+
+        :return: The allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
+        :rtype: bool
+        """
+        return self._allow_public_api_access
+
+    @allow_public_api_access.setter
+    def allow_public_api_access(self, allow_public_api_access):
+        """Sets the allow_public_api_access of this HubDbTableV3Request.
+
+        Specifies whether the table can be read by public without authorization  # noqa: E501
+
+        :param allow_public_api_access: The allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
+        :type allow_public_api_access: bool
+        """
+
+        self._allow_public_api_access = allow_public_api_access
+
+    @property
+    def use_for_pages(self):
+        """Gets the use_for_pages of this HubDbTableV3Request.  # noqa: E501
+
+        Specifies whether the table can be used for creation of dynamic pages  # noqa: E501
+
+        :return: The use_for_pages of this HubDbTableV3Request.  # noqa: E501
+        :rtype: bool
+        """
+        return self._use_for_pages
+
+    @use_for_pages.setter
+    def use_for_pages(self, use_for_pages):
+        """Sets the use_for_pages of this HubDbTableV3Request.
+
+        Specifies whether the table can be used for creation of dynamic pages  # noqa: E501
+
+        :param use_for_pages: The use_for_pages of this HubDbTableV3Request.  # noqa: E501
+        :type use_for_pages: bool
+        """
+
+        self._use_for_pages = use_for_pages
+
+    @property
+    def columns(self):
+        """Gets the columns of this HubDbTableV3Request.  # noqa: E501
+
+        List of columns in the table  # noqa: E501
+
+        :return: The columns of this HubDbTableV3Request.  # noqa: E501
+        :rtype: list[ColumnRequest]
+        """
+        return self._columns
+
+    @columns.setter
+    def columns(self, columns):
+        """Sets the columns of this HubDbTableV3Request.
+
+        List of columns in the table  # noqa: E501
+
+        :param columns: The columns of this HubDbTableV3Request.  # noqa: E501
+        :type columns: list[ColumnRequest]
+        """
+
+        self._columns = columns
 
     @property
     def name(self):
@@ -125,6 +217,29 @@ class HubDbTableV3Request(object):
         self._name = name
 
     @property
+    def enable_child_table_pages(self):
+        """Gets the enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
+
+        Specifies creation of multi-level dynamic pages using child tables  # noqa: E501
+
+        :return: The enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
+        :rtype: bool
+        """
+        return self._enable_child_table_pages
+
+    @enable_child_table_pages.setter
+    def enable_child_table_pages(self, enable_child_table_pages):
+        """Sets the enable_child_table_pages of this HubDbTableV3Request.
+
+        Specifies creation of multi-level dynamic pages using child tables  # noqa: E501
+
+        :param enable_child_table_pages: The enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
+        :type enable_child_table_pages: bool
+        """
+
+        self._enable_child_table_pages = enable_child_table_pages
+
+    @property
     def label(self):
         """Gets the label of this HubDbTableV3Request.  # noqa: E501
 
@@ -150,52 +265,6 @@ class HubDbTableV3Request(object):
         self._label = label
 
     @property
-    def use_for_pages(self):
-        """Gets the use_for_pages of this HubDbTableV3Request.  # noqa: E501
-
-        Specifies whether the table can be used for creation of dynamic pages  # noqa: E501
-
-        :return: The use_for_pages of this HubDbTableV3Request.  # noqa: E501
-        :rtype: bool
-        """
-        return self._use_for_pages
-
-    @use_for_pages.setter
-    def use_for_pages(self, use_for_pages):
-        """Sets the use_for_pages of this HubDbTableV3Request.
-
-        Specifies whether the table can be used for creation of dynamic pages  # noqa: E501
-
-        :param use_for_pages: The use_for_pages of this HubDbTableV3Request.  # noqa: E501
-        :type use_for_pages: bool
-        """
-
-        self._use_for_pages = use_for_pages
-
-    @property
-    def allow_public_api_access(self):
-        """Gets the allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
-
-        Specifies whether the table can be read by public without authorization  # noqa: E501
-
-        :return: The allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
-        :rtype: bool
-        """
-        return self._allow_public_api_access
-
-    @allow_public_api_access.setter
-    def allow_public_api_access(self, allow_public_api_access):
-        """Sets the allow_public_api_access of this HubDbTableV3Request.
-
-        Specifies whether the table can be read by public without authorization  # noqa: E501
-
-        :param allow_public_api_access: The allow_public_api_access of this HubDbTableV3Request.  # noqa: E501
-        :type allow_public_api_access: bool
-        """
-
-        self._allow_public_api_access = allow_public_api_access
-
-    @property
     def allow_child_tables(self):
         """Gets the allow_child_tables of this HubDbTableV3Request.  # noqa: E501
 
@@ -217,75 +286,6 @@ class HubDbTableV3Request(object):
         """
 
         self._allow_child_tables = allow_child_tables
-
-    @property
-    def enable_child_table_pages(self):
-        """Gets the enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
-
-        Specifies creation of multi-level dynamic pages using child tables  # noqa: E501
-
-        :return: The enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
-        :rtype: bool
-        """
-        return self._enable_child_table_pages
-
-    @enable_child_table_pages.setter
-    def enable_child_table_pages(self, enable_child_table_pages):
-        """Sets the enable_child_table_pages of this HubDbTableV3Request.
-
-        Specifies creation of multi-level dynamic pages using child tables  # noqa: E501
-
-        :param enable_child_table_pages: The enable_child_table_pages of this HubDbTableV3Request.  # noqa: E501
-        :type enable_child_table_pages: bool
-        """
-
-        self._enable_child_table_pages = enable_child_table_pages
-
-    @property
-    def columns(self):
-        """Gets the columns of this HubDbTableV3Request.  # noqa: E501
-
-        List of columns in the table  # noqa: E501
-
-        :return: The columns of this HubDbTableV3Request.  # noqa: E501
-        :rtype: list[ColumnRequest]
-        """
-        return self._columns
-
-    @columns.setter
-    def columns(self, columns):
-        """Sets the columns of this HubDbTableV3Request.
-
-        List of columns in the table  # noqa: E501
-
-        :param columns: The columns of this HubDbTableV3Request.  # noqa: E501
-        :type columns: list[ColumnRequest]
-        """
-
-        self._columns = columns
-
-    @property
-    def dynamic_meta_tags(self):
-        """Gets the dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
-
-        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
-
-        :return: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
-        :rtype: dict[str, int]
-        """
-        return self._dynamic_meta_tags
-
-    @dynamic_meta_tags.setter
-    def dynamic_meta_tags(self, dynamic_meta_tags):
-        """Sets the dynamic_meta_tags of this HubDbTableV3Request.
-
-        Specifies the key value pairs of the metadata fields with the associated column ids  # noqa: E501
-
-        :param dynamic_meta_tags: The dynamic_meta_tags of this HubDbTableV3Request.  # noqa: E501
-        :type dynamic_meta_tags: dict[str, int]
-        """
-
-        self._dynamic_meta_tags = dynamic_meta_tags
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

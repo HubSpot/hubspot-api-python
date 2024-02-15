@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,52 +35,30 @@ class ForeignId(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "type": "str"}
+    openapi_types = {"name": "str", "id": "str", "type": "str"}
 
-    attribute_map = {"id": "id", "name": "name", "type": "type"}
+    attribute_map = {"name": "name", "id": "id", "type": "type"}
 
-    def __init__(self, id=None, name=None, type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, id=None, type=None, local_vars_configuration=None):  # noqa: E501
         """ForeignId - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._name = None
+        self._id = None
         self._type = None
         self.discriminator = None
 
-        self.id = id
         self.name = name
+        self.id = id
         self.type = type
-
-    @property
-    def id(self):
-        """Gets the id of this ForeignId.  # noqa: E501
-
-
-        :return: The id of this ForeignId.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ForeignId.
-
-
-        :param id: The id of this ForeignId.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
 
     @property
     def name(self):
         """Gets the name of this ForeignId.  # noqa: E501
 
+          # noqa: E501
 
         :return: The name of this ForeignId.  # noqa: E501
         :rtype: str
@@ -91,6 +69,7 @@ class ForeignId(object):
     def name(self, name):
         """Sets the name of this ForeignId.
 
+          # noqa: E501
 
         :param name: The name of this ForeignId.  # noqa: E501
         :type name: str
@@ -101,9 +80,35 @@ class ForeignId(object):
         self._name = name
 
     @property
+    def id(self):
+        """Gets the id of this ForeignId.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The id of this ForeignId.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ForeignId.
+
+          # noqa: E501
+
+        :param id: The id of this ForeignId.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
     def type(self):
         """Gets the type of this ForeignId.  # noqa: E501
 
+          # noqa: E501
 
         :return: The type of this ForeignId.  # noqa: E501
         :rtype: str
@@ -114,6 +119,7 @@ class ForeignId(object):
     def type(self, type):
         """Sets the type of this ForeignId.
 
+          # noqa: E501
 
         :param type: The type of this ForeignId.  # noqa: E501
         :type type: str

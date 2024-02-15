@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    URL redirects
+    CMS Url Redirects
 
     URL redirect operations  # noqa: E501
 
@@ -36,51 +36,51 @@ class UrlMapping(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "route_prefix": "str",
-        "destination": "str",
-        "redirect_style": "int",
-        "is_only_after_not_found": "bool",
-        "is_match_full_url": "bool",
-        "is_match_query_string": "bool",
-        "is_pattern": "bool",
         "is_trailing_slash_optional": "bool",
-        "is_protocol_agnostic": "bool",
-        "precedence": "int",
+        "redirect_style": "int",
+        "is_match_query_string": "bool",
         "created": "datetime",
+        "is_match_full_url": "bool",
+        "destination": "str",
+        "is_only_after_not_found": "bool",
+        "is_pattern": "bool",
+        "precedence": "int",
+        "route_prefix": "str",
+        "is_protocol_agnostic": "bool",
+        "id": "str",
         "updated": "datetime",
     }
 
     attribute_map = {
-        "id": "id",
-        "route_prefix": "routePrefix",
-        "destination": "destination",
-        "redirect_style": "redirectStyle",
-        "is_only_after_not_found": "isOnlyAfterNotFound",
-        "is_match_full_url": "isMatchFullUrl",
-        "is_match_query_string": "isMatchQueryString",
-        "is_pattern": "isPattern",
         "is_trailing_slash_optional": "isTrailingSlashOptional",
-        "is_protocol_agnostic": "isProtocolAgnostic",
-        "precedence": "precedence",
+        "redirect_style": "redirectStyle",
+        "is_match_query_string": "isMatchQueryString",
         "created": "created",
+        "is_match_full_url": "isMatchFullUrl",
+        "destination": "destination",
+        "is_only_after_not_found": "isOnlyAfterNotFound",
+        "is_pattern": "isPattern",
+        "precedence": "precedence",
+        "route_prefix": "routePrefix",
+        "is_protocol_agnostic": "isProtocolAgnostic",
+        "id": "id",
         "updated": "updated",
     }
 
     def __init__(
         self,
-        id=None,
-        route_prefix=None,
-        destination=None,
-        redirect_style=None,
-        is_only_after_not_found=None,
-        is_match_full_url=None,
-        is_match_query_string=None,
-        is_pattern=None,
         is_trailing_slash_optional=None,
-        is_protocol_agnostic=None,
-        precedence=None,
+        redirect_style=None,
+        is_match_query_string=None,
         created=None,
+        is_match_full_url=None,
+        destination=None,
+        is_only_after_not_found=None,
+        is_pattern=None,
+        precedence=None,
+        route_prefix=None,
+        is_protocol_agnostic=None,
+        id=None,
         updated=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -89,236 +89,36 @@ class UrlMapping(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._route_prefix = None
-        self._destination = None
-        self._redirect_style = None
-        self._is_only_after_not_found = None
-        self._is_match_full_url = None
-        self._is_match_query_string = None
-        self._is_pattern = None
         self._is_trailing_slash_optional = None
-        self._is_protocol_agnostic = None
-        self._precedence = None
+        self._redirect_style = None
+        self._is_match_query_string = None
         self._created = None
+        self._is_match_full_url = None
+        self._destination = None
+        self._is_only_after_not_found = None
+        self._is_pattern = None
+        self._precedence = None
+        self._route_prefix = None
+        self._is_protocol_agnostic = None
+        self._id = None
         self._updated = None
         self.discriminator = None
 
-        self.id = id
-        self.route_prefix = route_prefix
-        self.destination = destination
-        self.redirect_style = redirect_style
-        self.is_only_after_not_found = is_only_after_not_found
-        self.is_match_full_url = is_match_full_url
-        self.is_match_query_string = is_match_query_string
-        self.is_pattern = is_pattern
         self.is_trailing_slash_optional = is_trailing_slash_optional
-        self.is_protocol_agnostic = is_protocol_agnostic
-        self.precedence = precedence
+        self.redirect_style = redirect_style
+        self.is_match_query_string = is_match_query_string
         if created is not None:
             self.created = created
+        self.is_match_full_url = is_match_full_url
+        self.destination = destination
+        self.is_only_after_not_found = is_only_after_not_found
+        self.is_pattern = is_pattern
+        self.precedence = precedence
+        self.route_prefix = route_prefix
+        self.is_protocol_agnostic = is_protocol_agnostic
+        self.id = id
         if updated is not None:
             self.updated = updated
-
-    @property
-    def id(self):
-        """Gets the id of this UrlMapping.  # noqa: E501
-
-        The unique ID of this URL redirect.  # noqa: E501
-
-        :return: The id of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this UrlMapping.
-
-        The unique ID of this URL redirect.  # noqa: E501
-
-        :param id: The id of this UrlMapping.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def route_prefix(self):
-        """Gets the route_prefix of this UrlMapping.  # noqa: E501
-
-        The target incoming URL, path, or pattern to match for redirection.  # noqa: E501
-
-        :return: The route_prefix of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._route_prefix
-
-    @route_prefix.setter
-    def route_prefix(self, route_prefix):
-        """Sets the route_prefix of this UrlMapping.
-
-        The target incoming URL, path, or pattern to match for redirection.  # noqa: E501
-
-        :param route_prefix: The route_prefix of this UrlMapping.  # noqa: E501
-        :type route_prefix: str
-        """
-        if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
-            raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
-
-        self._route_prefix = route_prefix
-
-    @property
-    def destination(self):
-        """Gets the destination of this UrlMapping.  # noqa: E501
-
-        The destination URL, where the target URL should be redirected if it matches the `routePrefix`.  # noqa: E501
-
-        :return: The destination of this UrlMapping.  # noqa: E501
-        :rtype: str
-        """
-        return self._destination
-
-    @destination.setter
-    def destination(self, destination):
-        """Sets the destination of this UrlMapping.
-
-        The destination URL, where the target URL should be redirected if it matches the `routePrefix`.  # noqa: E501
-
-        :param destination: The destination of this UrlMapping.  # noqa: E501
-        :type destination: str
-        """
-        if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
-            raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
-
-        self._destination = destination
-
-    @property
-    def redirect_style(self):
-        """Gets the redirect_style of this UrlMapping.  # noqa: E501
-
-        The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).  # noqa: E501
-
-        :return: The redirect_style of this UrlMapping.  # noqa: E501
-        :rtype: int
-        """
-        return self._redirect_style
-
-    @redirect_style.setter
-    def redirect_style(self, redirect_style):
-        """Sets the redirect_style of this UrlMapping.
-
-        The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).  # noqa: E501
-
-        :param redirect_style: The redirect_style of this UrlMapping.  # noqa: E501
-        :type redirect_style: int
-        """
-        if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
-            raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
-
-        self._redirect_style = redirect_style
-
-    @property
-    def is_only_after_not_found(self):
-        """Gets the is_only_after_not_found of this UrlMapping.  # noqa: E501
-
-        Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.  # noqa: E501
-
-        :return: The is_only_after_not_found of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_only_after_not_found
-
-    @is_only_after_not_found.setter
-    def is_only_after_not_found(self, is_only_after_not_found):
-        """Sets the is_only_after_not_found of this UrlMapping.
-
-        Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.  # noqa: E501
-
-        :param is_only_after_not_found: The is_only_after_not_found of this UrlMapping.  # noqa: E501
-        :type is_only_after_not_found: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_only_after_not_found is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_only_after_not_found`, must not be `None`")  # noqa: E501
-
-        self._is_only_after_not_found = is_only_after_not_found
-
-    @property
-    def is_match_full_url(self):
-        """Gets the is_match_full_url of this UrlMapping.  # noqa: E501
-
-        Whether the `routePrefix` should match on the entire URL, including the domain.  # noqa: E501
-
-        :return: The is_match_full_url of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_match_full_url
-
-    @is_match_full_url.setter
-    def is_match_full_url(self, is_match_full_url):
-        """Sets the is_match_full_url of this UrlMapping.
-
-        Whether the `routePrefix` should match on the entire URL, including the domain.  # noqa: E501
-
-        :param is_match_full_url: The is_match_full_url of this UrlMapping.  # noqa: E501
-        :type is_match_full_url: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_match_full_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_match_full_url`, must not be `None`")  # noqa: E501
-
-        self._is_match_full_url = is_match_full_url
-
-    @property
-    def is_match_query_string(self):
-        """Gets the is_match_query_string of this UrlMapping.  # noqa: E501
-
-        Whether the `routePrefix` should match on the entire URL path, including the query string.  # noqa: E501
-
-        :return: The is_match_query_string of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_match_query_string
-
-    @is_match_query_string.setter
-    def is_match_query_string(self, is_match_query_string):
-        """Sets the is_match_query_string of this UrlMapping.
-
-        Whether the `routePrefix` should match on the entire URL path, including the query string.  # noqa: E501
-
-        :param is_match_query_string: The is_match_query_string of this UrlMapping.  # noqa: E501
-        :type is_match_query_string: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_match_query_string is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_match_query_string`, must not be `None`")  # noqa: E501
-
-        self._is_match_query_string = is_match_query_string
-
-    @property
-    def is_pattern(self):
-        """Gets the is_pattern of this UrlMapping.  # noqa: E501
-
-        Whether the `routePrefix` should match based on pattern.  # noqa: E501
-
-        :return: The is_pattern of this UrlMapping.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_pattern
-
-    @is_pattern.setter
-    def is_pattern(self, is_pattern):
-        """Sets the is_pattern of this UrlMapping.
-
-        Whether the `routePrefix` should match based on pattern.  # noqa: E501
-
-        :param is_pattern: The is_pattern of this UrlMapping.  # noqa: E501
-        :type is_pattern: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_pattern is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_pattern`, must not be `None`")  # noqa: E501
-
-        self._is_pattern = is_pattern
 
     @property
     def is_trailing_slash_optional(self):
@@ -346,29 +146,175 @@ class UrlMapping(object):
         self._is_trailing_slash_optional = is_trailing_slash_optional
 
     @property
-    def is_protocol_agnostic(self):
-        """Gets the is_protocol_agnostic of this UrlMapping.  # noqa: E501
+    def redirect_style(self):
+        """Gets the redirect_style of this UrlMapping.  # noqa: E501
 
-        Whether the `routePrefix` should match both HTTP and HTTPS protocols.  # noqa: E501
+        The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).  # noqa: E501
 
-        :return: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
+        :return: The redirect_style of this UrlMapping.  # noqa: E501
+        :rtype: int
+        """
+        return self._redirect_style
+
+    @redirect_style.setter
+    def redirect_style(self, redirect_style):
+        """Sets the redirect_style of this UrlMapping.
+
+        The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).  # noqa: E501
+
+        :param redirect_style: The redirect_style of this UrlMapping.  # noqa: E501
+        :type redirect_style: int
+        """
+        if self.local_vars_configuration.client_side_validation and redirect_style is None:  # noqa: E501
+            raise ValueError("Invalid value for `redirect_style`, must not be `None`")  # noqa: E501
+
+        self._redirect_style = redirect_style
+
+    @property
+    def is_match_query_string(self):
+        """Gets the is_match_query_string of this UrlMapping.  # noqa: E501
+
+        Whether the `routePrefix` should match on the entire URL path, including the query string.  # noqa: E501
+
+        :return: The is_match_query_string of this UrlMapping.  # noqa: E501
         :rtype: bool
         """
-        return self._is_protocol_agnostic
+        return self._is_match_query_string
 
-    @is_protocol_agnostic.setter
-    def is_protocol_agnostic(self, is_protocol_agnostic):
-        """Sets the is_protocol_agnostic of this UrlMapping.
+    @is_match_query_string.setter
+    def is_match_query_string(self, is_match_query_string):
+        """Sets the is_match_query_string of this UrlMapping.
 
-        Whether the `routePrefix` should match both HTTP and HTTPS protocols.  # noqa: E501
+        Whether the `routePrefix` should match on the entire URL path, including the query string.  # noqa: E501
 
-        :param is_protocol_agnostic: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
-        :type is_protocol_agnostic: bool
+        :param is_match_query_string: The is_match_query_string of this UrlMapping.  # noqa: E501
+        :type is_match_query_string: bool
         """
-        if self.local_vars_configuration.client_side_validation and is_protocol_agnostic is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_protocol_agnostic`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and is_match_query_string is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_match_query_string`, must not be `None`")  # noqa: E501
 
-        self._is_protocol_agnostic = is_protocol_agnostic
+        self._is_match_query_string = is_match_query_string
+
+    @property
+    def created(self):
+        """Gets the created of this UrlMapping.  # noqa: E501
+
+
+        :return: The created of this UrlMapping.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this UrlMapping.
+
+
+        :param created: The created of this UrlMapping.  # noqa: E501
+        :type created: datetime
+        """
+
+        self._created = created
+
+    @property
+    def is_match_full_url(self):
+        """Gets the is_match_full_url of this UrlMapping.  # noqa: E501
+
+        Whether the `routePrefix` should match on the entire URL, including the domain.  # noqa: E501
+
+        :return: The is_match_full_url of this UrlMapping.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_match_full_url
+
+    @is_match_full_url.setter
+    def is_match_full_url(self, is_match_full_url):
+        """Sets the is_match_full_url of this UrlMapping.
+
+        Whether the `routePrefix` should match on the entire URL, including the domain.  # noqa: E501
+
+        :param is_match_full_url: The is_match_full_url of this UrlMapping.  # noqa: E501
+        :type is_match_full_url: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_match_full_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_match_full_url`, must not be `None`")  # noqa: E501
+
+        self._is_match_full_url = is_match_full_url
+
+    @property
+    def destination(self):
+        """Gets the destination of this UrlMapping.  # noqa: E501
+
+        The destination URL, where the target URL should be redirected if it matches the `routePrefix`.  # noqa: E501
+
+        :return: The destination of this UrlMapping.  # noqa: E501
+        :rtype: str
+        """
+        return self._destination
+
+    @destination.setter
+    def destination(self, destination):
+        """Sets the destination of this UrlMapping.
+
+        The destination URL, where the target URL should be redirected if it matches the `routePrefix`.  # noqa: E501
+
+        :param destination: The destination of this UrlMapping.  # noqa: E501
+        :type destination: str
+        """
+        if self.local_vars_configuration.client_side_validation and destination is None:  # noqa: E501
+            raise ValueError("Invalid value for `destination`, must not be `None`")  # noqa: E501
+
+        self._destination = destination
+
+    @property
+    def is_only_after_not_found(self):
+        """Gets the is_only_after_not_found of this UrlMapping.  # noqa: E501
+
+        Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.  # noqa: E501
+
+        :return: The is_only_after_not_found of this UrlMapping.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_only_after_not_found
+
+    @is_only_after_not_found.setter
+    def is_only_after_not_found(self, is_only_after_not_found):
+        """Sets the is_only_after_not_found of this UrlMapping.
+
+        Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.  # noqa: E501
+
+        :param is_only_after_not_found: The is_only_after_not_found of this UrlMapping.  # noqa: E501
+        :type is_only_after_not_found: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_only_after_not_found is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_only_after_not_found`, must not be `None`")  # noqa: E501
+
+        self._is_only_after_not_found = is_only_after_not_found
+
+    @property
+    def is_pattern(self):
+        """Gets the is_pattern of this UrlMapping.  # noqa: E501
+
+        Whether the `routePrefix` should match based on pattern.  # noqa: E501
+
+        :return: The is_pattern of this UrlMapping.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_pattern
+
+    @is_pattern.setter
+    def is_pattern(self, is_pattern):
+        """Sets the is_pattern of this UrlMapping.
+
+        Whether the `routePrefix` should match based on pattern.  # noqa: E501
+
+        :param is_pattern: The is_pattern of this UrlMapping.  # noqa: E501
+        :type is_pattern: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_pattern is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_pattern`, must not be `None`")  # noqa: E501
+
+        self._is_pattern = is_pattern
 
     @property
     def precedence(self):
@@ -396,25 +342,79 @@ class UrlMapping(object):
         self._precedence = precedence
 
     @property
-    def created(self):
-        """Gets the created of this UrlMapping.  # noqa: E501
+    def route_prefix(self):
+        """Gets the route_prefix of this UrlMapping.  # noqa: E501
 
+        The target incoming URL, path, or pattern to match for redirection.  # noqa: E501
 
-        :return: The created of this UrlMapping.  # noqa: E501
-        :rtype: datetime
+        :return: The route_prefix of this UrlMapping.  # noqa: E501
+        :rtype: str
         """
-        return self._created
+        return self._route_prefix
 
-    @created.setter
-    def created(self, created):
-        """Sets the created of this UrlMapping.
+    @route_prefix.setter
+    def route_prefix(self, route_prefix):
+        """Sets the route_prefix of this UrlMapping.
 
+        The target incoming URL, path, or pattern to match for redirection.  # noqa: E501
 
-        :param created: The created of this UrlMapping.  # noqa: E501
-        :type created: datetime
+        :param route_prefix: The route_prefix of this UrlMapping.  # noqa: E501
+        :type route_prefix: str
         """
+        if self.local_vars_configuration.client_side_validation and route_prefix is None:  # noqa: E501
+            raise ValueError("Invalid value for `route_prefix`, must not be `None`")  # noqa: E501
 
-        self._created = created
+        self._route_prefix = route_prefix
+
+    @property
+    def is_protocol_agnostic(self):
+        """Gets the is_protocol_agnostic of this UrlMapping.  # noqa: E501
+
+        Whether the `routePrefix` should match both HTTP and HTTPS protocols.  # noqa: E501
+
+        :return: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_protocol_agnostic
+
+    @is_protocol_agnostic.setter
+    def is_protocol_agnostic(self, is_protocol_agnostic):
+        """Sets the is_protocol_agnostic of this UrlMapping.
+
+        Whether the `routePrefix` should match both HTTP and HTTPS protocols.  # noqa: E501
+
+        :param is_protocol_agnostic: The is_protocol_agnostic of this UrlMapping.  # noqa: E501
+        :type is_protocol_agnostic: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_protocol_agnostic is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_protocol_agnostic`, must not be `None`")  # noqa: E501
+
+        self._is_protocol_agnostic = is_protocol_agnostic
+
+    @property
+    def id(self):
+        """Gets the id of this UrlMapping.  # noqa: E501
+
+        The unique ID of this URL redirect.  # noqa: E501
+
+        :return: The id of this UrlMapping.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this UrlMapping.
+
+        The unique ID of this URL redirect.  # noqa: E501
+
+        :param id: The id of this UrlMapping.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     @property
     def updated(self):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,47 +35,24 @@ class Gradient(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"side_or_corner": "SideOrCorner", "angle": "Angle", "colors": "list[ColorStop]"}
+    openapi_types = {"angle": "Angle", "side_or_corner": "SideOrCorner", "colors": "list[ColorStop]"}
 
-    attribute_map = {"side_or_corner": "sideOrCorner", "angle": "angle", "colors": "colors"}
+    attribute_map = {"angle": "angle", "side_or_corner": "sideOrCorner", "colors": "colors"}
 
-    def __init__(self, side_or_corner=None, angle=None, colors=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, angle=None, side_or_corner=None, colors=None, local_vars_configuration=None):  # noqa: E501
         """Gradient - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._side_or_corner = None
         self._angle = None
+        self._side_or_corner = None
         self._colors = None
         self.discriminator = None
 
-        self.side_or_corner = side_or_corner
         self.angle = angle
+        self.side_or_corner = side_or_corner
         self.colors = colors
-
-    @property
-    def side_or_corner(self):
-        """Gets the side_or_corner of this Gradient.  # noqa: E501
-
-
-        :return: The side_or_corner of this Gradient.  # noqa: E501
-        :rtype: SideOrCorner
-        """
-        return self._side_or_corner
-
-    @side_or_corner.setter
-    def side_or_corner(self, side_or_corner):
-        """Sets the side_or_corner of this Gradient.
-
-
-        :param side_or_corner: The side_or_corner of this Gradient.  # noqa: E501
-        :type side_or_corner: SideOrCorner
-        """
-        if self.local_vars_configuration.client_side_validation and side_or_corner is None:  # noqa: E501
-            raise ValueError("Invalid value for `side_or_corner`, must not be `None`")  # noqa: E501
-
-        self._side_or_corner = side_or_corner
 
     @property
     def angle(self):
@@ -99,6 +76,29 @@ class Gradient(object):
             raise ValueError("Invalid value for `angle`, must not be `None`")  # noqa: E501
 
         self._angle = angle
+
+    @property
+    def side_or_corner(self):
+        """Gets the side_or_corner of this Gradient.  # noqa: E501
+
+
+        :return: The side_or_corner of this Gradient.  # noqa: E501
+        :rtype: SideOrCorner
+        """
+        return self._side_or_corner
+
+    @side_or_corner.setter
+    def side_or_corner(self, side_or_corner):
+        """Sets the side_or_corner of this Gradient.
+
+
+        :param side_or_corner: The side_or_corner of this Gradient.  # noqa: E501
+        :type side_or_corner: SideOrCorner
+        """
+        if self.local_vars_configuration.client_side_validation and side_or_corner is None:  # noqa: E501
+            raise ValueError("Invalid value for `side_or_corner`, must not be `None`")  # noqa: E501
+
+        self._side_or_corner = side_or_corner
 
     @property
     def colors(self):

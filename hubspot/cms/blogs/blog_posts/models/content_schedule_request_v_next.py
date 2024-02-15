@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,47 +35,22 @@ class ContentScheduleRequestVNext(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "publish_date": "datetime"}
+    openapi_types = {"publish_date": "datetime", "id": "str"}
 
-    attribute_map = {"id": "id", "publish_date": "publishDate"}
+    attribute_map = {"publish_date": "publishDate", "id": "id"}
 
-    def __init__(self, id=None, publish_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, publish_date=None, id=None, local_vars_configuration=None):  # noqa: E501
         """ContentScheduleRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._publish_date = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         self.publish_date = publish_date
-
-    @property
-    def id(self):
-        """Gets the id of this ContentScheduleRequestVNext.  # noqa: E501
-
-        The ID of the object to be scheduled.  # noqa: E501
-
-        :return: The id of this ContentScheduleRequestVNext.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ContentScheduleRequestVNext.
-
-        The ID of the object to be scheduled.  # noqa: E501
-
-        :param id: The id of this ContentScheduleRequestVNext.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
+        self.id = id
 
     @property
     def publish_date(self):
@@ -101,6 +76,31 @@ class ContentScheduleRequestVNext(object):
             raise ValueError("Invalid value for `publish_date`, must not be `None`")  # noqa: E501
 
         self._publish_date = publish_date
+
+    @property
+    def id(self):
+        """Gets the id of this ContentScheduleRequestVNext.  # noqa: E501
+
+        The ID of the object to be scheduled.  # noqa: E501
+
+        :return: The id of this ContentScheduleRequestVNext.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ContentScheduleRequestVNext.
+
+        The ID of the object to be scheduled.  # noqa: E501
+
+        :param id: The id of this ContentScheduleRequestVNext.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

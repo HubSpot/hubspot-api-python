@@ -36,64 +36,64 @@ class ContentSearchResult(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "int",
-        "score": "float",
-        "type": "str",
-        "domain": "str",
-        "url": "str",
-        "featured_image_url": "str",
-        "language": "str",
-        "title": "str",
+        "combined_id": "str",
         "description": "str",
+        "language": "str",
+        "type": "str",
+        "title": "str",
+        "url": "str",
+        "tags": "list[str]",
+        "row_id": "int",
+        "featured_image_url": "str",
+        "score": "float",
+        "author_full_name": "str",
+        "domain": "str",
+        "table_id": "int",
+        "id": "int",
+        "published_date": "int",
         "category": "str",
         "subcategory": "str",
-        "author_full_name": "str",
-        "tags": "list[str]",
-        "table_id": "int",
-        "row_id": "int",
-        "published_date": "int",
-        "combined_id": "str",
     }
 
     attribute_map = {
-        "id": "id",
-        "score": "score",
-        "type": "type",
-        "domain": "domain",
-        "url": "url",
-        "featured_image_url": "featuredImageUrl",
-        "language": "language",
-        "title": "title",
+        "combined_id": "combinedId",
         "description": "description",
+        "language": "language",
+        "type": "type",
+        "title": "title",
+        "url": "url",
+        "tags": "tags",
+        "row_id": "rowId",
+        "featured_image_url": "featuredImageUrl",
+        "score": "score",
+        "author_full_name": "authorFullName",
+        "domain": "domain",
+        "table_id": "tableId",
+        "id": "id",
+        "published_date": "publishedDate",
         "category": "category",
         "subcategory": "subcategory",
-        "author_full_name": "authorFullName",
-        "tags": "tags",
-        "table_id": "tableId",
-        "row_id": "rowId",
-        "published_date": "publishedDate",
-        "combined_id": "combinedId",
     }
 
     def __init__(
         self,
-        id=None,
-        score=None,
-        type=None,
-        domain=None,
-        url=None,
-        featured_image_url=None,
-        language=None,
-        title=None,
+        combined_id=None,
         description=None,
+        language=None,
+        type=None,
+        title=None,
+        url=None,
+        tags=None,
+        row_id=None,
+        featured_image_url=None,
+        score=None,
+        author_full_name=None,
+        domain=None,
+        table_id=None,
+        id=None,
+        published_date=None,
         category=None,
         subcategory=None,
-        author_full_name=None,
-        tags=None,
-        table_id=None,
-        row_id=None,
-        published_date=None,
-        combined_id=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ContentSearchResult - a model defined in OpenAPI"""  # noqa: E501
@@ -101,205 +101,100 @@ class ContentSearchResult(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._score = None
-        self._type = None
-        self._domain = None
-        self._url = None
-        self._featured_image_url = None
-        self._language = None
-        self._title = None
+        self._combined_id = None
         self._description = None
+        self._language = None
+        self._type = None
+        self._title = None
+        self._url = None
+        self._tags = None
+        self._row_id = None
+        self._featured_image_url = None
+        self._score = None
+        self._author_full_name = None
+        self._domain = None
+        self._table_id = None
+        self._id = None
+        self._published_date = None
         self._category = None
         self._subcategory = None
-        self._author_full_name = None
-        self._tags = None
-        self._table_id = None
-        self._row_id = None
-        self._published_date = None
-        self._combined_id = None
         self.discriminator = None
 
-        self.id = id
-        self.score = score
-        self.type = type
-        self.domain = domain
-        self.url = url
-        if featured_image_url is not None:
-            self.featured_image_url = featured_image_url
-        if language is not None:
-            self.language = language
-        if title is not None:
-            self.title = title
+        if combined_id is not None:
+            self.combined_id = combined_id
         if description is not None:
             self.description = description
+        if language is not None:
+            self.language = language
+        self.type = type
+        if title is not None:
+            self.title = title
+        self.url = url
+        if tags is not None:
+            self.tags = tags
+        if row_id is not None:
+            self.row_id = row_id
+        if featured_image_url is not None:
+            self.featured_image_url = featured_image_url
+        self.score = score
+        if author_full_name is not None:
+            self.author_full_name = author_full_name
+        self.domain = domain
+        if table_id is not None:
+            self.table_id = table_id
+        self.id = id
+        if published_date is not None:
+            self.published_date = published_date
         if category is not None:
             self.category = category
         if subcategory is not None:
             self.subcategory = subcategory
-        if author_full_name is not None:
-            self.author_full_name = author_full_name
-        if tags is not None:
-            self.tags = tags
-        if table_id is not None:
-            self.table_id = table_id
-        if row_id is not None:
-            self.row_id = row_id
-        if published_date is not None:
-            self.published_date = published_date
-        if combined_id is not None:
-            self.combined_id = combined_id
 
     @property
-    def id(self):
-        """Gets the id of this ContentSearchResult.  # noqa: E501
+    def combined_id(self):
+        """Gets the combined_id of this ContentSearchResult.  # noqa: E501
 
-        The ID of the content.  # noqa: E501
+        The ID of the document in HubSpot.  # noqa: E501
 
-        :return: The id of this ContentSearchResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ContentSearchResult.
-
-        The ID of the content.  # noqa: E501
-
-        :param id: The id of this ContentSearchResult.  # noqa: E501
-        :type id: int
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def score(self):
-        """Gets the score of this ContentSearchResult.  # noqa: E501
-
-        The matching score of the document.  # noqa: E501
-
-        :return: The score of this ContentSearchResult.  # noqa: E501
-        :rtype: float
-        """
-        return self._score
-
-    @score.setter
-    def score(self, score):
-        """Sets the score of this ContentSearchResult.
-
-        The matching score of the document.  # noqa: E501
-
-        :param score: The score of this ContentSearchResult.  # noqa: E501
-        :type score: float
-        """
-        if self.local_vars_configuration.client_side_validation and score is None:  # noqa: E501
-            raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
-
-        self._score = score
-
-    @property
-    def type(self):
-        """Gets the type of this ContentSearchResult.  # noqa: E501
-
-        The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.  # noqa: E501
-
-        :return: The type of this ContentSearchResult.  # noqa: E501
+        :return: The combined_id of this ContentSearchResult.  # noqa: E501
         :rtype: str
         """
-        return self._type
+        return self._combined_id
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ContentSearchResult.
+    @combined_id.setter
+    def combined_id(self, combined_id):
+        """Sets the combined_id of this ContentSearchResult.
 
-        The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.  # noqa: E501
+        The ID of the document in HubSpot.  # noqa: E501
 
-        :param type: The type of this ContentSearchResult.  # noqa: E501
-        :type type: str
+        :param combined_id: The combined_id of this ContentSearchResult.  # noqa: E501
+        :type combined_id: str
         """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["LANDING_PAGE", "BLOG_POST", "SITE_PAGE", "KNOWLEDGE_ARTICLE", "LISTING_PAGE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
-        self._type = type
+        self._combined_id = combined_id
 
     @property
-    def domain(self):
-        """Gets the domain of this ContentSearchResult.  # noqa: E501
+    def description(self):
+        """Gets the description of this ContentSearchResult.  # noqa: E501
 
-        The domain the document is hosted on.  # noqa: E501
+        The result's description. The content will be determined by the value of `length` in the request.  # noqa: E501
 
-        :return: The domain of this ContentSearchResult.  # noqa: E501
+        :return: The description of this ContentSearchResult.  # noqa: E501
         :rtype: str
         """
-        return self._domain
+        return self._description
 
-    @domain.setter
-    def domain(self, domain):
-        """Sets the domain of this ContentSearchResult.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ContentSearchResult.
 
-        The domain the document is hosted on.  # noqa: E501
+        The result's description. The content will be determined by the value of `length` in the request.  # noqa: E501
 
-        :param domain: The domain of this ContentSearchResult.  # noqa: E501
-        :type domain: str
-        """
-        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
-            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
-
-        self._domain = domain
-
-    @property
-    def url(self):
-        """Gets the url of this ContentSearchResult.  # noqa: E501
-
-        The url of the document.  # noqa: E501
-
-        :return: The url of this ContentSearchResult.  # noqa: E501
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this ContentSearchResult.
-
-        The url of the document.  # noqa: E501
-
-        :param url: The url of this ContentSearchResult.  # noqa: E501
-        :type url: str
-        """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-
-        self._url = url
-
-    @property
-    def featured_image_url(self):
-        """Gets the featured_image_url of this ContentSearchResult.  # noqa: E501
-
-        URL of the featured image.  # noqa: E501
-
-        :return: The featured_image_url of this ContentSearchResult.  # noqa: E501
-        :rtype: str
-        """
-        return self._featured_image_url
-
-    @featured_image_url.setter
-    def featured_image_url(self, featured_image_url):
-        """Sets the featured_image_url of this ContentSearchResult.
-
-        URL of the featured image.  # noqa: E501
-
-        :param featured_image_url: The featured_image_url of this ContentSearchResult.  # noqa: E501
-        :type featured_image_url: str
+        :param description: The description of this ContentSearchResult.  # noqa: E501
+        :type description: str
         """
 
-        self._featured_image_url = featured_image_url
+        self._description = description
 
     @property
     def language(self):
@@ -472,6 +367,7 @@ class ContentSearchResult(object):
             "en-ch",
             "en-ck",
             "en-cm",
+            "en-cn",
             "en-cx",
             "en-cy",
             "en-de",
@@ -515,6 +411,7 @@ class ContentSearchResult(object):
             "en-mt",
             "en-mu",
             "en-mw",
+            "en-mx",
             "en-my",
             "en-na",
             "en-nf",
@@ -1081,6 +978,34 @@ class ContentSearchResult(object):
         self._language = language
 
     @property
+    def type(self):
+        """Gets the type of this ContentSearchResult.  # noqa: E501
+
+        The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.  # noqa: E501
+
+        :return: The type of this ContentSearchResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this ContentSearchResult.
+
+        The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.  # noqa: E501
+
+        :param type: The type of this ContentSearchResult.  # noqa: E501
+        :type type: str
+        """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["LANDING_PAGE", "BLOG_POST", "SITE_PAGE", "KNOWLEDGE_ARTICLE", "LISTING_PAGE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
+
+        self._type = type
+
+    @property
     def title(self):
         """Gets the title of this ContentSearchResult.  # noqa: E501
 
@@ -1104,27 +1029,242 @@ class ContentSearchResult(object):
         self._title = title
 
     @property
-    def description(self):
-        """Gets the description of this ContentSearchResult.  # noqa: E501
+    def url(self):
+        """Gets the url of this ContentSearchResult.  # noqa: E501
 
-        The result's description. The content will be determined by the value of `length` in the request.  # noqa: E501
+        The url of the document.  # noqa: E501
 
-        :return: The description of this ContentSearchResult.  # noqa: E501
+        :return: The url of this ContentSearchResult.  # noqa: E501
         :rtype: str
         """
-        return self._description
+        return self._url
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ContentSearchResult.
+    @url.setter
+    def url(self, url):
+        """Sets the url of this ContentSearchResult.
 
-        The result's description. The content will be determined by the value of `length` in the request.  # noqa: E501
+        The url of the document.  # noqa: E501
 
-        :param description: The description of this ContentSearchResult.  # noqa: E501
-        :type description: str
+        :param url: The url of this ContentSearchResult.  # noqa: E501
+        :type url: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
+
+    @property
+    def tags(self):
+        """Gets the tags of this ContentSearchResult.  # noqa: E501
+
+        If a blog post, the tags associated with it.  # noqa: E501
+
+        :return: The tags of this ContentSearchResult.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this ContentSearchResult.
+
+        If a blog post, the tags associated with it.  # noqa: E501
+
+        :param tags: The tags of this ContentSearchResult.  # noqa: E501
+        :type tags: list[str]
         """
 
-        self._description = description
+        self._tags = tags
+
+    @property
+    def row_id(self):
+        """Gets the row_id of this ContentSearchResult.  # noqa: E501
+
+        If a dynamic page, the row ID in the HubDB table.  # noqa: E501
+
+        :return: The row_id of this ContentSearchResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._row_id
+
+    @row_id.setter
+    def row_id(self, row_id):
+        """Sets the row_id of this ContentSearchResult.
+
+        If a dynamic page, the row ID in the HubDB table.  # noqa: E501
+
+        :param row_id: The row_id of this ContentSearchResult.  # noqa: E501
+        :type row_id: int
+        """
+
+        self._row_id = row_id
+
+    @property
+    def featured_image_url(self):
+        """Gets the featured_image_url of this ContentSearchResult.  # noqa: E501
+
+        URL of the featured image.  # noqa: E501
+
+        :return: The featured_image_url of this ContentSearchResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._featured_image_url
+
+    @featured_image_url.setter
+    def featured_image_url(self, featured_image_url):
+        """Sets the featured_image_url of this ContentSearchResult.
+
+        URL of the featured image.  # noqa: E501
+
+        :param featured_image_url: The featured_image_url of this ContentSearchResult.  # noqa: E501
+        :type featured_image_url: str
+        """
+
+        self._featured_image_url = featured_image_url
+
+    @property
+    def score(self):
+        """Gets the score of this ContentSearchResult.  # noqa: E501
+
+        The matching score of the document.  # noqa: E501
+
+        :return: The score of this ContentSearchResult.  # noqa: E501
+        :rtype: float
+        """
+        return self._score
+
+    @score.setter
+    def score(self, score):
+        """Sets the score of this ContentSearchResult.
+
+        The matching score of the document.  # noqa: E501
+
+        :param score: The score of this ContentSearchResult.  # noqa: E501
+        :type score: float
+        """
+        if self.local_vars_configuration.client_side_validation and score is None:  # noqa: E501
+            raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
+
+        self._score = score
+
+    @property
+    def author_full_name(self):
+        """Gets the author_full_name of this ContentSearchResult.  # noqa: E501
+
+        Name of the author.  # noqa: E501
+
+        :return: The author_full_name of this ContentSearchResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._author_full_name
+
+    @author_full_name.setter
+    def author_full_name(self, author_full_name):
+        """Sets the author_full_name of this ContentSearchResult.
+
+        Name of the author.  # noqa: E501
+
+        :param author_full_name: The author_full_name of this ContentSearchResult.  # noqa: E501
+        :type author_full_name: str
+        """
+
+        self._author_full_name = author_full_name
+
+    @property
+    def domain(self):
+        """Gets the domain of this ContentSearchResult.  # noqa: E501
+
+        The domain the document is hosted on.  # noqa: E501
+
+        :return: The domain of this ContentSearchResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._domain
+
+    @domain.setter
+    def domain(self, domain):
+        """Sets the domain of this ContentSearchResult.
+
+        The domain the document is hosted on.  # noqa: E501
+
+        :param domain: The domain of this ContentSearchResult.  # noqa: E501
+        :type domain: str
+        """
+        if self.local_vars_configuration.client_side_validation and domain is None:  # noqa: E501
+            raise ValueError("Invalid value for `domain`, must not be `None`")  # noqa: E501
+
+        self._domain = domain
+
+    @property
+    def table_id(self):
+        """Gets the table_id of this ContentSearchResult.  # noqa: E501
+
+        If a dynamic page, the ID of the HubDB table.  # noqa: E501
+
+        :return: The table_id of this ContentSearchResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._table_id
+
+    @table_id.setter
+    def table_id(self, table_id):
+        """Sets the table_id of this ContentSearchResult.
+
+        If a dynamic page, the ID of the HubDB table.  # noqa: E501
+
+        :param table_id: The table_id of this ContentSearchResult.  # noqa: E501
+        :type table_id: int
+        """
+
+        self._table_id = table_id
+
+    @property
+    def id(self):
+        """Gets the id of this ContentSearchResult.  # noqa: E501
+
+        The ID of the content.  # noqa: E501
+
+        :return: The id of this ContentSearchResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ContentSearchResult.
+
+        The ID of the content.  # noqa: E501
+
+        :param id: The id of this ContentSearchResult.  # noqa: E501
+        :type id: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def published_date(self):
+        """Gets the published_date of this ContentSearchResult.  # noqa: E501
+
+        The date the content was published.  # noqa: E501
+
+        :return: The published_date of this ContentSearchResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._published_date
+
+    @published_date.setter
+    def published_date(self, published_date):
+        """Sets the published_date of this ContentSearchResult.
+
+        The date the content was published.  # noqa: E501
+
+        :param published_date: The published_date of this ContentSearchResult.  # noqa: E501
+        :type published_date: int
+        """
+
+        self._published_date = published_date
 
     @property
     def category(self):
@@ -1171,144 +1311,6 @@ class ContentSearchResult(object):
         """
 
         self._subcategory = subcategory
-
-    @property
-    def author_full_name(self):
-        """Gets the author_full_name of this ContentSearchResult.  # noqa: E501
-
-        Name of the author.  # noqa: E501
-
-        :return: The author_full_name of this ContentSearchResult.  # noqa: E501
-        :rtype: str
-        """
-        return self._author_full_name
-
-    @author_full_name.setter
-    def author_full_name(self, author_full_name):
-        """Sets the author_full_name of this ContentSearchResult.
-
-        Name of the author.  # noqa: E501
-
-        :param author_full_name: The author_full_name of this ContentSearchResult.  # noqa: E501
-        :type author_full_name: str
-        """
-
-        self._author_full_name = author_full_name
-
-    @property
-    def tags(self):
-        """Gets the tags of this ContentSearchResult.  # noqa: E501
-
-        If a blog post, the tags associated with it.  # noqa: E501
-
-        :return: The tags of this ContentSearchResult.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this ContentSearchResult.
-
-        If a blog post, the tags associated with it.  # noqa: E501
-
-        :param tags: The tags of this ContentSearchResult.  # noqa: E501
-        :type tags: list[str]
-        """
-
-        self._tags = tags
-
-    @property
-    def table_id(self):
-        """Gets the table_id of this ContentSearchResult.  # noqa: E501
-
-        If a dynamic page, the ID of the HubDB table.  # noqa: E501
-
-        :return: The table_id of this ContentSearchResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._table_id
-
-    @table_id.setter
-    def table_id(self, table_id):
-        """Sets the table_id of this ContentSearchResult.
-
-        If a dynamic page, the ID of the HubDB table.  # noqa: E501
-
-        :param table_id: The table_id of this ContentSearchResult.  # noqa: E501
-        :type table_id: int
-        """
-
-        self._table_id = table_id
-
-    @property
-    def row_id(self):
-        """Gets the row_id of this ContentSearchResult.  # noqa: E501
-
-        If a dynamic page, the row ID in the HubDB table.  # noqa: E501
-
-        :return: The row_id of this ContentSearchResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._row_id
-
-    @row_id.setter
-    def row_id(self, row_id):
-        """Sets the row_id of this ContentSearchResult.
-
-        If a dynamic page, the row ID in the HubDB table.  # noqa: E501
-
-        :param row_id: The row_id of this ContentSearchResult.  # noqa: E501
-        :type row_id: int
-        """
-
-        self._row_id = row_id
-
-    @property
-    def published_date(self):
-        """Gets the published_date of this ContentSearchResult.  # noqa: E501
-
-        The date the content was published.  # noqa: E501
-
-        :return: The published_date of this ContentSearchResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._published_date
-
-    @published_date.setter
-    def published_date(self, published_date):
-        """Sets the published_date of this ContentSearchResult.
-
-        The date the content was published.  # noqa: E501
-
-        :param published_date: The published_date of this ContentSearchResult.  # noqa: E501
-        :type published_date: int
-        """
-
-        self._published_date = published_date
-
-    @property
-    def combined_id(self):
-        """Gets the combined_id of this ContentSearchResult.  # noqa: E501
-
-        The ID of the document in HubSpot.  # noqa: E501
-
-        :return: The combined_id of this ContentSearchResult.  # noqa: E501
-        :rtype: str
-        """
-        return self._combined_id
-
-    @combined_id.setter
-    def combined_id(self, combined_id):
-        """Sets the combined_id of this ContentSearchResult.
-
-        The ID of the document in HubSpot.  # noqa: E501
-
-        :param combined_id: The combined_id of this ContentSearchResult.  # noqa: E501
-        :type combined_id: str
-        """
-
-        self._combined_id = combined_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

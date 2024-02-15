@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,26 +35,51 @@ class RGBAColor(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"r": "int", "g": "int", "b": "int", "a": "float"}
+    openapi_types = {"a": "float", "r": "int", "b": "int", "g": "int"}
 
-    attribute_map = {"r": "r", "g": "g", "b": "b", "a": "a"}
+    attribute_map = {"a": "a", "r": "r", "b": "b", "g": "g"}
 
-    def __init__(self, r=None, g=None, b=None, a=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, a=None, r=None, b=None, g=None, local_vars_configuration=None):  # noqa: E501
         """RGBAColor - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._r = None
-        self._g = None
-        self._b = None
         self._a = None
+        self._r = None
+        self._b = None
+        self._g = None
         self.discriminator = None
 
-        self.r = r
-        self.g = g
-        self.b = b
         self.a = a
+        self.r = r
+        self.b = b
+        self.g = g
+
+    @property
+    def a(self):
+        """Gets the a of this RGBAColor.  # noqa: E501
+
+        Alpha.  # noqa: E501
+
+        :return: The a of this RGBAColor.  # noqa: E501
+        :rtype: float
+        """
+        return self._a
+
+    @a.setter
+    def a(self, a):
+        """Sets the a of this RGBAColor.
+
+        Alpha.  # noqa: E501
+
+        :param a: The a of this RGBAColor.  # noqa: E501
+        :type a: float
+        """
+        if self.local_vars_configuration.client_side_validation and a is None:  # noqa: E501
+            raise ValueError("Invalid value for `a`, must not be `None`")  # noqa: E501
+
+        self._a = a
 
     @property
     def r(self):
@@ -82,31 +107,6 @@ class RGBAColor(object):
         self._r = r
 
     @property
-    def g(self):
-        """Gets the g of this RGBAColor.  # noqa: E501
-
-        Green.  # noqa: E501
-
-        :return: The g of this RGBAColor.  # noqa: E501
-        :rtype: int
-        """
-        return self._g
-
-    @g.setter
-    def g(self, g):
-        """Sets the g of this RGBAColor.
-
-        Green.  # noqa: E501
-
-        :param g: The g of this RGBAColor.  # noqa: E501
-        :type g: int
-        """
-        if self.local_vars_configuration.client_side_validation and g is None:  # noqa: E501
-            raise ValueError("Invalid value for `g`, must not be `None`")  # noqa: E501
-
-        self._g = g
-
-    @property
     def b(self):
         """Gets the b of this RGBAColor.  # noqa: E501
 
@@ -132,29 +132,29 @@ class RGBAColor(object):
         self._b = b
 
     @property
-    def a(self):
-        """Gets the a of this RGBAColor.  # noqa: E501
+    def g(self):
+        """Gets the g of this RGBAColor.  # noqa: E501
 
-        Alpha.  # noqa: E501
+        Green.  # noqa: E501
 
-        :return: The a of this RGBAColor.  # noqa: E501
-        :rtype: float
+        :return: The g of this RGBAColor.  # noqa: E501
+        :rtype: int
         """
-        return self._a
+        return self._g
 
-    @a.setter
-    def a(self, a):
-        """Sets the a of this RGBAColor.
+    @g.setter
+    def g(self, g):
+        """Sets the g of this RGBAColor.
 
-        Alpha.  # noqa: E501
+        Green.  # noqa: E501
 
-        :param a: The a of this RGBAColor.  # noqa: E501
-        :type a: float
+        :param g: The g of this RGBAColor.  # noqa: E501
+        :type g: int
         """
-        if self.local_vars_configuration.client_side_validation and a is None:  # noqa: E501
-            raise ValueError("Invalid value for `a`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and g is None:  # noqa: E501
+            raise ValueError("Invalid value for `g`, must not be `None`")  # noqa: E501
 
-        self._a = a
+        self._g = g
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -36,34 +36,34 @@ class Styles(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "vertical_alignment": "str",
         "background_color": "RGBAColor",
-        "background_image": "BackgroundImage",
-        "background_gradient": "Gradient",
-        "max_width_section_centering": "int",
-        "force_full_width_section": "bool",
         "flexbox_positioning": "str",
+        "background_image": "BackgroundImage",
+        "force_full_width_section": "bool",
+        "vertical_alignment": "str",
+        "max_width_section_centering": "int",
+        "background_gradient": "Gradient",
     }
 
     attribute_map = {
-        "vertical_alignment": "verticalAlignment",
         "background_color": "backgroundColor",
-        "background_image": "backgroundImage",
-        "background_gradient": "backgroundGradient",
-        "max_width_section_centering": "maxWidthSectionCentering",
-        "force_full_width_section": "forceFullWidthSection",
         "flexbox_positioning": "flexboxPositioning",
+        "background_image": "backgroundImage",
+        "force_full_width_section": "forceFullWidthSection",
+        "vertical_alignment": "verticalAlignment",
+        "max_width_section_centering": "maxWidthSectionCentering",
+        "background_gradient": "backgroundGradient",
     }
 
     def __init__(
         self,
-        vertical_alignment=None,
         background_color=None,
-        background_image=None,
-        background_gradient=None,
-        max_width_section_centering=None,
-        force_full_width_section=None,
         flexbox_positioning=None,
+        background_image=None,
+        force_full_width_section=None,
+        vertical_alignment=None,
+        max_width_section_centering=None,
+        background_gradient=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """Styles - a model defined in OpenAPI"""  # noqa: E501
@@ -71,48 +71,22 @@ class Styles(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._vertical_alignment = None
         self._background_color = None
-        self._background_image = None
-        self._background_gradient = None
-        self._max_width_section_centering = None
-        self._force_full_width_section = None
         self._flexbox_positioning = None
+        self._background_image = None
+        self._force_full_width_section = None
+        self._vertical_alignment = None
+        self._max_width_section_centering = None
+        self._background_gradient = None
         self.discriminator = None
 
-        self.vertical_alignment = vertical_alignment
         self.background_color = background_color
-        self.background_image = background_image
-        self.background_gradient = background_gradient
-        self.max_width_section_centering = max_width_section_centering
-        self.force_full_width_section = force_full_width_section
         self.flexbox_positioning = flexbox_positioning
-
-    @property
-    def vertical_alignment(self):
-        """Gets the vertical_alignment of this Styles.  # noqa: E501
-
-
-        :return: The vertical_alignment of this Styles.  # noqa: E501
-        :rtype: str
-        """
-        return self._vertical_alignment
-
-    @vertical_alignment.setter
-    def vertical_alignment(self, vertical_alignment):
-        """Sets the vertical_alignment of this Styles.
-
-
-        :param vertical_alignment: The vertical_alignment of this Styles.  # noqa: E501
-        :type vertical_alignment: str
-        """
-        if self.local_vars_configuration.client_side_validation and vertical_alignment is None:  # noqa: E501
-            raise ValueError("Invalid value for `vertical_alignment`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP", "MIDDLE", "BOTTOM"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and vertical_alignment not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `vertical_alignment` ({0}), must be one of {1}".format(vertical_alignment, allowed_values))  # noqa: E501
-
-        self._vertical_alignment = vertical_alignment
+        self.background_image = background_image
+        self.force_full_width_section = force_full_width_section
+        self.vertical_alignment = vertical_alignment
+        self.max_width_section_centering = max_width_section_centering
+        self.background_gradient = background_gradient
 
     @property
     def background_color(self):
@@ -138,6 +112,29 @@ class Styles(object):
         self._background_color = background_color
 
     @property
+    def flexbox_positioning(self):
+        """Gets the flexbox_positioning of this Styles.  # noqa: E501
+
+
+        :return: The flexbox_positioning of this Styles.  # noqa: E501
+        :rtype: str
+        """
+        return self._flexbox_positioning
+
+    @flexbox_positioning.setter
+    def flexbox_positioning(self, flexbox_positioning):
+        """Sets the flexbox_positioning of this Styles.
+
+
+        :param flexbox_positioning: The flexbox_positioning of this Styles.  # noqa: E501
+        :type flexbox_positioning: str
+        """
+        if self.local_vars_configuration.client_side_validation and flexbox_positioning is None:  # noqa: E501
+            raise ValueError("Invalid value for `flexbox_positioning`, must not be `None`")  # noqa: E501
+
+        self._flexbox_positioning = flexbox_positioning
+
+    @property
     def background_image(self):
         """Gets the background_image of this Styles.  # noqa: E501
 
@@ -159,52 +156,6 @@ class Styles(object):
             raise ValueError("Invalid value for `background_image`, must not be `None`")  # noqa: E501
 
         self._background_image = background_image
-
-    @property
-    def background_gradient(self):
-        """Gets the background_gradient of this Styles.  # noqa: E501
-
-
-        :return: The background_gradient of this Styles.  # noqa: E501
-        :rtype: Gradient
-        """
-        return self._background_gradient
-
-    @background_gradient.setter
-    def background_gradient(self, background_gradient):
-        """Sets the background_gradient of this Styles.
-
-
-        :param background_gradient: The background_gradient of this Styles.  # noqa: E501
-        :type background_gradient: Gradient
-        """
-        if self.local_vars_configuration.client_side_validation and background_gradient is None:  # noqa: E501
-            raise ValueError("Invalid value for `background_gradient`, must not be `None`")  # noqa: E501
-
-        self._background_gradient = background_gradient
-
-    @property
-    def max_width_section_centering(self):
-        """Gets the max_width_section_centering of this Styles.  # noqa: E501
-
-
-        :return: The max_width_section_centering of this Styles.  # noqa: E501
-        :rtype: int
-        """
-        return self._max_width_section_centering
-
-    @max_width_section_centering.setter
-    def max_width_section_centering(self, max_width_section_centering):
-        """Sets the max_width_section_centering of this Styles.
-
-
-        :param max_width_section_centering: The max_width_section_centering of this Styles.  # noqa: E501
-        :type max_width_section_centering: int
-        """
-        if self.local_vars_configuration.client_side_validation and max_width_section_centering is None:  # noqa: E501
-            raise ValueError("Invalid value for `max_width_section_centering`, must not be `None`")  # noqa: E501
-
-        self._max_width_section_centering = max_width_section_centering
 
     @property
     def force_full_width_section(self):
@@ -230,30 +181,73 @@ class Styles(object):
         self._force_full_width_section = force_full_width_section
 
     @property
-    def flexbox_positioning(self):
-        """Gets the flexbox_positioning of this Styles.  # noqa: E501
+    def vertical_alignment(self):
+        """Gets the vertical_alignment of this Styles.  # noqa: E501
 
 
-        :return: The flexbox_positioning of this Styles.  # noqa: E501
+        :return: The vertical_alignment of this Styles.  # noqa: E501
         :rtype: str
         """
-        return self._flexbox_positioning
+        return self._vertical_alignment
 
-    @flexbox_positioning.setter
-    def flexbox_positioning(self, flexbox_positioning):
-        """Sets the flexbox_positioning of this Styles.
+    @vertical_alignment.setter
+    def vertical_alignment(self, vertical_alignment):
+        """Sets the vertical_alignment of this Styles.
 
 
-        :param flexbox_positioning: The flexbox_positioning of this Styles.  # noqa: E501
-        :type flexbox_positioning: str
+        :param vertical_alignment: The vertical_alignment of this Styles.  # noqa: E501
+        :type vertical_alignment: str
         """
-        if self.local_vars_configuration.client_side_validation and flexbox_positioning is None:  # noqa: E501
-            raise ValueError("Invalid value for `flexbox_positioning`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP_LEFT", "TOP_CENTER", "TOP_RIGHT", "MIDDLE_LEFT", "MIDDLE_CENTER", "MIDDLE_RIGHT", "BOTTOM_LEFT", "BOTTOM_CENTER", "BOTTOM_RIGHT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and flexbox_positioning not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `flexbox_positioning` ({0}), must be one of {1}".format(flexbox_positioning, allowed_values))  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and vertical_alignment is None:  # noqa: E501
+            raise ValueError("Invalid value for `vertical_alignment`, must not be `None`")  # noqa: E501
 
-        self._flexbox_positioning = flexbox_positioning
+        self._vertical_alignment = vertical_alignment
+
+    @property
+    def max_width_section_centering(self):
+        """Gets the max_width_section_centering of this Styles.  # noqa: E501
+
+
+        :return: The max_width_section_centering of this Styles.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_width_section_centering
+
+    @max_width_section_centering.setter
+    def max_width_section_centering(self, max_width_section_centering):
+        """Sets the max_width_section_centering of this Styles.
+
+
+        :param max_width_section_centering: The max_width_section_centering of this Styles.  # noqa: E501
+        :type max_width_section_centering: int
+        """
+        if self.local_vars_configuration.client_side_validation and max_width_section_centering is None:  # noqa: E501
+            raise ValueError("Invalid value for `max_width_section_centering`, must not be `None`")  # noqa: E501
+
+        self._max_width_section_centering = max_width_section_centering
+
+    @property
+    def background_gradient(self):
+        """Gets the background_gradient of this Styles.  # noqa: E501
+
+
+        :return: The background_gradient of this Styles.  # noqa: E501
+        :rtype: Gradient
+        """
+        return self._background_gradient
+
+    @background_gradient.setter
+    def background_gradient(self, background_gradient):
+        """Sets the background_gradient of this Styles.
+
+
+        :param background_gradient: The background_gradient of this Styles.  # noqa: E501
+        :type background_gradient: Gradient
+        """
+        if self.local_vars_configuration.client_side_validation and background_gradient is None:  # noqa: E501
+            raise ValueError("Invalid value for `background_gradient`, must not be `None`")  # noqa: E501
+
+        self._background_gradient = background_gradient
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

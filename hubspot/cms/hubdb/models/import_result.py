@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,76 +35,26 @@ class ImportResult(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"errors": "list[Error]", "duplicate_rows": "int", "row_limit_exceeded": "bool", "rows_imported": "int"}
+    openapi_types = {"row_limit_exceeded": "bool", "duplicate_rows": "int", "rows_imported": "int", "errors": "list[Error]"}
 
-    attribute_map = {"errors": "errors", "duplicate_rows": "duplicateRows", "row_limit_exceeded": "rowLimitExceeded", "rows_imported": "rowsImported"}
+    attribute_map = {"row_limit_exceeded": "rowLimitExceeded", "duplicate_rows": "duplicateRows", "rows_imported": "rowsImported", "errors": "errors"}
 
-    def __init__(self, errors=None, duplicate_rows=None, row_limit_exceeded=None, rows_imported=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, row_limit_exceeded=None, duplicate_rows=None, rows_imported=None, errors=None, local_vars_configuration=None):  # noqa: E501
         """ImportResult - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._errors = None
-        self._duplicate_rows = None
         self._row_limit_exceeded = None
+        self._duplicate_rows = None
         self._rows_imported = None
+        self._errors = None
         self.discriminator = None
 
-        self.errors = errors
-        self.duplicate_rows = duplicate_rows
         self.row_limit_exceeded = row_limit_exceeded
+        self.duplicate_rows = duplicate_rows
         self.rows_imported = rows_imported
-
-    @property
-    def errors(self):
-        """Gets the errors of this ImportResult.  # noqa: E501
-
-        List of errors during import  # noqa: E501
-
-        :return: The errors of this ImportResult.  # noqa: E501
-        :rtype: list[Error]
-        """
-        return self._errors
-
-    @errors.setter
-    def errors(self, errors):
-        """Sets the errors of this ImportResult.
-
-        List of errors during import  # noqa: E501
-
-        :param errors: The errors of this ImportResult.  # noqa: E501
-        :type errors: list[Error]
-        """
-        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
-            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
-
-        self._errors = errors
-
-    @property
-    def duplicate_rows(self):
-        """Gets the duplicate_rows of this ImportResult.  # noqa: E501
-
-        Specifies number of duplicate rows  # noqa: E501
-
-        :return: The duplicate_rows of this ImportResult.  # noqa: E501
-        :rtype: int
-        """
-        return self._duplicate_rows
-
-    @duplicate_rows.setter
-    def duplicate_rows(self, duplicate_rows):
-        """Sets the duplicate_rows of this ImportResult.
-
-        Specifies number of duplicate rows  # noqa: E501
-
-        :param duplicate_rows: The duplicate_rows of this ImportResult.  # noqa: E501
-        :type duplicate_rows: int
-        """
-        if self.local_vars_configuration.client_side_validation and duplicate_rows is None:  # noqa: E501
-            raise ValueError("Invalid value for `duplicate_rows`, must not be `None`")  # noqa: E501
-
-        self._duplicate_rows = duplicate_rows
+        self.errors = errors
 
     @property
     def row_limit_exceeded(self):
@@ -132,6 +82,31 @@ class ImportResult(object):
         self._row_limit_exceeded = row_limit_exceeded
 
     @property
+    def duplicate_rows(self):
+        """Gets the duplicate_rows of this ImportResult.  # noqa: E501
+
+        Specifies number of duplicate rows  # noqa: E501
+
+        :return: The duplicate_rows of this ImportResult.  # noqa: E501
+        :rtype: int
+        """
+        return self._duplicate_rows
+
+    @duplicate_rows.setter
+    def duplicate_rows(self, duplicate_rows):
+        """Sets the duplicate_rows of this ImportResult.
+
+        Specifies number of duplicate rows  # noqa: E501
+
+        :param duplicate_rows: The duplicate_rows of this ImportResult.  # noqa: E501
+        :type duplicate_rows: int
+        """
+        if self.local_vars_configuration.client_side_validation and duplicate_rows is None:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_rows`, must not be `None`")  # noqa: E501
+
+        self._duplicate_rows = duplicate_rows
+
+    @property
     def rows_imported(self):
         """Gets the rows_imported of this ImportResult.  # noqa: E501
 
@@ -155,6 +130,31 @@ class ImportResult(object):
             raise ValueError("Invalid value for `rows_imported`, must not be `None`")  # noqa: E501
 
         self._rows_imported = rows_imported
+
+    @property
+    def errors(self):
+        """Gets the errors of this ImportResult.  # noqa: E501
+
+        List of errors during import  # noqa: E501
+
+        :return: The errors of this ImportResult.  # noqa: E501
+        :rtype: list[Error]
+        """
+        return self._errors
+
+    @errors.setter
+    def errors(self, errors):
+        """Sets the errors of this ImportResult.
+
+        List of errors during import  # noqa: E501
+
+        :param errors: The errors of this ImportResult.  # noqa: E501
+        :type errors: list[Error]
+        """
+        if self.local_vars_configuration.client_side_validation and errors is None:  # noqa: E501
+            raise ValueError("Invalid value for `errors`, must not be `None`")  # noqa: E501
+
+        self._errors = errors
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

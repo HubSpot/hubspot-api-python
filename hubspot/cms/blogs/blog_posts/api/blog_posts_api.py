@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -311,7 +311,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: Error
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.attach_to_lang_group_with_http_info(attach_to_lang_primary_request_v_next, **kwargs)  # noqa: E501
@@ -349,7 +349,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -950,7 +950,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: Error
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.detach_from_lang_group_with_http_info(detach_from_lang_group_request_v_next, **kwargs)  # noqa: E501
@@ -988,7 +988,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -1065,6 +1065,8 @@ class BlogPostsApi(object):
         :type object_id: str
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param _property:
+        :type _property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1097,6 +1099,8 @@ class BlogPostsApi(object):
         :type object_id: str
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param _property:
+        :type _property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1123,7 +1127,7 @@ class BlogPostsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_id", "archived"]
+        all_params = ["object_id", "archived", "_property"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -1144,6 +1148,8 @@ class BlogPostsApi(object):
         query_params = []
         if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if local_var_params.get("_property") is not None:  # noqa: E501
+            query_params.append(("property", local_var_params["_property"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -1333,6 +1339,8 @@ class BlogPostsApi(object):
         :type limit: int
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param _property:
+        :type _property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1381,6 +1389,8 @@ class BlogPostsApi(object):
         :type limit: int
         :param archived: Specifies whether to return deleted Blog Posts. Defaults to `false`.
         :type archived: bool
+        :param _property:
+        :type _property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1407,7 +1417,7 @@ class BlogPostsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived"]
+        all_params = ["created_at", "created_after", "created_before", "updated_at", "updated_after", "updated_before", "sort", "after", "limit", "archived", "_property"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -1442,6 +1452,8 @@ class BlogPostsApi(object):
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
         if local_var_params.get("archived") is not None:  # noqa: E501
             query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if local_var_params.get("_property") is not None:  # noqa: E501
+            query_params.append(("property", local_var_params["_property"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -3084,7 +3096,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: Error
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.update_langs_with_http_info(update_languages_request_v_next, **kwargs)  # noqa: E501
@@ -3122,7 +3134,7 @@ class BlogPostsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()

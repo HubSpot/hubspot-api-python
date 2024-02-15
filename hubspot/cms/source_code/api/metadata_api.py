@@ -47,6 +47,8 @@ class MetadataApi(object):
         :type environment: str
         :param path: The file system location of the file. (required)
         :type path: str
+        :param properties:
+        :type properties: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -79,6 +81,8 @@ class MetadataApi(object):
         :type environment: str
         :param path: The file system location of the file. (required)
         :type path: str
+        :param properties:
+        :type properties: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -105,7 +109,7 @@ class MetadataApi(object):
 
         local_var_params = locals()
 
-        all_params = ["environment", "path"]
+        all_params = ["environment", "path", "properties"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -131,6 +135,8 @@ class MetadataApi(object):
             path_params["path"] = local_var_params["path"]  # noqa: E501
 
         query_params = []
+        if local_var_params.get("properties") is not None:  # noqa: E501
+            query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 

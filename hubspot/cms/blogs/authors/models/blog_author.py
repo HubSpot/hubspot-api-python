@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Authors
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -36,64 +36,64 @@ class BlogAuthor(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "full_name": "str",
-        "email": "str",
-        "slug": "str",
-        "language": "str",
-        "translated_from_id": "int",
-        "name": "str",
-        "display_name": "str",
-        "bio": "str",
         "website": "str",
-        "twitter": "str",
+        "display_name": "str",
+        "created": "datetime",
         "facebook": "str",
+        "full_name": "str",
+        "bio": "str",
+        "language": "str",
         "linkedin": "str",
         "avatar": "str",
-        "created": "datetime",
-        "updated": "datetime",
+        "translated_from_id": "int",
+        "twitter": "str",
         "deleted_at": "datetime",
+        "name": "str",
+        "id": "str",
+        "updated": "datetime",
+        "email": "str",
+        "slug": "str",
     }
 
     attribute_map = {
-        "id": "id",
-        "full_name": "fullName",
-        "email": "email",
-        "slug": "slug",
-        "language": "language",
-        "translated_from_id": "translatedFromId",
-        "name": "name",
-        "display_name": "displayName",
-        "bio": "bio",
         "website": "website",
-        "twitter": "twitter",
+        "display_name": "displayName",
+        "created": "created",
         "facebook": "facebook",
+        "full_name": "fullName",
+        "bio": "bio",
+        "language": "language",
         "linkedin": "linkedin",
         "avatar": "avatar",
-        "created": "created",
-        "updated": "updated",
+        "translated_from_id": "translatedFromId",
+        "twitter": "twitter",
         "deleted_at": "deletedAt",
+        "name": "name",
+        "id": "id",
+        "updated": "updated",
+        "email": "email",
+        "slug": "slug",
     }
 
     def __init__(
         self,
-        id=None,
-        full_name=None,
-        email=None,
-        slug=None,
-        language=None,
-        translated_from_id=None,
-        name=None,
-        display_name=None,
-        bio=None,
         website=None,
-        twitter=None,
+        display_name=None,
+        created=None,
         facebook=None,
+        full_name=None,
+        bio=None,
+        language=None,
         linkedin=None,
         avatar=None,
-        created=None,
-        updated=None,
+        translated_from_id=None,
+        twitter=None,
         deleted_at=None,
+        name=None,
+        id=None,
+        updated=None,
+        email=None,
+        slug=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """BlogAuthor - a model defined in OpenAPI"""  # noqa: E501
@@ -101,67 +101,140 @@ class BlogAuthor(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._full_name = None
-        self._email = None
-        self._slug = None
-        self._language = None
-        self._translated_from_id = None
-        self._name = None
-        self._display_name = None
-        self._bio = None
         self._website = None
-        self._twitter = None
+        self._display_name = None
+        self._created = None
         self._facebook = None
+        self._full_name = None
+        self._bio = None
+        self._language = None
         self._linkedin = None
         self._avatar = None
-        self._created = None
-        self._updated = None
+        self._translated_from_id = None
+        self._twitter = None
         self._deleted_at = None
+        self._name = None
+        self._id = None
+        self._updated = None
+        self._email = None
+        self._slug = None
         self.discriminator = None
 
-        self.id = id
-        self.full_name = full_name
-        self.email = email
-        self.slug = slug
-        self.language = language
-        self.translated_from_id = translated_from_id
-        self.name = name
-        self.display_name = display_name
-        self.bio = bio
         self.website = website
-        self.twitter = twitter
+        self.display_name = display_name
+        self.created = created
         self.facebook = facebook
+        self.full_name = full_name
+        self.bio = bio
+        self.language = language
         self.linkedin = linkedin
         self.avatar = avatar
-        self.created = created
-        self.updated = updated
+        self.translated_from_id = translated_from_id
+        self.twitter = twitter
         self.deleted_at = deleted_at
+        self.name = name
+        self.id = id
+        self.updated = updated
+        self.email = email
+        self.slug = slug
 
     @property
-    def id(self):
-        """Gets the id of this BlogAuthor.  # noqa: E501
+    def website(self):
+        """Gets the website of this BlogAuthor.  # noqa: E501
 
-        The unique ID of the Blog Author.  # noqa: E501
+        URL to the website of the Blog Author.  # noqa: E501
 
-        :return: The id of this BlogAuthor.  # noqa: E501
+        :return: The website of this BlogAuthor.  # noqa: E501
         :rtype: str
         """
-        return self._id
+        return self._website
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this BlogAuthor.
+    @website.setter
+    def website(self, website):
+        """Sets the website of this BlogAuthor.
 
-        The unique ID of the Blog Author.  # noqa: E501
+        URL to the website of the Blog Author.  # noqa: E501
 
-        :param id: The id of this BlogAuthor.  # noqa: E501
-        :type id: str
+        :param website: The website of this BlogAuthor.  # noqa: E501
+        :type website: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and website is None:  # noqa: E501
+            raise ValueError("Invalid value for `website`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._website = website
+
+    @property
+    def display_name(self):
+        """Gets the display_name of this BlogAuthor.  # noqa: E501
+
+        The full name of the Blog Author to be displayed.  # noqa: E501
+
+        :return: The display_name of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._display_name
+
+    @display_name.setter
+    def display_name(self, display_name):
+        """Sets the display_name of this BlogAuthor.
+
+        The full name of the Blog Author to be displayed.  # noqa: E501
+
+        :param display_name: The display_name of this BlogAuthor.  # noqa: E501
+        :type display_name: str
+        """
+        if self.local_vars_configuration.client_side_validation and display_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `display_name`, must not be `None`")  # noqa: E501
+
+        self._display_name = display_name
+
+    @property
+    def created(self):
+        """Gets the created of this BlogAuthor.  # noqa: E501
+
+
+        :return: The created of this BlogAuthor.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this BlogAuthor.
+
+
+        :param created: The created of this BlogAuthor.  # noqa: E501
+        :type created: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+
+        self._created = created
+
+    @property
+    def facebook(self):
+        """Gets the facebook of this BlogAuthor.  # noqa: E501
+
+        URL to the Blog Author's Facebook page.  # noqa: E501
+
+        :return: The facebook of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._facebook
+
+    @facebook.setter
+    def facebook(self, facebook):
+        """Sets the facebook of this BlogAuthor.
+
+        URL to the Blog Author's Facebook page.  # noqa: E501
+
+        :param facebook: The facebook of this BlogAuthor.  # noqa: E501
+        :type facebook: str
+        """
+        if self.local_vars_configuration.client_side_validation and facebook is None:  # noqa: E501
+            raise ValueError("Invalid value for `facebook`, must not be `None`")  # noqa: E501
+
+        self._facebook = facebook
 
     @property
     def full_name(self):
@@ -187,52 +260,29 @@ class BlogAuthor(object):
         self._full_name = full_name
 
     @property
-    def email(self):
-        """Gets the email of this BlogAuthor.  # noqa: E501
+    def bio(self):
+        """Gets the bio of this BlogAuthor.  # noqa: E501
 
-        Email address of the Blog Author.  # noqa: E501
+        A short biography of the blog author.  # noqa: E501
 
-        :return: The email of this BlogAuthor.  # noqa: E501
+        :return: The bio of this BlogAuthor.  # noqa: E501
         :rtype: str
         """
-        return self._email
+        return self._bio
 
-    @email.setter
-    def email(self, email):
-        """Sets the email of this BlogAuthor.
+    @bio.setter
+    def bio(self, bio):
+        """Sets the bio of this BlogAuthor.
 
-        Email address of the Blog Author.  # noqa: E501
+        A short biography of the blog author.  # noqa: E501
 
-        :param email: The email of this BlogAuthor.  # noqa: E501
-        :type email: str
+        :param bio: The bio of this BlogAuthor.  # noqa: E501
+        :type bio: str
         """
-        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
-            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and bio is None:  # noqa: E501
+            raise ValueError("Invalid value for `bio`, must not be `None`")  # noqa: E501
 
-        self._email = email
-
-    @property
-    def slug(self):
-        """Gets the slug of this BlogAuthor.  # noqa: E501
-
-
-        :return: The slug of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._slug
-
-    @slug.setter
-    def slug(self, slug):
-        """Sets the slug of this BlogAuthor.
-
-
-        :param slug: The slug of this BlogAuthor.  # noqa: E501
-        :type slug: str
-        """
-        if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
-            raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
-
-        self._slug = slug
+        self._bio = bio
 
     @property
     def language(self):
@@ -337,6 +387,8 @@ class BlogAuthor(object):
             "ccp-in",
             "ce",
             "ce-ru",
+            "ceb",
+            "ceb-ph",
             "cgg",
             "cgg-ug",
             "chr",
@@ -366,6 +418,8 @@ class BlogAuthor(object):
             "de-lu",
             "dje",
             "dje-ne",
+            "doi",
+            "doi-in",
             "dsb",
             "dsb-de",
             "dua",
@@ -403,6 +457,7 @@ class BlogAuthor(object):
             "en-ch",
             "en-ck",
             "en-cm",
+            "en-cn",
             "en-cx",
             "en-cy",
             "en-de",
@@ -446,6 +501,7 @@ class BlogAuthor(object):
             "en-mt",
             "en-mu",
             "en-mw",
+            "en-mx",
             "en-my",
             "en-na",
             "en-nf",
@@ -530,9 +586,17 @@ class BlogAuthor(object):
             "fa-af",
             "fa-ir",
             "ff",
+            "ff-bf",
             "ff-cm",
+            "ff-gh",
+            "ff-gm",
             "ff-gn",
+            "ff-gw",
+            "ff-lr",
             "ff-mr",
+            "ff-ne",
+            "ff-ng",
+            "ff-sl",
             "ff-sn",
             "fi",
             "fi-fi",
@@ -593,6 +657,7 @@ class BlogAuthor(object):
             "fy",
             "fy-nl",
             "ga",
+            "ga-gb",
             "ga-ie",
             "gd",
             "gd-gb",
@@ -626,6 +691,8 @@ class BlogAuthor(object):
             "hu-hu",
             "hy",
             "hy-am",
+            "ia",
+            "ia-001",
             "id",
             "ig",
             "ig-ng",
@@ -648,6 +715,8 @@ class BlogAuthor(object):
             "yi-001",
             "jmc",
             "jmc-tz",
+            "jv",
+            "jv-id",
             "ka",
             "ka-ge",
             "kab",
@@ -689,6 +758,8 @@ class BlogAuthor(object):
             "ksh-de",
             "kw",
             "kw-gb",
+            "ku",
+            "ku-tr",
             "ky",
             "ky-kg",
             "lag",
@@ -719,6 +790,8 @@ class BlogAuthor(object):
             "luy-ke",
             "lv",
             "lv-lv",
+            "mai",
+            "mai-in",
             "mas",
             "mas-ke",
             "mas-tz",
@@ -732,16 +805,21 @@ class BlogAuthor(object):
             "mgh-mz",
             "mgo",
             "mgo-cm",
+            "mi",
+            "mi-nz",
             "mk",
             "mk-mk",
             "ml",
             "ml-in",
             "mn",
             "mn-mn",
+            "mni",
+            "mni-in",
             "mr",
             "mr-in",
             "ms",
             "ms-bn",
+            "ms-id",
             "ms-my",
             "ms-sg",
             "mt",
@@ -798,12 +876,15 @@ class BlogAuthor(object):
             "pa",
             "pa-in",
             "pa-pk",
+            "pcm",
+            "pcm-ng",
             "pl",
             "pl-pl",
             "prg",
             "prg-001",
             "ps",
             "ps-af",
+            "ps-pk",
             "pt",
             "pt-ao",
             "pt-br",
@@ -842,13 +923,17 @@ class BlogAuthor(object):
             "rwk",
             "rwk-tz",
             "sa",
+            "sa-in",
             "sah",
             "sah-ru",
             "saq",
             "saq-ke",
+            "sat",
+            "sat-in",
             "sbp",
             "sbp-tz",
             "sd",
+            "sd-in",
             "sd-pk",
             "se",
             "se-fi",
@@ -887,6 +972,8 @@ class BlogAuthor(object):
             "sr-me",
             "sr-rs",
             "sr-xk",
+            "su",
+            "su-id",
             "sv",
             "sv-ax",
             "sv-fi",
@@ -916,6 +1003,7 @@ class BlogAuthor(object):
             "ti-et",
             "tk",
             "tk-tm",
+            "tl",
             "to",
             "to-to",
             "tr",
@@ -949,6 +1037,8 @@ class BlogAuthor(object):
             "wae-ch",
             "wo",
             "wo-sn",
+            "xh",
+            "xh-za",
             "xog",
             "xog-ug",
             "yav",
@@ -976,179 +1066,6 @@ class BlogAuthor(object):
             raise ValueError("Invalid value for `language` ({0}), must be one of {1}".format(language, allowed_values))  # noqa: E501
 
         self._language = language
-
-    @property
-    def translated_from_id(self):
-        """Gets the translated_from_id of this BlogAuthor.  # noqa: E501
-
-        ID of the primary blog author this object was translated from.  # noqa: E501
-
-        :return: The translated_from_id of this BlogAuthor.  # noqa: E501
-        :rtype: int
-        """
-        return self._translated_from_id
-
-    @translated_from_id.setter
-    def translated_from_id(self, translated_from_id):
-        """Sets the translated_from_id of this BlogAuthor.
-
-        ID of the primary blog author this object was translated from.  # noqa: E501
-
-        :param translated_from_id: The translated_from_id of this BlogAuthor.  # noqa: E501
-        :type translated_from_id: int
-        """
-        if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
-
-        self._translated_from_id = translated_from_id
-
-    @property
-    def name(self):
-        """Gets the name of this BlogAuthor.  # noqa: E501
-
-
-        :return: The name of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this BlogAuthor.
-
-
-        :param name: The name of this BlogAuthor.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def display_name(self):
-        """Gets the display_name of this BlogAuthor.  # noqa: E501
-
-        The full name of the Blog Author to be displayed.  # noqa: E501
-
-        :return: The display_name of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._display_name
-
-    @display_name.setter
-    def display_name(self, display_name):
-        """Sets the display_name of this BlogAuthor.
-
-        The full name of the Blog Author to be displayed.  # noqa: E501
-
-        :param display_name: The display_name of this BlogAuthor.  # noqa: E501
-        :type display_name: str
-        """
-        if self.local_vars_configuration.client_side_validation and display_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `display_name`, must not be `None`")  # noqa: E501
-
-        self._display_name = display_name
-
-    @property
-    def bio(self):
-        """Gets the bio of this BlogAuthor.  # noqa: E501
-
-        A short biography of the blog author.  # noqa: E501
-
-        :return: The bio of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._bio
-
-    @bio.setter
-    def bio(self, bio):
-        """Sets the bio of this BlogAuthor.
-
-        A short biography of the blog author.  # noqa: E501
-
-        :param bio: The bio of this BlogAuthor.  # noqa: E501
-        :type bio: str
-        """
-        if self.local_vars_configuration.client_side_validation and bio is None:  # noqa: E501
-            raise ValueError("Invalid value for `bio`, must not be `None`")  # noqa: E501
-
-        self._bio = bio
-
-    @property
-    def website(self):
-        """Gets the website of this BlogAuthor.  # noqa: E501
-
-        URL to the website of the Blog Author.  # noqa: E501
-
-        :return: The website of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._website
-
-    @website.setter
-    def website(self, website):
-        """Sets the website of this BlogAuthor.
-
-        URL to the website of the Blog Author.  # noqa: E501
-
-        :param website: The website of this BlogAuthor.  # noqa: E501
-        :type website: str
-        """
-        if self.local_vars_configuration.client_side_validation and website is None:  # noqa: E501
-            raise ValueError("Invalid value for `website`, must not be `None`")  # noqa: E501
-
-        self._website = website
-
-    @property
-    def twitter(self):
-        """Gets the twitter of this BlogAuthor.  # noqa: E501
-
-        URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.  # noqa: E501
-
-        :return: The twitter of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._twitter
-
-    @twitter.setter
-    def twitter(self, twitter):
-        """Sets the twitter of this BlogAuthor.
-
-        URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.  # noqa: E501
-
-        :param twitter: The twitter of this BlogAuthor.  # noqa: E501
-        :type twitter: str
-        """
-        if self.local_vars_configuration.client_side_validation and twitter is None:  # noqa: E501
-            raise ValueError("Invalid value for `twitter`, must not be `None`")  # noqa: E501
-
-        self._twitter = twitter
-
-    @property
-    def facebook(self):
-        """Gets the facebook of this BlogAuthor.  # noqa: E501
-
-        URL to the Blog Author's Facebook page.  # noqa: E501
-
-        :return: The facebook of this BlogAuthor.  # noqa: E501
-        :rtype: str
-        """
-        return self._facebook
-
-    @facebook.setter
-    def facebook(self, facebook):
-        """Sets the facebook of this BlogAuthor.
-
-        URL to the Blog Author's Facebook page.  # noqa: E501
-
-        :param facebook: The facebook of this BlogAuthor.  # noqa: E501
-        :type facebook: str
-        """
-        if self.local_vars_configuration.client_side_validation and facebook is None:  # noqa: E501
-            raise ValueError("Invalid value for `facebook`, must not be `None`")  # noqa: E501
-
-        self._facebook = facebook
 
     @property
     def linkedin(self):
@@ -1201,50 +1118,54 @@ class BlogAuthor(object):
         self._avatar = avatar
 
     @property
-    def created(self):
-        """Gets the created of this BlogAuthor.  # noqa: E501
+    def translated_from_id(self):
+        """Gets the translated_from_id of this BlogAuthor.  # noqa: E501
 
+        ID of the primary blog author this object was translated from.  # noqa: E501
 
-        :return: The created of this BlogAuthor.  # noqa: E501
-        :rtype: datetime
+        :return: The translated_from_id of this BlogAuthor.  # noqa: E501
+        :rtype: int
         """
-        return self._created
+        return self._translated_from_id
 
-    @created.setter
-    def created(self, created):
-        """Sets the created of this BlogAuthor.
+    @translated_from_id.setter
+    def translated_from_id(self, translated_from_id):
+        """Sets the translated_from_id of this BlogAuthor.
 
+        ID of the primary blog author this object was translated from.  # noqa: E501
 
-        :param created: The created of this BlogAuthor.  # noqa: E501
-        :type created: datetime
+        :param translated_from_id: The translated_from_id of this BlogAuthor.  # noqa: E501
+        :type translated_from_id: int
         """
-        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
-            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and translated_from_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `translated_from_id`, must not be `None`")  # noqa: E501
 
-        self._created = created
+        self._translated_from_id = translated_from_id
 
     @property
-    def updated(self):
-        """Gets the updated of this BlogAuthor.  # noqa: E501
+    def twitter(self):
+        """Gets the twitter of this BlogAuthor.  # noqa: E501
 
+        URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.  # noqa: E501
 
-        :return: The updated of this BlogAuthor.  # noqa: E501
-        :rtype: datetime
+        :return: The twitter of this BlogAuthor.  # noqa: E501
+        :rtype: str
         """
-        return self._updated
+        return self._twitter
 
-    @updated.setter
-    def updated(self, updated):
-        """Sets the updated of this BlogAuthor.
+    @twitter.setter
+    def twitter(self, twitter):
+        """Sets the twitter of this BlogAuthor.
 
+        URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.  # noqa: E501
 
-        :param updated: The updated of this BlogAuthor.  # noqa: E501
-        :type updated: datetime
+        :param twitter: The twitter of this BlogAuthor.  # noqa: E501
+        :type twitter: str
         """
-        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and twitter is None:  # noqa: E501
+            raise ValueError("Invalid value for `twitter`, must not be `None`")  # noqa: E501
 
-        self._updated = updated
+        self._twitter = twitter
 
     @property
     def deleted_at(self):
@@ -1270,6 +1191,125 @@ class BlogAuthor(object):
             raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
         self._deleted_at = deleted_at
+
+    @property
+    def name(self):
+        """Gets the name of this BlogAuthor.  # noqa: E501
+
+
+        :return: The name of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this BlogAuthor.
+
+
+        :param name: The name of this BlogAuthor.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def id(self):
+        """Gets the id of this BlogAuthor.  # noqa: E501
+
+        The unique ID of the Blog Author.  # noqa: E501
+
+        :return: The id of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this BlogAuthor.
+
+        The unique ID of the Blog Author.  # noqa: E501
+
+        :param id: The id of this BlogAuthor.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def updated(self):
+        """Gets the updated of this BlogAuthor.  # noqa: E501
+
+
+        :return: The updated of this BlogAuthor.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this BlogAuthor.
+
+
+        :param updated: The updated of this BlogAuthor.  # noqa: E501
+        :type updated: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
+
+        self._updated = updated
+
+    @property
+    def email(self):
+        """Gets the email of this BlogAuthor.  # noqa: E501
+
+        Email address of the Blog Author.  # noqa: E501
+
+        :return: The email of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._email
+
+    @email.setter
+    def email(self, email):
+        """Sets the email of this BlogAuthor.
+
+        Email address of the Blog Author.  # noqa: E501
+
+        :param email: The email of this BlogAuthor.  # noqa: E501
+        :type email: str
+        """
+        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
+            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+
+        self._email = email
+
+    @property
+    def slug(self):
+        """Gets the slug of this BlogAuthor.  # noqa: E501
+
+
+        :return: The slug of this BlogAuthor.  # noqa: E501
+        :rtype: str
+        """
+        return self._slug
+
+    @slug.setter
+    def slug(self, slug):
+        """Sets the slug of this BlogAuthor.
+
+
+        :param slug: The slug of this BlogAuthor.  # noqa: E501
+        :type slug: str
+        """
+        if self.local_vars_configuration.client_side_validation and slug is None:  # noqa: E501
+            raise ValueError("Invalid value for `slug`, must not be `None`")  # noqa: E501
+
+        self._slug = slug
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

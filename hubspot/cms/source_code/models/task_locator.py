@@ -35,23 +35,44 @@ class TaskLocator(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "links": "dict[str, str]"}
+    openapi_types = {"links": "dict[str, str]", "id": "str"}
 
-    attribute_map = {"id": "id", "links": "links"}
+    attribute_map = {"links": "links", "id": "id"}
 
-    def __init__(self, id=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, links=None, id=None, local_vars_configuration=None):  # noqa: E501
         """TaskLocator - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._links = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         if links is not None:
             self.links = links
+        self.id = id
+
+    @property
+    def links(self):
+        """Gets the links of this TaskLocator.  # noqa: E501
+
+
+        :return: The links of this TaskLocator.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this TaskLocator.
+
+
+        :param links: The links of this TaskLocator.  # noqa: E501
+        :type links: dict[str, str]
+        """
+
+        self._links = links
 
     @property
     def id(self):
@@ -75,27 +96,6 @@ class TaskLocator(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def links(self):
-        """Gets the links of this TaskLocator.  # noqa: E501
-
-
-        :return: The links of this TaskLocator.  # noqa: E501
-        :rtype: dict[str, str]
-        """
-        return self._links
-
-    @links.setter
-    def links(self, links):
-        """Sets the links of this TaskLocator.
-
-
-        :param links: The links of this TaskLocator.  # noqa: E501
-        :type links: dict[str, str]
-        """
-
-        self._links = links
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
