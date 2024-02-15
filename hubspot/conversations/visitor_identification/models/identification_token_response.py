@@ -54,6 +54,7 @@ class IdentificationTokenResponse(object):
     def token(self):
         """Gets the token of this IdentificationTokenResponse.  # noqa: E501
 
+          # noqa: E501
 
         :return: The token of this IdentificationTokenResponse.  # noqa: E501
         :rtype: str
@@ -64,6 +65,7 @@ class IdentificationTokenResponse(object):
     def token(self, token):
         """Sets the token of this IdentificationTokenResponse.
 
+          # noqa: E501
 
         :param token: The token of this IdentificationTokenResponse.  # noqa: E501
         :type token: str
