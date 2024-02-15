@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,30 +35,30 @@ class HubDbTableRowV3Request(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"path": "str", "name": "str", "child_table_id": "int", "values": "dict[str, object]", "display_index": "int"}
+    openapi_types = {"path": "str", "child_table_id": "int", "values": "dict[str, object]", "name": "str", "display_index": "int"}
 
-    attribute_map = {"path": "path", "name": "name", "child_table_id": "childTableId", "values": "values", "display_index": "displayIndex"}
+    attribute_map = {"path": "path", "child_table_id": "childTableId", "values": "values", "name": "name", "display_index": "displayIndex"}
 
-    def __init__(self, path=None, name=None, child_table_id=None, values=None, display_index=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, path=None, child_table_id=None, values=None, name=None, display_index=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3Request - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._path = None
-        self._name = None
         self._child_table_id = None
         self._values = None
+        self._name = None
         self._display_index = None
         self.discriminator = None
 
         if path is not None:
             self.path = path
-        if name is not None:
-            self.name = name
         if child_table_id is not None:
             self.child_table_id = child_table_id
         self.values = values
+        if name is not None:
+            self.name = name
         if display_index is not None:
             self.display_index = display_index
 
@@ -84,29 +84,6 @@ class HubDbTableRowV3Request(object):
         """
 
         self._path = path
-
-    @property
-    def name(self):
-        """Gets the name of this HubDbTableRowV3Request.  # noqa: E501
-
-        Specifies the value for `hs_name` column, which will be used as title in the dynamic pages  # noqa: E501
-
-        :return: The name of this HubDbTableRowV3Request.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this HubDbTableRowV3Request.
-
-        Specifies the value for `hs_name` column, which will be used as title in the dynamic pages  # noqa: E501
-
-        :param name: The name of this HubDbTableRowV3Request.  # noqa: E501
-        :type name: str
-        """
-
-        self._name = name
 
     @property
     def child_table_id(self):
@@ -155,6 +132,29 @@ class HubDbTableRowV3Request(object):
             raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
 
         self._values = values
+
+    @property
+    def name(self):
+        """Gets the name of this HubDbTableRowV3Request.  # noqa: E501
+
+        Specifies the value for `hs_name` column, which will be used as title in the dynamic pages  # noqa: E501
+
+        :return: The name of this HubDbTableRowV3Request.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this HubDbTableRowV3Request.
+
+        Specifies the value for `hs_name` column, which will be used as title in the dynamic pages  # noqa: E501
+
+        :param name: The name of this HubDbTableRowV3Request.  # noqa: E501
+        :type name: str
+        """
+
+        self._name = name
 
     @property
     def display_index(self):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,73 +35,140 @@ class HubDbTableRowV3(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "values": "dict[str, object]", "path": "str", "name": "str", "child_table_id": "str", "created_at": "datetime", "updated_at": "datetime", "published_at": "datetime"}
+    openapi_types = {"path": "str", "created_at": "datetime", "child_table_id": "str", "published_at": "datetime", "values": "dict[str, object]", "name": "str", "id": "str", "updated_at": "datetime"}
 
     attribute_map = {
-        "id": "id",
-        "values": "values",
         "path": "path",
-        "name": "name",
-        "child_table_id": "childTableId",
         "created_at": "createdAt",
-        "updated_at": "updatedAt",
+        "child_table_id": "childTableId",
         "published_at": "publishedAt",
+        "values": "values",
+        "name": "name",
+        "id": "id",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, id=None, values=None, path=None, name=None, child_table_id=None, created_at=None, updated_at=None, published_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, path=None, created_at=None, child_table_id=None, published_at=None, values=None, name=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """HubDbTableRowV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._values = None
         self._path = None
-        self._name = None
-        self._child_table_id = None
         self._created_at = None
-        self._updated_at = None
+        self._child_table_id = None
         self._published_at = None
+        self._values = None
+        self._name = None
+        self._id = None
+        self._updated_at = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        self.values = values
         if path is not None:
             self.path = path
-        if name is not None:
-            self.name = name
-        if child_table_id is not None:
-            self.child_table_id = child_table_id
         if created_at is not None:
             self.created_at = created_at
-        if updated_at is not None:
-            self.updated_at = updated_at
+        if child_table_id is not None:
+            self.child_table_id = child_table_id
         if published_at is not None:
             self.published_at = published_at
+        self.values = values
+        if name is not None:
+            self.name = name
+        if id is not None:
+            self.id = id
+        if updated_at is not None:
+            self.updated_at = updated_at
 
     @property
-    def id(self):
-        """Gets the id of this HubDbTableRowV3.  # noqa: E501
+    def path(self):
+        """Gets the path of this HubDbTableRowV3.  # noqa: E501
 
-        The id of the table row  # noqa: E501
+        Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages  # noqa: E501
 
-        :return: The id of this HubDbTableRowV3.  # noqa: E501
+        :return: The path of this HubDbTableRowV3.  # noqa: E501
         :rtype: str
         """
-        return self._id
+        return self._path
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this HubDbTableRowV3.
+    @path.setter
+    def path(self, path):
+        """Sets the path of this HubDbTableRowV3.
 
-        The id of the table row  # noqa: E501
+        Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages  # noqa: E501
 
-        :param id: The id of this HubDbTableRowV3.  # noqa: E501
-        :type id: str
+        :param path: The path of this HubDbTableRowV3.  # noqa: E501
+        :type path: str
         """
 
-        self._id = id
+        self._path = path
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this HubDbTableRowV3.  # noqa: E501
+
+        Timestamp at which the row is created  # noqa: E501
+
+        :return: The created_at of this HubDbTableRowV3.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this HubDbTableRowV3.
+
+        Timestamp at which the row is created  # noqa: E501
+
+        :param created_at: The created_at of this HubDbTableRowV3.  # noqa: E501
+        :type created_at: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def child_table_id(self):
+        """Gets the child_table_id of this HubDbTableRowV3.  # noqa: E501
+
+        Specifies the value for the column child table id  # noqa: E501
+
+        :return: The child_table_id of this HubDbTableRowV3.  # noqa: E501
+        :rtype: str
+        """
+        return self._child_table_id
+
+    @child_table_id.setter
+    def child_table_id(self, child_table_id):
+        """Sets the child_table_id of this HubDbTableRowV3.
+
+        Specifies the value for the column child table id  # noqa: E501
+
+        :param child_table_id: The child_table_id of this HubDbTableRowV3.  # noqa: E501
+        :type child_table_id: str
+        """
+
+        self._child_table_id = child_table_id
+
+    @property
+    def published_at(self):
+        """Gets the published_at of this HubDbTableRowV3.  # noqa: E501
+
+
+        :return: The published_at of this HubDbTableRowV3.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._published_at
+
+    @published_at.setter
+    def published_at(self, published_at):
+        """Sets the published_at of this HubDbTableRowV3.
+
+
+        :param published_at: The published_at of this HubDbTableRowV3.  # noqa: E501
+        :type published_at: datetime
+        """
+
+        self._published_at = published_at
 
     @property
     def values(self):
@@ -129,29 +196,6 @@ class HubDbTableRowV3(object):
         self._values = values
 
     @property
-    def path(self):
-        """Gets the path of this HubDbTableRowV3.  # noqa: E501
-
-        Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages  # noqa: E501
-
-        :return: The path of this HubDbTableRowV3.  # noqa: E501
-        :rtype: str
-        """
-        return self._path
-
-    @path.setter
-    def path(self, path):
-        """Sets the path of this HubDbTableRowV3.
-
-        Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages  # noqa: E501
-
-        :param path: The path of this HubDbTableRowV3.  # noqa: E501
-        :type path: str
-        """
-
-        self._path = path
-
-    @property
     def name(self):
         """Gets the name of this HubDbTableRowV3.  # noqa: E501
 
@@ -175,50 +219,27 @@ class HubDbTableRowV3(object):
         self._name = name
 
     @property
-    def child_table_id(self):
-        """Gets the child_table_id of this HubDbTableRowV3.  # noqa: E501
+    def id(self):
+        """Gets the id of this HubDbTableRowV3.  # noqa: E501
 
-        Specifies the value for the column child table id  # noqa: E501
+        The id of the table row  # noqa: E501
 
-        :return: The child_table_id of this HubDbTableRowV3.  # noqa: E501
+        :return: The id of this HubDbTableRowV3.  # noqa: E501
         :rtype: str
         """
-        return self._child_table_id
+        return self._id
 
-    @child_table_id.setter
-    def child_table_id(self, child_table_id):
-        """Sets the child_table_id of this HubDbTableRowV3.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this HubDbTableRowV3.
 
-        Specifies the value for the column child table id  # noqa: E501
+        The id of the table row  # noqa: E501
 
-        :param child_table_id: The child_table_id of this HubDbTableRowV3.  # noqa: E501
-        :type child_table_id: str
+        :param id: The id of this HubDbTableRowV3.  # noqa: E501
+        :type id: str
         """
 
-        self._child_table_id = child_table_id
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this HubDbTableRowV3.  # noqa: E501
-
-        Timestamp at which the row is created  # noqa: E501
-
-        :return: The created_at of this HubDbTableRowV3.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this HubDbTableRowV3.
-
-        Timestamp at which the row is created  # noqa: E501
-
-        :param created_at: The created_at of this HubDbTableRowV3.  # noqa: E501
-        :type created_at: datetime
-        """
-
-        self._created_at = created_at
+        self._id = id
 
     @property
     def updated_at(self):
@@ -242,27 +263,6 @@ class HubDbTableRowV3(object):
         """
 
         self._updated_at = updated_at
-
-    @property
-    def published_at(self):
-        """Gets the published_at of this HubDbTableRowV3.  # noqa: E501
-
-
-        :return: The published_at of this HubDbTableRowV3.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._published_at
-
-    @published_at.setter
-    def published_at(self, published_at):
-        """Sets the published_at of this HubDbTableRowV3.
-
-
-        :param published_at: The published_at of this HubDbTableRowV3.  # noqa: E501
-        :type published_at: datetime
-        """
-
-        self._published_at = published_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

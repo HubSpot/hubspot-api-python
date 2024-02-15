@@ -35,31 +35,31 @@ class PublicSearchResults(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"total": "int", "offset": "int", "limit": "int", "results": "list[ContentSearchResult]", "search_term": "str", "page": "int"}
+    openapi_types = {"total": "int", "search_term": "str", "offset": "int", "limit": "int", "page": "int", "results": "list[ContentSearchResult]"}
 
-    attribute_map = {"total": "total", "offset": "offset", "limit": "limit", "results": "results", "search_term": "searchTerm", "page": "page"}
+    attribute_map = {"total": "total", "search_term": "searchTerm", "offset": "offset", "limit": "limit", "page": "page", "results": "results"}
 
-    def __init__(self, total=None, offset=None, limit=None, results=None, search_term=None, page=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, total=None, search_term=None, offset=None, limit=None, page=None, results=None, local_vars_configuration=None):  # noqa: E501
         """PublicSearchResults - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._total = None
+        self._search_term = None
         self._offset = None
         self._limit = None
-        self._results = None
-        self._search_term = None
         self._page = None
+        self._results = None
         self.discriminator = None
 
         self.total = total
-        self.offset = offset
-        self.limit = limit
-        self.results = results
         if search_term is not None:
             self.search_term = search_term
+        self.offset = offset
+        self.limit = limit
         self.page = page
+        self.results = results
 
     @property
     def total(self):
@@ -83,6 +83,27 @@ class PublicSearchResults(object):
             raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
 
         self._total = total
+
+    @property
+    def search_term(self):
+        """Gets the search_term of this PublicSearchResults.  # noqa: E501
+
+
+        :return: The search_term of this PublicSearchResults.  # noqa: E501
+        :rtype: str
+        """
+        return self._search_term
+
+    @search_term.setter
+    def search_term(self, search_term):
+        """Sets the search_term of this PublicSearchResults.
+
+
+        :param search_term: The search_term of this PublicSearchResults.  # noqa: E501
+        :type search_term: str
+        """
+
+        self._search_term = search_term
 
     @property
     def offset(self):
@@ -131,50 +152,6 @@ class PublicSearchResults(object):
         self._limit = limit
 
     @property
-    def results(self):
-        """Gets the results of this PublicSearchResults.  # noqa: E501
-
-
-        :return: The results of this PublicSearchResults.  # noqa: E501
-        :rtype: list[ContentSearchResult]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this PublicSearchResults.
-
-
-        :param results: The results of this PublicSearchResults.  # noqa: E501
-        :type results: list[ContentSearchResult]
-        """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
-
-        self._results = results
-
-    @property
-    def search_term(self):
-        """Gets the search_term of this PublicSearchResults.  # noqa: E501
-
-
-        :return: The search_term of this PublicSearchResults.  # noqa: E501
-        :rtype: str
-        """
-        return self._search_term
-
-    @search_term.setter
-    def search_term(self, search_term):
-        """Sets the search_term of this PublicSearchResults.
-
-
-        :param search_term: The search_term of this PublicSearchResults.  # noqa: E501
-        :type search_term: str
-        """
-
-        self._search_term = search_term
-
-    @property
     def page(self):
         """Gets the page of this PublicSearchResults.  # noqa: E501
 
@@ -196,6 +173,29 @@ class PublicSearchResults(object):
             raise ValueError("Invalid value for `page`, must not be `None`")  # noqa: E501
 
         self._page = page
+
+    @property
+    def results(self):
+        """Gets the results of this PublicSearchResults.  # noqa: E501
+
+
+        :return: The results of this PublicSearchResults.  # noqa: E501
+        :rtype: list[ContentSearchResult]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this PublicSearchResults.
+
+
+        :param results: The results of this PublicSearchResults.  # noqa: E501
+        :type results: list[ContentSearchResult]
+        """
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+
+        self._results = results
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

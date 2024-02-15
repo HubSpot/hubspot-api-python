@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,72 +35,26 @@ class VersionBlogPost(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object": "BlogPost", "user": "VersionUser", "id": "str", "updated_at": "datetime"}
+    openapi_types = {"id": "str", "user": "VersionUser", "object": "BlogPost", "updated_at": "datetime"}
 
-    attribute_map = {"object": "object", "user": "user", "id": "id", "updated_at": "updatedAt"}
+    attribute_map = {"id": "id", "user": "user", "object": "object", "updated_at": "updatedAt"}
 
-    def __init__(self, object=None, user=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, user=None, object=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """VersionBlogPost - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._object = None
-        self._user = None
         self._id = None
+        self._user = None
+        self._object = None
         self._updated_at = None
         self.discriminator = None
 
-        self.object = object
-        self.user = user
         self.id = id
+        self.user = user
+        self.object = object
         self.updated_at = updated_at
-
-    @property
-    def object(self):
-        """Gets the object of this VersionBlogPost.  # noqa: E501
-
-
-        :return: The object of this VersionBlogPost.  # noqa: E501
-        :rtype: BlogPost
-        """
-        return self._object
-
-    @object.setter
-    def object(self, object):
-        """Sets the object of this VersionBlogPost.
-
-
-        :param object: The object of this VersionBlogPost.  # noqa: E501
-        :type object: BlogPost
-        """
-        if self.local_vars_configuration.client_side_validation and object is None:  # noqa: E501
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
-
-        self._object = object
-
-    @property
-    def user(self):
-        """Gets the user of this VersionBlogPost.  # noqa: E501
-
-
-        :return: The user of this VersionBlogPost.  # noqa: E501
-        :rtype: VersionUser
-        """
-        return self._user
-
-    @user.setter
-    def user(self, user):
-        """Sets the user of this VersionBlogPost.
-
-
-        :param user: The user of this VersionBlogPost.  # noqa: E501
-        :type user: VersionUser
-        """
-        if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
-            raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
-
-        self._user = user
 
     @property
     def id(self):
@@ -126,6 +80,52 @@ class VersionBlogPost(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def user(self):
+        """Gets the user of this VersionBlogPost.  # noqa: E501
+
+
+        :return: The user of this VersionBlogPost.  # noqa: E501
+        :rtype: VersionUser
+        """
+        return self._user
+
+    @user.setter
+    def user(self, user):
+        """Sets the user of this VersionBlogPost.
+
+
+        :param user: The user of this VersionBlogPost.  # noqa: E501
+        :type user: VersionUser
+        """
+        if self.local_vars_configuration.client_side_validation and user is None:  # noqa: E501
+            raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
+
+        self._user = user
+
+    @property
+    def object(self):
+        """Gets the object of this VersionBlogPost.  # noqa: E501
+
+
+        :return: The object of this VersionBlogPost.  # noqa: E501
+        :rtype: BlogPost
+        """
+        return self._object
+
+    @object.setter
+    def object(self, object):
+        """Sets the object of this VersionBlogPost.
+
+
+        :param object: The object of this VersionBlogPost.  # noqa: E501
+        :type object: BlogPost
+        """
+        if self.local_vars_configuration.client_side_validation and object is None:  # noqa: E501
+            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
+
+        self._object = object
 
     @property
     def updated_at(self):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    URL redirects
+    CMS Url Redirects
 
     URL redirect operations  # noqa: E501
 
@@ -35,23 +35,44 @@ class NextPage(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"after": "str", "link": "str"}
+    openapi_types = {"link": "str", "after": "str"}
 
-    attribute_map = {"after": "after", "link": "link"}
+    attribute_map = {"link": "link", "after": "after"}
 
-    def __init__(self, after=None, link=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, link=None, after=None, local_vars_configuration=None):  # noqa: E501
         """NextPage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._after = None
         self._link = None
+        self._after = None
         self.discriminator = None
 
-        self.after = after
         if link is not None:
             self.link = link
+        self.after = after
+
+    @property
+    def link(self):
+        """Gets the link of this NextPage.  # noqa: E501
+
+
+        :return: The link of this NextPage.  # noqa: E501
+        :rtype: str
+        """
+        return self._link
+
+    @link.setter
+    def link(self, link):
+        """Sets the link of this NextPage.
+
+
+        :param link: The link of this NextPage.  # noqa: E501
+        :type link: str
+        """
+
+        self._link = link
 
     @property
     def after(self):
@@ -75,27 +96,6 @@ class NextPage(object):
             raise ValueError("Invalid value for `after`, must not be `None`")  # noqa: E501
 
         self._after = after
-
-    @property
-    def link(self):
-        """Gets the link of this NextPage.  # noqa: E501
-
-
-        :return: The link of this NextPage.  # noqa: E501
-        :rtype: str
-        """
-        return self._link
-
-    @link.setter
-    def link(self, link):
-        """Sets the link of this NextPage.
-
-
-        :param link: The link of this NextPage.  # noqa: E501
-        :type link: str
-        """
-
-        self._link = link
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

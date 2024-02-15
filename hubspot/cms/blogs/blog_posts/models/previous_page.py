@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -57,6 +57,7 @@ class PreviousPage(object):
     def before(self):
         """Gets the before of this PreviousPage.  # noqa: E501
 
+          # noqa: E501
 
         :return: The before of this PreviousPage.  # noqa: E501
         :rtype: str
@@ -67,6 +68,7 @@ class PreviousPage(object):
     def before(self, before):
         """Sets the before of this PreviousPage.
 
+          # noqa: E501
 
         :param before: The before of this PreviousPage.  # noqa: E501
         :type before: str
@@ -80,6 +82,7 @@ class PreviousPage(object):
     def link(self):
         """Gets the link of this PreviousPage.  # noqa: E501
 
+          # noqa: E501
 
         :return: The link of this PreviousPage.  # noqa: E501
         :rtype: str
@@ -90,6 +93,7 @@ class PreviousPage(object):
     def link(self, link):
         """Sets the link of this PreviousPage.
 
+          # noqa: E501
 
         :param link: The link of this PreviousPage.  # noqa: E501
         :type link: str

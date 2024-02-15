@@ -35,26 +35,49 @@ class IndexedField(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "value": "object", "values": "list[object]", "metadata_field": "bool"}
+    openapi_types = {"values": "list[object]", "name": "str", "value": "object", "metadata_field": "bool"}
 
-    attribute_map = {"name": "name", "value": "value", "values": "values", "metadata_field": "metadataField"}
+    attribute_map = {"values": "values", "name": "name", "value": "value", "metadata_field": "metadataField"}
 
-    def __init__(self, name=None, value=None, values=None, metadata_field=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, values=None, name=None, value=None, metadata_field=None, local_vars_configuration=None):  # noqa: E501
         """IndexedField - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._values = None
         self._name = None
         self._value = None
-        self._values = None
         self._metadata_field = None
         self.discriminator = None
 
+        self.values = values
         self.name = name
         self.value = value
-        self.values = values
         self.metadata_field = metadata_field
+
+    @property
+    def values(self):
+        """Gets the values of this IndexedField.  # noqa: E501
+
+
+        :return: The values of this IndexedField.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        """Sets the values of this IndexedField.
+
+
+        :param values: The values of this IndexedField.  # noqa: E501
+        :type values: list[object]
+        """
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+
+        self._values = values
 
     @property
     def name(self):
@@ -101,29 +124,6 @@ class IndexedField(object):
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
-
-    @property
-    def values(self):
-        """Gets the values of this IndexedField.  # noqa: E501
-
-
-        :return: The values of this IndexedField.  # noqa: E501
-        :rtype: list[object]
-        """
-        return self._values
-
-    @values.setter
-    def values(self, values):
-        """Sets the values of this IndexedField.
-
-
-        :param values: The values of this IndexedField.  # noqa: E501
-        :type values: list[object]
-        """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
-
-        self._values = values
 
     @property
     def metadata_field(self):

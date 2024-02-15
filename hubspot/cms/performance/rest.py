@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CMS Performance API
+    CMS Performance
 
     Use these endpoints to get a time series view of your website's performance.  # noqa: E501
 

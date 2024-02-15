@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,45 +35,22 @@ class RowMetaData(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"styles": "Styles", "css_class": "str"}
+    openapi_types = {"css_class": "str", "styles": "Styles"}
 
-    attribute_map = {"styles": "styles", "css_class": "cssClass"}
+    attribute_map = {"css_class": "cssClass", "styles": "styles"}
 
-    def __init__(self, styles=None, css_class=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, css_class=None, styles=None, local_vars_configuration=None):  # noqa: E501
         """RowMetaData - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._styles = None
         self._css_class = None
+        self._styles = None
         self.discriminator = None
 
-        self.styles = styles
         self.css_class = css_class
-
-    @property
-    def styles(self):
-        """Gets the styles of this RowMetaData.  # noqa: E501
-
-
-        :return: The styles of this RowMetaData.  # noqa: E501
-        :rtype: Styles
-        """
-        return self._styles
-
-    @styles.setter
-    def styles(self, styles):
-        """Sets the styles of this RowMetaData.
-
-
-        :param styles: The styles of this RowMetaData.  # noqa: E501
-        :type styles: Styles
-        """
-        if self.local_vars_configuration.client_side_validation and styles is None:  # noqa: E501
-            raise ValueError("Invalid value for `styles`, must not be `None`")  # noqa: E501
-
-        self._styles = styles
+        self.styles = styles
 
     @property
     def css_class(self):
@@ -97,6 +74,29 @@ class RowMetaData(object):
             raise ValueError("Invalid value for `css_class`, must not be `None`")  # noqa: E501
 
         self._css_class = css_class
+
+    @property
+    def styles(self):
+        """Gets the styles of this RowMetaData.  # noqa: E501
+
+
+        :return: The styles of this RowMetaData.  # noqa: E501
+        :rtype: Styles
+        """
+        return self._styles
+
+    @styles.setter
+    def styles(self, styles):
+        """Sets the styles of this RowMetaData.
+
+
+        :param styles: The styles of this RowMetaData.  # noqa: E501
+        :type styles: Styles
+        """
+        if self.local_vars_configuration.client_side_validation and styles is None:  # noqa: E501
+            raise ValueError("Invalid value for `styles`, must not be `None`")  # noqa: E501
+
+        self._styles = styles
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

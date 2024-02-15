@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,24 +35,49 @@ class VersionUser(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "email": "str", "full_name": "str"}
+    openapi_types = {"full_name": "str", "id": "str", "email": "str"}
 
-    attribute_map = {"id": "id", "email": "email", "full_name": "fullName"}
+    attribute_map = {"full_name": "fullName", "id": "id", "email": "email"}
 
-    def __init__(self, id=None, email=None, full_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, full_name=None, id=None, email=None, local_vars_configuration=None):  # noqa: E501
         """VersionUser - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._full_name = None
         self._id = None
         self._email = None
-        self._full_name = None
         self.discriminator = None
 
+        self.full_name = full_name
         self.id = id
         self.email = email
-        self.full_name = full_name
+
+    @property
+    def full_name(self):
+        """Gets the full_name of this VersionUser.  # noqa: E501
+
+        The first and last name of the User.  # noqa: E501
+
+        :return: The full_name of this VersionUser.  # noqa: E501
+        :rtype: str
+        """
+        return self._full_name
+
+    @full_name.setter
+    def full_name(self, full_name):
+        """Sets the full_name of this VersionUser.
+
+        The first and last name of the User.  # noqa: E501
+
+        :param full_name: The full_name of this VersionUser.  # noqa: E501
+        :type full_name: str
+        """
+        if self.local_vars_configuration.client_side_validation and full_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `full_name`, must not be `None`")  # noqa: E501
+
+        self._full_name = full_name
 
     @property
     def id(self):
@@ -103,31 +128,6 @@ class VersionUser(object):
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
 
         self._email = email
-
-    @property
-    def full_name(self):
-        """Gets the full_name of this VersionUser.  # noqa: E501
-
-        The first and last name of the User.  # noqa: E501
-
-        :return: The full_name of this VersionUser.  # noqa: E501
-        :rtype: str
-        """
-        return self._full_name
-
-    @full_name.setter
-    def full_name(self, full_name):
-        """Sets the full_name of this VersionUser.
-
-        The first and last name of the User.  # noqa: E501
-
-        :param full_name: The full_name of this VersionUser.  # noqa: E501
-        :type full_name: str
-        """
-        if self.local_vars_configuration.client_side_validation and full_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `full_name`, must not be `None`")  # noqa: E501
-
-        self._full_name = full_name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

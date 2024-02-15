@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,30 +35,31 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"total": "int", "results": "list[HubDbTableV3]", "paging": "ForwardPaging"}
+    openapi_types = {"total": "int", "paging": "ForwardPaging", "results": "list[HubDbTableV3]"}
 
-    attribute_map = {"total": "total", "results": "results", "paging": "paging"}
+    attribute_map = {"total": "total", "paging": "paging", "results": "results"}
 
-    def __init__(self, total=None, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, total=None, paging=None, results=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseWithTotalHubDbTableV3ForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._total = None
-        self._results = None
         self._paging = None
+        self._results = None
         self.discriminator = None
 
         self.total = total
-        self.results = results
         if paging is not None:
             self.paging = paging
+        self.results = results
 
     @property
     def total(self):
         """Gets the total of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
 
+          # noqa: E501
 
         :return: The total of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
         :rtype: int
@@ -69,6 +70,7 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging(object):
     def total(self, total):
         """Sets the total of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.
 
+          # noqa: E501
 
         :param total: The total of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
         :type total: int
@@ -77,29 +79,6 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging(object):
             raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
 
         self._total = total
-
-    @property
-    def results(self):
-        """Gets the results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
-
-
-        :return: The results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
-        :rtype: list[HubDbTableV3]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.
-
-
-        :param results: The results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
-        :type results: list[HubDbTableV3]
-        """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
-
-        self._results = results
 
     @property
     def paging(self):
@@ -121,6 +100,31 @@ class CollectionResponseWithTotalHubDbTableV3ForwardPaging(object):
         """
 
         self._paging = paging
+
+    @property
+    def results(self):
+        """Gets the results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
+        :rtype: list[HubDbTableV3]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.
+
+          # noqa: E501
+
+        :param results: The results of this CollectionResponseWithTotalHubDbTableV3ForwardPaging.  # noqa: E501
+        :type results: list[HubDbTableV3]
+        """
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+
+        self._results = results
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

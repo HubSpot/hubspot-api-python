@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -120,9 +120,6 @@ class BackgroundImage(object):
         """
         if self.local_vars_configuration.client_side_validation and background_position is None:  # noqa: E501
             raise ValueError("Invalid value for `background_position`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP_LEFT", "TOP_CENTER", "TOP_RIGHT", "MIDDLE_LEFT", "MIDDLE_CENTER", "MIDDLE_RIGHT", "BOTTOM_LEFT", "BOTTOM_CENTER", "BOTTOM_RIGHT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and background_position not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `background_position` ({0}), must be one of {1}".format(background_position, allowed_values))  # noqa: E501
 
         self._background_position = background_position
 

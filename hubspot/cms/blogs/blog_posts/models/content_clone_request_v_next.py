@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,23 +35,46 @@ class ContentCloneRequestVNext(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "clone_name": "str"}
+    openapi_types = {"clone_name": "str", "id": "str"}
 
-    attribute_map = {"id": "id", "clone_name": "cloneName"}
+    attribute_map = {"clone_name": "cloneName", "id": "id"}
 
-    def __init__(self, id=None, clone_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, clone_name=None, id=None, local_vars_configuration=None):  # noqa: E501
         """ContentCloneRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._clone_name = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         if clone_name is not None:
             self.clone_name = clone_name
+        self.id = id
+
+    @property
+    def clone_name(self):
+        """Gets the clone_name of this ContentCloneRequestVNext.  # noqa: E501
+
+        Name of the cloned object.  # noqa: E501
+
+        :return: The clone_name of this ContentCloneRequestVNext.  # noqa: E501
+        :rtype: str
+        """
+        return self._clone_name
+
+    @clone_name.setter
+    def clone_name(self, clone_name):
+        """Sets the clone_name of this ContentCloneRequestVNext.
+
+        Name of the cloned object.  # noqa: E501
+
+        :param clone_name: The clone_name of this ContentCloneRequestVNext.  # noqa: E501
+        :type clone_name: str
+        """
+
+        self._clone_name = clone_name
 
     @property
     def id(self):
@@ -77,29 +100,6 @@ class ContentCloneRequestVNext(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def clone_name(self):
-        """Gets the clone_name of this ContentCloneRequestVNext.  # noqa: E501
-
-        Name of the cloned object.  # noqa: E501
-
-        :return: The clone_name of this ContentCloneRequestVNext.  # noqa: E501
-        :rtype: str
-        """
-        return self._clone_name
-
-    @clone_name.setter
-    def clone_name(self, clone_name):
-        """Sets the clone_name of this ContentCloneRequestVNext.
-
-        Name of the cloned object.  # noqa: E501
-
-        :param clone_name: The clone_name of this ContentCloneRequestVNext.  # noqa: E501
-        :type clone_name: str
-        """
-
-        self._clone_name = clone_name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

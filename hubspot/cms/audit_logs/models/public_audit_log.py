@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CMS Audit Logs
+    Cms Content Audit
 
     Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.  # noqa: E501
 
@@ -35,107 +35,65 @@ class PublicAuditLog(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object_id": "str", "user_id": "str", "timestamp": "datetime", "object_name": "str", "full_name": "str", "event": "str", "object_type": "str"}
+    openapi_types = {"meta": "object", "object_name": "str", "full_name": "str", "event": "str", "user_id": "str", "object_id": "str", "object_type": "str", "timestamp": "datetime"}
 
-    attribute_map = {"object_id": "objectId", "user_id": "userId", "timestamp": "timestamp", "object_name": "objectName", "full_name": "fullName", "event": "event", "object_type": "objectType"}
+    attribute_map = {
+        "meta": "meta",
+        "object_name": "objectName",
+        "full_name": "fullName",
+        "event": "event",
+        "user_id": "userId",
+        "object_id": "objectId",
+        "object_type": "objectType",
+        "timestamp": "timestamp",
+    }
 
-    def __init__(self, object_id=None, user_id=None, timestamp=None, object_name=None, full_name=None, event=None, object_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, meta=None, object_name=None, full_name=None, event=None, user_id=None, object_id=None, object_type=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
         """PublicAuditLog - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._object_id = None
-        self._user_id = None
-        self._timestamp = None
+        self._meta = None
         self._object_name = None
         self._full_name = None
         self._event = None
+        self._user_id = None
+        self._object_id = None
         self._object_type = None
+        self._timestamp = None
         self.discriminator = None
 
-        self.object_id = object_id
-        self.user_id = user_id
-        self.timestamp = timestamp
+        if meta is not None:
+            self.meta = meta
         self.object_name = object_name
         self.full_name = full_name
         self.event = event
+        self.user_id = user_id
+        self.object_id = object_id
         self.object_type = object_type
+        self.timestamp = timestamp
 
     @property
-    def object_id(self):
-        """Gets the object_id of this PublicAuditLog.  # noqa: E501
+    def meta(self):
+        """Gets the meta of this PublicAuditLog.  # noqa: E501
 
-        The ID of the object.  # noqa: E501
 
-        :return: The object_id of this PublicAuditLog.  # noqa: E501
-        :rtype: str
+        :return: The meta of this PublicAuditLog.  # noqa: E501
+        :rtype: object
         """
-        return self._object_id
+        return self._meta
 
-    @object_id.setter
-    def object_id(self, object_id):
-        """Sets the object_id of this PublicAuditLog.
+    @meta.setter
+    def meta(self, meta):
+        """Sets the meta of this PublicAuditLog.
 
-        The ID of the object.  # noqa: E501
 
-        :param object_id: The object_id of this PublicAuditLog.  # noqa: E501
-        :type object_id: str
+        :param meta: The meta of this PublicAuditLog.  # noqa: E501
+        :type meta: object
         """
-        if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
 
-        self._object_id = object_id
-
-    @property
-    def user_id(self):
-        """Gets the user_id of this PublicAuditLog.  # noqa: E501
-
-        The ID of the user who caused the event.  # noqa: E501
-
-        :return: The user_id of this PublicAuditLog.  # noqa: E501
-        :rtype: str
-        """
-        return self._user_id
-
-    @user_id.setter
-    def user_id(self, user_id):
-        """Sets the user_id of this PublicAuditLog.
-
-        The ID of the user who caused the event.  # noqa: E501
-
-        :param user_id: The user_id of this PublicAuditLog.  # noqa: E501
-        :type user_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
-
-        self._user_id = user_id
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this PublicAuditLog.  # noqa: E501
-
-        The timestamp at which the event occurred.  # noqa: E501
-
-        :return: The timestamp of this PublicAuditLog.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this PublicAuditLog.
-
-        The timestamp at which the event occurred.  # noqa: E501
-
-        :param timestamp: The timestamp of this PublicAuditLog.  # noqa: E501
-        :type timestamp: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
-
-        self._timestamp = timestamp
+        self._meta = meta
 
     @property
     def object_name(self):
@@ -209,11 +167,61 @@ class PublicAuditLog(object):
         """
         if self.local_vars_configuration.client_side_validation and event is None:  # noqa: E501
             raise ValueError("Invalid value for `event`, must not be `None`")  # noqa: E501
-        allowed_values = ["CREATED", "UPDATED", "PUBLISHED", "DELETED", "UNPUBLISHED"]  # noqa: E501
+        allowed_values = ["CREATED", "UPDATED", "PUBLISHED", "DELETED", "UNPUBLISHED", "RESTORE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event` ({0}), must be one of {1}".format(event, allowed_values))  # noqa: E501
 
         self._event = event
+
+    @property
+    def user_id(self):
+        """Gets the user_id of this PublicAuditLog.  # noqa: E501
+
+        The ID of the user who caused the event.  # noqa: E501
+
+        :return: The user_id of this PublicAuditLog.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this PublicAuditLog.
+
+        The ID of the user who caused the event.  # noqa: E501
+
+        :param user_id: The user_id of this PublicAuditLog.  # noqa: E501
+        :type user_id: str
+        """
+        if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+
+        self._user_id = user_id
+
+    @property
+    def object_id(self):
+        """Gets the object_id of this PublicAuditLog.  # noqa: E501
+
+        The ID of the object.  # noqa: E501
+
+        :return: The object_id of this PublicAuditLog.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_id
+
+    @object_id.setter
+    def object_id(self, object_id):
+        """Sets the object_id of this PublicAuditLog.
+
+        The ID of the object.  # noqa: E501
+
+        :param object_id: The object_id of this PublicAuditLog.  # noqa: E501
+        :type object_id: str
+        """
+        if self.local_vars_configuration.client_side_validation and object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
+
+        self._object_id = object_id
 
     @property
     def object_type(self):
@@ -256,11 +264,38 @@ class PublicAuditLog(object):
             "THEME",
             "CSS",
             "JS",
+            "CTA",
+            "FILE",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `object_type` ({0}), must be one of {1}".format(object_type, allowed_values))  # noqa: E501
 
         self._object_type = object_type
+
+    @property
+    def timestamp(self):
+        """Gets the timestamp of this PublicAuditLog.  # noqa: E501
+
+        The timestamp at which the event occurred.  # noqa: E501
+
+        :return: The timestamp of this PublicAuditLog.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        """Sets the timestamp of this PublicAuditLog.
+
+        The timestamp at which the event occurred.  # noqa: E501
+
+        :param timestamp: The timestamp of this PublicAuditLog.  # noqa: E501
+        :type timestamp: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
+            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
+
+        self._timestamp = timestamp
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

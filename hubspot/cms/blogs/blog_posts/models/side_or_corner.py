@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,48 +35,22 @@ class SideOrCorner(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"vertical_side": "str", "horizontal_side": "str"}
+    openapi_types = {"horizontal_side": "str", "vertical_side": "str"}
 
-    attribute_map = {"vertical_side": "verticalSide", "horizontal_side": "horizontalSide"}
+    attribute_map = {"horizontal_side": "horizontalSide", "vertical_side": "verticalSide"}
 
-    def __init__(self, vertical_side=None, horizontal_side=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, horizontal_side=None, vertical_side=None, local_vars_configuration=None):  # noqa: E501
         """SideOrCorner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._vertical_side = None
         self._horizontal_side = None
+        self._vertical_side = None
         self.discriminator = None
 
-        self.vertical_side = vertical_side
         self.horizontal_side = horizontal_side
-
-    @property
-    def vertical_side(self):
-        """Gets the vertical_side of this SideOrCorner.  # noqa: E501
-
-
-        :return: The vertical_side of this SideOrCorner.  # noqa: E501
-        :rtype: str
-        """
-        return self._vertical_side
-
-    @vertical_side.setter
-    def vertical_side(self, vertical_side):
-        """Sets the vertical_side of this SideOrCorner.
-
-
-        :param vertical_side: The vertical_side of this SideOrCorner.  # noqa: E501
-        :type vertical_side: str
-        """
-        if self.local_vars_configuration.client_side_validation and vertical_side is None:  # noqa: E501
-            raise ValueError("Invalid value for `vertical_side`, must not be `None`")  # noqa: E501
-        allowed_values = ["TOP", "MIDDLE", "BOTTOM"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and vertical_side not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `vertical_side` ({0}), must be one of {1}".format(vertical_side, allowed_values))  # noqa: E501
-
-        self._vertical_side = vertical_side
+        self.vertical_side = vertical_side
 
     @property
     def horizontal_side(self):
@@ -98,11 +72,31 @@ class SideOrCorner(object):
         """
         if self.local_vars_configuration.client_side_validation and horizontal_side is None:  # noqa: E501
             raise ValueError("Invalid value for `horizontal_side`, must not be `None`")  # noqa: E501
-        allowed_values = ["LEFT", "CENTER", "RIGHT"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and horizontal_side not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `horizontal_side` ({0}), must be one of {1}".format(horizontal_side, allowed_values))  # noqa: E501
 
         self._horizontal_side = horizontal_side
+
+    @property
+    def vertical_side(self):
+        """Gets the vertical_side of this SideOrCorner.  # noqa: E501
+
+
+        :return: The vertical_side of this SideOrCorner.  # noqa: E501
+        :rtype: str
+        """
+        return self._vertical_side
+
+    @vertical_side.setter
+    def vertical_side(self, vertical_side):
+        """Sets the vertical_side of this SideOrCorner.
+
+
+        :param vertical_side: The vertical_side of this SideOrCorner.  # noqa: E501
+        :type vertical_side: str
+        """
+        if self.local_vars_configuration.client_side_validation and vertical_side is None:  # noqa: E501
+            raise ValueError("Invalid value for `vertical_side`, must not be `None`")  # noqa: E501
+
+        self._vertical_side = vertical_side
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

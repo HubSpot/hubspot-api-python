@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Authors
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -36,69 +36,117 @@ class StandardError(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "status": "str",
-        "id": "str",
-        "category": "object",
         "sub_category": "object",
-        "message": "str",
-        "errors": "list[ErrorDetail]",
         "context": "dict[str, list[str]]",
         "links": "dict[str, str]",
+        "id": "str",
+        "category": "str",
+        "message": "str",
+        "errors": "list[ErrorDetail]",
+        "status": "str",
     }
 
-    attribute_map = {"status": "status", "id": "id", "category": "category", "sub_category": "subCategory", "message": "message", "errors": "errors", "context": "context", "links": "links"}
+    attribute_map = {"sub_category": "subCategory", "context": "context", "links": "links", "id": "id", "category": "category", "message": "message", "errors": "errors", "status": "status"}
 
-    def __init__(self, status=None, id=None, category=None, sub_category=None, message=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, sub_category=None, context=None, links=None, id=None, category=None, message=None, errors=None, status=None, local_vars_configuration=None):  # noqa: E501
         """StandardError - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._status = None
-        self._id = None
-        self._category = None
         self._sub_category = None
-        self._message = None
-        self._errors = None
         self._context = None
         self._links = None
+        self._id = None
+        self._category = None
+        self._message = None
+        self._errors = None
+        self._status = None
         self.discriminator = None
 
-        self.status = status
+        if sub_category is not None:
+            self.sub_category = sub_category
+        self.context = context
+        self.links = links
         if id is not None:
             self.id = id
         self.category = category
-        if sub_category is not None:
-            self.sub_category = sub_category
         self.message = message
         self.errors = errors
-        self.context = context
-        self.links = links
+        self.status = status
 
     @property
-    def status(self):
-        """Gets the status of this StandardError.  # noqa: E501
+    def sub_category(self):
+        """Gets the sub_category of this StandardError.  # noqa: E501
 
-        Error status.  # noqa: E501
+        Error subcategory.  # noqa: E501
 
-        :return: The status of this StandardError.  # noqa: E501
-        :rtype: str
+        :return: The sub_category of this StandardError.  # noqa: E501
+        :rtype: object
         """
-        return self._status
+        return self._sub_category
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this StandardError.
+    @sub_category.setter
+    def sub_category(self, sub_category):
+        """Sets the sub_category of this StandardError.
 
-        Error status.  # noqa: E501
+        Error subcategory.  # noqa: E501
 
-        :param status: The status of this StandardError.  # noqa: E501
-        :type status: str
+        :param sub_category: The sub_category of this StandardError.  # noqa: E501
+        :type sub_category: object
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
-        self._status = status
+        self._sub_category = sub_category
+
+    @property
+    def context(self):
+        """Gets the context of this StandardError.  # noqa: E501
+
+        Error context.  # noqa: E501
+
+        :return: The context of this StandardError.  # noqa: E501
+        :rtype: dict[str, list[str]]
+        """
+        return self._context
+
+    @context.setter
+    def context(self, context):
+        """Sets the context of this StandardError.
+
+        Error context.  # noqa: E501
+
+        :param context: The context of this StandardError.  # noqa: E501
+        :type context: dict[str, list[str]]
+        """
+        if self.local_vars_configuration.client_side_validation and context is None:  # noqa: E501
+            raise ValueError("Invalid value for `context`, must not be `None`")  # noqa: E501
+
+        self._context = context
+
+    @property
+    def links(self):
+        """Gets the links of this StandardError.  # noqa: E501
+
+        Error links.  # noqa: E501
+
+        :return: The links of this StandardError.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this StandardError.
+
+        Error links.  # noqa: E501
+
+        :param links: The links of this StandardError.  # noqa: E501
+        :type links: dict[str, str]
+        """
+        if self.local_vars_configuration.client_side_validation and links is None:  # noqa: E501
+            raise ValueError("Invalid value for `links`, must not be `None`")  # noqa: E501
+
+        self._links = links
 
     @property
     def id(self):
@@ -127,10 +175,10 @@ class StandardError(object):
     def category(self):
         """Gets the category of this StandardError.  # noqa: E501
 
-        Model definition for an error category.  # noqa: E501
+        Error category.  # noqa: E501
 
         :return: The category of this StandardError.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._category
 
@@ -138,38 +186,15 @@ class StandardError(object):
     def category(self, category):
         """Sets the category of this StandardError.
 
-        Model definition for an error category.  # noqa: E501
+        Error category.  # noqa: E501
 
         :param category: The category of this StandardError.  # noqa: E501
-        :type category: object
+        :type category: str
         """
         if self.local_vars_configuration.client_side_validation and category is None:  # noqa: E501
             raise ValueError("Invalid value for `category`, must not be `None`")  # noqa: E501
 
         self._category = category
-
-    @property
-    def sub_category(self):
-        """Gets the sub_category of this StandardError.  # noqa: E501
-
-        Error subcategory.  # noqa: E501
-
-        :return: The sub_category of this StandardError.  # noqa: E501
-        :rtype: object
-        """
-        return self._sub_category
-
-    @sub_category.setter
-    def sub_category(self, sub_category):
-        """Sets the sub_category of this StandardError.
-
-        Error subcategory.  # noqa: E501
-
-        :param sub_category: The sub_category of this StandardError.  # noqa: E501
-        :type sub_category: object
-        """
-
-        self._sub_category = sub_category
 
     @property
     def message(self):
@@ -222,54 +247,29 @@ class StandardError(object):
         self._errors = errors
 
     @property
-    def context(self):
-        """Gets the context of this StandardError.  # noqa: E501
+    def status(self):
+        """Gets the status of this StandardError.  # noqa: E501
 
-        Error context.  # noqa: E501
+        Error status.  # noqa: E501
 
-        :return: The context of this StandardError.  # noqa: E501
-        :rtype: dict[str, list[str]]
+        :return: The status of this StandardError.  # noqa: E501
+        :rtype: str
         """
-        return self._context
+        return self._status
 
-    @context.setter
-    def context(self, context):
-        """Sets the context of this StandardError.
+    @status.setter
+    def status(self, status):
+        """Sets the status of this StandardError.
 
-        Error context.  # noqa: E501
+        Error status.  # noqa: E501
 
-        :param context: The context of this StandardError.  # noqa: E501
-        :type context: dict[str, list[str]]
+        :param status: The status of this StandardError.  # noqa: E501
+        :type status: str
         """
-        if self.local_vars_configuration.client_side_validation and context is None:  # noqa: E501
-            raise ValueError("Invalid value for `context`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
-        self._context = context
-
-    @property
-    def links(self):
-        """Gets the links of this StandardError.  # noqa: E501
-
-        Error links.  # noqa: E501
-
-        :return: The links of this StandardError.  # noqa: E501
-        :rtype: dict[str, str]
-        """
-        return self._links
-
-    @links.setter
-    def links(self, links):
-        """Sets the links of this StandardError.
-
-        Error links.  # noqa: E501
-
-        :param links: The links of this StandardError.  # noqa: E501
-        :type links: dict[str, str]
-        """
-        if self.local_vars_configuration.client_side_validation and links is None:  # noqa: E501
-            raise ValueError("Invalid value for `links`, must not be `None`")  # noqa: E501
-
-        self._links = links
+        self._status = status
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

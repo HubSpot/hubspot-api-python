@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,22 +35,45 @@ class Angle(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"value": "float", "units": "str"}
+    openapi_types = {"units": "str", "value": "float"}
 
-    attribute_map = {"value": "value", "units": "units"}
+    attribute_map = {"units": "units", "value": "value"}
 
-    def __init__(self, value=None, units=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, units=None, value=None, local_vars_configuration=None):  # noqa: E501
         """Angle - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._value = None
         self._units = None
+        self._value = None
         self.discriminator = None
 
-        self.value = value
         self.units = units
+        self.value = value
+
+    @property
+    def units(self):
+        """Gets the units of this Angle.  # noqa: E501
+
+
+        :return: The units of this Angle.  # noqa: E501
+        :rtype: str
+        """
+        return self._units
+
+    @units.setter
+    def units(self, units):
+        """Sets the units of this Angle.
+
+
+        :param units: The units of this Angle.  # noqa: E501
+        :type units: str
+        """
+        if self.local_vars_configuration.client_side_validation and units is None:  # noqa: E501
+            raise ValueError("Invalid value for `units`, must not be `None`")  # noqa: E501
+
+        self._units = units
 
     @property
     def value(self):
@@ -74,32 +97,6 @@ class Angle(object):
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
-
-    @property
-    def units(self):
-        """Gets the units of this Angle.  # noqa: E501
-
-
-        :return: The units of this Angle.  # noqa: E501
-        :rtype: str
-        """
-        return self._units
-
-    @units.setter
-    def units(self, units):
-        """Sets the units of this Angle.
-
-
-        :param units: The units of this Angle.  # noqa: E501
-        :type units: str
-        """
-        if self.local_vars_configuration.client_side_validation and units is None:  # noqa: E501
-            raise ValueError("Invalid value for `units`, must not be `None`")  # noqa: E501
-        allowed_values = ["deg", "grad", "rad", "turn"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and units not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `units` ({0}), must be one of {1}".format(units, allowed_values))  # noqa: E501
-
-        self._units = units
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

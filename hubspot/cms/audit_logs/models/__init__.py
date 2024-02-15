@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    CMS Audit Logs
+    Cms Content Audit
 
     Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.  # noqa: E501
 
@@ -19,4 +19,5 @@ from hubspot.cms.audit_logs.models.error import Error
 from hubspot.cms.audit_logs.models.error_detail import ErrorDetail
 from hubspot.cms.audit_logs.models.next_page import NextPage
 from hubspot.cms.audit_logs.models.paging import Paging
+from hubspot.cms.audit_logs.models.previous_page import PreviousPage
 from hubspot.cms.audit_logs.models.public_audit_log import PublicAuditLog
