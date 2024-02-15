@@ -5,7 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...HEAD)
+
+## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-02-20
+
+### Automation Actions Definitions API:
+- Updated `create` method to accept `public_action_definition_egg` instead of `extension_action_definition_input` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
+- Updated `get_by_id` method to return `PublicActionDefinition` instead of `ExtensionActionDefinition`.
+- Updated `get_page` method to return `CollectionResponsePublicActionDefinitionForwardPaging` instead of `CollectionResponseExtensionActionDefinitionForwardPaging`.
+- Updated `update` method to accept `public_action_definition_patch` instead of `extension_action_definition_patch` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
+
+### Automation Actions Functions API:
+- Updated `create_or_replace` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
+- Updated `create_or_replace_by_function_type` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
+- Updated `get_by_function_type` method to return `PublicActionFunction` instead of `ActionFunction`.
+- Updated `get_by_id` method to return `PublicActionFunction` instead of `ActionFunction`.
+- Updated `get_page` method to return `CollectionResponsePublicActionFunctionIdentifierNoPaging` instead of `CollectionResponseActionFunctionIdentifierNoPaging`.
+
+### Automation Actions Revisions API:
+- Updated `get_by_id` method to return `PublicActionRevision` instead of `ActionRevision`.
+- Updated `get_page` method to return `CollectionResponsePublicActionRevisionForwardPaging` instead of `CollectionResponseActionRevisionForwardPaging`.
+
+### Changes Automation Actions models:
+- Added new function type `POST_ACTION_EXECUTION` to `automation.actions.models.PublicActionFunctionIdentifier` and `automation.actions.models.PublicActionFunction`.
+- Added new param `automation_field_type` to `automation.actions.models.InputFieldDefinition`
+- Added `automation.actions.models.OutputFieldDefinition`
+- Added `automation.actions.models.PublicExecutionTranslationRule`
+- Update params to `automation.actions.models.FieldTypeDefinition`:
+
+```python
+{
+    "help_text": "str",
+    "referenced_object_type": "str",
+    "name": "str",
+    "options": "list[Option]",
+    "description": "str",
+    "external_options_reference_type": "str",
+    "label": "str",
+    "type": "str",
+    "field_type": "str",
+    "options_url": "str",
+    "external_options": "bool",
+}
+```
+
+### Changes in Oauth models
+
+- Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`
+
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
