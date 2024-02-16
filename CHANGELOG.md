@@ -28,9 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes Automation Actions models:
 - Added new function type `POST_ACTION_EXECUTION` to `automation.actions.models.PublicActionFunctionIdentifier` and `automation.actions.models.PublicActionFunction`.
-- Added new param `automation_field_type` to `automation.actions.models.InputFieldDefinition`
-- Added `automation.actions.models.OutputFieldDefinition`
-- Added `automation.actions.models.PublicExecutionTranslationRule`
+- Added new param `automation_field_type` to `automation.actions.models.InputFieldDefinition`.
+- Added `automation.actions.models.OutputFieldDefinition`.
+- Added `automation.actions.models.PublicExecutionTranslationRule`.
 - Update params to `automation.actions.models.FieldTypeDefinition`:
 
 ```python
@@ -50,25 +50,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ```
 
 ### Changes in Oauth models
-- Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`
+- Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
-### CMS Blogs Authors API:
-- Updated `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods to return `None` instead of `Error`.
-- Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`
-
-### CMS Blogs Posts API:
-- Updated `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods to return `None` instead of `Error`.
-- Added new param `_property` to `cms.blogs.blog_posts.blog_posts_api.get_by_id()` and `cms.blogs.blog_posts.blog_posts_api.get_page()`
-
-### CMS Blogs Tags API:
-- Updated `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods to return `None` instead of `Error`.
-- Added new param `_property` to `cms.blogs.tags.blog_tags_api.get_by_id()` and `cms.blogs.tags.blog_tags_api.get_page()`
+### CMS Blog APIs:
+- `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods return `None` instead of `Error`.
+- Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`.
 
 ### CMS Source Code API:
 - Renamed `content_api.get()` method to `content_api.download()`.
 - Renamed `content_api.replace()` method to `content_api.create_or_update()`.
-- Added new param `hash` to `cms.source_code.models.AssetFileMetadata`
-- Added new param `properties` to `cms.source_code.metadata_api.get()`
+- Added new param `hash` to `cms.source_code.models.AssetFileMetadata`.
+- Added new param `properties` to `cms.source_code.metadata_api.get()`.
 
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
