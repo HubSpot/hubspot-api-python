@@ -65,8 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new param `_property` to `cms.blogs.tags.blog_tags_api.get_by_id()` and `cms.blogs.tags.blog_tags_api.get_page()`
 
 ### CMS Source Code API:
-- Renamed `download` method to `download()` instead of `get()`.
-- Renamed `create_or_update` method to `create_or_update()` instead of `replace()`.
+- Renamed `get` method to `download`.
+- Renamed `replace` method to `create_or_update`.
 - Added new param `hash` to `cms.source_code.models.AssetFileMetadata`
 - Added new param `properties` to `cms.source_code.metadata_api.get()`
 
