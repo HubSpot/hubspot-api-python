@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
 ### CMS Blog APIs:
-- `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods return `None` instead of `Error`.
+- `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods of all Api clients return `None` instead of `Error`.
 - Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`.
 
 ### CMS Source Code API:
