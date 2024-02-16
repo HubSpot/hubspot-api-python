@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
 ### CMS Blog APIs:
-- `attach_to_lang_group`, `detach_from_lang_group`, and `update_langs` methods of all Api clients return `None` instead of `Error`.
+- `attach_to_lang_group`, `detach_from_lang_group` and `update_langs` methods of all Api clients return `None` instead of `Error`.
 - Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`.
 
 ### CMS Source Code API:
@@ -61,6 +61,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed `content_api.replace()` method to `content_api.create_or_update()`.
 - Added new param `hash` to `cms.source_code.models.AssetFileMetadata`.
 - Added new param `properties` to `cms.source_code.metadata_api.get()`.
+
+### Changes in CRM Associations API (associations) v4
+- Methods `archive`, `create` and `create_default` of class `BasicApi` now accept parameters `object_id` and `to_object_id` of type `string` instead of `int`.
+- Method `get_page` of class `BasicApi` now accepts parameter `object_id` of type `string` instead of `int`.
+- Changed the type of parameters `to_object_id` and `from_object_id` in class `LabelsBetweenObjectPair` to `string`.
+- Changed the type of parameter `to_object_id` in class `MultiAssociatedObjectWithLabel` to `string`.
+- Changed the type of property `category` in class `ErrorCategory` to `string`.
+
+### Changes in AssociationsV4 Models
+- Type of errors array in class `BatchResponsePublicDefaultAssociation` changed from `StandardError1[]` to `StandardError[]`.
+- Added parameter `inverse_label` to classes `PublicAssociationDefinitionCreateRequest` and `PublicAssociationDefinitionUpdateRequest`.
+
+### Changes in AssociationsV4 Schema API Methods
+- Method `delete` renamed to `archive` in class `DefinitionsApi`.
 
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
