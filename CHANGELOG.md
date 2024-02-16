@@ -70,7 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the type of property `category` in class `ErrorCategory` to `string`.
 
 ### Changes in AssociationsV4 Models
-- Changed type of errors list in class `BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
+- Changed the type of property `errors` in class `BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
 - Added parameter `inverse_label` to classes `PublicAssociationDefinitionCreateRequest` and `PublicAssociationDefinitionUpdateRequest`.
 
 ### Changes in AssociationsV4 Schema API Methods
