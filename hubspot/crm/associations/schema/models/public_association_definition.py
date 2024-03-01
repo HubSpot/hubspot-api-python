@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Associations
+    CRM Associations Schema
 
     Associations define the relationships between objects in HubSpot. These endpoints allow you to create, read, and remove associations.  # noqa: E501
 
@@ -35,45 +35,22 @@ class PublicAssociationDefinition(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str"}
+    openapi_types = {"name": "str", "id": "str"}
 
-    attribute_map = {"id": "id", "name": "name"}
+    attribute_map = {"name": "name", "id": "id"}
 
-    def __init__(self, id=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, id=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._name = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         self.name = name
-
-    @property
-    def id(self):
-        """Gets the id of this PublicAssociationDefinition.  # noqa: E501
-
-
-        :return: The id of this PublicAssociationDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicAssociationDefinition.
-
-
-        :param id: The id of this PublicAssociationDefinition.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
+        self.id = id
 
     @property
     def name(self):
@@ -97,6 +74,29 @@ class PublicAssociationDefinition(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def id(self):
+        """Gets the id of this PublicAssociationDefinition.  # noqa: E501
+
+
+        :return: The id of this PublicAssociationDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicAssociationDefinition.
+
+
+        :param id: The id of this PublicAssociationDefinition.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
