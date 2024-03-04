@@ -34,6 +34,7 @@ from hubspot.crm.deals.models.next_page import NextPage
 from hubspot.crm.deals.models.paging import Paging
 from hubspot.crm.deals.models.previous_page import PreviousPage
 from hubspot.crm.deals.models.public_associations_for_object import PublicAssociationsForObject
+from hubspot.crm.deals.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.deals.models.public_merge_input import PublicMergeInput
 from hubspot.crm.deals.models.public_object_id import PublicObjectId
 from hubspot.crm.deals.models.public_object_search_request import PublicObjectSearchRequest

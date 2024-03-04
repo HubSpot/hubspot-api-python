@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,51 +35,26 @@ class CardCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"title": "str", "fetch": "CardFetchBody", "display": "CardDisplayBody", "actions": "CardActions"}
+    openapi_types = {"fetch": "CardFetchBody", "display": "CardDisplayBody", "title": "str", "actions": "CardActions"}
 
-    attribute_map = {"title": "title", "fetch": "fetch", "display": "display", "actions": "actions"}
+    attribute_map = {"fetch": "fetch", "display": "display", "title": "title", "actions": "actions"}
 
-    def __init__(self, title=None, fetch=None, display=None, actions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, fetch=None, display=None, title=None, actions=None, local_vars_configuration=None):  # noqa: E501
         """CardCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._title = None
         self._fetch = None
         self._display = None
+        self._title = None
         self._actions = None
         self.discriminator = None
 
-        self.title = title
         self.fetch = fetch
         self.display = display
+        self.title = title
         self.actions = actions
-
-    @property
-    def title(self):
-        """Gets the title of this CardCreateRequest.  # noqa: E501
-
-        The top-level title for this card. Displayed to users in the CRM UI.  # noqa: E501
-
-        :return: The title of this CardCreateRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """Sets the title of this CardCreateRequest.
-
-        The top-level title for this card. Displayed to users in the CRM UI.  # noqa: E501
-
-        :param title: The title of this CardCreateRequest.  # noqa: E501
-        :type title: str
-        """
-        if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
-            raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
-
-        self._title = title
 
     @property
     def fetch(self):
@@ -126,6 +101,31 @@ class CardCreateRequest(object):
             raise ValueError("Invalid value for `display`, must not be `None`")  # noqa: E501
 
         self._display = display
+
+    @property
+    def title(self):
+        """Gets the title of this CardCreateRequest.  # noqa: E501
+
+        The top-level title for this card. Displayed to users in the CRM UI.  # noqa: E501
+
+        :return: The title of this CardCreateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        """Sets the title of this CardCreateRequest.
+
+        The top-level title for this card. Displayed to users in the CRM UI.  # noqa: E501
+
+        :param title: The title of this CardCreateRequest.  # noqa: E501
+        :type title: str
+        """
+        if self.local_vars_configuration.client_side_validation and title is None:  # noqa: E501
+            raise ValueError("Invalid value for `title`, must not be `None`")  # noqa: E501
+
+        self._title = title
 
     @property
     def actions(self):

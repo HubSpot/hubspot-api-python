@@ -35,23 +35,44 @@ class PublicGdprDeleteInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object_id": "str", "id_property": "str"}
+    openapi_types = {"id_property": "str", "object_id": "str"}
 
-    attribute_map = {"object_id": "objectId", "id_property": "idProperty"}
+    attribute_map = {"id_property": "idProperty", "object_id": "objectId"}
 
-    def __init__(self, object_id=None, id_property=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id_property=None, object_id=None, local_vars_configuration=None):  # noqa: E501
         """PublicGdprDeleteInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._object_id = None
         self._id_property = None
+        self._object_id = None
         self.discriminator = None
 
-        self.object_id = object_id
         if id_property is not None:
             self.id_property = id_property
+        self.object_id = object_id
+
+    @property
+    def id_property(self):
+        """Gets the id_property of this PublicGdprDeleteInput.  # noqa: E501
+
+
+        :return: The id_property of this PublicGdprDeleteInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_property
+
+    @id_property.setter
+    def id_property(self, id_property):
+        """Sets the id_property of this PublicGdprDeleteInput.
+
+
+        :param id_property: The id_property of this PublicGdprDeleteInput.  # noqa: E501
+        :type id_property: str
+        """
+
+        self._id_property = id_property
 
     @property
     def object_id(self):
@@ -75,27 +96,6 @@ class PublicGdprDeleteInput(object):
             raise ValueError("Invalid value for `object_id`, must not be `None`")  # noqa: E501
 
         self._object_id = object_id
-
-    @property
-    def id_property(self):
-        """Gets the id_property of this PublicGdprDeleteInput.  # noqa: E501
-
-
-        :return: The id_property of this PublicGdprDeleteInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._id_property
-
-    @id_property.setter
-    def id_property(self, id_property):
-        """Sets the id_property of this PublicGdprDeleteInput.
-
-
-        :param id_property: The id_property of this PublicGdprDeleteInput.  # noqa: E501
-        :type id_property: str
-        """
-
-        self._id_property = id_property
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

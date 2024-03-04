@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,31 +35,98 @@ class IFrameActionBody(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"type": "str", "width": "int", "height": "int", "url": "str", "label": "str", "property_names_included": "list[str]"}
+    openapi_types = {"property_names_included": "list[str]", "width": "int", "label": "str", "type": "str", "url": "str", "height": "int"}
 
-    attribute_map = {"type": "type", "width": "width", "height": "height", "url": "url", "label": "label", "property_names_included": "propertyNamesIncluded"}
+    attribute_map = {"property_names_included": "propertyNamesIncluded", "width": "width", "label": "label", "type": "type", "url": "url", "height": "height"}
 
-    def __init__(self, type="IFRAME", width=None, height=None, url=None, label=None, property_names_included=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, property_names_included=None, width=None, label=None, type="IFRAME", url=None, height=None, local_vars_configuration=None):  # noqa: E501
         """IFrameActionBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._type = None
-        self._width = None
-        self._height = None
-        self._url = None
-        self._label = None
         self._property_names_included = None
+        self._width = None
+        self._label = None
+        self._type = None
+        self._url = None
+        self._height = None
         self.discriminator = None
 
-        self.type = type
+        self.property_names_included = property_names_included
         self.width = width
-        self.height = height
-        self.url = url
         if label is not None:
             self.label = label
-        self.property_names_included = property_names_included
+        self.type = type
+        self.url = url
+        self.height = height
+
+    @property
+    def property_names_included(self):
+        """Gets the property_names_included of this IFrameActionBody.  # noqa: E501
+
+
+        :return: The property_names_included of this IFrameActionBody.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._property_names_included
+
+    @property_names_included.setter
+    def property_names_included(self, property_names_included):
+        """Sets the property_names_included of this IFrameActionBody.
+
+
+        :param property_names_included: The property_names_included of this IFrameActionBody.  # noqa: E501
+        :type property_names_included: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
+            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
+
+        self._property_names_included = property_names_included
+
+    @property
+    def width(self):
+        """Gets the width of this IFrameActionBody.  # noqa: E501
+
+
+        :return: The width of this IFrameActionBody.  # noqa: E501
+        :rtype: int
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this IFrameActionBody.
+
+
+        :param width: The width of this IFrameActionBody.  # noqa: E501
+        :type width: int
+        """
+        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
+
+        self._width = width
+
+    @property
+    def label(self):
+        """Gets the label of this IFrameActionBody.  # noqa: E501
+
+
+        :return: The label of this IFrameActionBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this IFrameActionBody.
+
+
+        :param label: The label of this IFrameActionBody.  # noqa: E501
+        :type label: str
+        """
+
+        self._label = label
 
     @property
     def type(self):
@@ -88,52 +155,6 @@ class IFrameActionBody(object):
         self._type = type
 
     @property
-    def width(self):
-        """Gets the width of this IFrameActionBody.  # noqa: E501
-
-
-        :return: The width of this IFrameActionBody.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """Sets the width of this IFrameActionBody.
-
-
-        :param width: The width of this IFrameActionBody.  # noqa: E501
-        :type width: int
-        """
-        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
-            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
-
-        self._width = width
-
-    @property
-    def height(self):
-        """Gets the height of this IFrameActionBody.  # noqa: E501
-
-
-        :return: The height of this IFrameActionBody.  # noqa: E501
-        :rtype: int
-        """
-        return self._height
-
-    @height.setter
-    def height(self, height):
-        """Sets the height of this IFrameActionBody.
-
-
-        :param height: The height of this IFrameActionBody.  # noqa: E501
-        :type height: int
-        """
-        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
-            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
-
-        self._height = height
-
-    @property
     def url(self):
         """Gets the url of this IFrameActionBody.  # noqa: E501
 
@@ -157,48 +178,27 @@ class IFrameActionBody(object):
         self._url = url
 
     @property
-    def label(self):
-        """Gets the label of this IFrameActionBody.  # noqa: E501
+    def height(self):
+        """Gets the height of this IFrameActionBody.  # noqa: E501
 
 
-        :return: The label of this IFrameActionBody.  # noqa: E501
-        :rtype: str
+        :return: The height of this IFrameActionBody.  # noqa: E501
+        :rtype: int
         """
-        return self._label
+        return self._height
 
-    @label.setter
-    def label(self, label):
-        """Sets the label of this IFrameActionBody.
+    @height.setter
+    def height(self, height):
+        """Sets the height of this IFrameActionBody.
 
 
-        :param label: The label of this IFrameActionBody.  # noqa: E501
-        :type label: str
+        :param height: The height of this IFrameActionBody.  # noqa: E501
+        :type height: int
         """
+        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
-        self._label = label
-
-    @property
-    def property_names_included(self):
-        """Gets the property_names_included of this IFrameActionBody.  # noqa: E501
-
-
-        :return: The property_names_included of this IFrameActionBody.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._property_names_included
-
-    @property_names_included.setter
-    def property_names_included(self, property_names_included):
-        """Sets the property_names_included of this IFrameActionBody.
-
-
-        :param property_names_included: The property_names_included of this IFrameActionBody.  # noqa: E501
-        :type property_names_included: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
-            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
-
-        self._property_names_included = property_names_included
+        self._height = height
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

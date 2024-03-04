@@ -35,45 +35,22 @@ class PublicMergeInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"primary_object_id": "str", "object_id_to_merge": "str"}
+    openapi_types = {"object_id_to_merge": "str", "primary_object_id": "str"}
 
-    attribute_map = {"primary_object_id": "primaryObjectId", "object_id_to_merge": "objectIdToMerge"}
+    attribute_map = {"object_id_to_merge": "objectIdToMerge", "primary_object_id": "primaryObjectId"}
 
-    def __init__(self, primary_object_id=None, object_id_to_merge=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, object_id_to_merge=None, primary_object_id=None, local_vars_configuration=None):  # noqa: E501
         """PublicMergeInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._primary_object_id = None
         self._object_id_to_merge = None
+        self._primary_object_id = None
         self.discriminator = None
 
-        self.primary_object_id = primary_object_id
         self.object_id_to_merge = object_id_to_merge
-
-    @property
-    def primary_object_id(self):
-        """Gets the primary_object_id of this PublicMergeInput.  # noqa: E501
-
-
-        :return: The primary_object_id of this PublicMergeInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._primary_object_id
-
-    @primary_object_id.setter
-    def primary_object_id(self, primary_object_id):
-        """Sets the primary_object_id of this PublicMergeInput.
-
-
-        :param primary_object_id: The primary_object_id of this PublicMergeInput.  # noqa: E501
-        :type primary_object_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and primary_object_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `primary_object_id`, must not be `None`")  # noqa: E501
-
-        self._primary_object_id = primary_object_id
+        self.primary_object_id = primary_object_id
 
     @property
     def object_id_to_merge(self):
@@ -97,6 +74,29 @@ class PublicMergeInput(object):
             raise ValueError("Invalid value for `object_id_to_merge`, must not be `None`")  # noqa: E501
 
         self._object_id_to_merge = object_id_to_merge
+
+    @property
+    def primary_object_id(self):
+        """Gets the primary_object_id of this PublicMergeInput.  # noqa: E501
+
+
+        :return: The primary_object_id of this PublicMergeInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._primary_object_id
+
+    @primary_object_id.setter
+    def primary_object_id(self, primary_object_id):
+        """Sets the primary_object_id of this PublicMergeInput.
+
+
+        :param primary_object_id: The primary_object_id of this PublicMergeInput.  # noqa: E501
+        :type primary_object_id: str
+        """
+        if self.local_vars_configuration.client_side_validation and primary_object_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `primary_object_id`, must not be `None`")  # noqa: E501
+
+        self._primary_object_id = primary_object_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
