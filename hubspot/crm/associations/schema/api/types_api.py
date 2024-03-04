@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Associations
+    CRM Associations Schema
 
     Associations define the relationships between objects in HubSpot. These endpoints allow you to create, read, and remove associations.  # noqa: E501
 
