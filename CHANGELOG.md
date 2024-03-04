@@ -110,6 +110,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
 - Added `crm.deals.gdpr_api` Api.
+- Added `crm.objects.line_items.gdpr_api` Api.
+- Added `crm.objects.products.gdpr_api` Api.
+- Added `crm.objects.quotes.gdpr_api` Api.
+- Added `crm.objects.tickets.gdpr_api` Api.
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
