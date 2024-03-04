@@ -9,24 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-02-20
 
-### Changes Automation Actions Definitions API:
-- Updated `create` method to accept `public_action_definition_egg` instead of `extension_action_definition_input` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
-- Updated `get_by_id` method to return `PublicActionDefinition` instead of `ExtensionActionDefinition`.
-- Updated `get_page` method to return `CollectionResponsePublicActionDefinitionForwardPaging` instead of `CollectionResponseExtensionActionDefinitionForwardPaging`.
-- Updated `update` method to accept `public_action_definition_patch` instead of `extension_action_definition_patch` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
+### Changes in Automation Actions Definitions API:
+- Updated `create()` method to accept `public_action_definition_egg` instead of `extension_action_definition_input` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
+- Updated `get_by_id()` method to return `PublicActionDefinition` instead of `ExtensionActionDefinition`.
+- Updated `get_page()` method to return `CollectionResponsePublicActionDefinitionForwardPaging` instead of `CollectionResponseExtensionActionDefinitionForwardPaging`.
+- Updated `update()` method to accept `public_action_definition_patch` instead of `extension_action_definition_patch` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
 
-### Changes Automation Actions Functions API:
-- Updated `create_or_replace` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
-- Updated `create_or_replace_by_function_type` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
-- Updated `get_by_function_type` method to return `PublicActionFunction` instead of `ActionFunction`.
-- Updated `get_by_id` method to return `PublicActionFunction` instead of `ActionFunction`.
-- Updated `get_page` method to return `CollectionResponsePublicActionFunctionIdentifierNoPaging` instead of `CollectionResponseActionFunctionIdentifierNoPaging`.
+### Changes in Automation Actions Functions API:
+- Updated `create_or_replace()` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
+- Updated `create_or_replace_by_function_type()` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
+- Updated `get_by_function_type()` method to return `PublicActionFunction` instead of `ActionFunction`.
+- Updated `get_by_id()` method to return `PublicActionFunction` instead of `ActionFunction`.
+- Updated `get_page()` method to return `CollectionResponsePublicActionFunctionIdentifierNoPaging` instead of `CollectionResponseActionFunctionIdentifierNoPaging`.
 
-### Changes Automation Actions Revisions API:
-- Updated `get_by_id` method to return `PublicActionRevision` instead of `ActionRevision`.
-- Updated `get_page` method to return `CollectionResponsePublicActionRevisionForwardPaging` instead of `CollectionResponseActionRevisionForwardPaging`.
+### Changes in Automation Actions Revisions API:
+- Updated `get_by_id()` method to return `PublicActionRevision` instead of `ActionRevision`.
+- Updated `get_page()` method to return `CollectionResponsePublicActionRevisionForwardPaging` instead of `CollectionResponseActionRevisionForwardPaging`.
 
-### Changes Automation Actions models:
+### Changes in Automation Actions models:
 - Added new function type `POST_ACTION_EXECUTION` to `automation.actions.models.PublicActionFunctionIdentifier` and `automation.actions.models.PublicActionFunction`.
 - Added new param `automation_field_type` to `automation.actions.models.InputFieldDefinition`.
 - Added `automation.actions.models.OutputFieldDefinition`.
@@ -52,29 +52,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changes in Oauth models
 - Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
-### Changes CMS Blog APIs:
+### Changes in CMS Blog APIs:
 - Changed `attach_to_lang_group`, `detach_from_lang_group` and `update_langs` methods of all Api clients return `None` instead of `Error`.
 - Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`.
 
-### Changes CMS Source Code API:
+### Changes in CMS Source Code API:
 - Renamed `content_api.get()` method to `content_api.download()`.
 - Renamed `content_api.replace()` method to `content_api.create_or_update()`.
 - Added new param `hash` to `cms.source_code.models.AssetFileMetadata`.
 - Added new param `properties` to `cms.source_code.metadata_api.get()`.
 
-### Changes in CRM Associations API (associations) v4
+### Changes in AssociationsV3 Models:
+- Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
+
+### Changes in AssociationV4 Schema API Methods:
+- Method `delete()` renamed to `archive()` in class `DefinitionsApi`.
+
+### Changes in CRM AssociationsV4 API:
 - Changed the type of parameters `object_id` and `to_object_id` in `archive()`, `create()` and `create_default()` methods of class `BasicApi` from `string` to `int`.
 - Changed the type of parameter `object_id` in `get_page()` method of class `BasicApi` from `string` to `int`.
 - Changed the type of parameters `to_object_id` and `from_object_id` in class `LabelsBetweenObjectPair` to `string`.
 - Changed the type of parameter `to_object_id` in class `MultiAssociatedObjectWithLabel` to `string`.
 - Changed the type of property `category` in class `ErrorCategory` to `string`.
 
-### Changes in AssociationsV4 Models
-- Changed the type of property `errors` in class `BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
+### Changes in AssociationsV4 Models:
+- Changed the type of property `errors` in  class `BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
 - Added parameter `inverse_label` to classes `PublicAssociationDefinitionCreateRequest` and `PublicAssociationDefinitionUpdateRequest`.
-
-### Changes in AssociationsV4 Schema API Methods
-- Method `delete` renamed to `archive` in class `DefinitionsApi`.
 
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
