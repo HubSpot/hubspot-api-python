@@ -2,6 +2,7 @@ import hubspot.crm.extensions.accounting as api_client
 from ....discovery_base import DiscoveryBase
 
 
+# Deprecated: This feature will be removed in future versions
 class Discovery(DiscoveryBase):
     @property
     def callbacks_api(self) -> api_client.CallbacksApi:
