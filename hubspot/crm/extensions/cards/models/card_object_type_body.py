@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -74,7 +74,7 @@ class CardObjectTypeBody(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-        allowed_values = ["contacts", "deals", "companies", "tickets"]  # noqa: E501
+        allowed_values = ["contacts", "deals", "companies", "tickets", "marketing_events"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and name not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `name` ({0}), must be one of {1}".format(name, allowed_values))  # noqa: E501
 

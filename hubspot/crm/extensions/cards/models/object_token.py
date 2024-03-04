@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,29 +35,53 @@ class ObjectToken(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "label": "str", "data_type": "str", "value": "str"}
+    openapi_types = {"data_type": "str", "name": "str", "label": "str", "value": "str"}
 
-    attribute_map = {"name": "name", "label": "label", "data_type": "dataType", "value": "value"}
+    attribute_map = {"data_type": "dataType", "name": "name", "label": "label", "value": "value"}
 
-    def __init__(self, name=None, label=None, data_type=None, value=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, data_type=None, name=None, label=None, value=None, local_vars_configuration=None):  # noqa: E501
         """ObjectToken - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._data_type = None
         self._name = None
         self._label = None
-        self._data_type = None
         self._value = None
         self.discriminator = None
 
+        if data_type is not None:
+            self.data_type = data_type
         if name is not None:
             self.name = name
         if label is not None:
             self.label = label
-        if data_type is not None:
-            self.data_type = data_type
         self.value = value
+
+    @property
+    def data_type(self):
+        """Gets the data_type of this ObjectToken.  # noqa: E501
+
+
+        :return: The data_type of this ObjectToken.  # noqa: E501
+        :rtype: str
+        """
+        return self._data_type
+
+    @data_type.setter
+    def data_type(self, data_type):
+        """Sets the data_type of this ObjectToken.
+
+
+        :param data_type: The data_type of this ObjectToken.  # noqa: E501
+        :type data_type: str
+        """
+        allowed_values = ["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and data_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `data_type` ({0}), must be one of {1}".format(data_type, allowed_values))  # noqa: E501
+
+        self._data_type = data_type
 
     @property
     def name(self):
@@ -100,30 +124,6 @@ class ObjectToken(object):
         """
 
         self._label = label
-
-    @property
-    def data_type(self):
-        """Gets the data_type of this ObjectToken.  # noqa: E501
-
-
-        :return: The data_type of this ObjectToken.  # noqa: E501
-        :rtype: str
-        """
-        return self._data_type
-
-    @data_type.setter
-    def data_type(self, data_type):
-        """Sets the data_type of this ObjectToken.
-
-
-        :param data_type: The data_type of this ObjectToken.  # noqa: E501
-        :type data_type: str
-        """
-        allowed_values = ["BOOLEAN", "CURRENCY", "DATE", "DATETIME", "EMAIL", "LINK", "NUMERIC", "STRING", "STATUS"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and data_type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `data_type` ({0}), must be one of {1}".format(data_type, allowed_values))  # noqa: E501
-
-        self._data_type = data_type
 
     @property
     def value(self):

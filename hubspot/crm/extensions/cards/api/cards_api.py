@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -33,20 +33,20 @@ class CardsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, app_id, card_id, **kwargs):  # noqa: E501
+    def archive(self, card_id, app_id, **kwargs):  # noqa: E501
         """Delete a card  # noqa: E501
 
         Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.archive(app_id, card_id, async_req=True)
+        >>> thread = api.archive(card_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the card to delete. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -63,22 +63,22 @@ class CardsApi(object):
         :rtype: None
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(app_id, card_id, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(card_id, app_id, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, app_id, card_id, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, card_id, app_id, **kwargs):  # noqa: E501
         """Delete a card  # noqa: E501
 
         Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.archive_with_http_info(app_id, card_id, async_req=True)
+        >>> thread = api.archive_with_http_info(card_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the card to delete. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -105,7 +105,7 @@ class CardsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["app_id", "card_id"]
+        all_params = ["card_id", "app_id"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -113,20 +113,20 @@ class CardsApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
         # verify the required parameter 'card_id' is set
         if self.api_client.client_side_validation and local_var_params.get("card_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `card_id` when calling `archive`")  # noqa: E501
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
         if "card_id" in local_var_params:
             path_params["cardId"] = local_var_params["card_id"]  # noqa: E501
+        if "app_id" in local_var_params:
+            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
 
@@ -145,7 +145,7 @@ class CardsApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/cards/{appId}/{cardId}",
+            "/crm/v3/extensions/cards-dev/{appId}/{cardId}",
             "DELETE",
             path_params,
             query_params,
@@ -190,7 +190,7 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CardResponse
+        :rtype: PublicCardResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(app_id, card_create_request, **kwargs)  # noqa: E501
@@ -230,7 +230,7 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CardResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PublicCardResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -278,11 +278,11 @@ class CardsApi(object):
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
         response_types_map = {
-            201: "CardResponse",
+            201: "PublicCardResponse",
         }
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/cards/{appId}",
+            "/crm/v3/extensions/cards-dev/{appId}",
             "POST",
             path_params,
             query_params,
@@ -325,7 +325,7 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CardListResponse
+        :rtype: PublicCardListResponse
         """
         kwargs["_return_http_data_only"] = True
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
@@ -363,7 +363,7 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CardListResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PublicCardListResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -401,11 +401,11 @@ class CardsApi(object):
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
         response_types_map = {
-            200: "CardListResponse",
+            200: "PublicCardListResponse",
         }
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/cards/{appId}",
+            "/crm/v3/extensions/cards-dev/{appId}",
             "GET",
             path_params,
             query_params,
@@ -423,20 +423,20 @@ class CardsApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def get_by_id(self, app_id, card_id, **kwargs):  # noqa: E501
+    def get_by_id(self, card_id, app_id, **kwargs):  # noqa: E501
         """Get a card.  # noqa: E501
 
         Returns the definition for a card with the given ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id(app_id, card_id, async_req=True)
+        >>> thread = api.get_by_id(card_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the target card. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -450,25 +450,25 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CardResponse
+        :rtype: PublicCardResponse
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(app_id, card_id, **kwargs)  # noqa: E501
+        return self.get_by_id_with_http_info(card_id, app_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(self, app_id, card_id, **kwargs):  # noqa: E501
+    def get_by_id_with_http_info(self, card_id, app_id, **kwargs):  # noqa: E501
         """Get a card.  # noqa: E501
 
         Returns the definition for a card with the given ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id_with_http_info(app_id, card_id, async_req=True)
+        >>> thread = api.get_by_id_with_http_info(card_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the target card. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -490,12 +490,12 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CardResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PublicCardResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id", "card_id"]
+        all_params = ["card_id", "app_id"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -503,20 +503,20 @@ class CardsApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'card_id' is set
         if self.api_client.client_side_validation and local_var_params.get("card_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `card_id` when calling `get_by_id`")  # noqa: E501
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
         if "card_id" in local_var_params:
             path_params["cardId"] = local_var_params["card_id"]  # noqa: E501
+        if "app_id" in local_var_params:
+            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
 
@@ -533,11 +533,11 @@ class CardsApi(object):
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
         response_types_map = {
-            200: "CardResponse",
+            200: "PublicCardResponse",
         }
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/cards/{appId}/{cardId}",
+            "/crm/v3/extensions/cards-dev/{appId}/{cardId}",
             "GET",
             path_params,
             query_params,
@@ -555,20 +555,20 @@ class CardsApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update(self, app_id, card_id, card_patch_request, **kwargs):  # noqa: E501
+    def update(self, card_id, app_id, card_patch_request, **kwargs):  # noqa: E501
         """Update a card  # noqa: E501
 
         Update a card definition with new details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update(app_id, card_id, card_patch_request, async_req=True)
+        >>> thread = api.update(card_id, app_id, card_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the card to update. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param card_patch_request: Card definition fields to be updated. (required)
         :type card_patch_request: CardPatchRequest
         :param async_req: Whether to execute the request asynchronously.
@@ -584,25 +584,25 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CardResponse
+        :rtype: PublicCardResponse
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(app_id, card_id, card_patch_request, **kwargs)  # noqa: E501
+        return self.update_with_http_info(card_id, app_id, card_patch_request, **kwargs)  # noqa: E501
 
-    def update_with_http_info(self, app_id, card_id, card_patch_request, **kwargs):  # noqa: E501
+    def update_with_http_info(self, card_id, app_id, card_patch_request, **kwargs):  # noqa: E501
         """Update a card  # noqa: E501
 
         Update a card definition with new details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_with_http_info(app_id, card_id, card_patch_request, async_req=True)
+        >>> thread = api.update_with_http_info(card_id, app_id, card_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the target app. (required)
-        :type app_id: int
         :param card_id: The ID of the card to update. (required)
         :type card_id: str
+        :param app_id: The ID of the target app. (required)
+        :type app_id: int
         :param card_patch_request: Card definition fields to be updated. (required)
         :type card_patch_request: CardPatchRequest
         :param async_req: Whether to execute the request asynchronously.
@@ -626,12 +626,12 @@ class CardsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CardResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(PublicCardResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["app_id", "card_id", "card_patch_request"]
+        all_params = ["card_id", "app_id", "card_patch_request"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -639,12 +639,12 @@ class CardsApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'card_id' is set
         if self.api_client.client_side_validation and local_var_params.get("card_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `card_id` when calling `update`")  # noqa: E501
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'card_patch_request' is set
         if self.api_client.client_side_validation and local_var_params.get("card_patch_request") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `card_patch_request` when calling `update`")  # noqa: E501
@@ -652,10 +652,10 @@ class CardsApi(object):
         collection_formats = {}
 
         path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
         if "card_id" in local_var_params:
             path_params["cardId"] = local_var_params["card_id"]  # noqa: E501
+        if "app_id" in local_var_params:
+            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
 
         query_params = []
 
@@ -679,11 +679,11 @@ class CardsApi(object):
         auth_settings = ["developer_hapikey"]  # noqa: E501
 
         response_types_map = {
-            200: "CardResponse",
+            200: "PublicCardResponse",
         }
 
         return self.api_client.call_api(
-            "/crm/v3/extensions/cards/{appId}/{cardId}",
+            "/crm/v3/extensions/cards-dev/{appId}/{cardId}",
             "PATCH",
             path_params,
             query_params,

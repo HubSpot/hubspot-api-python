@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Calling Extensions API
+    Calling Extensions
 
     Provides a way for apps to add custom calling options to a contact record. This works in conjunction with the [Calling SDK](#), which is used to build your phone/calling UI. The endpoints here allow your service to appear as an option to HubSpot users when they access the *Call* action on a contact record. Once accessed, your custom phone/calling UI will be displayed in an iframe at the specified URL with the specified dimensions on that record.  # noqa: E501
 
@@ -35,43 +35,118 @@ class SettingsResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "url": "str", "height": "int", "width": "int", "is_ready": "bool", "supports_custom_objects": "bool", "created_at": "datetime", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "supports_custom_objects": "bool", "is_ready": "bool", "name": "str", "width": "int", "url": "str", "height": "int", "updated_at": "datetime"}
 
     attribute_map = {
+        "created_at": "createdAt",
+        "supports_custom_objects": "supportsCustomObjects",
+        "is_ready": "isReady",
         "name": "name",
+        "width": "width",
         "url": "url",
         "height": "height",
-        "width": "width",
-        "is_ready": "isReady",
-        "supports_custom_objects": "supportsCustomObjects",
-        "created_at": "createdAt",
         "updated_at": "updatedAt",
     }
 
-    def __init__(self, name=None, url=None, height=None, width=None, is_ready=None, supports_custom_objects=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, supports_custom_objects=None, is_ready=None, name=None, width=None, url=None, height=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SettingsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._created_at = None
+        self._supports_custom_objects = None
+        self._is_ready = None
         self._name = None
+        self._width = None
         self._url = None
         self._height = None
-        self._width = None
-        self._is_ready = None
-        self._supports_custom_objects = None
-        self._created_at = None
         self._updated_at = None
         self.discriminator = None
 
+        self.created_at = created_at
+        self.supports_custom_objects = supports_custom_objects
+        self.is_ready = is_ready
         self.name = name
+        self.width = width
         self.url = url
         self.height = height
-        self.width = width
-        self.is_ready = is_ready
-        self.supports_custom_objects = supports_custom_objects
-        self.created_at = created_at
         self.updated_at = updated_at
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this SettingsResponse.  # noqa: E501
+
+        When this calling extension was created.  # noqa: E501
+
+        :return: The created_at of this SettingsResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SettingsResponse.
+
+        When this calling extension was created.  # noqa: E501
+
+        :param created_at: The created_at of this SettingsResponse.  # noqa: E501
+        :type created_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def supports_custom_objects(self):
+        """Gets the supports_custom_objects of this SettingsResponse.  # noqa: E501
+
+        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+
+        :return: The supports_custom_objects of this SettingsResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._supports_custom_objects
+
+    @supports_custom_objects.setter
+    def supports_custom_objects(self, supports_custom_objects):
+        """Sets the supports_custom_objects of this SettingsResponse.
+
+        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+
+        :param supports_custom_objects: The supports_custom_objects of this SettingsResponse.  # noqa: E501
+        :type supports_custom_objects: bool
+        """
+        if self.local_vars_configuration.client_side_validation and supports_custom_objects is None:  # noqa: E501
+            raise ValueError("Invalid value for `supports_custom_objects`, must not be `None`")  # noqa: E501
+
+        self._supports_custom_objects = supports_custom_objects
+
+    @property
+    def is_ready(self):
+        """Gets the is_ready of this SettingsResponse.  # noqa: E501
+
+        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
+
+        :return: The is_ready of this SettingsResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_ready
+
+    @is_ready.setter
+    def is_ready(self, is_ready):
+        """Sets the is_ready of this SettingsResponse.
+
+        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
+
+        :param is_ready: The is_ready of this SettingsResponse.  # noqa: E501
+        :type is_ready: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_ready is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_ready`, must not be `None`")  # noqa: E501
+
+        self._is_ready = is_ready
 
     @property
     def name(self):
@@ -97,6 +172,31 @@ class SettingsResponse(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def width(self):
+        """Gets the width of this SettingsResponse.  # noqa: E501
+
+        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
+
+        :return: The width of this SettingsResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this SettingsResponse.
+
+        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
+
+        :param width: The width of this SettingsResponse.  # noqa: E501
+        :type width: int
+        """
+        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
+
+        self._width = width
 
     @property
     def url(self):
@@ -147,106 +247,6 @@ class SettingsResponse(object):
             raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
         self._height = height
-
-    @property
-    def width(self):
-        """Gets the width of this SettingsResponse.  # noqa: E501
-
-        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
-
-        :return: The width of this SettingsResponse.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """Sets the width of this SettingsResponse.
-
-        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
-
-        :param width: The width of this SettingsResponse.  # noqa: E501
-        :type width: int
-        """
-        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
-            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
-
-        self._width = width
-
-    @property
-    def is_ready(self):
-        """Gets the is_ready of this SettingsResponse.  # noqa: E501
-
-        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
-
-        :return: The is_ready of this SettingsResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_ready
-
-    @is_ready.setter
-    def is_ready(self, is_ready):
-        """Sets the is_ready of this SettingsResponse.
-
-        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
-
-        :param is_ready: The is_ready of this SettingsResponse.  # noqa: E501
-        :type is_ready: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_ready is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_ready`, must not be `None`")  # noqa: E501
-
-        self._is_ready = is_ready
-
-    @property
-    def supports_custom_objects(self):
-        """Gets the supports_custom_objects of this SettingsResponse.  # noqa: E501
-
-        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
-
-        :return: The supports_custom_objects of this SettingsResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._supports_custom_objects
-
-    @supports_custom_objects.setter
-    def supports_custom_objects(self, supports_custom_objects):
-        """Sets the supports_custom_objects of this SettingsResponse.
-
-        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
-
-        :param supports_custom_objects: The supports_custom_objects of this SettingsResponse.  # noqa: E501
-        :type supports_custom_objects: bool
-        """
-        if self.local_vars_configuration.client_side_validation and supports_custom_objects is None:  # noqa: E501
-            raise ValueError("Invalid value for `supports_custom_objects`, must not be `None`")  # noqa: E501
-
-        self._supports_custom_objects = supports_custom_objects
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SettingsResponse.  # noqa: E501
-
-        When this calling extension was created.  # noqa: E501
-
-        :return: The created_at of this SettingsResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SettingsResponse.
-
-        When this calling extension was created.  # noqa: E501
-
-        :param created_at: The created_at of this SettingsResponse.  # noqa: E501
-        :type created_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
 
     @property
     def updated_at(self):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,26 +35,49 @@ class TopLevelActions(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"settings": "IFrameActionBody", "primary": "IntegratorObjectResultActionsInner", "secondary": "list[IntegratorObjectResultActionsInner]"}
+    openapi_types = {"secondary": "list[IntegratorObjectResultActionsInner]", "settings": "IFrameActionBody", "primary": "IntegratorObjectResultActionsInner"}
 
-    attribute_map = {"settings": "settings", "primary": "primary", "secondary": "secondary"}
+    attribute_map = {"secondary": "secondary", "settings": "settings", "primary": "primary"}
 
-    def __init__(self, settings=None, primary=None, secondary=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, secondary=None, settings=None, primary=None, local_vars_configuration=None):  # noqa: E501
         """TopLevelActions - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._secondary = None
         self._settings = None
         self._primary = None
-        self._secondary = None
         self.discriminator = None
 
+        self.secondary = secondary
         if settings is not None:
             self.settings = settings
         if primary is not None:
             self.primary = primary
-        self.secondary = secondary
+
+    @property
+    def secondary(self):
+        """Gets the secondary of this TopLevelActions.  # noqa: E501
+
+
+        :return: The secondary of this TopLevelActions.  # noqa: E501
+        :rtype: list[IntegratorObjectResultActionsInner]
+        """
+        return self._secondary
+
+    @secondary.setter
+    def secondary(self, secondary):
+        """Sets the secondary of this TopLevelActions.
+
+
+        :param secondary: The secondary of this TopLevelActions.  # noqa: E501
+        :type secondary: list[IntegratorObjectResultActionsInner]
+        """
+        if self.local_vars_configuration.client_side_validation and secondary is None:  # noqa: E501
+            raise ValueError("Invalid value for `secondary`, must not be `None`")  # noqa: E501
+
+        self._secondary = secondary
 
     @property
     def settings(self):
@@ -97,29 +120,6 @@ class TopLevelActions(object):
         """
 
         self._primary = primary
-
-    @property
-    def secondary(self):
-        """Gets the secondary of this TopLevelActions.  # noqa: E501
-
-
-        :return: The secondary of this TopLevelActions.  # noqa: E501
-        :rtype: list[IntegratorObjectResultActionsInner]
-        """
-        return self._secondary
-
-    @secondary.setter
-    def secondary(self, secondary):
-        """Sets the secondary of this TopLevelActions.
-
-
-        :param secondary: The secondary of this TopLevelActions.  # noqa: E501
-        :type secondary: list[IntegratorObjectResultActionsInner]
-        """
-        if self.local_vars_configuration.client_side_validation and secondary is None:  # noqa: E501
-            raise ValueError("Invalid value for `secondary`, must not be `None`")  # noqa: E501
-
-        self._secondary = secondary
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

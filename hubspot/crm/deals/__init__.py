@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.crm.deals.api.basic_api import BasicApi
 from hubspot.crm.deals.api.batch_api import BatchApi
+from hubspot.crm.deals.api.gdpr_api import GDPRApi
 from hubspot.crm.deals.api.public_object_api import PublicObjectApi
 from hubspot.crm.deals.api.search_api import SearchApi
 
@@ -53,6 +54,7 @@ from hubspot.crm.deals.models.next_page import NextPage
 from hubspot.crm.deals.models.paging import Paging
 from hubspot.crm.deals.models.previous_page import PreviousPage
 from hubspot.crm.deals.models.public_associations_for_object import PublicAssociationsForObject
+from hubspot.crm.deals.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.deals.models.public_merge_input import PublicMergeInput
 from hubspot.crm.deals.models.public_object_id import PublicObjectId
 from hubspot.crm.deals.models.public_object_search_request import PublicObjectSearchRequest

@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    Video Conference Extension
+    Video Conferencing Extension
 
     These APIs allow you to specify URLs that can be used to interact with a video conferencing application, to allow HubSpot to add video conference links to meeting requests with contacts.  # noqa: E501
 
