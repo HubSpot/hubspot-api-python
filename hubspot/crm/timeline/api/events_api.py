@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -186,7 +186,7 @@ class EventsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BatchResponseTimelineEventResponse
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.create_batch_with_http_info(batch_input_timeline_event, **kwargs)  # noqa: E501
@@ -224,7 +224,7 @@ class EventsApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BatchResponseTimelineEventResponse, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()
@@ -266,10 +266,7 @@ class EventsApi(object):
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
 
-        response_types_map = {
-            201: "BatchResponseTimelineEventResponse",
-            207: "BatchResponseTimelineEventResponseWithErrors",
-        }
+        response_types_map = {}
 
         return self.api_client.call_api(
             "/crm/v3/timeline/events/batch/create",

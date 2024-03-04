@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -37,32 +37,32 @@ class TimelineEvent(object):
     """
     openapi_types = {
         "event_template_id": "str",
-        "email": "str",
-        "object_id": "str",
-        "utk": "str",
-        "domain": "str",
-        "timestamp": "datetime",
-        "tokens": "dict[str, str]",
         "extra_data": "object",
         "timeline_i_frame": "TimelineEventIFrame",
+        "domain": "str",
+        "tokens": "dict[str, str]",
         "id": "str",
+        "utk": "str",
+        "email": "str",
+        "object_id": "str",
+        "timestamp": "datetime",
     }
 
     attribute_map = {
         "event_template_id": "eventTemplateId",
-        "email": "email",
-        "object_id": "objectId",
-        "utk": "utk",
-        "domain": "domain",
-        "timestamp": "timestamp",
-        "tokens": "tokens",
         "extra_data": "extraData",
         "timeline_i_frame": "timelineIFrame",
+        "domain": "domain",
+        "tokens": "tokens",
         "id": "id",
+        "utk": "utk",
+        "email": "email",
+        "object_id": "objectId",
+        "timestamp": "timestamp",
     }
 
     def __init__(
-        self, event_template_id=None, email=None, object_id=None, utk=None, domain=None, timestamp=None, tokens=None, extra_data=None, timeline_i_frame=None, id=None, local_vars_configuration=None
+        self, event_template_id=None, extra_data=None, timeline_i_frame=None, domain=None, tokens=None, id=None, utk=None, email=None, object_id=None, timestamp=None, local_vars_configuration=None
     ):  # noqa: E501
         """TimelineEvent - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
@@ -70,35 +70,35 @@ class TimelineEvent(object):
         self.local_vars_configuration = local_vars_configuration
 
         self._event_template_id = None
-        self._email = None
-        self._object_id = None
-        self._utk = None
-        self._domain = None
-        self._timestamp = None
-        self._tokens = None
         self._extra_data = None
         self._timeline_i_frame = None
+        self._domain = None
+        self._tokens = None
         self._id = None
+        self._utk = None
+        self._email = None
+        self._object_id = None
+        self._timestamp = None
         self.discriminator = None
 
         self.event_template_id = event_template_id
-        if email is not None:
-            self.email = email
-        if object_id is not None:
-            self.object_id = object_id
-        if utk is not None:
-            self.utk = utk
-        if domain is not None:
-            self.domain = domain
-        if timestamp is not None:
-            self.timestamp = timestamp
-        self.tokens = tokens
         if extra_data is not None:
             self.extra_data = extra_data
         if timeline_i_frame is not None:
             self.timeline_i_frame = timeline_i_frame
+        if domain is not None:
+            self.domain = domain
+        self.tokens = tokens
         if id is not None:
             self.id = id
+        if utk is not None:
+            self.utk = utk
+        if email is not None:
+            self.email = email
+        if object_id is not None:
+            self.object_id = object_id
+        if timestamp is not None:
+            self.timestamp = timestamp
 
     @property
     def event_template_id(self):
@@ -124,6 +124,144 @@ class TimelineEvent(object):
             raise ValueError("Invalid value for `event_template_id`, must not be `None`")  # noqa: E501
 
         self._event_template_id = event_template_id
+
+    @property
+    def extra_data(self):
+        """Gets the extra_data of this TimelineEvent.  # noqa: E501
+
+        Additional event-specific data that can be interpreted by the template's markdown.  # noqa: E501
+
+        :return: The extra_data of this TimelineEvent.  # noqa: E501
+        :rtype: object
+        """
+        return self._extra_data
+
+    @extra_data.setter
+    def extra_data(self, extra_data):
+        """Sets the extra_data of this TimelineEvent.
+
+        Additional event-specific data that can be interpreted by the template's markdown.  # noqa: E501
+
+        :param extra_data: The extra_data of this TimelineEvent.  # noqa: E501
+        :type extra_data: object
+        """
+
+        self._extra_data = extra_data
+
+    @property
+    def timeline_i_frame(self):
+        """Gets the timeline_i_frame of this TimelineEvent.  # noqa: E501
+
+
+        :return: The timeline_i_frame of this TimelineEvent.  # noqa: E501
+        :rtype: TimelineEventIFrame
+        """
+        return self._timeline_i_frame
+
+    @timeline_i_frame.setter
+    def timeline_i_frame(self, timeline_i_frame):
+        """Sets the timeline_i_frame of this TimelineEvent.
+
+
+        :param timeline_i_frame: The timeline_i_frame of this TimelineEvent.  # noqa: E501
+        :type timeline_i_frame: TimelineEventIFrame
+        """
+
+        self._timeline_i_frame = timeline_i_frame
+
+    @property
+    def domain(self):
+        """Gets the domain of this TimelineEvent.  # noqa: E501
+
+        The event domain (often paired with utk).  # noqa: E501
+
+        :return: The domain of this TimelineEvent.  # noqa: E501
+        :rtype: str
+        """
+        return self._domain
+
+    @domain.setter
+    def domain(self, domain):
+        """Sets the domain of this TimelineEvent.
+
+        The event domain (often paired with utk).  # noqa: E501
+
+        :param domain: The domain of this TimelineEvent.  # noqa: E501
+        :type domain: str
+        """
+
+        self._domain = domain
+
+    @property
+    def tokens(self):
+        """Gets the tokens of this TimelineEvent.  # noqa: E501
+
+        A collection of token keys and values associated with the template tokens.  # noqa: E501
+
+        :return: The tokens of this TimelineEvent.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._tokens
+
+    @tokens.setter
+    def tokens(self, tokens):
+        """Sets the tokens of this TimelineEvent.
+
+        A collection of token keys and values associated with the template tokens.  # noqa: E501
+
+        :param tokens: The tokens of this TimelineEvent.  # noqa: E501
+        :type tokens: dict[str, str]
+        """
+        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
+            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
+
+        self._tokens = tokens
+
+    @property
+    def id(self):
+        """Gets the id of this TimelineEvent.  # noqa: E501
+
+        Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.  # noqa: E501
+
+        :return: The id of this TimelineEvent.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this TimelineEvent.
+
+        Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.  # noqa: E501
+
+        :param id: The id of this TimelineEvent.  # noqa: E501
+        :type id: str
+        """
+
+        self._id = id
+
+    @property
+    def utk(self):
+        """Gets the utk of this TimelineEvent.  # noqa: E501
+
+        Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.  # noqa: E501
+
+        :return: The utk of this TimelineEvent.  # noqa: E501
+        :rtype: str
+        """
+        return self._utk
+
+    @utk.setter
+    def utk(self, utk):
+        """Sets the utk of this TimelineEvent.
+
+        Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.  # noqa: E501
+
+        :param utk: The utk of this TimelineEvent.  # noqa: E501
+        :type utk: str
+        """
+
+        self._utk = utk
 
     @property
     def email(self):
@@ -172,52 +310,6 @@ class TimelineEvent(object):
         self._object_id = object_id
 
     @property
-    def utk(self):
-        """Gets the utk of this TimelineEvent.  # noqa: E501
-
-        Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.  # noqa: E501
-
-        :return: The utk of this TimelineEvent.  # noqa: E501
-        :rtype: str
-        """
-        return self._utk
-
-    @utk.setter
-    def utk(self, utk):
-        """Sets the utk of this TimelineEvent.
-
-        Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.  # noqa: E501
-
-        :param utk: The utk of this TimelineEvent.  # noqa: E501
-        :type utk: str
-        """
-
-        self._utk = utk
-
-    @property
-    def domain(self):
-        """Gets the domain of this TimelineEvent.  # noqa: E501
-
-        The event domain (often paired with utk).  # noqa: E501
-
-        :return: The domain of this TimelineEvent.  # noqa: E501
-        :rtype: str
-        """
-        return self._domain
-
-    @domain.setter
-    def domain(self, domain):
-        """Sets the domain of this TimelineEvent.
-
-        The event domain (often paired with utk).  # noqa: E501
-
-        :param domain: The domain of this TimelineEvent.  # noqa: E501
-        :type domain: str
-        """
-
-        self._domain = domain
-
-    @property
     def timestamp(self):
         """Gets the timestamp of this TimelineEvent.  # noqa: E501
 
@@ -239,98 +331,6 @@ class TimelineEvent(object):
         """
 
         self._timestamp = timestamp
-
-    @property
-    def tokens(self):
-        """Gets the tokens of this TimelineEvent.  # noqa: E501
-
-        A collection of token keys and values associated with the template tokens.  # noqa: E501
-
-        :return: The tokens of this TimelineEvent.  # noqa: E501
-        :rtype: dict[str, str]
-        """
-        return self._tokens
-
-    @tokens.setter
-    def tokens(self, tokens):
-        """Sets the tokens of this TimelineEvent.
-
-        A collection of token keys and values associated with the template tokens.  # noqa: E501
-
-        :param tokens: The tokens of this TimelineEvent.  # noqa: E501
-        :type tokens: dict[str, str]
-        """
-        if self.local_vars_configuration.client_side_validation and tokens is None:  # noqa: E501
-            raise ValueError("Invalid value for `tokens`, must not be `None`")  # noqa: E501
-
-        self._tokens = tokens
-
-    @property
-    def extra_data(self):
-        """Gets the extra_data of this TimelineEvent.  # noqa: E501
-
-        Additional event-specific data that can be interpreted by the template's markdown.  # noqa: E501
-
-        :return: The extra_data of this TimelineEvent.  # noqa: E501
-        :rtype: object
-        """
-        return self._extra_data
-
-    @extra_data.setter
-    def extra_data(self, extra_data):
-        """Sets the extra_data of this TimelineEvent.
-
-        Additional event-specific data that can be interpreted by the template's markdown.  # noqa: E501
-
-        :param extra_data: The extra_data of this TimelineEvent.  # noqa: E501
-        :type extra_data: object
-        """
-
-        self._extra_data = extra_data
-
-    @property
-    def timeline_i_frame(self):
-        """Gets the timeline_i_frame of this TimelineEvent.  # noqa: E501
-
-
-        :return: The timeline_i_frame of this TimelineEvent.  # noqa: E501
-        :rtype: TimelineEventIFrame
-        """
-        return self._timeline_i_frame
-
-    @timeline_i_frame.setter
-    def timeline_i_frame(self, timeline_i_frame):
-        """Sets the timeline_i_frame of this TimelineEvent.
-
-
-        :param timeline_i_frame: The timeline_i_frame of this TimelineEvent.  # noqa: E501
-        :type timeline_i_frame: TimelineEventIFrame
-        """
-
-        self._timeline_i_frame = timeline_i_frame
-
-    @property
-    def id(self):
-        """Gets the id of this TimelineEvent.  # noqa: E501
-
-        Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.  # noqa: E501
-
-        :return: The id of this TimelineEvent.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this TimelineEvent.
-
-        Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.  # noqa: E501
-
-        :param id: The id of this TimelineEvent.  # noqa: E501
-        :type id: str
-        """
-
-        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

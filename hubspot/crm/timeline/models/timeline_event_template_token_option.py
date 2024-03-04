@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -35,45 +35,22 @@ class TimelineEventTemplateTokenOption(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"value": "str", "label": "str"}
+    openapi_types = {"label": "str", "value": "str"}
 
-    attribute_map = {"value": "value", "label": "label"}
+    attribute_map = {"label": "label", "value": "value"}
 
-    def __init__(self, value=None, label=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, label=None, value=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateTokenOption - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._value = None
         self._label = None
+        self._value = None
         self.discriminator = None
 
-        self.value = value
         self.label = label
-
-    @property
-    def value(self):
-        """Gets the value of this TimelineEventTemplateTokenOption.  # noqa: E501
-
-
-        :return: The value of this TimelineEventTemplateTokenOption.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this TimelineEventTemplateTokenOption.
-
-
-        :param value: The value of this TimelineEventTemplateTokenOption.  # noqa: E501
-        :type value: str
-        """
-        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
+        self.value = value
 
     @property
     def label(self):
@@ -97,6 +74,29 @@ class TimelineEventTemplateTokenOption(object):
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
+
+    @property
+    def value(self):
+        """Gets the value of this TimelineEventTemplateTokenOption.  # noqa: E501
+
+
+        :return: The value of this TimelineEventTemplateTokenOption.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this TimelineEventTemplateTokenOption.
+
+
+        :param value: The value of this TimelineEventTemplateTokenOption.  # noqa: E501
+        :type value: str
+        """
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
