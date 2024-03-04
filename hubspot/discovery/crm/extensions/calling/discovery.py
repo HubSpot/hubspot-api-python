@@ -6,3 +6,7 @@ class Discovery(DiscoveryBase):
     @property
     def settings_api(self) -> api_client.SettingsApi:
         return self._configure_api_client(api_client, "SettingsApi")
+
+    @property
+    def recording_settings_api(self) -> api_client.RecordingSettingsApi:
+        return self._configure_api_client(api_client, "RecordingSettingsApi")
