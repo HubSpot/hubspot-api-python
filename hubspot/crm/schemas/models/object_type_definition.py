@@ -36,52 +36,55 @@ class ObjectTypeDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        "secondary_display_properties": "list[str]",
+        "object_type_id": "str",
+        "description": "str",
+        "fully_qualified_name": "str",
         "labels": "ObjectTypeDefinitionLabels",
+        "archived": "bool",
+        "created_at": "datetime",
         "required_properties": "list[str]",
         "searchable_properties": "list[str]",
-        "primary_display_property": "str",
-        "secondary_display_properties": "list[str]",
-        "archived": "bool",
-        "id": "str",
-        "fully_qualified_name": "str",
-        "created_at": "datetime",
-        "updated_at": "datetime",
-        "object_type_id": "str",
-        "name": "str",
         "portal_id": "int",
+        "primary_display_property": "str",
+        "name": "str",
+        "id": "str",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
+        "secondary_display_properties": "secondaryDisplayProperties",
+        "object_type_id": "objectTypeId",
+        "description": "description",
+        "fully_qualified_name": "fullyQualifiedName",
         "labels": "labels",
+        "archived": "archived",
+        "created_at": "createdAt",
         "required_properties": "requiredProperties",
         "searchable_properties": "searchableProperties",
-        "primary_display_property": "primaryDisplayProperty",
-        "secondary_display_properties": "secondaryDisplayProperties",
-        "archived": "archived",
-        "id": "id",
-        "fully_qualified_name": "fullyQualifiedName",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "object_type_id": "objectTypeId",
-        "name": "name",
         "portal_id": "portalId",
+        "primary_display_property": "primaryDisplayProperty",
+        "name": "name",
+        "id": "id",
+        "updated_at": "updatedAt",
     }
 
     def __init__(
         self,
+        secondary_display_properties=None,
+        object_type_id=None,
+        description=None,
+        fully_qualified_name=None,
         labels=None,
+        archived=None,
+        created_at=None,
         required_properties=None,
         searchable_properties=None,
-        primary_display_property=None,
-        secondary_display_properties=None,
-        archived=None,
-        id=None,
-        fully_qualified_name=None,
-        created_at=None,
-        updated_at=None,
-        object_type_id=None,
-        name=None,
         portal_id=None,
+        primary_display_property=None,
+        name=None,
+        id=None,
+        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ObjectTypeDefinition - a model defined in OpenAPI"""  # noqa: E501
@@ -89,38 +92,132 @@ class ObjectTypeDefinition(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._secondary_display_properties = None
+        self._object_type_id = None
+        self._description = None
+        self._fully_qualified_name = None
         self._labels = None
+        self._archived = None
+        self._created_at = None
         self._required_properties = None
         self._searchable_properties = None
-        self._primary_display_property = None
-        self._secondary_display_properties = None
-        self._archived = None
-        self._id = None
-        self._fully_qualified_name = None
-        self._created_at = None
-        self._updated_at = None
-        self._object_type_id = None
-        self._name = None
         self._portal_id = None
+        self._primary_display_property = None
+        self._name = None
+        self._id = None
+        self._updated_at = None
         self.discriminator = None
 
+        if secondary_display_properties is not None:
+            self.secondary_display_properties = secondary_display_properties
+        if object_type_id is not None:
+            self.object_type_id = object_type_id
+        if description is not None:
+            self.description = description
+        if fully_qualified_name is not None:
+            self.fully_qualified_name = fully_qualified_name
         self.labels = labels
-        self.required_properties = required_properties
-        self.searchable_properties = searchable_properties
-        if primary_display_property is not None:
-            self.primary_display_property = primary_display_property
-        self.secondary_display_properties = secondary_display_properties
-        self.archived = archived
-        self.id = id
-        self.fully_qualified_name = fully_qualified_name
+        if archived is not None:
+            self.archived = archived
         if created_at is not None:
             self.created_at = created_at
-        if updated_at is not None:
-            self.updated_at = updated_at
-        self.object_type_id = object_type_id
-        self.name = name
+        self.required_properties = required_properties
+        if searchable_properties is not None:
+            self.searchable_properties = searchable_properties
         if portal_id is not None:
             self.portal_id = portal_id
+        if primary_display_property is not None:
+            self.primary_display_property = primary_display_property
+        self.name = name
+        self.id = id
+        if updated_at is not None:
+            self.updated_at = updated_at
+
+    @property
+    def secondary_display_properties(self):
+        """Gets the secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
+
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
+
+        :return: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._secondary_display_properties
+
+    @secondary_display_properties.setter
+    def secondary_display_properties(self, secondary_display_properties):
+        """Sets the secondary_display_properties of this ObjectTypeDefinition.
+
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
+
+        :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
+        :type secondary_display_properties: list[str]
+        """
+
+        self._secondary_display_properties = secondary_display_properties
+
+    @property
+    def object_type_id(self):
+        """Gets the object_type_id of this ObjectTypeDefinition.  # noqa: E501
+
+
+        :return: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_type_id
+
+    @object_type_id.setter
+    def object_type_id(self, object_type_id):
+        """Sets the object_type_id of this ObjectTypeDefinition.
+
+
+        :param object_type_id: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
+        :type object_type_id: str
+        """
+
+        self._object_type_id = object_type_id
+
+    @property
+    def description(self):
+        """Gets the description of this ObjectTypeDefinition.  # noqa: E501
+
+
+        :return: The description of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ObjectTypeDefinition.
+
+
+        :param description: The description of this ObjectTypeDefinition.  # noqa: E501
+        :type description: str
+        """
+
+        self._description = description
+
+    @property
+    def fully_qualified_name(self):
+        """Gets the fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
+
+
+        :return: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._fully_qualified_name
+
+    @fully_qualified_name.setter
+    def fully_qualified_name(self, fully_qualified_name):
+        """Sets the fully_qualified_name of this ObjectTypeDefinition.
+
+
+        :param fully_qualified_name: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
+        :type fully_qualified_name: str
+        """
+
+        self._fully_qualified_name = fully_qualified_name
 
     @property
     def labels(self):
@@ -144,6 +241,50 @@ class ObjectTypeDefinition(object):
             raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
         self._labels = labels
+
+    @property
+    def archived(self):
+        """Gets the archived of this ObjectTypeDefinition.  # noqa: E501
+
+
+        :return: The archived of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: bool
+        """
+        return self._archived
+
+    @archived.setter
+    def archived(self, archived):
+        """Sets the archived of this ObjectTypeDefinition.
+
+
+        :param archived: The archived of this ObjectTypeDefinition.  # noqa: E501
+        :type archived: bool
+        """
+
+        self._archived = archived
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this ObjectTypeDefinition.  # noqa: E501
+
+        When the object type was created.  # noqa: E501
+
+        :return: The created_at of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this ObjectTypeDefinition.
+
+        When the object type was created.  # noqa: E501
+
+        :param created_at: The created_at of this ObjectTypeDefinition.  # noqa: E501
+        :type created_at: datetime
+        """
+
+        self._created_at = created_at
 
     @property
     def required_properties(self):
@@ -190,10 +331,31 @@ class ObjectTypeDefinition(object):
         :param searchable_properties: The searchable_properties of this ObjectTypeDefinition.  # noqa: E501
         :type searchable_properties: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
 
         self._searchable_properties = searchable_properties
+
+    @property
+    def portal_id(self):
+        """Gets the portal_id of this ObjectTypeDefinition.  # noqa: E501
+
+        The ID of the account that this object type is specific to.  # noqa: E501
+
+        :return: The portal_id of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: int
+        """
+        return self._portal_id
+
+    @portal_id.setter
+    def portal_id(self, portal_id):
+        """Sets the portal_id of this ObjectTypeDefinition.
+
+        The ID of the account that this object type is specific to.  # noqa: E501
+
+        :param portal_id: The portal_id of this ObjectTypeDefinition.  # noqa: E501
+        :type portal_id: int
+        """
+
+        self._portal_id = portal_id
 
     @property
     def primary_display_property(self):
@@ -217,171 +379,6 @@ class ObjectTypeDefinition(object):
         """
 
         self._primary_display_property = primary_display_property
-
-    @property
-    def secondary_display_properties(self):
-        """Gets the secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
-
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
-
-        :return: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._secondary_display_properties
-
-    @secondary_display_properties.setter
-    def secondary_display_properties(self, secondary_display_properties):
-        """Sets the secondary_display_properties of this ObjectTypeDefinition.
-
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
-
-        :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinition.  # noqa: E501
-        :type secondary_display_properties: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
-
-        self._secondary_display_properties = secondary_display_properties
-
-    @property
-    def archived(self):
-        """Gets the archived of this ObjectTypeDefinition.  # noqa: E501
-
-
-        :return: The archived of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: bool
-        """
-        return self._archived
-
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this ObjectTypeDefinition.
-
-
-        :param archived: The archived of this ObjectTypeDefinition.  # noqa: E501
-        :type archived: bool
-        """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
-
-        self._archived = archived
-
-    @property
-    def id(self):
-        """Gets the id of this ObjectTypeDefinition.  # noqa: E501
-
-        A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
-
-        :return: The id of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ObjectTypeDefinition.
-
-        A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
-
-        :param id: The id of this ObjectTypeDefinition.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def fully_qualified_name(self):
-        """Gets the fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
-
-
-        :return: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._fully_qualified_name
-
-    @fully_qualified_name.setter
-    def fully_qualified_name(self, fully_qualified_name):
-        """Sets the fully_qualified_name of this ObjectTypeDefinition.
-
-
-        :param fully_qualified_name: The fully_qualified_name of this ObjectTypeDefinition.  # noqa: E501
-        :type fully_qualified_name: str
-        """
-        if self.local_vars_configuration.client_side_validation and fully_qualified_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `fully_qualified_name`, must not be `None`")  # noqa: E501
-
-        self._fully_qualified_name = fully_qualified_name
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this ObjectTypeDefinition.  # noqa: E501
-
-        When the object type was created.  # noqa: E501
-
-        :return: The created_at of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this ObjectTypeDefinition.
-
-        When the object type was created.  # noqa: E501
-
-        :param created_at: The created_at of this ObjectTypeDefinition.  # noqa: E501
-        :type created_at: datetime
-        """
-
-        self._created_at = created_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this ObjectTypeDefinition.  # noqa: E501
-
-        When the object type was last updated.  # noqa: E501
-
-        :return: The updated_at of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this ObjectTypeDefinition.
-
-        When the object type was last updated.  # noqa: E501
-
-        :param updated_at: The updated_at of this ObjectTypeDefinition.  # noqa: E501
-        :type updated_at: datetime
-        """
-
-        self._updated_at = updated_at
-
-    @property
-    def object_type_id(self):
-        """Gets the object_type_id of this ObjectTypeDefinition.  # noqa: E501
-
-
-        :return: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._object_type_id
-
-    @object_type_id.setter
-    def object_type_id(self, object_type_id):
-        """Sets the object_type_id of this ObjectTypeDefinition.
-
-
-        :param object_type_id: The object_type_id of this ObjectTypeDefinition.  # noqa: E501
-        :type object_type_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type_id`, must not be `None`")  # noqa: E501
-
-        self._object_type_id = object_type_id
 
     @property
     def name(self):
@@ -409,27 +406,52 @@ class ObjectTypeDefinition(object):
         self._name = name
 
     @property
-    def portal_id(self):
-        """Gets the portal_id of this ObjectTypeDefinition.  # noqa: E501
+    def id(self):
+        """Gets the id of this ObjectTypeDefinition.  # noqa: E501
 
-        The ID of the account that this object type is specific to.  # noqa: E501
+        A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
 
-        :return: The portal_id of this ObjectTypeDefinition.  # noqa: E501
-        :rtype: int
+        :return: The id of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: str
         """
-        return self._portal_id
+        return self._id
 
-    @portal_id.setter
-    def portal_id(self, portal_id):
-        """Sets the portal_id of this ObjectTypeDefinition.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ObjectTypeDefinition.
 
-        The ID of the account that this object type is specific to.  # noqa: E501
+        A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.  # noqa: E501
 
-        :param portal_id: The portal_id of this ObjectTypeDefinition.  # noqa: E501
-        :type portal_id: int
+        :param id: The id of this ObjectTypeDefinition.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this ObjectTypeDefinition.  # noqa: E501
+
+        When the object type was last updated.  # noqa: E501
+
+        :return: The updated_at of this ObjectTypeDefinition.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this ObjectTypeDefinition.
+
+        When the object type was last updated.  # noqa: E501
+
+        :param updated_at: The updated_at of this ObjectTypeDefinition.  # noqa: E501
+        :type updated_at: datetime
         """
 
-        self._portal_id = portal_id
+        self._updated_at = updated_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

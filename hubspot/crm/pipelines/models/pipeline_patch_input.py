@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Pipelines
+    Pipelines
 
     Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.  # noqa: E501
 
@@ -35,50 +35,50 @@ class PipelinePatchInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "display_order": "int", "archived": "bool"}
+    openapi_types = {"archived": "bool", "display_order": "int", "label": "str"}
 
-    attribute_map = {"label": "label", "display_order": "displayOrder", "archived": "archived"}
+    attribute_map = {"archived": "archived", "display_order": "displayOrder", "label": "label"}
 
-    def __init__(self, label=None, display_order=None, archived=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, archived=None, display_order=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PipelinePatchInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._label = None
-        self._display_order = None
         self._archived = None
+        self._display_order = None
+        self._label = None
         self.discriminator = None
 
-        if label is not None:
-            self.label = label
-        if display_order is not None:
-            self.display_order = display_order
         if archived is not None:
             self.archived = archived
+        if display_order is not None:
+            self.display_order = display_order
+        if label is not None:
+            self.label = label
 
     @property
-    def label(self):
-        """Gets the label of this PipelinePatchInput.  # noqa: E501
+    def archived(self):
+        """Gets the archived of this PipelinePatchInput.  # noqa: E501
 
-        A unique label used to organize pipelines in HubSpot's UI  # noqa: E501
+        Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.  # noqa: E501
 
-        :return: The label of this PipelinePatchInput.  # noqa: E501
-        :rtype: str
+        :return: The archived of this PipelinePatchInput.  # noqa: E501
+        :rtype: bool
         """
-        return self._label
+        return self._archived
 
-    @label.setter
-    def label(self, label):
-        """Sets the label of this PipelinePatchInput.
+    @archived.setter
+    def archived(self, archived):
+        """Sets the archived of this PipelinePatchInput.
 
-        A unique label used to organize pipelines in HubSpot's UI  # noqa: E501
+        Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.  # noqa: E501
 
-        :param label: The label of this PipelinePatchInput.  # noqa: E501
-        :type label: str
+        :param archived: The archived of this PipelinePatchInput.  # noqa: E501
+        :type archived: bool
         """
 
-        self._label = label
+        self._archived = archived
 
     @property
     def display_order(self):
@@ -104,27 +104,27 @@ class PipelinePatchInput(object):
         self._display_order = display_order
 
     @property
-    def archived(self):
-        """Gets the archived of this PipelinePatchInput.  # noqa: E501
+    def label(self):
+        """Gets the label of this PipelinePatchInput.  # noqa: E501
 
-        Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.  # noqa: E501
+        A unique label used to organize pipelines in HubSpot's UI  # noqa: E501
 
-        :return: The archived of this PipelinePatchInput.  # noqa: E501
-        :rtype: bool
+        :return: The label of this PipelinePatchInput.  # noqa: E501
+        :rtype: str
         """
-        return self._archived
+        return self._label
 
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this PipelinePatchInput.
+    @label.setter
+    def label(self, label):
+        """Sets the label of this PipelinePatchInput.
 
-        Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.  # noqa: E501
+        A unique label used to organize pipelines in HubSpot's UI  # noqa: E501
 
-        :param archived: The archived of this PipelinePatchInput.  # noqa: E501
-        :type archived: bool
+        :param label: The label of this PipelinePatchInput.  # noqa: E501
+        :type label: str
         """
 
-        self._archived = archived
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

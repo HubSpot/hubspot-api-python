@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Pipelines
+    Pipelines
 
     Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.  # noqa: E501
 
@@ -49,6 +49,8 @@ class PipelinesApi(object):
         :type pipeline_id: str
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -83,6 +85,8 @@ class PipelinesApi(object):
         :type pipeline_id: str
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -109,7 +113,7 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "validate_references_before_delete"]
+        all_params = ["object_type", "pipeline_id", "validate_references_before_delete", "validate_deal_stage_usages_before_delete"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -135,6 +139,8 @@ class PipelinesApi(object):
         query_params = []
         if local_var_params.get("validate_references_before_delete") is not None:  # noqa: E501
             query_params.append(("validateReferencesBeforeDelete", local_var_params["validate_references_before_delete"]))  # noqa: E501
+        if local_var_params.get("validate_deal_stage_usages_before_delete") is not None:  # noqa: E501
+            query_params.append(("validateDealStageUsagesBeforeDelete", local_var_params["validate_deal_stage_usages_before_delete"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -579,6 +585,8 @@ class PipelinesApi(object):
         :type pipeline_input: PipelineInput
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -615,6 +623,8 @@ class PipelinesApi(object):
         :type pipeline_input: PipelineInput
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -641,7 +651,7 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "pipeline_input", "validate_references_before_delete"]
+        all_params = ["object_type", "pipeline_id", "pipeline_input", "validate_references_before_delete", "validate_deal_stage_usages_before_delete"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -670,6 +680,8 @@ class PipelinesApi(object):
         query_params = []
         if local_var_params.get("validate_references_before_delete") is not None:  # noqa: E501
             query_params.append(("validateReferencesBeforeDelete", local_var_params["validate_references_before_delete"]))  # noqa: E501
+        if local_var_params.get("validate_deal_stage_usages_before_delete") is not None:  # noqa: E501
+            query_params.append(("validateDealStageUsagesBeforeDelete", local_var_params["validate_deal_stage_usages_before_delete"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -731,6 +743,8 @@ class PipelinesApi(object):
         :type pipeline_patch_input: PipelinePatchInput
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -767,6 +781,8 @@ class PipelinesApi(object):
         :type pipeline_patch_input: PipelinePatchInput
         :param validate_references_before_delete:
         :type validate_references_before_delete: bool
+        :param validate_deal_stage_usages_before_delete:
+        :type validate_deal_stage_usages_before_delete: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -793,7 +809,7 @@ class PipelinesApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "pipeline_id", "pipeline_patch_input", "validate_references_before_delete"]
+        all_params = ["object_type", "pipeline_id", "pipeline_patch_input", "validate_references_before_delete", "validate_deal_stage_usages_before_delete"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -822,6 +838,8 @@ class PipelinesApi(object):
         query_params = []
         if local_var_params.get("validate_references_before_delete") is not None:  # noqa: E501
             query_params.append(("validateReferencesBeforeDelete", local_var_params["validate_references_before_delete"]))  # noqa: E501
+        if local_var_params.get("validate_deal_stage_usages_before_delete") is not None:  # noqa: E501
+            query_params.append(("validateDealStageUsagesBeforeDelete", local_var_params["validate_deal_stage_usages_before_delete"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 

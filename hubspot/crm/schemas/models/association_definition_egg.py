@@ -35,25 +35,25 @@ class AssociationDefinitionEgg(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"from_object_type_id": "str", "to_object_type_id": "str", "name": "str"}
+    openapi_types = {"from_object_type_id": "str", "name": "str", "to_object_type_id": "str"}
 
-    attribute_map = {"from_object_type_id": "fromObjectTypeId", "to_object_type_id": "toObjectTypeId", "name": "name"}
+    attribute_map = {"from_object_type_id": "fromObjectTypeId", "name": "name", "to_object_type_id": "toObjectTypeId"}
 
-    def __init__(self, from_object_type_id=None, to_object_type_id=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, from_object_type_id=None, name=None, to_object_type_id=None, local_vars_configuration=None):  # noqa: E501
         """AssociationDefinitionEgg - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._from_object_type_id = None
-        self._to_object_type_id = None
         self._name = None
+        self._to_object_type_id = None
         self.discriminator = None
 
         self.from_object_type_id = from_object_type_id
-        self.to_object_type_id = to_object_type_id
         if name is not None:
             self.name = name
+        self.to_object_type_id = to_object_type_id
 
     @property
     def from_object_type_id(self):
@@ -81,6 +81,29 @@ class AssociationDefinitionEgg(object):
         self._from_object_type_id = from_object_type_id
 
     @property
+    def name(self):
+        """Gets the name of this AssociationDefinitionEgg.  # noqa: E501
+
+        A unique name for this association.  # noqa: E501
+
+        :return: The name of this AssociationDefinitionEgg.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this AssociationDefinitionEgg.
+
+        A unique name for this association.  # noqa: E501
+
+        :param name: The name of this AssociationDefinitionEgg.  # noqa: E501
+        :type name: str
+        """
+
+        self._name = name
+
+    @property
     def to_object_type_id(self):
         """Gets the to_object_type_id of this AssociationDefinitionEgg.  # noqa: E501
 
@@ -104,29 +127,6 @@ class AssociationDefinitionEgg(object):
             raise ValueError("Invalid value for `to_object_type_id`, must not be `None`")  # noqa: E501
 
         self._to_object_type_id = to_object_type_id
-
-    @property
-    def name(self):
-        """Gets the name of this AssociationDefinitionEgg.  # noqa: E501
-
-        A unique name for this association.  # noqa: E501
-
-        :return: The name of this AssociationDefinitionEgg.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AssociationDefinitionEgg.
-
-        A unique name for this association.  # noqa: E501
-
-        :param name: The name of this AssociationDefinitionEgg.  # noqa: E501
-        :type name: str
-        """
-
-        self._name = name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
