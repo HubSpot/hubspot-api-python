@@ -79,6 +79,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the type of property `errors` in  class `BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
 - Added parameter `inverse_label` to classes `PublicAssociationDefinitionCreateRequest` and `PublicAssociationDefinitionUpdateRequest`.
 
+#### Changes in All Models PublicObjectSearchRequest:
+- Changed the type of parameter `after` from `int` to `string`.
+
+#### Changes in All Models SimplePublicObjectBatchInput:
+- Added new param `id_property`.
+
+### Changes in CRM Extensions Accounting API:
+- Marked as deprecated.
+
+### Changes in CRM Extensions Cards API:
+- Changed parameter order in `archive()` method from `(app_id, card_id)` to `(card_id, app_id)`.
+- Updated `create()` method to return `PublicCardResponse` instead `CardResponse`.
+- Updated `get_all()` method to return `PublicCardListResponse` instead `CardListResponse`.
+- Changed parameter order in `get_by_id()` method from `(app_id, card_id)` to `(card_id, app_id)` and method return `PublicCardResponse` instead `CardResponse`.
+- Changed parameter order in `update()` method from `(app_id, card_id, card_patch_request)` to `(card_id, app_id, card_patch_request)` and method return `PublicCardResponse` instead `CardResponse`.
+
+### Changes in CRM Extensions Card Models:
+- Added new params `serverless_function` and `card_type` to `CardFetchBody` and `CardFetchBodyPatch`.
+- Added new param `audit_history` to `PublicCardResponse`.
+- Added new allowable value `marketing_events` to `CardObjectTypeBody`.
+
+#### Changes in CRM Extensions Videoconferencing API:
+- Added `developer_hapikey`
+
+#### Changes in CRM Extensions Videoconferencing Model:
+- Added new param `fetch_accounts_uri` to `ExternalSettings`.
+
+## Added new Client APIs:
+- Added `crm.extensions.calling.recording_settings_api` Api.
+- Added `crm.companies.gdpr_api` Api.
+- Added `crm.deals.gdpr_api` Api.
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
