@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Pipelines
+    Pipelines
 
     Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.  # noqa: E501
 
@@ -35,49 +35,49 @@ class PipelineStageInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "display_order": "int", "metadata": "dict[str, str]"}
+    openapi_types = {"metadata": "dict[str, str]", "display_order": "int", "label": "str"}
 
-    attribute_map = {"label": "label", "display_order": "displayOrder", "metadata": "metadata"}
+    attribute_map = {"metadata": "metadata", "display_order": "displayOrder", "label": "label"}
 
-    def __init__(self, label=None, display_order=None, metadata=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, metadata=None, display_order=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PipelineStageInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._label = None
-        self._display_order = None
         self._metadata = None
+        self._display_order = None
+        self._label = None
         self.discriminator = None
 
-        self.label = label
-        self.display_order = display_order
         self.metadata = metadata
+        self.display_order = display_order
+        self.label = label
 
     @property
-    def label(self):
-        """Gets the label of this PipelineStageInput.  # noqa: E501
+    def metadata(self):
+        """Gets the metadata of this PipelineStageInput.  # noqa: E501
 
-        A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.  # noqa: E501
+        A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
 
-        :return: The label of this PipelineStageInput.  # noqa: E501
-        :rtype: str
+        :return: The metadata of this PipelineStageInput.  # noqa: E501
+        :rtype: dict[str, str]
         """
-        return self._label
+        return self._metadata
 
-    @label.setter
-    def label(self, label):
-        """Sets the label of this PipelineStageInput.
+    @metadata.setter
+    def metadata(self, metadata):
+        """Sets the metadata of this PipelineStageInput.
 
-        A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.  # noqa: E501
+        A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
 
-        :param label: The label of this PipelineStageInput.  # noqa: E501
-        :type label: str
+        :param metadata: The metadata of this PipelineStageInput.  # noqa: E501
+        :type metadata: dict[str, str]
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
+            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
-        self._label = label
+        self._metadata = metadata
 
     @property
     def display_order(self):
@@ -105,29 +105,29 @@ class PipelineStageInput(object):
         self._display_order = display_order
 
     @property
-    def metadata(self):
-        """Gets the metadata of this PipelineStageInput.  # noqa: E501
+    def label(self):
+        """Gets the label of this PipelineStageInput.  # noqa: E501
 
-        A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
+        A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.  # noqa: E501
 
-        :return: The metadata of this PipelineStageInput.  # noqa: E501
-        :rtype: dict[str, str]
+        :return: The label of this PipelineStageInput.  # noqa: E501
+        :rtype: str
         """
-        return self._metadata
+        return self._label
 
-    @metadata.setter
-    def metadata(self, metadata):
-        """Sets the metadata of this PipelineStageInput.
+    @label.setter
+    def label(self, label):
+        """Sets the label of this PipelineStageInput.
 
-        A JSON object containing properties that are not present on all object pipelines.  For `deals` pipelines, the `probability` field is required (`{ \"probability\": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.  For `tickets` pipelines, the `ticketState` field is optional (`{ \"ticketState\": \"OPEN\" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.  # noqa: E501
+        A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.  # noqa: E501
 
-        :param metadata: The metadata of this PipelineStageInput.  # noqa: E501
-        :type metadata: dict[str, str]
+        :param label: The label of this PipelineStageInput.  # noqa: E501
+        :type label: str
         """
-        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
-            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
-        self._metadata = metadata
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

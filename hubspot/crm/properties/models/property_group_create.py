@@ -35,25 +35,25 @@ class PropertyGroupCreate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "label": "str", "display_order": "int"}
+    openapi_types = {"name": "str", "display_order": "int", "label": "str"}
 
-    attribute_map = {"name": "name", "label": "label", "display_order": "displayOrder"}
+    attribute_map = {"name": "name", "display_order": "displayOrder", "label": "label"}
 
-    def __init__(self, name=None, label=None, display_order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, display_order=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PropertyGroupCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
-        self._label = None
         self._display_order = None
+        self._label = None
         self.discriminator = None
 
         self.name = name
-        self.label = label
         if display_order is not None:
             self.display_order = display_order
+        self.label = label
 
     @property
     def name(self):
@@ -81,6 +81,29 @@ class PropertyGroupCreate(object):
         self._name = name
 
     @property
+    def display_order(self):
+        """Gets the display_order of this PropertyGroupCreate.  # noqa: E501
+
+        Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.  # noqa: E501
+
+        :return: The display_order of this PropertyGroupCreate.  # noqa: E501
+        :rtype: int
+        """
+        return self._display_order
+
+    @display_order.setter
+    def display_order(self, display_order):
+        """Sets the display_order of this PropertyGroupCreate.
+
+        Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.  # noqa: E501
+
+        :param display_order: The display_order of this PropertyGroupCreate.  # noqa: E501
+        :type display_order: int
+        """
+
+        self._display_order = display_order
+
+    @property
     def label(self):
         """Gets the label of this PropertyGroupCreate.  # noqa: E501
 
@@ -104,29 +127,6 @@ class PropertyGroupCreate(object):
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
-
-    @property
-    def display_order(self):
-        """Gets the display_order of this PropertyGroupCreate.  # noqa: E501
-
-        Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.  # noqa: E501
-
-        :return: The display_order of this PropertyGroupCreate.  # noqa: E501
-        :rtype: int
-        """
-        return self._display_order
-
-    @display_order.setter
-    def display_order(self, display_order):
-        """Sets the display_order of this PropertyGroupCreate.
-
-        Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.  # noqa: E501
-
-        :param display_order: The display_order of this PropertyGroupCreate.  # noqa: E501
-        :type display_order: int
-        """
-
-        self._display_order = display_order
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

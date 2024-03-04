@@ -35,47 +35,24 @@ class PropertyGroupUpdate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "display_order": "int"}
+    openapi_types = {"display_order": "int", "label": "str"}
 
-    attribute_map = {"label": "label", "display_order": "displayOrder"}
+    attribute_map = {"display_order": "displayOrder", "label": "label"}
 
-    def __init__(self, label=None, display_order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, display_order=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PropertyGroupUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._label = None
         self._display_order = None
+        self._label = None
         self.discriminator = None
 
-        if label is not None:
-            self.label = label
         if display_order is not None:
             self.display_order = display_order
-
-    @property
-    def label(self):
-        """Gets the label of this PropertyGroupUpdate.  # noqa: E501
-
-        A human-readable label that will be shown in HubSpot.  # noqa: E501
-
-        :return: The label of this PropertyGroupUpdate.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this PropertyGroupUpdate.
-
-        A human-readable label that will be shown in HubSpot.  # noqa: E501
-
-        :param label: The label of this PropertyGroupUpdate.  # noqa: E501
-        :type label: str
-        """
-
-        self._label = label
+        if label is not None:
+            self.label = label
 
     @property
     def display_order(self):
@@ -99,6 +76,29 @@ class PropertyGroupUpdate(object):
         """
 
         self._display_order = display_order
+
+    @property
+    def label(self):
+        """Gets the label of this PropertyGroupUpdate.  # noqa: E501
+
+        A human-readable label that will be shown in HubSpot.  # noqa: E501
+
+        :return: The label of this PropertyGroupUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this PropertyGroupUpdate.
+
+        A human-readable label that will be shown in HubSpot.  # noqa: E501
+
+        :param label: The label of this PropertyGroupUpdate.  # noqa: E501
+        :type label: str
+        """
+
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

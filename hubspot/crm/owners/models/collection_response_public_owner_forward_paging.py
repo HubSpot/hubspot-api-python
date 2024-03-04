@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Owners
+    Crm Owners
 
     HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.  # noqa: E501
 
@@ -35,23 +35,44 @@ class CollectionResponsePublicOwnerForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"results": "list[PublicOwner]", "paging": "ForwardPaging"}
+    openapi_types = {"paging": "ForwardPaging", "results": "list[PublicOwner]"}
 
-    attribute_map = {"results": "results", "paging": "paging"}
+    attribute_map = {"paging": "paging", "results": "results"}
 
-    def __init__(self, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, paging=None, results=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponsePublicOwnerForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._results = None
         self._paging = None
+        self._results = None
         self.discriminator = None
 
-        self.results = results
         if paging is not None:
             self.paging = paging
+        self.results = results
+
+    @property
+    def paging(self):
+        """Gets the paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
+
+
+        :return: The paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
+        :rtype: ForwardPaging
+        """
+        return self._paging
+
+    @paging.setter
+    def paging(self, paging):
+        """Sets the paging of this CollectionResponsePublicOwnerForwardPaging.
+
+
+        :param paging: The paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
+        :type paging: ForwardPaging
+        """
+
+        self._paging = paging
 
     @property
     def results(self):
@@ -75,27 +96,6 @@ class CollectionResponsePublicOwnerForwardPaging(object):
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
-
-    @property
-    def paging(self):
-        """Gets the paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
-
-
-        :return: The paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
-        :rtype: ForwardPaging
-        """
-        return self._paging
-
-    @paging.setter
-    def paging(self, paging):
-        """Sets the paging of this CollectionResponsePublicOwnerForwardPaging.
-
-
-        :param paging: The paging of this CollectionResponsePublicOwnerForwardPaging.  # noqa: E501
-        :type paging: ForwardPaging
-        """
-
-        self._paging = paging
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

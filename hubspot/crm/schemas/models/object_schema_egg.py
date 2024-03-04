@@ -36,37 +36,40 @@ class ObjectSchemaEgg(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "labels": "ObjectTypeDefinitionLabels",
+        "secondary_display_properties": "list[str]",
         "required_properties": "list[str]",
         "searchable_properties": "list[str]",
         "primary_display_property": "str",
-        "secondary_display_properties": "list[str]",
-        "properties": "list[ObjectTypePropertyCreate]",
-        "associated_objects": "list[str]",
         "name": "str",
+        "description": "str",
+        "associated_objects": "list[str]",
+        "properties": "list[ObjectTypePropertyCreate]",
+        "labels": "ObjectTypeDefinitionLabels",
     }
 
     attribute_map = {
-        "labels": "labels",
+        "secondary_display_properties": "secondaryDisplayProperties",
         "required_properties": "requiredProperties",
         "searchable_properties": "searchableProperties",
         "primary_display_property": "primaryDisplayProperty",
-        "secondary_display_properties": "secondaryDisplayProperties",
-        "properties": "properties",
-        "associated_objects": "associatedObjects",
         "name": "name",
+        "description": "description",
+        "associated_objects": "associatedObjects",
+        "properties": "properties",
+        "labels": "labels",
     }
 
     def __init__(
         self,
-        labels=None,
+        secondary_display_properties=None,
         required_properties=None,
         searchable_properties=None,
         primary_display_property=None,
-        secondary_display_properties=None,
-        properties=None,
-        associated_objects=None,
         name=None,
+        description=None,
+        associated_objects=None,
+        properties=None,
+        labels=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ObjectSchemaEgg - a model defined in OpenAPI"""  # noqa: E501
@@ -74,48 +77,53 @@ class ObjectSchemaEgg(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._labels = None
+        self._secondary_display_properties = None
         self._required_properties = None
         self._searchable_properties = None
         self._primary_display_property = None
-        self._secondary_display_properties = None
-        self._properties = None
-        self._associated_objects = None
         self._name = None
+        self._description = None
+        self._associated_objects = None
+        self._properties = None
+        self._labels = None
         self.discriminator = None
 
-        self.labels = labels
+        if secondary_display_properties is not None:
+            self.secondary_display_properties = secondary_display_properties
         self.required_properties = required_properties
-        self.searchable_properties = searchable_properties
+        if searchable_properties is not None:
+            self.searchable_properties = searchable_properties
         if primary_display_property is not None:
             self.primary_display_property = primary_display_property
-        self.secondary_display_properties = secondary_display_properties
-        self.properties = properties
-        self.associated_objects = associated_objects
         self.name = name
+        if description is not None:
+            self.description = description
+        self.associated_objects = associated_objects
+        self.properties = properties
+        self.labels = labels
 
     @property
-    def labels(self):
-        """Gets the labels of this ObjectSchemaEgg.  # noqa: E501
+    def secondary_display_properties(self):
+        """Gets the secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
 
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :return: The labels of this ObjectSchemaEgg.  # noqa: E501
-        :rtype: ObjectTypeDefinitionLabels
+        :return: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._labels
+        return self._secondary_display_properties
 
-    @labels.setter
-    def labels(self, labels):
-        """Sets the labels of this ObjectSchemaEgg.
+    @secondary_display_properties.setter
+    def secondary_display_properties(self, secondary_display_properties):
+        """Sets the secondary_display_properties of this ObjectSchemaEgg.
 
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :param labels: The labels of this ObjectSchemaEgg.  # noqa: E501
-        :type labels: ObjectTypeDefinitionLabels
+        :param secondary_display_properties: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
+        :type secondary_display_properties: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
-            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
 
-        self._labels = labels
+        self._secondary_display_properties = secondary_display_properties
 
     @property
     def required_properties(self):
@@ -162,8 +170,6 @@ class ObjectSchemaEgg(object):
         :param searchable_properties: The searchable_properties of this ObjectSchemaEgg.  # noqa: E501
         :type searchable_properties: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and searchable_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `searchable_properties`, must not be `None`")  # noqa: E501
 
         self._searchable_properties = searchable_properties
 
@@ -191,54 +197,50 @@ class ObjectSchemaEgg(object):
         self._primary_display_property = primary_display_property
 
     @property
-    def secondary_display_properties(self):
-        """Gets the secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
+    def name(self):
+        """Gets the name of this ObjectSchemaEgg.  # noqa: E501
 
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
+        A unique name for this object. For internal use only.  # noqa: E501
 
-        :return: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
-        :rtype: list[str]
+        :return: The name of this ObjectSchemaEgg.  # noqa: E501
+        :rtype: str
         """
-        return self._secondary_display_properties
+        return self._name
 
-    @secondary_display_properties.setter
-    def secondary_display_properties(self, secondary_display_properties):
-        """Sets the secondary_display_properties of this ObjectSchemaEgg.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ObjectSchemaEgg.
 
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
+        A unique name for this object. For internal use only.  # noqa: E501
 
-        :param secondary_display_properties: The secondary_display_properties of this ObjectSchemaEgg.  # noqa: E501
-        :type secondary_display_properties: list[str]
+        :param name: The name of this ObjectSchemaEgg.  # noqa: E501
+        :type name: str
         """
-        if self.local_vars_configuration.client_side_validation and secondary_display_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `secondary_display_properties`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._secondary_display_properties = secondary_display_properties
+        self._name = name
 
     @property
-    def properties(self):
-        """Gets the properties of this ObjectSchemaEgg.  # noqa: E501
+    def description(self):
+        """Gets the description of this ObjectSchemaEgg.  # noqa: E501
 
-        Properties defined for this object type.  # noqa: E501
 
-        :return: The properties of this ObjectSchemaEgg.  # noqa: E501
-        :rtype: list[ObjectTypePropertyCreate]
+        :return: The description of this ObjectSchemaEgg.  # noqa: E501
+        :rtype: str
         """
-        return self._properties
+        return self._description
 
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this ObjectSchemaEgg.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ObjectSchemaEgg.
 
-        Properties defined for this object type.  # noqa: E501
 
-        :param properties: The properties of this ObjectSchemaEgg.  # noqa: E501
-        :type properties: list[ObjectTypePropertyCreate]
+        :param description: The description of this ObjectSchemaEgg.  # noqa: E501
+        :type description: str
         """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
-        self._properties = properties
+        self._description = description
 
     @property
     def associated_objects(self):
@@ -266,29 +268,52 @@ class ObjectSchemaEgg(object):
         self._associated_objects = associated_objects
 
     @property
-    def name(self):
-        """Gets the name of this ObjectSchemaEgg.  # noqa: E501
+    def properties(self):
+        """Gets the properties of this ObjectSchemaEgg.  # noqa: E501
 
-        A unique name for this object. For internal use only.  # noqa: E501
+        Properties defined for this object type.  # noqa: E501
 
-        :return: The name of this ObjectSchemaEgg.  # noqa: E501
-        :rtype: str
+        :return: The properties of this ObjectSchemaEgg.  # noqa: E501
+        :rtype: list[ObjectTypePropertyCreate]
         """
-        return self._name
+        return self._properties
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ObjectSchemaEgg.
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this ObjectSchemaEgg.
 
-        A unique name for this object. For internal use only.  # noqa: E501
+        Properties defined for this object type.  # noqa: E501
 
-        :param name: The name of this ObjectSchemaEgg.  # noqa: E501
-        :type name: str
+        :param properties: The properties of this ObjectSchemaEgg.  # noqa: E501
+        :type properties: list[ObjectTypePropertyCreate]
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._properties = properties
+
+    @property
+    def labels(self):
+        """Gets the labels of this ObjectSchemaEgg.  # noqa: E501
+
+
+        :return: The labels of this ObjectSchemaEgg.  # noqa: E501
+        :rtype: ObjectTypeDefinitionLabels
+        """
+        return self._labels
+
+    @labels.setter
+    def labels(self, labels):
+        """Sets the labels of this ObjectSchemaEgg.
+
+
+        :param labels: The labels of this ObjectSchemaEgg.  # noqa: E501
+        :type labels: ObjectTypeDefinitionLabels
+        """
+        if self.local_vars_configuration.client_side_validation and labels is None:  # noqa: E501
+            raise ValueError("Invalid value for `labels`, must not be `None`")  # noqa: E501
+
+        self._labels = labels
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

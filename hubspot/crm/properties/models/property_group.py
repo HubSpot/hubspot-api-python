@@ -35,26 +35,49 @@ class PropertyGroup(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "label": "str", "display_order": "int", "archived": "bool"}
+    openapi_types = {"archived": "bool", "name": "str", "display_order": "int", "label": "str"}
 
-    attribute_map = {"name": "name", "label": "label", "display_order": "displayOrder", "archived": "archived"}
+    attribute_map = {"archived": "archived", "name": "name", "display_order": "displayOrder", "label": "label"}
 
-    def __init__(self, name=None, label=None, display_order=None, archived=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, archived=None, name=None, display_order=None, label=None, local_vars_configuration=None):  # noqa: E501
         """PropertyGroup - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._label = None
-        self._display_order = None
         self._archived = None
+        self._name = None
+        self._display_order = None
+        self._label = None
         self.discriminator = None
 
-        self.name = name
-        self.label = label
-        self.display_order = display_order
         self.archived = archived
+        self.name = name
+        self.display_order = display_order
+        self.label = label
+
+    @property
+    def archived(self):
+        """Gets the archived of this PropertyGroup.  # noqa: E501
+
+
+        :return: The archived of this PropertyGroup.  # noqa: E501
+        :rtype: bool
+        """
+        return self._archived
+
+    @archived.setter
+    def archived(self, archived):
+        """Sets the archived of this PropertyGroup.
+
+
+        :param archived: The archived of this PropertyGroup.  # noqa: E501
+        :type archived: bool
+        """
+        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+
+        self._archived = archived
 
     @property
     def name(self):
@@ -82,31 +105,6 @@ class PropertyGroup(object):
         self._name = name
 
     @property
-    def label(self):
-        """Gets the label of this PropertyGroup.  # noqa: E501
-
-        A human-readable label that will be shown in HubSpot.  # noqa: E501
-
-        :return: The label of this PropertyGroup.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this PropertyGroup.
-
-        A human-readable label that will be shown in HubSpot.  # noqa: E501
-
-        :param label: The label of this PropertyGroup.  # noqa: E501
-        :type label: str
-        """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
-
-        self._label = label
-
-    @property
     def display_order(self):
         """Gets the display_order of this PropertyGroup.  # noqa: E501
 
@@ -132,27 +130,29 @@ class PropertyGroup(object):
         self._display_order = display_order
 
     @property
-    def archived(self):
-        """Gets the archived of this PropertyGroup.  # noqa: E501
+    def label(self):
+        """Gets the label of this PropertyGroup.  # noqa: E501
 
+        A human-readable label that will be shown in HubSpot.  # noqa: E501
 
-        :return: The archived of this PropertyGroup.  # noqa: E501
-        :rtype: bool
+        :return: The label of this PropertyGroup.  # noqa: E501
+        :rtype: str
         """
-        return self._archived
+        return self._label
 
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this PropertyGroup.
+    @label.setter
+    def label(self, label):
+        """Sets the label of this PropertyGroup.
 
+        A human-readable label that will be shown in HubSpot.  # noqa: E501
 
-        :param archived: The archived of this PropertyGroup.  # noqa: E501
-        :type archived: bool
+        :param label: The label of this PropertyGroup.  # noqa: E501
+        :type label: str
         """
-        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
-            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
-        self._archived = archived
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

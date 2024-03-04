@@ -35,33 +35,56 @@ class AssociationDefinition(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"from_object_type_id": "str", "to_object_type_id": "str", "name": "str", "id": "str", "created_at": "datetime", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "from_object_type_id": "str", "name": "str", "id": "str", "to_object_type_id": "str", "updated_at": "datetime"}
 
-    attribute_map = {"from_object_type_id": "fromObjectTypeId", "to_object_type_id": "toObjectTypeId", "name": "name", "id": "id", "created_at": "createdAt", "updated_at": "updatedAt"}
+    attribute_map = {"created_at": "createdAt", "from_object_type_id": "fromObjectTypeId", "name": "name", "id": "id", "to_object_type_id": "toObjectTypeId", "updated_at": "updatedAt"}
 
-    def __init__(self, from_object_type_id=None, to_object_type_id=None, name=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, from_object_type_id=None, name=None, id=None, to_object_type_id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """AssociationDefinition - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._created_at = None
         self._from_object_type_id = None
-        self._to_object_type_id = None
         self._name = None
         self._id = None
-        self._created_at = None
+        self._to_object_type_id = None
         self._updated_at = None
         self.discriminator = None
 
+        if created_at is not None:
+            self.created_at = created_at
         self.from_object_type_id = from_object_type_id
-        self.to_object_type_id = to_object_type_id
         if name is not None:
             self.name = name
         self.id = id
-        if created_at is not None:
-            self.created_at = created_at
+        self.to_object_type_id = to_object_type_id
         if updated_at is not None:
             self.updated_at = updated_at
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this AssociationDefinition.  # noqa: E501
+
+        When the association was defined.  # noqa: E501
+
+        :return: The created_at of this AssociationDefinition.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this AssociationDefinition.
+
+        When the association was defined.  # noqa: E501
+
+        :param created_at: The created_at of this AssociationDefinition.  # noqa: E501
+        :type created_at: datetime
+        """
+
+        self._created_at = created_at
 
     @property
     def from_object_type_id(self):
@@ -87,31 +110,6 @@ class AssociationDefinition(object):
             raise ValueError("Invalid value for `from_object_type_id`, must not be `None`")  # noqa: E501
 
         self._from_object_type_id = from_object_type_id
-
-    @property
-    def to_object_type_id(self):
-        """Gets the to_object_type_id of this AssociationDefinition.  # noqa: E501
-
-        ID of the target object type ID to link to.  # noqa: E501
-
-        :return: The to_object_type_id of this AssociationDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._to_object_type_id
-
-    @to_object_type_id.setter
-    def to_object_type_id(self, to_object_type_id):
-        """Sets the to_object_type_id of this AssociationDefinition.
-
-        ID of the target object type ID to link to.  # noqa: E501
-
-        :param to_object_type_id: The to_object_type_id of this AssociationDefinition.  # noqa: E501
-        :type to_object_type_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and to_object_type_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `to_object_type_id`, must not be `None`")  # noqa: E501
-
-        self._to_object_type_id = to_object_type_id
 
     @property
     def name(self):
@@ -162,27 +160,29 @@ class AssociationDefinition(object):
         self._id = id
 
     @property
-    def created_at(self):
-        """Gets the created_at of this AssociationDefinition.  # noqa: E501
+    def to_object_type_id(self):
+        """Gets the to_object_type_id of this AssociationDefinition.  # noqa: E501
 
-        When the association was defined.  # noqa: E501
+        ID of the target object type ID to link to.  # noqa: E501
 
-        :return: The created_at of this AssociationDefinition.  # noqa: E501
-        :rtype: datetime
+        :return: The to_object_type_id of this AssociationDefinition.  # noqa: E501
+        :rtype: str
         """
-        return self._created_at
+        return self._to_object_type_id
 
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this AssociationDefinition.
+    @to_object_type_id.setter
+    def to_object_type_id(self, to_object_type_id):
+        """Sets the to_object_type_id of this AssociationDefinition.
 
-        When the association was defined.  # noqa: E501
+        ID of the target object type ID to link to.  # noqa: E501
 
-        :param created_at: The created_at of this AssociationDefinition.  # noqa: E501
-        :type created_at: datetime
+        :param to_object_type_id: The to_object_type_id of this AssociationDefinition.  # noqa: E501
+        :type to_object_type_id: str
         """
+        if self.local_vars_configuration.client_side_validation and to_object_type_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `to_object_type_id`, must not be `None`")  # noqa: E501
 
-        self._created_at = created_at
+        self._to_object_type_id = to_object_type_id
 
     @property
     def updated_at(self):
