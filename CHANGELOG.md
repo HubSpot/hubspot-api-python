@@ -112,14 +112,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changes in CRM Lists APIs:
 - Renamed Api client from `memberships_api` to `list_app_membership_api`.
 - Renamed Api client from `lists_api` to `list_app_api`.
-- Changed the type of parameter `list_id` and `list_ids: list[]` to `list_id` and `list_ids: list[]` from `int` to `string` in class `ListAppApi`.
-- Changed the type of parameter `list_id`, `request_body: list[]` and `source_list_id` to `list_id`, `request_body: list[]` and `source_list_id` from `int` to `string` in class `ListAppMembershipApi`.
+- Changed in all methods of class `ListAppApi` the type of parameters `list_id` and `list_ids: list[]` to `list_id` and `list_ids: list[]` from `int` to `string`.
+- Changed in all methods of class `ListAppMembershipApi` the type of parameters `list_id`, `request_body: list[]` and `source_list_id` from `int` to `string`.
 - Renamed method `memberships_api.add_remove()` to `list_app_membership_api.add_and_remove()`.
 
 ### Changes in CRM Lists Models:
 - Renamed class `CollectionResponseLong` to `CollectionResponseJoinTimeAndRecordId`.
 - Changed the type of parameter `results: list[int]` to `results: list[JoinTimeAndRecordId]` in `CollectionResponseJoinTimeAndRecordId`.
-- Changed the type of parameter `list_id`, `business_unit_id`, `subscription_ids: list[]`, `email_id`, `app_id`, `updated_by_id`, `rtype: list[]`, `record_ids_to_remove: list[]`, `record_ids_to_add: list[]`, `record_ids_removed: list[]`, `records_ids_added: list[]` and `record_ids_missing: list[]` from `int` to `string`.
+- Changed the type of parameter `list_id`, `business_unit_id`, `subscription_ids: list[]`, `email_id`, `app_id`, `updated_by_id`, `rtype: list[]`, `record_ids_to_remove: list[]`, `record_ids_to_add: list[]`, `record_ids_removed: list[]`, `records_ids_added: list[]` and `record_ids_missing: list[]` from `int` to `string` in all models in which these parameters are present.
 
 ### Changes in CRM Pipelines Pipelines API :
 - Added param `validate_deal_stage_usages_before_delete` to `archive()`, `replace()` and `update()` methods.
