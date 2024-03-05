@@ -106,6 +106,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Changes in CRM Extensions Videoconferencing Model:
 - Added new param `fetch_accounts_uri` to `ExternalSettings`.
 
+### Changes in CRM Imports Model:
+- Added `import_template` and `import_source` params to class `PublicImportResponse`.
+
+### Changes in CRM Lists APIs:
+- Renamed Api client from `memberships_api` to `list_app_membership_api`.
+- Renamed Api client from `lists_api` to `list_app_api`.
+- Changed the type of parameters `list_id` and `list_ids: list[]` from `int` to `string` in all methods of class `ListAppApi`.
+- Changed the type of parameters `list_id`, `request_body: list[]` and `source_list_id` from `int` to `string` in all methods of class `ListAppMembershipApi`.
+- Renamed method `memberships_api.add_remove()` to `list_app_membership_api.add_and_remove()`.
+
+### Changes in CRM Lists Models:
+- Renamed class `CollectionResponseLong` to `CollectionResponseJoinTimeAndRecordId`.
+- Changed the type of parameter `results: list[int]` to `results: list[JoinTimeAndRecordId]` in `CollectionResponseJoinTimeAndRecordId`.
+- Changed the type of parameter `list_id`, `business_unit_id`, `subscription_ids: list[]`, `email_id`, `app_id`, `updated_by_id`, `rtype: list[]`, `record_ids_to_remove: list[]`, `record_ids_to_add: list[]`, `record_ids_removed: list[]`, `records_ids_added: list[]` and `record_ids_missing: list[]` from `int` to `string` in all models in which these parameters are present.
+
+### Changes in CRM Pipelines Pipelines API :
+- Added param `validate_deal_stage_usages_before_delete` to `archive()`, `replace()` and `update()` methods.
+
+### Changes in CRM Pipelines Model:
+- Added `write_permissions` param to class `PipelineStage`.
+
+### Changes in CRM Schemas Models:
+- Added `description` param to class `ObjectTypeDefinitionPatch`.
+- Added new params: `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search`
+and `number_display_hint` to class `ObjectTypePropertyCreate`.
+
+### Changes in CRM Timeline Events API:
+- Updated `create_batch()` method to return `None` insted `BatchResponseTimelineEventResponse`.
+
+### Changes in CRM Timeline Model:
+- Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
+
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
@@ -114,6 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `crm.objects.products.gdpr_api` Api.
 - Added `crm.objects.quotes.gdpr_api` Api.
 - Added `crm.objects.tickets.gdpr_api` Api.
+- Added `crm.line_items.gdpr_api` Api.
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
