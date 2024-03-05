@@ -10,4 +10,3 @@ class Discovery(DiscoveryBase):
     @property
     def list_app_membership_api(self) -> api_client.ListAppMembershipApi:
         return self._configure_api_client(api_client, "ListAppMembershipApi")
-
