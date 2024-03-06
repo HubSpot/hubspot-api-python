@@ -34,7 +34,7 @@ class BatchApi(object):
         self.api_client = api_client
 
     def archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Archive a batch of Communications by ID  # noqa: E501
+        """Archive a batch of communications by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -63,7 +63,7 @@ class BatchApi(object):
         return self.archive_with_http_info(batch_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Archive a batch of Communications by ID  # noqa: E501
+        """Archive a batch of communications by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -139,7 +139,7 @@ class BatchApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/batch/archive",
+            "/crm/v3/objects/communications/batch/archive",
             "POST",
             path_params,
             query_params,
@@ -158,7 +158,7 @@ class BatchApi(object):
         )
 
     def create(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
-        """Create a batch of Communications  # noqa: E501
+        """Create a batch of communications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -187,7 +187,7 @@ class BatchApi(object):
         return self.create_with_http_info(batch_input_simple_public_object_input_for_create, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
-        """Create a batch of Communications  # noqa: E501
+        """Create a batch of communications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -266,7 +266,7 @@ class BatchApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/batch/create",
+            "/crm/v3/objects/communications/batch/create",
             "POST",
             path_params,
             query_params,
@@ -285,7 +285,7 @@ class BatchApi(object):
         )
 
     def read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of Communications by internal ID, or unique property values  # noqa: E501
+        """Read a batch of communications by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -316,7 +316,7 @@ class BatchApi(object):
         return self.read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of Communications by internal ID, or unique property values  # noqa: E501
+        """Read a batch of communications by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -399,7 +399,7 @@ class BatchApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/batch/read",
+            "/crm/v3/objects/communications/batch/read",
             "POST",
             path_params,
             query_params,
@@ -418,7 +418,7 @@ class BatchApi(object):
         )
 
     def update(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of Communications  # noqa: E501
+        """Update a batch of communications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -447,7 +447,7 @@ class BatchApi(object):
         return self.update_with_http_info(batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of Communications  # noqa: E501
+        """Update a batch of communications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -526,7 +526,7 @@ class BatchApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/batch/update",
+            "/crm/v3/objects/communications/batch/update",
             "POST",
             path_params,
             query_params,

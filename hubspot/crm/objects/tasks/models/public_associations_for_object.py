@@ -35,45 +35,22 @@ class PublicAssociationsForObject(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"to": "PublicObjectId", "types": "list[AssociationSpec]"}
+    openapi_types = {"types": "list[AssociationSpec]", "to": "PublicObjectId"}
 
-    attribute_map = {"to": "to", "types": "types"}
+    attribute_map = {"types": "types", "to": "to"}
 
-    def __init__(self, to=None, types=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, types=None, to=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationsForObject - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._to = None
         self._types = None
+        self._to = None
         self.discriminator = None
 
-        self.to = to
         self.types = types
-
-    @property
-    def to(self):
-        """Gets the to of this PublicAssociationsForObject.  # noqa: E501
-
-
-        :return: The to of this PublicAssociationsForObject.  # noqa: E501
-        :rtype: PublicObjectId
-        """
-        return self._to
-
-    @to.setter
-    def to(self, to):
-        """Sets the to of this PublicAssociationsForObject.
-
-
-        :param to: The to of this PublicAssociationsForObject.  # noqa: E501
-        :type to: PublicObjectId
-        """
-        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
-            raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
-
-        self._to = to
+        self.to = to
 
     @property
     def types(self):
@@ -97,6 +74,29 @@ class PublicAssociationsForObject(object):
             raise ValueError("Invalid value for `types`, must not be `None`")  # noqa: E501
 
         self._types = types
+
+    @property
+    def to(self):
+        """Gets the to of this PublicAssociationsForObject.  # noqa: E501
+
+
+        :return: The to of this PublicAssociationsForObject.  # noqa: E501
+        :rtype: PublicObjectId
+        """
+        return self._to
+
+    @to.setter
+    def to(self, to):
+        """Sets the to of this PublicAssociationsForObject.
+
+
+        :param to: The to of this PublicAssociationsForObject.  # noqa: E501
+        :type to: PublicObjectId
+        """
+        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
+            raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
+
+        self._to = to
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

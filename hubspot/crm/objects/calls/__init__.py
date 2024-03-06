@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.crm.objects.calls.api.basic_api import BasicApi
 from hubspot.crm.objects.calls.api.batch_api import BatchApi
+from hubspot.crm.objects.calls.api.gdpr_api import GDPRApi
 from hubspot.crm.objects.calls.api.public_object_api import PublicObjectApi
 from hubspot.crm.objects.calls.api.search_api import SearchApi
 
@@ -53,6 +54,7 @@ from hubspot.crm.objects.calls.models.next_page import NextPage
 from hubspot.crm.objects.calls.models.paging import Paging
 from hubspot.crm.objects.calls.models.previous_page import PreviousPage
 from hubspot.crm.objects.calls.models.public_associations_for_object import PublicAssociationsForObject
+from hubspot.crm.objects.calls.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.objects.calls.models.public_merge_input import PublicMergeInput
 from hubspot.crm.objects.calls.models.public_object_id import PublicObjectId
 from hubspot.crm.objects.calls.models.public_object_search_request import PublicObjectSearchRequest

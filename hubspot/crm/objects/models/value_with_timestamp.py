@@ -35,33 +35,119 @@ class ValueWithTimestamp(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"value": "str", "timestamp": "datetime", "source_type": "str", "source_id": "str", "source_label": "str", "updated_by_user_id": "int"}
+    openapi_types = {"source_id": "str", "source_type": "str", "source_label": "str", "updated_by_user_id": "int", "value": "str", "timestamp": "datetime"}
 
-    attribute_map = {"value": "value", "timestamp": "timestamp", "source_type": "sourceType", "source_id": "sourceId", "source_label": "sourceLabel", "updated_by_user_id": "updatedByUserId"}
+    attribute_map = {"source_id": "sourceId", "source_type": "sourceType", "source_label": "sourceLabel", "updated_by_user_id": "updatedByUserId", "value": "value", "timestamp": "timestamp"}
 
-    def __init__(self, value=None, timestamp=None, source_type=None, source_id=None, source_label=None, updated_by_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, source_id=None, source_type=None, source_label=None, updated_by_user_id=None, value=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
         """ValueWithTimestamp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._value = None
-        self._timestamp = None
-        self._source_type = None
         self._source_id = None
+        self._source_type = None
         self._source_label = None
         self._updated_by_user_id = None
+        self._value = None
+        self._timestamp = None
         self.discriminator = None
 
-        self.value = value
-        self.timestamp = timestamp
-        self.source_type = source_type
         if source_id is not None:
             self.source_id = source_id
+        self.source_type = source_type
         if source_label is not None:
             self.source_label = source_label
         if updated_by_user_id is not None:
             self.updated_by_user_id = updated_by_user_id
+        self.value = value
+        self.timestamp = timestamp
+
+    @property
+    def source_id(self):
+        """Gets the source_id of this ValueWithTimestamp.  # noqa: E501
+
+
+        :return: The source_id of this ValueWithTimestamp.  # noqa: E501
+        :rtype: str
+        """
+        return self._source_id
+
+    @source_id.setter
+    def source_id(self, source_id):
+        """Sets the source_id of this ValueWithTimestamp.
+
+
+        :param source_id: The source_id of this ValueWithTimestamp.  # noqa: E501
+        :type source_id: str
+        """
+
+        self._source_id = source_id
+
+    @property
+    def source_type(self):
+        """Gets the source_type of this ValueWithTimestamp.  # noqa: E501
+
+
+        :return: The source_type of this ValueWithTimestamp.  # noqa: E501
+        :rtype: str
+        """
+        return self._source_type
+
+    @source_type.setter
+    def source_type(self, source_type):
+        """Sets the source_type of this ValueWithTimestamp.
+
+
+        :param source_type: The source_type of this ValueWithTimestamp.  # noqa: E501
+        :type source_type: str
+        """
+        if self.local_vars_configuration.client_side_validation and source_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_type`, must not be `None`")  # noqa: E501
+
+        self._source_type = source_type
+
+    @property
+    def source_label(self):
+        """Gets the source_label of this ValueWithTimestamp.  # noqa: E501
+
+
+        :return: The source_label of this ValueWithTimestamp.  # noqa: E501
+        :rtype: str
+        """
+        return self._source_label
+
+    @source_label.setter
+    def source_label(self, source_label):
+        """Sets the source_label of this ValueWithTimestamp.
+
+
+        :param source_label: The source_label of this ValueWithTimestamp.  # noqa: E501
+        :type source_label: str
+        """
+
+        self._source_label = source_label
+
+    @property
+    def updated_by_user_id(self):
+        """Gets the updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
+
+
+        :return: The updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
+        :rtype: int
+        """
+        return self._updated_by_user_id
+
+    @updated_by_user_id.setter
+    def updated_by_user_id(self, updated_by_user_id):
+        """Sets the updated_by_user_id of this ValueWithTimestamp.
+
+
+        :param updated_by_user_id: The updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
+        :type updated_by_user_id: int
+        """
+
+        self._updated_by_user_id = updated_by_user_id
 
     @property
     def value(self):
@@ -108,92 +194,6 @@ class ValueWithTimestamp(object):
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
 
         self._timestamp = timestamp
-
-    @property
-    def source_type(self):
-        """Gets the source_type of this ValueWithTimestamp.  # noqa: E501
-
-
-        :return: The source_type of this ValueWithTimestamp.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_type
-
-    @source_type.setter
-    def source_type(self, source_type):
-        """Sets the source_type of this ValueWithTimestamp.
-
-
-        :param source_type: The source_type of this ValueWithTimestamp.  # noqa: E501
-        :type source_type: str
-        """
-        if self.local_vars_configuration.client_side_validation and source_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `source_type`, must not be `None`")  # noqa: E501
-
-        self._source_type = source_type
-
-    @property
-    def source_id(self):
-        """Gets the source_id of this ValueWithTimestamp.  # noqa: E501
-
-
-        :return: The source_id of this ValueWithTimestamp.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_id
-
-    @source_id.setter
-    def source_id(self, source_id):
-        """Sets the source_id of this ValueWithTimestamp.
-
-
-        :param source_id: The source_id of this ValueWithTimestamp.  # noqa: E501
-        :type source_id: str
-        """
-
-        self._source_id = source_id
-
-    @property
-    def source_label(self):
-        """Gets the source_label of this ValueWithTimestamp.  # noqa: E501
-
-
-        :return: The source_label of this ValueWithTimestamp.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_label
-
-    @source_label.setter
-    def source_label(self, source_label):
-        """Sets the source_label of this ValueWithTimestamp.
-
-
-        :param source_label: The source_label of this ValueWithTimestamp.  # noqa: E501
-        :type source_label: str
-        """
-
-        self._source_label = source_label
-
-    @property
-    def updated_by_user_id(self):
-        """Gets the updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
-
-
-        :return: The updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
-        :rtype: int
-        """
-        return self._updated_by_user_id
-
-    @updated_by_user_id.setter
-    def updated_by_user_id(self, updated_by_user_id):
-        """Sets the updated_by_user_id of this ValueWithTimestamp.
-
-
-        :param updated_by_user_id: The updated_by_user_id of this ValueWithTimestamp.  # noqa: E501
-        :type updated_by_user_id: int
-        """
-
-        self._updated_by_user_id = updated_by_user_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
