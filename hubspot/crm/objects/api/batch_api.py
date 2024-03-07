@@ -445,7 +445,7 @@ class BatchApi(object):
         )
 
     def update(self, object_type, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of objects  # noqa: E501
+        """Update a batch of objects by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -476,7 +476,7 @@ class BatchApi(object):
         return self.update_with_http_info(object_type, batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, object_type, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of objects  # noqa: E501
+        """Update a batch of objects by internal ID, or unique property values  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

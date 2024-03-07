@@ -34,7 +34,7 @@ class PublicObjectApi(object):
         self.api_client = api_client
 
     def merge(self, public_merge_input, **kwargs):  # noqa: E501
-        """Merge two Communications with same type  # noqa: E501
+        """Merge two communications with same type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -63,7 +63,7 @@ class PublicObjectApi(object):
         return self.merge_with_http_info(public_merge_input, **kwargs)  # noqa: E501
 
     def merge_with_http_info(self, public_merge_input, **kwargs):  # noqa: E501
-        """Merge two Communications with same type  # noqa: E501
+        """Merge two communications with same type  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -141,7 +141,7 @@ class PublicObjectApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/merge",
+            "/crm/v3/objects/communications/merge",
             "POST",
             path_params,
             query_params,

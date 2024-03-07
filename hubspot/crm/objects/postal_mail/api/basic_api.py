@@ -33,18 +33,18 @@ class BasicApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, postal_mail, **kwargs):  # noqa: E501
+    def archive(self, postal_mail_id, **kwargs):  # noqa: E501
         """Archive  # noqa: E501
 
-        Move an Object identified by `{postalMail}` to the recycling bin.  # noqa: E501
+        Move an Object identified by `{postalMailId}` to the recycling bin.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.archive(postal_mail, async_req=True)
+        >>> thread = api.archive(postal_mail_id, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -61,20 +61,20 @@ class BasicApi(object):
         :rtype: None
         """
         kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(postal_mail, **kwargs)  # noqa: E501
+        return self.archive_with_http_info(postal_mail_id, **kwargs)  # noqa: E501
 
-    def archive_with_http_info(self, postal_mail, **kwargs):  # noqa: E501
+    def archive_with_http_info(self, postal_mail_id, **kwargs):  # noqa: E501
         """Archive  # noqa: E501
 
-        Move an Object identified by `{postalMail}` to the recycling bin.  # noqa: E501
+        Move an Object identified by `{postalMailId}` to the recycling bin.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.archive_with_http_info(postal_mail, async_req=True)
+        >>> thread = api.archive_with_http_info(postal_mail_id, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -101,7 +101,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["postal_mail"]
+        all_params = ["postal_mail_id"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -109,15 +109,15 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'postal_mail' is set
-        if self.api_client.client_side_validation and local_var_params.get("postal_mail") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `postal_mail` when calling `archive`")  # noqa: E501
+        # verify the required parameter 'postal_mail_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("postal_mail_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `postal_mail_id` when calling `archive`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "postal_mail" in local_var_params:
-            path_params["postalMail"] = local_var_params["postal_mail"]  # noqa: E501
+        if "postal_mail_id" in local_var_params:
+            path_params["postalMailId"] = local_var_params["postal_mail_id"]  # noqa: E501
 
         query_params = []
 
@@ -136,7 +136,7 @@ class BasicApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/{postalMail}",
+            "/crm/v3/objects/postal_mail/{postalMailId}",
             "DELETE",
             path_params,
             query_params,
@@ -282,18 +282,18 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def get_by_id(self, postal_mail, **kwargs):  # noqa: E501
+    def get_by_id(self, postal_mail_id, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Read an Object identified by `{postalMail}`. `{postalMail}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
+        Read an Object identified by `{postalMailId}`. `{postalMailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id(postal_mail, async_req=True)
+        >>> thread = api.get_by_id(postal_mail_id, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
@@ -320,20 +320,20 @@ class BasicApi(object):
         :rtype: SimplePublicObjectWithAssociations
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(postal_mail, **kwargs)  # noqa: E501
+        return self.get_by_id_with_http_info(postal_mail_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(self, postal_mail, **kwargs):  # noqa: E501
+    def get_by_id_with_http_info(self, postal_mail_id, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Read an Object identified by `{postalMail}`. `{postalMail}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
+        Read an Object identified by `{postalMailId}`. `{postalMailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id_with_http_info(postal_mail, async_req=True)
+        >>> thread = api.get_by_id_with_http_info(postal_mail_id, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
@@ -370,7 +370,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["postal_mail", "properties", "properties_with_history", "associations", "archived", "id_property"]
+        all_params = ["postal_mail_id", "properties", "properties_with_history", "associations", "archived", "id_property"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -378,15 +378,15 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'postal_mail' is set
-        if self.api_client.client_side_validation and local_var_params.get("postal_mail") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `postal_mail` when calling `get_by_id`")  # noqa: E501
+        # verify the required parameter 'postal_mail_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("postal_mail_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `postal_mail_id` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "postal_mail" in local_var_params:
-            path_params["postalMail"] = local_var_params["postal_mail"]  # noqa: E501
+        if "postal_mail_id" in local_var_params:
+            path_params["postalMailId"] = local_var_params["postal_mail_id"]  # noqa: E501
 
         query_params = []
         if local_var_params.get("properties") is not None:  # noqa: E501
@@ -420,7 +420,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/{postalMail}",
+            "/crm/v3/objects/postal_mail/{postalMailId}",
             "GET",
             path_params,
             query_params,
@@ -591,18 +591,18 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update(self, postal_mail, simple_public_object_input, **kwargs):  # noqa: E501
+    def update(self, postal_mail_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{postalMail}`. `{postalMail}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{postalMailId}`. `{postalMailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update(postal_mail, simple_public_object_input, async_req=True)
+        >>> thread = api.update(postal_mail_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
         :param id_property: The name of a property whose values are unique for this object type
@@ -623,20 +623,20 @@ class BasicApi(object):
         :rtype: SimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(postal_mail, simple_public_object_input, **kwargs)  # noqa: E501
+        return self.update_with_http_info(postal_mail_id, simple_public_object_input, **kwargs)  # noqa: E501
 
-    def update_with_http_info(self, postal_mail, simple_public_object_input, **kwargs):  # noqa: E501
+    def update_with_http_info(self, postal_mail_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{postalMail}`. `{postalMail}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{postalMailId}`. `{postalMailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_with_http_info(postal_mail, simple_public_object_input, async_req=True)
+        >>> thread = api.update_with_http_info(postal_mail_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param postal_mail: (required)
-        :type postal_mail: str
+        :param postal_mail_id: (required)
+        :type postal_mail_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
         :param id_property: The name of a property whose values are unique for this object type
@@ -667,7 +667,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["postal_mail", "simple_public_object_input", "id_property"]
+        all_params = ["postal_mail_id", "simple_public_object_input", "id_property"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -675,9 +675,9 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'postal_mail' is set
-        if self.api_client.client_side_validation and local_var_params.get("postal_mail") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `postal_mail` when calling `update`")  # noqa: E501
+        # verify the required parameter 'postal_mail_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("postal_mail_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `postal_mail_id` when calling `update`")  # noqa: E501
         # verify the required parameter 'simple_public_object_input' is set
         if self.api_client.client_side_validation and local_var_params.get("simple_public_object_input") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `simple_public_object_input` when calling `update`")  # noqa: E501
@@ -685,8 +685,8 @@ class BasicApi(object):
         collection_formats = {}
 
         path_params = {}
-        if "postal_mail" in local_var_params:
-            path_params["postalMail"] = local_var_params["postal_mail"]  # noqa: E501
+        if "postal_mail_id" in local_var_params:
+            path_params["postalMailId"] = local_var_params["postal_mail_id"]  # noqa: E501
 
         query_params = []
         if local_var_params.get("id_property") is not None:  # noqa: E501
@@ -716,7 +716,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/postal_mail/{postalMail}",
+            "/crm/v3/objects/postal_mail/{postalMailId}",
             "PATCH",
             path_params,
             query_params,

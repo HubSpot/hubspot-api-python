@@ -35,22 +35,46 @@ class SimplePublicObjectBatchInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "properties": "dict[str, str]"}
+    openapi_types = {"id_property": "str", "id": "str", "properties": "dict[str, str]"}
 
-    attribute_map = {"id": "id", "properties": "properties"}
+    attribute_map = {"id_property": "idProperty", "id": "id", "properties": "properties"}
 
-    def __init__(self, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id_property=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectBatchInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._id_property = None
         self._id = None
         self._properties = None
         self.discriminator = None
 
+        if id_property is not None:
+            self.id_property = id_property
         self.id = id
         self.properties = properties
+
+    @property
+    def id_property(self):
+        """Gets the id_property of this SimplePublicObjectBatchInput.  # noqa: E501
+
+
+        :return: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._id_property
+
+    @id_property.setter
+    def id_property(self, id_property):
+        """Sets the id_property of this SimplePublicObjectBatchInput.
+
+
+        :param id_property: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
+        :type id_property: str
+        """
+
+        self._id_property = id_property
 
     @property
     def id(self):

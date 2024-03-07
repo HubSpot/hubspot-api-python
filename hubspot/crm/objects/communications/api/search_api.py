@@ -141,7 +141,7 @@ class SearchApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/search",
+            "/crm/v3/objects/communications/search",
             "POST",
             path_params,
             query_params,

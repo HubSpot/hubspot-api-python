@@ -35,45 +35,46 @@ class SimplePublicObjectBatchInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"properties": "dict[str, str]", "id": "str"}
+    openapi_types = {"id_property": "str", "id": "str", "properties": "dict[str, str]"}
 
-    attribute_map = {"properties": "properties", "id": "id"}
+    attribute_map = {"id_property": "idProperty", "id": "id", "properties": "properties"}
 
-    def __init__(self, properties=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id_property=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectBatchInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._properties = None
+        self._id_property = None
         self._id = None
+        self._properties = None
         self.discriminator = None
 
-        self.properties = properties
+        if id_property is not None:
+            self.id_property = id_property
         self.id = id
+        self.properties = properties
 
     @property
-    def properties(self):
-        """Gets the properties of this SimplePublicObjectBatchInput.  # noqa: E501
+    def id_property(self):
+        """Gets the id_property of this SimplePublicObjectBatchInput.  # noqa: E501
 
 
-        :return: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
-        :rtype: dict[str, str]
+        :return: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
+        :rtype: str
         """
-        return self._properties
+        return self._id_property
 
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this SimplePublicObjectBatchInput.
+    @id_property.setter
+    def id_property(self, id_property):
+        """Sets the id_property of this SimplePublicObjectBatchInput.
 
 
-        :param properties: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
-        :type properties: dict[str, str]
+        :param id_property: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
+        :type id_property: str
         """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
-        self._properties = properties
+        self._id_property = id_property
 
     @property
     def id(self):
@@ -97,6 +98,29 @@ class SimplePublicObjectBatchInput(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def properties(self):
+        """Gets the properties of this SimplePublicObjectBatchInput.  # noqa: E501
+
+
+        :return: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this SimplePublicObjectBatchInput.
+
+
+        :param properties: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
+        :type properties: dict[str, str]
+        """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
+
+        self._properties = properties
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
