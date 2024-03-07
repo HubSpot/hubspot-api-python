@@ -138,13 +138,13 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 ### Changes in CRM Timeline Model:
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
 
-#### Changes in Crm Objects:
+#### Changes in CRM Objects:
 - Removed `crm.objects.associations_api`.
 
-#### Changes in Crm Objects Postal Mail BasicAPI:
+#### Changes in CRM Objects Postal Mail BasicAPI:
 - Renamed param `postal_mail` to `postal_mail_id`.
 
-#### Changes in All Clients Models:
+#### Changes in All CRM Models:
 - Changed the type of parameter `after` from `int` to `string` in all `PublicObjectSearchRequest`.
 - Added new param `id_property` in all `SimplePublicObjectBatchInput`.
 
