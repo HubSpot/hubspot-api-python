@@ -144,11 +144,9 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 #### Changes in Crm Objects Postal Mail BasicAPI:
 - Renamed param `postal_mail` to `postal_mail_id`.
 
-#### Changes in All Models PublicObjectSearchRequest:
-- Changed the type of parameter `after` from `int` to `string`.
-
-#### Changes in All Models SimplePublicObjectBatchInput:
-- Added new param `id_property`.
+#### Changes in All Clients Models:
+- Changed the type of parameter `after` from `int` to `string` in all `PublicObjectSearchRequest`.
+- Added new param `id_property` in all `SimplePublicObjectBatchInput`.
 
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
