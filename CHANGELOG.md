@@ -138,11 +138,29 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 ### Changes in CRM Timeline Model:
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
 
+#### Changes in CRM Objects:
+- Removed `crm.objects.associations_api`.
+
+#### Changes in CRM Objects Postal Mail BasicAPI:
+- Renamed param `postal_mail` to `postal_mail_id`.
+
+#### Changes in All CRM Models:
+- Changed the type of parameter `after` from `int` to `string` in all `PublicObjectSearchRequest`.
+- Added new param `id_property` in all `SimplePublicObjectBatchInput`.
+
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
 - Added `crm.deals.gdpr_api` Api.
 - Added `crm.objects.line_items.gdpr_api` Api.
+- Added `crm.objects.calls.gdpr_api` Api.
+- Added `crm.objects.communications.gdpr_api` Api.
+- Added `crm.objects.emails.gdpr_api` Api.
+- Added `crm.objects.feedback_submissions.gdpr_api` Api.
+- Added `crm.objects.meetings.gdpr_api` Api.
+- Added `crm.objects.notes.gdpr_api` Api.
+- Added `crm.objects.postal_mail.gdpr_api` Api.
+- Added `crm.objects.tasks.gdpr_api` Api.
 - Added `crm.objects.products.gdpr_api` Api.
 - Added `crm.objects.quotes.gdpr_api` Api.
 - Added `crm.objects.tickets.gdpr_api` Api.
