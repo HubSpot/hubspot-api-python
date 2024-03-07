@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -54,6 +54,7 @@ class BatchInputMarketingEventCreateRequestParams(object):
     def inputs(self):
         """Gets the inputs of this BatchInputMarketingEventCreateRequestParams.  # noqa: E501
 
+          # noqa: E501
 
         :return: The inputs of this BatchInputMarketingEventCreateRequestParams.  # noqa: E501
         :rtype: list[MarketingEventCreateRequestParams]
@@ -64,6 +65,7 @@ class BatchInputMarketingEventCreateRequestParams(object):
     def inputs(self, inputs):
         """Sets the inputs of this BatchInputMarketingEventCreateRequestParams.
 
+          # noqa: E501
 
         :param inputs: The inputs of this BatchInputMarketingEventCreateRequestParams.  # noqa: E501
         :type inputs: list[MarketingEventCreateRequestParams]

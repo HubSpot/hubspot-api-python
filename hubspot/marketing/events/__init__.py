@@ -3,7 +3,7 @@
 # flake8: noqa
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -18,9 +18,12 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.marketing.events.api.attendance_subscriber_state_changes_api import AttendanceSubscriberStateChangesApi
+from hubspot.marketing.events.api.basic_api import BasicApi
+from hubspot.marketing.events.api.batch_api import BatchApi
 from hubspot.marketing.events.api.marketing_events_external_api import MarketingEventsExternalApi
 from hubspot.marketing.events.api.search_api import SearchApi
-from hubspot.marketing.events.api.settings_external_api import SettingsExternalApi
+from hubspot.marketing.events.api.settings_api import SettingsApi
+from hubspot.marketing.events.api.subscriber_state_changes_api import SubscriberStateChangesApi
 
 # import ApiClient
 from hubspot.marketing.events.api_client import ApiClient
@@ -42,7 +45,6 @@ from hubspot.marketing.events.models.batch_response_subscriber_email_response im
 from hubspot.marketing.events.models.batch_response_subscriber_vid_response import BatchResponseSubscriberVidResponse
 from hubspot.marketing.events.models.collection_response_marketing_event_external_unique_identifier_no_paging import CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging
 from hubspot.marketing.events.models.error import Error
-from hubspot.marketing.events.models.error_category import ErrorCategory
 from hubspot.marketing.events.models.error_detail import ErrorDetail
 from hubspot.marketing.events.models.event_detail_settings import EventDetailSettings
 from hubspot.marketing.events.models.event_detail_settings_url import EventDetailSettingsUrl

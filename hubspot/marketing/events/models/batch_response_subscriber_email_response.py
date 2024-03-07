@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -36,104 +36,78 @@ class BatchResponseSubscriberEmailResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "status": "str",
-        "results": "list[SubscriberEmailResponse]",
+        "completed_at": "datetime",
         "num_errors": "int",
-        "errors": "list[StandardError]",
         "requested_at": "datetime",
         "started_at": "datetime",
-        "completed_at": "datetime",
         "links": "dict[str, str]",
+        "results": "list[SubscriberEmailResponse]",
+        "errors": "list[StandardError]",
+        "status": "str",
     }
 
     attribute_map = {
-        "status": "status",
-        "results": "results",
+        "completed_at": "completedAt",
         "num_errors": "numErrors",
-        "errors": "errors",
         "requested_at": "requestedAt",
         "started_at": "startedAt",
-        "completed_at": "completedAt",
         "links": "links",
+        "results": "results",
+        "errors": "errors",
+        "status": "status",
     }
 
-    def __init__(self, status=None, results=None, num_errors=None, errors=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, completed_at=None, num_errors=None, requested_at=None, started_at=None, links=None, results=None, errors=None, status=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseSubscriberEmailResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._status = None
-        self._results = None
+        self._completed_at = None
         self._num_errors = None
-        self._errors = None
         self._requested_at = None
         self._started_at = None
-        self._completed_at = None
         self._links = None
+        self._results = None
+        self._errors = None
+        self._status = None
         self.discriminator = None
 
-        self.status = status
-        self.results = results
+        self.completed_at = completed_at
         if num_errors is not None:
             self.num_errors = num_errors
-        if errors is not None:
-            self.errors = errors
         if requested_at is not None:
             self.requested_at = requested_at
         self.started_at = started_at
-        self.completed_at = completed_at
         if links is not None:
             self.links = links
+        self.results = results
+        if errors is not None:
+            self.errors = errors
+        self.status = status
 
     @property
-    def status(self):
-        """Gets the status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+    def completed_at(self):
+        """Gets the completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
 
 
-        :return: The status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :rtype: str
+        :return: The completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :rtype: datetime
         """
-        return self._status
+        return self._completed_at
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this BatchResponseSubscriberEmailResponse.
+    @completed_at.setter
+    def completed_at(self, completed_at):
+        """Sets the completed_at of this BatchResponseSubscriberEmailResponse.
 
 
-        :param status: The status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :type status: str
+        :param completed_at: The completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :type completed_at: datetime
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
 
-        self._status = status
-
-    @property
-    def results(self):
-        """Gets the results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-
-
-        :return: The results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :rtype: list[SubscriberEmailResponse]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this BatchResponseSubscriberEmailResponse.
-
-
-        :param results: The results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :type results: list[SubscriberEmailResponse]
-        """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
-
-        self._results = results
+        self._completed_at = completed_at
 
     @property
     def num_errors(self):
@@ -155,27 +129,6 @@ class BatchResponseSubscriberEmailResponse(object):
         """
 
         self._num_errors = num_errors
-
-    @property
-    def errors(self):
-        """Gets the errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-
-
-        :return: The errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :rtype: list[StandardError]
-        """
-        return self._errors
-
-    @errors.setter
-    def errors(self, errors):
-        """Sets the errors of this BatchResponseSubscriberEmailResponse.
-
-
-        :param errors: The errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :type errors: list[StandardError]
-        """
-
-        self._errors = errors
 
     @property
     def requested_at(self):
@@ -222,29 +175,6 @@ class BatchResponseSubscriberEmailResponse(object):
         self._started_at = started_at
 
     @property
-    def completed_at(self):
-        """Gets the completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-
-
-        :return: The completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._completed_at
-
-    @completed_at.setter
-    def completed_at(self, completed_at):
-        """Sets the completed_at of this BatchResponseSubscriberEmailResponse.
-
-
-        :param completed_at: The completed_at of this BatchResponseSubscriberEmailResponse.  # noqa: E501
-        :type completed_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and completed_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `completed_at`, must not be `None`")  # noqa: E501
-
-        self._completed_at = completed_at
-
-    @property
     def links(self):
         """Gets the links of this BatchResponseSubscriberEmailResponse.  # noqa: E501
 
@@ -264,6 +194,76 @@ class BatchResponseSubscriberEmailResponse(object):
         """
 
         self._links = links
+
+    @property
+    def results(self):
+        """Gets the results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+
+
+        :return: The results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :rtype: list[SubscriberEmailResponse]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this BatchResponseSubscriberEmailResponse.
+
+
+        :param results: The results of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :type results: list[SubscriberEmailResponse]
+        """
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+
+        self._results = results
+
+    @property
+    def errors(self):
+        """Gets the errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+
+
+        :return: The errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :rtype: list[StandardError]
+        """
+        return self._errors
+
+    @errors.setter
+    def errors(self, errors):
+        """Sets the errors of this BatchResponseSubscriberEmailResponse.
+
+
+        :param errors: The errors of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :type errors: list[StandardError]
+        """
+
+        self._errors = errors
+
+    @property
+    def status(self):
+        """Gets the status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+
+
+        :return: The status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this BatchResponseSubscriberEmailResponse.
+
+
+        :param status: The status of this BatchResponseSubscriberEmailResponse.  # noqa: E501
+        :type status: str
+        """
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+
+        self._status = status
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
