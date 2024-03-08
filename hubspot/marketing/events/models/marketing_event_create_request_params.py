@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -36,46 +36,46 @@ class MarketingEventCreateRequestParams(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "event_name": "str",
-        "event_type": "str",
         "start_date_time": "datetime",
-        "end_date_time": "datetime",
-        "event_organizer": "str",
-        "event_description": "str",
-        "event_url": "str",
-        "event_cancelled": "bool",
         "custom_properties": "list[PropertyValue]",
         "external_account_id": "str",
+        "event_cancelled": "bool",
+        "event_organizer": "str",
+        "event_url": "str",
         "external_event_id": "str",
+        "event_description": "str",
+        "event_name": "str",
+        "event_type": "str",
+        "end_date_time": "datetime",
     }
 
     attribute_map = {
-        "event_name": "eventName",
-        "event_type": "eventType",
         "start_date_time": "startDateTime",
-        "end_date_time": "endDateTime",
-        "event_organizer": "eventOrganizer",
-        "event_description": "eventDescription",
-        "event_url": "eventUrl",
-        "event_cancelled": "eventCancelled",
         "custom_properties": "customProperties",
         "external_account_id": "externalAccountId",
+        "event_cancelled": "eventCancelled",
+        "event_organizer": "eventOrganizer",
+        "event_url": "eventUrl",
         "external_event_id": "externalEventId",
+        "event_description": "eventDescription",
+        "event_name": "eventName",
+        "event_type": "eventType",
+        "end_date_time": "endDateTime",
     }
 
     def __init__(
         self,
-        event_name=None,
-        event_type=None,
         start_date_time=None,
-        end_date_time=None,
-        event_organizer=None,
-        event_description=None,
-        event_url=None,
-        event_cancelled=None,
         custom_properties=None,
         external_account_id=None,
+        event_cancelled=None,
+        event_organizer=None,
+        event_url=None,
         external_event_id=None,
+        event_description=None,
+        event_name=None,
+        event_type=None,
+        end_date_time=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """MarketingEventCreateRequestParams - a model defined in OpenAPI"""  # noqa: E501
@@ -83,85 +83,37 @@ class MarketingEventCreateRequestParams(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._event_name = None
-        self._event_type = None
         self._start_date_time = None
-        self._end_date_time = None
-        self._event_organizer = None
-        self._event_description = None
-        self._event_url = None
-        self._event_cancelled = None
         self._custom_properties = None
         self._external_account_id = None
+        self._event_cancelled = None
+        self._event_organizer = None
+        self._event_url = None
         self._external_event_id = None
+        self._event_description = None
+        self._event_name = None
+        self._event_type = None
+        self._end_date_time = None
         self.discriminator = None
 
-        self.event_name = event_name
-        if event_type is not None:
-            self.event_type = event_type
         if start_date_time is not None:
             self.start_date_time = start_date_time
-        if end_date_time is not None:
-            self.end_date_time = end_date_time
-        self.event_organizer = event_organizer
-        if event_description is not None:
-            self.event_description = event_description
-        if event_url is not None:
-            self.event_url = event_url
-        if event_cancelled is not None:
-            self.event_cancelled = event_cancelled
         if custom_properties is not None:
             self.custom_properties = custom_properties
         self.external_account_id = external_account_id
+        if event_cancelled is not None:
+            self.event_cancelled = event_cancelled
+        self.event_organizer = event_organizer
+        if event_url is not None:
+            self.event_url = event_url
         self.external_event_id = external_event_id
-
-    @property
-    def event_name(self):
-        """Gets the event_name of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        The name of the marketing event.  # noqa: E501
-
-        :return: The event_name of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_name
-
-    @event_name.setter
-    def event_name(self, event_name):
-        """Sets the event_name of this MarketingEventCreateRequestParams.
-
-        The name of the marketing event.  # noqa: E501
-
-        :param event_name: The event_name of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_name: str
-        """
-        if self.local_vars_configuration.client_side_validation and event_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `event_name`, must not be `None`")  # noqa: E501
-
-        self._event_name = event_name
-
-    @property
-    def event_type(self):
-        """Gets the event_type of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`  # noqa: E501
-
-        :return: The event_type of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_type
-
-    @event_type.setter
-    def event_type(self, event_type):
-        """Sets the event_type of this MarketingEventCreateRequestParams.
-
-        Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`  # noqa: E501
-
-        :param event_type: The event_type of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_type: str
-        """
-
-        self._event_type = event_type
+        if event_description is not None:
+            self.event_description = event_description
+        self.event_name = event_name
+        if event_type is not None:
+            self.event_type = event_type
+        if end_date_time is not None:
+            self.end_date_time = end_date_time
 
     @property
     def start_date_time(self):
@@ -185,123 +137,6 @@ class MarketingEventCreateRequestParams(object):
         """
 
         self._start_date_time = start_date_time
-
-    @property
-    def end_date_time(self):
-        """Gets the end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        The end date and time of the marketing event.  # noqa: E501
-
-        :return: The end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._end_date_time
-
-    @end_date_time.setter
-    def end_date_time(self, end_date_time):
-        """Sets the end_date_time of this MarketingEventCreateRequestParams.
-
-        The end date and time of the marketing event.  # noqa: E501
-
-        :param end_date_time: The end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type end_date_time: datetime
-        """
-
-        self._end_date_time = end_date_time
-
-    @property
-    def event_organizer(self):
-        """Gets the event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        The name of the organizer of the marketing event.  # noqa: E501
-
-        :return: The event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_organizer
-
-    @event_organizer.setter
-    def event_organizer(self, event_organizer):
-        """Sets the event_organizer of this MarketingEventCreateRequestParams.
-
-        The name of the organizer of the marketing event.  # noqa: E501
-
-        :param event_organizer: The event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_organizer: str
-        """
-        if self.local_vars_configuration.client_side_validation and event_organizer is None:  # noqa: E501
-            raise ValueError("Invalid value for `event_organizer`, must not be `None`")  # noqa: E501
-
-        self._event_organizer = event_organizer
-
-    @property
-    def event_description(self):
-        """Gets the event_description of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        The description of the marketing event.  # noqa: E501
-
-        :return: The event_description of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_description
-
-    @event_description.setter
-    def event_description(self, event_description):
-        """Sets the event_description of this MarketingEventCreateRequestParams.
-
-        The description of the marketing event.  # noqa: E501
-
-        :param event_description: The event_description of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_description: str
-        """
-
-        self._event_description = event_description
-
-    @property
-    def event_url(self):
-        """Gets the event_url of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        A URL in the external event application where the marketing event can be managed.  # noqa: E501
-
-        :return: The event_url of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._event_url
-
-    @event_url.setter
-    def event_url(self, event_url):
-        """Sets the event_url of this MarketingEventCreateRequestParams.
-
-        A URL in the external event application where the marketing event can be managed.  # noqa: E501
-
-        :param event_url: The event_url of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_url: str
-        """
-
-        self._event_url = event_url
-
-    @property
-    def event_cancelled(self):
-        """Gets the event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
-
-        Indicates if the marketing event has been cancelled.  Defaults to `false`  # noqa: E501
-
-        :return: The event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
-        :rtype: bool
-        """
-        return self._event_cancelled
-
-    @event_cancelled.setter
-    def event_cancelled(self, event_cancelled):
-        """Sets the event_cancelled of this MarketingEventCreateRequestParams.
-
-        Indicates if the marketing event has been cancelled.  Defaults to `false`  # noqa: E501
-
-        :param event_cancelled: The event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
-        :type event_cancelled: bool
-        """
-
-        self._event_cancelled = event_cancelled
 
     @property
     def custom_properties(self):
@@ -352,6 +187,77 @@ class MarketingEventCreateRequestParams(object):
         self._external_account_id = external_account_id
 
     @property
+    def event_cancelled(self):
+        """Gets the event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        Indicates if the marketing event has been cancelled.  Defaults to `false`  # noqa: E501
+
+        :return: The event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: bool
+        """
+        return self._event_cancelled
+
+    @event_cancelled.setter
+    def event_cancelled(self, event_cancelled):
+        """Sets the event_cancelled of this MarketingEventCreateRequestParams.
+
+        Indicates if the marketing event has been cancelled.  Defaults to `false`  # noqa: E501
+
+        :param event_cancelled: The event_cancelled of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_cancelled: bool
+        """
+
+        self._event_cancelled = event_cancelled
+
+    @property
+    def event_organizer(self):
+        """Gets the event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        The name of the organizer of the marketing event.  # noqa: E501
+
+        :return: The event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_organizer
+
+    @event_organizer.setter
+    def event_organizer(self, event_organizer):
+        """Sets the event_organizer of this MarketingEventCreateRequestParams.
+
+        The name of the organizer of the marketing event.  # noqa: E501
+
+        :param event_organizer: The event_organizer of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_organizer: str
+        """
+        if self.local_vars_configuration.client_side_validation and event_organizer is None:  # noqa: E501
+            raise ValueError("Invalid value for `event_organizer`, must not be `None`")  # noqa: E501
+
+        self._event_organizer = event_organizer
+
+    @property
+    def event_url(self):
+        """Gets the event_url of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        A URL in the external event application where the marketing event can be managed.  # noqa: E501
+
+        :return: The event_url of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_url
+
+    @event_url.setter
+    def event_url(self, event_url):
+        """Sets the event_url of this MarketingEventCreateRequestParams.
+
+        A URL in the external event application where the marketing event can be managed.  # noqa: E501
+
+        :param event_url: The event_url of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_url: str
+        """
+
+        self._event_url = event_url
+
+    @property
     def external_event_id(self):
         """Gets the external_event_id of this MarketingEventCreateRequestParams.  # noqa: E501
 
@@ -375,6 +281,100 @@ class MarketingEventCreateRequestParams(object):
             raise ValueError("Invalid value for `external_event_id`, must not be `None`")  # noqa: E501
 
         self._external_event_id = external_event_id
+
+    @property
+    def event_description(self):
+        """Gets the event_description of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        The description of the marketing event.  # noqa: E501
+
+        :return: The event_description of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_description
+
+    @event_description.setter
+    def event_description(self, event_description):
+        """Sets the event_description of this MarketingEventCreateRequestParams.
+
+        The description of the marketing event.  # noqa: E501
+
+        :param event_description: The event_description of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_description: str
+        """
+
+        self._event_description = event_description
+
+    @property
+    def event_name(self):
+        """Gets the event_name of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        The name of the marketing event.  # noqa: E501
+
+        :return: The event_name of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_name
+
+    @event_name.setter
+    def event_name(self, event_name):
+        """Sets the event_name of this MarketingEventCreateRequestParams.
+
+        The name of the marketing event.  # noqa: E501
+
+        :param event_name: The event_name of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_name: str
+        """
+        if self.local_vars_configuration.client_side_validation and event_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `event_name`, must not be `None`")  # noqa: E501
+
+        self._event_name = event_name
+
+    @property
+    def event_type(self):
+        """Gets the event_type of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`  # noqa: E501
+
+        :return: The event_type of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_type
+
+    @event_type.setter
+    def event_type(self, event_type):
+        """Sets the event_type of this MarketingEventCreateRequestParams.
+
+        Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`  # noqa: E501
+
+        :param event_type: The event_type of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type event_type: str
+        """
+
+        self._event_type = event_type
+
+    @property
+    def end_date_time(self):
+        """Gets the end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
+
+        The end date and time of the marketing event.  # noqa: E501
+
+        :return: The end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_date_time
+
+    @end_date_time.setter
+    def end_date_time(self, end_date_time):
+        """Sets the end_date_time of this MarketingEventCreateRequestParams.
+
+        The end date and time of the marketing event.  # noqa: E501
+
+        :param end_date_time: The end_date_time of this MarketingEventCreateRequestParams.  # noqa: E501
+        :type end_date_time: datetime
+        """
+
+        self._end_date_time = end_date_time
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
