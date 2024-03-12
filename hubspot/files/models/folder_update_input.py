@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.files.files.configuration import Configuration
+from hubspot.files.configuration import Configuration
 
 
 class FolderUpdateInput(object):
@@ -35,51 +35,49 @@ class FolderUpdateInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "parent_folder_id": "int"}
+    openapi_types = {"parent_folder_id": "int", "name": "str", "id": "str"}
 
-    attribute_map = {"id": "id", "name": "name", "parent_folder_id": "parentFolderId"}
+    attribute_map = {"parent_folder_id": "parentFolderId", "name": "name", "id": "id"}
 
-    def __init__(self, id=None, name=None, parent_folder_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, parent_folder_id=None, name=None, id=None, local_vars_configuration=None):  # noqa: E501
         """FolderUpdateInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._name = None
         self._parent_folder_id = None
+        self._name = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
-        if name is not None:
-            self.name = name
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
+        if name is not None:
+            self.name = name
+        self.id = id
 
     @property
-    def id(self):
-        """Gets the id of this FolderUpdateInput.  # noqa: E501
+    def parent_folder_id(self):
+        """Gets the parent_folder_id of this FolderUpdateInput.  # noqa: E501
 
-        Id of the folder to change.  # noqa: E501
+        New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.  # noqa: E501
 
-        :return: The id of this FolderUpdateInput.  # noqa: E501
-        :rtype: str
+        :return: The parent_folder_id of this FolderUpdateInput.  # noqa: E501
+        :rtype: int
         """
-        return self._id
+        return self._parent_folder_id
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this FolderUpdateInput.
+    @parent_folder_id.setter
+    def parent_folder_id(self, parent_folder_id):
+        """Sets the parent_folder_id of this FolderUpdateInput.
 
-        Id of the folder to change.  # noqa: E501
+        New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.  # noqa: E501
 
-        :param id: The id of this FolderUpdateInput.  # noqa: E501
-        :type id: str
+        :param parent_folder_id: The parent_folder_id of this FolderUpdateInput.  # noqa: E501
+        :type parent_folder_id: int
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._parent_folder_id = parent_folder_id
 
     @property
     def name(self):
@@ -105,27 +103,29 @@ class FolderUpdateInput(object):
         self._name = name
 
     @property
-    def parent_folder_id(self):
-        """Gets the parent_folder_id of this FolderUpdateInput.  # noqa: E501
+    def id(self):
+        """Gets the id of this FolderUpdateInput.  # noqa: E501
 
-        New parent folder ID. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.  # noqa: E501
+        ID of the folder to change.  # noqa: E501
 
-        :return: The parent_folder_id of this FolderUpdateInput.  # noqa: E501
-        :rtype: int
+        :return: The id of this FolderUpdateInput.  # noqa: E501
+        :rtype: str
         """
-        return self._parent_folder_id
+        return self._id
 
-    @parent_folder_id.setter
-    def parent_folder_id(self, parent_folder_id):
-        """Sets the parent_folder_id of this FolderUpdateInput.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this FolderUpdateInput.
 
-        New parent folder ID. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.  # noqa: E501
+        ID of the folder to change.  # noqa: E501
 
-        :param parent_folder_id: The parent_folder_id of this FolderUpdateInput.  # noqa: E501
-        :type parent_folder_id: int
+        :param id: The id of this FolderUpdateInput.  # noqa: E501
+        :type id: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._parent_folder_id = parent_folder_id
+        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

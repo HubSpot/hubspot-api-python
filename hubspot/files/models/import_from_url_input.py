@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.files.files.configuration import Configuration
+from hubspot.files.configuration import Configuration
 
 
 class ImportFromUrlInput(object):
@@ -36,40 +36,40 @@ class ImportFromUrlInput(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        "folder_path": "str",
         "access": "str",
-        "ttl": "str",
+        "duplicate_validation_scope": "str",
         "name": "str",
+        "duplicate_validation_strategy": "str",
+        "ttl": "str",
+        "overwrite": "bool",
         "url": "str",
         "folder_id": "str",
-        "folder_path": "str",
-        "duplicate_validation_strategy": "str",
-        "duplicate_validation_scope": "str",
-        "overwrite": "bool",
     }
 
     attribute_map = {
+        "folder_path": "folderPath",
         "access": "access",
-        "ttl": "ttl",
+        "duplicate_validation_scope": "duplicateValidationScope",
         "name": "name",
+        "duplicate_validation_strategy": "duplicateValidationStrategy",
+        "ttl": "ttl",
+        "overwrite": "overwrite",
         "url": "url",
         "folder_id": "folderId",
-        "folder_path": "folderPath",
-        "duplicate_validation_strategy": "duplicateValidationStrategy",
-        "duplicate_validation_scope": "duplicateValidationScope",
-        "overwrite": "overwrite",
     }
 
     def __init__(
         self,
+        folder_path=None,
         access=None,
-        ttl=None,
+        duplicate_validation_scope=None,
         name=None,
+        duplicate_validation_strategy=None,
+        ttl=None,
+        overwrite=None,
         url=None,
         folder_id=None,
-        folder_path=None,
-        duplicate_validation_strategy=None,
-        duplicate_validation_scope=None,
-        overwrite=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ImportFromUrlInput - a model defined in OpenAPI"""  # noqa: E501
@@ -77,30 +77,56 @@ class ImportFromUrlInput(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._folder_path = None
         self._access = None
-        self._ttl = None
+        self._duplicate_validation_scope = None
         self._name = None
+        self._duplicate_validation_strategy = None
+        self._ttl = None
+        self._overwrite = None
         self._url = None
         self._folder_id = None
-        self._folder_path = None
-        self._duplicate_validation_strategy = None
-        self._duplicate_validation_scope = None
-        self._overwrite = None
         self.discriminator = None
 
+        if folder_path is not None:
+            self.folder_path = folder_path
         self.access = access
-        if ttl is not None:
-            self.ttl = ttl
+        if duplicate_validation_scope is not None:
+            self.duplicate_validation_scope = duplicate_validation_scope
         if name is not None:
             self.name = name
+        if duplicate_validation_strategy is not None:
+            self.duplicate_validation_strategy = duplicate_validation_strategy
+        if ttl is not None:
+            self.ttl = ttl
+        if overwrite is not None:
+            self.overwrite = overwrite
         self.url = url
         if folder_id is not None:
             self.folder_id = folder_id
-        if folder_path is not None:
-            self.folder_path = folder_path
-        self.duplicate_validation_strategy = duplicate_validation_strategy
-        self.duplicate_validation_scope = duplicate_validation_scope
-        self.overwrite = overwrite
+
+    @property
+    def folder_path(self):
+        """Gets the folder_path of this ImportFromUrlInput.  # noqa: E501
+
+        One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.  # noqa: E501
+
+        :return: The folder_path of this ImportFromUrlInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._folder_path
+
+    @folder_path.setter
+    def folder_path(self, folder_path):
+        """Sets the folder_path of this ImportFromUrlInput.
+
+        One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.  # noqa: E501
+
+        :param folder_path: The folder_path of this ImportFromUrlInput.  # noqa: E501
+        :type folder_path: str
+        """
+
+        self._folder_path = folder_path
 
     @property
     def access(self):
@@ -131,27 +157,30 @@ class ImportFromUrlInput(object):
         self._access = access
 
     @property
-    def ttl(self):
-        """Gets the ttl of this ImportFromUrlInput.  # noqa: E501
+    def duplicate_validation_scope(self):
+        """Gets the duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
 
-        Time to live. If specified the file will be deleted after the given time frame.  # noqa: E501
+        ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.   # noqa: E501
 
-        :return: The ttl of this ImportFromUrlInput.  # noqa: E501
+        :return: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
         :rtype: str
         """
-        return self._ttl
+        return self._duplicate_validation_scope
 
-    @ttl.setter
-    def ttl(self, ttl):
-        """Sets the ttl of this ImportFromUrlInput.
+    @duplicate_validation_scope.setter
+    def duplicate_validation_scope(self, duplicate_validation_scope):
+        """Sets the duplicate_validation_scope of this ImportFromUrlInput.
 
-        Time to live. If specified the file will be deleted after the given time frame.  # noqa: E501
+        ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.   # noqa: E501
 
-        :param ttl: The ttl of this ImportFromUrlInput.  # noqa: E501
-        :type ttl: str
+        :param duplicate_validation_scope: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
+        :type duplicate_validation_scope: str
         """
+        allowed_values = ["ENTIRE_PORTAL", "EXACT_FOLDER"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_scope not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}".format(duplicate_validation_scope, allowed_values))  # noqa: E501
 
-        self._ttl = ttl
+        self._duplicate_validation_scope = duplicate_validation_scope
 
     @property
     def name(self):
@@ -175,6 +204,78 @@ class ImportFromUrlInput(object):
         """
 
         self._name = name
+
+    @property
+    def duplicate_validation_strategy(self):
+        """Gets the duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
+
+        NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
+
+        :return: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._duplicate_validation_strategy
+
+    @duplicate_validation_strategy.setter
+    def duplicate_validation_strategy(self, duplicate_validation_strategy):
+        """Sets the duplicate_validation_strategy of this ImportFromUrlInput.
+
+        NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
+
+        :param duplicate_validation_strategy: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
+        :type duplicate_validation_strategy: str
+        """
+        allowed_values = ["NONE", "REJECT", "RETURN_EXISTING"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}".format(duplicate_validation_strategy, allowed_values))  # noqa: E501
+
+        self._duplicate_validation_strategy = duplicate_validation_strategy
+
+    @property
+    def ttl(self):
+        """Gets the ttl of this ImportFromUrlInput.  # noqa: E501
+
+        Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely  # noqa: E501
+
+        :return: The ttl of this ImportFromUrlInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._ttl
+
+    @ttl.setter
+    def ttl(self, ttl):
+        """Sets the ttl of this ImportFromUrlInput.
+
+        Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely  # noqa: E501
+
+        :param ttl: The ttl of this ImportFromUrlInput.  # noqa: E501
+        :type ttl: str
+        """
+
+        self._ttl = ttl
+
+    @property
+    def overwrite(self):
+        """Gets the overwrite of this ImportFromUrlInput.  # noqa: E501
+
+        If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension  # noqa: E501
+
+        :return: The overwrite of this ImportFromUrlInput.  # noqa: E501
+        :rtype: bool
+        """
+        return self._overwrite
+
+    @overwrite.setter
+    def overwrite(self, overwrite):
+        """Sets the overwrite of this ImportFromUrlInput.
+
+        If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension  # noqa: E501
+
+        :param overwrite: The overwrite of this ImportFromUrlInput.  # noqa: E501
+        :type overwrite: bool
+        """
+
+        self._overwrite = overwrite
 
     @property
     def url(self):
@@ -205,7 +306,7 @@ class ImportFromUrlInput(object):
     def folder_id(self):
         """Gets the folder_id of this ImportFromUrlInput.  # noqa: E501
 
-        One of folderId or folderPath is required. Destination folder ID for the uploaded file.  # noqa: E501
+        One of folderId or folderPath is required. Destination folderId for the uploaded file.  # noqa: E501
 
         :return: The folder_id of this ImportFromUrlInput.  # noqa: E501
         :rtype: str
@@ -216,117 +317,13 @@ class ImportFromUrlInput(object):
     def folder_id(self, folder_id):
         """Sets the folder_id of this ImportFromUrlInput.
 
-        One of folderId or folderPath is required. Destination folder ID for the uploaded file.  # noqa: E501
+        One of folderId or folderPath is required. Destination folderId for the uploaded file.  # noqa: E501
 
         :param folder_id: The folder_id of this ImportFromUrlInput.  # noqa: E501
         :type folder_id: str
         """
 
         self._folder_id = folder_id
-
-    @property
-    def folder_path(self):
-        """Gets the folder_path of this ImportFromUrlInput.  # noqa: E501
-
-        One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.  # noqa: E501
-
-        :return: The folder_path of this ImportFromUrlInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._folder_path
-
-    @folder_path.setter
-    def folder_path(self, folder_path):
-        """Sets the folder_path of this ImportFromUrlInput.
-
-        One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.  # noqa: E501
-
-        :param folder_path: The folder_path of this ImportFromUrlInput.  # noqa: E501
-        :type folder_path: str
-        """
-
-        self._folder_path = folder_path
-
-    @property
-    def duplicate_validation_strategy(self):
-        """Gets the duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
-
-        NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
-
-        :return: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._duplicate_validation_strategy
-
-    @duplicate_validation_strategy.setter
-    def duplicate_validation_strategy(self, duplicate_validation_strategy):
-        """Sets the duplicate_validation_strategy of this ImportFromUrlInput.
-
-        NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.   # noqa: E501
-
-        :param duplicate_validation_strategy: The duplicate_validation_strategy of this ImportFromUrlInput.  # noqa: E501
-        :type duplicate_validation_strategy: str
-        """
-        if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy is None:  # noqa: E501
-            raise ValueError("Invalid value for `duplicate_validation_strategy`, must not be `None`")  # noqa: E501
-        allowed_values = ["NONE", "REJECT", "RETURN_EXISTING"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and duplicate_validation_strategy not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `duplicate_validation_strategy` ({0}), must be one of {1}".format(duplicate_validation_strategy, allowed_values))  # noqa: E501
-
-        self._duplicate_validation_strategy = duplicate_validation_strategy
-
-    @property
-    def duplicate_validation_scope(self):
-        """Gets the duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
-
-        ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.   # noqa: E501
-
-        :return: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._duplicate_validation_scope
-
-    @duplicate_validation_scope.setter
-    def duplicate_validation_scope(self, duplicate_validation_scope):
-        """Sets the duplicate_validation_scope of this ImportFromUrlInput.
-
-        ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.   # noqa: E501
-
-        :param duplicate_validation_scope: The duplicate_validation_scope of this ImportFromUrlInput.  # noqa: E501
-        :type duplicate_validation_scope: str
-        """
-        if self.local_vars_configuration.client_side_validation and duplicate_validation_scope is None:  # noqa: E501
-            raise ValueError("Invalid value for `duplicate_validation_scope`, must not be `None`")  # noqa: E501
-        allowed_values = ["ENTIRE_PORTAL", "EXACT_FOLDER"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and duplicate_validation_scope not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `duplicate_validation_scope` ({0}), must be one of {1}".format(duplicate_validation_scope, allowed_values))  # noqa: E501
-
-        self._duplicate_validation_scope = duplicate_validation_scope
-
-    @property
-    def overwrite(self):
-        """Gets the overwrite of this ImportFromUrlInput.  # noqa: E501
-
-        If true, it will overwrite existing files if a file with the same name exists in the given folder.  # noqa: E501
-
-        :return: The overwrite of this ImportFromUrlInput.  # noqa: E501
-        :rtype: bool
-        """
-        return self._overwrite
-
-    @overwrite.setter
-    def overwrite(self, overwrite):
-        """Sets the overwrite of this ImportFromUrlInput.
-
-        If true, it will overwrite existing files if a file with the same name exists in the given folder.  # noqa: E501
-
-        :param overwrite: The overwrite of this ImportFromUrlInput.  # noqa: E501
-        :type overwrite: bool
-        """
-        if self.local_vars_configuration.client_side_validation and overwrite is None:  # noqa: E501
-            raise ValueError("Invalid value for `overwrite`, must not be `None`")  # noqa: E501
-
-        self._overwrite = overwrite
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

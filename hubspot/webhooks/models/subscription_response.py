@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Webhooks API
+    Webhooks Webhooks
 
     Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.  # noqa: E501
 
@@ -35,32 +35,105 @@ class SubscriptionResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"event_type": "str", "property_name": "str", "active": "bool", "id": "str", "created_at": "datetime", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "property_name": "str", "active": "bool", "event_type": "str", "id": "str", "updated_at": "datetime"}
 
-    attribute_map = {"event_type": "eventType", "property_name": "propertyName", "active": "active", "id": "id", "created_at": "createdAt", "updated_at": "updatedAt"}
+    attribute_map = {"created_at": "createdAt", "property_name": "propertyName", "active": "active", "event_type": "eventType", "id": "id", "updated_at": "updatedAt"}
 
-    def __init__(self, event_type=None, property_name=None, active=None, id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, property_name=None, active=None, event_type=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._event_type = None
+        self._created_at = None
         self._property_name = None
         self._active = None
+        self._event_type = None
         self._id = None
-        self._created_at = None
         self._updated_at = None
         self.discriminator = None
 
-        self.event_type = event_type
+        self.created_at = created_at
         if property_name is not None:
             self.property_name = property_name
         self.active = active
+        self.event_type = event_type
         self.id = id
-        self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this SubscriptionResponse.  # noqa: E501
+
+        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :return: The created_at of this SubscriptionResponse.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SubscriptionResponse.
+
+        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
+
+        :param created_at: The created_at of this SubscriptionResponse.  # noqa: E501
+        :type created_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def property_name(self):
+        """Gets the property_name of this SubscriptionResponse.  # noqa: E501
+
+        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :return: The property_name of this SubscriptionResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._property_name
+
+    @property_name.setter
+    def property_name(self, property_name):
+        """Sets the property_name of this SubscriptionResponse.
+
+        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :param property_name: The property_name of this SubscriptionResponse.  # noqa: E501
+        :type property_name: str
+        """
+
+        self._property_name = property_name
+
+    @property
+    def active(self):
+        """Gets the active of this SubscriptionResponse.  # noqa: E501
+
+        Determines if the subscription is active or paused.  # noqa: E501
+
+        :return: The active of this SubscriptionResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._active
+
+    @active.setter
+    def active(self, active):
+        """Sets the active of this SubscriptionResponse.
+
+        Determines if the subscription is active or paused.  # noqa: E501
+
+        :param active: The active of this SubscriptionResponse.  # noqa: E501
+        :type active: bool
+        """
+        if self.local_vars_configuration.client_side_validation and active is None:  # noqa: E501
+            raise ValueError("Invalid value for `active`, must not be `None`")  # noqa: E501
+
+        self._active = active
 
     @property
     def event_type(self):
@@ -133,54 +206,6 @@ class SubscriptionResponse(object):
         self._event_type = event_type
 
     @property
-    def property_name(self):
-        """Gets the property_name of this SubscriptionResponse.  # noqa: E501
-
-        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :return: The property_name of this SubscriptionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._property_name
-
-    @property_name.setter
-    def property_name(self, property_name):
-        """Sets the property_name of this SubscriptionResponse.
-
-        The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :param property_name: The property_name of this SubscriptionResponse.  # noqa: E501
-        :type property_name: str
-        """
-
-        self._property_name = property_name
-
-    @property
-    def active(self):
-        """Gets the active of this SubscriptionResponse.  # noqa: E501
-
-        Determines if the subscription is active or paused.  # noqa: E501
-
-        :return: The active of this SubscriptionResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._active
-
-    @active.setter
-    def active(self, active):
-        """Sets the active of this SubscriptionResponse.
-
-        Determines if the subscription is active or paused.  # noqa: E501
-
-        :param active: The active of this SubscriptionResponse.  # noqa: E501
-        :type active: bool
-        """
-        if self.local_vars_configuration.client_side_validation and active is None:  # noqa: E501
-            raise ValueError("Invalid value for `active`, must not be `None`")  # noqa: E501
-
-        self._active = active
-
-    @property
     def id(self):
         """Gets the id of this SubscriptionResponse.  # noqa: E501
 
@@ -204,31 +229,6 @@ class SubscriptionResponse(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SubscriptionResponse.  # noqa: E501
-
-        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :return: The created_at of this SubscriptionResponse.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SubscriptionResponse.
-
-        When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).  # noqa: E501
-
-        :param created_at: The created_at of this SubscriptionResponse.  # noqa: E501
-        :type created_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
 
     @property
     def updated_at(self):

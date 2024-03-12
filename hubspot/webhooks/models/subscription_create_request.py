@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Webhooks API
+    Webhooks Webhooks
 
     Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.  # noqa: E501
 
@@ -35,26 +35,72 @@ class SubscriptionCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"event_type": "str", "property_name": "str", "active": "bool"}
+    openapi_types = {"property_name": "str", "active": "bool", "event_type": "str"}
 
-    attribute_map = {"event_type": "eventType", "property_name": "propertyName", "active": "active"}
+    attribute_map = {"property_name": "propertyName", "active": "active", "event_type": "eventType"}
 
-    def __init__(self, event_type=None, property_name=None, active=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, property_name=None, active=None, event_type=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._event_type = None
         self._property_name = None
         self._active = None
+        self._event_type = None
         self.discriminator = None
 
-        self.event_type = event_type
         if property_name is not None:
             self.property_name = property_name
         if active is not None:
             self.active = active
+        self.event_type = event_type
+
+    @property
+    def property_name(self):
+        """Gets the property_name of this SubscriptionCreateRequest.  # noqa: E501
+
+        The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :return: The property_name of this SubscriptionCreateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._property_name
+
+    @property_name.setter
+    def property_name(self, property_name):
+        """Sets the property_name of this SubscriptionCreateRequest.
+
+        The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
+
+        :param property_name: The property_name of this SubscriptionCreateRequest.  # noqa: E501
+        :type property_name: str
+        """
+
+        self._property_name = property_name
+
+    @property
+    def active(self):
+        """Gets the active of this SubscriptionCreateRequest.  # noqa: E501
+
+        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
+
+        :return: The active of this SubscriptionCreateRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._active
+
+    @active.setter
+    def active(self, active):
+        """Sets the active of this SubscriptionCreateRequest.
+
+        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
+
+        :param active: The active of this SubscriptionCreateRequest.  # noqa: E501
+        :type active: bool
+        """
+
+        self._active = active
 
     @property
     def event_type(self):
@@ -125,52 +171,6 @@ class SubscriptionCreateRequest(object):
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501
 
         self._event_type = event_type
-
-    @property
-    def property_name(self):
-        """Gets the property_name of this SubscriptionCreateRequest.  # noqa: E501
-
-        The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :return: The property_name of this SubscriptionCreateRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._property_name
-
-    @property_name.setter
-    def property_name(self, property_name):
-        """Sets the property_name of this SubscriptionCreateRequest.
-
-        The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.  # noqa: E501
-
-        :param property_name: The property_name of this SubscriptionCreateRequest.  # noqa: E501
-        :type property_name: str
-        """
-
-        self._property_name = property_name
-
-    @property
-    def active(self):
-        """Gets the active of this SubscriptionCreateRequest.  # noqa: E501
-
-        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
-
-        :return: The active of this SubscriptionCreateRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._active
-
-    @active.setter
-    def active(self, active):
-        """Sets the active of this SubscriptionCreateRequest.
-
-        Determines if the subscription is active or paused. Defaults to false.  # noqa: E501
-
-        :param active: The active of this SubscriptionCreateRequest.  # noqa: E501
-        :type active: bool
-        """
-
-        self._active = active
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

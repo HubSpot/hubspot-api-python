@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.files.files.configuration import Configuration
+from hubspot.files.configuration import Configuration
 
 
 class Folder(object):
@@ -35,72 +35,47 @@ class Folder(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "created_at": "datetime", "archived_at": "datetime", "updated_at": "datetime", "archived": "bool", "parent_folder_id": "str", "name": "str", "path": "str"}
+    openapi_types = {"created_at": "datetime", "archived_at": "datetime", "archived": "bool", "path": "str", "parent_folder_id": "str", "name": "str", "id": "str", "updated_at": "datetime"}
 
     attribute_map = {
-        "id": "id",
         "created_at": "createdAt",
         "archived_at": "archivedAt",
-        "updated_at": "updatedAt",
         "archived": "archived",
+        "path": "path",
         "parent_folder_id": "parentFolderId",
         "name": "name",
-        "path": "path",
+        "id": "id",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, id=None, created_at=None, archived_at=None, updated_at=None, archived=None, parent_folder_id=None, name=None, path=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, archived_at=None, archived=None, path=None, parent_folder_id=None, name=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """Folder - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._created_at = None
         self._archived_at = None
-        self._updated_at = None
         self._archived = None
+        self._path = None
         self._parent_folder_id = None
         self._name = None
-        self._path = None
+        self._id = None
+        self._updated_at = None
         self.discriminator = None
 
-        self.id = id
         self.created_at = created_at
         if archived_at is not None:
             self.archived_at = archived_at
-        self.updated_at = updated_at
         self.archived = archived
+        if path is not None:
+            self.path = path
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
         if name is not None:
             self.name = name
-        if path is not None:
-            self.path = path
-
-    @property
-    def id(self):
-        """Gets the id of this Folder.  # noqa: E501
-
-        Id of the folder.  # noqa: E501
-
-        :return: The id of this Folder.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Folder.
-
-        Id of the folder.  # noqa: E501
-
-        :param id: The id of this Folder.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
+        self.id = id
+        self.updated_at = updated_at
 
     @property
     def created_at(self):
@@ -151,35 +126,10 @@ class Folder(object):
         self._archived_at = archived_at
 
     @property
-    def updated_at(self):
-        """Gets the updated_at of this Folder.  # noqa: E501
-
-        Timestamp of the latest update to the folder.  # noqa: E501
-
-        :return: The updated_at of this Folder.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this Folder.
-
-        Timestamp of the latest update to the folder.  # noqa: E501
-
-        :param updated_at: The updated_at of this Folder.  # noqa: E501
-        :type updated_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
-
-    @property
     def archived(self):
         """Gets the archived of this Folder.  # noqa: E501
 
-        Marks weather the folder is deleted or not.  # noqa: E501
+        Marks whether the folder is deleted or not.  # noqa: E501
 
         :return: The archived of this Folder.  # noqa: E501
         :rtype: bool
@@ -190,7 +140,7 @@ class Folder(object):
     def archived(self, archived):
         """Sets the archived of this Folder.
 
-        Marks weather the folder is deleted or not.  # noqa: E501
+        Marks whether the folder is deleted or not.  # noqa: E501
 
         :param archived: The archived of this Folder.  # noqa: E501
         :type archived: bool
@@ -201,10 +151,33 @@ class Folder(object):
         self._archived = archived
 
     @property
+    def path(self):
+        """Gets the path of this Folder.  # noqa: E501
+
+        Path of the folder in the file manager.  # noqa: E501
+
+        :return: The path of this Folder.  # noqa: E501
+        :rtype: str
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        """Sets the path of this Folder.
+
+        Path of the folder in the file manager.  # noqa: E501
+
+        :param path: The path of this Folder.  # noqa: E501
+        :type path: str
+        """
+
+        self._path = path
+
+    @property
     def parent_folder_id(self):
         """Gets the parent_folder_id of this Folder.  # noqa: E501
 
-        Id of the parent folder.  # noqa: E501
+        ID of the parent folder.  # noqa: E501
 
         :return: The parent_folder_id of this Folder.  # noqa: E501
         :rtype: str
@@ -215,7 +188,7 @@ class Folder(object):
     def parent_folder_id(self, parent_folder_id):
         """Sets the parent_folder_id of this Folder.
 
-        Id of the parent folder.  # noqa: E501
+        ID of the parent folder.  # noqa: E501
 
         :param parent_folder_id: The parent_folder_id of this Folder.  # noqa: E501
         :type parent_folder_id: str
@@ -247,27 +220,54 @@ class Folder(object):
         self._name = name
 
     @property
-    def path(self):
-        """Gets the path of this Folder.  # noqa: E501
+    def id(self):
+        """Gets the id of this Folder.  # noqa: E501
 
-        Path of the folder in the file manager.  # noqa: E501
+        ID of the folder.  # noqa: E501
 
-        :return: The path of this Folder.  # noqa: E501
+        :return: The id of this Folder.  # noqa: E501
         :rtype: str
         """
-        return self._path
+        return self._id
 
-    @path.setter
-    def path(self, path):
-        """Sets the path of this Folder.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this Folder.
 
-        Path of the folder in the file manager.  # noqa: E501
+        ID of the folder.  # noqa: E501
 
-        :param path: The path of this Folder.  # noqa: E501
-        :type path: str
+        :param id: The id of this Folder.  # noqa: E501
+        :type id: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._path = path
+        self._id = id
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this Folder.  # noqa: E501
+
+        Timestamp of the latest update to the folder.  # noqa: E501
+
+        :return: The updated_at of this Folder.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this Folder.
+
+        Timestamp of the latest update to the folder.  # noqa: E501
+
+        :param updated_at: The updated_at of this Folder.  # noqa: E501
+        :type updated_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

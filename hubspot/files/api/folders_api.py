@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -17,8 +17,8 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from hubspot.files.files.api_client import ApiClient
-from hubspot.files.files.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.files.api_client import ApiClient
+from hubspot.files.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class FoldersApi(object):
@@ -289,7 +289,7 @@ class FoldersApi(object):
         >>> thread = api.check_update_status(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param task_id: Task ID of folder update (required)
+        :param task_id: TaskId of folder update (required)
         :type task_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -319,7 +319,7 @@ class FoldersApi(object):
         >>> thread = api.check_update_status_with_http_info(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param task_id: Task ID of folder update (required)
+        :param task_id: TaskId of folder update (required)
         :type task_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -568,7 +568,7 @@ class FoldersApi(object):
         :type name: str
         :param path: Search for folders by path.
         :type path: str
-        :param parent_folder_id: Search for folders with the given parent folder ID.
+        :param parent_folder_id: Search for folders with the given parent folderId.
         :type parent_folder_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -626,7 +626,7 @@ class FoldersApi(object):
         :type name: str
         :param path: Search for folders by path.
         :type path: str
-        :param parent_folder_id: Search for folders with the given parent folder ID.
+        :param parent_folder_id: Search for folders with the given parent folderId.
         :type parent_folder_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
