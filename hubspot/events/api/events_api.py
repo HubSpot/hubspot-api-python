@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubSpot Events API
+    Events
 
     API for accessing CRM object events.  # noqa: E501
 
@@ -34,7 +34,7 @@ class EventsApi(object):
         self.api_client = api_client
 
     def get_page(self, **kwargs):  # noqa: E501
-        """Returns a collection of events matching a query.  # noqa: E501
+        """get_page  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -42,24 +42,34 @@ class EventsApi(object):
         >>> thread = api.get_page(async_req=True)
         >>> result = thread.get()
 
-        :param occurred_after: The starting time as an ISO 8601 timestamp.
-        :type occurred_after: datetime
-        :param occurred_before: The ending time as an ISO 8601 timestamp.
-        :type occurred_before: datetime
-        :param object_type: The type of object being selected. Valid values are hubspot named object types (e.g. `contact`).
+        :param object_type:
         :type object_type: str
-        :param object_id: The id of the selected object. If not present, then the `objectProperty` parameter is required.
-        :type object_id: int
-        :param event_type: Limits the response to the specified event type.  For example `&eventType=e_visited_page` returns only `e_visited_page` events.  If not present all event types are returned.
+        :param event_type:
         :type event_type: str
-        :param after: An additional parameter that may be used to get the next `limit` set of results.
+        :param occurred_after:
+        :type occurred_after: datetime
+        :param occurred_before:
+        :type occurred_before: datetime
+        :param object_id:
+        :type object_id: int
+        :param index_table_name:
+        :type index_table_name: str
+        :param index_specific_metadata:
+        :type index_specific_metadata: str
+        :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
         :param before:
         :type before: str
-        :param limit: The maximum number of events to return, defaults to 20.
+        :param limit: The maximum number of results to display per page.
         :type limit: int
-        :param sort: Selects the sort field and order. Defaults to ascending, prefix with `-` for descending order. `occurredAt` is the only field supported for sorting.
+        :param sort:
         :type sort: list[str]
+        :param object_property_propname:
+        :type object_property_propname: object
+        :param property_propname:
+        :type property_propname: object
+        :param id:
+        :type id: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -79,7 +89,7 @@ class EventsApi(object):
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
-        """Returns a collection of events matching a query.  # noqa: E501
+        """get_page  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -87,24 +97,34 @@ class EventsApi(object):
         >>> thread = api.get_page_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param occurred_after: The starting time as an ISO 8601 timestamp.
-        :type occurred_after: datetime
-        :param occurred_before: The ending time as an ISO 8601 timestamp.
-        :type occurred_before: datetime
-        :param object_type: The type of object being selected. Valid values are hubspot named object types (e.g. `contact`).
+        :param object_type:
         :type object_type: str
-        :param object_id: The id of the selected object. If not present, then the `objectProperty` parameter is required.
-        :type object_id: int
-        :param event_type: Limits the response to the specified event type.  For example `&eventType=e_visited_page` returns only `e_visited_page` events.  If not present all event types are returned.
+        :param event_type:
         :type event_type: str
-        :param after: An additional parameter that may be used to get the next `limit` set of results.
+        :param occurred_after:
+        :type occurred_after: datetime
+        :param occurred_before:
+        :type occurred_before: datetime
+        :param object_id:
+        :type object_id: int
+        :param index_table_name:
+        :type index_table_name: str
+        :param index_specific_metadata:
+        :type index_specific_metadata: str
+        :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
         :param before:
         :type before: str
-        :param limit: The maximum number of events to return, defaults to 20.
+        :param limit: The maximum number of results to display per page.
         :type limit: int
-        :param sort: Selects the sort field and order. Defaults to ascending, prefix with `-` for descending order. `occurredAt` is the only field supported for sorting.
+        :param sort:
         :type sort: list[str]
+        :param object_property_propname:
+        :type object_property_propname: object
+        :param property_propname:
+        :type property_propname: object
+        :param id:
+        :type id: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -131,7 +151,22 @@ class EventsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["occurred_after", "occurred_before", "object_type", "object_id", "event_type", "after", "before", "limit", "sort"]
+        all_params = [
+            "object_type",
+            "event_type",
+            "occurred_after",
+            "occurred_before",
+            "object_id",
+            "index_table_name",
+            "index_specific_metadata",
+            "after",
+            "before",
+            "limit",
+            "sort",
+            "object_property_propname",
+            "property_propname",
+            "id",
+        ]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -145,16 +180,20 @@ class EventsApi(object):
         path_params = {}
 
         query_params = []
+        if local_var_params.get("object_type") is not None:  # noqa: E501
+            query_params.append(("objectType", local_var_params["object_type"]))  # noqa: E501
+        if local_var_params.get("event_type") is not None:  # noqa: E501
+            query_params.append(("eventType", local_var_params["event_type"]))  # noqa: E501
         if local_var_params.get("occurred_after") is not None:  # noqa: E501
             query_params.append(("occurredAfter", local_var_params["occurred_after"]))  # noqa: E501
         if local_var_params.get("occurred_before") is not None:  # noqa: E501
             query_params.append(("occurredBefore", local_var_params["occurred_before"]))  # noqa: E501
-        if local_var_params.get("object_type") is not None:  # noqa: E501
-            query_params.append(("objectType", local_var_params["object_type"]))  # noqa: E501
         if local_var_params.get("object_id") is not None:  # noqa: E501
             query_params.append(("objectId", local_var_params["object_id"]))  # noqa: E501
-        if local_var_params.get("event_type") is not None:  # noqa: E501
-            query_params.append(("eventType", local_var_params["event_type"]))  # noqa: E501
+        if local_var_params.get("index_table_name") is not None:  # noqa: E501
+            query_params.append(("indexTableName", local_var_params["index_table_name"]))  # noqa: E501
+        if local_var_params.get("index_specific_metadata") is not None:  # noqa: E501
+            query_params.append(("indexSpecificMetadata", local_var_params["index_specific_metadata"]))  # noqa: E501
         if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
         if local_var_params.get("before") is not None:  # noqa: E501
@@ -164,6 +203,13 @@ class EventsApi(object):
         if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
+        if local_var_params.get("object_property_propname") is not None:  # noqa: E501
+            query_params.append(("objectProperty.{propname}", local_var_params["object_property_propname"]))  # noqa: E501
+        if local_var_params.get("property_propname") is not None:  # noqa: E501
+            query_params.append(("property.{propname}", local_var_params["property_propname"]))  # noqa: E501
+        if local_var_params.get("id") is not None:  # noqa: E501
+            query_params.append(("id", local_var_params["id"]))  # noqa: E501
+            collection_formats["id"] = "multi"  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -182,7 +228,7 @@ class EventsApi(object):
         }
 
         return self.api_client.call_api(
-            "/events/v3/events",
+            "/events/v3/events/",
             "GET",
             path_params,
             query_params,

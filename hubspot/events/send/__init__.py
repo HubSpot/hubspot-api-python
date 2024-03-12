@@ -17,7 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.events.send.api.behavioral_events_tracking_api import BehavioralEventsTrackingApi
+from hubspot.events.send.api.custom_event_data_api import CustomEventDataApi
 
 # import ApiClient
 from hubspot.events.send.api_client import ApiClient

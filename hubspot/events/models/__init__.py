@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    HubSpot Events API
+    Events
 
     API for accessing CRM object events.  # noqa: E501
 
@@ -20,3 +20,4 @@ from hubspot.events.models.error_detail import ErrorDetail
 from hubspot.events.models.external_unified_event import ExternalUnifiedEvent
 from hubspot.events.models.next_page import NextPage
 from hubspot.events.models.paging import Paging
+from hubspot.events.models.previous_page import PreviousPage
