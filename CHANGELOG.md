@@ -166,6 +166,16 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 - Renamed `HubSpotFormDefinitionPatchRequestLegalConsentOptions` to `HubSpotFormDefinitionAllOfLegalConsentOptions`.
 - Added new parameter `other` to `allowed_values`.
 
+#### Changes in Files client:
+- Moved client from `files.files` to `files`.
+
+#### Changes in Files Files API:
+- Added new method `get_metadata()`.
+
+#### Changes in Files Models:
+- Added new param  `expires_at` to `File` and `FileUpdateInput`.
+- Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
+
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
