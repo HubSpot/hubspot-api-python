@@ -8,6 +8,14 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "AttendanceSubscriberStateChangesApi")
 
     @property
+    def basic_api(self) -> api_client.BasicApi:
+        return self._configure_api_client(api_client, "BasicApi")
+
+    @property
+    def batch_api(self) -> api_client.BatchApi:
+        return self._configure_api_client(api_client, "BatchApi")
+
+    @property
     def marketing_events_external_api(self) -> api_client.MarketingEventsExternalApi:
         return self._configure_api_client(api_client, "MarketingEventsExternalApi")
 
@@ -16,5 +24,9 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "SearchApi")
 
     @property
-    def settings_external_api(self) -> api_client.SettingsExternalApi:
-        return self._configure_api_client(api_client, "SettingsExternalApi")
+    def settings_api(self) -> api_client.SettingsApi:
+        return self._configure_api_client(api_client, "SettingsApi")
+
+    @property
+    def subscriber_state_changes_api(self) -> api_client.SubscriberStateChangesApi:
+        return self._configure_api_client(api_client, "SubscriberStateChangesApi")
