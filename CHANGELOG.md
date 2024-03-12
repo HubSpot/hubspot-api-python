@@ -176,6 +176,15 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 - Added new param  `expires_at` to `File` and `FileUpdateInput`.
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
 
+#### Changes in Events API:
+- Added new query params: `index_table_name`, `index_table_name`,`object_property_propname`, `property_propname` and `id` to `get_page()` method.
+
+#### Changes in Events Send API:
+- Renamed `behavioral_events_tracking_api` to `custom_event_data_api`.
+
+#### Changes in Events Model:
+- Added new param `prev` to `Paging`.
+
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
