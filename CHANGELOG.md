@@ -148,6 +148,24 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 - Changed the type of parameter `after` from `int` to `string` in all `PublicObjectSearchRequest`.
 - Added new param `id_property` in all `SimplePublicObjectBatchInput`.
 
+#### Changes in Marketing Events Apis:
+- Moved methods `archive()`, `create()`, `do_cancel()`, `get_by_id()`, `replace()` and `update()` from `marketing.events.marketing_events_external_api` to `marketing.events.basic_api`.
+- Moved method `do_upsert()` from `marketing.events.marketing_events_external_api` to `marketing.events.batch_api`.
+- Moved and renamed method `archive_batch()` to `archive()` from `marketing.events.marketing_events_external_api.archive_batch` to `marketing.events.batch_api.archive`.
+- Moved methods `do_email_upsert_by_id()` and `do_upsert_by_id()`  from `marketing.events.marketing_events_external_api` to `marketing.events.subscriber_state_changes`.
+- Renamed Api `marketing.events.settings_external_api` to `marketing.events.settings_api`.
+
+#### Changes in Marketing Events Models:
+- Added new param `is_large_value` to `PropertyValue`.
+- Changed the type of parameter `category` from `ErrorCategory` to `string` in class `StandardError`.
+
+#### Changes in Marketing Forms Models:
+- Added new param `lifecycle_stages` to `HubSpotFormConfiguration`.
+- Changed the type of parameter `legal_consent_options` from `object` to `HubSpotFormDefinitionAllOfLegalConsentOptions` in all classes where parameter exists.
+- Changed the `field_type` parameter, now defaults to `payment_link_radio` instead `file` in class `DependentFieldDependentField`.
+- Renamed `HubSpotFormDefinitionPatchRequestLegalConsentOptions` to `HubSpotFormDefinitionAllOfLegalConsentOptions`.
+- Added new parameter `other` to `allowed_values`.
+
 ## Added new Client APIs:
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
@@ -165,6 +183,9 @@ and `number_display_hint` to class `ObjectTypePropertyCreate`.
 - Added `crm.objects.quotes.gdpr_api` Api.
 - Added `crm.objects.tickets.gdpr_api` Api.
 - Added `crm.line_items.gdpr_api` Api.
+- Added `marketing.events.basic_api` Api.
+- Added `marketing.events.batch_api` Api.
+- Added `marketing.events.subscriber_state_changes_api` Api.
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
