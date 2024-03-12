@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.files.files.configuration import Configuration
+from hubspot.files.configuration import Configuration
 
 
 class FolderInput(object):
@@ -35,57 +35,32 @@ class FolderInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "parent_folder_id": "str", "parent_path": "str"}
+    openapi_types = {"parent_folder_id": "str", "parent_path": "str", "name": "str"}
 
-    attribute_map = {"name": "name", "parent_folder_id": "parentFolderId", "parent_path": "parentPath"}
+    attribute_map = {"parent_folder_id": "parentFolderId", "parent_path": "parentPath", "name": "name"}
 
-    def __init__(self, name=None, parent_folder_id=None, parent_path=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, parent_folder_id=None, parent_path=None, name=None, local_vars_configuration=None):  # noqa: E501
         """FolderInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
         self._parent_folder_id = None
         self._parent_path = None
+        self._name = None
         self.discriminator = None
 
-        self.name = name
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
         if parent_path is not None:
             self.parent_path = parent_path
-
-    @property
-    def name(self):
-        """Gets the name of this FolderInput.  # noqa: E501
-
-        Desired name for the folder.  # noqa: E501
-
-        :return: The name of this FolderInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this FolderInput.
-
-        Desired name for the folder.  # noqa: E501
-
-        :param name: The name of this FolderInput.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
+        self.name = name
 
     @property
     def parent_folder_id(self):
         """Gets the parent_folder_id of this FolderInput.  # noqa: E501
 
-        Folder ID of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.  # noqa: E501
+        FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.  # noqa: E501
 
         :return: The parent_folder_id of this FolderInput.  # noqa: E501
         :rtype: str
@@ -96,7 +71,7 @@ class FolderInput(object):
     def parent_folder_id(self, parent_folder_id):
         """Sets the parent_folder_id of this FolderInput.
 
-        Folder ID of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.  # noqa: E501
+        FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.  # noqa: E501
 
         :param parent_folder_id: The parent_folder_id of this FolderInput.  # noqa: E501
         :type parent_folder_id: str
@@ -126,6 +101,31 @@ class FolderInput(object):
         """
 
         self._parent_path = parent_path
+
+    @property
+    def name(self):
+        """Gets the name of this FolderInput.  # noqa: E501
+
+        Desired name for the folder.  # noqa: E501
+
+        :return: The name of this FolderInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this FolderInput.
+
+        Desired name for the folder.  # noqa: E501
+
+        :param name: The name of this FolderInput.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -1,7 +1,6 @@
 # coding: utf-8
 
 # flake8: noqa
-
 """
     Files Files
 
@@ -14,23 +13,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.0"
-
-# import apis into sdk package
-from hubspot.files.api.files_api import FilesApi
-from hubspot.files.api.folders_api import FoldersApi
-
-# import ApiClient
-from hubspot.files.api_client import ApiClient
-from hubspot.files.configuration import Configuration
-from hubspot.files.exceptions import OpenApiException
-from hubspot.files.exceptions import ApiTypeError
-from hubspot.files.exceptions import ApiValueError
-from hubspot.files.exceptions import ApiKeyError
-from hubspot.files.exceptions import ApiAttributeError
-from hubspot.files.exceptions import ApiException
-
-# import models into sdk package
+# import models into model package
 from hubspot.files.models.collection_response_file import CollectionResponseFile
 from hubspot.files.models.collection_response_folder import CollectionResponseFolder
 from hubspot.files.models.error import Error

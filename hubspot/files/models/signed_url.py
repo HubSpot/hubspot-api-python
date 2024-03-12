@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.files.files.configuration import Configuration
+from hubspot.files.configuration import Configuration
 
 
 class SignedUrl(object):
@@ -35,36 +35,159 @@ class SignedUrl(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"expires_at": "datetime", "url": "str", "name": "str", "extension": "str", "type": "str", "size": "int", "height": "int", "width": "int"}
+    openapi_types = {"extension": "str", "size": "int", "name": "str", "width": "int", "type": "str", "expires_at": "datetime", "url": "str", "height": "int"}
 
-    attribute_map = {"expires_at": "expiresAt", "url": "url", "name": "name", "extension": "extension", "type": "type", "size": "size", "height": "height", "width": "width"}
+    attribute_map = {"extension": "extension", "size": "size", "name": "name", "width": "width", "type": "type", "expires_at": "expiresAt", "url": "url", "height": "height"}
 
-    def __init__(self, expires_at=None, url=None, name=None, extension=None, type=None, size=None, height=None, width=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, extension=None, size=None, name=None, width=None, type=None, expires_at=None, url=None, height=None, local_vars_configuration=None):  # noqa: E501
         """SignedUrl - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._extension = None
+        self._size = None
+        self._name = None
+        self._width = None
+        self._type = None
         self._expires_at = None
         self._url = None
-        self._name = None
-        self._extension = None
-        self._type = None
-        self._size = None
         self._height = None
-        self._width = None
         self.discriminator = None
 
-        self.expires_at = expires_at
-        self.url = url
-        self.name = name
         self.extension = extension
-        self.type = type
         self.size = size
-        if height is not None:
-            self.height = height
+        self.name = name
         if width is not None:
             self.width = width
+        self.type = type
+        self.expires_at = expires_at
+        self.url = url
+        if height is not None:
+            self.height = height
+
+    @property
+    def extension(self):
+        """Gets the extension of this SignedUrl.  # noqa: E501
+
+        Extension of the requested file.  # noqa: E501
+
+        :return: The extension of this SignedUrl.  # noqa: E501
+        :rtype: str
+        """
+        return self._extension
+
+    @extension.setter
+    def extension(self, extension):
+        """Sets the extension of this SignedUrl.
+
+        Extension of the requested file.  # noqa: E501
+
+        :param extension: The extension of this SignedUrl.  # noqa: E501
+        :type extension: str
+        """
+        if self.local_vars_configuration.client_side_validation and extension is None:  # noqa: E501
+            raise ValueError("Invalid value for `extension`, must not be `None`")  # noqa: E501
+
+        self._extension = extension
+
+    @property
+    def size(self):
+        """Gets the size of this SignedUrl.  # noqa: E501
+
+        Size in bytes of the requested file.  # noqa: E501
+
+        :return: The size of this SignedUrl.  # noqa: E501
+        :rtype: int
+        """
+        return self._size
+
+    @size.setter
+    def size(self, size):
+        """Sets the size of this SignedUrl.
+
+        Size in bytes of the requested file.  # noqa: E501
+
+        :param size: The size of this SignedUrl.  # noqa: E501
+        :type size: int
+        """
+        if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
+            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
+
+        self._size = size
+
+    @property
+    def name(self):
+        """Gets the name of this SignedUrl.  # noqa: E501
+
+        Name of the requested file.  # noqa: E501
+
+        :return: The name of this SignedUrl.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this SignedUrl.
+
+        Name of the requested file.  # noqa: E501
+
+        :param name: The name of this SignedUrl.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def width(self):
+        """Gets the width of this SignedUrl.  # noqa: E501
+
+        For image and video files. The width of the file.  # noqa: E501
+
+        :return: The width of this SignedUrl.  # noqa: E501
+        :rtype: int
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this SignedUrl.
+
+        For image and video files. The width of the file.  # noqa: E501
+
+        :param width: The width of this SignedUrl.  # noqa: E501
+        :type width: int
+        """
+
+        self._width = width
+
+    @property
+    def type(self):
+        """Gets the type of this SignedUrl.  # noqa: E501
+
+        Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
+
+        :return: The type of this SignedUrl.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this SignedUrl.
+
+        Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
+
+        :param type: The type of this SignedUrl.  # noqa: E501
+        :type type: str
+        """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+
+        self._type = type
 
     @property
     def expires_at(self):
@@ -117,106 +240,6 @@ class SignedUrl(object):
         self._url = url
 
     @property
-    def name(self):
-        """Gets the name of this SignedUrl.  # noqa: E501
-
-        Name of the requested file.  # noqa: E501
-
-        :return: The name of this SignedUrl.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SignedUrl.
-
-        Name of the requested file.  # noqa: E501
-
-        :param name: The name of this SignedUrl.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def extension(self):
-        """Gets the extension of this SignedUrl.  # noqa: E501
-
-        Extension of the requested file.  # noqa: E501
-
-        :return: The extension of this SignedUrl.  # noqa: E501
-        :rtype: str
-        """
-        return self._extension
-
-    @extension.setter
-    def extension(self, extension):
-        """Sets the extension of this SignedUrl.
-
-        Extension of the requested file.  # noqa: E501
-
-        :param extension: The extension of this SignedUrl.  # noqa: E501
-        :type extension: str
-        """
-        if self.local_vars_configuration.client_side_validation and extension is None:  # noqa: E501
-            raise ValueError("Invalid value for `extension`, must not be `None`")  # noqa: E501
-
-        self._extension = extension
-
-    @property
-    def type(self):
-        """Gets the type of this SignedUrl.  # noqa: E501
-
-        Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
-
-        :return: The type of this SignedUrl.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this SignedUrl.
-
-        Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.  # noqa: E501
-
-        :param type: The type of this SignedUrl.  # noqa: E501
-        :type type: str
-        """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-
-        self._type = type
-
-    @property
-    def size(self):
-        """Gets the size of this SignedUrl.  # noqa: E501
-
-        Size in bytes of the requested file.  # noqa: E501
-
-        :return: The size of this SignedUrl.  # noqa: E501
-        :rtype: int
-        """
-        return self._size
-
-    @size.setter
-    def size(self, size):
-        """Sets the size of this SignedUrl.
-
-        Size in bytes of the requested file.  # noqa: E501
-
-        :param size: The size of this SignedUrl.  # noqa: E501
-        :type size: int
-        """
-        if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
-            raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
-
-        self._size = size
-
-    @property
     def height(self):
         """Gets the height of this SignedUrl.  # noqa: E501
 
@@ -238,29 +261,6 @@ class SignedUrl(object):
         """
 
         self._height = height
-
-    @property
-    def width(self):
-        """Gets the width of this SignedUrl.  # noqa: E501
-
-        For image and video files. The width of the file.  # noqa: E501
-
-        :return: The width of this SignedUrl.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """Sets the width of this SignedUrl.
-
-        For image and video files. The width of the file.  # noqa: E501
-
-        :param width: The width of this SignedUrl.  # noqa: E501
-        :type width: int
-        """
-
-        self._width = width
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

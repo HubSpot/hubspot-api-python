@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Files
+    Files Files
 
     Upload and manage files.  # noqa: E501
 
@@ -24,10 +24,10 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from hubspot.files.files.configuration import Configuration
-import hubspot.files.files.models
-from hubspot.files.files import rest
-from hubspot.files.files.exceptions import ApiValueError, ApiException
+from hubspot.files.configuration import Configuration
+import hubspot.files.models
+from hubspot.files import rest
+from hubspot.files.exceptions import ApiValueError, ApiException
 
 
 class ApiClient(object):
@@ -301,7 +301,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(hubspot.files.files.models, klass)
+                klass = getattr(hubspot.files.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

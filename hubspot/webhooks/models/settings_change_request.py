@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Webhooks API
+    Webhooks Webhooks
 
     Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.  # noqa: E501
 
@@ -35,47 +35,22 @@ class SettingsChangeRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"target_url": "str", "throttling": "ThrottlingSettings"}
+    openapi_types = {"throttling": "ThrottlingSettings", "target_url": "str"}
 
-    attribute_map = {"target_url": "targetUrl", "throttling": "throttling"}
+    attribute_map = {"throttling": "throttling", "target_url": "targetUrl"}
 
-    def __init__(self, target_url=None, throttling=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, throttling=None, target_url=None, local_vars_configuration=None):  # noqa: E501
         """SettingsChangeRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._target_url = None
         self._throttling = None
+        self._target_url = None
         self.discriminator = None
 
-        self.target_url = target_url
         self.throttling = throttling
-
-    @property
-    def target_url(self):
-        """Gets the target_url of this SettingsChangeRequest.  # noqa: E501
-
-        A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.  # noqa: E501
-
-        :return: The target_url of this SettingsChangeRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_url
-
-    @target_url.setter
-    def target_url(self, target_url):
-        """Sets the target_url of this SettingsChangeRequest.
-
-        A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.  # noqa: E501
-
-        :param target_url: The target_url of this SettingsChangeRequest.  # noqa: E501
-        :type target_url: str
-        """
-        if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
-
-        self._target_url = target_url
+        self.target_url = target_url
 
     @property
     def throttling(self):
@@ -99,6 +74,31 @@ class SettingsChangeRequest(object):
             raise ValueError("Invalid value for `throttling`, must not be `None`")  # noqa: E501
 
         self._throttling = throttling
+
+    @property
+    def target_url(self):
+        """Gets the target_url of this SettingsChangeRequest.  # noqa: E501
+
+        A publicly available URL for HubSpot to call where event payloads will be delivered.  # noqa: E501
+
+        :return: The target_url of this SettingsChangeRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_url
+
+    @target_url.setter
+    def target_url(self, target_url):
+        """Sets the target_url of this SettingsChangeRequest.
+
+        A publicly available URL for HubSpot to call where event payloads will be delivered.  # noqa: E501
+
+        :param target_url: The target_url of this SettingsChangeRequest.  # noqa: E501
+        :type target_url: str
+        """
+        if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
+
+        self._target_url = target_url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

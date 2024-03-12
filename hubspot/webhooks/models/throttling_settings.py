@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Webhooks API
+    Webhooks Webhooks
 
     Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.  # noqa: E501
 
@@ -35,47 +35,22 @@ class ThrottlingSettings(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"max_concurrent_requests": "int", "period": "str"}
+    openapi_types = {"period": "str", "max_concurrent_requests": "int"}
 
-    attribute_map = {"max_concurrent_requests": "maxConcurrentRequests", "period": "period"}
+    attribute_map = {"period": "period", "max_concurrent_requests": "maxConcurrentRequests"}
 
-    def __init__(self, max_concurrent_requests=None, period=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, period=None, max_concurrent_requests=None, local_vars_configuration=None):  # noqa: E501
         """ThrottlingSettings - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._max_concurrent_requests = None
         self._period = None
+        self._max_concurrent_requests = None
         self.discriminator = None
 
-        self.max_concurrent_requests = max_concurrent_requests
         self.period = period
-
-    @property
-    def max_concurrent_requests(self):
-        """Gets the max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
-
-        The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.  # noqa: E501
-
-        :return: The max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
-        :rtype: int
-        """
-        return self._max_concurrent_requests
-
-    @max_concurrent_requests.setter
-    def max_concurrent_requests(self, max_concurrent_requests):
-        """Sets the max_concurrent_requests of this ThrottlingSettings.
-
-        The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.  # noqa: E501
-
-        :param max_concurrent_requests: The max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
-        :type max_concurrent_requests: int
-        """
-        if self.local_vars_configuration.client_side_validation and max_concurrent_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `max_concurrent_requests`, must not be `None`")  # noqa: E501
-
-        self._max_concurrent_requests = max_concurrent_requests
+        self.max_concurrent_requests = max_concurrent_requests
 
     @property
     def period(self):
@@ -104,6 +79,31 @@ class ThrottlingSettings(object):
             raise ValueError("Invalid value for `period` ({0}), must be one of {1}".format(period, allowed_values))  # noqa: E501
 
         self._period = period
+
+    @property
+    def max_concurrent_requests(self):
+        """Gets the max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
+
+        The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.  # noqa: E501
+
+        :return: The max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_concurrent_requests
+
+    @max_concurrent_requests.setter
+    def max_concurrent_requests(self, max_concurrent_requests):
+        """Sets the max_concurrent_requests of this ThrottlingSettings.
+
+        The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.  # noqa: E501
+
+        :param max_concurrent_requests: The max_concurrent_requests of this ThrottlingSettings.  # noqa: E501
+        :type max_concurrent_requests: int
+        """
+        if self.local_vars_configuration.client_side_validation and max_concurrent_requests is None:  # noqa: E501
+            raise ValueError("Invalid value for `max_concurrent_requests`, must not be `None`")  # noqa: E501
+
+        self._max_concurrent_requests = max_concurrent_requests
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
