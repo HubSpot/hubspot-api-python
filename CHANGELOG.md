@@ -120,46 +120,38 @@ and `number_display_hint` to `crm.schemas.models.ObjectTypePropertyCreate`.
 - Renamed `marketing.forms.models.HubSpotFormDefinitionPatchRequestLegalConsentOptions` to `marketing.forms.models.HubSpotFormDefinitionAllOfLegalConsentOptions`.
 - Added new parameter `other` to `allowed_values` in `marketing.forms.models`.
 
-### Files client
+### Events, Files and OAuth clients
 
 - Moved client from `files.files` to `files`.
 - Added new method `files.files_api.get_metadata()`.
 - Added new param `expires_at` to `files.models.File` and `files.models.FileUpdateInput`.
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in `files.models.StandardError`.
-
-### Events сlient
-
 - Added new query params: `index_table_name`, `index_table_name`,`object_property_propname`, `property_propname` and `id` to `get_page()` method.
 - Renamed `events.send_api.behavioral_events_tracking_api()` to `events.send_api.custom_event_data_api()`.
 - Added new param `prev` to `events.models.Paging`.
-
-### Other models
-
-- Changed the type of parameter `after` from `int` to `string` in all models `PublicObjectSearchRequest`.
-- Added new param `id_property` in all models `SimplePublicObjectBatchInput`.
 - Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
 ### Client APIs
 
-- Added `crm.extensions.calling.recording_settings_api` Api.
-- Added `crm.companies.gdpr_api` Api.
-- Added `crm.deals.gdpr_api` Api.
-- Added `crm.objects.line_items.gdpr_api` Api.
-- Added `crm.objects.calls.gdpr_api` Api.
-- Added `crm.objects.communications.gdpr_api` Api.
-- Added `crm.objects.emails.gdpr_api` Api.
-- Added `crm.objects.feedback_submissions.gdpr_api` Api.
-- Added `crm.objects.meetings.gdpr_api` Api.
-- Added `crm.objects.notes.gdpr_api` Api.
-- Added `crm.objects.postal_mail.gdpr_api` Api.
-- Added `crm.objects.tasks.gdpr_api` Api.
-- Added `crm.objects.products.gdpr_api` Api.
-- Added `crm.objects.quotes.gdpr_api` Api.
-- Added `crm.objects.tickets.gdpr_api` Api.
-- Added `crm.line_items.gdpr_api` Api.
-- Added `marketing.events.basic_api` Api.
-- Added `marketing.events.batch_api` Api.
-- Added `marketing.events.subscriber_state_changes_api` Api.
+- Added `crm.extensions.calling.recording_settings_api` API.
+- Added `crm.companies.gdpr_api` API.
+- Added `crm.deals.gdpr_api` API.
+- Added `crm.objects.line_items.gdpr_api` API.
+- Added `crm.objects.calls.gdpr_api` API.
+- Added `crm.objects.communications.gdpr_api` API.
+- Added `crm.objects.emails.gdpr_api` API.
+- Added `crm.objects.feedback_submissions.gdpr_api` API.
+- Added `crm.objects.meetings.gdpr_api` API.
+- Added `crm.objects.notes.gdpr_api` API.
+- Added `crm.objects.postal_mail.gdpr_api` API.
+- Added `crm.objects.tasks.gdpr_api` API.
+- Added `crm.objects.products.gdpr_api` API.
+- Added `crm.objects.quotes.gdpr_api` API.
+- Added `crm.objects.tickets.gdpr_api` API.
+- Added `crm.line_items.gdpr_api` API.
+- Added `marketing.events.basic_api` API.
+- Added `marketing.events.batch_api` API.
+- Added `marketing.events.subscriber_state_changes_api` API.
 
 ## [8.2.1](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.0...v8.2.1) - 2024-01-25
 
