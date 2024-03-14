@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `automation.actions.definitions_api.update()` method to accept `public_action_definition_patch` instead of `extension_action_definition_patch` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
 - Updated `automation.actions.functions_api.create_or_replace()` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
 - Updated `automation.actions.functions_api.create_or_replace_by_function_type()` method to return `PublicActionFunctionIdentifier` instead of `ActionFunctionIdentifier`.
-- Updated `automation.actions.functions_api.get_by_fu nction_type()` method to return `PublicActionFunction` instead of `ActionFunction`.
+- Updated `automation.actions.functions_api.get_by_function_type()` method to return `PublicActionFunction` instead of `ActionFunction`.
 - Updated `automation.actions.functions_api.get_by_id()` method to return `PublicActionFunction` instead of `ActionFunction`.
 - Updated `automation.actions.functions_api.get_page()` method to return `CollectionResponsePublicActionFunctionIdentifierNoPaging` instead of `CollectionResponseActionFunctionIdentifierNoPaging`.
 - Updated `automation.actions.revisions_api.get_by_id()` method to return `PublicActionRevision` instead of `ActionRevision`.
