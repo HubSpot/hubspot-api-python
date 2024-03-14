@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-02-20
 
-### Changes in Automation Actions Client:
+### Automation Actions client
+
 - Updated `automation.actions.definitions_api.create()` method to accept `public_action_definition_egg` instead of `extension_action_definition_input` and returned `PublicActionDefinition` instead `ExtensionActionDefinition`.
 - Updated `automation.actions.definitions_api.get_by_id()` method to return `PublicActionDefinition` instead of `ExtensionActionDefinition`.
 - Updated `automation.actions.definitions_api.get_page()` method to return `CollectionResponsePublicActionDefinitionForwardPaging` instead of `CollectionResponseExtensionActionDefinitionForwardPaging`.
@@ -25,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new param `automation_field_type` to `automation.actions.models.InputFieldDefinition`.
 - Added `automation.actions.models.OutputFieldDefinition`.
 - Added `automation.actions.models.PublicExecutionTranslationRule`.
-- Update params to `automation.actions.models.FieldTypeDefinition`:
+- Added new params to `automation.actions.models.FieldTypeDefinition`:
 
 ```python
 {
@@ -43,7 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 }
 ```
 
-### Changes in CMS Clients:
+### CMS clients
+
 - Changed `attach_to_lang_group()`, `detach_from_lang_group()` and `update_langs()` methods of all Api clients(`cms.blogs.authors.blog_authors_api`, `cms.blogs.blog_posts.blog_posts_api` and `cms.blogs.tags.blog_tags_api`) return `None` instead of `Error`.
 - Added new param `_property` to `cms.blogs.authors.blog_authors_api.get_by_id()` and `cms.blogs.authors.blog_authors_api.get_page()`.
 - Renamed `cms.source_code.content_api.get()` method to `cms.source_code.content_api.download()`.
@@ -51,7 +53,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new param `hash` to `cms.source_code.models.AssetFileMetadata`.
 - Added new param `properties` to `cms.source_code.metadata_api.get()`.
 
-### Changes in CRM Associations Clients:
+### CRM Associations and Objects clients
+
+> [!NOTE]
+> Please note that CRM Objects includes: companies, contacts, deals, line items, all CRM objects `crm.objects`, products, quotes and tickets
+
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in `crm.associations.models.StandardError`.
 - Renamed `crm.associations.v4.schema.definitions_api.delete()` method to `crm.associations.v4.schema.definitions_api.archive()`.
 - Changed the type of parameters `object_id` and `crm.associations.v4.basic_api.to_object_id` in `crm.associations.v4.basic_api.archive()`, `crm.associations.v4.basic_api.create()` and `crm.associations.v4.basic_api.create_default()` methods from `string` to `int`.
@@ -61,8 +67,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed the type of property `category` in `ErrorCategory` to `string` in `crm.associations.v4.models.StandardError`.
 - Changed the type of property `errors` in `crm.associations.v4.models.BatchResponsePublicDefaultAssociation` from `StandardError1[]` to `StandardError[]`.
 - Added parameter `inverse_label` to `crm.associations.v4.models.PublicAssociationDefinitionCreateRequest` and `crm.associations.v4.models.PublicAssociationDefinitionUpdateRequest`.
+- Updated `crm.time_line.events_api.create_batch()` method to return `None` insted `BatchResponseTimelineEventResponse`.
+- Changed the type of parameter `category` from `ErrorCategory` to `string` in `crm.time_line.models.StandardError`.
+- Removed `crm.objects.associations_api`.
+- Renamed param `postal_mail` to `postal_mail_id` in `crm.objects.postal_mail.basic_api()`.
+- Changed the type of parameter `after` from `int` to `string` in all CRM models `PublicObjectSearchRequest`.
+- Added new param `id_property` in all CRM models `SimplePublicObjectBatchInput`.
 
-### Changes in CRM Extensions Client:
+### CRM Extensions client
+
 - Changed parameter order in `crm.extinsions.cards_api.archive()` method from `(app_id, card_id)` to `(card_id, app_id)`.
 - Updated `crm.extinsions.cards_api.create()` method to return `PublicCardResponse` instead `CardResponse`.
 - Updated `crm.extinsions.cards_api.get_all()` method to return `PublicCardListResponse` instead `CardListResponse`.
@@ -75,7 +88,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new param `fetch_accounts_uri` to `crm.extinsions.videoconferencing.models.ExternalSettings`.
 - Marked `CRM Extensions Accounting Apis` as deprecated.
 
-### Changes in CRM Clients:
+### CRM clients
+
 - Added `import_template` and `import_source` params to `crm.imports.models.PublicImportResponse`.
 - Renamed Api client from `crm.lists.memberships_api()` to `crm.lists.list_app_membership_api()`.
 - Renamed Api client from `crm.lists.lists_api()` to `crm.lists.list_app_api()`.
@@ -90,14 +104,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `description` param to `crm.schemas.models.ObjectTypeDefinitionPatch`.
 - Added new params: `option_sort_strategy`, `show_currency_symbol`, `form_field`, `referenced_object_type`, `text_display_hint`, `searchable_in_global_search`
 and `number_display_hint` to `crm.schemas.models.ObjectTypePropertyCreate`.
-- Updated `crm.time_line.events_api.create_batch()` method to return `None` insted `BatchResponseTimelineEventResponse`.
-- Changed the type of parameter `category` from `ErrorCategory` to `string` in `crm.time_line.models.StandardError`.
-- Removed `crm.objects.associations_api`.
-- Renamed param `postal_mail` to `postal_mail_id` in `crm.objects.postal_mail.basic_api()`.
-- Changed the type of parameter `after` from `int` to `string` in all CRM models `PublicObjectSearchRequest`.
-- Added new param `id_property` in all CRM models `SimplePublicObjectBatchInput`.
 
-### Changes in Marketing Client:
+### Marketing client
+
 - Moved methods `archive()`, `create()`, `do_cancel()`, `get_by_id()`, `replace()` and `update()` from `marketing.events.marketing_events_external_api()` to `marketing.events.basic_api`.
 - Moved method `do_upsert()` from `marketing.events.marketing_events_external_api()` to `marketing.events.batch_api()`.
 - Moved and renamed method `archive_batch()` to `archive()` from `marketing.events.marketing_events_external_api.archive_batch()` to `marketing.events.batch_api.archive()`.
@@ -111,23 +120,27 @@ and `number_display_hint` to `crm.schemas.models.ObjectTypePropertyCreate`.
 - Renamed `marketing.forms.models.HubSpotFormDefinitionPatchRequestLegalConsentOptions` to `marketing.forms.models.HubSpotFormDefinitionAllOfLegalConsentOptions`.
 - Added new parameter `other` to `allowed_values` in `marketing.forms.models`.
 
-### Changes in Files client:
+### Files client
+
 - Moved client from `files.files` to `files`.
 - Added new method `files.files_api.get_metadata()`.
 - Added new param `expires_at` to `files.models.File` and `files.models.FileUpdateInput`.
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in `files.models.StandardError`.
 
-### Changes in Events Client:
+### Events сlient
+
 - Added new query params: `index_table_name`, `index_table_name`,`object_property_propname`, `property_propname` and `id` to `get_page()` method.
 - Renamed `events.send_api.behavioral_events_tracking_api()` to `events.send_api.custom_event_data_api()`.
 - Added new param `prev` to `events.models.Paging`.
 
-### Changes in other Models:
+### Other models
+
 - Changed the type of parameter `after` from `int` to `string` in all models `PublicObjectSearchRequest`.
 - Added new param `id_property` in all models `SimplePublicObjectBatchInput`.
 - Removed params `scope_to_scope_group_pks, trial_scopes, trial_scope_to_scope_group_pks` from `oauth.models.AccessTokenInfoResponse`.
 
-## Added new Client APIs:
+### Client APIs
+
 - Added `crm.extensions.calling.recording_settings_api` Api.
 - Added `crm.companies.gdpr_api` Api.
 - Added `crm.deals.gdpr_api` Api.
