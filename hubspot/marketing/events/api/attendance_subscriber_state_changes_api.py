@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -188,7 +188,7 @@ class AttendanceSubscriberStateChangesApi(object):
     def create_by_email(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
         """Record  # noqa: E501
 
-        Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
+        Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -224,7 +224,7 @@ class AttendanceSubscriberStateChangesApi(object):
     def create_by_email_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
         """Record  # noqa: E501
 
-        Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. If you set params   # noqa: E501
+        Record a subscription state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

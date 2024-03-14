@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -35,11 +35,11 @@ class TimelineEventIFrame(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"link_label": "str", "header_label": "str", "url": "str", "width": "int", "height": "int"}
+    openapi_types = {"link_label": "str", "header_label": "str", "width": "int", "url": "str", "height": "int"}
 
-    attribute_map = {"link_label": "linkLabel", "header_label": "headerLabel", "url": "url", "width": "width", "height": "height"}
+    attribute_map = {"link_label": "linkLabel", "header_label": "headerLabel", "width": "width", "url": "url", "height": "height"}
 
-    def __init__(self, link_label=None, header_label=None, url=None, width=None, height=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, link_label=None, header_label=None, width=None, url=None, height=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventIFrame - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -47,15 +47,15 @@ class TimelineEventIFrame(object):
 
         self._link_label = None
         self._header_label = None
-        self._url = None
         self._width = None
+        self._url = None
         self._height = None
         self.discriminator = None
 
         self.link_label = link_label
         self.header_label = header_label
-        self.url = url
         self.width = width
+        self.url = url
         self.height = height
 
     @property
@@ -109,31 +109,6 @@ class TimelineEventIFrame(object):
         self._header_label = header_label
 
     @property
-    def url(self):
-        """Gets the url of this TimelineEventIFrame.  # noqa: E501
-
-        The URI of the iframe contents.  # noqa: E501
-
-        :return: The url of this TimelineEventIFrame.  # noqa: E501
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this TimelineEventIFrame.
-
-        The URI of the iframe contents.  # noqa: E501
-
-        :param url: The url of this TimelineEventIFrame.  # noqa: E501
-        :type url: str
-        """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-
-        self._url = url
-
-    @property
     def width(self):
         """Gets the width of this TimelineEventIFrame.  # noqa: E501
 
@@ -157,6 +132,31 @@ class TimelineEventIFrame(object):
             raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
 
         self._width = width
+
+    @property
+    def url(self):
+        """Gets the url of this TimelineEventIFrame.  # noqa: E501
+
+        The URI of the iframe contents.  # noqa: E501
+
+        :return: The url of this TimelineEventIFrame.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this TimelineEventIFrame.
+
+        The URI of the iframe contents.  # noqa: E501
+
+        :param url: The url of this TimelineEventIFrame.  # noqa: E501
+        :type url: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
 
     @property
     def height(self):

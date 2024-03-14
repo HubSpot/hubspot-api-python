@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Webhooks API
+    Webhooks Webhooks
 
     Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.  # noqa: E501
 
@@ -35,45 +35,22 @@ class SubscriptionBatchUpdateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "int", "active": "bool"}
+    openapi_types = {"active": "bool", "id": "int"}
 
-    attribute_map = {"id": "id", "active": "active"}
+    attribute_map = {"active": "active", "id": "id"}
 
-    def __init__(self, id=None, active=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, active=None, id=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionBatchUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._active = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         self.active = active
-
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionBatchUpdateRequest.  # noqa: E501
-
-
-        :return: The id of this SubscriptionBatchUpdateRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionBatchUpdateRequest.
-
-
-        :param id: The id of this SubscriptionBatchUpdateRequest.  # noqa: E501
-        :type id: int
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
+        self.id = id
 
     @property
     def active(self):
@@ -97,6 +74,29 @@ class SubscriptionBatchUpdateRequest(object):
             raise ValueError("Invalid value for `active`, must not be `None`")  # noqa: E501
 
         self._active = active
+
+    @property
+    def id(self):
+        """Gets the id of this SubscriptionBatchUpdateRequest.  # noqa: E501
+
+
+        :return: The id of this SubscriptionBatchUpdateRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this SubscriptionBatchUpdateRequest.
+
+
+        :param id: The id of this SubscriptionBatchUpdateRequest.  # noqa: E501
+        :type id: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

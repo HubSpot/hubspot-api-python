@@ -35,47 +35,24 @@ class ObjectTypeDefinitionLabels(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"singular": "str", "plural": "str"}
+    openapi_types = {"plural": "str", "singular": "str"}
 
-    attribute_map = {"singular": "singular", "plural": "plural"}
+    attribute_map = {"plural": "plural", "singular": "singular"}
 
-    def __init__(self, singular=None, plural=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, plural=None, singular=None, local_vars_configuration=None):  # noqa: E501
         """ObjectTypeDefinitionLabels - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._singular = None
         self._plural = None
+        self._singular = None
         self.discriminator = None
 
-        if singular is not None:
-            self.singular = singular
         if plural is not None:
             self.plural = plural
-
-    @property
-    def singular(self):
-        """Gets the singular of this ObjectTypeDefinitionLabels.  # noqa: E501
-
-        The word for one object. (There’s no way to change this later.)  # noqa: E501
-
-        :return: The singular of this ObjectTypeDefinitionLabels.  # noqa: E501
-        :rtype: str
-        """
-        return self._singular
-
-    @singular.setter
-    def singular(self, singular):
-        """Sets the singular of this ObjectTypeDefinitionLabels.
-
-        The word for one object. (There’s no way to change this later.)  # noqa: E501
-
-        :param singular: The singular of this ObjectTypeDefinitionLabels.  # noqa: E501
-        :type singular: str
-        """
-
-        self._singular = singular
+        if singular is not None:
+            self.singular = singular
 
     @property
     def plural(self):
@@ -99,6 +76,29 @@ class ObjectTypeDefinitionLabels(object):
         """
 
         self._plural = plural
+
+    @property
+    def singular(self):
+        """Gets the singular of this ObjectTypeDefinitionLabels.  # noqa: E501
+
+        The word for one object. (There’s no way to change this later.)  # noqa: E501
+
+        :return: The singular of this ObjectTypeDefinitionLabels.  # noqa: E501
+        :rtype: str
+        """
+        return self._singular
+
+    @singular.setter
+    def singular(self, singular):
+        """Sets the singular of this ObjectTypeDefinitionLabels.
+
+        The word for one object. (There’s no way to change this later.)  # noqa: E501
+
+        :param singular: The singular of this ObjectTypeDefinitionLabels.  # noqa: E501
+        :type singular: str
+        """
+
+        self._singular = singular
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

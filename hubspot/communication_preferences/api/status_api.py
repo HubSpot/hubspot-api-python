@@ -263,6 +263,8 @@ class StatusApi(object):
 
         response_types_map = {
             200: "PublicSubscriptionStatus",
+            400: None,
+            404: None,
         }
 
         return self.api_client.call_api(
@@ -391,6 +393,8 @@ class StatusApi(object):
 
         response_types_map = {
             200: "PublicSubscriptionStatus",
+            400: None,
+            404: None,
         }
 
         return self.api_client.call_api(

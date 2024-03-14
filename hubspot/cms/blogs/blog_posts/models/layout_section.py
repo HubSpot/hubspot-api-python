@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -36,9 +36,7 @@ class LayoutSection(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "x": "int",
-        "w": "int",
-        "name": "str",
+        "css_style": "str",
         "label": "str",
         "type": "str",
         "params": "dict[str, object]",
@@ -46,15 +44,15 @@ class LayoutSection(object):
         "row_meta_data": "list[RowMetaData]",
         "cells": "list[LayoutSection]",
         "css_class": "str",
-        "css_style": "str",
+        "w": "int",
         "css_id": "str",
+        "x": "int",
+        "name": "str",
         "styles": "Styles",
     }
 
     attribute_map = {
-        "x": "x",
-        "w": "w",
-        "name": "name",
+        "css_style": "cssStyle",
         "label": "label",
         "type": "type",
         "params": "params",
@@ -62,16 +60,16 @@ class LayoutSection(object):
         "row_meta_data": "rowMetaData",
         "cells": "cells",
         "css_class": "cssClass",
-        "css_style": "cssStyle",
+        "w": "w",
         "css_id": "cssId",
+        "x": "x",
+        "name": "name",
         "styles": "styles",
     }
 
     def __init__(
         self,
-        x=None,
-        w=None,
-        name=None,
+        css_style=None,
         label=None,
         type=None,
         params=None,
@@ -79,8 +77,10 @@ class LayoutSection(object):
         row_meta_data=None,
         cells=None,
         css_class=None,
-        css_style=None,
+        w=None,
         css_id=None,
+        x=None,
+        name=None,
         styles=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -89,9 +89,7 @@ class LayoutSection(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._x = None
-        self._w = None
-        self._name = None
+        self._css_style = None
         self._label = None
         self._type = None
         self._params = None
@@ -99,14 +97,14 @@ class LayoutSection(object):
         self._row_meta_data = None
         self._cells = None
         self._css_class = None
-        self._css_style = None
+        self._w = None
         self._css_id = None
+        self._x = None
+        self._name = None
         self._styles = None
         self.discriminator = None
 
-        self.x = x
-        self.w = w
-        self.name = name
+        self.css_style = css_style
         self.label = label
         self.type = type
         self.params = params
@@ -114,78 +112,34 @@ class LayoutSection(object):
         self.row_meta_data = row_meta_data
         self.cells = cells
         self.css_class = css_class
-        self.css_style = css_style
+        self.w = w
         self.css_id = css_id
+        self.x = x
+        self.name = name
         self.styles = styles
 
     @property
-    def x(self):
-        """Gets the x of this LayoutSection.  # noqa: E501
+    def css_style(self):
+        """Gets the css_style of this LayoutSection.  # noqa: E501
 
 
-        :return: The x of this LayoutSection.  # noqa: E501
-        :rtype: int
-        """
-        return self._x
-
-    @x.setter
-    def x(self, x):
-        """Sets the x of this LayoutSection.
-
-
-        :param x: The x of this LayoutSection.  # noqa: E501
-        :type x: int
-        """
-        if self.local_vars_configuration.client_side_validation and x is None:  # noqa: E501
-            raise ValueError("Invalid value for `x`, must not be `None`")  # noqa: E501
-
-        self._x = x
-
-    @property
-    def w(self):
-        """Gets the w of this LayoutSection.  # noqa: E501
-
-
-        :return: The w of this LayoutSection.  # noqa: E501
-        :rtype: int
-        """
-        return self._w
-
-    @w.setter
-    def w(self, w):
-        """Sets the w of this LayoutSection.
-
-
-        :param w: The w of this LayoutSection.  # noqa: E501
-        :type w: int
-        """
-        if self.local_vars_configuration.client_side_validation and w is None:  # noqa: E501
-            raise ValueError("Invalid value for `w`, must not be `None`")  # noqa: E501
-
-        self._w = w
-
-    @property
-    def name(self):
-        """Gets the name of this LayoutSection.  # noqa: E501
-
-
-        :return: The name of this LayoutSection.  # noqa: E501
+        :return: The css_style of this LayoutSection.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._css_style
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this LayoutSection.
+    @css_style.setter
+    def css_style(self, css_style):
+        """Sets the css_style of this LayoutSection.
 
 
-        :param name: The name of this LayoutSection.  # noqa: E501
-        :type name: str
+        :param css_style: The css_style of this LayoutSection.  # noqa: E501
+        :type css_style: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and css_style is None:  # noqa: E501
+            raise ValueError("Invalid value for `css_style`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._css_style = css_style
 
     @property
     def label(self):
@@ -351,27 +305,27 @@ class LayoutSection(object):
         self._css_class = css_class
 
     @property
-    def css_style(self):
-        """Gets the css_style of this LayoutSection.  # noqa: E501
+    def w(self):
+        """Gets the w of this LayoutSection.  # noqa: E501
 
 
-        :return: The css_style of this LayoutSection.  # noqa: E501
-        :rtype: str
+        :return: The w of this LayoutSection.  # noqa: E501
+        :rtype: int
         """
-        return self._css_style
+        return self._w
 
-    @css_style.setter
-    def css_style(self, css_style):
-        """Sets the css_style of this LayoutSection.
+    @w.setter
+    def w(self, w):
+        """Sets the w of this LayoutSection.
 
 
-        :param css_style: The css_style of this LayoutSection.  # noqa: E501
-        :type css_style: str
+        :param w: The w of this LayoutSection.  # noqa: E501
+        :type w: int
         """
-        if self.local_vars_configuration.client_side_validation and css_style is None:  # noqa: E501
-            raise ValueError("Invalid value for `css_style`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and w is None:  # noqa: E501
+            raise ValueError("Invalid value for `w`, must not be `None`")  # noqa: E501
 
-        self._css_style = css_style
+        self._w = w
 
     @property
     def css_id(self):
@@ -395,6 +349,52 @@ class LayoutSection(object):
             raise ValueError("Invalid value for `css_id`, must not be `None`")  # noqa: E501
 
         self._css_id = css_id
+
+    @property
+    def x(self):
+        """Gets the x of this LayoutSection.  # noqa: E501
+
+
+        :return: The x of this LayoutSection.  # noqa: E501
+        :rtype: int
+        """
+        return self._x
+
+    @x.setter
+    def x(self, x):
+        """Sets the x of this LayoutSection.
+
+
+        :param x: The x of this LayoutSection.  # noqa: E501
+        :type x: int
+        """
+        if self.local_vars_configuration.client_side_validation and x is None:  # noqa: E501
+            raise ValueError("Invalid value for `x`, must not be `None`")  # noqa: E501
+
+        self._x = x
+
+    @property
+    def name(self):
+        """Gets the name of this LayoutSection.  # noqa: E501
+
+
+        :return: The name of this LayoutSection.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this LayoutSection.
+
+
+        :param name: The name of this LayoutSection.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
 
     @property
     def styles(self):

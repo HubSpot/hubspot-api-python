@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -35,49 +35,24 @@ class MarketingEventExternalUniqueIdentifier(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"app_id": "int", "external_account_id": "str", "external_event_id": "str"}
+    openapi_types = {"external_account_id": "str", "external_event_id": "str", "app_id": "int"}
 
-    attribute_map = {"app_id": "appId", "external_account_id": "externalAccountId", "external_event_id": "externalEventId"}
+    attribute_map = {"external_account_id": "externalAccountId", "external_event_id": "externalEventId", "app_id": "appId"}
 
-    def __init__(self, app_id=None, external_account_id=None, external_event_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, external_account_id=None, external_event_id=None, app_id=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventExternalUniqueIdentifier - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._app_id = None
         self._external_account_id = None
         self._external_event_id = None
+        self._app_id = None
         self.discriminator = None
 
-        self.app_id = app_id
         self.external_account_id = external_account_id
         self.external_event_id = external_event_id
-
-    @property
-    def app_id(self):
-        """Gets the app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
-
-        The id of the application that created the marketing event in HubSpot.  # noqa: E501
-
-        :return: The app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
-        :rtype: int
-        """
-        return self._app_id
-
-    @app_id.setter
-    def app_id(self, app_id):
-        """Sets the app_id of this MarketingEventExternalUniqueIdentifier.
-
-        The id of the application that created the marketing event in HubSpot.  # noqa: E501
-
-        :param app_id: The app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
-        :type app_id: int
-        """
-        if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
-
-        self._app_id = app_id
+        self.app_id = app_id
 
     @property
     def external_account_id(self):
@@ -128,6 +103,31 @@ class MarketingEventExternalUniqueIdentifier(object):
             raise ValueError("Invalid value for `external_event_id`, must not be `None`")  # noqa: E501
 
         self._external_event_id = external_event_id
+
+    @property
+    def app_id(self):
+        """Gets the app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
+
+        The id of the application that created the marketing event in HubSpot.  # noqa: E501
+
+        :return: The app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
+        :rtype: int
+        """
+        return self._app_id
+
+    @app_id.setter
+    def app_id(self, app_id):
+        """Sets the app_id of this MarketingEventExternalUniqueIdentifier.
+
+        The id of the application that created the marketing event in HubSpot.  # noqa: E501
+
+        :param app_id: The app_id of this MarketingEventExternalUniqueIdentifier.  # noqa: E501
+        :type app_id: int
+        """
+        if self.local_vars_configuration.client_side_validation and app_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
+
+        self._app_id = app_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

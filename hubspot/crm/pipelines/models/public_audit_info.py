@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Pipelines
+    Pipelines
 
     Pipelines represent distinct stages in a workflow, like closing a deal or servicing a support ticket. These endpoints provide access to read and modify pipelines in HubSpot. Pipelines support `deals` and `tickets` object types.  ## Pipeline ID validation  When calling endpoints that take pipelineId as a parameter, that ID must correspond to an existing, un-archived pipeline. Otherwise the request will fail with a `404 Not Found` response.  # noqa: E501
 
@@ -35,59 +35,36 @@ class PublicAuditInfo(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"portal_id": "int", "identifier": "str", "action": "str", "timestamp": "datetime", "message": "str", "raw_object": "object", "from_user_id": "int"}
+    openapi_types = {"identifier": "str", "raw_object": "object", "from_user_id": "int", "portal_id": "int", "action": "str", "message": "str", "timestamp": "datetime"}
 
-    attribute_map = {"portal_id": "portalId", "identifier": "identifier", "action": "action", "timestamp": "timestamp", "message": "message", "raw_object": "rawObject", "from_user_id": "fromUserId"}
+    attribute_map = {"identifier": "identifier", "raw_object": "rawObject", "from_user_id": "fromUserId", "portal_id": "portalId", "action": "action", "message": "message", "timestamp": "timestamp"}
 
-    def __init__(self, portal_id=None, identifier=None, action=None, timestamp=None, message=None, raw_object=None, from_user_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, identifier=None, raw_object=None, from_user_id=None, portal_id=None, action=None, message=None, timestamp=None, local_vars_configuration=None):  # noqa: E501
         """PublicAuditInfo - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._portal_id = None
         self._identifier = None
-        self._action = None
-        self._timestamp = None
-        self._message = None
         self._raw_object = None
         self._from_user_id = None
+        self._portal_id = None
+        self._action = None
+        self._message = None
+        self._timestamp = None
         self.discriminator = None
 
-        self.portal_id = portal_id
         self.identifier = identifier
-        self.action = action
-        if timestamp is not None:
-            self.timestamp = timestamp
-        if message is not None:
-            self.message = message
         if raw_object is not None:
             self.raw_object = raw_object
         if from_user_id is not None:
             self.from_user_id = from_user_id
-
-    @property
-    def portal_id(self):
-        """Gets the portal_id of this PublicAuditInfo.  # noqa: E501
-
-
-        :return: The portal_id of this PublicAuditInfo.  # noqa: E501
-        :rtype: int
-        """
-        return self._portal_id
-
-    @portal_id.setter
-    def portal_id(self, portal_id):
-        """Sets the portal_id of this PublicAuditInfo.
-
-
-        :param portal_id: The portal_id of this PublicAuditInfo.  # noqa: E501
-        :type portal_id: int
-        """
-        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
-
-        self._portal_id = portal_id
+        self.portal_id = portal_id
+        self.action = action
+        if message is not None:
+            self.message = message
+        if timestamp is not None:
+            self.timestamp = timestamp
 
     @property
     def identifier(self):
@@ -111,71 +88,6 @@ class PublicAuditInfo(object):
             raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
 
         self._identifier = identifier
-
-    @property
-    def action(self):
-        """Gets the action of this PublicAuditInfo.  # noqa: E501
-
-
-        :return: The action of this PublicAuditInfo.  # noqa: E501
-        :rtype: str
-        """
-        return self._action
-
-    @action.setter
-    def action(self, action):
-        """Sets the action of this PublicAuditInfo.
-
-
-        :param action: The action of this PublicAuditInfo.  # noqa: E501
-        :type action: str
-        """
-        if self.local_vars_configuration.client_side_validation and action is None:  # noqa: E501
-            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
-
-        self._action = action
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this PublicAuditInfo.  # noqa: E501
-
-
-        :return: The timestamp of this PublicAuditInfo.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this PublicAuditInfo.
-
-
-        :param timestamp: The timestamp of this PublicAuditInfo.  # noqa: E501
-        :type timestamp: datetime
-        """
-
-        self._timestamp = timestamp
-
-    @property
-    def message(self):
-        """Gets the message of this PublicAuditInfo.  # noqa: E501
-
-
-        :return: The message of this PublicAuditInfo.  # noqa: E501
-        :rtype: str
-        """
-        return self._message
-
-    @message.setter
-    def message(self, message):
-        """Sets the message of this PublicAuditInfo.
-
-
-        :param message: The message of this PublicAuditInfo.  # noqa: E501
-        :type message: str
-        """
-
-        self._message = message
 
     @property
     def raw_object(self):
@@ -218,6 +130,94 @@ class PublicAuditInfo(object):
         """
 
         self._from_user_id = from_user_id
+
+    @property
+    def portal_id(self):
+        """Gets the portal_id of this PublicAuditInfo.  # noqa: E501
+
+
+        :return: The portal_id of this PublicAuditInfo.  # noqa: E501
+        :rtype: int
+        """
+        return self._portal_id
+
+    @portal_id.setter
+    def portal_id(self, portal_id):
+        """Sets the portal_id of this PublicAuditInfo.
+
+
+        :param portal_id: The portal_id of this PublicAuditInfo.  # noqa: E501
+        :type portal_id: int
+        """
+        if self.local_vars_configuration.client_side_validation and portal_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `portal_id`, must not be `None`")  # noqa: E501
+
+        self._portal_id = portal_id
+
+    @property
+    def action(self):
+        """Gets the action of this PublicAuditInfo.  # noqa: E501
+
+
+        :return: The action of this PublicAuditInfo.  # noqa: E501
+        :rtype: str
+        """
+        return self._action
+
+    @action.setter
+    def action(self, action):
+        """Sets the action of this PublicAuditInfo.
+
+
+        :param action: The action of this PublicAuditInfo.  # noqa: E501
+        :type action: str
+        """
+        if self.local_vars_configuration.client_side_validation and action is None:  # noqa: E501
+            raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
+
+        self._action = action
+
+    @property
+    def message(self):
+        """Gets the message of this PublicAuditInfo.  # noqa: E501
+
+
+        :return: The message of this PublicAuditInfo.  # noqa: E501
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message):
+        """Sets the message of this PublicAuditInfo.
+
+
+        :param message: The message of this PublicAuditInfo.  # noqa: E501
+        :type message: str
+        """
+
+        self._message = message
+
+    @property
+    def timestamp(self):
+        """Gets the timestamp of this PublicAuditInfo.  # noqa: E501
+
+
+        :return: The timestamp of this PublicAuditInfo.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        """Sets the timestamp of this PublicAuditInfo.
+
+
+        :param timestamp: The timestamp of this PublicAuditInfo.  # noqa: E501
+        :type timestamp: datetime
+        """
+
+        self._timestamp = timestamp
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

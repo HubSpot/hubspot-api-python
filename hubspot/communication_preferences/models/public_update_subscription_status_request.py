@@ -35,26 +35,26 @@ class PublicUpdateSubscriptionStatusRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"email_address": "str", "subscription_id": "str", "legal_basis": "str", "legal_basis_explanation": "str"}
+    openapi_types = {"email_address": "str", "legal_basis": "str", "subscription_id": "str", "legal_basis_explanation": "str"}
 
-    attribute_map = {"email_address": "emailAddress", "subscription_id": "subscriptionId", "legal_basis": "legalBasis", "legal_basis_explanation": "legalBasisExplanation"}
+    attribute_map = {"email_address": "emailAddress", "legal_basis": "legalBasis", "subscription_id": "subscriptionId", "legal_basis_explanation": "legalBasisExplanation"}
 
-    def __init__(self, email_address=None, subscription_id=None, legal_basis=None, legal_basis_explanation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, email_address=None, legal_basis=None, subscription_id=None, legal_basis_explanation=None, local_vars_configuration=None):  # noqa: E501
         """PublicUpdateSubscriptionStatusRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._email_address = None
-        self._subscription_id = None
         self._legal_basis = None
+        self._subscription_id = None
         self._legal_basis_explanation = None
         self.discriminator = None
 
         self.email_address = email_address
-        self.subscription_id = subscription_id
         if legal_basis is not None:
             self.legal_basis = legal_basis
+        self.subscription_id = subscription_id
         if legal_basis_explanation is not None:
             self.legal_basis_explanation = legal_basis_explanation
 
@@ -82,31 +82,6 @@ class PublicUpdateSubscriptionStatusRequest(object):
             raise ValueError("Invalid value for `email_address`, must not be `None`")  # noqa: E501
 
         self._email_address = email_address
-
-    @property
-    def subscription_id(self):
-        """Gets the subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-
-        ID of the subscription being updated for the contact.  # noqa: E501
-
-        :return: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._subscription_id
-
-    @subscription_id.setter
-    def subscription_id(self, subscription_id):
-        """Sets the subscription_id of this PublicUpdateSubscriptionStatusRequest.
-
-        ID of the subscription being updated for the contact.  # noqa: E501
-
-        :param subscription_id: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
-        :type subscription_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
-
-        self._subscription_id = subscription_id
 
     @property
     def legal_basis(self):
@@ -141,6 +116,31 @@ class PublicUpdateSubscriptionStatusRequest(object):
             raise ValueError("Invalid value for `legal_basis` ({0}), must be one of {1}".format(legal_basis, allowed_values))  # noqa: E501
 
         self._legal_basis = legal_basis
+
+    @property
+    def subscription_id(self):
+        """Gets the subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
+
+        ID of the subscription being updated for the contact.  # noqa: E501
+
+        :return: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._subscription_id
+
+    @subscription_id.setter
+    def subscription_id(self, subscription_id):
+        """Sets the subscription_id of this PublicUpdateSubscriptionStatusRequest.
+
+        ID of the subscription being updated for the contact.  # noqa: E501
+
+        :param subscription_id: The subscription_id of this PublicUpdateSubscriptionStatusRequest.  # noqa: E501
+        :type subscription_id: str
+        """
+        if self.local_vars_configuration.client_side_validation and subscription_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `subscription_id`, must not be `None`")  # noqa: E501
+
+        self._subscription_id = subscription_id
 
     @property
     def legal_basis_explanation(self):

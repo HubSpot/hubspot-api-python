@@ -35,51 +35,26 @@ class IdentificationTokenGenerationRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"email": "str", "first_name": "str", "last_name": "str"}
+    openapi_types = {"first_name": "str", "last_name": "str", "email": "str"}
 
-    attribute_map = {"email": "email", "first_name": "firstName", "last_name": "lastName"}
+    attribute_map = {"first_name": "firstName", "last_name": "lastName", "email": "email"}
 
-    def __init__(self, email=None, first_name=None, last_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, first_name=None, last_name=None, email=None, local_vars_configuration=None):  # noqa: E501
         """IdentificationTokenGenerationRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._email = None
         self._first_name = None
         self._last_name = None
+        self._email = None
         self.discriminator = None
 
-        self.email = email
         if first_name is not None:
             self.first_name = first_name
         if last_name is not None:
             self.last_name = last_name
-
-    @property
-    def email(self):
-        """Gets the email of this IdentificationTokenGenerationRequest.  # noqa: E501
-
-        The email of the visitor that you wish to identify  # noqa: E501
-
-        :return: The email of this IdentificationTokenGenerationRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._email
-
-    @email.setter
-    def email(self, email):
-        """Sets the email of this IdentificationTokenGenerationRequest.
-
-        The email of the visitor that you wish to identify  # noqa: E501
-
-        :param email: The email of this IdentificationTokenGenerationRequest.  # noqa: E501
-        :type email: str
-        """
-        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
-            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
-
-        self._email = email
+        self.email = email
 
     @property
     def first_name(self):
@@ -126,6 +101,31 @@ class IdentificationTokenGenerationRequest(object):
         """
 
         self._last_name = last_name
+
+    @property
+    def email(self):
+        """Gets the email of this IdentificationTokenGenerationRequest.  # noqa: E501
+
+        The email of the visitor that you wish to identify  # noqa: E501
+
+        :return: The email of this IdentificationTokenGenerationRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._email
+
+    @email.setter
+    def email(self, email):
+        """Sets the email of this IdentificationTokenGenerationRequest.
+
+        The email of the visitor that you wish to identify  # noqa: E501
+
+        :param email: The email of this IdentificationTokenGenerationRequest.  # noqa: E501
+        :type email: str
+        """
+        if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
+            raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+
+        self._email = email
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

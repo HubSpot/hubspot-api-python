@@ -36,186 +36,167 @@ class ObjectTypePropertyCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "label": "str",
-        "group_name": "str",
-        "description": "str",
-        "options": "list[OptionInput]",
-        "display_order": "int",
-        "has_unique_value": "bool",
         "hidden": "bool",
+        "option_sort_strategy": "str",
+        "display_order": "int",
+        "description": "str",
+        "show_currency_symbol": "bool",
+        "label": "str",
         "type": "str",
+        "form_field": "bool",
+        "group_name": "str",
+        "referenced_object_type": "str",
+        "text_display_hint": "str",
+        "name": "str",
+        "options": "list[OptionInput]",
+        "searchable_in_global_search": "bool",
+        "number_display_hint": "str",
+        "has_unique_value": "bool",
         "field_type": "str",
     }
 
     attribute_map = {
-        "name": "name",
-        "label": "label",
-        "group_name": "groupName",
-        "description": "description",
-        "options": "options",
-        "display_order": "displayOrder",
-        "has_unique_value": "hasUniqueValue",
         "hidden": "hidden",
+        "option_sort_strategy": "optionSortStrategy",
+        "display_order": "displayOrder",
+        "description": "description",
+        "show_currency_symbol": "showCurrencySymbol",
+        "label": "label",
         "type": "type",
+        "form_field": "formField",
+        "group_name": "groupName",
+        "referenced_object_type": "referencedObjectType",
+        "text_display_hint": "textDisplayHint",
+        "name": "name",
+        "options": "options",
+        "searchable_in_global_search": "searchableInGlobalSearch",
+        "number_display_hint": "numberDisplayHint",
+        "has_unique_value": "hasUniqueValue",
         "field_type": "fieldType",
     }
 
     def __init__(
-        self, name=None, label=None, group_name=None, description=None, options=None, display_order=None, has_unique_value=None, hidden=None, type=None, field_type=None, local_vars_configuration=None
+        self,
+        hidden=None,
+        option_sort_strategy=None,
+        display_order=None,
+        description=None,
+        show_currency_symbol=None,
+        label=None,
+        type=None,
+        form_field=None,
+        group_name=None,
+        referenced_object_type=None,
+        text_display_hint=None,
+        name=None,
+        options=None,
+        searchable_in_global_search=None,
+        number_display_hint=None,
+        has_unique_value=None,
+        field_type=None,
+        local_vars_configuration=None,
     ):  # noqa: E501
         """ObjectTypePropertyCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._label = None
-        self._group_name = None
-        self._description = None
-        self._options = None
-        self._display_order = None
-        self._has_unique_value = None
         self._hidden = None
+        self._option_sort_strategy = None
+        self._display_order = None
+        self._description = None
+        self._show_currency_symbol = None
+        self._label = None
         self._type = None
+        self._form_field = None
+        self._group_name = None
+        self._referenced_object_type = None
+        self._text_display_hint = None
+        self._name = None
+        self._options = None
+        self._searchable_in_global_search = None
+        self._number_display_hint = None
+        self._has_unique_value = None
         self._field_type = None
         self.discriminator = None
 
-        self.name = name
-        self.label = label
-        if group_name is not None:
-            self.group_name = group_name
-        if description is not None:
-            self.description = description
-        if options is not None:
-            self.options = options
-        if display_order is not None:
-            self.display_order = display_order
-        if has_unique_value is not None:
-            self.has_unique_value = has_unique_value
         if hidden is not None:
             self.hidden = hidden
+        if option_sort_strategy is not None:
+            self.option_sort_strategy = option_sort_strategy
+        if display_order is not None:
+            self.display_order = display_order
+        if description is not None:
+            self.description = description
+        if show_currency_symbol is not None:
+            self.show_currency_symbol = show_currency_symbol
+        self.label = label
         self.type = type
+        if form_field is not None:
+            self.form_field = form_field
+        if group_name is not None:
+            self.group_name = group_name
+        if referenced_object_type is not None:
+            self.referenced_object_type = referenced_object_type
+        if text_display_hint is not None:
+            self.text_display_hint = text_display_hint
+        self.name = name
+        if options is not None:
+            self.options = options
+        if searchable_in_global_search is not None:
+            self.searchable_in_global_search = searchable_in_global_search
+        if number_display_hint is not None:
+            self.number_display_hint = number_display_hint
+        if has_unique_value is not None:
+            self.has_unique_value = has_unique_value
         self.field_type = field_type
 
     @property
-    def name(self):
-        """Gets the name of this ObjectTypePropertyCreate.  # noqa: E501
+    def hidden(self):
+        """Gets the hidden of this ObjectTypePropertyCreate.  # noqa: E501
 
-        The internal property name, which must be used when referencing the property from the API.  # noqa: E501
 
-        :return: The name of this ObjectTypePropertyCreate.  # noqa: E501
-        :rtype: str
+        :return: The hidden of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: bool
         """
-        return self._name
+        return self._hidden
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ObjectTypePropertyCreate.
+    @hidden.setter
+    def hidden(self, hidden):
+        """Sets the hidden of this ObjectTypePropertyCreate.
 
-        The internal property name, which must be used when referencing the property from the API.  # noqa: E501
 
-        :param name: The name of this ObjectTypePropertyCreate.  # noqa: E501
-        :type name: str
+        :param hidden: The hidden of this ObjectTypePropertyCreate.  # noqa: E501
+        :type hidden: bool
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._hidden = hidden
 
     @property
-    def label(self):
-        """Gets the label of this ObjectTypePropertyCreate.  # noqa: E501
+    def option_sort_strategy(self):
+        """Gets the option_sort_strategy of this ObjectTypePropertyCreate.  # noqa: E501
 
-        A human-readable property label that will be shown in HubSpot.  # noqa: E501
+        Controls how the property options will be sorted in the HubSpot UI.  # noqa: E501
 
-        :return: The label of this ObjectTypePropertyCreate.  # noqa: E501
+        :return: The option_sort_strategy of this ObjectTypePropertyCreate.  # noqa: E501
         :rtype: str
         """
-        return self._label
+        return self._option_sort_strategy
 
-    @label.setter
-    def label(self, label):
-        """Sets the label of this ObjectTypePropertyCreate.
+    @option_sort_strategy.setter
+    def option_sort_strategy(self, option_sort_strategy):
+        """Sets the option_sort_strategy of this ObjectTypePropertyCreate.
 
-        A human-readable property label that will be shown in HubSpot.  # noqa: E501
+        Controls how the property options will be sorted in the HubSpot UI.  # noqa: E501
 
-        :param label: The label of this ObjectTypePropertyCreate.  # noqa: E501
-        :type label: str
+        :param option_sort_strategy: The option_sort_strategy of this ObjectTypePropertyCreate.  # noqa: E501
+        :type option_sort_strategy: str
         """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+        allowed_values = ["DISPLAY_ORDER", "ALPHABETICAL"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and option_sort_strategy not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `option_sort_strategy` ({0}), must be one of {1}".format(option_sort_strategy, allowed_values))  # noqa: E501
 
-        self._label = label
-
-    @property
-    def group_name(self):
-        """Gets the group_name of this ObjectTypePropertyCreate.  # noqa: E501
-
-        The name of the group this property belongs to.  # noqa: E501
-
-        :return: The group_name of this ObjectTypePropertyCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._group_name
-
-    @group_name.setter
-    def group_name(self, group_name):
-        """Sets the group_name of this ObjectTypePropertyCreate.
-
-        The name of the group this property belongs to.  # noqa: E501
-
-        :param group_name: The group_name of this ObjectTypePropertyCreate.  # noqa: E501
-        :type group_name: str
-        """
-
-        self._group_name = group_name
-
-    @property
-    def description(self):
-        """Gets the description of this ObjectTypePropertyCreate.  # noqa: E501
-
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
-
-        :return: The description of this ObjectTypePropertyCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ObjectTypePropertyCreate.
-
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
-
-        :param description: The description of this ObjectTypePropertyCreate.  # noqa: E501
-        :type description: str
-        """
-
-        self._description = description
-
-    @property
-    def options(self):
-        """Gets the options of this ObjectTypePropertyCreate.  # noqa: E501
-
-        A list of available options for the property. This field is only required for enumerated properties.  # noqa: E501
-
-        :return: The options of this ObjectTypePropertyCreate.  # noqa: E501
-        :rtype: list[OptionInput]
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this ObjectTypePropertyCreate.
-
-        A list of available options for the property. This field is only required for enumerated properties.  # noqa: E501
-
-        :param options: The options of this ObjectTypePropertyCreate.  # noqa: E501
-        :type options: list[OptionInput]
-        """
-
-        self._options = options
+        self._option_sort_strategy = option_sort_strategy
 
     @property
     def display_order(self):
@@ -241,48 +222,75 @@ class ObjectTypePropertyCreate(object):
         self._display_order = display_order
 
     @property
-    def has_unique_value(self):
-        """Gets the has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
+    def description(self):
+        """Gets the description of this ObjectTypePropertyCreate.  # noqa: E501
 
-        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
 
-        :return: The has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
-        :rtype: bool
+        :return: The description of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
         """
-        return self._has_unique_value
+        return self._description
 
-    @has_unique_value.setter
-    def has_unique_value(self, has_unique_value):
-        """Sets the has_unique_value of this ObjectTypePropertyCreate.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ObjectTypePropertyCreate.
 
-        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
 
-        :param has_unique_value: The has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
-        :type has_unique_value: bool
+        :param description: The description of this ObjectTypePropertyCreate.  # noqa: E501
+        :type description: str
         """
 
-        self._has_unique_value = has_unique_value
+        self._description = description
 
     @property
-    def hidden(self):
-        """Gets the hidden of this ObjectTypePropertyCreate.  # noqa: E501
+    def show_currency_symbol(self):
+        """Gets the show_currency_symbol of this ObjectTypePropertyCreate.  # noqa: E501
 
+        Whether the property will display the currency symbol in the HubSpot UI.  # noqa: E501
 
-        :return: The hidden of this ObjectTypePropertyCreate.  # noqa: E501
+        :return: The show_currency_symbol of this ObjectTypePropertyCreate.  # noqa: E501
         :rtype: bool
         """
-        return self._hidden
+        return self._show_currency_symbol
 
-    @hidden.setter
-    def hidden(self, hidden):
-        """Sets the hidden of this ObjectTypePropertyCreate.
+    @show_currency_symbol.setter
+    def show_currency_symbol(self, show_currency_symbol):
+        """Sets the show_currency_symbol of this ObjectTypePropertyCreate.
 
+        Whether the property will display the currency symbol in the HubSpot UI.  # noqa: E501
 
-        :param hidden: The hidden of this ObjectTypePropertyCreate.  # noqa: E501
-        :type hidden: bool
+        :param show_currency_symbol: The show_currency_symbol of this ObjectTypePropertyCreate.  # noqa: E501
+        :type show_currency_symbol: bool
         """
 
-        self._hidden = hidden
+        self._show_currency_symbol = show_currency_symbol
+
+    @property
+    def label(self):
+        """Gets the label of this ObjectTypePropertyCreate.  # noqa: E501
+
+        A human-readable property label that will be shown in HubSpot.  # noqa: E501
+
+        :return: The label of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this ObjectTypePropertyCreate.
+
+        A human-readable property label that will be shown in HubSpot.  # noqa: E501
+
+        :param label: The label of this ObjectTypePropertyCreate.  # noqa: E501
+        :type label: str
+        """
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+
+        self._label = label
 
     @property
     def type(self):
@@ -311,6 +319,221 @@ class ObjectTypePropertyCreate(object):
             raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
+
+    @property
+    def form_field(self):
+        """Gets the form_field of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Whether the property can be used in a HubSpot form.  # noqa: E501
+
+        :return: The form_field of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._form_field
+
+    @form_field.setter
+    def form_field(self, form_field):
+        """Sets the form_field of this ObjectTypePropertyCreate.
+
+        Whether the property can be used in a HubSpot form.  # noqa: E501
+
+        :param form_field: The form_field of this ObjectTypePropertyCreate.  # noqa: E501
+        :type form_field: bool
+        """
+
+        self._form_field = form_field
+
+    @property
+    def group_name(self):
+        """Gets the group_name of this ObjectTypePropertyCreate.  # noqa: E501
+
+        The name of the group this property belongs to.  # noqa: E501
+
+        :return: The group_name of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._group_name
+
+    @group_name.setter
+    def group_name(self, group_name):
+        """Sets the group_name of this ObjectTypePropertyCreate.
+
+        The name of the group this property belongs to.  # noqa: E501
+
+        :param group_name: The group_name of this ObjectTypePropertyCreate.  # noqa: E501
+        :type group_name: str
+        """
+
+        self._group_name = group_name
+
+    @property
+    def referenced_object_type(self):
+        """Gets the referenced_object_type of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Defines the options this property will return, e.g. OWNER would return name of users on the portal.  # noqa: E501
+
+        :return: The referenced_object_type of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._referenced_object_type
+
+    @referenced_object_type.setter
+    def referenced_object_type(self, referenced_object_type):
+        """Sets the referenced_object_type of this ObjectTypePropertyCreate.
+
+        Defines the options this property will return, e.g. OWNER would return name of users on the portal.  # noqa: E501
+
+        :param referenced_object_type: The referenced_object_type of this ObjectTypePropertyCreate.  # noqa: E501
+        :type referenced_object_type: str
+        """
+
+        self._referenced_object_type = referenced_object_type
+
+    @property
+    def text_display_hint(self):
+        """Gets the text_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Controls how text properties are formatted in the HubSpot UI  # noqa: E501
+
+        :return: The text_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._text_display_hint
+
+    @text_display_hint.setter
+    def text_display_hint(self, text_display_hint):
+        """Sets the text_display_hint of this ObjectTypePropertyCreate.
+
+        Controls how text properties are formatted in the HubSpot UI  # noqa: E501
+
+        :param text_display_hint: The text_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+        :type text_display_hint: str
+        """
+        allowed_values = ["unformatted_single_line", "multi_line", "email", "phone_number", "domain_name", "ip_address", "physical_address", "postal_code"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and text_display_hint not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `text_display_hint` ({0}), must be one of {1}".format(text_display_hint, allowed_values))  # noqa: E501
+
+        self._text_display_hint = text_display_hint
+
+    @property
+    def name(self):
+        """Gets the name of this ObjectTypePropertyCreate.  # noqa: E501
+
+        The internal property name, which must be used when referencing the property from the API.  # noqa: E501
+
+        :return: The name of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ObjectTypePropertyCreate.
+
+        The internal property name, which must be used when referencing the property from the API.  # noqa: E501
+
+        :param name: The name of this ObjectTypePropertyCreate.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def options(self):
+        """Gets the options of this ObjectTypePropertyCreate.  # noqa: E501
+
+        A list of available options for the property. This field is only required for enumerated properties.  # noqa: E501
+
+        :return: The options of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: list[OptionInput]
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this ObjectTypePropertyCreate.
+
+        A list of available options for the property. This field is only required for enumerated properties.  # noqa: E501
+
+        :param options: The options of this ObjectTypePropertyCreate.  # noqa: E501
+        :type options: list[OptionInput]
+        """
+
+        self._options = options
+
+    @property
+    def searchable_in_global_search(self):
+        """Gets the searchable_in_global_search of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Allow users to search for information entered to this field (limited to 3 properties)  # noqa: E501
+
+        :return: The searchable_in_global_search of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._searchable_in_global_search
+
+    @searchable_in_global_search.setter
+    def searchable_in_global_search(self, searchable_in_global_search):
+        """Sets the searchable_in_global_search of this ObjectTypePropertyCreate.
+
+        Allow users to search for information entered to this field (limited to 3 properties)  # noqa: E501
+
+        :param searchable_in_global_search: The searchable_in_global_search of this ObjectTypePropertyCreate.  # noqa: E501
+        :type searchable_in_global_search: bool
+        """
+
+        self._searchable_in_global_search = searchable_in_global_search
+
+    @property
+    def number_display_hint(self):
+        """Gets the number_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Controls how numeric properties are formatted in the HubSpot UI  # noqa: E501
+
+        :return: The number_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._number_display_hint
+
+    @number_display_hint.setter
+    def number_display_hint(self, number_display_hint):
+        """Sets the number_display_hint of this ObjectTypePropertyCreate.
+
+        Controls how numeric properties are formatted in the HubSpot UI  # noqa: E501
+
+        :param number_display_hint: The number_display_hint of this ObjectTypePropertyCreate.  # noqa: E501
+        :type number_display_hint: str
+        """
+        allowed_values = ["unformatted", "formatted", "currency", "percentage", "duration", "probability"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and number_display_hint not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `number_display_hint` ({0}), must be one of {1}".format(number_display_hint, allowed_values))  # noqa: E501
+
+        self._number_display_hint = number_display_hint
+
+    @property
+    def has_unique_value(self):
+        """Gets the has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
+
+        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+
+        :return: The has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_unique_value
+
+    @has_unique_value.setter
+    def has_unique_value(self, has_unique_value):
+        """Sets the has_unique_value of this ObjectTypePropertyCreate.
+
+        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+
+        :param has_unique_value: The has_unique_value of this ObjectTypePropertyCreate.  # noqa: E501
+        :type has_unique_value: bool
+        """
+
+        self._has_unique_value = has_unique_value
 
     @property
     def field_type(self):

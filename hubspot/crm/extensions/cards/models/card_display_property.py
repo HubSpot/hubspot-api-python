@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,76 +35,26 @@ class CardDisplayProperty(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "label": "str", "data_type": "str", "options": "list[DisplayOption]"}
+    openapi_types = {"data_type": "str", "name": "str", "options": "list[DisplayOption]", "label": "str"}
 
-    attribute_map = {"name": "name", "label": "label", "data_type": "dataType", "options": "options"}
+    attribute_map = {"data_type": "dataType", "name": "name", "options": "options", "label": "label"}
 
-    def __init__(self, name=None, label=None, data_type=None, options=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, data_type=None, name=None, options=None, label=None, local_vars_configuration=None):  # noqa: E501
         """CardDisplayProperty - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._label = None
         self._data_type = None
+        self._name = None
         self._options = None
+        self._label = None
         self.discriminator = None
 
-        self.name = name
-        self.label = label
         self.data_type = data_type
+        self.name = name
         self.options = options
-
-    @property
-    def name(self):
-        """Gets the name of this CardDisplayProperty.  # noqa: E501
-
-        An internal identifier for this property. This value must be unique TODO.  # noqa: E501
-
-        :return: The name of this CardDisplayProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CardDisplayProperty.
-
-        An internal identifier for this property. This value must be unique TODO.  # noqa: E501
-
-        :param name: The name of this CardDisplayProperty.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def label(self):
-        """Gets the label of this CardDisplayProperty.  # noqa: E501
-
-        The label for this property as you'd like it displayed to users.  # noqa: E501
-
-        :return: The label of this CardDisplayProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this CardDisplayProperty.
-
-        The label for this property as you'd like it displayed to users.  # noqa: E501
-
-        :param label: The label of this CardDisplayProperty.  # noqa: E501
-        :type label: str
-        """
-        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
-            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
-
-        self._label = label
+        self.label = label
 
     @property
     def data_type(self):
@@ -135,6 +85,31 @@ class CardDisplayProperty(object):
         self._data_type = data_type
 
     @property
+    def name(self):
+        """Gets the name of this CardDisplayProperty.  # noqa: E501
+
+        An internal identifier for this property. This value must be unique TODO.  # noqa: E501
+
+        :return: The name of this CardDisplayProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this CardDisplayProperty.
+
+        An internal identifier for this property. This value must be unique TODO.  # noqa: E501
+
+        :param name: The name of this CardDisplayProperty.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
     def options(self):
         """Gets the options of this CardDisplayProperty.  # noqa: E501
 
@@ -158,6 +133,31 @@ class CardDisplayProperty(object):
             raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
 
         self._options = options
+
+    @property
+    def label(self):
+        """Gets the label of this CardDisplayProperty.  # noqa: E501
+
+        The label for this property as you'd like it displayed to users.  # noqa: E501
+
+        :return: The label of this CardDisplayProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this CardDisplayProperty.
+
+        The label for this property as you'd like it displayed to users.  # noqa: E501
+
+        :param label: The label of this CardDisplayProperty.  # noqa: E501
+        :type label: str
+        """
+        if self.local_vars_configuration.client_side_validation and label is None:  # noqa: E501
+            raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
+
+        self._label = label
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

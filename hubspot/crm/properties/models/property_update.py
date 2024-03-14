@@ -36,43 +36,43 @@ class PropertyUpdate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        "group_name": "str",
+        "hidden": "bool",
+        "options": "list[OptionInput]",
+        "display_order": "int",
+        "description": "str",
+        "calculation_formula": "str",
         "label": "str",
         "type": "str",
         "field_type": "str",
-        "group_name": "str",
-        "description": "str",
-        "options": "list[OptionInput]",
-        "display_order": "int",
-        "hidden": "bool",
         "form_field": "bool",
-        "calculation_formula": "str",
     }
 
     attribute_map = {
+        "group_name": "groupName",
+        "hidden": "hidden",
+        "options": "options",
+        "display_order": "displayOrder",
+        "description": "description",
+        "calculation_formula": "calculationFormula",
         "label": "label",
         "type": "type",
         "field_type": "fieldType",
-        "group_name": "groupName",
-        "description": "description",
-        "options": "options",
-        "display_order": "displayOrder",
-        "hidden": "hidden",
         "form_field": "formField",
-        "calculation_formula": "calculationFormula",
     }
 
     def __init__(
         self,
+        group_name=None,
+        hidden=None,
+        options=None,
+        display_order=None,
+        description=None,
+        calculation_formula=None,
         label=None,
         type=None,
         field_type=None,
-        group_name=None,
-        description=None,
-        options=None,
-        display_order=None,
-        hidden=None,
         form_field=None,
-        calculation_formula=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PropertyUpdate - a model defined in OpenAPI"""  # noqa: E501
@@ -80,38 +80,176 @@ class PropertyUpdate(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._group_name = None
+        self._hidden = None
+        self._options = None
+        self._display_order = None
+        self._description = None
+        self._calculation_formula = None
         self._label = None
         self._type = None
         self._field_type = None
-        self._group_name = None
-        self._description = None
-        self._options = None
-        self._display_order = None
-        self._hidden = None
         self._form_field = None
-        self._calculation_formula = None
         self.discriminator = None
 
+        if group_name is not None:
+            self.group_name = group_name
+        if hidden is not None:
+            self.hidden = hidden
+        if options is not None:
+            self.options = options
+        if display_order is not None:
+            self.display_order = display_order
+        if description is not None:
+            self.description = description
+        if calculation_formula is not None:
+            self.calculation_formula = calculation_formula
         if label is not None:
             self.label = label
         if type is not None:
             self.type = type
         if field_type is not None:
             self.field_type = field_type
-        if group_name is not None:
-            self.group_name = group_name
-        if description is not None:
-            self.description = description
-        if options is not None:
-            self.options = options
-        if display_order is not None:
-            self.display_order = display_order
-        if hidden is not None:
-            self.hidden = hidden
         if form_field is not None:
             self.form_field = form_field
-        if calculation_formula is not None:
-            self.calculation_formula = calculation_formula
+
+    @property
+    def group_name(self):
+        """Gets the group_name of this PropertyUpdate.  # noqa: E501
+
+        The name of the property group the property belongs to.  # noqa: E501
+
+        :return: The group_name of this PropertyUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._group_name
+
+    @group_name.setter
+    def group_name(self, group_name):
+        """Sets the group_name of this PropertyUpdate.
+
+        The name of the property group the property belongs to.  # noqa: E501
+
+        :param group_name: The group_name of this PropertyUpdate.  # noqa: E501
+        :type group_name: str
+        """
+
+        self._group_name = group_name
+
+    @property
+    def hidden(self):
+        """Gets the hidden of this PropertyUpdate.  # noqa: E501
+
+        If true, the property won't be visible and can't be used in HubSpot.  # noqa: E501
+
+        :return: The hidden of this PropertyUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._hidden
+
+    @hidden.setter
+    def hidden(self, hidden):
+        """Sets the hidden of this PropertyUpdate.
+
+        If true, the property won't be visible and can't be used in HubSpot.  # noqa: E501
+
+        :param hidden: The hidden of this PropertyUpdate.  # noqa: E501
+        :type hidden: bool
+        """
+
+        self._hidden = hidden
+
+    @property
+    def options(self):
+        """Gets the options of this PropertyUpdate.  # noqa: E501
+
+        A list of valid options for the property.  # noqa: E501
+
+        :return: The options of this PropertyUpdate.  # noqa: E501
+        :rtype: list[OptionInput]
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this PropertyUpdate.
+
+        A list of valid options for the property.  # noqa: E501
+
+        :param options: The options of this PropertyUpdate.  # noqa: E501
+        :type options: list[OptionInput]
+        """
+
+        self._options = options
+
+    @property
+    def display_order(self):
+        """Gets the display_order of this PropertyUpdate.  # noqa: E501
+
+        Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.  # noqa: E501
+
+        :return: The display_order of this PropertyUpdate.  # noqa: E501
+        :rtype: int
+        """
+        return self._display_order
+
+    @display_order.setter
+    def display_order(self, display_order):
+        """Sets the display_order of this PropertyUpdate.
+
+        Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.  # noqa: E501
+
+        :param display_order: The display_order of this PropertyUpdate.  # noqa: E501
+        :type display_order: int
+        """
+
+        self._display_order = display_order
+
+    @property
+    def description(self):
+        """Gets the description of this PropertyUpdate.  # noqa: E501
+
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+
+        :return: The description of this PropertyUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this PropertyUpdate.
+
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+
+        :param description: The description of this PropertyUpdate.  # noqa: E501
+        :type description: str
+        """
+
+        self._description = description
+
+    @property
+    def calculation_formula(self):
+        """Gets the calculation_formula of this PropertyUpdate.  # noqa: E501
+
+        Represents a formula that is used to compute a calculated property.  # noqa: E501
+
+        :return: The calculation_formula of this PropertyUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._calculation_formula
+
+    @calculation_formula.setter
+    def calculation_formula(self, calculation_formula):
+        """Sets the calculation_formula of this PropertyUpdate.
+
+        Represents a formula that is used to compute a calculated property.  # noqa: E501
+
+        :param calculation_formula: The calculation_formula of this PropertyUpdate.  # noqa: E501
+        :type calculation_formula: str
+        """
+
+        self._calculation_formula = calculation_formula
 
     @property
     def label(self):
@@ -189,121 +327,6 @@ class PropertyUpdate(object):
         self._field_type = field_type
 
     @property
-    def group_name(self):
-        """Gets the group_name of this PropertyUpdate.  # noqa: E501
-
-        The name of the property group the property belongs to.  # noqa: E501
-
-        :return: The group_name of this PropertyUpdate.  # noqa: E501
-        :rtype: str
-        """
-        return self._group_name
-
-    @group_name.setter
-    def group_name(self, group_name):
-        """Sets the group_name of this PropertyUpdate.
-
-        The name of the property group the property belongs to.  # noqa: E501
-
-        :param group_name: The group_name of this PropertyUpdate.  # noqa: E501
-        :type group_name: str
-        """
-
-        self._group_name = group_name
-
-    @property
-    def description(self):
-        """Gets the description of this PropertyUpdate.  # noqa: E501
-
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
-
-        :return: The description of this PropertyUpdate.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this PropertyUpdate.
-
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
-
-        :param description: The description of this PropertyUpdate.  # noqa: E501
-        :type description: str
-        """
-
-        self._description = description
-
-    @property
-    def options(self):
-        """Gets the options of this PropertyUpdate.  # noqa: E501
-
-        A list of valid options for the property.  # noqa: E501
-
-        :return: The options of this PropertyUpdate.  # noqa: E501
-        :rtype: list[OptionInput]
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this PropertyUpdate.
-
-        A list of valid options for the property.  # noqa: E501
-
-        :param options: The options of this PropertyUpdate.  # noqa: E501
-        :type options: list[OptionInput]
-        """
-
-        self._options = options
-
-    @property
-    def display_order(self):
-        """Gets the display_order of this PropertyUpdate.  # noqa: E501
-
-        Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.  # noqa: E501
-
-        :return: The display_order of this PropertyUpdate.  # noqa: E501
-        :rtype: int
-        """
-        return self._display_order
-
-    @display_order.setter
-    def display_order(self, display_order):
-        """Sets the display_order of this PropertyUpdate.
-
-        Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.  # noqa: E501
-
-        :param display_order: The display_order of this PropertyUpdate.  # noqa: E501
-        :type display_order: int
-        """
-
-        self._display_order = display_order
-
-    @property
-    def hidden(self):
-        """Gets the hidden of this PropertyUpdate.  # noqa: E501
-
-        If true, the property won't be visible and can't be used in HubSpot.  # noqa: E501
-
-        :return: The hidden of this PropertyUpdate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._hidden
-
-    @hidden.setter
-    def hidden(self, hidden):
-        """Sets the hidden of this PropertyUpdate.
-
-        If true, the property won't be visible and can't be used in HubSpot.  # noqa: E501
-
-        :param hidden: The hidden of this PropertyUpdate.  # noqa: E501
-        :type hidden: bool
-        """
-
-        self._hidden = hidden
-
-    @property
     def form_field(self):
         """Gets the form_field of this PropertyUpdate.  # noqa: E501
 
@@ -325,29 +348,6 @@ class PropertyUpdate(object):
         """
 
         self._form_field = form_field
-
-    @property
-    def calculation_formula(self):
-        """Gets the calculation_formula of this PropertyUpdate.  # noqa: E501
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :return: The calculation_formula of this PropertyUpdate.  # noqa: E501
-        :rtype: str
-        """
-        return self._calculation_formula
-
-    @calculation_formula.setter
-    def calculation_formula(self, calculation_formula):
-        """Sets the calculation_formula of this PropertyUpdate.
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :param calculation_formula: The calculation_formula of this PropertyUpdate.  # noqa: E501
-        :type calculation_formula: str
-        """
-
-        self._calculation_formula = calculation_formula
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

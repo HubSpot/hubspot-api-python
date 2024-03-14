@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -19,7 +19,6 @@ from hubspot.crm.timeline.models.batch_response_timeline_event_response import B
 from hubspot.crm.timeline.models.batch_response_timeline_event_response_with_errors import BatchResponseTimelineEventResponseWithErrors
 from hubspot.crm.timeline.models.collection_response_timeline_event_template_no_paging import CollectionResponseTimelineEventTemplateNoPaging
 from hubspot.crm.timeline.models.error import Error
-from hubspot.crm.timeline.models.error_category import ErrorCategory
 from hubspot.crm.timeline.models.error_detail import ErrorDetail
 from hubspot.crm.timeline.models.event_detail import EventDetail
 from hubspot.crm.timeline.models.standard_error import StandardError

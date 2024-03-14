@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Owners
+    Crm Owners
 
     HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.  # noqa: E501
 
@@ -35,47 +35,24 @@ class PublicTeam(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "primary": "bool"}
+    openapi_types = {"name": "str", "id": "str", "primary": "bool"}
 
-    attribute_map = {"id": "id", "name": "name", "primary": "primary"}
+    attribute_map = {"name": "name", "id": "id", "primary": "primary"}
 
-    def __init__(self, id=None, name=None, primary=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, id=None, primary=None, local_vars_configuration=None):  # noqa: E501
         """PublicTeam - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._name = None
+        self._id = None
         self._primary = None
         self.discriminator = None
 
-        self.id = id
         self.name = name
+        self.id = id
         self.primary = primary
-
-    @property
-    def id(self):
-        """Gets the id of this PublicTeam.  # noqa: E501
-
-
-        :return: The id of this PublicTeam.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicTeam.
-
-
-        :param id: The id of this PublicTeam.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
 
     @property
     def name(self):
@@ -99,6 +76,29 @@ class PublicTeam(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def id(self):
+        """Gets the id of this PublicTeam.  # noqa: E501
+
+
+        :return: The id of this PublicTeam.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicTeam.
+
+
+        :param id: The id of this PublicTeam.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     @property
     def primary(self):

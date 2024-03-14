@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -36,55 +36,58 @@ class PropertyValue(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "name": "str",
-        "value": "str",
-        "timestamp": "int",
         "source_id": "str",
+        "selected_by_user": "bool",
         "source_label": "str",
         "source": "str",
-        "selected_by_user": "bool",
-        "selected_by_user_timestamp": "int",
-        "source_vid": "list[int]",
-        "source_metadata": "str",
-        "request_id": "str",
         "updated_by_user_id": "int",
         "persistence_timestamp": "int",
+        "source_metadata": "str",
+        "source_vid": "list[int]",
+        "request_id": "str",
+        "name": "str",
         "use_timestamp_as_persistence_timestamp": "bool",
+        "value": "str",
+        "selected_by_user_timestamp": "int",
+        "timestamp": "int",
+        "is_large_value": "bool",
     }
 
     attribute_map = {
-        "name": "name",
-        "value": "value",
-        "timestamp": "timestamp",
         "source_id": "sourceId",
+        "selected_by_user": "selectedByUser",
         "source_label": "sourceLabel",
         "source": "source",
-        "selected_by_user": "selectedByUser",
-        "selected_by_user_timestamp": "selectedByUserTimestamp",
-        "source_vid": "sourceVid",
-        "source_metadata": "sourceMetadata",
-        "request_id": "requestId",
         "updated_by_user_id": "updatedByUserId",
         "persistence_timestamp": "persistenceTimestamp",
+        "source_metadata": "sourceMetadata",
+        "source_vid": "sourceVid",
+        "request_id": "requestId",
+        "name": "name",
         "use_timestamp_as_persistence_timestamp": "useTimestampAsPersistenceTimestamp",
+        "value": "value",
+        "selected_by_user_timestamp": "selectedByUserTimestamp",
+        "timestamp": "timestamp",
+        "is_large_value": "isLargeValue",
     }
 
     def __init__(
         self,
-        name=None,
-        value=None,
-        timestamp=None,
         source_id=None,
+        selected_by_user=None,
         source_label=None,
         source=None,
-        selected_by_user=None,
-        selected_by_user_timestamp=None,
-        source_vid=None,
-        source_metadata=None,
-        request_id=None,
         updated_by_user_id=None,
         persistence_timestamp=None,
+        source_metadata=None,
+        source_vid=None,
+        request_id=None,
+        name=None,
         use_timestamp_as_persistence_timestamp=None,
+        value=None,
+        selected_by_user_timestamp=None,
+        timestamp=None,
+        is_large_value=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PropertyValue - a model defined in OpenAPI"""  # noqa: E501
@@ -92,113 +95,48 @@ class PropertyValue(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._value = None
-        self._timestamp = None
         self._source_id = None
+        self._selected_by_user = None
         self._source_label = None
         self._source = None
-        self._selected_by_user = None
-        self._selected_by_user_timestamp = None
-        self._source_vid = None
-        self._source_metadata = None
-        self._request_id = None
         self._updated_by_user_id = None
         self._persistence_timestamp = None
+        self._source_metadata = None
+        self._source_vid = None
+        self._request_id = None
+        self._name = None
         self._use_timestamp_as_persistence_timestamp = None
+        self._value = None
+        self._selected_by_user_timestamp = None
+        self._timestamp = None
+        self._is_large_value = None
         self.discriminator = None
 
-        self.name = name
-        self.value = value
-        self.timestamp = timestamp
         self.source_id = source_id
+        self.selected_by_user = selected_by_user
         self.source_label = source_label
         self.source = source
-        self.selected_by_user = selected_by_user
-        self.selected_by_user_timestamp = selected_by_user_timestamp
-        self.source_vid = source_vid
-        self.source_metadata = source_metadata
-        self.request_id = request_id
         if updated_by_user_id is not None:
             self.updated_by_user_id = updated_by_user_id
         if persistence_timestamp is not None:
             self.persistence_timestamp = persistence_timestamp
+        self.source_metadata = source_metadata
+        self.source_vid = source_vid
+        self.request_id = request_id
+        self.name = name
         if use_timestamp_as_persistence_timestamp is not None:
             self.use_timestamp_as_persistence_timestamp = use_timestamp_as_persistence_timestamp
-
-    @property
-    def name(self):
-        """Gets the name of this PropertyValue.  # noqa: E501
-
-
-        :return: The name of this PropertyValue.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PropertyValue.
-
-
-        :param name: The name of this PropertyValue.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def value(self):
-        """Gets the value of this PropertyValue.  # noqa: E501
-
-
-        :return: The value of this PropertyValue.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this PropertyValue.
-
-
-        :param value: The value of this PropertyValue.  # noqa: E501
-        :type value: str
-        """
-        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this PropertyValue.  # noqa: E501
-
-
-        :return: The timestamp of this PropertyValue.  # noqa: E501
-        :rtype: int
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this PropertyValue.
-
-
-        :param timestamp: The timestamp of this PropertyValue.  # noqa: E501
-        :type timestamp: int
-        """
-        if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
-
-        self._timestamp = timestamp
+        self.value = value
+        self.selected_by_user_timestamp = selected_by_user_timestamp
+        self.timestamp = timestamp
+        if is_large_value is not None:
+            self.is_large_value = is_large_value
 
     @property
     def source_id(self):
         """Gets the source_id of this PropertyValue.  # noqa: E501
 
+          # noqa: E501
 
         :return: The source_id of this PropertyValue.  # noqa: E501
         :rtype: str
@@ -209,6 +147,7 @@ class PropertyValue(object):
     def source_id(self, source_id):
         """Sets the source_id of this PropertyValue.
 
+          # noqa: E501
 
         :param source_id: The source_id of this PropertyValue.  # noqa: E501
         :type source_id: str
@@ -219,9 +158,35 @@ class PropertyValue(object):
         self._source_id = source_id
 
     @property
+    def selected_by_user(self):
+        """Gets the selected_by_user of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The selected_by_user of this PropertyValue.  # noqa: E501
+        :rtype: bool
+        """
+        return self._selected_by_user
+
+    @selected_by_user.setter
+    def selected_by_user(self, selected_by_user):
+        """Sets the selected_by_user of this PropertyValue.
+
+          # noqa: E501
+
+        :param selected_by_user: The selected_by_user of this PropertyValue.  # noqa: E501
+        :type selected_by_user: bool
+        """
+        if self.local_vars_configuration.client_side_validation and selected_by_user is None:  # noqa: E501
+            raise ValueError("Invalid value for `selected_by_user`, must not be `None`")  # noqa: E501
+
+        self._selected_by_user = selected_by_user
+
+    @property
     def source_label(self):
         """Gets the source_label of this PropertyValue.  # noqa: E501
 
+          # noqa: E501
 
         :return: The source_label of this PropertyValue.  # noqa: E501
         :rtype: str
@@ -232,6 +197,7 @@ class PropertyValue(object):
     def source_label(self, source_label):
         """Sets the source_label of this PropertyValue.
 
+          # noqa: E501
 
         :param source_label: The source_label of this PropertyValue.  # noqa: E501
         :type source_label: str
@@ -245,6 +211,7 @@ class PropertyValue(object):
     def source(self):
         """Gets the source of this PropertyValue.  # noqa: E501
 
+          # noqa: E501
 
         :return: The source of this PropertyValue.  # noqa: E501
         :rtype: str
@@ -255,6 +222,7 @@ class PropertyValue(object):
     def source(self, source):
         """Sets the source of this PropertyValue.
 
+          # noqa: E501
 
         :param source: The source of this PropertyValue.  # noqa: E501
         :type source: str
@@ -348,123 +316,6 @@ class PropertyValue(object):
         self._source = source
 
     @property
-    def selected_by_user(self):
-        """Gets the selected_by_user of this PropertyValue.  # noqa: E501
-
-
-        :return: The selected_by_user of this PropertyValue.  # noqa: E501
-        :rtype: bool
-        """
-        return self._selected_by_user
-
-    @selected_by_user.setter
-    def selected_by_user(self, selected_by_user):
-        """Sets the selected_by_user of this PropertyValue.
-
-
-        :param selected_by_user: The selected_by_user of this PropertyValue.  # noqa: E501
-        :type selected_by_user: bool
-        """
-        if self.local_vars_configuration.client_side_validation and selected_by_user is None:  # noqa: E501
-            raise ValueError("Invalid value for `selected_by_user`, must not be `None`")  # noqa: E501
-
-        self._selected_by_user = selected_by_user
-
-    @property
-    def selected_by_user_timestamp(self):
-        """Gets the selected_by_user_timestamp of this PropertyValue.  # noqa: E501
-
-
-        :return: The selected_by_user_timestamp of this PropertyValue.  # noqa: E501
-        :rtype: int
-        """
-        return self._selected_by_user_timestamp
-
-    @selected_by_user_timestamp.setter
-    def selected_by_user_timestamp(self, selected_by_user_timestamp):
-        """Sets the selected_by_user_timestamp of this PropertyValue.
-
-
-        :param selected_by_user_timestamp: The selected_by_user_timestamp of this PropertyValue.  # noqa: E501
-        :type selected_by_user_timestamp: int
-        """
-        if self.local_vars_configuration.client_side_validation and selected_by_user_timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `selected_by_user_timestamp`, must not be `None`")  # noqa: E501
-
-        self._selected_by_user_timestamp = selected_by_user_timestamp
-
-    @property
-    def source_vid(self):
-        """Gets the source_vid of this PropertyValue.  # noqa: E501
-
-
-        :return: The source_vid of this PropertyValue.  # noqa: E501
-        :rtype: list[int]
-        """
-        return self._source_vid
-
-    @source_vid.setter
-    def source_vid(self, source_vid):
-        """Sets the source_vid of this PropertyValue.
-
-
-        :param source_vid: The source_vid of this PropertyValue.  # noqa: E501
-        :type source_vid: list[int]
-        """
-        if self.local_vars_configuration.client_side_validation and source_vid is None:  # noqa: E501
-            raise ValueError("Invalid value for `source_vid`, must not be `None`")  # noqa: E501
-
-        self._source_vid = source_vid
-
-    @property
-    def source_metadata(self):
-        """Gets the source_metadata of this PropertyValue.  # noqa: E501
-
-        Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`  # noqa: E501
-
-        :return: The source_metadata of this PropertyValue.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_metadata
-
-    @source_metadata.setter
-    def source_metadata(self, source_metadata):
-        """Sets the source_metadata of this PropertyValue.
-
-        Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`  # noqa: E501
-
-        :param source_metadata: The source_metadata of this PropertyValue.  # noqa: E501
-        :type source_metadata: str
-        """
-        if self.local_vars_configuration.client_side_validation and source_metadata is None:  # noqa: E501
-            raise ValueError("Invalid value for `source_metadata`, must not be `None`")  # noqa: E501
-
-        self._source_metadata = source_metadata
-
-    @property
-    def request_id(self):
-        """Gets the request_id of this PropertyValue.  # noqa: E501
-
-
-        :return: The request_id of this PropertyValue.  # noqa: E501
-        :rtype: str
-        """
-        return self._request_id
-
-    @request_id.setter
-    def request_id(self, request_id):
-        """Sets the request_id of this PropertyValue.
-
-
-        :param request_id: The request_id of this PropertyValue.  # noqa: E501
-        :type request_id: str
-        """
-        if self.local_vars_configuration.client_side_validation and request_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
-
-        self._request_id = request_id
-
-    @property
     def updated_by_user_id(self):
         """Gets the updated_by_user_id of this PropertyValue.  # noqa: E501
 
@@ -507,6 +358,106 @@ class PropertyValue(object):
         self._persistence_timestamp = persistence_timestamp
 
     @property
+    def source_metadata(self):
+        """Gets the source_metadata of this PropertyValue.  # noqa: E501
+
+        Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`  # noqa: E501
+
+        :return: The source_metadata of this PropertyValue.  # noqa: E501
+        :rtype: str
+        """
+        return self._source_metadata
+
+    @source_metadata.setter
+    def source_metadata(self, source_metadata):
+        """Sets the source_metadata of this PropertyValue.
+
+        Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`  # noqa: E501
+
+        :param source_metadata: The source_metadata of this PropertyValue.  # noqa: E501
+        :type source_metadata: str
+        """
+        if self.local_vars_configuration.client_side_validation and source_metadata is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_metadata`, must not be `None`")  # noqa: E501
+
+        self._source_metadata = source_metadata
+
+    @property
+    def source_vid(self):
+        """Gets the source_vid of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The source_vid of this PropertyValue.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._source_vid
+
+    @source_vid.setter
+    def source_vid(self, source_vid):
+        """Sets the source_vid of this PropertyValue.
+
+          # noqa: E501
+
+        :param source_vid: The source_vid of this PropertyValue.  # noqa: E501
+        :type source_vid: list[int]
+        """
+        if self.local_vars_configuration.client_side_validation and source_vid is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_vid`, must not be `None`")  # noqa: E501
+
+        self._source_vid = source_vid
+
+    @property
+    def request_id(self):
+        """Gets the request_id of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The request_id of this PropertyValue.  # noqa: E501
+        :rtype: str
+        """
+        return self._request_id
+
+    @request_id.setter
+    def request_id(self, request_id):
+        """Sets the request_id of this PropertyValue.
+
+          # noqa: E501
+
+        :param request_id: The request_id of this PropertyValue.  # noqa: E501
+        :type request_id: str
+        """
+        if self.local_vars_configuration.client_side_validation and request_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
+
+        self._request_id = request_id
+
+    @property
+    def name(self):
+        """Gets the name of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The name of this PropertyValue.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this PropertyValue.
+
+          # noqa: E501
+
+        :param name: The name of this PropertyValue.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
     def use_timestamp_as_persistence_timestamp(self):
         """Gets the use_timestamp_as_persistence_timestamp of this PropertyValue.  # noqa: E501
 
@@ -526,6 +477,102 @@ class PropertyValue(object):
         """
 
         self._use_timestamp_as_persistence_timestamp = use_timestamp_as_persistence_timestamp
+
+    @property
+    def value(self):
+        """Gets the value of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The value of this PropertyValue.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this PropertyValue.
+
+          # noqa: E501
+
+        :param value: The value of this PropertyValue.  # noqa: E501
+        :type value: str
+        """
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
+
+    @property
+    def selected_by_user_timestamp(self):
+        """Gets the selected_by_user_timestamp of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The selected_by_user_timestamp of this PropertyValue.  # noqa: E501
+        :rtype: int
+        """
+        return self._selected_by_user_timestamp
+
+    @selected_by_user_timestamp.setter
+    def selected_by_user_timestamp(self, selected_by_user_timestamp):
+        """Sets the selected_by_user_timestamp of this PropertyValue.
+
+          # noqa: E501
+
+        :param selected_by_user_timestamp: The selected_by_user_timestamp of this PropertyValue.  # noqa: E501
+        :type selected_by_user_timestamp: int
+        """
+        if self.local_vars_configuration.client_side_validation and selected_by_user_timestamp is None:  # noqa: E501
+            raise ValueError("Invalid value for `selected_by_user_timestamp`, must not be `None`")  # noqa: E501
+
+        self._selected_by_user_timestamp = selected_by_user_timestamp
+
+    @property
+    def timestamp(self):
+        """Gets the timestamp of this PropertyValue.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The timestamp of this PropertyValue.  # noqa: E501
+        :rtype: int
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        """Sets the timestamp of this PropertyValue.
+
+          # noqa: E501
+
+        :param timestamp: The timestamp of this PropertyValue.  # noqa: E501
+        :type timestamp: int
+        """
+        if self.local_vars_configuration.client_side_validation and timestamp is None:  # noqa: E501
+            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
+
+        self._timestamp = timestamp
+
+    @property
+    def is_large_value(self):
+        """Gets the is_large_value of this PropertyValue.  # noqa: E501
+
+
+        :return: The is_large_value of this PropertyValue.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_large_value
+
+    @is_large_value.setter
+    def is_large_value(self, is_large_value):
+        """Sets the is_large_value of this PropertyValue.
+
+
+        :param is_large_value: The is_large_value of this PropertyValue.  # noqa: E501
+        :type is_large_value: bool
+        """
+
+        self._is_large_value = is_large_value
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

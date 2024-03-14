@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubSpot Events API
+    Events
 
     API for accessing CRM object events.  # noqa: E501
 

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,59 +35,57 @@ class ColumnRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "int", "name": "str", "label": "str", "type": "str", "options": "list[Option]", "foreign_table_id": "int", "foreign_column_id": "int"}
+    openapi_types = {"foreign_table_id": "int", "name": "str", "options": "list[Option]", "id": "int", "label": "str", "type": "str", "foreign_column_id": "int"}
 
-    attribute_map = {"id": "id", "name": "name", "label": "label", "type": "type", "options": "options", "foreign_table_id": "foreignTableId", "foreign_column_id": "foreignColumnId"}
+    attribute_map = {"foreign_table_id": "foreignTableId", "name": "name", "options": "options", "id": "id", "label": "label", "type": "type", "foreign_column_id": "foreignColumnId"}
 
-    def __init__(self, id=None, name=None, label=None, type=None, options=None, foreign_table_id=None, foreign_column_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, foreign_table_id=None, name=None, options=None, id=None, label=None, type=None, foreign_column_id=None, local_vars_configuration=None):  # noqa: E501
         """ColumnRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
+        self._foreign_table_id = None
         self._name = None
+        self._options = None
+        self._id = None
         self._label = None
         self._type = None
-        self._options = None
-        self._foreign_table_id = None
         self._foreign_column_id = None
         self.discriminator = None
 
-        self.id = id
-        self.name = name
-        self.label = label
-        self.type = type
-        self.options = options
         if foreign_table_id is not None:
             self.foreign_table_id = foreign_table_id
+        self.name = name
+        self.options = options
+        self.id = id
+        self.label = label
+        self.type = type
         if foreign_column_id is not None:
             self.foreign_column_id = foreign_column_id
 
     @property
-    def id(self):
-        """Gets the id of this ColumnRequest.  # noqa: E501
+    def foreign_table_id(self):
+        """Gets the foreign_table_id of this ColumnRequest.  # noqa: E501
 
-        Column Id  # noqa: E501
+        The id of another table to which the column refers/points to.  # noqa: E501
 
-        :return: The id of this ColumnRequest.  # noqa: E501
+        :return: The foreign_table_id of this ColumnRequest.  # noqa: E501
         :rtype: int
         """
-        return self._id
+        return self._foreign_table_id
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ColumnRequest.
+    @foreign_table_id.setter
+    def foreign_table_id(self, foreign_table_id):
+        """Sets the foreign_table_id of this ColumnRequest.
 
-        Column Id  # noqa: E501
+        The id of another table to which the column refers/points to.  # noqa: E501
 
-        :param id: The id of this ColumnRequest.  # noqa: E501
-        :type id: int
+        :param foreign_table_id: The foreign_table_id of this ColumnRequest.  # noqa: E501
+        :type foreign_table_id: int
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._foreign_table_id = foreign_table_id
 
     @property
     def name(self):
@@ -113,6 +111,56 @@ class ColumnRequest(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def options(self):
+        """Gets the options of this ColumnRequest.  # noqa: E501
+
+        Options to choose for select and multi-select columns  # noqa: E501
+
+        :return: The options of this ColumnRequest.  # noqa: E501
+        :rtype: list[Option]
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this ColumnRequest.
+
+        Options to choose for select and multi-select columns  # noqa: E501
+
+        :param options: The options of this ColumnRequest.  # noqa: E501
+        :type options: list[Option]
+        """
+        if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
+            raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
+
+        self._options = options
+
+    @property
+    def id(self):
+        """Gets the id of this ColumnRequest.  # noqa: E501
+
+        Column Id  # noqa: E501
+
+        :return: The id of this ColumnRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ColumnRequest.
+
+        Column Id  # noqa: E501
+
+        :param id: The id of this ColumnRequest.  # noqa: E501
+        :type id: int
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
 
     @property
     def label(self):
@@ -184,54 +232,6 @@ class ColumnRequest(object):
             raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
-
-    @property
-    def options(self):
-        """Gets the options of this ColumnRequest.  # noqa: E501
-
-        Options to choose for select and multi-select columns  # noqa: E501
-
-        :return: The options of this ColumnRequest.  # noqa: E501
-        :rtype: list[Option]
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this ColumnRequest.
-
-        Options to choose for select and multi-select columns  # noqa: E501
-
-        :param options: The options of this ColumnRequest.  # noqa: E501
-        :type options: list[Option]
-        """
-        if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
-            raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
-
-        self._options = options
-
-    @property
-    def foreign_table_id(self):
-        """Gets the foreign_table_id of this ColumnRequest.  # noqa: E501
-
-        The id of another table to which the column refers/points to.  # noqa: E501
-
-        :return: The foreign_table_id of this ColumnRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._foreign_table_id
-
-    @foreign_table_id.setter
-    def foreign_table_id(self, foreign_table_id):
-        """Sets the foreign_table_id of this ColumnRequest.
-
-        The id of another table to which the column refers/points to.  # noqa: E501
-
-        :param foreign_table_id: The foreign_table_id of this ColumnRequest.  # noqa: E501
-        :type foreign_table_id: int
-        """
-
-        self._foreign_table_id = foreign_table_id
 
     @property
     def foreign_column_id(self):

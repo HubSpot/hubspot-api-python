@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Owners
+    Crm Owners
 
     HubSpot uses **owners** to assign CRM objects to specific people in your organization. The endpoints described here are used to get a list of the owners that are available for an account. To assign an owner to an object, set the hubspot_owner_id property using the appropriate CRM object update or create a request.  If teams are available for your HubSpot tier, these endpoints will also indicate which team(s) an owner can access, as well as which team is the owner's primary team.  # noqa: E501
 
@@ -36,104 +36,60 @@ class PublicOwner(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "email": "str",
         "first_name": "str",
         "last_name": "str",
-        "user_id": "int",
         "created_at": "datetime",
-        "updated_at": "datetime",
         "archived": "bool",
         "teams": "list[PublicTeam]",
+        "id": "str",
+        "user_id": "int",
+        "email": "str",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        "id": "id",
-        "email": "email",
         "first_name": "firstName",
         "last_name": "lastName",
-        "user_id": "userId",
         "created_at": "createdAt",
-        "updated_at": "updatedAt",
         "archived": "archived",
         "teams": "teams",
+        "id": "id",
+        "user_id": "userId",
+        "email": "email",
+        "updated_at": "updatedAt",
     }
 
-    def __init__(self, id=None, email=None, first_name=None, last_name=None, user_id=None, created_at=None, updated_at=None, archived=None, teams=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, first_name=None, last_name=None, created_at=None, archived=None, teams=None, id=None, user_id=None, email=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """PublicOwner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._email = None
         self._first_name = None
         self._last_name = None
-        self._user_id = None
         self._created_at = None
-        self._updated_at = None
         self._archived = None
         self._teams = None
+        self._id = None
+        self._user_id = None
+        self._email = None
+        self._updated_at = None
         self.discriminator = None
 
-        self.id = id
-        if email is not None:
-            self.email = email
         if first_name is not None:
             self.first_name = first_name
         if last_name is not None:
             self.last_name = last_name
-        if user_id is not None:
-            self.user_id = user_id
         self.created_at = created_at
-        self.updated_at = updated_at
         self.archived = archived
         if teams is not None:
             self.teams = teams
-
-    @property
-    def id(self):
-        """Gets the id of this PublicOwner.  # noqa: E501
-
-
-        :return: The id of this PublicOwner.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PublicOwner.
-
-
-        :param id: The id of this PublicOwner.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
-
-    @property
-    def email(self):
-        """Gets the email of this PublicOwner.  # noqa: E501
-
-
-        :return: The email of this PublicOwner.  # noqa: E501
-        :rtype: str
-        """
-        return self._email
-
-    @email.setter
-    def email(self, email):
-        """Sets the email of this PublicOwner.
-
-
-        :param email: The email of this PublicOwner.  # noqa: E501
-        :type email: str
-        """
-
-        self._email = email
+        self.id = id
+        if user_id is not None:
+            self.user_id = user_id
+        if email is not None:
+            self.email = email
+        self.updated_at = updated_at
 
     @property
     def first_name(self):
@@ -178,27 +134,6 @@ class PublicOwner(object):
         self._last_name = last_name
 
     @property
-    def user_id(self):
-        """Gets the user_id of this PublicOwner.  # noqa: E501
-
-
-        :return: The user_id of this PublicOwner.  # noqa: E501
-        :rtype: int
-        """
-        return self._user_id
-
-    @user_id.setter
-    def user_id(self, user_id):
-        """Sets the user_id of this PublicOwner.
-
-
-        :param user_id: The user_id of this PublicOwner.  # noqa: E501
-        :type user_id: int
-        """
-
-        self._user_id = user_id
-
-    @property
     def created_at(self):
         """Gets the created_at of this PublicOwner.  # noqa: E501
 
@@ -220,29 +155,6 @@ class PublicOwner(object):
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
-
-    @property
-    def updated_at(self):
-        """Gets the updated_at of this PublicOwner.  # noqa: E501
-
-
-        :return: The updated_at of this PublicOwner.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this PublicOwner.
-
-
-        :param updated_at: The updated_at of this PublicOwner.  # noqa: E501
-        :type updated_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
-
-        self._updated_at = updated_at
 
     @property
     def archived(self):
@@ -287,6 +199,94 @@ class PublicOwner(object):
         """
 
         self._teams = teams
+
+    @property
+    def id(self):
+        """Gets the id of this PublicOwner.  # noqa: E501
+
+
+        :return: The id of this PublicOwner.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PublicOwner.
+
+
+        :param id: The id of this PublicOwner.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def user_id(self):
+        """Gets the user_id of this PublicOwner.  # noqa: E501
+
+
+        :return: The user_id of this PublicOwner.  # noqa: E501
+        :rtype: int
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this PublicOwner.
+
+
+        :param user_id: The user_id of this PublicOwner.  # noqa: E501
+        :type user_id: int
+        """
+
+        self._user_id = user_id
+
+    @property
+    def email(self):
+        """Gets the email of this PublicOwner.  # noqa: E501
+
+
+        :return: The email of this PublicOwner.  # noqa: E501
+        :rtype: str
+        """
+        return self._email
+
+    @email.setter
+    def email(self, email):
+        """Sets the email of this PublicOwner.
+
+
+        :param email: The email of this PublicOwner.  # noqa: E501
+        :type email: str
+        """
+
+        self._email = email
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this PublicOwner.  # noqa: E501
+
+
+        :return: The updated_at of this PublicOwner.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this PublicOwner.
+
+
+        :param updated_at: The updated_at of this PublicOwner.  # noqa: E501
+        :type updated_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and updated_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
+
+        self._updated_at = updated_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

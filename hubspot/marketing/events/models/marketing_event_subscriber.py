@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -35,26 +35,68 @@ class MarketingEventSubscriber(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"interaction_date_time": "int", "properties": "dict[str, str]", "vid": "int"}
+    openapi_types = {"vid": "int", "properties": "dict[str, str]", "interaction_date_time": "int"}
 
-    attribute_map = {"interaction_date_time": "interactionDateTime", "properties": "properties", "vid": "vid"}
+    attribute_map = {"vid": "vid", "properties": "properties", "interaction_date_time": "interactionDateTime"}
 
-    def __init__(self, interaction_date_time=None, properties=None, vid=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, vid=None, properties=None, interaction_date_time=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventSubscriber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._interaction_date_time = None
-        self._properties = None
         self._vid = None
+        self._properties = None
+        self._interaction_date_time = None
         self.discriminator = None
 
-        self.interaction_date_time = interaction_date_time
-        if properties is not None:
-            self.properties = properties
         if vid is not None:
             self.vid = vid
+        if properties is not None:
+            self.properties = properties
+        self.interaction_date_time = interaction_date_time
+
+    @property
+    def vid(self):
+        """Gets the vid of this MarketingEventSubscriber.  # noqa: E501
+
+
+        :return: The vid of this MarketingEventSubscriber.  # noqa: E501
+        :rtype: int
+        """
+        return self._vid
+
+    @vid.setter
+    def vid(self, vid):
+        """Sets the vid of this MarketingEventSubscriber.
+
+
+        :param vid: The vid of this MarketingEventSubscriber.  # noqa: E501
+        :type vid: int
+        """
+
+        self._vid = vid
+
+    @property
+    def properties(self):
+        """Gets the properties of this MarketingEventSubscriber.  # noqa: E501
+
+
+        :return: The properties of this MarketingEventSubscriber.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this MarketingEventSubscriber.
+
+
+        :param properties: The properties of this MarketingEventSubscriber.  # noqa: E501
+        :type properties: dict[str, str]
+        """
+
+        self._properties = properties
 
     @property
     def interaction_date_time(self):
@@ -80,48 +122,6 @@ class MarketingEventSubscriber(object):
             raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
 
         self._interaction_date_time = interaction_date_time
-
-    @property
-    def properties(self):
-        """Gets the properties of this MarketingEventSubscriber.  # noqa: E501
-
-
-        :return: The properties of this MarketingEventSubscriber.  # noqa: E501
-        :rtype: dict[str, str]
-        """
-        return self._properties
-
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this MarketingEventSubscriber.
-
-
-        :param properties: The properties of this MarketingEventSubscriber.  # noqa: E501
-        :type properties: dict[str, str]
-        """
-
-        self._properties = properties
-
-    @property
-    def vid(self):
-        """Gets the vid of this MarketingEventSubscriber.  # noqa: E501
-
-
-        :return: The vid of this MarketingEventSubscriber.  # noqa: E501
-        :rtype: int
-        """
-        return self._vid
-
-    @vid.setter
-    def vid(self, vid):
-        """Sets the vid of this MarketingEventSubscriber.
-
-
-        :param vid: The vid of this MarketingEventSubscriber.  # noqa: E501
-        :type vid: int
-        """
-
-        self._vid = vid
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

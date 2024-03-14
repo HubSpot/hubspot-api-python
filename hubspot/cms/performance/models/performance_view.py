@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CMS Performance API
+    CMS Performance
 
     Use these endpoints to get a time series view of your website's performance.  # noqa: E501
 
@@ -40,24 +40,24 @@ class PerformanceView(object):
         "_404": "int",
         "_500": "int",
         "_504": "int",
-        "start_timestamp": "int",
-        "end_timestamp": "int",
         "start_datetime": "str",
-        "end_datetime": "str",
-        "total_requests": "int",
-        "cache_hits": "int",
-        "cache_hit_rate": "float",
-        "total_request_time": "int",
-        "avg_origin_response_time": "int",
         "response_time_ms": "int",
+        "_95th": "int",
+        "total_requests": "int",
+        "cache_hit_rate": "float",
+        "_99th": "int",
+        "total_request_time": "int",
         "_100_x": "int",
+        "_50th": "int",
+        "cache_hits": "int",
         "_20_x": "int",
         "_30_x": "int",
         "_40_x": "int",
+        "end_timestamp": "int",
         "_50_x": "int",
-        "_50th": "int",
-        "_95th": "int",
-        "_99th": "int",
+        "start_timestamp": "int",
+        "end_datetime": "str",
+        "avg_origin_response_time": "int",
     }
 
     attribute_map = {
@@ -65,24 +65,24 @@ class PerformanceView(object):
         "_404": "404",
         "_500": "500",
         "_504": "504",
-        "start_timestamp": "startTimestamp",
-        "end_timestamp": "endTimestamp",
         "start_datetime": "startDatetime",
-        "end_datetime": "endDatetime",
-        "total_requests": "totalRequests",
-        "cache_hits": "cacheHits",
-        "cache_hit_rate": "cacheHitRate",
-        "total_request_time": "totalRequestTime",
-        "avg_origin_response_time": "avgOriginResponseTime",
         "response_time_ms": "responseTimeMs",
+        "_95th": "95th",
+        "total_requests": "totalRequests",
+        "cache_hit_rate": "cacheHitRate",
+        "_99th": "99th",
+        "total_request_time": "totalRequestTime",
         "_100_x": "100X",
+        "_50th": "50th",
+        "cache_hits": "cacheHits",
         "_20_x": "20X",
         "_30_x": "30X",
         "_40_x": "40X",
+        "end_timestamp": "endTimestamp",
         "_50_x": "50X",
-        "_50th": "50th",
-        "_95th": "95th",
-        "_99th": "99th",
+        "start_timestamp": "startTimestamp",
+        "end_datetime": "endDatetime",
+        "avg_origin_response_time": "avgOriginResponseTime",
     }
 
     def __init__(
@@ -91,24 +91,24 @@ class PerformanceView(object):
         _404=None,
         _500=None,
         _504=None,
-        start_timestamp=None,
-        end_timestamp=None,
         start_datetime=None,
-        end_datetime=None,
-        total_requests=None,
-        cache_hits=None,
-        cache_hit_rate=None,
-        total_request_time=None,
-        avg_origin_response_time=None,
         response_time_ms=None,
+        _95th=None,
+        total_requests=None,
+        cache_hit_rate=None,
+        _99th=None,
+        total_request_time=None,
         _100_x=None,
+        _50th=None,
+        cache_hits=None,
         _20_x=None,
         _30_x=None,
         _40_x=None,
+        end_timestamp=None,
         _50_x=None,
-        _50th=None,
-        _95th=None,
-        _99th=None,
+        start_timestamp=None,
+        end_datetime=None,
+        avg_origin_response_time=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """PerformanceView - a model defined in OpenAPI"""  # noqa: E501
@@ -120,48 +120,51 @@ class PerformanceView(object):
         self.__404 = None
         self.__500 = None
         self.__504 = None
-        self._start_timestamp = None
-        self._end_timestamp = None
         self._start_datetime = None
-        self._end_datetime = None
-        self._total_requests = None
-        self._cache_hits = None
-        self._cache_hit_rate = None
-        self._total_request_time = None
-        self._avg_origin_response_time = None
         self._response_time_ms = None
+        self.__95th = None
+        self._total_requests = None
+        self._cache_hit_rate = None
+        self.__99th = None
+        self._total_request_time = None
         self.__100_x = None
+        self.__50th = None
+        self._cache_hits = None
         self.__20_x = None
         self.__30_x = None
         self.__40_x = None
+        self._end_timestamp = None
         self.__50_x = None
-        self.__50th = None
-        self.__95th = None
-        self.__99th = None
+        self._start_timestamp = None
+        self._end_datetime = None
+        self._avg_origin_response_time = None
         self.discriminator = None
 
         self._403 = _403
         self._404 = _404
         self._500 = _500
         self._504 = _504
-        self.start_timestamp = start_timestamp
-        self.end_timestamp = end_timestamp
-        self.start_datetime = start_datetime
-        self.end_datetime = end_datetime
-        self.total_requests = total_requests
-        self.cache_hits = cache_hits
-        self.cache_hit_rate = cache_hit_rate
-        self.total_request_time = total_request_time
-        self.avg_origin_response_time = avg_origin_response_time
+        if start_datetime is not None:
+            self.start_datetime = start_datetime
         self.response_time_ms = response_time_ms
+        self._95th = _95th
+        self.total_requests = total_requests
+        self.cache_hit_rate = cache_hit_rate
+        self._99th = _99th
+        if total_request_time is not None:
+            self.total_request_time = total_request_time
         self._100_x = _100_x
+        self._50th = _50th
+        self.cache_hits = cache_hits
         self._20_x = _20_x
         self._30_x = _30_x
         self._40_x = _40_x
+        self.end_timestamp = end_timestamp
         self._50_x = _50_x
-        self._50th = _50th
-        self._95th = _95th
-        self._99th = _99th
+        self.start_timestamp = start_timestamp
+        if end_datetime is not None:
+            self.end_datetime = end_datetime
+        self.avg_origin_response_time = avg_origin_response_time
 
     @property
     def _403(self):
@@ -264,56 +267,6 @@ class PerformanceView(object):
         self.__504 = _504
 
     @property
-    def start_timestamp(self):
-        """Gets the start_timestamp of this PerformanceView.  # noqa: E501
-
-        The timestamp in milliseconds of the start of this interval.  # noqa: E501
-
-        :return: The start_timestamp of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._start_timestamp
-
-    @start_timestamp.setter
-    def start_timestamp(self, start_timestamp):
-        """Sets the start_timestamp of this PerformanceView.
-
-        The timestamp in milliseconds of the start of this interval.  # noqa: E501
-
-        :param start_timestamp: The start_timestamp of this PerformanceView.  # noqa: E501
-        :type start_timestamp: int
-        """
-        if self.local_vars_configuration.client_side_validation and start_timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `start_timestamp`, must not be `None`")  # noqa: E501
-
-        self._start_timestamp = start_timestamp
-
-    @property
-    def end_timestamp(self):
-        """Gets the end_timestamp of this PerformanceView.  # noqa: E501
-
-        The timestamp in milliseconds of the end of this interval.  # noqa: E501
-
-        :return: The end_timestamp of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._end_timestamp
-
-    @end_timestamp.setter
-    def end_timestamp(self, end_timestamp):
-        """Sets the end_timestamp of this PerformanceView.
-
-        The timestamp in milliseconds of the end of this interval.  # noqa: E501
-
-        :param end_timestamp: The end_timestamp of this PerformanceView.  # noqa: E501
-        :type end_timestamp: int
-        """
-        if self.local_vars_configuration.client_side_validation and end_timestamp is None:  # noqa: E501
-            raise ValueError("Invalid value for `end_timestamp`, must not be `None`")  # noqa: E501
-
-        self._end_timestamp = end_timestamp
-
-    @property
     def start_datetime(self):
         """Gets the start_datetime of this PerformanceView.  # noqa: E501
 
@@ -331,156 +284,8 @@ class PerformanceView(object):
         :param start_datetime: The start_datetime of this PerformanceView.  # noqa: E501
         :type start_datetime: str
         """
-        if self.local_vars_configuration.client_side_validation and start_datetime is None:  # noqa: E501
-            raise ValueError("Invalid value for `start_datetime`, must not be `None`")  # noqa: E501
 
         self._start_datetime = start_datetime
-
-    @property
-    def end_datetime(self):
-        """Gets the end_datetime of this PerformanceView.  # noqa: E501
-
-
-        :return: The end_datetime of this PerformanceView.  # noqa: E501
-        :rtype: str
-        """
-        return self._end_datetime
-
-    @end_datetime.setter
-    def end_datetime(self, end_datetime):
-        """Sets the end_datetime of this PerformanceView.
-
-
-        :param end_datetime: The end_datetime of this PerformanceView.  # noqa: E501
-        :type end_datetime: str
-        """
-        if self.local_vars_configuration.client_side_validation and end_datetime is None:  # noqa: E501
-            raise ValueError("Invalid value for `end_datetime`, must not be `None`")  # noqa: E501
-
-        self._end_datetime = end_datetime
-
-    @property
-    def total_requests(self):
-        """Gets the total_requests of this PerformanceView.  # noqa: E501
-
-        The total number of requests received in this period.  # noqa: E501
-
-        :return: The total_requests of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._total_requests
-
-    @total_requests.setter
-    def total_requests(self, total_requests):
-        """Sets the total_requests of this PerformanceView.
-
-        The total number of requests received in this period.  # noqa: E501
-
-        :param total_requests: The total_requests of this PerformanceView.  # noqa: E501
-        :type total_requests: int
-        """
-        if self.local_vars_configuration.client_side_validation and total_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_requests`, must not be `None`")  # noqa: E501
-
-        self._total_requests = total_requests
-
-    @property
-    def cache_hits(self):
-        """Gets the cache_hits of this PerformanceView.  # noqa: E501
-
-        The total number of requests that were served cached responses.  # noqa: E501
-
-        :return: The cache_hits of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._cache_hits
-
-    @cache_hits.setter
-    def cache_hits(self, cache_hits):
-        """Sets the cache_hits of this PerformanceView.
-
-        The total number of requests that were served cached responses.  # noqa: E501
-
-        :param cache_hits: The cache_hits of this PerformanceView.  # noqa: E501
-        :type cache_hits: int
-        """
-        if self.local_vars_configuration.client_side_validation and cache_hits is None:  # noqa: E501
-            raise ValueError("Invalid value for `cache_hits`, must not be `None`")  # noqa: E501
-
-        self._cache_hits = cache_hits
-
-    @property
-    def cache_hit_rate(self):
-        """Gets the cache_hit_rate of this PerformanceView.  # noqa: E501
-
-        The percentage of requests that were served cached responses.  # noqa: E501
-
-        :return: The cache_hit_rate of this PerformanceView.  # noqa: E501
-        :rtype: float
-        """
-        return self._cache_hit_rate
-
-    @cache_hit_rate.setter
-    def cache_hit_rate(self, cache_hit_rate):
-        """Sets the cache_hit_rate of this PerformanceView.
-
-        The percentage of requests that were served cached responses.  # noqa: E501
-
-        :param cache_hit_rate: The cache_hit_rate of this PerformanceView.  # noqa: E501
-        :type cache_hit_rate: float
-        """
-        if self.local_vars_configuration.client_side_validation and cache_hit_rate is None:  # noqa: E501
-            raise ValueError("Invalid value for `cache_hit_rate`, must not be `None`")  # noqa: E501
-
-        self._cache_hit_rate = cache_hit_rate
-
-    @property
-    def total_request_time(self):
-        """Gets the total_request_time of this PerformanceView.  # noqa: E501
-
-
-        :return: The total_request_time of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._total_request_time
-
-    @total_request_time.setter
-    def total_request_time(self, total_request_time):
-        """Sets the total_request_time of this PerformanceView.
-
-
-        :param total_request_time: The total_request_time of this PerformanceView.  # noqa: E501
-        :type total_request_time: int
-        """
-        if self.local_vars_configuration.client_side_validation and total_request_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_request_time`, must not be `None`")  # noqa: E501
-
-        self._total_request_time = total_request_time
-
-    @property
-    def avg_origin_response_time(self):
-        """Gets the avg_origin_response_time of this PerformanceView.  # noqa: E501
-
-        The average response time in milliseconds from the origin to the edge.  # noqa: E501
-
-        :return: The avg_origin_response_time of this PerformanceView.  # noqa: E501
-        :rtype: int
-        """
-        return self._avg_origin_response_time
-
-    @avg_origin_response_time.setter
-    def avg_origin_response_time(self, avg_origin_response_time):
-        """Sets the avg_origin_response_time of this PerformanceView.
-
-        The average response time in milliseconds from the origin to the edge.  # noqa: E501
-
-        :param avg_origin_response_time: The avg_origin_response_time of this PerformanceView.  # noqa: E501
-        :type avg_origin_response_time: int
-        """
-        if self.local_vars_configuration.client_side_validation and avg_origin_response_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `avg_origin_response_time`, must not be `None`")  # noqa: E501
-
-        self._avg_origin_response_time = avg_origin_response_time
 
     @property
     def response_time_ms(self):
@@ -508,6 +313,127 @@ class PerformanceView(object):
         self._response_time_ms = response_time_ms
 
     @property
+    def _95th(self):
+        """Gets the _95th of this PerformanceView.  # noqa: E501
+
+        The 95th percentile response time.  # noqa: E501
+
+        :return: The _95th of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self.__95th
+
+    @_95th.setter
+    def _95th(self, _95th):
+        """Sets the _95th of this PerformanceView.
+
+        The 95th percentile response time.  # noqa: E501
+
+        :param _95th: The _95th of this PerformanceView.  # noqa: E501
+        :type _95th: int
+        """
+        if self.local_vars_configuration.client_side_validation and _95th is None:  # noqa: E501
+            raise ValueError("Invalid value for `_95th`, must not be `None`")  # noqa: E501
+
+        self.__95th = _95th
+
+    @property
+    def total_requests(self):
+        """Gets the total_requests of this PerformanceView.  # noqa: E501
+
+        The total number of requests received in this period.  # noqa: E501
+
+        :return: The total_requests of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self._total_requests
+
+    @total_requests.setter
+    def total_requests(self, total_requests):
+        """Sets the total_requests of this PerformanceView.
+
+        The total number of requests received in this period.  # noqa: E501
+
+        :param total_requests: The total_requests of this PerformanceView.  # noqa: E501
+        :type total_requests: int
+        """
+        if self.local_vars_configuration.client_side_validation and total_requests is None:  # noqa: E501
+            raise ValueError("Invalid value for `total_requests`, must not be `None`")  # noqa: E501
+
+        self._total_requests = total_requests
+
+    @property
+    def cache_hit_rate(self):
+        """Gets the cache_hit_rate of this PerformanceView.  # noqa: E501
+
+        The percentage of requests that were served cached responses.  # noqa: E501
+
+        :return: The cache_hit_rate of this PerformanceView.  # noqa: E501
+        :rtype: float
+        """
+        return self._cache_hit_rate
+
+    @cache_hit_rate.setter
+    def cache_hit_rate(self, cache_hit_rate):
+        """Sets the cache_hit_rate of this PerformanceView.
+
+        The percentage of requests that were served cached responses.  # noqa: E501
+
+        :param cache_hit_rate: The cache_hit_rate of this PerformanceView.  # noqa: E501
+        :type cache_hit_rate: float
+        """
+        if self.local_vars_configuration.client_side_validation and cache_hit_rate is None:  # noqa: E501
+            raise ValueError("Invalid value for `cache_hit_rate`, must not be `None`")  # noqa: E501
+
+        self._cache_hit_rate = cache_hit_rate
+
+    @property
+    def _99th(self):
+        """Gets the _99th of this PerformanceView.  # noqa: E501
+
+        The 99th percentile response time.  # noqa: E501
+
+        :return: The _99th of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self.__99th
+
+    @_99th.setter
+    def _99th(self, _99th):
+        """Sets the _99th of this PerformanceView.
+
+        The 99th percentile response time.  # noqa: E501
+
+        :param _99th: The _99th of this PerformanceView.  # noqa: E501
+        :type _99th: int
+        """
+        if self.local_vars_configuration.client_side_validation and _99th is None:  # noqa: E501
+            raise ValueError("Invalid value for `_99th`, must not be `None`")  # noqa: E501
+
+        self.__99th = _99th
+
+    @property
+    def total_request_time(self):
+        """Gets the total_request_time of this PerformanceView.  # noqa: E501
+
+
+        :return: The total_request_time of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self._total_request_time
+
+    @total_request_time.setter
+    def total_request_time(self, total_request_time):
+        """Sets the total_request_time of this PerformanceView.
+
+
+        :param total_request_time: The total_request_time of this PerformanceView.  # noqa: E501
+        :type total_request_time: int
+        """
+
+        self._total_request_time = total_request_time
+
+    @property
     def _100_x(self):
         """Gets the _100_x of this PerformanceView.  # noqa: E501
 
@@ -531,6 +457,56 @@ class PerformanceView(object):
             raise ValueError("Invalid value for `_100_x`, must not be `None`")  # noqa: E501
 
         self.__100_x = _100_x
+
+    @property
+    def _50th(self):
+        """Gets the _50th of this PerformanceView.  # noqa: E501
+
+        The 50th percentile response time.  # noqa: E501
+
+        :return: The _50th of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self.__50th
+
+    @_50th.setter
+    def _50th(self, _50th):
+        """Sets the _50th of this PerformanceView.
+
+        The 50th percentile response time.  # noqa: E501
+
+        :param _50th: The _50th of this PerformanceView.  # noqa: E501
+        :type _50th: int
+        """
+        if self.local_vars_configuration.client_side_validation and _50th is None:  # noqa: E501
+            raise ValueError("Invalid value for `_50th`, must not be `None`")  # noqa: E501
+
+        self.__50th = _50th
+
+    @property
+    def cache_hits(self):
+        """Gets the cache_hits of this PerformanceView.  # noqa: E501
+
+        The total number of requests that were served cached responses.  # noqa: E501
+
+        :return: The cache_hits of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self._cache_hits
+
+    @cache_hits.setter
+    def cache_hits(self, cache_hits):
+        """Sets the cache_hits of this PerformanceView.
+
+        The total number of requests that were served cached responses.  # noqa: E501
+
+        :param cache_hits: The cache_hits of this PerformanceView.  # noqa: E501
+        :type cache_hits: int
+        """
+        if self.local_vars_configuration.client_side_validation and cache_hits is None:  # noqa: E501
+            raise ValueError("Invalid value for `cache_hits`, must not be `None`")  # noqa: E501
+
+        self._cache_hits = cache_hits
 
     @property
     def _20_x(self):
@@ -608,6 +584,31 @@ class PerformanceView(object):
         self.__40_x = _40_x
 
     @property
+    def end_timestamp(self):
+        """Gets the end_timestamp of this PerformanceView.  # noqa: E501
+
+        The timestamp in milliseconds of the end of this interval.  # noqa: E501
+
+        :return: The end_timestamp of this PerformanceView.  # noqa: E501
+        :rtype: int
+        """
+        return self._end_timestamp
+
+    @end_timestamp.setter
+    def end_timestamp(self, end_timestamp):
+        """Sets the end_timestamp of this PerformanceView.
+
+        The timestamp in milliseconds of the end of this interval.  # noqa: E501
+
+        :param end_timestamp: The end_timestamp of this PerformanceView.  # noqa: E501
+        :type end_timestamp: int
+        """
+        if self.local_vars_configuration.client_side_validation and end_timestamp is None:  # noqa: E501
+            raise ValueError("Invalid value for `end_timestamp`, must not be `None`")  # noqa: E501
+
+        self._end_timestamp = end_timestamp
+
+    @property
     def _50_x(self):
         """Gets the _50_x of this PerformanceView.  # noqa: E501
 
@@ -633,79 +634,75 @@ class PerformanceView(object):
         self.__50_x = _50_x
 
     @property
-    def _50th(self):
-        """Gets the _50th of this PerformanceView.  # noqa: E501
+    def start_timestamp(self):
+        """Gets the start_timestamp of this PerformanceView.  # noqa: E501
 
-        The 50th percentile response time.  # noqa: E501
+        The timestamp in milliseconds of the start of this interval.  # noqa: E501
 
-        :return: The _50th of this PerformanceView.  # noqa: E501
+        :return: The start_timestamp of this PerformanceView.  # noqa: E501
         :rtype: int
         """
-        return self.__50th
+        return self._start_timestamp
 
-    @_50th.setter
-    def _50th(self, _50th):
-        """Sets the _50th of this PerformanceView.
+    @start_timestamp.setter
+    def start_timestamp(self, start_timestamp):
+        """Sets the start_timestamp of this PerformanceView.
 
-        The 50th percentile response time.  # noqa: E501
+        The timestamp in milliseconds of the start of this interval.  # noqa: E501
 
-        :param _50th: The _50th of this PerformanceView.  # noqa: E501
-        :type _50th: int
+        :param start_timestamp: The start_timestamp of this PerformanceView.  # noqa: E501
+        :type start_timestamp: int
         """
-        if self.local_vars_configuration.client_side_validation and _50th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_50th`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and start_timestamp is None:  # noqa: E501
+            raise ValueError("Invalid value for `start_timestamp`, must not be `None`")  # noqa: E501
 
-        self.__50th = _50th
+        self._start_timestamp = start_timestamp
 
     @property
-    def _95th(self):
-        """Gets the _95th of this PerformanceView.  # noqa: E501
+    def end_datetime(self):
+        """Gets the end_datetime of this PerformanceView.  # noqa: E501
 
-        The 95th percentile response time.  # noqa: E501
 
-        :return: The _95th of this PerformanceView.  # noqa: E501
-        :rtype: int
+        :return: The end_datetime of this PerformanceView.  # noqa: E501
+        :rtype: str
         """
-        return self.__95th
+        return self._end_datetime
 
-    @_95th.setter
-    def _95th(self, _95th):
-        """Sets the _95th of this PerformanceView.
+    @end_datetime.setter
+    def end_datetime(self, end_datetime):
+        """Sets the end_datetime of this PerformanceView.
 
-        The 95th percentile response time.  # noqa: E501
 
-        :param _95th: The _95th of this PerformanceView.  # noqa: E501
-        :type _95th: int
+        :param end_datetime: The end_datetime of this PerformanceView.  # noqa: E501
+        :type end_datetime: str
         """
-        if self.local_vars_configuration.client_side_validation and _95th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_95th`, must not be `None`")  # noqa: E501
 
-        self.__95th = _95th
+        self._end_datetime = end_datetime
 
     @property
-    def _99th(self):
-        """Gets the _99th of this PerformanceView.  # noqa: E501
+    def avg_origin_response_time(self):
+        """Gets the avg_origin_response_time of this PerformanceView.  # noqa: E501
 
-        The 99th percentile response time.  # noqa: E501
+        The average response time in milliseconds from the origin to the edge.  # noqa: E501
 
-        :return: The _99th of this PerformanceView.  # noqa: E501
+        :return: The avg_origin_response_time of this PerformanceView.  # noqa: E501
         :rtype: int
         """
-        return self.__99th
+        return self._avg_origin_response_time
 
-    @_99th.setter
-    def _99th(self, _99th):
-        """Sets the _99th of this PerformanceView.
+    @avg_origin_response_time.setter
+    def avg_origin_response_time(self, avg_origin_response_time):
+        """Sets the avg_origin_response_time of this PerformanceView.
 
-        The 99th percentile response time.  # noqa: E501
+        The average response time in milliseconds from the origin to the edge.  # noqa: E501
 
-        :param _99th: The _99th of this PerformanceView.  # noqa: E501
-        :type _99th: int
+        :param avg_origin_response_time: The avg_origin_response_time of this PerformanceView.  # noqa: E501
+        :type avg_origin_response_time: int
         """
-        if self.local_vars_configuration.client_side_validation and _99th is None:  # noqa: E501
-            raise ValueError("Invalid value for `_99th`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and avg_origin_response_time is None:  # noqa: E501
+            raise ValueError("Invalid value for `avg_origin_response_time`, must not be `None`")  # noqa: E501
 
-        self.__99th = _99th
+        self._avg_origin_response_time = avg_origin_response_time
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

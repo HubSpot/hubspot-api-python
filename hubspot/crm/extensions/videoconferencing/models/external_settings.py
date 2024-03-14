@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Video Conference Extension
+    Video Conferencing Extension
 
     These APIs allow you to specify URLs that can be used to interact with a video conferencing application, to allow HubSpot to add video conference links to meeting requests with contacts.  # noqa: E501
 
@@ -35,29 +35,82 @@ class ExternalSettings(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"create_meeting_url": "str", "update_meeting_url": "str", "delete_meeting_url": "str", "user_verify_url": "str"}
+    openapi_types = {"user_verify_url": "str", "fetch_accounts_uri": "str", "create_meeting_url": "str", "update_meeting_url": "str", "delete_meeting_url": "str"}
 
-    attribute_map = {"create_meeting_url": "createMeetingUrl", "update_meeting_url": "updateMeetingUrl", "delete_meeting_url": "deleteMeetingUrl", "user_verify_url": "userVerifyUrl"}
+    attribute_map = {
+        "user_verify_url": "userVerifyUrl",
+        "fetch_accounts_uri": "fetchAccountsUri",
+        "create_meeting_url": "createMeetingUrl",
+        "update_meeting_url": "updateMeetingUrl",
+        "delete_meeting_url": "deleteMeetingUrl",
+    }
 
-    def __init__(self, create_meeting_url=None, update_meeting_url=None, delete_meeting_url=None, user_verify_url=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, user_verify_url=None, fetch_accounts_uri=None, create_meeting_url=None, update_meeting_url=None, delete_meeting_url=None, local_vars_configuration=None):  # noqa: E501
         """ExternalSettings - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._user_verify_url = None
+        self._fetch_accounts_uri = None
         self._create_meeting_url = None
         self._update_meeting_url = None
         self._delete_meeting_url = None
-        self._user_verify_url = None
         self.discriminator = None
 
+        if user_verify_url is not None:
+            self.user_verify_url = user_verify_url
+        if fetch_accounts_uri is not None:
+            self.fetch_accounts_uri = fetch_accounts_uri
         self.create_meeting_url = create_meeting_url
         if update_meeting_url is not None:
             self.update_meeting_url = update_meeting_url
         if delete_meeting_url is not None:
             self.delete_meeting_url = delete_meeting_url
-        if user_verify_url is not None:
-            self.user_verify_url = user_verify_url
+
+    @property
+    def user_verify_url(self):
+        """Gets the user_verify_url of this ExternalSettings.  # noqa: E501
+
+        The URL that HubSpot will use to verify that a user exists in the video conference application.  # noqa: E501
+
+        :return: The user_verify_url of this ExternalSettings.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_verify_url
+
+    @user_verify_url.setter
+    def user_verify_url(self, user_verify_url):
+        """Sets the user_verify_url of this ExternalSettings.
+
+        The URL that HubSpot will use to verify that a user exists in the video conference application.  # noqa: E501
+
+        :param user_verify_url: The user_verify_url of this ExternalSettings.  # noqa: E501
+        :type user_verify_url: str
+        """
+
+        self._user_verify_url = user_verify_url
+
+    @property
+    def fetch_accounts_uri(self):
+        """Gets the fetch_accounts_uri of this ExternalSettings.  # noqa: E501
+
+
+        :return: The fetch_accounts_uri of this ExternalSettings.  # noqa: E501
+        :rtype: str
+        """
+        return self._fetch_accounts_uri
+
+    @fetch_accounts_uri.setter
+    def fetch_accounts_uri(self, fetch_accounts_uri):
+        """Sets the fetch_accounts_uri of this ExternalSettings.
+
+
+        :param fetch_accounts_uri: The fetch_accounts_uri of this ExternalSettings.  # noqa: E501
+        :type fetch_accounts_uri: str
+        """
+
+        self._fetch_accounts_uri = fetch_accounts_uri
 
     @property
     def create_meeting_url(self):
@@ -129,29 +182,6 @@ class ExternalSettings(object):
         """
 
         self._delete_meeting_url = delete_meeting_url
-
-    @property
-    def user_verify_url(self):
-        """Gets the user_verify_url of this ExternalSettings.  # noqa: E501
-
-        The URL that HubSpot will use to verify that a user exists in the video conference application.  # noqa: E501
-
-        :return: The user_verify_url of this ExternalSettings.  # noqa: E501
-        :rtype: str
-        """
-        return self._user_verify_url
-
-    @user_verify_url.setter
-    def user_verify_url(self, user_verify_url):
-        """Sets the user_verify_url of this ExternalSettings.
-
-        The URL that HubSpot will use to verify that a user exists in the video conference application.  # noqa: E501
-
-        :param user_verify_url: The user_verify_url of this ExternalSettings.  # noqa: E501
-        :type user_verify_url: str
-        """
-
-        self._user_verify_url = user_verify_url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

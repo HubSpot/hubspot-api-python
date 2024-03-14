@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubDB endpoints
+    Hubdb
 
     HubDB is a relational data store that presents data as rows, columns, and cells in a table, much like a spreadsheet. HubDB tables can be added or modified [in the HubSpot CMS](https://knowledge.hubspot.com/cos-general/how-to-edit-hubdb-tables), but you can also use the API endpoints documented here. For more information on HubDB tables and using their data on a HubSpot site, see the [CMS developers site](https://designers.hubspot.com/docs/tools/hubdb). You can also see the [documentation for dynamic pages](https://designers.hubspot.com/docs/tutorials/how-to-build-dynamic-pages-with-hubdb) for more details about the `useForPages` field.  HubDB tables support `draft` and `published` versions. This allows you to update data in the table, either for testing or to allow for a manual approval process, without affecting any live pages using the existing data. Draft data can be reviewed, and published by a user working in HubSpot or published via the API. Draft data can also be discarded, allowing users to go back to the published version of the data without disrupting it. If a table is set to be `allowed for public access`, you can access the published version of the table and rows without any authentication by specifying the portal id via the query parameter `portalId`.  # noqa: E501
 
@@ -35,81 +35,57 @@ class BatchResponseHubDbTableRowV3(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"status": "str", "results": "list[HubDbTableRowV3]", "requested_at": "datetime", "started_at": "datetime", "completed_at": "datetime", "links": "dict[str, str]"}
+    openapi_types = {"completed_at": "datetime", "requested_at": "datetime", "started_at": "datetime", "links": "dict[str, str]", "results": "list[HubDbTableRowV3]", "status": "str"}
 
-    attribute_map = {"status": "status", "results": "results", "requested_at": "requestedAt", "started_at": "startedAt", "completed_at": "completedAt", "links": "links"}
+    attribute_map = {"completed_at": "completedAt", "requested_at": "requestedAt", "started_at": "startedAt", "links": "links", "results": "results", "status": "status"}
 
-    def __init__(self, status=None, results=None, requested_at=None, started_at=None, completed_at=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, completed_at=None, requested_at=None, started_at=None, links=None, results=None, status=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseHubDbTableRowV3 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._status = None
-        self._results = None
+        self._completed_at = None
         self._requested_at = None
         self._started_at = None
-        self._completed_at = None
         self._links = None
+        self._results = None
+        self._status = None
         self.discriminator = None
 
-        if status is not None:
-            self.status = status
-        if results is not None:
-            self.results = results
+        if completed_at is not None:
+            self.completed_at = completed_at
         if requested_at is not None:
             self.requested_at = requested_at
         if started_at is not None:
             self.started_at = started_at
-        if completed_at is not None:
-            self.completed_at = completed_at
         if links is not None:
             self.links = links
+        if results is not None:
+            self.results = results
+        if status is not None:
+            self.status = status
 
     @property
-    def status(self):
-        """Gets the status of this BatchResponseHubDbTableRowV3.  # noqa: E501
+    def completed_at(self):
+        """Gets the completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
 
 
-        :return: The status of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :rtype: str
+        :return: The completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :rtype: datetime
         """
-        return self._status
+        return self._completed_at
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this BatchResponseHubDbTableRowV3.
-
-
-        :param status: The status of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :type status: str
-        """
-        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
-
-        self._status = status
-
-    @property
-    def results(self):
-        """Gets the results of this BatchResponseHubDbTableRowV3.  # noqa: E501
+    @completed_at.setter
+    def completed_at(self, completed_at):
+        """Sets the completed_at of this BatchResponseHubDbTableRowV3.
 
 
-        :return: The results of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :rtype: list[HubDbTableRowV3]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this BatchResponseHubDbTableRowV3.
-
-
-        :param results: The results of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :type results: list[HubDbTableRowV3]
+        :param completed_at: The completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :type completed_at: datetime
         """
 
-        self._results = results
+        self._completed_at = completed_at
 
     @property
     def requested_at(self):
@@ -154,27 +130,6 @@ class BatchResponseHubDbTableRowV3(object):
         self._started_at = started_at
 
     @property
-    def completed_at(self):
-        """Gets the completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
-
-
-        :return: The completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._completed_at
-
-    @completed_at.setter
-    def completed_at(self, completed_at):
-        """Sets the completed_at of this BatchResponseHubDbTableRowV3.
-
-
-        :param completed_at: The completed_at of this BatchResponseHubDbTableRowV3.  # noqa: E501
-        :type completed_at: datetime
-        """
-
-        self._completed_at = completed_at
-
-    @property
     def links(self):
         """Gets the links of this BatchResponseHubDbTableRowV3.  # noqa: E501
 
@@ -194,6 +149,51 @@ class BatchResponseHubDbTableRowV3(object):
         """
 
         self._links = links
+
+    @property
+    def results(self):
+        """Gets the results of this BatchResponseHubDbTableRowV3.  # noqa: E501
+
+
+        :return: The results of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :rtype: list[HubDbTableRowV3]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this BatchResponseHubDbTableRowV3.
+
+
+        :param results: The results of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :type results: list[HubDbTableRowV3]
+        """
+
+        self._results = results
+
+    @property
+    def status(self):
+        """Gets the status of this BatchResponseHubDbTableRowV3.  # noqa: E501
+
+
+        :return: The status of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this BatchResponseHubDbTableRowV3.
+
+
+        :param status: The status of this BatchResponseHubDbTableRowV3.  # noqa: E501
+        :type status: str
+        """
+        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
+
+        self._status = status
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

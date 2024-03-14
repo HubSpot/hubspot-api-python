@@ -36,42 +36,42 @@ class SubscriptionDefinition(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "id": "str",
-        "name": "str",
-        "description": "str",
-        "purpose": "str",
-        "communication_method": "str",
-        "is_active": "bool",
-        "is_default": "bool",
         "is_internal": "bool",
         "created_at": "datetime",
+        "is_default": "bool",
+        "communication_method": "str",
+        "purpose": "str",
+        "name": "str",
+        "description": "str",
+        "id": "str",
+        "is_active": "bool",
         "updated_at": "datetime",
     }
 
     attribute_map = {
-        "id": "id",
-        "name": "name",
-        "description": "description",
-        "purpose": "purpose",
-        "communication_method": "communicationMethod",
-        "is_active": "isActive",
-        "is_default": "isDefault",
         "is_internal": "isInternal",
         "created_at": "createdAt",
+        "is_default": "isDefault",
+        "communication_method": "communicationMethod",
+        "purpose": "purpose",
+        "name": "name",
+        "description": "description",
+        "id": "id",
+        "is_active": "isActive",
         "updated_at": "updatedAt",
     }
 
     def __init__(
         self,
-        id=None,
-        name=None,
-        description=None,
-        purpose=None,
-        communication_method=None,
-        is_active=None,
-        is_default=None,
         is_internal=None,
         created_at=None,
+        is_default=None,
+        communication_method=None,
+        purpose=None,
+        name=None,
+        description=None,
+        id=None,
+        is_active=None,
         updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -80,55 +80,151 @@ class SubscriptionDefinition(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._name = None
-        self._description = None
-        self._purpose = None
-        self._communication_method = None
-        self._is_active = None
-        self._is_default = None
         self._is_internal = None
         self._created_at = None
+        self._is_default = None
+        self._communication_method = None
+        self._purpose = None
+        self._name = None
+        self._description = None
+        self._id = None
+        self._is_active = None
         self._updated_at = None
         self.discriminator = None
 
-        self.id = id
-        self.name = name
-        self.description = description
-        if purpose is not None:
-            self.purpose = purpose
-        if communication_method is not None:
-            self.communication_method = communication_method
-        self.is_active = is_active
-        self.is_default = is_default
         self.is_internal = is_internal
         self.created_at = created_at
+        self.is_default = is_default
+        if communication_method is not None:
+            self.communication_method = communication_method
+        if purpose is not None:
+            self.purpose = purpose
+        self.name = name
+        self.description = description
+        self.id = id
+        self.is_active = is_active
         self.updated_at = updated_at
 
     @property
-    def id(self):
-        """Gets the id of this SubscriptionDefinition.  # noqa: E501
+    def is_internal(self):
+        """Gets the is_internal of this SubscriptionDefinition.  # noqa: E501
 
-        The ID of the definition.  # noqa: E501
+        A default description that is used by some HubSpot tools and cannot be edited.  # noqa: E501
 
-        :return: The id of this SubscriptionDefinition.  # noqa: E501
+        :return: The is_internal of this SubscriptionDefinition.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_internal
+
+    @is_internal.setter
+    def is_internal(self, is_internal):
+        """Sets the is_internal of this SubscriptionDefinition.
+
+        A default description that is used by some HubSpot tools and cannot be edited.  # noqa: E501
+
+        :param is_internal: The is_internal of this SubscriptionDefinition.  # noqa: E501
+        :type is_internal: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_internal is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_internal`, must not be `None`")  # noqa: E501
+
+        self._is_internal = is_internal
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this SubscriptionDefinition.  # noqa: E501
+
+        Time at which the definition was created.  # noqa: E501
+
+        :return: The created_at of this SubscriptionDefinition.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SubscriptionDefinition.
+
+        Time at which the definition was created.  # noqa: E501
+
+        :param created_at: The created_at of this SubscriptionDefinition.  # noqa: E501
+        :type created_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
+
+        self._created_at = created_at
+
+    @property
+    def is_default(self):
+        """Gets the is_default of this SubscriptionDefinition.  # noqa: E501
+
+        A subscription definition created by HubSpot.  # noqa: E501
+
+        :return: The is_default of this SubscriptionDefinition.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_default
+
+    @is_default.setter
+    def is_default(self, is_default):
+        """Sets the is_default of this SubscriptionDefinition.
+
+        A subscription definition created by HubSpot.  # noqa: E501
+
+        :param is_default: The is_default of this SubscriptionDefinition.  # noqa: E501
+        :type is_default: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_default is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_default`, must not be `None`")  # noqa: E501
+
+        self._is_default = is_default
+
+    @property
+    def communication_method(self):
+        """Gets the communication_method of this SubscriptionDefinition.  # noqa: E501
+
+        The method or technology used to contact.  # noqa: E501
+
+        :return: The communication_method of this SubscriptionDefinition.  # noqa: E501
         :rtype: str
         """
-        return self._id
+        return self._communication_method
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionDefinition.
+    @communication_method.setter
+    def communication_method(self, communication_method):
+        """Sets the communication_method of this SubscriptionDefinition.
 
-        The ID of the definition.  # noqa: E501
+        The method or technology used to contact.  # noqa: E501
 
-        :param id: The id of this SubscriptionDefinition.  # noqa: E501
-        :type id: str
+        :param communication_method: The communication_method of this SubscriptionDefinition.  # noqa: E501
+        :type communication_method: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._communication_method = communication_method
+
+    @property
+    def purpose(self):
+        """Gets the purpose of this SubscriptionDefinition.  # noqa: E501
+
+        The purpose of this subscription or the department in your organization that uses it.  # noqa: E501
+
+        :return: The purpose of this SubscriptionDefinition.  # noqa: E501
+        :rtype: str
+        """
+        return self._purpose
+
+    @purpose.setter
+    def purpose(self, purpose):
+        """Sets the purpose of this SubscriptionDefinition.
+
+        The purpose of this subscription or the department in your organization that uses it.  # noqa: E501
+
+        :param purpose: The purpose of this SubscriptionDefinition.  # noqa: E501
+        :type purpose: str
+        """
+
+        self._purpose = purpose
 
     @property
     def name(self):
@@ -181,50 +277,29 @@ class SubscriptionDefinition(object):
         self._description = description
 
     @property
-    def purpose(self):
-        """Gets the purpose of this SubscriptionDefinition.  # noqa: E501
+    def id(self):
+        """Gets the id of this SubscriptionDefinition.  # noqa: E501
 
-        The purpose of this subscription or the department in your organization that uses it.  # noqa: E501
+        The ID of the definition.  # noqa: E501
 
-        :return: The purpose of this SubscriptionDefinition.  # noqa: E501
+        :return: The id of this SubscriptionDefinition.  # noqa: E501
         :rtype: str
         """
-        return self._purpose
+        return self._id
 
-    @purpose.setter
-    def purpose(self, purpose):
-        """Sets the purpose of this SubscriptionDefinition.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this SubscriptionDefinition.
 
-        The purpose of this subscription or the department in your organization that uses it.  # noqa: E501
+        The ID of the definition.  # noqa: E501
 
-        :param purpose: The purpose of this SubscriptionDefinition.  # noqa: E501
-        :type purpose: str
+        :param id: The id of this SubscriptionDefinition.  # noqa: E501
+        :type id: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
-        self._purpose = purpose
-
-    @property
-    def communication_method(self):
-        """Gets the communication_method of this SubscriptionDefinition.  # noqa: E501
-
-        The method or technology used to contact.  # noqa: E501
-
-        :return: The communication_method of this SubscriptionDefinition.  # noqa: E501
-        :rtype: str
-        """
-        return self._communication_method
-
-    @communication_method.setter
-    def communication_method(self, communication_method):
-        """Sets the communication_method of this SubscriptionDefinition.
-
-        The method or technology used to contact.  # noqa: E501
-
-        :param communication_method: The communication_method of this SubscriptionDefinition.  # noqa: E501
-        :type communication_method: str
-        """
-
-        self._communication_method = communication_method
+        self._id = id
 
     @property
     def is_active(self):
@@ -250,81 +325,6 @@ class SubscriptionDefinition(object):
             raise ValueError("Invalid value for `is_active`, must not be `None`")  # noqa: E501
 
         self._is_active = is_active
-
-    @property
-    def is_default(self):
-        """Gets the is_default of this SubscriptionDefinition.  # noqa: E501
-
-        A subscription definition created by HubSpot.  # noqa: E501
-
-        :return: The is_default of this SubscriptionDefinition.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_default
-
-    @is_default.setter
-    def is_default(self, is_default):
-        """Sets the is_default of this SubscriptionDefinition.
-
-        A subscription definition created by HubSpot.  # noqa: E501
-
-        :param is_default: The is_default of this SubscriptionDefinition.  # noqa: E501
-        :type is_default: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_default is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_default`, must not be `None`")  # noqa: E501
-
-        self._is_default = is_default
-
-    @property
-    def is_internal(self):
-        """Gets the is_internal of this SubscriptionDefinition.  # noqa: E501
-
-        A default description that is used by some HubSpot tools and cannot be edited.  # noqa: E501
-
-        :return: The is_internal of this SubscriptionDefinition.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_internal
-
-    @is_internal.setter
-    def is_internal(self, is_internal):
-        """Sets the is_internal of this SubscriptionDefinition.
-
-        A default description that is used by some HubSpot tools and cannot be edited.  # noqa: E501
-
-        :param is_internal: The is_internal of this SubscriptionDefinition.  # noqa: E501
-        :type is_internal: bool
-        """
-        if self.local_vars_configuration.client_side_validation and is_internal is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_internal`, must not be `None`")  # noqa: E501
-
-        self._is_internal = is_internal
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SubscriptionDefinition.  # noqa: E501
-
-        Time at which the definition was created.  # noqa: E501
-
-        :return: The created_at of this SubscriptionDefinition.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SubscriptionDefinition.
-
-        Time at which the definition was created.  # noqa: E501
-
-        :param created_at: The created_at of this SubscriptionDefinition.  # noqa: E501
-        :type created_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
 
     @property
     def updated_at(self):

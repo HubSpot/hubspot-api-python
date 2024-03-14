@@ -36,85 +36,85 @@ class ModelProperty(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "updated_at": "datetime",
-        "created_at": "datetime",
-        "archived_at": "datetime",
-        "name": "str",
+        "created_user_id": "str",
+        "hidden": "bool",
+        "modification_metadata": "PropertyModificationMetadata",
+        "display_order": "int",
+        "description": "str",
+        "show_currency_symbol": "bool",
         "label": "str",
         "type": "str",
-        "field_type": "str",
-        "description": "str",
+        "hubspot_defined": "bool",
+        "form_field": "bool",
+        "created_at": "datetime",
+        "archived_at": "datetime",
+        "archived": "bool",
         "group_name": "str",
-        "options": "list[Option]",
-        "created_user_id": "str",
-        "updated_user_id": "str",
         "referenced_object_type": "str",
-        "display_order": "int",
+        "name": "str",
+        "options": "list[Option]",
+        "calculation_formula": "str",
+        "has_unique_value": "bool",
+        "field_type": "str",
+        "updated_user_id": "str",
         "calculated": "bool",
         "external_options": "bool",
-        "archived": "bool",
-        "has_unique_value": "bool",
-        "hidden": "bool",
-        "hubspot_defined": "bool",
-        "show_currency_symbol": "bool",
-        "modification_metadata": "PropertyModificationMetadata",
-        "form_field": "bool",
-        "calculation_formula": "str",
+        "updated_at": "datetime",
     }
 
     attribute_map = {
-        "updated_at": "updatedAt",
-        "created_at": "createdAt",
-        "archived_at": "archivedAt",
-        "name": "name",
+        "created_user_id": "createdUserId",
+        "hidden": "hidden",
+        "modification_metadata": "modificationMetadata",
+        "display_order": "displayOrder",
+        "description": "description",
+        "show_currency_symbol": "showCurrencySymbol",
         "label": "label",
         "type": "type",
-        "field_type": "fieldType",
-        "description": "description",
+        "hubspot_defined": "hubspotDefined",
+        "form_field": "formField",
+        "created_at": "createdAt",
+        "archived_at": "archivedAt",
+        "archived": "archived",
         "group_name": "groupName",
-        "options": "options",
-        "created_user_id": "createdUserId",
-        "updated_user_id": "updatedUserId",
         "referenced_object_type": "referencedObjectType",
-        "display_order": "displayOrder",
+        "name": "name",
+        "options": "options",
+        "calculation_formula": "calculationFormula",
+        "has_unique_value": "hasUniqueValue",
+        "field_type": "fieldType",
+        "updated_user_id": "updatedUserId",
         "calculated": "calculated",
         "external_options": "externalOptions",
-        "archived": "archived",
-        "has_unique_value": "hasUniqueValue",
-        "hidden": "hidden",
-        "hubspot_defined": "hubspotDefined",
-        "show_currency_symbol": "showCurrencySymbol",
-        "modification_metadata": "modificationMetadata",
-        "form_field": "formField",
-        "calculation_formula": "calculationFormula",
+        "updated_at": "updatedAt",
     }
 
     def __init__(
         self,
-        updated_at=None,
-        created_at=None,
-        archived_at=None,
-        name=None,
+        created_user_id=None,
+        hidden=None,
+        modification_metadata=None,
+        display_order=None,
+        description=None,
+        show_currency_symbol=None,
         label=None,
         type=None,
-        field_type=None,
-        description=None,
+        hubspot_defined=None,
+        form_field=None,
+        created_at=None,
+        archived_at=None,
+        archived=None,
         group_name=None,
-        options=None,
-        created_user_id=None,
-        updated_user_id=None,
         referenced_object_type=None,
-        display_order=None,
+        name=None,
+        options=None,
+        calculation_formula=None,
+        has_unique_value=None,
+        field_type=None,
+        updated_user_id=None,
         calculated=None,
         external_options=None,
-        archived=None,
-        has_unique_value=None,
-        hidden=None,
-        hubspot_defined=None,
-        show_currency_symbol=None,
-        modification_metadata=None,
-        form_field=None,
-        calculation_formula=None,
+        updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """ModelProperty - a model defined in OpenAPI"""  # noqa: E501
@@ -122,163 +122,211 @@ class ModelProperty(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._updated_at = None
-        self._created_at = None
-        self._archived_at = None
-        self._name = None
+        self._created_user_id = None
+        self._hidden = None
+        self._modification_metadata = None
+        self._display_order = None
+        self._description = None
+        self._show_currency_symbol = None
         self._label = None
         self._type = None
-        self._field_type = None
-        self._description = None
+        self._hubspot_defined = None
+        self._form_field = None
+        self._created_at = None
+        self._archived_at = None
+        self._archived = None
         self._group_name = None
-        self._options = None
-        self._created_user_id = None
-        self._updated_user_id = None
         self._referenced_object_type = None
-        self._display_order = None
+        self._name = None
+        self._options = None
+        self._calculation_formula = None
+        self._has_unique_value = None
+        self._field_type = None
+        self._updated_user_id = None
         self._calculated = None
         self._external_options = None
-        self._archived = None
-        self._has_unique_value = None
-        self._hidden = None
-        self._hubspot_defined = None
-        self._show_currency_symbol = None
-        self._modification_metadata = None
-        self._form_field = None
-        self._calculation_formula = None
+        self._updated_at = None
         self.discriminator = None
 
-        if updated_at is not None:
-            self.updated_at = updated_at
+        if created_user_id is not None:
+            self.created_user_id = created_user_id
+        if hidden is not None:
+            self.hidden = hidden
+        if modification_metadata is not None:
+            self.modification_metadata = modification_metadata
+        if display_order is not None:
+            self.display_order = display_order
+        self.description = description
+        if show_currency_symbol is not None:
+            self.show_currency_symbol = show_currency_symbol
+        self.label = label
+        self.type = type
+        if hubspot_defined is not None:
+            self.hubspot_defined = hubspot_defined
+        if form_field is not None:
+            self.form_field = form_field
         if created_at is not None:
             self.created_at = created_at
         if archived_at is not None:
             self.archived_at = archived_at
-        self.name = name
-        self.label = label
-        self.type = type
-        self.field_type = field_type
-        self.description = description
+        if archived is not None:
+            self.archived = archived
         self.group_name = group_name
-        self.options = options
-        if created_user_id is not None:
-            self.created_user_id = created_user_id
-        if updated_user_id is not None:
-            self.updated_user_id = updated_user_id
         if referenced_object_type is not None:
             self.referenced_object_type = referenced_object_type
-        if display_order is not None:
-            self.display_order = display_order
+        self.name = name
+        self.options = options
+        if calculation_formula is not None:
+            self.calculation_formula = calculation_formula
+        if has_unique_value is not None:
+            self.has_unique_value = has_unique_value
+        self.field_type = field_type
+        if updated_user_id is not None:
+            self.updated_user_id = updated_user_id
         if calculated is not None:
             self.calculated = calculated
         if external_options is not None:
             self.external_options = external_options
-        if archived is not None:
-            self.archived = archived
-        if has_unique_value is not None:
-            self.has_unique_value = has_unique_value
-        if hidden is not None:
-            self.hidden = hidden
-        if hubspot_defined is not None:
-            self.hubspot_defined = hubspot_defined
-        if show_currency_symbol is not None:
-            self.show_currency_symbol = show_currency_symbol
-        if modification_metadata is not None:
-            self.modification_metadata = modification_metadata
-        if form_field is not None:
-            self.form_field = form_field
-        if calculation_formula is not None:
-            self.calculation_formula = calculation_formula
+        if updated_at is not None:
+            self.updated_at = updated_at
 
     @property
-    def updated_at(self):
-        """Gets the updated_at of this ModelProperty.  # noqa: E501
+    def created_user_id(self):
+        """Gets the created_user_id of this ModelProperty.  # noqa: E501
 
+        The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.  # noqa: E501
 
-        :return: The updated_at of this ModelProperty.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._updated_at
-
-    @updated_at.setter
-    def updated_at(self, updated_at):
-        """Sets the updated_at of this ModelProperty.
-
-
-        :param updated_at: The updated_at of this ModelProperty.  # noqa: E501
-        :type updated_at: datetime
-        """
-
-        self._updated_at = updated_at
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this ModelProperty.  # noqa: E501
-
-
-        :return: The created_at of this ModelProperty.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this ModelProperty.
-
-
-        :param created_at: The created_at of this ModelProperty.  # noqa: E501
-        :type created_at: datetime
-        """
-
-        self._created_at = created_at
-
-    @property
-    def archived_at(self):
-        """Gets the archived_at of this ModelProperty.  # noqa: E501
-
-        When the property was archived.  # noqa: E501
-
-        :return: The archived_at of this ModelProperty.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._archived_at
-
-    @archived_at.setter
-    def archived_at(self, archived_at):
-        """Sets the archived_at of this ModelProperty.
-
-        When the property was archived.  # noqa: E501
-
-        :param archived_at: The archived_at of this ModelProperty.  # noqa: E501
-        :type archived_at: datetime
-        """
-
-        self._archived_at = archived_at
-
-    @property
-    def name(self):
-        """Gets the name of this ModelProperty.  # noqa: E501
-
-        The internal property name, which must be used when referencing the property via the API.  # noqa: E501
-
-        :return: The name of this ModelProperty.  # noqa: E501
+        :return: The created_user_id of this ModelProperty.  # noqa: E501
         :rtype: str
         """
-        return self._name
+        return self._created_user_id
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ModelProperty.
+    @created_user_id.setter
+    def created_user_id(self, created_user_id):
+        """Sets the created_user_id of this ModelProperty.
 
-        The internal property name, which must be used when referencing the property via the API.  # noqa: E501
+        The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.  # noqa: E501
 
-        :param name: The name of this ModelProperty.  # noqa: E501
-        :type name: str
+        :param created_user_id: The created_user_id of this ModelProperty.  # noqa: E501
+        :type created_user_id: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
-        self._name = name
+        self._created_user_id = created_user_id
+
+    @property
+    def hidden(self):
+        """Gets the hidden of this ModelProperty.  # noqa: E501
+
+        Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.  # noqa: E501
+
+        :return: The hidden of this ModelProperty.  # noqa: E501
+        :rtype: bool
+        """
+        return self._hidden
+
+    @hidden.setter
+    def hidden(self, hidden):
+        """Sets the hidden of this ModelProperty.
+
+        Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.  # noqa: E501
+
+        :param hidden: The hidden of this ModelProperty.  # noqa: E501
+        :type hidden: bool
+        """
+
+        self._hidden = hidden
+
+    @property
+    def modification_metadata(self):
+        """Gets the modification_metadata of this ModelProperty.  # noqa: E501
+
+
+        :return: The modification_metadata of this ModelProperty.  # noqa: E501
+        :rtype: PropertyModificationMetadata
+        """
+        return self._modification_metadata
+
+    @modification_metadata.setter
+    def modification_metadata(self, modification_metadata):
+        """Sets the modification_metadata of this ModelProperty.
+
+
+        :param modification_metadata: The modification_metadata of this ModelProperty.  # noqa: E501
+        :type modification_metadata: PropertyModificationMetadata
+        """
+
+        self._modification_metadata = modification_metadata
+
+    @property
+    def display_order(self):
+        """Gets the display_order of this ModelProperty.  # noqa: E501
+
+        Properties are shown in order, starting with the lowest positive integer value.  # noqa: E501
+
+        :return: The display_order of this ModelProperty.  # noqa: E501
+        :rtype: int
+        """
+        return self._display_order
+
+    @display_order.setter
+    def display_order(self, display_order):
+        """Sets the display_order of this ModelProperty.
+
+        Properties are shown in order, starting with the lowest positive integer value.  # noqa: E501
+
+        :param display_order: The display_order of this ModelProperty.  # noqa: E501
+        :type display_order: int
+        """
+
+        self._display_order = display_order
+
+    @property
+    def description(self):
+        """Gets the description of this ModelProperty.  # noqa: E501
+
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+
+        :return: The description of this ModelProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ModelProperty.
+
+        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+
+        :param description: The description of this ModelProperty.  # noqa: E501
+        :type description: str
+        """
+        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def show_currency_symbol(self):
+        """Gets the show_currency_symbol of this ModelProperty.  # noqa: E501
+
+        Whether or not the property will display the currency symbol set in the account settings.  # noqa: E501
+
+        :return: The show_currency_symbol of this ModelProperty.  # noqa: E501
+        :rtype: bool
+        """
+        return self._show_currency_symbol
+
+    @show_currency_symbol.setter
+    def show_currency_symbol(self, show_currency_symbol):
+        """Sets the show_currency_symbol of this ModelProperty.
+
+        Whether or not the property will display the currency symbol set in the account settings.  # noqa: E501
+
+        :param show_currency_symbol: The show_currency_symbol of this ModelProperty.  # noqa: E501
+        :type show_currency_symbol: bool
+        """
+
+        self._show_currency_symbol = show_currency_symbol
 
     @property
     def label(self):
@@ -331,54 +379,119 @@ class ModelProperty(object):
         self._type = type
 
     @property
-    def field_type(self):
-        """Gets the field_type of this ModelProperty.  # noqa: E501
+    def hubspot_defined(self):
+        """Gets the hubspot_defined of this ModelProperty.  # noqa: E501
 
-        Controls how the property appears in HubSpot.  # noqa: E501
+        This will be true for default object properties built into HubSpot.  # noqa: E501
 
-        :return: The field_type of this ModelProperty.  # noqa: E501
-        :rtype: str
+        :return: The hubspot_defined of this ModelProperty.  # noqa: E501
+        :rtype: bool
         """
-        return self._field_type
+        return self._hubspot_defined
 
-    @field_type.setter
-    def field_type(self, field_type):
-        """Sets the field_type of this ModelProperty.
+    @hubspot_defined.setter
+    def hubspot_defined(self, hubspot_defined):
+        """Sets the hubspot_defined of this ModelProperty.
 
-        Controls how the property appears in HubSpot.  # noqa: E501
+        This will be true for default object properties built into HubSpot.  # noqa: E501
 
-        :param field_type: The field_type of this ModelProperty.  # noqa: E501
-        :type field_type: str
+        :param hubspot_defined: The hubspot_defined of this ModelProperty.  # noqa: E501
+        :type hubspot_defined: bool
         """
-        if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
 
-        self._field_type = field_type
+        self._hubspot_defined = hubspot_defined
 
     @property
-    def description(self):
-        """Gets the description of this ModelProperty.  # noqa: E501
+    def form_field(self):
+        """Gets the form_field of this ModelProperty.  # noqa: E501
 
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
 
-        :return: The description of this ModelProperty.  # noqa: E501
-        :rtype: str
+        :return: The form_field of this ModelProperty.  # noqa: E501
+        :rtype: bool
         """
-        return self._description
+        return self._form_field
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ModelProperty.
+    @form_field.setter
+    def form_field(self, form_field):
+        """Sets the form_field of this ModelProperty.
 
-        A description of the property that will be shown as help text in HubSpot.  # noqa: E501
+        Whether or not the property can be used in a HubSpot form.  # noqa: E501
 
-        :param description: The description of this ModelProperty.  # noqa: E501
-        :type description: str
+        :param form_field: The form_field of this ModelProperty.  # noqa: E501
+        :type form_field: bool
         """
-        if self.local_vars_configuration.client_side_validation and description is None:  # noqa: E501
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
-        self._description = description
+        self._form_field = form_field
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this ModelProperty.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The created_at of this ModelProperty.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this ModelProperty.
+
+          # noqa: E501
+
+        :param created_at: The created_at of this ModelProperty.  # noqa: E501
+        :type created_at: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def archived_at(self):
+        """Gets the archived_at of this ModelProperty.  # noqa: E501
+
+        When the property was archived.  # noqa: E501
+
+        :return: The archived_at of this ModelProperty.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._archived_at
+
+    @archived_at.setter
+    def archived_at(self, archived_at):
+        """Sets the archived_at of this ModelProperty.
+
+        When the property was archived.  # noqa: E501
+
+        :param archived_at: The archived_at of this ModelProperty.  # noqa: E501
+        :type archived_at: datetime
+        """
+
+        self._archived_at = archived_at
+
+    @property
+    def archived(self):
+        """Gets the archived of this ModelProperty.  # noqa: E501
+
+        Whether or not the property is archived.  # noqa: E501
+
+        :return: The archived of this ModelProperty.  # noqa: E501
+        :rtype: bool
+        """
+        return self._archived
+
+    @archived.setter
+    def archived(self, archived):
+        """Sets the archived of this ModelProperty.
+
+        Whether or not the property is archived.  # noqa: E501
+
+        :param archived: The archived of this ModelProperty.  # noqa: E501
+        :type archived: bool
+        """
+
+        self._archived = archived
 
     @property
     def group_name(self):
@@ -406,6 +519,54 @@ class ModelProperty(object):
         self._group_name = group_name
 
     @property
+    def referenced_object_type(self):
+        """Gets the referenced_object_type of this ModelProperty.  # noqa: E501
+
+        If this property is related to other object(s), they'll be listed here.  # noqa: E501
+
+        :return: The referenced_object_type of this ModelProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._referenced_object_type
+
+    @referenced_object_type.setter
+    def referenced_object_type(self, referenced_object_type):
+        """Sets the referenced_object_type of this ModelProperty.
+
+        If this property is related to other object(s), they'll be listed here.  # noqa: E501
+
+        :param referenced_object_type: The referenced_object_type of this ModelProperty.  # noqa: E501
+        :type referenced_object_type: str
+        """
+
+        self._referenced_object_type = referenced_object_type
+
+    @property
+    def name(self):
+        """Gets the name of this ModelProperty.  # noqa: E501
+
+        The internal property name, which must be used when referencing the property via the API.  # noqa: E501
+
+        :return: The name of this ModelProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ModelProperty.
+
+        The internal property name, which must be used when referencing the property via the API.  # noqa: E501
+
+        :param name: The name of this ModelProperty.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
     def options(self):
         """Gets the options of this ModelProperty.  # noqa: E501
 
@@ -431,27 +592,75 @@ class ModelProperty(object):
         self._options = options
 
     @property
-    def created_user_id(self):
-        """Gets the created_user_id of this ModelProperty.  # noqa: E501
+    def calculation_formula(self):
+        """Gets the calculation_formula of this ModelProperty.  # noqa: E501
 
-        The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.  # noqa: E501
+        Represents a formula that is used to compute a calculated property.  # noqa: E501
 
-        :return: The created_user_id of this ModelProperty.  # noqa: E501
+        :return: The calculation_formula of this ModelProperty.  # noqa: E501
         :rtype: str
         """
-        return self._created_user_id
+        return self._calculation_formula
 
-    @created_user_id.setter
-    def created_user_id(self, created_user_id):
-        """Sets the created_user_id of this ModelProperty.
+    @calculation_formula.setter
+    def calculation_formula(self, calculation_formula):
+        """Sets the calculation_formula of this ModelProperty.
 
-        The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.  # noqa: E501
+        Represents a formula that is used to compute a calculated property.  # noqa: E501
 
-        :param created_user_id: The created_user_id of this ModelProperty.  # noqa: E501
-        :type created_user_id: str
+        :param calculation_formula: The calculation_formula of this ModelProperty.  # noqa: E501
+        :type calculation_formula: str
         """
 
-        self._created_user_id = created_user_id
+        self._calculation_formula = calculation_formula
+
+    @property
+    def has_unique_value(self):
+        """Gets the has_unique_value of this ModelProperty.  # noqa: E501
+
+        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+
+        :return: The has_unique_value of this ModelProperty.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_unique_value
+
+    @has_unique_value.setter
+    def has_unique_value(self, has_unique_value):
+        """Sets the has_unique_value of this ModelProperty.
+
+        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
+
+        :param has_unique_value: The has_unique_value of this ModelProperty.  # noqa: E501
+        :type has_unique_value: bool
+        """
+
+        self._has_unique_value = has_unique_value
+
+    @property
+    def field_type(self):
+        """Gets the field_type of this ModelProperty.  # noqa: E501
+
+        Controls how the property appears in HubSpot.  # noqa: E501
+
+        :return: The field_type of this ModelProperty.  # noqa: E501
+        :rtype: str
+        """
+        return self._field_type
+
+    @field_type.setter
+    def field_type(self, field_type):
+        """Sets the field_type of this ModelProperty.
+
+        Controls how the property appears in HubSpot.  # noqa: E501
+
+        :param field_type: The field_type of this ModelProperty.  # noqa: E501
+        :type field_type: str
+        """
+        if self.local_vars_configuration.client_side_validation and field_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `field_type`, must not be `None`")  # noqa: E501
+
+        self._field_type = field_type
 
     @property
     def updated_user_id(self):
@@ -475,52 +684,6 @@ class ModelProperty(object):
         """
 
         self._updated_user_id = updated_user_id
-
-    @property
-    def referenced_object_type(self):
-        """Gets the referenced_object_type of this ModelProperty.  # noqa: E501
-
-        If this property is related to other object(s), they'll be listed here.  # noqa: E501
-
-        :return: The referenced_object_type of this ModelProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._referenced_object_type
-
-    @referenced_object_type.setter
-    def referenced_object_type(self, referenced_object_type):
-        """Sets the referenced_object_type of this ModelProperty.
-
-        If this property is related to other object(s), they'll be listed here.  # noqa: E501
-
-        :param referenced_object_type: The referenced_object_type of this ModelProperty.  # noqa: E501
-        :type referenced_object_type: str
-        """
-
-        self._referenced_object_type = referenced_object_type
-
-    @property
-    def display_order(self):
-        """Gets the display_order of this ModelProperty.  # noqa: E501
-
-        Properties are shown in order, starting with the lowest positive integer value.  # noqa: E501
-
-        :return: The display_order of this ModelProperty.  # noqa: E501
-        :rtype: int
-        """
-        return self._display_order
-
-    @display_order.setter
-    def display_order(self, display_order):
-        """Sets the display_order of this ModelProperty.
-
-        Properties are shown in order, starting with the lowest positive integer value.  # noqa: E501
-
-        :param display_order: The display_order of this ModelProperty.  # noqa: E501
-        :type display_order: int
-        """
-
-        self._display_order = display_order
 
     @property
     def calculated(self):
@@ -569,186 +732,27 @@ class ModelProperty(object):
         self._external_options = external_options
 
     @property
-    def archived(self):
-        """Gets the archived of this ModelProperty.  # noqa: E501
+    def updated_at(self):
+        """Gets the updated_at of this ModelProperty.  # noqa: E501
 
-        Whether or not the property is archived.  # noqa: E501
+          # noqa: E501
 
-        :return: The archived of this ModelProperty.  # noqa: E501
-        :rtype: bool
+        :return: The updated_at of this ModelProperty.  # noqa: E501
+        :rtype: datetime
         """
-        return self._archived
+        return self._updated_at
 
-    @archived.setter
-    def archived(self, archived):
-        """Sets the archived of this ModelProperty.
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this ModelProperty.
 
-        Whether or not the property is archived.  # noqa: E501
+          # noqa: E501
 
-        :param archived: The archived of this ModelProperty.  # noqa: E501
-        :type archived: bool
-        """
-
-        self._archived = archived
-
-    @property
-    def has_unique_value(self):
-        """Gets the has_unique_value of this ModelProperty.  # noqa: E501
-
-        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
-
-        :return: The has_unique_value of this ModelProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._has_unique_value
-
-    @has_unique_value.setter
-    def has_unique_value(self, has_unique_value):
-        """Sets the has_unique_value of this ModelProperty.
-
-        Whether or not the property's value must be unique. Once set, this can't be changed.  # noqa: E501
-
-        :param has_unique_value: The has_unique_value of this ModelProperty.  # noqa: E501
-        :type has_unique_value: bool
+        :param updated_at: The updated_at of this ModelProperty.  # noqa: E501
+        :type updated_at: datetime
         """
 
-        self._has_unique_value = has_unique_value
-
-    @property
-    def hidden(self):
-        """Gets the hidden of this ModelProperty.  # noqa: E501
-
-        Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.  # noqa: E501
-
-        :return: The hidden of this ModelProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._hidden
-
-    @hidden.setter
-    def hidden(self, hidden):
-        """Sets the hidden of this ModelProperty.
-
-        Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.  # noqa: E501
-
-        :param hidden: The hidden of this ModelProperty.  # noqa: E501
-        :type hidden: bool
-        """
-
-        self._hidden = hidden
-
-    @property
-    def hubspot_defined(self):
-        """Gets the hubspot_defined of this ModelProperty.  # noqa: E501
-
-        This will be true for default object properties built into HubSpot.  # noqa: E501
-
-        :return: The hubspot_defined of this ModelProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._hubspot_defined
-
-    @hubspot_defined.setter
-    def hubspot_defined(self, hubspot_defined):
-        """Sets the hubspot_defined of this ModelProperty.
-
-        This will be true for default object properties built into HubSpot.  # noqa: E501
-
-        :param hubspot_defined: The hubspot_defined of this ModelProperty.  # noqa: E501
-        :type hubspot_defined: bool
-        """
-
-        self._hubspot_defined = hubspot_defined
-
-    @property
-    def show_currency_symbol(self):
-        """Gets the show_currency_symbol of this ModelProperty.  # noqa: E501
-
-        Whether or not the property will display the currency symbol set in the account settings.  # noqa: E501
-
-        :return: The show_currency_symbol of this ModelProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._show_currency_symbol
-
-    @show_currency_symbol.setter
-    def show_currency_symbol(self, show_currency_symbol):
-        """Sets the show_currency_symbol of this ModelProperty.
-
-        Whether or not the property will display the currency symbol set in the account settings.  # noqa: E501
-
-        :param show_currency_symbol: The show_currency_symbol of this ModelProperty.  # noqa: E501
-        :type show_currency_symbol: bool
-        """
-
-        self._show_currency_symbol = show_currency_symbol
-
-    @property
-    def modification_metadata(self):
-        """Gets the modification_metadata of this ModelProperty.  # noqa: E501
-
-
-        :return: The modification_metadata of this ModelProperty.  # noqa: E501
-        :rtype: PropertyModificationMetadata
-        """
-        return self._modification_metadata
-
-    @modification_metadata.setter
-    def modification_metadata(self, modification_metadata):
-        """Sets the modification_metadata of this ModelProperty.
-
-
-        :param modification_metadata: The modification_metadata of this ModelProperty.  # noqa: E501
-        :type modification_metadata: PropertyModificationMetadata
-        """
-
-        self._modification_metadata = modification_metadata
-
-    @property
-    def form_field(self):
-        """Gets the form_field of this ModelProperty.  # noqa: E501
-
-        Whether or not the property can be used in a HubSpot form.  # noqa: E501
-
-        :return: The form_field of this ModelProperty.  # noqa: E501
-        :rtype: bool
-        """
-        return self._form_field
-
-    @form_field.setter
-    def form_field(self, form_field):
-        """Sets the form_field of this ModelProperty.
-
-        Whether or not the property can be used in a HubSpot form.  # noqa: E501
-
-        :param form_field: The form_field of this ModelProperty.  # noqa: E501
-        :type form_field: bool
-        """
-
-        self._form_field = form_field
-
-    @property
-    def calculation_formula(self):
-        """Gets the calculation_formula of this ModelProperty.  # noqa: E501
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :return: The calculation_formula of this ModelProperty.  # noqa: E501
-        :rtype: str
-        """
-        return self._calculation_formula
-
-    @calculation_formula.setter
-    def calculation_formula(self, calculation_formula):
-        """Sets the calculation_formula of this ModelProperty.
-
-        Represents a formula that is used to compute a calculated property.  # noqa: E501
-
-        :param calculation_formula: The calculation_formula of this ModelProperty.  # noqa: E501
-        :type calculation_formula: str
-        """
-
-        self._calculation_formula = calculation_formula
+        self._updated_at = updated_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

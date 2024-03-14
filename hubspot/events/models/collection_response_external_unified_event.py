@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    HubSpot Events API
+    Events
 
     API for accessing CRM object events.  # noqa: E501
 
@@ -35,46 +35,23 @@ class CollectionResponseExternalUnifiedEvent(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"results": "list[ExternalUnifiedEvent]", "paging": "Paging"}
+    openapi_types = {"paging": "Paging", "results": "list[ExternalUnifiedEvent]"}
 
-    attribute_map = {"results": "results", "paging": "paging"}
+    attribute_map = {"paging": "paging", "results": "results"}
 
-    def __init__(self, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, paging=None, results=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseExternalUnifiedEvent - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._results = None
         self._paging = None
+        self._results = None
         self.discriminator = None
 
-        self.results = results
         if paging is not None:
             self.paging = paging
-
-    @property
-    def results(self):
-        """Gets the results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
-
-
-        :return: The results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
-        :rtype: list[ExternalUnifiedEvent]
-        """
-        return self._results
-
-    @results.setter
-    def results(self, results):
-        """Sets the results of this CollectionResponseExternalUnifiedEvent.
-
-
-        :param results: The results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
-        :type results: list[ExternalUnifiedEvent]
-        """
-        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
-            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
-
-        self._results = results
+        self.results = results
 
     @property
     def paging(self):
@@ -96,6 +73,31 @@ class CollectionResponseExternalUnifiedEvent(object):
         """
 
         self._paging = paging
+
+    @property
+    def results(self):
+        """Gets the results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
+        :rtype: list[ExternalUnifiedEvent]
+        """
+        return self._results
+
+    @results.setter
+    def results(self, results):
+        """Sets the results of this CollectionResponseExternalUnifiedEvent.
+
+          # noqa: E501
+
+        :param results: The results of this CollectionResponseExternalUnifiedEvent.  # noqa: E501
+        :type results: list[ExternalUnifiedEvent]
+        """
+        if self.local_vars_configuration.client_side_validation and results is None:  # noqa: E501
+            raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
+
+        self._results = results
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

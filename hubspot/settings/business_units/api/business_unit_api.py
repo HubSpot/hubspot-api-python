@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Business Units Business Units
+    Business Units
 
     Retrieve Business Unit information.  # noqa: E501
 

@@ -136,7 +136,7 @@ class BasicApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/{communicationId}",
+            "/crm/v3/objects/communications/{communicationId}",
             "DELETE",
             path_params,
             query_params,
@@ -157,7 +157,7 @@ class BasicApi(object):
     def create(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
-        Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard Communications is provided.  # noqa: E501
+        Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard communications is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -187,7 +187,7 @@ class BasicApi(object):
     def create_with_http_info(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
         """Create  # noqa: E501
 
-        Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard Communications is provided.  # noqa: E501
+        Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard communications is provided.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -264,7 +264,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications",
+            "/crm/v3/objects/communications",
             "POST",
             path_params,
             query_params,
@@ -420,7 +420,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/{communicationId}",
+            "/crm/v3/objects/communications/{communicationId}",
             "GET",
             path_params,
             query_params,
@@ -441,7 +441,7 @@ class BasicApi(object):
     def get_page(self, **kwargs):  # noqa: E501
         """List  # noqa: E501
 
-        Read a page of Communications. Control what is returned via the `properties` query param.  # noqa: E501
+        Read a page of communications. Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -481,7 +481,7 @@ class BasicApi(object):
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
         """List  # noqa: E501
 
-        Read a page of Communications. Control what is returned via the `properties` query param.  # noqa: E501
+        Read a page of communications. Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -573,7 +573,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications",
+            "/crm/v3/objects/communications",
             "GET",
             path_params,
             query_params,
@@ -716,7 +716,7 @@ class BasicApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/objects/Communications/{communicationId}",
+            "/crm/v3/objects/communications/{communicationId}",
             "PATCH",
             path_params,
             query_params,

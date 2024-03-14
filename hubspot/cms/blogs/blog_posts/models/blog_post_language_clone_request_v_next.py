@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,23 +35,46 @@ class BlogPostLanguageCloneRequestVNext(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "language": "str"}
+    openapi_types = {"language": "str", "id": "str"}
 
-    attribute_map = {"id": "id", "language": "language"}
+    attribute_map = {"language": "language", "id": "id"}
 
-    def __init__(self, id=None, language=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, language=None, id=None, local_vars_configuration=None):  # noqa: E501
         """BlogPostLanguageCloneRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._language = None
+        self._id = None
         self.discriminator = None
 
-        self.id = id
         if language is not None:
             self.language = language
+        self.id = id
+
+    @property
+    def language(self):
+        """Gets the language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
+
+        Target language of new variant.  # noqa: E501
+
+        :return: The language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
+        :rtype: str
+        """
+        return self._language
+
+    @language.setter
+    def language(self, language):
+        """Sets the language of this BlogPostLanguageCloneRequestVNext.
+
+        Target language of new variant.  # noqa: E501
+
+        :param language: The language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
+        :type language: str
+        """
+
+        self._language = language
 
     @property
     def id(self):
@@ -77,29 +100,6 @@ class BlogPostLanguageCloneRequestVNext(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
-
-    @property
-    def language(self):
-        """Gets the language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
-
-        Target language of new variant.  # noqa: E501
-
-        :return: The language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this BlogPostLanguageCloneRequestVNext.
-
-        Target language of new variant.  # noqa: E501
-
-        :param language: The language of this BlogPostLanguageCloneRequestVNext.  # noqa: E501
-        :type language: str
-        """
-
-        self._language = language
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

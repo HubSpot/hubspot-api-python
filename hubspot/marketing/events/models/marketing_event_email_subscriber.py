@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Marketing Events Extension
+    Marketing Events
 
     These APIs allow you to interact with HubSpot's Marketing Events Extension. It allows you to: * Create, Read or update Marketing Event information in HubSpot * Specify whether a HubSpot contact has registered, attended or cancelled a registration to a Marketing Event. * Specify a URL that can be called to get the details of a Marketing Event.   # noqa: E501
 
@@ -35,53 +35,49 @@ class MarketingEventEmailSubscriber(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"interaction_date_time": "int", "properties": "dict[str, str]", "email": "str", "contact_properties": "dict[str, str]"}
+    openapi_types = {"contact_properties": "dict[str, str]", "properties": "dict[str, str]", "email": "str", "interaction_date_time": "int"}
 
-    attribute_map = {"interaction_date_time": "interactionDateTime", "properties": "properties", "email": "email", "contact_properties": "contactProperties"}
+    attribute_map = {"contact_properties": "contactProperties", "properties": "properties", "email": "email", "interaction_date_time": "interactionDateTime"}
 
-    def __init__(self, interaction_date_time=None, properties=None, email=None, contact_properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, contact_properties=None, properties=None, email=None, interaction_date_time=None, local_vars_configuration=None):  # noqa: E501
         """MarketingEventEmailSubscriber - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._interaction_date_time = None
+        self._contact_properties = None
         self._properties = None
         self._email = None
-        self._contact_properties = None
+        self._interaction_date_time = None
         self.discriminator = None
 
-        self.interaction_date_time = interaction_date_time
+        if contact_properties is not None:
+            self.contact_properties = contact_properties
         if properties is not None:
             self.properties = properties
         self.email = email
-        if contact_properties is not None:
-            self.contact_properties = contact_properties
+        self.interaction_date_time = interaction_date_time
 
     @property
-    def interaction_date_time(self):
-        """Gets the interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
+    def contact_properties(self):
+        """Gets the contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
 
-        The date and time at which the contact subscribed to the event.  # noqa: E501
 
-        :return: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
-        :rtype: int
+        :return: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
+        :rtype: dict[str, str]
         """
-        return self._interaction_date_time
+        return self._contact_properties
 
-    @interaction_date_time.setter
-    def interaction_date_time(self, interaction_date_time):
-        """Sets the interaction_date_time of this MarketingEventEmailSubscriber.
+    @contact_properties.setter
+    def contact_properties(self, contact_properties):
+        """Sets the contact_properties of this MarketingEventEmailSubscriber.
 
-        The date and time at which the contact subscribed to the event.  # noqa: E501
 
-        :param interaction_date_time: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type interaction_date_time: int
+        :param contact_properties: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
+        :type contact_properties: dict[str, str]
         """
-        if self.local_vars_configuration.client_side_validation and interaction_date_time is None:  # noqa: E501
-            raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
 
-        self._interaction_date_time = interaction_date_time
+        self._contact_properties = contact_properties
 
     @property
     def properties(self):
@@ -108,7 +104,7 @@ class MarketingEventEmailSubscriber(object):
     def email(self):
         """Gets the email of this MarketingEventEmailSubscriber.  # noqa: E501
 
-        The email address of the contact in HubSpot to associate with the event. Note that the contact must already exist in HubSpot; a contact will not be created.  # noqa: E501
+        The email address of the contact in HubSpot to associate with the event.  # noqa: E501
 
         :return: The email of this MarketingEventEmailSubscriber.  # noqa: E501
         :rtype: str
@@ -119,7 +115,7 @@ class MarketingEventEmailSubscriber(object):
     def email(self, email):
         """Sets the email of this MarketingEventEmailSubscriber.
 
-        The email address of the contact in HubSpot to associate with the event. Note that the contact must already exist in HubSpot; a contact will not be created.  # noqa: E501
+        The email address of the contact in HubSpot to associate with the event.  # noqa: E501
 
         :param email: The email of this MarketingEventEmailSubscriber.  # noqa: E501
         :type email: str
@@ -130,25 +126,29 @@ class MarketingEventEmailSubscriber(object):
         self._email = email
 
     @property
-    def contact_properties(self):
-        """Gets the contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
+    def interaction_date_time(self):
+        """Gets the interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
 
+        The date and time at which the contact subscribed to the event.  # noqa: E501
 
-        :return: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :rtype: dict[str, str]
+        :return: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
+        :rtype: int
         """
-        return self._contact_properties
+        return self._interaction_date_time
 
-    @contact_properties.setter
-    def contact_properties(self, contact_properties):
-        """Sets the contact_properties of this MarketingEventEmailSubscriber.
+    @interaction_date_time.setter
+    def interaction_date_time(self, interaction_date_time):
+        """Sets the interaction_date_time of this MarketingEventEmailSubscriber.
 
+        The date and time at which the contact subscribed to the event.  # noqa: E501
 
-        :param contact_properties: The contact_properties of this MarketingEventEmailSubscriber.  # noqa: E501
-        :type contact_properties: dict[str, str]
+        :param interaction_date_time: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
+        :type interaction_date_time: int
         """
+        if self.local_vars_configuration.client_side_validation and interaction_date_time is None:  # noqa: E501
+            raise ValueError("Invalid value for `interaction_date_time`, must not be `None`")  # noqa: E501
 
-        self._contact_properties = contact_properties
+        self._interaction_date_time = interaction_date_time
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CMS Audit Logs
+    Cms Content Audit
 
     Use this endpoint to query audit logs of CMS changes that occurred on your HubSpot account.  # noqa: E501
 
@@ -35,61 +35,82 @@ class Error(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"message": "str", "correlation_id": "str", "category": "str", "sub_category": "str", "errors": "list[ErrorDetail]", "context": "dict[str, list[str]]", "links": "dict[str, str]"}
+    openapi_types = {"sub_category": "str", "context": "dict[str, list[str]]", "correlation_id": "str", "links": "dict[str, str]", "message": "str", "category": "str", "errors": "list[ErrorDetail]"}
 
-    attribute_map = {"message": "message", "correlation_id": "correlationId", "category": "category", "sub_category": "subCategory", "errors": "errors", "context": "context", "links": "links"}
+    attribute_map = {"sub_category": "subCategory", "context": "context", "correlation_id": "correlationId", "links": "links", "message": "message", "category": "category", "errors": "errors"}
 
-    def __init__(self, message=None, correlation_id=None, category=None, sub_category=None, errors=None, context=None, links=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, sub_category=None, context=None, correlation_id=None, links=None, message=None, category=None, errors=None, local_vars_configuration=None):  # noqa: E501
         """Error - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._message = None
-        self._correlation_id = None
-        self._category = None
         self._sub_category = None
-        self._errors = None
         self._context = None
+        self._correlation_id = None
         self._links = None
+        self._message = None
+        self._category = None
+        self._errors = None
         self.discriminator = None
 
-        self.message = message
-        self.correlation_id = correlation_id
-        self.category = category
         if sub_category is not None:
             self.sub_category = sub_category
-        if errors is not None:
-            self.errors = errors
         if context is not None:
             self.context = context
+        self.correlation_id = correlation_id
         if links is not None:
             self.links = links
+        self.message = message
+        self.category = category
+        if errors is not None:
+            self.errors = errors
 
     @property
-    def message(self):
-        """Gets the message of this Error.  # noqa: E501
+    def sub_category(self):
+        """Gets the sub_category of this Error.  # noqa: E501
 
-        A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
+        A specific category that contains more specific detail about the error  # noqa: E501
 
-        :return: The message of this Error.  # noqa: E501
+        :return: The sub_category of this Error.  # noqa: E501
         :rtype: str
         """
-        return self._message
+        return self._sub_category
 
-    @message.setter
-    def message(self, message):
-        """Sets the message of this Error.
+    @sub_category.setter
+    def sub_category(self, sub_category):
+        """Sets the sub_category of this Error.
 
-        A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
+        A specific category that contains more specific detail about the error  # noqa: E501
 
-        :param message: The message of this Error.  # noqa: E501
-        :type message: str
+        :param sub_category: The sub_category of this Error.  # noqa: E501
+        :type sub_category: str
         """
-        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
-            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
-        self._message = message
+        self._sub_category = sub_category
+
+    @property
+    def context(self):
+        """Gets the context of this Error.  # noqa: E501
+
+        Context about the error condition  # noqa: E501
+
+        :return: The context of this Error.  # noqa: E501
+        :rtype: dict[str, list[str]]
+        """
+        return self._context
+
+    @context.setter
+    def context(self, context):
+        """Sets the context of this Error.
+
+        Context about the error condition  # noqa: E501
+
+        :param context: The context of this Error.  # noqa: E501
+        :type context: dict[str, list[str]]
+        """
+
+        self._context = context
 
     @property
     def correlation_id(self):
@@ -117,6 +138,54 @@ class Error(object):
         self._correlation_id = correlation_id
 
     @property
+    def links(self):
+        """Gets the links of this Error.  # noqa: E501
+
+        A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
+
+        :return: The links of this Error.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._links
+
+    @links.setter
+    def links(self, links):
+        """Sets the links of this Error.
+
+        A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
+
+        :param links: The links of this Error.  # noqa: E501
+        :type links: dict[str, str]
+        """
+
+        self._links = links
+
+    @property
+    def message(self):
+        """Gets the message of this Error.  # noqa: E501
+
+        A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
+
+        :return: The message of this Error.  # noqa: E501
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message):
+        """Sets the message of this Error.
+
+        A human readable message describing the error along with remediation steps where appropriate  # noqa: E501
+
+        :param message: The message of this Error.  # noqa: E501
+        :type message: str
+        """
+        if self.local_vars_configuration.client_side_validation and message is None:  # noqa: E501
+            raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
+
+        self._message = message
+
+    @property
     def category(self):
         """Gets the category of this Error.  # noqa: E501
 
@@ -142,29 +211,6 @@ class Error(object):
         self._category = category
 
     @property
-    def sub_category(self):
-        """Gets the sub_category of this Error.  # noqa: E501
-
-        A specific category that contains more specific detail about the error  # noqa: E501
-
-        :return: The sub_category of this Error.  # noqa: E501
-        :rtype: str
-        """
-        return self._sub_category
-
-    @sub_category.setter
-    def sub_category(self, sub_category):
-        """Sets the sub_category of this Error.
-
-        A specific category that contains more specific detail about the error  # noqa: E501
-
-        :param sub_category: The sub_category of this Error.  # noqa: E501
-        :type sub_category: str
-        """
-
-        self._sub_category = sub_category
-
-    @property
     def errors(self):
         """Gets the errors of this Error.  # noqa: E501
 
@@ -186,52 +232,6 @@ class Error(object):
         """
 
         self._errors = errors
-
-    @property
-    def context(self):
-        """Gets the context of this Error.  # noqa: E501
-
-        Context about the error condition  # noqa: E501
-
-        :return: The context of this Error.  # noqa: E501
-        :rtype: dict[str, list[str]]
-        """
-        return self._context
-
-    @context.setter
-    def context(self, context):
-        """Sets the context of this Error.
-
-        Context about the error condition  # noqa: E501
-
-        :param context: The context of this Error.  # noqa: E501
-        :type context: dict[str, list[str]]
-        """
-
-        self._context = context
-
-    @property
-    def links(self):
-        """Gets the links of this Error.  # noqa: E501
-
-        A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
-
-        :return: The links of this Error.  # noqa: E501
-        :rtype: dict[str, str]
-        """
-        return self._links
-
-    @links.setter
-    def links(self, links):
-        """Sets the links of this Error.
-
-        A map of link names to associated URIs containing documentation about the error or recommended remediation steps  # noqa: E501
-
-        :param links: The links of this Error.  # noqa: E501
-        :type links: dict[str, str]
-        """
-
-        self._links = links
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -35,30 +35,53 @@ class TimelineEventTemplateUpdateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"name": "str", "header_template": "str", "detail_template": "str", "tokens": "list[TimelineEventTemplateToken]", "id": "str"}
+    openapi_types = {"detail_template": "str", "name": "str", "tokens": "list[TimelineEventTemplateToken]", "id": "str", "header_template": "str"}
 
-    attribute_map = {"name": "name", "header_template": "headerTemplate", "detail_template": "detailTemplate", "tokens": "tokens", "id": "id"}
+    attribute_map = {"detail_template": "detailTemplate", "name": "name", "tokens": "tokens", "id": "id", "header_template": "headerTemplate"}
 
-    def __init__(self, name=None, header_template=None, detail_template=None, tokens=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, detail_template=None, name=None, tokens=None, id=None, header_template=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateUpdateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._name = None
-        self._header_template = None
         self._detail_template = None
+        self._name = None
         self._tokens = None
         self._id = None
+        self._header_template = None
         self.discriminator = None
 
-        self.name = name
-        if header_template is not None:
-            self.header_template = header_template
         if detail_template is not None:
             self.detail_template = detail_template
+        self.name = name
         self.tokens = tokens
         self.id = id
+        if header_template is not None:
+            self.header_template = header_template
+
+    @property
+    def detail_template(self):
+        """Gets the detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+
+        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.  # noqa: E501
+
+        :return: The detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._detail_template
+
+    @detail_template.setter
+    def detail_template(self, detail_template):
+        """Sets the detail_template of this TimelineEventTemplateUpdateRequest.
+
+        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.  # noqa: E501
+
+        :param detail_template: The detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+        :type detail_template: str
+        """
+
+        self._detail_template = detail_template
 
     @property
     def name(self):
@@ -84,52 +107,6 @@ class TimelineEventTemplateUpdateRequest(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def header_template(self):
-        """Gets the header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-
-        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.  # noqa: E501
-
-        :return: The header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._header_template
-
-    @header_template.setter
-    def header_template(self, header_template):
-        """Sets the header_template of this TimelineEventTemplateUpdateRequest.
-
-        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.  # noqa: E501
-
-        :param header_template: The header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-        :type header_template: str
-        """
-
-        self._header_template = header_template
-
-    @property
-    def detail_template(self):
-        """Gets the detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-
-        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.  # noqa: E501
-
-        :return: The detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._detail_template
-
-    @detail_template.setter
-    def detail_template(self, detail_template):
-        """Sets the detail_template of this TimelineEventTemplateUpdateRequest.
-
-        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.  # noqa: E501
-
-        :param detail_template: The detail_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
-        :type detail_template: str
-        """
-
-        self._detail_template = detail_template
 
     @property
     def tokens(self):
@@ -180,6 +157,29 @@ class TimelineEventTemplateUpdateRequest(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def header_template(self):
+        """Gets the header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+
+        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.  # noqa: E501
+
+        :return: The header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._header_template
+
+    @header_template.setter
+    def header_template(self, header_template):
+        """Sets the header_template of this TimelineEventTemplateUpdateRequest.
+
+        This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.  # noqa: E501
+
+        :param header_template: The header_template of this TimelineEventTemplateUpdateRequest.  # noqa: E501
+        :type header_template: str
+        """
+
+        self._header_template = header_template
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

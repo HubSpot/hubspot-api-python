@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Tags
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,57 +35,80 @@ class Tag(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "name": "str", "language": "str", "translated_from_id": "int", "created": "datetime", "updated": "datetime", "deleted_at": "datetime"}
+    openapi_types = {"deleted_at": "datetime", "created": "datetime", "name": "str", "language": "str", "id": "str", "translated_from_id": "int", "updated": "datetime"}
 
-    attribute_map = {"id": "id", "name": "name", "language": "language", "translated_from_id": "translatedFromId", "created": "created", "updated": "updated", "deleted_at": "deletedAt"}
+    attribute_map = {"deleted_at": "deletedAt", "created": "created", "name": "name", "language": "language", "id": "id", "translated_from_id": "translatedFromId", "updated": "updated"}
 
-    def __init__(self, id=None, name=None, language=None, translated_from_id=None, created=None, updated=None, deleted_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, deleted_at=None, created=None, name=None, language=None, id=None, translated_from_id=None, updated=None, local_vars_configuration=None):  # noqa: E501
         """Tag - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
+        self._deleted_at = None
+        self._created = None
         self._name = None
         self._language = None
+        self._id = None
         self._translated_from_id = None
-        self._created = None
         self._updated = None
-        self._deleted_at = None
         self.discriminator = None
 
-        self.id = id
+        self.deleted_at = deleted_at
+        self.created = created
         self.name = name
         self.language = language
+        self.id = id
         self.translated_from_id = translated_from_id
-        self.created = created
         self.updated = updated
-        self.deleted_at = deleted_at
 
     @property
-    def id(self):
-        """Gets the id of this Tag.  # noqa: E501
+    def deleted_at(self):
+        """Gets the deleted_at of this Tag.  # noqa: E501
 
-        The unique ID of the Blog Tag.  # noqa: E501
+        The timestamp (ISO8601 format) when this Blog Tag was deleted.  # noqa: E501
 
-        :return: The id of this Tag.  # noqa: E501
-        :rtype: str
+        :return: The deleted_at of this Tag.  # noqa: E501
+        :rtype: datetime
         """
-        return self._id
+        return self._deleted_at
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Tag.
+    @deleted_at.setter
+    def deleted_at(self, deleted_at):
+        """Sets the deleted_at of this Tag.
 
-        The unique ID of the Blog Tag.  # noqa: E501
+        The timestamp (ISO8601 format) when this Blog Tag was deleted.  # noqa: E501
 
-        :param id: The id of this Tag.  # noqa: E501
-        :type id: str
+        :param deleted_at: The deleted_at of this Tag.  # noqa: E501
+        :type deleted_at: datetime
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
 
-        self._id = id
+        self._deleted_at = deleted_at
+
+    @property
+    def created(self):
+        """Gets the created of this Tag.  # noqa: E501
+
+
+        :return: The created of this Tag.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this Tag.
+
+
+        :param created: The created of this Tag.  # noqa: E501
+        :type created: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
+            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
+
+        self._created = created
 
     @property
     def name(self):
@@ -215,6 +238,8 @@ class Tag(object):
             "ccp-in",
             "ce",
             "ce-ru",
+            "ceb",
+            "ceb-ph",
             "cgg",
             "cgg-ug",
             "chr",
@@ -244,6 +269,8 @@ class Tag(object):
             "de-lu",
             "dje",
             "dje-ne",
+            "doi",
+            "doi-in",
             "dsb",
             "dsb-de",
             "dua",
@@ -281,6 +308,7 @@ class Tag(object):
             "en-ch",
             "en-ck",
             "en-cm",
+            "en-cn",
             "en-cx",
             "en-cy",
             "en-de",
@@ -324,6 +352,7 @@ class Tag(object):
             "en-mt",
             "en-mu",
             "en-mw",
+            "en-mx",
             "en-my",
             "en-na",
             "en-nf",
@@ -408,9 +437,17 @@ class Tag(object):
             "fa-af",
             "fa-ir",
             "ff",
+            "ff-bf",
             "ff-cm",
+            "ff-gh",
+            "ff-gm",
             "ff-gn",
+            "ff-gw",
+            "ff-lr",
             "ff-mr",
+            "ff-ne",
+            "ff-ng",
+            "ff-sl",
             "ff-sn",
             "fi",
             "fi-fi",
@@ -471,6 +508,7 @@ class Tag(object):
             "fy",
             "fy-nl",
             "ga",
+            "ga-gb",
             "ga-ie",
             "gd",
             "gd-gb",
@@ -504,6 +542,8 @@ class Tag(object):
             "hu-hu",
             "hy",
             "hy-am",
+            "ia",
+            "ia-001",
             "id",
             "ig",
             "ig-ng",
@@ -526,6 +566,8 @@ class Tag(object):
             "yi-001",
             "jmc",
             "jmc-tz",
+            "jv",
+            "jv-id",
             "ka",
             "ka-ge",
             "kab",
@@ -567,6 +609,8 @@ class Tag(object):
             "ksh-de",
             "kw",
             "kw-gb",
+            "ku",
+            "ku-tr",
             "ky",
             "ky-kg",
             "lag",
@@ -597,6 +641,8 @@ class Tag(object):
             "luy-ke",
             "lv",
             "lv-lv",
+            "mai",
+            "mai-in",
             "mas",
             "mas-ke",
             "mas-tz",
@@ -610,16 +656,21 @@ class Tag(object):
             "mgh-mz",
             "mgo",
             "mgo-cm",
+            "mi",
+            "mi-nz",
             "mk",
             "mk-mk",
             "ml",
             "ml-in",
             "mn",
             "mn-mn",
+            "mni",
+            "mni-in",
             "mr",
             "mr-in",
             "ms",
             "ms-bn",
+            "ms-id",
             "ms-my",
             "ms-sg",
             "mt",
@@ -676,12 +727,15 @@ class Tag(object):
             "pa",
             "pa-in",
             "pa-pk",
+            "pcm",
+            "pcm-ng",
             "pl",
             "pl-pl",
             "prg",
             "prg-001",
             "ps",
             "ps-af",
+            "ps-pk",
             "pt",
             "pt-ao",
             "pt-br",
@@ -720,13 +774,17 @@ class Tag(object):
             "rwk",
             "rwk-tz",
             "sa",
+            "sa-in",
             "sah",
             "sah-ru",
             "saq",
             "saq-ke",
+            "sat",
+            "sat-in",
             "sbp",
             "sbp-tz",
             "sd",
+            "sd-in",
             "sd-pk",
             "se",
             "se-fi",
@@ -765,6 +823,8 @@ class Tag(object):
             "sr-me",
             "sr-rs",
             "sr-xk",
+            "su",
+            "su-id",
             "sv",
             "sv-ax",
             "sv-fi",
@@ -794,6 +854,7 @@ class Tag(object):
             "ti-et",
             "tk",
             "tk-tm",
+            "tl",
             "to",
             "to-to",
             "tr",
@@ -827,6 +888,8 @@ class Tag(object):
             "wae-ch",
             "wo",
             "wo-sn",
+            "xh",
+            "xh-za",
             "xog",
             "xog-ug",
             "yav",
@@ -856,6 +919,31 @@ class Tag(object):
         self._language = language
 
     @property
+    def id(self):
+        """Gets the id of this Tag.  # noqa: E501
+
+        The unique ID of the Blog Tag.  # noqa: E501
+
+        :return: The id of this Tag.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this Tag.
+
+        The unique ID of the Blog Tag.  # noqa: E501
+
+        :param id: The id of this Tag.  # noqa: E501
+        :type id: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+
+        self._id = id
+
+    @property
     def translated_from_id(self):
         """Gets the translated_from_id of this Tag.  # noqa: E501
 
@@ -881,29 +969,6 @@ class Tag(object):
         self._translated_from_id = translated_from_id
 
     @property
-    def created(self):
-        """Gets the created of this Tag.  # noqa: E501
-
-
-        :return: The created of this Tag.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created
-
-    @created.setter
-    def created(self, created):
-        """Sets the created of this Tag.
-
-
-        :param created: The created of this Tag.  # noqa: E501
-        :type created: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created is None:  # noqa: E501
-            raise ValueError("Invalid value for `created`, must not be `None`")  # noqa: E501
-
-        self._created = created
-
-    @property
     def updated(self):
         """Gets the updated of this Tag.  # noqa: E501
 
@@ -925,31 +990,6 @@ class Tag(object):
             raise ValueError("Invalid value for `updated`, must not be `None`")  # noqa: E501
 
         self._updated = updated
-
-    @property
-    def deleted_at(self):
-        """Gets the deleted_at of this Tag.  # noqa: E501
-
-        The timestamp (ISO8601 format) when this Blog Tag was deleted.  # noqa: E501
-
-        :return: The deleted_at of this Tag.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._deleted_at
-
-    @deleted_at.setter
-    def deleted_at(self, deleted_at):
-        """Sets the deleted_at of this Tag.
-
-        The timestamp (ISO8601 format) when this Blog Tag was deleted.  # noqa: E501
-
-        :param deleted_at: The deleted_at of this Tag.  # noqa: E501
-        :type deleted_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and deleted_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `deleted_at`, must not be `None`")  # noqa: E501
-
-        self._deleted_at = deleted_at
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

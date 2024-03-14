@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Tags
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,28 +35,76 @@ class TagCloneRequestVNext(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id": "str", "language": "str", "primary_language": "str", "name": "str"}
+    openapi_types = {"name": "str", "language": "str", "id": "str", "primary_language": "str"}
 
-    attribute_map = {"id": "id", "language": "language", "primary_language": "primaryLanguage", "name": "name"}
+    attribute_map = {"name": "name", "language": "language", "id": "id", "primary_language": "primaryLanguage"}
 
-    def __init__(self, id=None, language=None, primary_language=None, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, language=None, id=None, primary_language=None, local_vars_configuration=None):  # noqa: E501
         """TagCloneRequestVNext - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
-        self._language = None
-        self._primary_language = None
         self._name = None
+        self._language = None
+        self._id = None
+        self._primary_language = None
         self.discriminator = None
 
-        self.id = id
+        self.name = name
         if language is not None:
             self.language = language
+        self.id = id
         if primary_language is not None:
             self.primary_language = primary_language
-        self.name = name
+
+    @property
+    def name(self):
+        """Gets the name of this TagCloneRequestVNext.  # noqa: E501
+
+        Name of newly cloned blog tag.  # noqa: E501
+
+        :return: The name of this TagCloneRequestVNext.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this TagCloneRequestVNext.
+
+        Name of newly cloned blog tag.  # noqa: E501
+
+        :param name: The name of this TagCloneRequestVNext.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def language(self):
+        """Gets the language of this TagCloneRequestVNext.  # noqa: E501
+
+        Target language of new variant.  # noqa: E501
+
+        :return: The language of this TagCloneRequestVNext.  # noqa: E501
+        :rtype: str
+        """
+        return self._language
+
+    @language.setter
+    def language(self, language):
+        """Sets the language of this TagCloneRequestVNext.
+
+        Target language of new variant.  # noqa: E501
+
+        :param language: The language of this TagCloneRequestVNext.  # noqa: E501
+        :type language: str
+        """
+
+        self._language = language
 
     @property
     def id(self):
@@ -84,29 +132,6 @@ class TagCloneRequestVNext(object):
         self._id = id
 
     @property
-    def language(self):
-        """Gets the language of this TagCloneRequestVNext.  # noqa: E501
-
-        Target language of new variant.  # noqa: E501
-
-        :return: The language of this TagCloneRequestVNext.  # noqa: E501
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this TagCloneRequestVNext.
-
-        Target language of new variant.  # noqa: E501
-
-        :param language: The language of this TagCloneRequestVNext.  # noqa: E501
-        :type language: str
-        """
-
-        self._language = language
-
-    @property
     def primary_language(self):
         """Gets the primary_language of this TagCloneRequestVNext.  # noqa: E501
 
@@ -128,31 +153,6 @@ class TagCloneRequestVNext(object):
         """
 
         self._primary_language = primary_language
-
-    @property
-    def name(self):
-        """Gets the name of this TagCloneRequestVNext.  # noqa: E501
-
-        Name of newly cloned blog tag.  # noqa: E501
-
-        :return: The name of this TagCloneRequestVNext.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TagCloneRequestVNext.
-
-        Name of newly cloned blog tag.  # noqa: E501
-
-        :param name: The name of this TagCloneRequestVNext.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

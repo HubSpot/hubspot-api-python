@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -36,73 +36,95 @@ class IntegratorCardPayloadResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "total_count": "int",
-        "all_items_link_url": "str",
+        "response_version": "str",
         "card_label": "str",
+        "all_items_link_url": "str",
+        "total_count": "int",
         "top_level_actions": "TopLevelActions",
         "sections": "list[IntegratorObjectResult]",
-        "response_version": "str",
     }
 
     attribute_map = {
-        "total_count": "totalCount",
-        "all_items_link_url": "allItemsLinkUrl",
+        "response_version": "responseVersion",
         "card_label": "cardLabel",
+        "all_items_link_url": "allItemsLinkUrl",
+        "total_count": "totalCount",
         "top_level_actions": "topLevelActions",
         "sections": "sections",
-        "response_version": "responseVersion",
     }
 
-    def __init__(self, total_count=None, all_items_link_url=None, card_label=None, top_level_actions=None, sections=None, response_version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, response_version=None, card_label=None, all_items_link_url=None, total_count=None, top_level_actions=None, sections=None, local_vars_configuration=None):  # noqa: E501
         """IntegratorCardPayloadResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._total_count = None
-        self._all_items_link_url = None
+        self._response_version = None
         self._card_label = None
+        self._all_items_link_url = None
+        self._total_count = None
         self._top_level_actions = None
         self._sections = None
-        self._response_version = None
         self.discriminator = None
 
-        self.total_count = total_count
-        if all_items_link_url is not None:
-            self.all_items_link_url = all_items_link_url
+        if response_version is not None:
+            self.response_version = response_version
         if card_label is not None:
             self.card_label = card_label
+        if all_items_link_url is not None:
+            self.all_items_link_url = all_items_link_url
+        self.total_count = total_count
         if top_level_actions is not None:
             self.top_level_actions = top_level_actions
         if sections is not None:
             self.sections = sections
-        if response_version is not None:
-            self.response_version = response_version
 
     @property
-    def total_count(self):
-        """Gets the total_count of this IntegratorCardPayloadResponse.  # noqa: E501
+    def response_version(self):
+        """Gets the response_version of this IntegratorCardPayloadResponse.  # noqa: E501
 
-        The total number of card properties that will be sent in this response.  # noqa: E501
 
-        :return: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
-        :rtype: int
+        :return: The response_version of this IntegratorCardPayloadResponse.  # noqa: E501
+        :rtype: str
         """
-        return self._total_count
+        return self._response_version
 
-    @total_count.setter
-    def total_count(self, total_count):
-        """Sets the total_count of this IntegratorCardPayloadResponse.
+    @response_version.setter
+    def response_version(self, response_version):
+        """Sets the response_version of this IntegratorCardPayloadResponse.
 
-        The total number of card properties that will be sent in this response.  # noqa: E501
 
-        :param total_count: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type total_count: int
+        :param response_version: The response_version of this IntegratorCardPayloadResponse.  # noqa: E501
+        :type response_version: str
         """
-        if self.local_vars_configuration.client_side_validation and total_count is None:  # noqa: E501
-            raise ValueError("Invalid value for `total_count`, must not be `None`")  # noqa: E501
+        allowed_values = ["v1", "v3"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and response_version not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `response_version` ({0}), must be one of {1}".format(response_version, allowed_values))  # noqa: E501
 
-        self._total_count = total_count
+        self._response_version = response_version
+
+    @property
+    def card_label(self):
+        """Gets the card_label of this IntegratorCardPayloadResponse.  # noqa: E501
+
+        The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.  # noqa: E501
+
+        :return: The card_label of this IntegratorCardPayloadResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._card_label
+
+    @card_label.setter
+    def card_label(self, card_label):
+        """Sets the card_label of this IntegratorCardPayloadResponse.
+
+        The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.  # noqa: E501
+
+        :param card_label: The card_label of this IntegratorCardPayloadResponse.  # noqa: E501
+        :type card_label: str
+        """
+
+        self._card_label = card_label
 
     @property
     def all_items_link_url(self):
@@ -128,27 +150,29 @@ class IntegratorCardPayloadResponse(object):
         self._all_items_link_url = all_items_link_url
 
     @property
-    def card_label(self):
-        """Gets the card_label of this IntegratorCardPayloadResponse.  # noqa: E501
+    def total_count(self):
+        """Gets the total_count of this IntegratorCardPayloadResponse.  # noqa: E501
 
-        The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.  # noqa: E501
+        The total number of card properties that will be sent in this response.  # noqa: E501
 
-        :return: The card_label of this IntegratorCardPayloadResponse.  # noqa: E501
-        :rtype: str
+        :return: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
+        :rtype: int
         """
-        return self._card_label
+        return self._total_count
 
-    @card_label.setter
-    def card_label(self, card_label):
-        """Sets the card_label of this IntegratorCardPayloadResponse.
+    @total_count.setter
+    def total_count(self, total_count):
+        """Sets the total_count of this IntegratorCardPayloadResponse.
 
-        The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.  # noqa: E501
+        The total number of card properties that will be sent in this response.  # noqa: E501
 
-        :param card_label: The card_label of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type card_label: str
+        :param total_count: The total_count of this IntegratorCardPayloadResponse.  # noqa: E501
+        :type total_count: int
         """
+        if self.local_vars_configuration.client_side_validation and total_count is None:  # noqa: E501
+            raise ValueError("Invalid value for `total_count`, must not be `None`")  # noqa: E501
 
-        self._card_label = card_label
+        self._total_count = total_count
 
     @property
     def top_level_actions(self):
@@ -193,30 +217,6 @@ class IntegratorCardPayloadResponse(object):
         """
 
         self._sections = sections
-
-    @property
-    def response_version(self):
-        """Gets the response_version of this IntegratorCardPayloadResponse.  # noqa: E501
-
-
-        :return: The response_version of this IntegratorCardPayloadResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._response_version
-
-    @response_version.setter
-    def response_version(self, response_version):
-        """Sets the response_version of this IntegratorCardPayloadResponse.
-
-
-        :param response_version: The response_version of this IntegratorCardPayloadResponse.  # noqa: E501
-        :type response_version: str
-        """
-        allowed_values = ["v1", "v3"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and response_version not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `response_version` ({0}), must be one of {1}".format(response_version, allowed_values))  # noqa: E501
-
-        self._response_version = response_version
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

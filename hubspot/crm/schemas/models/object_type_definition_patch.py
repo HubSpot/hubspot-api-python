@@ -36,72 +36,87 @@ class ObjectTypeDefinitionPatch(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "labels": "ObjectTypeDefinitionLabels",
+        "secondary_display_properties": "list[str]",
         "required_properties": "list[str]",
         "searchable_properties": "list[str]",
         "primary_display_property": "str",
-        "secondary_display_properties": "list[str]",
+        "description": "str",
         "restorable": "bool",
+        "labels": "ObjectTypeDefinitionLabels",
     }
 
     attribute_map = {
-        "labels": "labels",
+        "secondary_display_properties": "secondaryDisplayProperties",
         "required_properties": "requiredProperties",
         "searchable_properties": "searchableProperties",
         "primary_display_property": "primaryDisplayProperty",
-        "secondary_display_properties": "secondaryDisplayProperties",
+        "description": "description",
         "restorable": "restorable",
+        "labels": "labels",
     }
 
     def __init__(
-        self, labels=None, required_properties=None, searchable_properties=None, primary_display_property=None, secondary_display_properties=None, restorable=None, local_vars_configuration=None
+        self,
+        secondary_display_properties=None,
+        required_properties=None,
+        searchable_properties=None,
+        primary_display_property=None,
+        description=None,
+        restorable=None,
+        labels=None,
+        local_vars_configuration=None,
     ):  # noqa: E501
         """ObjectTypeDefinitionPatch - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._labels = None
+        self._secondary_display_properties = None
         self._required_properties = None
         self._searchable_properties = None
         self._primary_display_property = None
-        self._secondary_display_properties = None
+        self._description = None
         self._restorable = None
+        self._labels = None
         self.discriminator = None
 
-        if labels is not None:
-            self.labels = labels
+        if secondary_display_properties is not None:
+            self.secondary_display_properties = secondary_display_properties
         if required_properties is not None:
             self.required_properties = required_properties
         if searchable_properties is not None:
             self.searchable_properties = searchable_properties
         if primary_display_property is not None:
             self.primary_display_property = primary_display_property
-        if secondary_display_properties is not None:
-            self.secondary_display_properties = secondary_display_properties
+        if description is not None:
+            self.description = description
         if restorable is not None:
             self.restorable = restorable
+        if labels is not None:
+            self.labels = labels
 
     @property
-    def labels(self):
-        """Gets the labels of this ObjectTypeDefinitionPatch.  # noqa: E501
+    def secondary_display_properties(self):
+        """Gets the secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
 
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :return: The labels of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :rtype: ObjectTypeDefinitionLabels
+        :return: The secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :rtype: list[str]
         """
-        return self._labels
+        return self._secondary_display_properties
 
-    @labels.setter
-    def labels(self, labels):
-        """Sets the labels of this ObjectTypeDefinitionPatch.
+    @secondary_display_properties.setter
+    def secondary_display_properties(self, secondary_display_properties):
+        """Sets the secondary_display_properties of this ObjectTypeDefinitionPatch.
 
+        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :param labels: The labels of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type labels: ObjectTypeDefinitionLabels
+        :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :type secondary_display_properties: list[str]
         """
 
-        self._labels = labels
+        self._secondary_display_properties = secondary_display_properties
 
     @property
     def required_properties(self):
@@ -173,27 +188,25 @@ class ObjectTypeDefinitionPatch(object):
         self._primary_display_property = primary_display_property
 
     @property
-    def secondary_display_properties(self):
-        """Gets the secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
+    def description(self):
+        """Gets the description of this ObjectTypeDefinitionPatch.  # noqa: E501
 
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :return: The secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :rtype: list[str]
+        :return: The description of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :rtype: str
         """
-        return self._secondary_display_properties
+        return self._description
 
-    @secondary_display_properties.setter
-    def secondary_display_properties(self, secondary_display_properties):
-        """Sets the secondary_display_properties of this ObjectTypeDefinitionPatch.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ObjectTypeDefinitionPatch.
 
-        The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.  # noqa: E501
 
-        :param secondary_display_properties: The secondary_display_properties of this ObjectTypeDefinitionPatch.  # noqa: E501
-        :type secondary_display_properties: list[str]
+        :param description: The description of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :type description: str
         """
 
-        self._secondary_display_properties = secondary_display_properties
+        self._description = description
 
     @property
     def restorable(self):
@@ -215,6 +228,27 @@ class ObjectTypeDefinitionPatch(object):
         """
 
         self._restorable = restorable
+
+    @property
+    def labels(self):
+        """Gets the labels of this ObjectTypeDefinitionPatch.  # noqa: E501
+
+
+        :return: The labels of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :rtype: ObjectTypeDefinitionLabels
+        """
+        return self._labels
+
+    @labels.setter
+    def labels(self, labels):
+        """Sets the labels of this ObjectTypeDefinitionPatch.
+
+
+        :param labels: The labels of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :type labels: ObjectTypeDefinitionLabels
+        """
+
+        self._labels = labels
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

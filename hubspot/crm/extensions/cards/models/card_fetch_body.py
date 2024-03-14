@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM cards
+    Public App Crm Cards
 
     Allows an app to extend the CRM UI by surfacing custom cards in the sidebar of record pages. These cards are defined up-front as part of app configuration, then populated by external data fetch requests when the record page is accessed by a user.  # noqa: E501
 
@@ -35,47 +35,73 @@ class CardFetchBody(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"target_url": "str", "object_types": "list[CardObjectTypeBody]"}
+    openapi_types = {"serverless_function": "str", "card_type": "str", "object_types": "list[CardObjectTypeBody]", "target_url": "str"}
 
-    attribute_map = {"target_url": "targetUrl", "object_types": "objectTypes"}
+    attribute_map = {"serverless_function": "serverlessFunction", "card_type": "cardType", "object_types": "objectTypes", "target_url": "targetUrl"}
 
-    def __init__(self, target_url=None, object_types=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, serverless_function=None, card_type=None, object_types=None, target_url=None, local_vars_configuration=None):  # noqa: E501
         """CardFetchBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._target_url = None
+        self._serverless_function = None
+        self._card_type = None
         self._object_types = None
+        self._target_url = None
         self.discriminator = None
 
-        self.target_url = target_url
+        if serverless_function is not None:
+            self.serverless_function = serverless_function
+        if card_type is not None:
+            self.card_type = card_type
         self.object_types = object_types
+        self.target_url = target_url
 
     @property
-    def target_url(self):
-        """Gets the target_url of this CardFetchBody.  # noqa: E501
+    def serverless_function(self):
+        """Gets the serverless_function of this CardFetchBody.  # noqa: E501
 
-        URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.  # noqa: E501
 
-        :return: The target_url of this CardFetchBody.  # noqa: E501
+        :return: The serverless_function of this CardFetchBody.  # noqa: E501
         :rtype: str
         """
-        return self._target_url
+        return self._serverless_function
 
-    @target_url.setter
-    def target_url(self, target_url):
-        """Sets the target_url of this CardFetchBody.
+    @serverless_function.setter
+    def serverless_function(self, serverless_function):
+        """Sets the serverless_function of this CardFetchBody.
 
-        URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.  # noqa: E501
 
-        :param target_url: The target_url of this CardFetchBody.  # noqa: E501
-        :type target_url: str
+        :param serverless_function: The serverless_function of this CardFetchBody.  # noqa: E501
+        :type serverless_function: str
         """
-        if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
-            raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
 
-        self._target_url = target_url
+        self._serverless_function = serverless_function
+
+    @property
+    def card_type(self):
+        """Gets the card_type of this CardFetchBody.  # noqa: E501
+
+
+        :return: The card_type of this CardFetchBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._card_type
+
+    @card_type.setter
+    def card_type(self, card_type):
+        """Sets the card_type of this CardFetchBody.
+
+
+        :param card_type: The card_type of this CardFetchBody.  # noqa: E501
+        :type card_type: str
+        """
+        allowed_values = ["EXTERNAL", "SERVERLESS"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and card_type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `card_type` ({0}), must be one of {1}".format(card_type, allowed_values))  # noqa: E501
+
+        self._card_type = card_type
 
     @property
     def object_types(self):
@@ -101,6 +127,31 @@ class CardFetchBody(object):
             raise ValueError("Invalid value for `object_types`, must not be `None`")  # noqa: E501
 
         self._object_types = object_types
+
+    @property
+    def target_url(self):
+        """Gets the target_url of this CardFetchBody.  # noqa: E501
+
+        URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.  # noqa: E501
+
+        :return: The target_url of this CardFetchBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_url
+
+    @target_url.setter
+    def target_url(self, target_url):
+        """Sets the target_url of this CardFetchBody.
+
+        URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.  # noqa: E501
+
+        :param target_url: The target_url of this CardFetchBody.  # noqa: E501
+        :type target_url: str
+        """
+        if self.local_vars_configuration.client_side_validation and target_url is None:  # noqa: E501
+            raise ValueError("Invalid value for `target_url`, must not be `None`")  # noqa: E501
+
+        self._target_url = target_url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

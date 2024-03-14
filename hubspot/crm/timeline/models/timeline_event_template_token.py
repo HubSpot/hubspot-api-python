@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Timeline events
+    CRM Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -36,42 +36,114 @@ class TimelineEventTemplateToken(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "label": "str",
-        "object_property_name": "str",
+        "created_at": "datetime",
         "options": "list[TimelineEventTemplateTokenOption]",
         "name": "str",
+        "label": "str",
+        "object_property_name": "str",
         "type": "str",
-        "created_at": "datetime",
         "updated_at": "datetime",
     }
 
-    attribute_map = {"label": "label", "object_property_name": "objectPropertyName", "options": "options", "name": "name", "type": "type", "created_at": "createdAt", "updated_at": "updatedAt"}
+    attribute_map = {"created_at": "createdAt", "options": "options", "name": "name", "label": "label", "object_property_name": "objectPropertyName", "type": "type", "updated_at": "updatedAt"}
 
-    def __init__(self, label=None, object_property_name=None, options=None, name=None, type=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, options=None, name=None, label=None, object_property_name=None, type=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """TimelineEventTemplateToken - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._label = None
-        self._object_property_name = None
+        self._created_at = None
         self._options = None
         self._name = None
+        self._label = None
+        self._object_property_name = None
         self._type = None
-        self._created_at = None
         self._updated_at = None
         self.discriminator = None
 
+        if created_at is not None:
+            self.created_at = created_at
+        if options is not None:
+            self.options = options
+        self.name = name
         self.label = label
         if object_property_name is not None:
             self.object_property_name = object_property_name
-        self.options = options
-        self.name = name
         self.type = type
-        if created_at is not None:
-            self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
+
+    @property
+    def created_at(self):
+        """Gets the created_at of this TimelineEventTemplateToken.  # noqa: E501
+
+        The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
+
+        :return: The created_at of this TimelineEventTemplateToken.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._created_at
+
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this TimelineEventTemplateToken.
+
+        The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
+
+        :param created_at: The created_at of this TimelineEventTemplateToken.  # noqa: E501
+        :type created_at: datetime
+        """
+
+        self._created_at = created_at
+
+    @property
+    def options(self):
+        """Gets the options of this TimelineEventTemplateToken.  # noqa: E501
+
+        If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
+
+        :return: The options of this TimelineEventTemplateToken.  # noqa: E501
+        :rtype: list[TimelineEventTemplateTokenOption]
+        """
+        return self._options
+
+    @options.setter
+    def options(self, options):
+        """Sets the options of this TimelineEventTemplateToken.
+
+        If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
+
+        :param options: The options of this TimelineEventTemplateToken.  # noqa: E501
+        :type options: list[TimelineEventTemplateTokenOption]
+        """
+
+        self._options = options
+
+    @property
+    def name(self):
+        """Gets the name of this TimelineEventTemplateToken.  # noqa: E501
+
+        The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).  # noqa: E501
+
+        :return: The name of this TimelineEventTemplateToken.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this TimelineEventTemplateToken.
+
+        The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).  # noqa: E501
+
+        :param name: The name of this TimelineEventTemplateToken.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
 
     @property
     def label(self):
@@ -122,56 +194,6 @@ class TimelineEventTemplateToken(object):
         self._object_property_name = object_property_name
 
     @property
-    def options(self):
-        """Gets the options of this TimelineEventTemplateToken.  # noqa: E501
-
-        If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
-
-        :return: The options of this TimelineEventTemplateToken.  # noqa: E501
-        :rtype: list[TimelineEventTemplateTokenOption]
-        """
-        return self._options
-
-    @options.setter
-    def options(self, options):
-        """Sets the options of this TimelineEventTemplateToken.
-
-        If type is `enumeration`, we should have a list of options to choose from.  # noqa: E501
-
-        :param options: The options of this TimelineEventTemplateToken.  # noqa: E501
-        :type options: list[TimelineEventTemplateTokenOption]
-        """
-        if self.local_vars_configuration.client_side_validation and options is None:  # noqa: E501
-            raise ValueError("Invalid value for `options`, must not be `None`")  # noqa: E501
-
-        self._options = options
-
-    @property
-    def name(self):
-        """Gets the name of this TimelineEventTemplateToken.  # noqa: E501
-
-        The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).  # noqa: E501
-
-        :return: The name of this TimelineEventTemplateToken.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TimelineEventTemplateToken.
-
-        The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).  # noqa: E501
-
-        :param name: The name of this TimelineEventTemplateToken.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
     def type(self):
         """Gets the type of this TimelineEventTemplateToken.  # noqa: E501
 
@@ -198,29 +220,6 @@ class TimelineEventTemplateToken(object):
             raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this TimelineEventTemplateToken.  # noqa: E501
-
-        The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
-
-        :return: The created_at of this TimelineEventTemplateToken.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this TimelineEventTemplateToken.
-
-        The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.  # noqa: E501
-
-        :param created_at: The created_at of this TimelineEventTemplateToken.  # noqa: E501
-        :type created_at: datetime
-        """
-
-        self._created_at = created_at
 
     @property
     def updated_at(self):

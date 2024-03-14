@@ -4,10 +4,9 @@ from ...discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
-    def lists_api(self) -> api_client.ListsApi:
-        return self._configure_api_client(api_client, "ListsApi")
+    def list_app_api(self) -> api_client.ListAppApi:
+        return self._configure_api_client(api_client, "ListAppApi")
 
     @property
-    def memberships_api(self) -> api_client.MembershipsApi:
-        return self._configure_api_client(api_client, "MembershipsApi")
-
+    def list_app_membership_api(self) -> api_client.ListAppMembershipApi:
+        return self._configure_api_client(api_client, "ListAppMembershipApi")

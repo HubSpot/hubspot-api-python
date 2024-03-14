@@ -3,7 +3,7 @@
 # flake8: noqa
 
 """
-    Business Units Business Units
+    Business Units
 
     Retrieve Business Unit information.  # noqa: E501
 

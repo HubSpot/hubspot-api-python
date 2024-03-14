@@ -35,50 +35,27 @@ class BatchReadInputSimplePublicObjectId(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"properties": "list[str]", "properties_with_history": "list[str]", "id_property": "str", "inputs": "list[SimplePublicObjectId]"}
+    openapi_types = {"properties_with_history": "list[str]", "id_property": "str", "inputs": "list[SimplePublicObjectId]", "properties": "list[str]"}
 
-    attribute_map = {"properties": "properties", "properties_with_history": "propertiesWithHistory", "id_property": "idProperty", "inputs": "inputs"}
+    attribute_map = {"properties_with_history": "propertiesWithHistory", "id_property": "idProperty", "inputs": "inputs", "properties": "properties"}
 
-    def __init__(self, properties=None, properties_with_history=None, id_property=None, inputs=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, properties_with_history=None, id_property=None, inputs=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """BatchReadInputSimplePublicObjectId - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._properties = None
         self._properties_with_history = None
         self._id_property = None
         self._inputs = None
+        self._properties = None
         self.discriminator = None
 
-        self.properties = properties
         self.properties_with_history = properties_with_history
         if id_property is not None:
             self.id_property = id_property
         self.inputs = inputs
-
-    @property
-    def properties(self):
-        """Gets the properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-
-
-        :return: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._properties
-
-    @properties.setter
-    def properties(self, properties):
-        """Sets the properties of this BatchReadInputSimplePublicObjectId.
-
-
-        :param properties: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
-        :type properties: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
-
-        self._properties = properties
+        self.properties = properties
 
     @property
     def properties_with_history(self):
@@ -146,6 +123,29 @@ class BatchReadInputSimplePublicObjectId(object):
             raise ValueError("Invalid value for `inputs`, must not be `None`")  # noqa: E501
 
         self._inputs = inputs
+
+    @property
+    def properties(self):
+        """Gets the properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+
+
+        :return: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._properties
+
+    @properties.setter
+    def properties(self, properties):
+        """Sets the properties of this BatchReadInputSimplePublicObjectId.
+
+
+        :param properties: The properties of this BatchReadInputSimplePublicObjectId.  # noqa: E501
+        :type properties: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
+
+        self._properties = properties
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

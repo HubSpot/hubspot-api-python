@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Blog Post endpoints
+    Posts
 
     Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags  # noqa: E501
 
@@ -35,25 +35,25 @@ class CollectionResponseWithTotalBlogPostForwardPaging(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"total": "int", "results": "list[BlogPost]", "paging": "ForwardPaging"}
+    openapi_types = {"total": "int", "paging": "ForwardPaging", "results": "list[BlogPost]"}
 
-    attribute_map = {"total": "total", "results": "results", "paging": "paging"}
+    attribute_map = {"total": "total", "paging": "paging", "results": "results"}
 
-    def __init__(self, total=None, results=None, paging=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, total=None, paging=None, results=None, local_vars_configuration=None):  # noqa: E501
         """CollectionResponseWithTotalBlogPostForwardPaging - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._total = None
-        self._results = None
         self._paging = None
+        self._results = None
         self.discriminator = None
 
         self.total = total
-        self.results = results
         if paging is not None:
             self.paging = paging
+        self.results = results
 
     @property
     def total(self):
@@ -81,6 +81,27 @@ class CollectionResponseWithTotalBlogPostForwardPaging(object):
         self._total = total
 
     @property
+    def paging(self):
+        """Gets the paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
+
+
+        :return: The paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
+        :rtype: ForwardPaging
+        """
+        return self._paging
+
+    @paging.setter
+    def paging(self, paging):
+        """Sets the paging of this CollectionResponseWithTotalBlogPostForwardPaging.
+
+
+        :param paging: The paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
+        :type paging: ForwardPaging
+        """
+
+        self._paging = paging
+
+    @property
     def results(self):
         """Gets the results of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
 
@@ -104,27 +125,6 @@ class CollectionResponseWithTotalBlogPostForwardPaging(object):
             raise ValueError("Invalid value for `results`, must not be `None`")  # noqa: E501
 
         self._results = results
-
-    @property
-    def paging(self):
-        """Gets the paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
-
-
-        :return: The paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
-        :rtype: ForwardPaging
-        """
-        return self._paging
-
-    @paging.setter
-    def paging(self, paging):
-        """Sets the paging of this CollectionResponseWithTotalBlogPostForwardPaging.
-
-
-        :param paging: The paging of this CollectionResponseWithTotalBlogPostForwardPaging.  # noqa: E501
-        :type paging: ForwardPaging
-        """
-
-        self._paging = paging
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
