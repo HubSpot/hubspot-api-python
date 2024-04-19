@@ -171,7 +171,7 @@ except ApiException as e:
 from hubspot.utils.oauth import get_auth_url
 
 auth_url = get_auth_url(
-    scopes=('contacts',),
+    scope=('contacts',),
     client_id='client_id',
     redirect_uri='http://localhost'
 )
