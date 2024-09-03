@@ -23,7 +23,13 @@ NAME = "hubspot-api-client"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+REQUIRES = [
+    "urllib3 >= 1.15",
+    "six >= 1.10",
+    "certifi",
+    "python-dateutil",
+    "importlib-metadata<5; python_version<'3.8'"
+]
 DEV_REQUIRES = ["pytest", "black"]
 
 DIR_PATH = dirname(abspath(__file__))
