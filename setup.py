@@ -56,5 +56,5 @@ setup(
     extras_require={"dev": DEV_REQUIRES},
     python_requires=">=3.7",
     include_package_data=True,
-    license = 'Apache-2.0',
+    license='Apache-2.0',
 )
