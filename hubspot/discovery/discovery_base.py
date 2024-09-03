@@ -1,4 +1,4 @@
-import pkg_resources
+import importlib.metadata
 
 
 class DiscoveryBase:
@@ -24,7 +24,7 @@ class DiscoveryBase:
 
         api_client = api_client_package.ApiClient(configuration=configuration)
 
-        package_version = pkg_resources.require("hubspot-api-client")[0].version
+        package_version = importlib.metadata.version("hubspot-api-client")
         api_client.user_agent = "hubspot-api-client-python; {0}".format(package_version)
 
         return getattr(api_client_package, api_name)(api_client=api_client)
