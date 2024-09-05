@@ -1,7 +1,5 @@
 import pytest
-
 from datetime import datetime
-
 from hubspot.exceptions import InvalidSignatureVersionError, InvalidSignatureTimestampError
 from hubspot.utils.signature import Signature
 
@@ -11,7 +9,7 @@ TEST_DATA = {
     "request_body": "{'example_field':'example_value'}",
     "url": "https://www.example.com/webhook_uri",
     "http_method": "POST",
-    "timestamp": 15000000,
+    "timestamp": str(int(datetime.now().timestamp() * 1000)),
 }
 
 
@@ -48,10 +46,12 @@ def test_get_signature__v2():
 
 def test_get_signature__v3():
     data = {
-            "signature": "HPW73RUtKmcYoEDADG0s6MmGFWUzWJKAW07r8RDgcQw=",
-            "signature_version": "v3"
-         }
+        "signature": "K36dawei4A+QBNolUOqo7s91KQDWQ5MXZ/QufNYuk/Y=",
+        "signature_version": "v3",
+    }
+
     data.update(TEST_DATA)
+    data["timestamp"] = "1693657560000"
 
     signature = Signature.get_signature(
         data["client_secret"],
@@ -66,13 +66,11 @@ def test_get_signature__v3():
 
 
 def test_get_signature__wrong_version():
-
     with pytest.raises(InvalidSignatureVersionError):
         Signature.get_signature(
             TEST_DATA["client_secret"],
             TEST_DATA["request_body"],
             "wrong_signature_version"
-
         )
 
 
@@ -84,7 +82,6 @@ def test_is_valid__v1():
         TEST_DATA["client_secret"],
         TEST_DATA["request_body"],
         signature_version="v1"
-
     )
 
     assert result
@@ -120,13 +117,12 @@ def test_is_valid__v2_get_method():
 
 
 def test_is_valid__v3():
-    timestamp = datetime.now().timestamp()
     signature = Signature.get_signature(
         TEST_DATA["client_secret"],
         TEST_DATA["request_body"],
         signature_version="v3",
         http_uri=TEST_DATA["url"],
-        timestamp=timestamp
+        timestamp=TEST_DATA["timestamp"]
     )
 
     result = Signature.is_valid(
@@ -135,7 +131,7 @@ def test_is_valid__v3():
         TEST_DATA["request_body"],
         signature_version="v3",
         http_uri=TEST_DATA["url"],
-        timestamp=timestamp
+        timestamp=TEST_DATA["timestamp"]
     )
 
     assert result
@@ -161,13 +157,14 @@ def test_is_valid__none_timestamp():
 
 
 def test_is_valid__expired_timestamp():
-    timestamp = datetime.now().timestamp()
+    expired_timestamp = str(int((datetime.now().timestamp() - Signature.MAX_ALLOWED_TIMESTAMP - 1) * 1000))
+
     signature = Signature.get_signature(
         TEST_DATA["client_secret"],
         TEST_DATA["request_body"],
         signature_version="v3",
         http_uri=TEST_DATA["url"],
-        timestamp=timestamp
+        timestamp=expired_timestamp
     )
 
     with pytest.raises(InvalidSignatureTimestampError):
@@ -177,5 +174,17 @@ def test_is_valid__expired_timestamp():
             TEST_DATA["request_body"],
             signature_version="v3",
             http_uri=TEST_DATA["url"],
-            timestamp=timestamp - Signature.MAX_ALLOWED_TIMESTAMP
+            timestamp=expired_timestamp
         )
+
+
+def test_is_timestamp_valid__valid_timestamp():
+    current_timestamp = str(int(datetime.now().timestamp() * 1000))
+
+    assert Signature._is_timestamp_valid(current_timestamp) is True
+
+
+def test_is_timestamp_valid__expired_timestamp():
+    expired_timestamp = str(int((datetime.now().timestamp() - Signature.MAX_ALLOWED_TIMESTAMP - 10) * 1000))
+
+    assert Signature._is_timestamp_valid(expired_timestamp) is False
