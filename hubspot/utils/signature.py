@@ -2,13 +2,25 @@ import base64
 import hmac
 import hashlib
 
-from datetime import datetime
+from datetime import datetime, UTC, timedelta
 
 from hubspot.exceptions import InvalidSignatureVersionError, InvalidSignatureTimestampError
 
 
 class Signature:
-    MAX_ALLOWED_TIMESTAMP = 3000
+    MAX_ALLOWED_TIMESTAMP = 300
+
+    @staticmethod
+    def _is_timestamp_valid(timestamp: str) -> bool:
+        if timestamp is None:
+            return False
+        try:
+            timestamp_float = float(timestamp)
+            request_time = datetime.fromtimestamp(timestamp_float // 1000, tz=UTC)
+            current_time = datetime.now(UTC)
+            return current_time - request_time < timedelta(seconds=Signature.MAX_ALLOWED_TIMESTAMP)
+        except (ValueError, OverflowError):
+            return False
 
     @staticmethod
     def is_valid(
@@ -18,12 +30,12 @@ class Signature:
         http_uri: str = None,
         http_method: str = "POST",
         signature_version: str = "v2",
-        timestamp: float = None
+        timestamp: str = None
     ) -> bool:
         if signature_version == "v3":
-            current_time = datetime.now()
-            if timestamp is None or current_time.timestamp() - timestamp > Signature.MAX_ALLOWED_TIMESTAMP:
+            if timestamp is None or not Signature._is_timestamp_valid(timestamp):
                 raise InvalidSignatureTimestampError(timestamp=timestamp)
+
         hashed_signature = Signature.get_signature(
             client_secret,
             request_body,
@@ -33,7 +45,7 @@ class Signature:
             timestamp
         )
 
-        return signature == hashed_signature
+        return hmac.compare_digest(hashed_signature, signature)
 
     @staticmethod
     def get_signature(
@@ -42,7 +54,7 @@ class Signature:
         signature_version: str,
         http_uri: str = None,
         http_method: str = "POST",
-        timestamp: float = None,
+        timestamp: str = None
     ) -> str:
         if signature_version == "v1":
             source_string = f"{client_secret}{request_body}"
@@ -54,10 +66,10 @@ class Signature:
             source_string = f"{http_method}{http_uri}{request_body}{timestamp}"
             hashed_signature = base64.b64encode(
                 hmac.new(
-                        client_secret.encode("utf-8"),
-                        msg=source_string.encode("utf-8"),
-                        digestmod=hashlib.sha256
-                        ).digest()
+                    client_secret.encode("utf-8"),
+                    msg=source_string.encode("utf-8"),
+                    digestmod=hashlib.sha256
+                ).digest()
             ).decode()
             return hashed_signature
         else:
