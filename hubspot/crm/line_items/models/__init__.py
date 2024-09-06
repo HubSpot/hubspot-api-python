@@ -17,6 +17,7 @@ from __future__ import absolute_import
 from hubspot.crm.line_items.models.associated_id import AssociatedId
 from hubspot.crm.line_items.models.association_spec import AssociationSpec
 from hubspot.crm.line_items.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
+from hubspot.crm.line_items.models.batch_input_simple_public_object_batch_input_upsert import BatchInputSimplePublicObjectBatchInputUpsert
 from hubspot.crm.line_items.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
 from hubspot.crm.line_items.models.batch_input_simple_public_object_input_for_create import BatchInputSimplePublicObjectInputForCreate
 from hubspot.crm.line_items.models.batch_read_input_simple_public_object_id import BatchReadInputSimplePublicObjectId
@@ -34,12 +35,11 @@ from hubspot.crm.line_items.models.next_page import NextPage
 from hubspot.crm.line_items.models.paging import Paging
 from hubspot.crm.line_items.models.previous_page import PreviousPage
 from hubspot.crm.line_items.models.public_associations_for_object import PublicAssociationsForObject
-from hubspot.crm.line_items.models.public_gdpr_delete_input import PublicGdprDeleteInput
-from hubspot.crm.line_items.models.public_merge_input import PublicMergeInput
 from hubspot.crm.line_items.models.public_object_id import PublicObjectId
 from hubspot.crm.line_items.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.line_items.models.simple_public_object import SimplePublicObject
 from hubspot.crm.line_items.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
+from hubspot.crm.line_items.models.simple_public_object_batch_input_upsert import SimplePublicObjectBatchInputUpsert
 from hubspot.crm.line_items.models.simple_public_object_id import SimplePublicObjectId
 from hubspot.crm.line_items.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.line_items.models.simple_public_object_input_for_create import SimplePublicObjectInputForCreate

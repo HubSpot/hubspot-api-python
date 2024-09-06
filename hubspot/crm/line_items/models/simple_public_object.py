@@ -78,8 +78,7 @@ class SimplePublicObject(object):
         if properties_with_history is not None:
             self.properties_with_history = properties_with_history
         self.id = id
-        if properties is not None:
-            self.properties = properties
+        self.properties = properties
         self.updated_at = updated_at
 
     @property
@@ -209,6 +208,8 @@ class SimplePublicObject(object):
         :param properties: The properties of this SimplePublicObject.  # noqa: E501
         :type properties: dict[str, str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
