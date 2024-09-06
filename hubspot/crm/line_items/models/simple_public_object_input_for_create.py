@@ -50,8 +50,7 @@ class SimplePublicObjectInputForCreate(object):
         self.discriminator = None
 
         self.associations = associations
-        if properties is not None:
-            self.properties = properties
+        self.properties = properties
 
     @property
     def associations(self):
@@ -94,6 +93,8 @@ class SimplePublicObjectInputForCreate(object):
         :param properties: The properties of this SimplePublicObjectInputForCreate.  # noqa: E501
         :type properties: dict[str, str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
