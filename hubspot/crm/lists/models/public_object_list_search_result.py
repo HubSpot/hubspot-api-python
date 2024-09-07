@@ -38,7 +38,7 @@ class PublicObjectListSearchResult(object):
     openapi_types = {
         "processing_type": "str",
         "object_type_id": "str",
-        "updated_by_id": "int",
+        "updated_by_id": "str",
         "filters_updated_at": "datetime",
         "list_id": "str",
         "created_at": "datetime",
@@ -47,7 +47,7 @@ class PublicObjectListSearchResult(object):
         "list_version": "int",
         "name": "str",
         "additional_properties": "dict[str, str]",
-        "created_by_id": "int",
+        "created_by_id": "str",
         "updated_at": "datetime",
     }
 
@@ -181,7 +181,7 @@ class PublicObjectListSearchResult(object):
         The ID of the user that last updated the list.  # noqa: E501
 
         :return: The updated_by_id of this PublicObjectListSearchResult.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._updated_by_id
 
@@ -192,7 +192,7 @@ class PublicObjectListSearchResult(object):
         The ID of the user that last updated the list.  # noqa: E501
 
         :param updated_by_id: The updated_by_id of this PublicObjectListSearchResult.  # noqa: E501
-        :type updated_by_id: int
+        :type updated_by_id: str
         """
 
         self._updated_by_id = updated_by_id
@@ -398,7 +398,7 @@ class PublicObjectListSearchResult(object):
         The ID of the user that created the list.  # noqa: E501
 
         :return: The created_by_id of this PublicObjectListSearchResult.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._created_by_id
 
@@ -409,7 +409,7 @@ class PublicObjectListSearchResult(object):
         The ID of the user that created the list.  # noqa: E501
 
         :param created_by_id: The created_by_id of this PublicObjectListSearchResult.  # noqa: E501
-        :type created_by_id: int
+        :type created_by_id: str
         """
 
         self._created_by_id = created_by_id

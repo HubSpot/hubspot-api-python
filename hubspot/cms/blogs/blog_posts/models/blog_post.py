@@ -87,8 +87,8 @@ class BlogPost(object):
         "rss_summary": "str",
         "page_expiry_enabled": "bool",
         "url": "str",
-        "public_access_rules": "list[object]",
         "enable_google_amp_output_override": "bool",
+        "public_access_rules": "list[object]",
         "archived_at": "int",
         "post_body": "str",
         "theme_settings_values": "dict[str, object]",
@@ -151,8 +151,8 @@ class BlogPost(object):
         "rss_summary": "rssSummary",
         "page_expiry_enabled": "pageExpiryEnabled",
         "url": "url",
-        "public_access_rules": "publicAccessRules",
         "enable_google_amp_output_override": "enableGoogleAmpOutputOverride",
+        "public_access_rules": "publicAccessRules",
         "archived_at": "archivedAt",
         "post_body": "postBody",
         "theme_settings_values": "themeSettingsValues",
@@ -216,8 +216,8 @@ class BlogPost(object):
         rss_summary=None,
         page_expiry_enabled=None,
         url=None,
-        public_access_rules=None,
         enable_google_amp_output_override=None,
+        public_access_rules=None,
         archived_at=None,
         post_body=None,
         theme_settings_values=None,
@@ -284,8 +284,8 @@ class BlogPost(object):
         self._rss_summary = None
         self._page_expiry_enabled = None
         self._url = None
-        self._public_access_rules = None
         self._enable_google_amp_output_override = None
+        self._public_access_rules = None
         self._archived_at = None
         self._post_body = None
         self._theme_settings_values = None
@@ -347,8 +347,8 @@ class BlogPost(object):
         self.rss_summary = rss_summary
         self.page_expiry_enabled = page_expiry_enabled
         self.url = url
-        self.public_access_rules = public_access_rules
         self.enable_google_amp_output_override = enable_google_amp_output_override
+        self.public_access_rules = public_access_rules
         self.archived_at = archived_at
         self.post_body = post_body
         self.theme_settings_values = theme_settings_values
@@ -563,7 +563,9 @@ class BlogPost(object):
             "en-dg",
             "en-dk",
             "en-dm",
+            "en-ee",
             "en-er",
+            "en-fr",
             "en-fi",
             "en-fj",
             "en-fk",
@@ -1559,7 +1561,7 @@ class BlogPost(object):
         """
         if self.local_vars_configuration.client_side_validation and content_type_category is None:  # noqa: E501
             raise ValueError("Invalid value for `content_type_category`, must not be `None`")  # noqa: E501
-        allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]  # noqa: E501
+        allowed_values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and content_type_category not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `content_type_category` ({0}), must be one of {1}".format(content_type_category, allowed_values))  # noqa: E501
 
@@ -2388,31 +2390,6 @@ class BlogPost(object):
         self._url = url
 
     @property
-    def public_access_rules(self):
-        """Gets the public_access_rules of this BlogPost.  # noqa: E501
-
-        Rules for require member registration to access private content.  # noqa: E501
-
-        :return: The public_access_rules of this BlogPost.  # noqa: E501
-        :rtype: list[object]
-        """
-        return self._public_access_rules
-
-    @public_access_rules.setter
-    def public_access_rules(self, public_access_rules):
-        """Sets the public_access_rules of this BlogPost.
-
-        Rules for require member registration to access private content.  # noqa: E501
-
-        :param public_access_rules: The public_access_rules of this BlogPost.  # noqa: E501
-        :type public_access_rules: list[object]
-        """
-        if self.local_vars_configuration.client_side_validation and public_access_rules is None:  # noqa: E501
-            raise ValueError("Invalid value for `public_access_rules`, must not be `None`")  # noqa: E501
-
-        self._public_access_rules = public_access_rules
-
-    @property
     def enable_google_amp_output_override(self):
         """Gets the enable_google_amp_output_override of this BlogPost.  # noqa: E501
 
@@ -2436,6 +2413,31 @@ class BlogPost(object):
             raise ValueError("Invalid value for `enable_google_amp_output_override`, must not be `None`")  # noqa: E501
 
         self._enable_google_amp_output_override = enable_google_amp_output_override
+
+    @property
+    def public_access_rules(self):
+        """Gets the public_access_rules of this BlogPost.  # noqa: E501
+
+        Rules for require member registration to access private content.  # noqa: E501
+
+        :return: The public_access_rules of this BlogPost.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._public_access_rules
+
+    @public_access_rules.setter
+    def public_access_rules(self, public_access_rules):
+        """Sets the public_access_rules of this BlogPost.
+
+        Rules for require member registration to access private content.  # noqa: E501
+
+        :param public_access_rules: The public_access_rules of this BlogPost.  # noqa: E501
+        :type public_access_rules: list[object]
+        """
+        if self.local_vars_configuration.client_side_validation and public_access_rules is None:  # noqa: E501
+            raise ValueError("Invalid value for `public_access_rules`, must not be `None`")  # noqa: E501
+
+        self._public_access_rules = public_access_rules
 
     @property
     def archived_at(self):
@@ -2626,7 +2628,7 @@ class BlogPost(object):
     def category_id(self):
         """Gets the category_id of this BlogPost.  # noqa: E501
 
-        ID of the type of object this is. Should always .  # noqa: E501
+        ID of the type of object this is.   # noqa: E501
 
         :return: The category_id of this BlogPost.  # noqa: E501
         :rtype: int
@@ -2637,7 +2639,7 @@ class BlogPost(object):
     def category_id(self, category_id):
         """Sets the category_id of this BlogPost.
 
-        ID of the type of object this is. Should always .  # noqa: E501
+        ID of the type of object this is.   # noqa: E501
 
         :param category_id: The category_id of this BlogPost.  # noqa: E501
         :type category_id: int
