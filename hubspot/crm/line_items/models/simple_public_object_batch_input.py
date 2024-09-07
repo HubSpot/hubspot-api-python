@@ -53,13 +53,13 @@ class SimplePublicObjectBatchInput(object):
         if id_property is not None:
             self.id_property = id_property
         self.id = id
-        if properties is not None:
-            self.properties = properties
+        self.properties = properties
 
     @property
     def id_property(self):
         """Gets the id_property of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :return: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: str
@@ -70,6 +70,7 @@ class SimplePublicObjectBatchInput(object):
     def id_property(self, id_property):
         """Sets the id_property of this SimplePublicObjectBatchInput.
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :param id_property: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
         :type id_property: str
@@ -81,6 +82,7 @@ class SimplePublicObjectBatchInput(object):
     def id(self):
         """Gets the id of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        The id to be updated. This can be the object id, or the unique property value of the idProperty property  # noqa: E501
 
         :return: The id of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: str
@@ -91,6 +93,7 @@ class SimplePublicObjectBatchInput(object):
     def id(self, id):
         """Sets the id of this SimplePublicObjectBatchInput.
 
+        The id to be updated. This can be the object id, or the unique property value of the idProperty property  # noqa: E501
 
         :param id: The id of this SimplePublicObjectBatchInput.  # noqa: E501
         :type id: str
@@ -118,6 +121,8 @@ class SimplePublicObjectBatchInput(object):
         :param properties: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
         :type properties: dict[str, str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
