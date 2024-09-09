@@ -38,7 +38,7 @@ class PublicEmailEventFilter(object):
     openapi_types = {
         "click_url": "str",
         "level": "str",
-        "pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "app_id": "str",
         "email_id": "str",
         "filter_type": "str",
@@ -122,7 +122,7 @@ class PublicEmailEventFilter(object):
 
 
         :return: The pruning_refine_by of this PublicEmailEventFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -132,7 +132,7 @@ class PublicEmailEventFilter(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicEmailEventFilter.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._pruning_refine_by = pruning_refine_by

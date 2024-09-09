@@ -35,7 +35,7 @@ class PublicNumAssociationsFilter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy", "association_type_id": "int", "association_category": "str", "filter_type": "str"}
+    openapi_types = {"coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy", "association_type_id": "int", "association_category": "str", "filter_type": "str"}
 
     attribute_map = {"coalescing_refine_by": "coalescingRefineBy", "association_type_id": "associationTypeId", "association_category": "associationCategory", "filter_type": "filterType"}
 
@@ -62,7 +62,7 @@ class PublicNumAssociationsFilter(object):
 
 
         :return: The coalescing_refine_by of this PublicNumAssociationsFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -72,7 +72,7 @@ class PublicNumAssociationsFilter(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicNumAssociationsFilter.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
         if self.local_vars_configuration.client_side_validation and coalescing_refine_by is None:  # noqa: E501
             raise ValueError("Invalid value for `coalescing_refine_by`, must not be `None`")  # noqa: E501

@@ -38,16 +38,16 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
     openapi_types = {
         "_property": "str",
         "filter_type": "str",
-        "operation": "PublicPropertyFilterOperation",
+        "operation": "PublicSurveyMonkeyValueFilterValueComparison",
         "list_id": "str",
-        "coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "to_object_type": "str",
         "association_type_id": "int",
         "association_category": "str",
         "to_object_type_id": "str",
         "operator": "str",
         "enable_tracking": "bool",
-        "pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "page_url": "str",
         "cta_name": "str",
         "event_id": "str",
@@ -63,7 +63,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
         "business_unit_id": "str",
         "campaign_id": "str",
         "survey_id": "str",
-        "value_comparison": "PublicPropertyFilterOperation",
+        "value_comparison": "PublicSurveyMonkeyValueFilterValueComparison",
         "survey_question": "str",
         "survey_answer_row_id": "str",
         "survey_answer_col_id": "str",
@@ -134,7 +134,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
     def __init__(
         self,
         _property=None,
-        filter_type="UNIFIED_EVENTS_IN_LIST",
+        filter_type="CONSTANT",
         operation=None,
         list_id=None,
         coalescing_refine_by=None,
@@ -332,7 +332,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
         """
         if self.local_vars_configuration.client_side_validation and filter_type is None:  # noqa: E501
             raise ValueError("Invalid value for `filter_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["UNIFIED_EVENTS_IN_LIST"]  # noqa: E501
+        allowed_values = ["CONSTANT"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and filter_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `filter_type` ({0}), must be one of {1}".format(filter_type, allowed_values))  # noqa: E501
 
@@ -344,7 +344,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :return: The operation of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :rtype: PublicPropertyFilterOperation
+        :rtype: PublicSurveyMonkeyValueFilterValueComparison
         """
         return self._operation
 
@@ -354,7 +354,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :param operation: The operation of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :type operation: PublicPropertyFilterOperation
+        :type operation: PublicSurveyMonkeyValueFilterValueComparison
         """
         if self.local_vars_configuration.client_side_validation and operation is None:  # noqa: E501
             raise ValueError("Invalid value for `operation`, must not be `None`")  # noqa: E501
@@ -390,7 +390,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :return: The coalescing_refine_by of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -400,7 +400,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
         if self.local_vars_configuration.client_side_validation and coalescing_refine_by is None:  # noqa: E501
             raise ValueError("Invalid value for `coalescing_refine_by`, must not be `None`")  # noqa: E501
@@ -545,7 +545,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :return: The pruning_refine_by of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -555,7 +555,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
         if self.local_vars_configuration.client_side_validation and pruning_refine_by is None:  # noqa: E501
             raise ValueError("Invalid value for `pruning_refine_by`, must not be `None`")  # noqa: E501
@@ -909,7 +909,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :return: The value_comparison of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :rtype: PublicPropertyFilterOperation
+        :rtype: PublicSurveyMonkeyValueFilterValueComparison
         """
         return self._value_comparison
 
@@ -919,7 +919,7 @@ class PublicPropertyAssociationFilterBranchFiltersInner(object):
 
 
         :param value_comparison: The value_comparison of this PublicPropertyAssociationFilterBranchFiltersInner.  # noqa: E501
-        :type value_comparison: PublicPropertyFilterOperation
+        :type value_comparison: PublicSurveyMonkeyValueFilterValueComparison
         """
         if self.local_vars_configuration.client_side_validation and value_comparison is None:  # noqa: E501
             raise ValueError("Invalid value for `value_comparison`, must not be `None`")  # noqa: E501
