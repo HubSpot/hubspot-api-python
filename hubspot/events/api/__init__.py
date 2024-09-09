@@ -4,3 +4,4 @@ from __future__ import absolute_import
 
 # import apis into api package
 from hubspot.events.api.events_api import EventsApi
+from hubspot.events.api.default_api import DefaultApi
