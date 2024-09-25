@@ -189,13 +189,12 @@ from flask import request
 from hubspot.utils.signature import Signature
 
 Signature.is_valid(
-        signature=request.headers["X-HubSpot-Signature"],
-        client_secret=os.getenv("HUBSPOT_CLIENT_SECRET"),
-        request_body=request.data.decode("utf-8"),
-        http_uri=request.base_url,
-        signature_version=request.headers["X-HubSpot-Signature-Version"],
-        timestamp=datetime.now().timestamp()
-
+    signature=request.headers["X-HubSpot-Signature"],
+    client_secret=os.getenv("HUBSPOT_CLIENT_SECRET"),
+    request_body=request.data.decode("utf-8"),
+    http_uri=request.base_url,
+    signature_version=request.headers["X-HubSpot-Signature-Version"],
+    timestamp=datetime.now().timestamp()
 )
 ```
 
