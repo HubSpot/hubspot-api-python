@@ -84,7 +84,6 @@ class BatchReadInputSimplePublicObjectId(object):
     def id_property(self):
         """Gets the id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
 
-        The name of a property whose values are unique for this object  # noqa: E501
 
         :return: The id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :rtype: str
@@ -95,7 +94,6 @@ class BatchReadInputSimplePublicObjectId(object):
     def id_property(self, id_property):
         """Sets the id_property of this BatchReadInputSimplePublicObjectId.
 
-        The name of a property whose values are unique for this object  # noqa: E501
 
         :param id_property: The id_property of this BatchReadInputSimplePublicObjectId.  # noqa: E501
         :type id_property: str

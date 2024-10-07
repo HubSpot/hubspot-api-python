@@ -35,23 +35,26 @@ class SimplePublicObjectBatchInputUpsert(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"id_property": "str", "id": "str", "properties": "dict[str, str]"}
+    openapi_types = {"id_property": "str", "object_write_trace_id": "str", "id": "str", "properties": "dict[str, str]"}
 
-    attribute_map = {"id_property": "idProperty", "id": "id", "properties": "properties"}
+    attribute_map = {"id_property": "idProperty", "object_write_trace_id": "objectWriteTraceId", "id": "id", "properties": "properties"}
 
-    def __init__(self, id_property=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id_property=None, object_write_trace_id=None, id=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectBatchInputUpsert - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._id_property = None
+        self._object_write_trace_id = None
         self._id = None
         self._properties = None
         self.discriminator = None
 
         if id_property is not None:
             self.id_property = id_property
+        if object_write_trace_id is not None:
+            self.object_write_trace_id = object_write_trace_id
         self.id = id
         self.properties = properties
 
@@ -59,7 +62,6 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id_property(self):
         """Gets the id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
 
-        The name of a property whose values are unique for this object  # noqa: E501
 
         :return: The id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :rtype: str
@@ -70,13 +72,33 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id_property(self, id_property):
         """Sets the id_property of this SimplePublicObjectBatchInputUpsert.
 
-        The name of a property whose values are unique for this object  # noqa: E501
 
         :param id_property: The id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :type id_property: str
         """
 
         self._id_property = id_property
+
+    @property
+    def object_write_trace_id(self):
+        """Gets the object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
+
+
+        :return: The object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_write_trace_id
+
+    @object_write_trace_id.setter
+    def object_write_trace_id(self, object_write_trace_id):
+        """Sets the object_write_trace_id of this SimplePublicObjectBatchInputUpsert.
+
+
+        :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
+        :type object_write_trace_id: str
+        """
+
+        self._object_write_trace_id = object_write_trace_id
 
     @property
     def id(self):
