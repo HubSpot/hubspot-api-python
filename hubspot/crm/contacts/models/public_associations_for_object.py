@@ -49,8 +49,10 @@ class PublicAssociationsForObject(object):
         self._to = None
         self.discriminator = None
 
-        self.types = types
-        self.to = to
+        if types is not None:
+            self.types = types
+        if to is not None:
+            self.to = to
 
     @property
     def types(self):
@@ -70,8 +72,6 @@ class PublicAssociationsForObject(object):
         :param types: The types of this PublicAssociationsForObject.  # noqa: E501
         :type types: list[AssociationSpec]
         """
-        if self.local_vars_configuration.client_side_validation and types is None:  # noqa: E501
-            raise ValueError("Invalid value for `types`, must not be `None`")  # noqa: E501
 
         self._types = types
 
@@ -93,8 +93,6 @@ class PublicAssociationsForObject(object):
         :param to: The to of this PublicAssociationsForObject.  # noqa: E501
         :type to: PublicObjectId
         """
-        if self.local_vars_configuration.client_side_validation and to is None:  # noqa: E501
-            raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
 
