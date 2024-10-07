@@ -142,7 +142,7 @@ class CoreApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/schemas/{objectType}",
+            "/crm-object-schemas/v3/schemas/{objectType}",
             "DELETE",
             path_params,
             query_params,
@@ -272,7 +272,7 @@ class CoreApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/schemas/{objectType}/associations/{associationIdentifier}",
+            "/crm-object-schemas/v3/schemas/{objectType}/associations/{associationIdentifier}",
             "DELETE",
             path_params,
             query_params,
@@ -400,7 +400,7 @@ class CoreApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/schemas",
+            "/crm-object-schemas/v3/schemas",
             "POST",
             path_params,
             query_params,
@@ -537,7 +537,7 @@ class CoreApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/schemas/{objectType}/associations",
+            "/crm-object-schemas/v3/schemas/{objectType}/associations",
             "POST",
             path_params,
             query_params,
@@ -657,7 +657,7 @@ class CoreApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/schemas",
+            "/crm-object-schemas/v3/schemas",
             "GET",
             path_params,
             query_params,
@@ -780,7 +780,7 @@ class CoreApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/schemas/{objectType}",
+            "/crm-object-schemas/v3/schemas/{objectType}",
             "GET",
             path_params,
             query_params,
@@ -917,7 +917,7 @@ class CoreApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/schemas/{objectType}",
+            "/crm-object-schemas/v3/schemas/{objectType}",
             "PATCH",
             path_params,
             query_params,
