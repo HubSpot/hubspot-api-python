@@ -5,6 +5,4 @@ from __future__ import absolute_import
 # import apis into api package
 from hubspot.crm.products.api.basic_api import BasicApi
 from hubspot.crm.products.api.batch_api import BatchApi
-from hubspot.crm.products.api.gdpr_api import GDPRApi
-from hubspot.crm.products.api.public_object_api import PublicObjectApi
 from hubspot.crm.products.api.search_api import SearchApi

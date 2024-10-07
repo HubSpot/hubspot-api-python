@@ -35,32 +35,97 @@ class ActionHookActionBody(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"type": "str", "confirmation": "ActionConfirmationBody", "http_method": "str", "url": "str", "label": "str", "property_names_included": "list[str]"}
+    openapi_types = {"property_names_included": "list[str]", "confirmation": "ActionConfirmationBody", "label": "str", "type": "str", "http_method": "str", "url": "str"}
 
-    attribute_map = {"type": "type", "confirmation": "confirmation", "http_method": "httpMethod", "url": "url", "label": "label", "property_names_included": "propertyNamesIncluded"}
+    attribute_map = {"property_names_included": "propertyNamesIncluded", "confirmation": "confirmation", "label": "label", "type": "type", "http_method": "httpMethod", "url": "url"}
 
-    def __init__(self, type="ACTION_HOOK", confirmation=None, http_method=None, url=None, label=None, property_names_included=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, property_names_included=None, confirmation=None, label=None, type="ACTION_HOOK", http_method=None, url=None, local_vars_configuration=None):  # noqa: E501
         """ActionHookActionBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._type = None
+        self._property_names_included = None
         self._confirmation = None
+        self._label = None
+        self._type = None
         self._http_method = None
         self._url = None
-        self._label = None
-        self._property_names_included = None
         self.discriminator = None
 
-        self.type = type
+        self.property_names_included = property_names_included
         if confirmation is not None:
             self.confirmation = confirmation
-        self.http_method = http_method
-        self.url = url
         if label is not None:
             self.label = label
-        self.property_names_included = property_names_included
+        self.type = type
+        self.http_method = http_method
+        self.url = url
+
+    @property
+    def property_names_included(self):
+        """Gets the property_names_included of this ActionHookActionBody.  # noqa: E501
+
+
+        :return: The property_names_included of this ActionHookActionBody.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._property_names_included
+
+    @property_names_included.setter
+    def property_names_included(self, property_names_included):
+        """Sets the property_names_included of this ActionHookActionBody.
+
+
+        :param property_names_included: The property_names_included of this ActionHookActionBody.  # noqa: E501
+        :type property_names_included: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
+            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
+
+        self._property_names_included = property_names_included
+
+    @property
+    def confirmation(self):
+        """Gets the confirmation of this ActionHookActionBody.  # noqa: E501
+
+
+        :return: The confirmation of this ActionHookActionBody.  # noqa: E501
+        :rtype: ActionConfirmationBody
+        """
+        return self._confirmation
+
+    @confirmation.setter
+    def confirmation(self, confirmation):
+        """Sets the confirmation of this ActionHookActionBody.
+
+
+        :param confirmation: The confirmation of this ActionHookActionBody.  # noqa: E501
+        :type confirmation: ActionConfirmationBody
+        """
+
+        self._confirmation = confirmation
+
+    @property
+    def label(self):
+        """Gets the label of this ActionHookActionBody.  # noqa: E501
+
+
+        :return: The label of this ActionHookActionBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this ActionHookActionBody.
+
+
+        :param label: The label of this ActionHookActionBody.  # noqa: E501
+        :type label: str
+        """
+
+        self._label = label
 
     @property
     def type(self):
@@ -87,27 +152,6 @@ class ActionHookActionBody(object):
             raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
 
         self._type = type
-
-    @property
-    def confirmation(self):
-        """Gets the confirmation of this ActionHookActionBody.  # noqa: E501
-
-
-        :return: The confirmation of this ActionHookActionBody.  # noqa: E501
-        :rtype: ActionConfirmationBody
-        """
-        return self._confirmation
-
-    @confirmation.setter
-    def confirmation(self, confirmation):
-        """Sets the confirmation of this ActionHookActionBody.
-
-
-        :param confirmation: The confirmation of this ActionHookActionBody.  # noqa: E501
-        :type confirmation: ActionConfirmationBody
-        """
-
-        self._confirmation = confirmation
 
     @property
     def http_method(self):
@@ -157,50 +201,6 @@ class ActionHookActionBody(object):
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
-
-    @property
-    def label(self):
-        """Gets the label of this ActionHookActionBody.  # noqa: E501
-
-
-        :return: The label of this ActionHookActionBody.  # noqa: E501
-        :rtype: str
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this ActionHookActionBody.
-
-
-        :param label: The label of this ActionHookActionBody.  # noqa: E501
-        :type label: str
-        """
-
-        self._label = label
-
-    @property
-    def property_names_included(self):
-        """Gets the property_names_included of this ActionHookActionBody.  # noqa: E501
-
-
-        :return: The property_names_included of this ActionHookActionBody.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._property_names_included
-
-    @property_names_included.setter
-    def property_names_included(self, property_names_included):
-        """Sets the property_names_included of this ActionHookActionBody.
-
-
-        :param property_names_included: The property_names_included of this ActionHookActionBody.  # noqa: E501
-        :type property_names_included: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and property_names_included is None:  # noqa: E501
-            raise ValueError("Invalid value for `property_names_included`, must not be `None`")  # noqa: E501
-
-        self._property_names_included = property_names_included
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
