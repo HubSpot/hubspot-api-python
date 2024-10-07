@@ -33,14 +33,14 @@ class AttendanceSubscriberStateChangesApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_by_contact_email(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def record_by_contact_emails(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
         """Record a subscriber state by contact email  # noqa: E501
 
         Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_by_contact_email(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
+        >>> thread = api.record_by_contact_emails(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
         :param external_event_id: The id of the marketing event (required)
@@ -67,16 +67,16 @@ class AttendanceSubscriberStateChangesApi(object):
         :rtype: BatchResponseSubscriberEmailResponse
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_by_contact_email_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
+        return self.record_by_contact_emails_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs)  # noqa: E501
 
-    def create_by_contact_email_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
+    def record_by_contact_emails_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, **kwargs):  # noqa: E501
         """Record a subscriber state by contact email  # noqa: E501
 
         Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. If contact is not present it will be automatically created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_by_contact_email_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
+        >>> thread = api.record_by_contact_emails_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
         :param external_event_id: The id of the marketing event (required)
@@ -118,18 +118,18 @@ class AttendanceSubscriberStateChangesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_by_contact_email" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method record_by_contact_emails" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
         if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `create_by_contact_email`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `external_event_id` when calling `record_by_contact_emails`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
         if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create_by_contact_email`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `record_by_contact_emails`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_email_subscriber' is set
         if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_email_subscriber") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `create_by_contact_email`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_email_subscriber` when calling `record_by_contact_emails`")  # noqa: E501
 
         collection_formats = {}
 
@@ -185,14 +185,14 @@ class AttendanceSubscriberStateChangesApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def create_by_contact_id(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def record_by_contact_ids(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
         """Record a subscriber state by contact ids  # noqa: E501
 
         Record a subscriber state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_by_contact_id(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
+        >>> thread = api.record_by_contact_ids(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
         :param external_event_id: The id of the marketing event (required)
@@ -219,16 +219,16 @@ class AttendanceSubscriberStateChangesApi(object):
         :rtype: BatchResponseSubscriberVidResponse
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_by_contact_id_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
+        return self.record_by_contact_ids_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs)  # noqa: E501
 
-    def create_by_contact_id_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
+    def record_by_contact_ids_with_http_info(self, external_event_id, subscriber_state, batch_input_marketing_event_subscriber, **kwargs):  # noqa: E501
         """Record a subscriber state by contact ids  # noqa: E501
 
         Record a subscriber state between multiple HubSpot contacts and a marketing event, using HubSpot contact ids.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_by_contact_id_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
+        >>> thread = api.record_by_contact_ids_with_http_info(external_event_id, subscriber_state, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
         :param external_event_id: The id of the marketing event (required)
@@ -270,18 +270,18 @@ class AttendanceSubscriberStateChangesApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create_by_contact_id" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method record_by_contact_ids" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'external_event_id' is set
         if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `create_by_contact_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `external_event_id` when calling `record_by_contact_ids`")  # noqa: E501
         # verify the required parameter 'subscriber_state' is set
         if self.api_client.client_side_validation and local_var_params.get("subscriber_state") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `create_by_contact_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `subscriber_state` when calling `record_by_contact_ids`")  # noqa: E501
         # verify the required parameter 'batch_input_marketing_event_subscriber' is set
         if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_subscriber") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `create_by_contact_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_subscriber` when calling `record_by_contact_ids`")  # noqa: E501
 
         collection_formats = {}
 
