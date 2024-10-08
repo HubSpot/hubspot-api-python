@@ -1,5 +1,5 @@
-import hubspot.auth.oauth as api_client
-from ...discovery_base import DiscoveryBase
+import hubspot.oauth as api_client
+from ..discovery_base import DiscoveryBase
 
 
 class Discovery(DiscoveryBase):
