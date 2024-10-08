@@ -20,7 +20,7 @@ import urllib3
 
 import six
 from six.moves import http_client as httplib
-from hubspot.auth.oauth.exceptions import ApiValueError
+from hubspot.oauth.exceptions import ApiValueError
 
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {"multipleOf", "maximum", "exclusiveMaximum", "minimum", "exclusiveMinimum", "maxLength", "minLength", "pattern", "maxItems", "minItems"}
@@ -137,7 +137,7 @@ class Configuration(object):
         self.logger = {}
         """Logging Settings
         """
-        self.logger["package_logger"] = logging.getLogger("hubspot.auth.oauth")
+        self.logger["package_logger"] = logging.getLogger("hubspot.oauth")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         self.logger_format = "%(asctime)s %(levelname)s %(message)s"
         """Log format

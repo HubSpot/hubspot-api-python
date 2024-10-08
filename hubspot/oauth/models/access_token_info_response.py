@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import six
 
-from hubspot.auth.oauth.configuration import Configuration
+from hubspot.oauth.configuration import Configuration
 
 
 class AccessTokenInfoResponse(object):
