@@ -35,33 +35,109 @@ class DependentFieldFilter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"operator": "str", "value": "str", "values": "list[str]", "range_start": "str", "range_end": "str"}
+    openapi_types = {"range_start": "str", "values": "list[str]", "value": "str", "operator": "str", "range_end": "str"}
 
-    attribute_map = {"operator": "operator", "value": "value", "values": "values", "range_start": "rangeStart", "range_end": "rangeEnd"}
+    attribute_map = {"range_start": "rangeStart", "values": "values", "value": "value", "operator": "operator", "range_end": "rangeEnd"}
 
-    def __init__(self, operator=None, value=None, values=None, range_start=None, range_end=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, range_start=None, values=None, value=None, operator=None, range_end=None, local_vars_configuration=None):  # noqa: E501
         """DependentFieldFilter - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._operator = None
-        self._value = None
-        self._values = None
         self._range_start = None
+        self._values = None
+        self._value = None
+        self._operator = None
         self._range_end = None
         self.discriminator = None
 
-        self.operator = operator
-        self.value = value
-        self.values = values
         self.range_start = range_start
+        self.values = values
+        self.value = value
+        self.operator = operator
         self.range_end = range_end
+
+    @property
+    def range_start(self):
+        """Gets the range_start of this DependentFieldFilter.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The range_start of this DependentFieldFilter.  # noqa: E501
+        :rtype: str
+        """
+        return self._range_start
+
+    @range_start.setter
+    def range_start(self, range_start):
+        """Sets the range_start of this DependentFieldFilter.
+
+          # noqa: E501
+
+        :param range_start: The range_start of this DependentFieldFilter.  # noqa: E501
+        :type range_start: str
+        """
+        if self.local_vars_configuration.client_side_validation and range_start is None:  # noqa: E501
+            raise ValueError("Invalid value for `range_start`, must not be `None`")  # noqa: E501
+
+        self._range_start = range_start
+
+    @property
+    def values(self):
+        """Gets the values of this DependentFieldFilter.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The values of this DependentFieldFilter.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        """Sets the values of this DependentFieldFilter.
+
+          # noqa: E501
+
+        :param values: The values of this DependentFieldFilter.  # noqa: E501
+        :type values: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
+            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
+
+        self._values = values
+
+    @property
+    def value(self):
+        """Gets the value of this DependentFieldFilter.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The value of this DependentFieldFilter.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this DependentFieldFilter.
+
+          # noqa: E501
+
+        :param value: The value of this DependentFieldFilter.  # noqa: E501
+        :type value: str
+        """
+        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
 
     @property
     def operator(self):
         """Gets the operator of this DependentFieldFilter.  # noqa: E501
 
+          # noqa: E501
 
         :return: The operator of this DependentFieldFilter.  # noqa: E501
         :rtype: str
@@ -72,6 +148,7 @@ class DependentFieldFilter(object):
     def operator(self, operator):
         """Sets the operator of this DependentFieldFilter.
 
+          # noqa: E501
 
         :param operator: The operator of this DependentFieldFilter.  # noqa: E501
         :type operator: str
@@ -107,78 +184,10 @@ class DependentFieldFilter(object):
         self._operator = operator
 
     @property
-    def value(self):
-        """Gets the value of this DependentFieldFilter.  # noqa: E501
-
-
-        :return: The value of this DependentFieldFilter.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this DependentFieldFilter.
-
-
-        :param value: The value of this DependentFieldFilter.  # noqa: E501
-        :type value: str
-        """
-        if self.local_vars_configuration.client_side_validation and value is None:  # noqa: E501
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
-
-    @property
-    def values(self):
-        """Gets the values of this DependentFieldFilter.  # noqa: E501
-
-
-        :return: The values of this DependentFieldFilter.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._values
-
-    @values.setter
-    def values(self, values):
-        """Sets the values of this DependentFieldFilter.
-
-
-        :param values: The values of this DependentFieldFilter.  # noqa: E501
-        :type values: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and values is None:  # noqa: E501
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
-
-        self._values = values
-
-    @property
-    def range_start(self):
-        """Gets the range_start of this DependentFieldFilter.  # noqa: E501
-
-
-        :return: The range_start of this DependentFieldFilter.  # noqa: E501
-        :rtype: str
-        """
-        return self._range_start
-
-    @range_start.setter
-    def range_start(self, range_start):
-        """Sets the range_start of this DependentFieldFilter.
-
-
-        :param range_start: The range_start of this DependentFieldFilter.  # noqa: E501
-        :type range_start: str
-        """
-        if self.local_vars_configuration.client_side_validation and range_start is None:  # noqa: E501
-            raise ValueError("Invalid value for `range_start`, must not be `None`")  # noqa: E501
-
-        self._range_start = range_start
-
-    @property
     def range_end(self):
         """Gets the range_end of this DependentFieldFilter.  # noqa: E501
 
+          # noqa: E501
 
         :return: The range_end of this DependentFieldFilter.  # noqa: E501
         :rtype: str
@@ -189,6 +198,7 @@ class DependentFieldFilter(object):
     def range_end(self, range_end):
         """Sets the range_end of this DependentFieldFilter.
 
+          # noqa: E501
 
         :param range_end: The range_end of this DependentFieldFilter.  # noqa: E501
         :type range_end: str

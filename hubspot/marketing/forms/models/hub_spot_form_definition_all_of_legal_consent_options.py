@@ -40,11 +40,11 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         "subscription_type_ids": "list[int]",
         "lawful_basis": "str",
         "privacy_text": "str",
-        "communication_consent_text": "str",
         "communications_checkboxes": "list[LegalConsentCheckbox]",
-        "consent_to_process_text": "str",
+        "communication_consent_text": "str",
         "consent_to_process_checkbox_label": "str",
         "consent_to_process_footer_text": "str",
+        "consent_to_process_text": "str",
     }
 
     attribute_map = {
@@ -52,11 +52,11 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         "subscription_type_ids": "subscriptionTypeIds",
         "lawful_basis": "lawfulBasis",
         "privacy_text": "privacyText",
-        "communication_consent_text": "communicationConsentText",
         "communications_checkboxes": "communicationsCheckboxes",
-        "consent_to_process_text": "consentToProcessText",
+        "communication_consent_text": "communicationConsentText",
         "consent_to_process_checkbox_label": "consentToProcessCheckboxLabel",
         "consent_to_process_footer_text": "consentToProcessFooterText",
+        "consent_to_process_text": "consentToProcessText",
     }
 
     def __init__(
@@ -65,11 +65,11 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         subscription_type_ids=None,
         lawful_basis=None,
         privacy_text=None,
-        communication_consent_text=None,
         communications_checkboxes=None,
-        consent_to_process_text=None,
+        communication_consent_text=None,
         consent_to_process_checkbox_label=None,
         consent_to_process_footer_text=None,
+        consent_to_process_text=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """HubSpotFormDefinitionAllOfLegalConsentOptions - a model defined in OpenAPI"""  # noqa: E501
@@ -81,31 +81,32 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         self._subscription_type_ids = None
         self._lawful_basis = None
         self._privacy_text = None
-        self._communication_consent_text = None
         self._communications_checkboxes = None
-        self._consent_to_process_text = None
+        self._communication_consent_text = None
         self._consent_to_process_checkbox_label = None
         self._consent_to_process_footer_text = None
+        self._consent_to_process_text = None
         self.discriminator = None
 
         self.type = type
         self.subscription_type_ids = subscription_type_ids
         self.lawful_basis = lawful_basis
         self.privacy_text = privacy_text
+        self.communications_checkboxes = communications_checkboxes
         if communication_consent_text is not None:
             self.communication_consent_text = communication_consent_text
-        self.communications_checkboxes = communications_checkboxes
-        if consent_to_process_text is not None:
-            self.consent_to_process_text = consent_to_process_text
         if consent_to_process_checkbox_label is not None:
             self.consent_to_process_checkbox_label = consent_to_process_checkbox_label
         if consent_to_process_footer_text is not None:
             self.consent_to_process_footer_text = consent_to_process_footer_text
+        if consent_to_process_text is not None:
+            self.consent_to_process_text = consent_to_process_text
 
     @property
     def type(self):
         """Gets the type of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The type of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
@@ -116,6 +117,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def type(self, type):
         """Sets the type of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param type: The type of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type type: str
@@ -132,6 +134,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def subscription_type_ids(self):
         """Gets the subscription_type_ids of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The subscription_type_ids of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: list[int]
@@ -142,6 +145,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def subscription_type_ids(self, subscription_type_ids):
         """Sets the subscription_type_ids of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param subscription_type_ids: The subscription_type_ids of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type subscription_type_ids: list[int]
@@ -155,6 +159,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def lawful_basis(self):
         """Gets the lawful_basis of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The lawful_basis of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
@@ -165,6 +170,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def lawful_basis(self, lawful_basis):
         """Sets the lawful_basis of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param lawful_basis: The lawful_basis of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type lawful_basis: str
@@ -181,6 +187,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def privacy_text(self):
         """Gets the privacy_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The privacy_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
@@ -191,6 +198,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def privacy_text(self, privacy_text):
         """Sets the privacy_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param privacy_text: The privacy_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type privacy_text: str
@@ -201,30 +209,10 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         self._privacy_text = privacy_text
 
     @property
-    def communication_consent_text(self):
-        """Gets the communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
-
-
-        :return: The communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
-        :rtype: str
-        """
-        return self._communication_consent_text
-
-    @communication_consent_text.setter
-    def communication_consent_text(self, communication_consent_text):
-        """Sets the communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
-
-
-        :param communication_consent_text: The communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
-        :type communication_consent_text: str
-        """
-
-        self._communication_consent_text = communication_consent_text
-
-    @property
     def communications_checkboxes(self):
         """Gets the communications_checkboxes of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The communications_checkboxes of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: list[LegalConsentCheckbox]
@@ -235,6 +223,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def communications_checkboxes(self, communications_checkboxes):
         """Sets the communications_checkboxes of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param communications_checkboxes: The communications_checkboxes of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type communications_checkboxes: list[LegalConsentCheckbox]
@@ -245,30 +234,33 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
         self._communications_checkboxes = communications_checkboxes
 
     @property
-    def consent_to_process_text(self):
-        """Gets the consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+    def communication_consent_text(self):
+        """Gets the communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
-        :return: The consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+        :return: The communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
         """
-        return self._consent_to_process_text
+        return self._communication_consent_text
 
-    @consent_to_process_text.setter
-    def consent_to_process_text(self, consent_to_process_text):
-        """Sets the consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
+    @communication_consent_text.setter
+    def communication_consent_text(self, communication_consent_text):
+        """Sets the communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
-        :param consent_to_process_text: The consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
-        :type consent_to_process_text: str
+        :param communication_consent_text: The communication_consent_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+        :type communication_consent_text: str
         """
 
-        self._consent_to_process_text = consent_to_process_text
+        self._communication_consent_text = communication_consent_text
 
     @property
     def consent_to_process_checkbox_label(self):
         """Gets the consent_to_process_checkbox_label of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The consent_to_process_checkbox_label of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
@@ -279,6 +271,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def consent_to_process_checkbox_label(self, consent_to_process_checkbox_label):
         """Sets the consent_to_process_checkbox_label of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param consent_to_process_checkbox_label: The consent_to_process_checkbox_label of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type consent_to_process_checkbox_label: str
@@ -290,6 +283,7 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def consent_to_process_footer_text(self):
         """Gets the consent_to_process_footer_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
 
+          # noqa: E501
 
         :return: The consent_to_process_footer_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :rtype: str
@@ -300,12 +294,36 @@ class HubSpotFormDefinitionAllOfLegalConsentOptions(object):
     def consent_to_process_footer_text(self, consent_to_process_footer_text):
         """Sets the consent_to_process_footer_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
 
+          # noqa: E501
 
         :param consent_to_process_footer_text: The consent_to_process_footer_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
         :type consent_to_process_footer_text: str
         """
 
         self._consent_to_process_footer_text = consent_to_process_footer_text
+
+    @property
+    def consent_to_process_text(self):
+        """Gets the consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+        :rtype: str
+        """
+        return self._consent_to_process_text
+
+    @consent_to_process_text.setter
+    def consent_to_process_text(self, consent_to_process_text):
+        """Sets the consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.
+
+          # noqa: E501
+
+        :param consent_to_process_text: The consent_to_process_text of this HubSpotFormDefinitionAllOfLegalConsentOptions.  # noqa: E501
+        :type consent_to_process_text: str
+        """
+
+        self._consent_to_process_text = consent_to_process_text
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
