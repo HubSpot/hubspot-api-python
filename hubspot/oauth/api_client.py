@@ -24,10 +24,10 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from hubspot.auth.oauth.configuration import Configuration
-import hubspot.auth.oauth.models
-from hubspot.auth.oauth import rest
-from hubspot.auth.oauth.exceptions import ApiValueError, ApiException
+from hubspot.oauth.configuration import Configuration
+import hubspot.oauth.models
+from hubspot.oauth import rest
+from hubspot.oauth.exceptions import ApiValueError, ApiException
 
 
 class ApiClient(object):
@@ -301,7 +301,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(hubspot.auth.oauth.models, klass)
+                klass = getattr(hubspot.oauth.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

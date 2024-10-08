@@ -17,8 +17,8 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from hubspot.auth.oauth.api_client import ApiClient
-from hubspot.auth.oauth.exceptions import ApiTypeError, ApiValueError  # noqa: F401
+from hubspot.oauth.api_client import ApiClient
+from hubspot.oauth.exceptions import ApiTypeError, ApiValueError  # noqa: F401
 
 
 class RefreshTokensApi(object):
