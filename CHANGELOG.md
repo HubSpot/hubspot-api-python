@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v10.0.0...HEAD)
+
+## [10.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...v10.0.0) - 2024-10-??
+
+## CMS
+
+- Updated `language` validation: Added a predefined list of `allowed_values` for stricter validation for `cms/blogs/blog_posts/models/attach_to_lang_primary_request_v_next`.
+- 
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
