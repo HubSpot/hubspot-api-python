@@ -11,8 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## CMS
 
+- Added parameter `campaign_name` to `cms/blogs/blog_posts/models/content_language_variation`.
+- Added parameter `breakpoint_styles` to `cms/blogs/blog_posts/models/styles`.
+- Added parameter `name` to `cms.hubdb.rows_api.clone_draft_table_row()`.
+- Added parameter `archived` to `cms.hubdb.rows_api.get_draft_table_row_by_id()` and `cms.hubdb.rows_api.get_table_row()`.
+- Added parameters `offset` and `archived` to `cms.hubdb.rows_api.get_table_rows()` and `cms.hubdb.rows_api.read_draft_table_rows()`.
+- Added parameter `content_type` parameter to `cms.hubdb.tables_api.export_table()` and `cms.hubdb.tables_api.get_all_tables()`.
+- Added parameter `is_get_localized_schema` parameter to `cms.hubdb.tables_api.get_draft_table_details_by_id()`, `cms.hubdb.tables_api.get_table_details()` and `cms.hubdb.tables_api.update_draft_table()`.
+- Added parameters `created_by_user_id`, `updated_by`, `updated_by_user_id`, `created_at`, `created_by` and `updated_at` to `cms/hubdb/models/column` and `cms/hubdb/models/option`.
+- Added parameter `is_hubspot_defined` to `cms/hubdb/models/hub_db_table_clone_request`.
+- Added `do_async()` and `get_async_status()` methods to `cms.source_code.extract_api`.
+- Changed the response object type from  `CollectionResponseWithTotalHubDbTableRowV3ForwardPaging` to `UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3` for `cms.hubdb.rows_api.get_table_rows()` and `cms.hubdb.rows_api.read_draft_table_rows()`.
+- Changed parameter `batch_input_string: BatchInputString` to `batch_input_hub_db_table_row_batch_clone_request: BatchInputHubDbTableRowBatchCloneRequest` in `cms.hubdb.rows_api.clone_draft_table_row()`.
 - Updated `language` validation: Added a predefined list of `allowed_values` for stricter validation for `cms/blogs/blog_posts/models/attach_to_lang_primary_request_v_next`.
-- 
+- Updated `type` validation: Expanded `allowed_values` for validation for `/cms/hubdb/models/column_request`.
+- Removed `cms.source_code.extract_api.extract_by_path()` method.
+- Removed `cms.source_code.source_code_extract_api`.
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
