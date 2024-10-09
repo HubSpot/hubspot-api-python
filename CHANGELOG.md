@@ -31,8 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## CRM
 
 - Added `crm.objects.leads` Api client.
-- Added `crm.objects.lists.folders_api` Api.
-- Added `crm.lists.mapping_api` Api.
 - Added method `upsert` to `crm.companies.batch_api`, `crm.contacts.batch_api`, `crm.deals.batch_api`, `crm.line_items.batch_api`, `crm.objects.batch_api`, `crm.objects.calls.batch_api`, `crm.objects.communications.batch_api`, `crm.objects.emails.batch_api`, `crm.objects.meetings.batch_api`, `crm.objects.notes.batch_api`, `crm.objects.postal_mail.batch_api`, `crm.objects.tasks.batch_api`, `crm.objects.taxes.batch_api`, `crm.products.batch_api`, `crm.quotes.batch_api`, `crm.tickets.batch_api`.
 - Added parameter `object_write_trace_id` to models: `simple_public_object_input`, `simple_public_object_batch_input`, `simple_public_object_input_for_create` for `crm.companies`, `crm.contacts`, `crm.deals`, `crm.line_items`, `crm.objects`, `crm.objects.calls`, `crm.objects.communications`, `crm.objects.emails`, `crm.objects.meetings`, `crm.objects.notes`, `crm.objects.postal_mail`, `crm.objects.tasks`, `crm.objects.taxes`, `crm.products`, `crm.quotes`, `crm.tickets`.
 - Added method `mark_as_ready()` to `crm.extensions.calling.recording_settings_api`.
@@ -44,8 +42,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed `id` parameters can be `None` in `crm/companies/models/public_object_id`, `crm/contacts/models/public_object_id`, `crm/deals/models/public_object_id`, and `crm/tickets/models/public_object_id`.
 - Changed `limit`, `after`, `sorts`, `properties`, and `filter_groups` parameters can be `None` in `crm/companies/models/public_object_search_request`, `crm/contacts/models/public_object_search_request`, `crm/deals/models/public_object_search_request`, `crm/line_items/models/public_object_search_request`, `crm/objects/models/public_object_search_request`, `crm/objects/calls/models/public_object_search_request`, `crm/objects/communications/models/public_object_search_request`, `crm/objects/emails/models/public_object_search_request`, `crm/objects/goals/models/public_object_search_request`, `crm/objects/postal_mail/models/public_object_search_request`, `crm/objects/tasks/models/public_object_search_request`, `crm/objects/taxes/models/public_object_search_request`, `crm/products/models/public_object_search_request`, `crm/quotes/models/public_object_search_request`, and `crm/tickets/models/public_object_search_request`.
 - Changed `associations` parameters can be `None` in `crm/companies/models/simple_public_object_input_for_create`, `crm/contacts/models/simple_public_object_input_for_create`, `crm/deals/models/simple_public_object_input_for_create`, and `crm/tickets/models/simple_public_object_input_for_create`.
-- Renamed Api client from `crm.lists.list_app_membership_api` to `crm.lists.memberships_api`.
-- Renamed Api client from `crm.lists.list_app_api` to `crm.lists.lists_api`.
 - Renamed `public_object_api` to `merge_api` in `crm.companies`, `crm.contacts`, `crm.deals` and `crm.tickets`.
 - Removed `archive`, `create` and `update` methods from `crm.objects.goals.basic_api` and `crm.objects.goals.batch_api`.
 - Removed GDPRApi:
@@ -54,6 +50,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 `crm.line_items.public_object_api`, `crm.objects.public_object_api`, `crm.objects.calls.public_object_api`, `crm.objects.communications.public_object_api`, `crm.objects.emails.public_object_api`, `crm.objects.goals.public_object_api`, `crm.objects.meetings.public_object_api`, `crm.objects.notes.public_object_api`, `crm.objects.postal_mail.public_object_api`, `crm.objects.tasks.public_object_api`, `crm.objects.taxes.public_object_api`, `crm.products.public_object_api`, `crm.quotes.public_object_api`.
 - Removed `crm.schemas.public_object_schemas_api`.
 - Removed `crm.extensions.accounting` API client.
+
+## CRM Lists
+
+- Added `crm.objects.lists.folders_api` Api.
+- Added `crm.lists.mapping_api` Api.
+- Added `crm.lists.memberships_api.get_lists()` and `crm.lists.memberships_api.get_page_ordered_by_added_to_list_date()`.
+- Added parameter `custom_properties` to `crm/lists/models/list_create_request`.
+- Added parameters `list_ids`, `processing_types` and `sort` to `crm/lists/models/list_search_request`.
+- Added parameters `coalescing_refine_by` to `crm/lists/models/public_unified_events_filter_branch`.
+- Changed response object type `CollectionResponseLong` to `ApiCollectionResponseJoinTimeAndRecordId` of `crm.lists.membershipsApi.get_page()`.
+- Changed `offset` and `additional_properties` parameters can be `None` in `crm/lists/models/list_search_request`.
+- Rename model from `PublicEventAnalyticsFilterCoalescingRefineBy` to `PublicFormSubmissionFilterCoalescingRefineBy`.
+- Rename model from `PublicPropertyFilterOperation` to `PublicSurveyMonkeyValueFilterValueComparison`.
+- Renamed Api client from `crm.lists.list_app_membership_api` to `crm.lists.memberships_api`.
+- Renamed Api client from `crm.lists.list_app_api` to `crm.lists.lists_api`.
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
