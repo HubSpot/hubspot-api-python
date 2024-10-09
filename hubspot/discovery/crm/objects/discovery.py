@@ -41,6 +41,11 @@ class Discovery(DiscoveryBase):
         return GoalsDiscovery(self.config)
 
     @property
+    def leads(self):
+        from .leads.discovery import Discovery as LeadsDiscovery
+        return LeadsDiscovery(self.config)
+
+    @property
     def meetings(self):
         from .meetings.discovery import Discovery as MeetingsDiscovery
         return MeetingsDiscovery(self.config)
