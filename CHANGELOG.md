@@ -5,7 +5,100 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v10.0.0...HEAD)
+
+## [10.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...v10.0.0) - 2024-10-10
+
+## CMS
+
+- Added parameter `campaign_name` to `cms.blogs.blog_posts.models.content_language_variation`.
+- Added parameter `breakpoint_styles` to `cms.blogs.blog_posts.models.styles`.
+- Added parameter `name` to `cms.hubdb.rows_api.clone_draft_table_row()`.
+- Added parameter `archived` to `cms.hubdb.rows_api.get_draft_table_row_by_id()` and `cms.hubdb.rows_api.get_table_row()`.
+- Added parameters `offset` and `archived` to `cms.hubdb.rows_api.get_table_rows()` and `cms.hubdb.rows_api.read_draft_table_rows()`.
+- Added parameter `content_type` parameter to `cms.hubdb.tables_api.export_table()` and `cms.hubdb.tables_api.get_all_tables()`.
+- Added parameter `is_get_localized_schema` parameter to `cms.hubdb.tables_api.get_draft_table_details_by_id()`, `cms.hubdb.tables_api.get_table_details()` and `cms.hubdb.tables_api.update_draft_table()`.
+- Added parameters `created_by_user_id`, `updated_by`, `updated_by_user_id`, `created_at`, `created_by` and `updated_at` to `cms.hubdb.models.column` and `cms.hubdb.models.option`.
+- Added parameter `is_hubspot_defined` to `cms.hubdb.models.hub_db_table_clone_request`.
+- Added `do_async()` and `get_async_status()` methods to `cms.source_code.extract_api`.
+- Changed the response object type from  `CollectionResponseWithTotalHubDbTableRowV3ForwardPaging` to `UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3` for `cms.hubdb.rows_api.get_table_rows()` and `cms.hubdb.rows_api.read_draft_table_rows()`.
+- Changed parameter `batch_input_string: BatchInputString` to `batch_input_hub_db_table_row_batch_clone_request: BatchInputHubDbTableRowBatchCloneRequest` in `cms.hubdb.rows_api.clone_draft_table_row()`.
+- Updated `language` validation: Added a predefined list of `allowed_values` for stricter validation for `cms.blogs.blog_posts.models.attach_to_lang_primary_request_v_next`.
+- Updated `type` validation: Expanded `allowed_values` for validation for `cms.hubdb.models.column_request`.
+- Removed `cms.source_code.extract_api.extract_by_path()` method.
+- Removed `cms.source_code.source_code_extract_api`.
+
+## CRM
+
+- Added `crm.objects.leads` Api client.
+- Added method `upsert` to `crm.companies.batch_api`, `crm.contacts.batch_api`, `crm.deals.batch_api`, `crm.line_items.batch_api`, `crm.objects.batch_api`, `crm.objects.calls.batch_api`, `crm.objects.communications.batch_api`, `crm.objects.emails.batch_api`, `crm.objects.meetings.batch_api`, `crm.objects.notes.batch_api`, `crm.objects.postal_mail.batch_api`, `crm.objects.tasks.batch_api`, `crm.objects.taxes.batch_api`, `crm.products.batch_api`, `crm.quotes.batch_api`, `crm.tickets.batch_api`.
+- Added parameter `object_write_trace_id` to models: `simple_public_object_input`, `simple_public_object_batch_input`, `simple_public_object_input_for_create` for `crm.companies`, `crm.contacts`, `crm.deals`, `crm.line_items`, `crm.objects`, `crm.objects.calls`, `crm.objects.communications`, `crm.objects.emails`, `crm.objects.meetings`, `crm.objects.notes`, `crm.objects.postal_mail`, `crm.objects.tasks`, `crm.objects.taxes`, `crm.products`, `crm.quotes`, `crm.tickets`.
+- Added method `mark_as_ready()` to `crm.extensions.calling.recording_settings_api`.
+- Added parameters `created_by_user_id` and `updated_by_user_id` to `crm.schemas.models.object_schema`.
+- Added parameter `clear_description` to `crm.schemas.models.object_type_definition_patch`.
+- Added parameter `supports_inbound_calling` to `crm.extensions.calling.models.settings_patch_request`, `crm.extensions.calling.models.settings_request` and `crm.extensions.calling.models.settings_response`.
+- Changed `association_category` and `association_type_id` parameters can be `None` in `crm.companies.models.association_spec`, `crm.contacts.models.association_spec`, `crm.deals.models.association_spec`, `crm.tickets.models.association_spec`.
+- Changed `types` and `to` parameters can be `None` in `crm.companies.models.public_associations_for_object`, `crm.contacts.models.public_associations_for_object`, `crm.deals.models.public_associations_for_object`, and `crm.tickets.models.public_associations_for_object`.
+- Changed `id` parameters can be `None` in `crm.companies.models.public_object_id`, `crm.contacts.models.public_object_id`, `crm.deals.models.public_object_id`, and `crm.tickets.models.public_object_id`.
+- Changed `limit`, `after`, `sorts`, `properties`, and `filter_groups` parameters can be `None` in `crm.companies.models.public_object_search_request`, `crm.contacts.models.public_object_search_request`, `crm.deals.models.public_object_search_request`, `crm.line_items.models.public_object_search_request`, `crm.objects.models.public_object_search_request`, `crm.objects.calls.models.public_object_search_request`, `crm.objects.communications.models.public_object_search_request`, `crm.objects.emails.models.public_object_search_request`, `crm.objects.goals.models.public_object_search_request`, `crm.objects.postal_mail.models.public_object_search_request`, `crm.objects.tasks.models.public_object_search_request`, `crm.objects.taxes.models.public_object_search_request`, `crm.products.models.public_object_search_request`, `crm.quotes.models.public_object_search_request`, and `crm.tickets.models.public_object_search_request`.
+- Changed `associations` parameters can be `None` in `crm.companies.models.simple_public_object_input_for_create`, `crm.contacts.models.simple_public_object_input_for_create`, `crm.deals.models.simple_public_object_input_for_create`, and `crm.tickets.models.simple_public_object_input_for_create`.
+- Renamed `public_object_api` to `merge_api` in `crm.companies`, `crm.contacts`, `crm.deals` and `crm.tickets`.
+- Removed `archive`, `create` and `update` methods from `crm.objects.goals.basic_api` and `crm.objects.goals.batch_api`.
+- Removed GDPRApi:
+`crm.companies.gdpr_api`, `crm.deals.gdpr_api`, `crm.line_items.gdpr_api`, `crm.objects.gdpr_api`, `crm.objects.calls.gdpr_api`, `crm.objects.communications.gdpr_api`, `crm.objects.emails.gdpr_api`, `crm.objects.goals.gdpr_api`, `crm.objects.meetings.gdpr_api`, `crm.objects.notes.gdpr_api`, `crm.objects.postal_mail.gdpr_api`, `crm.objects.tasks.gdpr_api`, `crm.objects.taxes.gdpr_api`, `crm.products.gdpr_api`, `crm.quotes.gdpr_api`, `crm.tickets.gdpr_api`.
+- Removed PublicObjectApi:
+`crm.line_items.public_object_api`, `crm.objects.public_object_api`, `crm.objects.calls.public_object_api`, `crm.objects.communications.public_object_api`, `crm.objects.emails.public_object_api`, `crm.objects.goals.public_object_api`, `crm.objects.meetings.public_object_api`, `crm.objects.notes.public_object_api`, `crm.objects.postal_mail.public_object_api`, `crm.objects.tasks.public_object_api`, `crm.objects.taxes.public_object_api`, `crm.products.public_object_api`, `crm.quotes.public_object_api`.
+- Removed `crm.schemas.public_object_schemas_api`.
+- Removed `crm.extensions.accounting` API client.
+
+## CRM Lists
+
+- Added `crm.objects.lists.folders_api` Api.
+- Added `crm.lists.mapping_api` Api.
+- Added `crm.lists.memberships_api.get_lists()` and `crm.lists.memberships_api.get_page_ordered_by_added_to_list_date()`.
+- Added parameter `custom_properties` to `crm.lists.models.list_create_request`.
+- Added parameters `list_ids`, `processing_types` and `sort` to `crm.lists.models.list_search_request`.
+- Added parameters `coalescing_refine_by` to `crm.lists.models.public_unified_events_filter_branch`.
+- Changed response object type `CollectionResponseLong` to `ApiCollectionResponseJoinTimeAndRecordId` of `crm.lists.membershipsApi.get_page()`.
+- Changed `offset` and `additional_properties` parameters can be `None` in `crm.lists.models.list_search_request`.
+- Rename model from `PublicEventAnalyticsFilterCoalescingRefineBy` to `PublicFormSubmissionFilterCoalescingRefineBy`.
+- Rename model from `PublicPropertyFilterOperation` to `PublicSurveyMonkeyValueFilterValueComparison`.
+- Renamed Api client from `crm.lists.list_app_membership_api` to `crm.lists.memberships_api`.
+- Renamed Api client from `crm.lists.list_app_api` to `crm.lists.lists_api`.
+
+## Marketing
+
+- Added `marketing.events.participant_state_api` Api.
+- Added new methods `batch_archive`, `batch_upsert`, `cancel` and `complete` to `marketing.events.basic_api`.
+- Added parameter `event_completed` to `marketing.events.models.marketing_event_public_default_response`,`marketing.events.models.marketing_event_create_request_params`, `marketing.events.models.marketing_event_default_response`, `marketing.events.models.marketing_event_public_read_response`.
+- Added parameters `attendance_state_calculation_timestamp`, `event_completed` and `import_status` to `marketing.events.models.marketing_event_update_request_params`.
+- Added parameters `data_sensitivity`, `unit` and `is_encrypted` to `marketing.events.models.property_value`.
+- Updated `source` validation: Expanded `allowed_values` for validation for `marketing.events.models.property_value`.
+- Renamed method `create` to `create_by_contact_id` in `marketing.events.attendance_subscriber_state_changes_api`.
+- Renamed method `create_by_email` to `create_by_contact_email` in `marketing.events.attendance_subscriber_state_changes_api`.
+- Renamed method `get_by_id` to `get_details` in `marketing.events.basic_api`.
+- Renamed method `replace` to `upsert` in `marketing.events.basic_api`.
+- Renamed method `create` to `update` in `marketing.events.settings_api`.
+- Renamed method `do_email_upsert_by_id` to `upsert_by_contact_email` in `marketing.events.subscriber_state_changes_api`.
+- Renamed method `do_upsert_by_id` to `upsert_by_contact_id` in `marketing.events.subscriber_state_changes_api`.
+- Moved method `do_search` from `marketing.events.search_api` to `marketing.events.basic_api`.
+- Removed `marketing.events.batch_api`.
+- Removed `marketing.events.marketing_events_external_api`.
+- Removed `marketing.events.search_api`.
+
+## Events and OAuth
+
+- Added `events.api.default_api` Api.
+- Moved client from `auth.oauth` to `oauth`.
+
+## Signature
+
+- Fix `MAX_ALLOWED_TIMESTAMP`.
+- Changed `timestamp` form `float` to `str`.
+
+## Pkg_resources
+
+- remove deprecated `pkg_resources`.
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
