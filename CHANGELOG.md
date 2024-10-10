@@ -86,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed `marketing.events.marketing_events_external_api`.
 - Removed `marketing.events.search_api`.
 
-## Events OAuth
+## Events and OAuth
 
 - Added `events.api.default_api` Api.
 - Moved client from `auth.oauth` to `oauth`.
