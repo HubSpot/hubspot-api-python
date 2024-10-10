@@ -18,7 +18,7 @@ pip install --upgrade hubspot-api-client
 
 ### Requirements
 
-Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+Make sure you have [Python 3.7+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
 
 
 ## Quickstart
