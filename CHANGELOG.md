@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v10.0.0...HEAD)
 
-## [10.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...v10.0.0) - 2024-10-??
+## [10.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...v10.0.0) - 2024-10-10
 
 ## CMS
 
@@ -90,6 +90,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `events.api.default_api` Api.
 - Moved client from `auth.oauth` to `oauth`.
+
+## Signature
+
+- Fix `MAX_ALLOWED_TIMESTAMP`.
+- Changed `timestamp` form `float` to `str`.
+
+## Pkg_resources
+
+- remove deprecated `pkg_resources`.
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
