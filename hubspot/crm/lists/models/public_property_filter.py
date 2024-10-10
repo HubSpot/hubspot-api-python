@@ -35,7 +35,7 @@ class PublicPropertyFilter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"_property": "str", "filter_type": "str", "operation": "PublicPropertyFilterOperation"}
+    openapi_types = {"_property": "str", "filter_type": "str", "operation": "PublicSurveyMonkeyValueFilterValueComparison"}
 
     attribute_map = {"_property": "property", "filter_type": "filterType", "operation": "operation"}
 
@@ -109,7 +109,7 @@ class PublicPropertyFilter(object):
 
 
         :return: The operation of this PublicPropertyFilter.  # noqa: E501
-        :rtype: PublicPropertyFilterOperation
+        :rtype: PublicSurveyMonkeyValueFilterValueComparison
         """
         return self._operation
 
@@ -119,7 +119,7 @@ class PublicPropertyFilter(object):
 
 
         :param operation: The operation of this PublicPropertyFilter.  # noqa: E501
-        :type operation: PublicPropertyFilterOperation
+        :type operation: PublicSurveyMonkeyValueFilterValueComparison
         """
         if self.local_vars_configuration.client_side_validation and operation is None:  # noqa: E501
             raise ValueError("Invalid value for `operation`, must not be `None`")  # noqa: E501

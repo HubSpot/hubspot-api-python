@@ -38,8 +38,10 @@ class ObjectSchema(object):
     openapi_types = {
         "associations": "list[AssociationDefinition]",
         "secondary_display_properties": "list[str]",
+        "created_by_user_id": "int",
         "object_type_id": "str",
         "description": "str",
+        "updated_by_user_id": "int",
         "fully_qualified_name": "str",
         "labels": "ObjectTypeDefinitionLabels",
         "archived": "bool",
@@ -56,8 +58,10 @@ class ObjectSchema(object):
     attribute_map = {
         "associations": "associations",
         "secondary_display_properties": "secondaryDisplayProperties",
+        "created_by_user_id": "createdByUserId",
         "object_type_id": "objectTypeId",
         "description": "description",
+        "updated_by_user_id": "updatedByUserId",
         "fully_qualified_name": "fullyQualifiedName",
         "labels": "labels",
         "archived": "archived",
@@ -75,8 +79,10 @@ class ObjectSchema(object):
         self,
         associations=None,
         secondary_display_properties=None,
+        created_by_user_id=None,
         object_type_id=None,
         description=None,
+        updated_by_user_id=None,
         fully_qualified_name=None,
         labels=None,
         archived=None,
@@ -97,8 +103,10 @@ class ObjectSchema(object):
 
         self._associations = None
         self._secondary_display_properties = None
+        self._created_by_user_id = None
         self._object_type_id = None
         self._description = None
+        self._updated_by_user_id = None
         self._fully_qualified_name = None
         self._labels = None
         self._archived = None
@@ -115,10 +123,14 @@ class ObjectSchema(object):
         self.associations = associations
         if secondary_display_properties is not None:
             self.secondary_display_properties = secondary_display_properties
+        if created_by_user_id is not None:
+            self.created_by_user_id = created_by_user_id
         if object_type_id is not None:
             self.object_type_id = object_type_id
         if description is not None:
             self.description = description
+        if updated_by_user_id is not None:
+            self.updated_by_user_id = updated_by_user_id
         if fully_qualified_name is not None:
             self.fully_qualified_name = fully_qualified_name
         self.labels = labels
@@ -186,6 +198,27 @@ class ObjectSchema(object):
         self._secondary_display_properties = secondary_display_properties
 
     @property
+    def created_by_user_id(self):
+        """Gets the created_by_user_id of this ObjectSchema.  # noqa: E501
+
+
+        :return: The created_by_user_id of this ObjectSchema.  # noqa: E501
+        :rtype: int
+        """
+        return self._created_by_user_id
+
+    @created_by_user_id.setter
+    def created_by_user_id(self, created_by_user_id):
+        """Sets the created_by_user_id of this ObjectSchema.
+
+
+        :param created_by_user_id: The created_by_user_id of this ObjectSchema.  # noqa: E501
+        :type created_by_user_id: int
+        """
+
+        self._created_by_user_id = created_by_user_id
+
+    @property
     def object_type_id(self):
         """Gets the object_type_id of this ObjectSchema.  # noqa: E501
 
@@ -226,6 +259,27 @@ class ObjectSchema(object):
         """
 
         self._description = description
+
+    @property
+    def updated_by_user_id(self):
+        """Gets the updated_by_user_id of this ObjectSchema.  # noqa: E501
+
+
+        :return: The updated_by_user_id of this ObjectSchema.  # noqa: E501
+        :rtype: int
+        """
+        return self._updated_by_user_id
+
+    @updated_by_user_id.setter
+    def updated_by_user_id(self, updated_by_user_id):
+        """Sets the updated_by_user_id of this ObjectSchema.
+
+
+        :param updated_by_user_id: The updated_by_user_id of this ObjectSchema.  # noqa: E501
+        :type updated_by_user_id: int
+        """
+
+        self._updated_by_user_id = updated_by_user_id
 
     @property
     def fully_qualified_name(self):

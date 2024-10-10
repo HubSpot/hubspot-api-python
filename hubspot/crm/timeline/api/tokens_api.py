@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Timeline
+    Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -154,7 +154,7 @@ class TokensApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
+            "/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
             "DELETE",
             path_params,
             query_params,
@@ -300,7 +300,7 @@ class TokensApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens",
+            "/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}/tokens",
             "POST",
             path_params,
             query_params,
@@ -455,7 +455,7 @@ class TokensApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
+            "/integrators/timeline/v3/{appId}/event-templates/{eventTemplateId}/tokens/{tokenName}",
             "PUT",
             path_params,
             query_params,

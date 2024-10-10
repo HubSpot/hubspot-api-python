@@ -37,7 +37,7 @@ class PublicAssociationInListFilter(object):
     """
     openapi_types = {
         "list_id": "str",
-        "coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "to_object_type": "str",
         "association_type_id": "int",
         "association_category": "str",
@@ -124,7 +124,7 @@ class PublicAssociationInListFilter(object):
 
 
         :return: The coalescing_refine_by of this PublicAssociationInListFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -134,7 +134,7 @@ class PublicAssociationInListFilter(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicAssociationInListFilter.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
         if self.local_vars_configuration.client_side_validation and coalescing_refine_by is None:  # noqa: E501
             raise ValueError("Invalid value for `coalescing_refine_by`, must not be `None`")  # noqa: E501

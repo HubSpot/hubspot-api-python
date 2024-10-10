@@ -18,7 +18,6 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.crm.schemas.api.core_api import CoreApi
-from hubspot.crm.schemas.api.public_object_schemas_api import PublicObjectSchemasApi
 
 # import ApiClient
 from hubspot.crm.schemas.api_client import ApiClient

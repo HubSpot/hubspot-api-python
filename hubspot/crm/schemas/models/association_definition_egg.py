@@ -107,7 +107,7 @@ class AssociationDefinitionEgg(object):
     def to_object_type_id(self):
         """Gets the to_object_type_id of this AssociationDefinitionEgg.  # noqa: E501
 
-        ID of the target object type ID to link to.  # noqa: E501
+        ID of the target object type to link to.  # noqa: E501
 
         :return: The to_object_type_id of this AssociationDefinitionEgg.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class AssociationDefinitionEgg(object):
     def to_object_type_id(self, to_object_type_id):
         """Sets the to_object_type_id of this AssociationDefinitionEgg.
 
-        ID of the target object type ID to link to.  # noqa: E501
+        ID of the target object type to link to.  # noqa: E501
 
         :param to_object_type_id: The to_object_type_id of this AssociationDefinitionEgg.  # noqa: E501
         :type to_object_type_id: str

@@ -36,7 +36,7 @@ class PublicSurveyMonkeyValueFilter(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "value_comparison": "PublicPropertyFilterOperation",
+        "value_comparison": "PublicSurveyMonkeyValueFilterValueComparison",
         "survey_id": "str",
         "survey_question": "str",
         "filter_type": "str",
@@ -96,7 +96,7 @@ class PublicSurveyMonkeyValueFilter(object):
 
 
         :return: The value_comparison of this PublicSurveyMonkeyValueFilter.  # noqa: E501
-        :rtype: PublicPropertyFilterOperation
+        :rtype: PublicSurveyMonkeyValueFilterValueComparison
         """
         return self._value_comparison
 
@@ -106,7 +106,7 @@ class PublicSurveyMonkeyValueFilter(object):
 
 
         :param value_comparison: The value_comparison of this PublicSurveyMonkeyValueFilter.  # noqa: E501
-        :type value_comparison: PublicPropertyFilterOperation
+        :type value_comparison: PublicSurveyMonkeyValueFilterValueComparison
         """
         if self.local_vars_configuration.client_side_validation and value_comparison is None:  # noqa: E501
             raise ValueError("Invalid value for `value_comparison`, must not be `None`")  # noqa: E501
