@@ -7,11 +7,6 @@ class Discovery(DiscoveryBase):
         return CardsDiscovery(self.config)
 
     @property
-    def accounting(self):
-        from .accounting.discovery import Discovery as AccountingDiscovery
-        return AccountingDiscovery(self.config)
-
-    @property
     def calling(self):
         from .calling.discovery import Discovery as CallingDiscovery
         return CallingDiscovery(self.config)
