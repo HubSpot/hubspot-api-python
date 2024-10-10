@@ -86,6 +86,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed `marketing.events.marketing_events_external_api`.
 - Removed `marketing.events.search_api`.
 
+## Events
+
+- Added `events.api.default_api` Api.
+
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
 ### Automation Actions client
