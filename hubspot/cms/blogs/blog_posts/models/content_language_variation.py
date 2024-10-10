@@ -48,6 +48,7 @@ class ContentLanguageVariation(object):
         "campaign": "str",
         "id": "int",
         "state": "str",
+        "campaign_name": "str",
         "updated": "datetime",
         "slug": "str",
     }
@@ -65,6 +66,7 @@ class ContentLanguageVariation(object):
         "campaign": "campaign",
         "id": "id",
         "state": "state",
+        "campaign_name": "campaignName",
         "updated": "updated",
         "slug": "slug",
     }
@@ -83,6 +85,7 @@ class ContentLanguageVariation(object):
         campaign=None,
         id=None,
         state=None,
+        campaign_name=None,
         updated=None,
         slug=None,
         local_vars_configuration=None,
@@ -104,6 +107,7 @@ class ContentLanguageVariation(object):
         self._campaign = None
         self._id = None
         self._state = None
+        self._campaign_name = None
         self._updated = None
         self._slug = None
         self.discriminator = None
@@ -121,6 +125,7 @@ class ContentLanguageVariation(object):
         self.campaign = campaign
         self.id = id
         self.state = state
+        self.campaign_name = campaign_name
         self.updated = updated
         self.slug = slug
 
@@ -397,6 +402,29 @@ class ContentLanguageVariation(object):
             raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
 
         self._state = state
+
+    @property
+    def campaign_name(self):
+        """Gets the campaign_name of this ContentLanguageVariation.  # noqa: E501
+
+
+        :return: The campaign_name of this ContentLanguageVariation.  # noqa: E501
+        :rtype: str
+        """
+        return self._campaign_name
+
+    @campaign_name.setter
+    def campaign_name(self, campaign_name):
+        """Sets the campaign_name of this ContentLanguageVariation.
+
+
+        :param campaign_name: The campaign_name of this ContentLanguageVariation.  # noqa: E501
+        :type campaign_name: str
+        """
+        if self.local_vars_configuration.client_side_validation and campaign_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `campaign_name`, must not be `None`")  # noqa: E501
+
+        self._campaign_name = campaign_name
 
     @property
     def updated(self):

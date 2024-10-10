@@ -36,8 +36,8 @@ class PublicCtaAnalyticsFilter(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
-        "pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
+        "pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "filter_type": "str",
         "cta_name": "str",
         "operator": "str",
@@ -72,7 +72,7 @@ class PublicCtaAnalyticsFilter(object):
 
 
         :return: The coalescing_refine_by of this PublicCtaAnalyticsFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -82,7 +82,7 @@ class PublicCtaAnalyticsFilter(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicCtaAnalyticsFilter.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._coalescing_refine_by = coalescing_refine_by
@@ -93,7 +93,7 @@ class PublicCtaAnalyticsFilter(object):
 
 
         :return: The pruning_refine_by of this PublicCtaAnalyticsFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -103,7 +103,7 @@ class PublicCtaAnalyticsFilter(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicCtaAnalyticsFilter.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._pruning_refine_by = pruning_refine_by

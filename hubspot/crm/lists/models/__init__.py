@@ -14,7 +14,8 @@
 from __future__ import absolute_import
 
 # import models into model package
-from hubspot.crm.lists.models.collection_response_join_time_and_record_id import CollectionResponseJoinTimeAndRecordId
+from hubspot.crm.lists.models.api_collection_response_join_time_and_record_id import ApiCollectionResponseJoinTimeAndRecordId
+from hubspot.crm.lists.models.api_collection_response_record_list_membership_no_paging import ApiCollectionResponseRecordListMembershipNoPaging
 from hubspot.crm.lists.models.error import Error
 from hubspot.crm.lists.models.error_detail import ErrorDetail
 from hubspot.crm.lists.models.join_time_and_record_id import JoinTimeAndRecordId
@@ -22,6 +23,10 @@ from hubspot.crm.lists.models.list_create_request import ListCreateRequest
 from hubspot.crm.lists.models.list_create_response import ListCreateResponse
 from hubspot.crm.lists.models.list_fetch_response import ListFetchResponse
 from hubspot.crm.lists.models.list_filter_update_request import ListFilterUpdateRequest
+from hubspot.crm.lists.models.list_folder_create_request import ListFolderCreateRequest
+from hubspot.crm.lists.models.list_folder_create_response import ListFolderCreateResponse
+from hubspot.crm.lists.models.list_folder_fetch_response import ListFolderFetchResponse
+from hubspot.crm.lists.models.list_move_request import ListMoveRequest
 from hubspot.crm.lists.models.list_search_request import ListSearchRequest
 from hubspot.crm.lists.models.list_search_response import ListSearchResponse
 from hubspot.crm.lists.models.list_update_response import ListUpdateResponse
@@ -40,6 +45,7 @@ from hubspot.crm.lists.models.public_all_property_types_operation import PublicA
 from hubspot.crm.lists.models.public_and_filter_branch import PublicAndFilterBranch
 from hubspot.crm.lists.models.public_association_filter_branch import PublicAssociationFilterBranch
 from hubspot.crm.lists.models.public_association_in_list_filter import PublicAssociationInListFilter
+from hubspot.crm.lists.models.public_batch_migration_mapping import PublicBatchMigrationMapping
 from hubspot.crm.lists.models.public_bool_property_operation import PublicBoolPropertyOperation
 from hubspot.crm.lists.models.public_calendar_date_property_operation import PublicCalendarDatePropertyOperation
 from hubspot.crm.lists.models.public_campaign_influenced_filter import PublicCampaignInfluencedFilter
@@ -55,11 +61,11 @@ from hubspot.crm.lists.models.public_email_event_filter import PublicEmailEventF
 from hubspot.crm.lists.models.public_email_subscription_filter import PublicEmailSubscriptionFilter
 from hubspot.crm.lists.models.public_enumeration_property_operation import PublicEnumerationPropertyOperation
 from hubspot.crm.lists.models.public_event_analytics_filter import PublicEventAnalyticsFilter
-from hubspot.crm.lists.models.public_event_analytics_filter_coalescing_refine_by import PublicEventAnalyticsFilterCoalescingRefineBy
 from hubspot.crm.lists.models.public_event_filter_metadata import PublicEventFilterMetadata
 from hubspot.crm.lists.models.public_fiscal_quarter_reference import PublicFiscalQuarterReference
 from hubspot.crm.lists.models.public_fiscal_year_reference import PublicFiscalYearReference
 from hubspot.crm.lists.models.public_form_submission_filter import PublicFormSubmissionFilter
+from hubspot.crm.lists.models.public_form_submission_filter_coalescing_refine_by import PublicFormSubmissionFilterCoalescingRefineBy
 from hubspot.crm.lists.models.public_form_submission_on_page_filter import PublicFormSubmissionOnPageFilter
 from hubspot.crm.lists.models.public_in_list_filter import PublicInListFilter
 from hubspot.crm.lists.models.public_in_list_filter_metadata import PublicInListFilterMetadata
@@ -67,6 +73,8 @@ from hubspot.crm.lists.models.public_index_offset import PublicIndexOffset
 from hubspot.crm.lists.models.public_indexed_time_point import PublicIndexedTimePoint
 from hubspot.crm.lists.models.public_indexed_time_point_index_reference import PublicIndexedTimePointIndexReference
 from hubspot.crm.lists.models.public_integration_event_filter import PublicIntegrationEventFilter
+from hubspot.crm.lists.models.public_list_folder import PublicListFolder
+from hubspot.crm.lists.models.public_migration_mapping import PublicMigrationMapping
 from hubspot.crm.lists.models.public_month_reference import PublicMonthReference
 from hubspot.crm.lists.models.public_multi_string_property_operation import PublicMultiStringPropertyOperation
 from hubspot.crm.lists.models.public_not_all_filter_branch import PublicNotAllFilterBranch
@@ -85,7 +93,6 @@ from hubspot.crm.lists.models.public_property_association_filter_branch_filter_b
 from hubspot.crm.lists.models.public_property_association_filter_branch_filters_inner import PublicPropertyAssociationFilterBranchFiltersInner
 from hubspot.crm.lists.models.public_property_association_in_list_filter import PublicPropertyAssociationInListFilter
 from hubspot.crm.lists.models.public_property_filter import PublicPropertyFilter
-from hubspot.crm.lists.models.public_property_filter_operation import PublicPropertyFilterOperation
 from hubspot.crm.lists.models.public_property_referenced_time import PublicPropertyReferencedTime
 from hubspot.crm.lists.models.public_quarter_reference import PublicQuarterReference
 from hubspot.crm.lists.models.public_ranged_date_property_operation import PublicRangedDatePropertyOperation
@@ -100,13 +107,14 @@ from hubspot.crm.lists.models.public_set_occurrences_refine_by import PublicSetO
 from hubspot.crm.lists.models.public_string_property_operation import PublicStringPropertyOperation
 from hubspot.crm.lists.models.public_survey_monkey_filter import PublicSurveyMonkeyFilter
 from hubspot.crm.lists.models.public_survey_monkey_value_filter import PublicSurveyMonkeyValueFilter
+from hubspot.crm.lists.models.public_survey_monkey_value_filter_value_comparison import PublicSurveyMonkeyValueFilterValueComparison
 from hubspot.crm.lists.models.public_time_offset import PublicTimeOffset
 from hubspot.crm.lists.models.public_time_point_operation import PublicTimePointOperation
 from hubspot.crm.lists.models.public_time_point_operation_time_point import PublicTimePointOperationTimePoint
 from hubspot.crm.lists.models.public_today_reference import PublicTodayReference
 from hubspot.crm.lists.models.public_unified_events_filter import PublicUnifiedEventsFilter
 from hubspot.crm.lists.models.public_unified_events_filter_branch import PublicUnifiedEventsFilterBranch
-from hubspot.crm.lists.models.public_unified_events_in_list_filter import PublicUnifiedEventsInListFilter
 from hubspot.crm.lists.models.public_webinar_filter import PublicWebinarFilter
 from hubspot.crm.lists.models.public_week_reference import PublicWeekReference
 from hubspot.crm.lists.models.public_year_reference import PublicYearReference
+from hubspot.crm.lists.models.record_list_membership import RecordListMembership

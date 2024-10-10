@@ -35,47 +35,24 @@ class ActionConfirmationBody(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"prompt": "str", "confirm_button_label": "str", "cancel_button_label": "str"}
+    openapi_types = {"confirm_button_label": "str", "cancel_button_label": "str", "prompt": "str"}
 
-    attribute_map = {"prompt": "prompt", "confirm_button_label": "confirmButtonLabel", "cancel_button_label": "cancelButtonLabel"}
+    attribute_map = {"confirm_button_label": "confirmButtonLabel", "cancel_button_label": "cancelButtonLabel", "prompt": "prompt"}
 
-    def __init__(self, prompt=None, confirm_button_label=None, cancel_button_label=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confirm_button_label=None, cancel_button_label=None, prompt=None, local_vars_configuration=None):  # noqa: E501
         """ActionConfirmationBody - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._prompt = None
         self._confirm_button_label = None
         self._cancel_button_label = None
+        self._prompt = None
         self.discriminator = None
 
-        self.prompt = prompt
         self.confirm_button_label = confirm_button_label
         self.cancel_button_label = cancel_button_label
-
-    @property
-    def prompt(self):
-        """Gets the prompt of this ActionConfirmationBody.  # noqa: E501
-
-
-        :return: The prompt of this ActionConfirmationBody.  # noqa: E501
-        :rtype: str
-        """
-        return self._prompt
-
-    @prompt.setter
-    def prompt(self, prompt):
-        """Sets the prompt of this ActionConfirmationBody.
-
-
-        :param prompt: The prompt of this ActionConfirmationBody.  # noqa: E501
-        :type prompt: str
-        """
-        if self.local_vars_configuration.client_side_validation and prompt is None:  # noqa: E501
-            raise ValueError("Invalid value for `prompt`, must not be `None`")  # noqa: E501
-
-        self._prompt = prompt
+        self.prompt = prompt
 
     @property
     def confirm_button_label(self):
@@ -122,6 +99,29 @@ class ActionConfirmationBody(object):
             raise ValueError("Invalid value for `cancel_button_label`, must not be `None`")  # noqa: E501
 
         self._cancel_button_label = cancel_button_label
+
+    @property
+    def prompt(self):
+        """Gets the prompt of this ActionConfirmationBody.  # noqa: E501
+
+
+        :return: The prompt of this ActionConfirmationBody.  # noqa: E501
+        :rtype: str
+        """
+        return self._prompt
+
+    @prompt.setter
+    def prompt(self, prompt):
+        """Sets the prompt of this ActionConfirmationBody.
+
+
+        :param prompt: The prompt of this ActionConfirmationBody.  # noqa: E501
+        :type prompt: str
+        """
+        if self.local_vars_configuration.client_side_validation and prompt is None:  # noqa: E501
+            raise ValueError("Invalid value for `prompt`, must not be `None`")  # noqa: E501
+
+        self._prompt = prompt
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -33,9 +33,9 @@ class Client:
         self.config["api_key"] = value
 
     @property
-    def auth(self):
-        from .discovery.auth.discovery import Discovery as AuthDiscovery
-        return AuthDiscovery(self.config)
+    def oauth(self):
+        from .discovery.oauth.discovery import Discovery as OauthDiscovery
+        return OauthDiscovery(self.config)
 
     @property
     def automation(self):

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CRM Timeline
+    Timeline
 
     This feature allows an app to create and configure custom events that can show up in the timelines of certain CRM objects like contacts, companies, tickets, or deals. You'll find multiple use cases for this API in the sections below.  # noqa: E501
 
@@ -143,7 +143,7 @@ class EventsApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/events",
+            "/integrators/timeline/v3/events",
             "POST",
             path_params,
             query_params,
@@ -269,7 +269,7 @@ class EventsApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/events/batch/create",
+            "/integrators/timeline/v3/events/batch/create",
             "POST",
             path_params,
             query_params,
@@ -401,7 +401,7 @@ class EventsApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/events/{eventTemplateId}/{eventId}",
+            "/integrators/timeline/v3/events/{eventTemplateId}/{eventId}",
             "GET",
             path_params,
             query_params,
@@ -533,7 +533,7 @@ class EventsApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/events/{eventTemplateId}/{eventId}/detail",
+            "/integrators/timeline/v3/events/{eventTemplateId}/{eventId}/detail",
             "GET",
             path_params,
             query_params,
@@ -671,7 +671,7 @@ class EventsApi(object):
         }
 
         return self.api_client.call_api(
-            "/crm/v3/timeline/events/{eventTemplateId}/{eventId}/render",
+            "/integrators/timeline/v3/events/{eventTemplateId}/{eventId}/render",
             "GET",
             path_params,
             query_params,

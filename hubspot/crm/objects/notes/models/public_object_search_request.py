@@ -55,11 +55,16 @@ class PublicObjectSearchRequest(object):
 
         if query is not None:
             self.query = query
-        self.limit = limit
-        self.after = after
-        self.sorts = sorts
-        self.properties = properties
-        self.filter_groups = filter_groups
+        if limit is not None:
+            self.limit = limit
+        if after is not None:
+            self.after = after
+        if sorts is not None:
+            self.sorts = sorts
+        if properties is not None:
+            self.properties = properties
+        if filter_groups is not None:
+            self.filter_groups = filter_groups
 
     @property
     def query(self):
@@ -100,8 +105,6 @@ class PublicObjectSearchRequest(object):
         :param limit: The limit of this PublicObjectSearchRequest.  # noqa: E501
         :type limit: int
         """
-        if self.local_vars_configuration.client_side_validation and limit is None:  # noqa: E501
-            raise ValueError("Invalid value for `limit`, must not be `None`")  # noqa: E501
 
         self._limit = limit
 
@@ -123,8 +126,6 @@ class PublicObjectSearchRequest(object):
         :param after: The after of this PublicObjectSearchRequest.  # noqa: E501
         :type after: str
         """
-        if self.local_vars_configuration.client_side_validation and after is None:  # noqa: E501
-            raise ValueError("Invalid value for `after`, must not be `None`")  # noqa: E501
 
         self._after = after
 
@@ -146,8 +147,6 @@ class PublicObjectSearchRequest(object):
         :param sorts: The sorts of this PublicObjectSearchRequest.  # noqa: E501
         :type sorts: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and sorts is None:  # noqa: E501
-            raise ValueError("Invalid value for `sorts`, must not be `None`")  # noqa: E501
 
         self._sorts = sorts
 
@@ -169,8 +168,6 @@ class PublicObjectSearchRequest(object):
         :param properties: The properties of this PublicObjectSearchRequest.  # noqa: E501
         :type properties: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 
@@ -192,8 +189,6 @@ class PublicObjectSearchRequest(object):
         :param filter_groups: The filter_groups of this PublicObjectSearchRequest.  # noqa: E501
         :type filter_groups: list[FilterGroup]
         """
-        if self.local_vars_configuration.client_side_validation and filter_groups is None:  # noqa: E501
-            raise ValueError("Invalid value for `filter_groups`, must not be `None`")  # noqa: E501
 
         self._filter_groups = filter_groups
 

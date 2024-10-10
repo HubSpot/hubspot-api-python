@@ -35,11 +35,25 @@ class ListCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"object_type_id": "str", "processing_type": "str", "list_folder_id": "int", "name": "str", "filter_branch": "PublicPropertyAssociationFilterBranchFilterBranchesInner"}
+    openapi_types = {
+        "object_type_id": "str",
+        "processing_type": "str",
+        "custom_properties": "dict[str, str]",
+        "list_folder_id": "int",
+        "name": "str",
+        "filter_branch": "PublicPropertyAssociationFilterBranchFilterBranchesInner",
+    }
 
-    attribute_map = {"object_type_id": "objectTypeId", "processing_type": "processingType", "list_folder_id": "listFolderId", "name": "name", "filter_branch": "filterBranch"}
+    attribute_map = {
+        "object_type_id": "objectTypeId",
+        "processing_type": "processingType",
+        "custom_properties": "customProperties",
+        "list_folder_id": "listFolderId",
+        "name": "name",
+        "filter_branch": "filterBranch",
+    }
 
-    def __init__(self, object_type_id=None, processing_type=None, list_folder_id=None, name=None, filter_branch=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, object_type_id=None, processing_type=None, custom_properties=None, list_folder_id=None, name=None, filter_branch=None, local_vars_configuration=None):  # noqa: E501
         """ListCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -47,6 +61,7 @@ class ListCreateRequest(object):
 
         self._object_type_id = None
         self._processing_type = None
+        self._custom_properties = None
         self._list_folder_id = None
         self._name = None
         self._filter_branch = None
@@ -54,6 +69,8 @@ class ListCreateRequest(object):
 
         self.object_type_id = object_type_id
         self.processing_type = processing_type
+        if custom_properties is not None:
+            self.custom_properties = custom_properties
         if list_folder_id is not None:
             self.list_folder_id = list_folder_id
         self.name = name
@@ -109,6 +126,29 @@ class ListCreateRequest(object):
             raise ValueError("Invalid value for `processing_type`, must not be `None`")  # noqa: E501
 
         self._processing_type = processing_type
+
+    @property
+    def custom_properties(self):
+        """Gets the custom_properties of this ListCreateRequest.  # noqa: E501
+
+        The list of custom properties to tie to the list. Custom property name is the key, the value is the value.  # noqa: E501
+
+        :return: The custom_properties of this ListCreateRequest.  # noqa: E501
+        :rtype: dict[str, str]
+        """
+        return self._custom_properties
+
+    @custom_properties.setter
+    def custom_properties(self, custom_properties):
+        """Sets the custom_properties of this ListCreateRequest.
+
+        The list of custom properties to tie to the list. Custom property name is the key, the value is the value.  # noqa: E501
+
+        :param custom_properties: The custom_properties of this ListCreateRequest.  # noqa: E501
+        :type custom_properties: dict[str, str]
+        """
+
+        self._custom_properties = custom_properties
 
     @property
     def list_folder_id(self):

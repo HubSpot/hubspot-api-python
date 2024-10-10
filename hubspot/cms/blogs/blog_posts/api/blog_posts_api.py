@@ -2533,7 +2533,7 @@ class BlogPostsApi(object):
     def set_lang_primary(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
         """Set a new primary language  # noqa: E501
 
-        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
+        Set the primary language of a multi-language group to the language of the provided post (specified as an id in the request body)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2563,7 +2563,7 @@ class BlogPostsApi(object):
     def set_lang_primary_with_http_info(self, set_new_language_primary_request_v_next, **kwargs):  # noqa: E501
         """Set a new primary language  # noqa: E501
 
-        Set a Blog Post as the primary language of a multi-language group.  # noqa: E501
+        Set the primary language of a multi-language group to the language of the provided post (specified as an id in the request body)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
