@@ -86,9 +86,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed `marketing.events.marketing_events_external_api`.
 - Removed `marketing.events.search_api`.
 
-## Events
+## Events OAuth
 
 - Added `events.api.default_api` Api.
+- Moved client from `auth.oauth` to `oauth`.
 
 ## [9.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v8.2.1...v9.0.0) - 2024-03-14
 
