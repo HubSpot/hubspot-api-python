@@ -24,7 +24,11 @@ class DiscoveryBase:
             configuration.retries = config["retry"]
         if "verify_ssl" in config:
             configuration.verify_ssl = config["verify_ssl"]
-
+        if "proxy" in config:
+            configuration.proxy = config["proxy"]
+        if "proxy_headers" in config:
+            configuration.proxy_headers = config["proxy_headers"]
+    
         api_client = api_client_package.ApiClient(configuration=configuration)
 
         package_version = metadata.version("hubspot-api-client")
