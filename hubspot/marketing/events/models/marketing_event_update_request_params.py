@@ -36,7 +36,6 @@ class MarketingEventUpdateRequestParams(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "import_status": "str",
         "start_date_time": "datetime",
         "custom_properties": "list[PropertyValue]",
         "event_cancelled": "bool",
@@ -47,11 +46,9 @@ class MarketingEventUpdateRequestParams(object):
         "event_type": "str",
         "event_completed": "bool",
         "end_date_time": "datetime",
-        "attendance_state_calculation_timestamp": "datetime",
     }
 
     attribute_map = {
-        "import_status": "importStatus",
         "start_date_time": "startDateTime",
         "custom_properties": "customProperties",
         "event_cancelled": "eventCancelled",
@@ -62,12 +59,10 @@ class MarketingEventUpdateRequestParams(object):
         "event_type": "eventType",
         "event_completed": "eventCompleted",
         "end_date_time": "endDateTime",
-        "attendance_state_calculation_timestamp": "attendanceStateCalculationTimestamp",
     }
 
     def __init__(
         self,
-        import_status=None,
         start_date_time=None,
         custom_properties=None,
         event_cancelled=None,
@@ -78,7 +73,6 @@ class MarketingEventUpdateRequestParams(object):
         event_type=None,
         event_completed=None,
         end_date_time=None,
-        attendance_state_calculation_timestamp=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """MarketingEventUpdateRequestParams - a model defined in OpenAPI"""  # noqa: E501
@@ -86,7 +80,6 @@ class MarketingEventUpdateRequestParams(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._import_status = None
         self._start_date_time = None
         self._custom_properties = None
         self._event_cancelled = None
@@ -97,11 +90,8 @@ class MarketingEventUpdateRequestParams(object):
         self._event_type = None
         self._event_completed = None
         self._end_date_time = None
-        self._attendance_state_calculation_timestamp = None
         self.discriminator = None
 
-        if import_status is not None:
-            self.import_status = import_status
         if start_date_time is not None:
             self.start_date_time = start_date_time
         if custom_properties is not None:
@@ -122,29 +112,6 @@ class MarketingEventUpdateRequestParams(object):
             self.event_completed = event_completed
         if end_date_time is not None:
             self.end_date_time = end_date_time
-        if attendance_state_calculation_timestamp is not None:
-            self.attendance_state_calculation_timestamp = attendance_state_calculation_timestamp
-
-    @property
-    def import_status(self):
-        """Gets the import_status of this MarketingEventUpdateRequestParams.  # noqa: E501
-
-
-        :return: The import_status of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :rtype: str
-        """
-        return self._import_status
-
-    @import_status.setter
-    def import_status(self, import_status):
-        """Sets the import_status of this MarketingEventUpdateRequestParams.
-
-
-        :param import_status: The import_status of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type import_status: str
-        """
-
-        self._import_status = import_status
 
     @property
     def start_date_time(self):
@@ -373,27 +340,6 @@ class MarketingEventUpdateRequestParams(object):
         """
 
         self._end_date_time = end_date_time
-
-    @property
-    def attendance_state_calculation_timestamp(self):
-        """Gets the attendance_state_calculation_timestamp of this MarketingEventUpdateRequestParams.  # noqa: E501
-
-
-        :return: The attendance_state_calculation_timestamp of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._attendance_state_calculation_timestamp
-
-    @attendance_state_calculation_timestamp.setter
-    def attendance_state_calculation_timestamp(self, attendance_state_calculation_timestamp):
-        """Sets the attendance_state_calculation_timestamp of this MarketingEventUpdateRequestParams.
-
-
-        :param attendance_state_calculation_timestamp: The attendance_state_calculation_timestamp of this MarketingEventUpdateRequestParams.  # noqa: E501
-        :type attendance_state_calculation_timestamp: datetime
-        """
-
-        self._attendance_state_calculation_timestamp = attendance_state_calculation_timestamp
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
