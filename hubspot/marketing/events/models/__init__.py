@@ -24,6 +24,7 @@ from hubspot.marketing.events.models.batch_response_subscriber_email_response im
 from hubspot.marketing.events.models.batch_response_subscriber_vid_response import BatchResponseSubscriberVidResponse
 from hubspot.marketing.events.models.collection_response_marketing_event_external_unique_identifier_no_paging import CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging
 from hubspot.marketing.events.models.collection_response_with_total_participation_breakdown_forward_paging import CollectionResponseWithTotalParticipationBreakdownForwardPaging
+from hubspot.marketing.events.models.collection_response_with_total_public_list_no_paging import CollectionResponseWithTotalPublicListNoPaging
 from hubspot.marketing.events.models.contact_association import ContactAssociation
 from hubspot.marketing.events.models.error import Error
 from hubspot.marketing.events.models.error_detail import ErrorDetail
@@ -45,6 +46,7 @@ from hubspot.marketing.events.models.participation_associations import Participa
 from hubspot.marketing.events.models.participation_breakdown import ParticipationBreakdown
 from hubspot.marketing.events.models.participation_properties import ParticipationProperties
 from hubspot.marketing.events.models.property_value import PropertyValue
+from hubspot.marketing.events.models.public_list import PublicList
 from hubspot.marketing.events.models.standard_error import StandardError
 from hubspot.marketing.events.models.subscriber_email_response import SubscriberEmailResponse
 from hubspot.marketing.events.models.subscriber_vid_response import SubscriberVidResponse
