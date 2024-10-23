@@ -1,4 +1,4 @@
-VENV_NAME?=venv
+VENV_NAME?=.venv
 
 venv: $(VENV_NAME)/bin/activate
 

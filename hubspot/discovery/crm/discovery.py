@@ -85,3 +85,8 @@ class Discovery(DiscoveryBase):
     def timeline(self):
         from .timeline.discovery import Discovery as TimelineDiscovery
         return TimelineDiscovery(self.config)
+
+    @property
+    def invoices(self):
+        from .invoices.discovery import Discovery as InvoicesDiscovery
+        return InvoicesDiscovery(self.config)
