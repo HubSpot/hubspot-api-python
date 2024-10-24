@@ -176,7 +176,7 @@ client.api_request({
 })
 ```
 
-### Get contacts
+### {Example} for `GET` request
 
 ```python
 import hubspot
@@ -194,7 +194,7 @@ except ApiException as e:
     print(e)
 ```
 
-### Create contact
+### {Example} for `POST` request
 
 ```python
 import hubspot
