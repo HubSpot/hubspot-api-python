@@ -1,5 +1,6 @@
 from urllib3.util.retry import Retry
 
+
 class Client:
     def __init__(
         self,
@@ -86,3 +87,8 @@ class Client:
     def webhooks(self):
         from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
         return WebhooksDiscovery(self.config)
+
+    def api_request(self, options):
+        from .utils.requests.http_request_builder import Request
+        request = Request(self.config, options)
+        return request.send()
