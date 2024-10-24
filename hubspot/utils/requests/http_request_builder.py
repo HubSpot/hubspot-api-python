@@ -35,19 +35,15 @@ class Request:
         return options
 
     def apply_auth(self):
-        auth = Auth.choose_auth(self.options, self.config)
+        auth = Auth.choose_auth(self.config, self.options)
 
         if auth["auth_type"]:
-            if auth["auth_type"] == "hapikey":
+            if auth["auth_type"] == "api_key":
                 self.options["qs"] = self.options.get("qs", {})
-                self.options["qs"]["hapikey"] = auth["auth_value"]
+                self.options["qs"]["hapikey"] = self.config.get(auth["auth_type"])
 
-            if auth["auth_type"] == "developerApiKey":
-                self.options["qs"] = self.options.get("qs", {})
-                self.options["qs"]["hapikey"] = auth["auth_value"]
-
-            if auth["auth_type"] == "accessToken":
-                self.headers["Authorization"] = f"Bearer {auth['auth_value']}"
+            if auth["auth_type"] == "access_token":
+                self.headers["Authorization"] = f"Bearer {self.config.get(auth['auth_type'])}"
 
     def init_headers(self):
         if self.default_json:

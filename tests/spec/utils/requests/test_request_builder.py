@@ -17,7 +17,8 @@ COMMON_HEADERS = {
 @pytest.fixture
 def config():
     return {
-        "user_agent": "custom-python-client/1.0"
+        "access_token": "test_access_token",
+        "api_key": "test_api_key"
     }
 
 
@@ -37,59 +38,29 @@ def options():
         (
             {
                 "path": BASE_PATH,
-                "auth_type": "developerApiKey",
-                "auth_value": "test_value_from_options"
+                "auth_type": "api_key",
             },
             {
-                "auth_type": "accessToken",
-                "auth_value": "test_value_from_config"
+                "api_key": "test_api_key",
             },
-            f"https://api.hubapi.com{BASE_PATH}?hapikey=test_value_from_options",
+            f"https://api.hubapi.com{BASE_PATH}?hapikey=test_api_key",
             COMMON_HEADERS
         ),
         (
             {
                 "path": BASE_PATH,
-                "auth_type": "hapikey",
-                "auth_value": "test_value_from_options"
+                "auth_type": "access_token",
             },
             {
-                "auth_type": "accessToken",
-                "auth_value": "test_value_from_config"
-            },
-            f"https://api.hubapi.com{BASE_PATH}?hapikey=test_value_from_options",
-            COMMON_HEADERS
-        ),
-        (
-            {
-                "path": BASE_PATH,
-                "auth_type": "accessToken",
-                "auth_value": "test_value_from_options"
-            },
-            {
-                "auth_type": "developerApiKey",
-                "auth_value": "test_value_from_config"
+                "access_token": "test_access_token",
+                "api_key": "test_api_key"
             },
             f"https://api.hubapi.com{BASE_PATH}",
             {
                 **COMMON_HEADERS,
-                "Authorization": "Bearer test_value_from_options"
+                "Authorization": "Bearer test_access_token"
             }
         ),
-        (
-            {
-                "path": BASE_PATH,
-            },
-            {
-                "auth_type": "accessToken",
-                "auth_value": "test_value_from_config"
-            },
-            f"https://api.hubapi.com{BASE_PATH}",
-            {
-                **COMMON_HEADERS,
-                "Authorization": "Bearer test_value_from_config"
-            }
-        )
     ]
 )
 def test_generate_url(options, config, expected_url, expected_headers):
