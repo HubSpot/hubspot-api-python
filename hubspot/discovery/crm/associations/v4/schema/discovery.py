@@ -8,3 +8,6 @@ class Discovery(DiscoveryBase):
     def definitions_api(self) -> api_client.DefinitionsApi:
         return self._configure_api_client(api_client, "DefinitionsApi")
 
+    @property
+    def definition_configurations_api(self) -> api_client.DefinitionConfigurationsApi:
+        return self._configure_api_client(api_client, "DefinitionConfigurationsApi")

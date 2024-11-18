@@ -12,6 +12,10 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BasicApi")
 
     @property
+    def list_associations_api(self) -> api_client.ListAssociationsApi:
+        return self._configure_api_client(api_client, "ListAssociationsApi")
+
+    @property
     def participant_state_api(self) -> api_client.ParticipantStateApi:
         return self._configure_api_client(api_client, "ParticipantStateApi")
 

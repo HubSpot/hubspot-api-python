@@ -8,12 +8,12 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BasicApi")
 
     @property
-    def search_api(self) -> api_client.SearchApi:
-        return self._configure_api_client(api_client, "SearchApi")
-
-    @property
     def batch_api(self) -> api_client.BatchApi:
         return self._configure_api_client(api_client, "BatchApi")
+
+    @property
+    def search_api(self) -> api_client.SearchApi:
+        return self._configure_api_client(api_client, "SearchApi")
 
     @property
     def calls(self):
