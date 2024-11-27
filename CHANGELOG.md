@@ -5,7 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v10.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v11.0.0...HEAD)
+
+## [11.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v10.0.0...v11.0.0) - 2024-11-27
+
+## Associations
+
+- Added `assiciations.v4.report_api` Api.
+- Added `assiciations.v4.schema.definition_configurations_api` Api.
+
+## Marketing Events
+
+- Added `marketing.events.list_associations_api` Api.
+- Renamed method `create_by_contact_email` to `record_by_contact_emails` in `marketing.events.attendance_subscriber_state_changes_api`.
+- Renamed method `create_by_contact_id` to `record_by_contact_ids` in `marketing.events.attendance_subscriber_state_changes_api`.
+- Remove parameters `attendance_state_calculation_timestamp` and `import_status` to `marketing.events.models.marketing_event_update_request_params`.
+
+## Other changes
+
+- Added `api_request` Api(for requests by curl).
+- Enhance `get_all` method.
+- Added possibility change all configuration params("proxy", "proxy_headers" and ect.).
+- Fix call `crm.tickets.merge_api`.
+- Update README.
+- Update requires.
+- Update Makefile.
 
 ## [10.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v9.0.0...v10.0.0) - 2024-10-10
 

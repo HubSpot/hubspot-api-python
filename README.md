@@ -18,7 +18,7 @@ pip install --upgrade hubspot-api-client
 
 ### Requirements
 
-Make sure you have [Python 3.5+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
+Make sure you have [Python 3.7+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
 
 
 ## Quickstart
@@ -162,7 +162,66 @@ try:
 except ApiException as e:
     print("Exception when calling cards_api->create: %s\n" % e)
 ```
+## Not wrapped endpoint(s)
 
+It is possible to access the hubspot request method directly,
+it could be handy if client doesn't have implementation for some endpoint yet.
+Exposed request method benefits by having all configured client params.
+
+```python
+client.api_request({
+    "method": "PUT",
+    "path": "/some/api/not/wrapped/yet",
+    "body": {"key": "value"}
+})
+```
+
+### {Example} for `GET` request
+
+```python
+import hubspot
+from pprint import pprint
+from hubspot.crm.contacts import ApiException
+
+client = hubspot.Client.create(access_token="your_access_token")
+
+try:
+    response = client.api_request(
+        {"path": "/crm/v3/objects/contacts"}
+    )
+    pprint(response)
+except ApiException as e:
+    print(e)
+```
+
+### {Example} for `POST` request
+
+```python
+import hubspot
+from pprint import pprint
+from hubspot.crm.contacts import ApiException
+
+client = hubspot.Client.create(access_token="your_access_token")
+
+try:
+    response = client.api_request(
+        {
+            "path": "/crm/v3/objects/contacts",
+            "method": "POST",
+            "body": {
+                "properties":
+                    {
+                        "email": "some_email@some.com",
+                        "lastname": "some_last_name"
+                    },
+            }
+        }
+
+    )
+    pprint(response.json())
+except ApiException as e:
+    print(e)
+```
 ### Using utils
 
 #### Get OAuth url:
@@ -183,8 +242,6 @@ auth_url = get_auth_url(
 
 ```python
 import os
-
-from datetime import datetime
 from flask import request
 from hubspot.utils.signature import Signature
 
@@ -194,7 +251,7 @@ Signature.is_valid(
     request_body=request.data.decode("utf-8"),
     http_uri=request.base_url,
     signature_version=request.headers["X-HubSpot-Signature-Version"],
-    timestamp=datetime.now().timestamp()
+    timestamp=request.headers["X-HubSpot-Request-Timestamp"]
 )
 ```
 
