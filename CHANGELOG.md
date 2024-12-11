@@ -177,8 +177,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Changed the type of parameter `category` from `ErrorCategory` to `string` in `crm.associations.models.StandardError`.
 - Renamed `crm.associations.v4.schema.definitions_api.delete()` method to `crm.associations.v4.schema.definitions_api.archive()`.
-- Changed the type of parameters `object_id` and `crm.associations.v4.basic_api.to_object_id` in `crm.associations.v4.basic_api.archive()`, `crm.associations.v4.basic_api.create()` and `crm.associations.v4.basic_api.create_default()` methods from `string` to `int`.
-- Changed the type of parameter `object_id` in `crm.associations.v4.basic_api.get_page()` method from `string` to `int`.
+- Changed the type of parameters `object_id` and `crm.associations.v4.basic_api.to_object_id` in `crm.associations.v4.basic_api.archive()`, `crm.associations.v4.basic_api.create()` and `crm.associations.v4.basic_api.create_default()` methods from `int` to `string`.
+- Changed the type of parameter `object_id` in `crm.associations.v4.basic_api.get_page()` method from `int` to `string`.
 - Changed the type of parameters `to_object_id` and `from_object_id` in `crm.associations.v4.models.LabelsBetweenObjectPair` to `string`.
 - Changed the type of parameter `to_object_id` in `crm.associations.v4.models.MultiAssociatedObjectWithLabel` to `string`.
 - Changed the type of property `category` in `ErrorCategory` to `string` in `crm.associations.v4.models.StandardError`.
