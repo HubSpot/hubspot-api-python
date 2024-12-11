@@ -2,7 +2,7 @@ import base64
 import hmac
 import hashlib
 
-from datetime import datetime, UTC, timedelta
+from datetime import datetime, timezone, timedelta
 
 from hubspot.exceptions import InvalidSignatureVersionError, InvalidSignatureTimestampError
 
@@ -16,8 +16,8 @@ class Signature:
             return False
         try:
             timestamp_float = float(timestamp)
-            request_time = datetime.fromtimestamp(timestamp_float // 1000, tz=UTC)
-            current_time = datetime.now(UTC)
+            request_time = datetime.fromtimestamp(timestamp_float // 1000, tz=timezone.utc)
+            current_time = datetime.now(timezone.utc)
             return current_time - request_time < timedelta(seconds=Signature.MAX_ALLOWED_TIMESTAMP)
         except (ValueError, OverflowError):
             return False
