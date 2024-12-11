@@ -25,7 +25,7 @@ NAME = "hubspot-api-client"
 
 REQUIRES = [
     "requests >= 2.31.0",
-    "urllib3 >= 1.15, < 2.0",
+    "urllib3 >= 1.15, < 3.0",
     "six >= 1.10, < 2.0",
     "certifi >= 2023.1.1",
     "python-dateutil >= 2.8.2",
