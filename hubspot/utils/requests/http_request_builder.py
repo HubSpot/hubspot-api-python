@@ -67,7 +67,7 @@ class Request:
 
         qs = self.options.get("qs")
         if qs:
-            query_string = urlencode(qs)
+            query_string = urlencode(qs, doseq=True)
             url += f"?{query_string}"
 
         return url
