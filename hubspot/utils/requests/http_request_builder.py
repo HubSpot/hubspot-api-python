@@ -68,7 +68,8 @@ class Request:
         qs = self.options.get("qs")
         if qs:
             query_string = urlencode(qs, doseq=True)
-            url += f"?{query_string}"
+            delimiter = "&" if "?" in url else "?"
+            url += f"{delimiter}{query_string}"
 
         return url
 
