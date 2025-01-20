@@ -162,6 +162,36 @@ try:
 except ApiException as e:
     print("Exception when calling cards_api->create: %s\n" % e)
 ```
+
+### Files API
+
+#### Upload files:
+```python
+import hubspot
+import json
+from pprint import pprint
+from hubspot.crm.contacts import ApiException
+
+client = hubspot.Client.create(access_token="your_access_token")
+
+options = json.dumps(
+    {'access': 'PRIVATE',
+     "overwrite": False}
+)
+
+try:
+    response = client.files.files_api.upload(
+        file="/file/path/file.jpeg",
+        file_name="name_in_hubspot",
+        folder_path="folder_in_hubspot",
+        options=options,
+    )
+    pprint(response)
+
+except ApiException as e:
+    print("Exception when calling basic_api->get_page: %s\n" % e)
+```
+
 ## Not wrapped endpoint(s)
 
 It is possible to access the hubspot request method directly,
