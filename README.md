@@ -320,7 +320,7 @@ api_client = HubSpot(retry=retry)
 
 ```python
 contacts = api_client.crm.contacts.basic_api.get_page()
-for contact in contacts:
+for contact in contacts.results:
     print(contact.to_dict())
 ```
 
