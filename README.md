@@ -47,7 +47,7 @@ Please, note that hapikey is no longer supported after v5.1.0. You can get more 
 #### Obtain OAuth2 access token:
 
 ```python
-from hubspot.auth.oauth import ApiException
+from hubspot.oauth import ApiException
 
 try:
     tokens = api_client.oauth.tokens_api.create(
