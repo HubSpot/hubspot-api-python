@@ -41,6 +41,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
         "filter_branch_operator": "str",
         "filters": "list[PublicPropertyAssociationFilterBranchFiltersInner]",
         "event_type_id": "str",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "operator": "str",
         "object_type_id": "str",
         "property_with_object_id": "str",
@@ -54,6 +55,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
         "filter_branch_operator": "filterBranchOperator",
         "filters": "filters",
         "event_type_id": "eventTypeId",
+        "coalescing_refine_by": "coalescingRefineBy",
         "operator": "operator",
         "object_type_id": "objectTypeId",
         "property_with_object_id": "propertyWithObjectId",
@@ -68,6 +70,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
         filter_branch_operator=None,
         filters=None,
         event_type_id=None,
+        coalescing_refine_by=None,
         operator=None,
         object_type_id=None,
         property_with_object_id=None,
@@ -85,6 +88,7 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
         self._filter_branch_operator = None
         self._filters = None
         self._event_type_id = None
+        self._coalescing_refine_by = None
         self._operator = None
         self._object_type_id = None
         self._property_with_object_id = None
@@ -97,6 +101,8 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
         self.filter_branch_operator = filter_branch_operator
         self.filters = filters
         self.event_type_id = event_type_id
+        if coalescing_refine_by is not None:
+            self.coalescing_refine_by = coalescing_refine_by
         self.operator = operator
         self.object_type_id = object_type_id
         self.property_with_object_id = property_with_object_id
@@ -220,6 +226,27 @@ class PublicPropertyAssociationFilterBranchFilterBranchesInner(object):
             raise ValueError("Invalid value for `event_type_id`, must not be `None`")  # noqa: E501
 
         self._event_type_id = event_type_id
+
+    @property
+    def coalescing_refine_by(self):
+        """Gets the coalescing_refine_by of this PublicPropertyAssociationFilterBranchFilterBranchesInner.  # noqa: E501
+
+
+        :return: The coalescing_refine_by of this PublicPropertyAssociationFilterBranchFilterBranchesInner.  # noqa: E501
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
+        """
+        return self._coalescing_refine_by
+
+    @coalescing_refine_by.setter
+    def coalescing_refine_by(self, coalescing_refine_by):
+        """Sets the coalescing_refine_by of this PublicPropertyAssociationFilterBranchFilterBranchesInner.
+
+
+        :param coalescing_refine_by: The coalescing_refine_by of this PublicPropertyAssociationFilterBranchFilterBranchesInner.  # noqa: E501
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
+        """
+
+        self._coalescing_refine_by = coalescing_refine_by
 
     @property
     def operator(self):

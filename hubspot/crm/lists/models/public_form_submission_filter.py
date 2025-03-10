@@ -37,8 +37,8 @@ class PublicFormSubmissionFilter(object):
     """
     openapi_types = {
         "form_id": "str",
-        "coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
-        "pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
+        "pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "filter_type": "str",
         "operator": "str",
     }
@@ -94,7 +94,7 @@ class PublicFormSubmissionFilter(object):
 
 
         :return: The coalescing_refine_by of this PublicFormSubmissionFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -104,7 +104,7 @@ class PublicFormSubmissionFilter(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicFormSubmissionFilter.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._coalescing_refine_by = coalescing_refine_by
@@ -115,7 +115,7 @@ class PublicFormSubmissionFilter(object):
 
 
         :return: The pruning_refine_by of this PublicFormSubmissionFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -125,7 +125,7 @@ class PublicFormSubmissionFilter(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicFormSubmissionFilter.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._pruning_refine_by = pruning_refine_by

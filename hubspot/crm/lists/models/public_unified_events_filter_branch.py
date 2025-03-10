@@ -39,6 +39,7 @@ class PublicUnifiedEventsFilterBranch(object):
         "filter_branch_type": "str",
         "filter_branches": "list[PublicPropertyAssociationFilterBranchFilterBranchesInner]",
         "event_type_id": "str",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "filter_branch_operator": "str",
         "filters": "list[PublicPropertyAssociationFilterBranchFiltersInner]",
         "operator": "str",
@@ -48,13 +49,22 @@ class PublicUnifiedEventsFilterBranch(object):
         "filter_branch_type": "filterBranchType",
         "filter_branches": "filterBranches",
         "event_type_id": "eventTypeId",
+        "coalescing_refine_by": "coalescingRefineBy",
         "filter_branch_operator": "filterBranchOperator",
         "filters": "filters",
         "operator": "operator",
     }
 
     def __init__(
-        self, filter_branch_type="UNIFIED_EVENTS", filter_branches=None, event_type_id=None, filter_branch_operator=None, filters=None, operator=None, local_vars_configuration=None
+        self,
+        filter_branch_type="UNIFIED_EVENTS",
+        filter_branches=None,
+        event_type_id=None,
+        coalescing_refine_by=None,
+        filter_branch_operator=None,
+        filters=None,
+        operator=None,
+        local_vars_configuration=None,
     ):  # noqa: E501
         """PublicUnifiedEventsFilterBranch - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
@@ -64,6 +74,7 @@ class PublicUnifiedEventsFilterBranch(object):
         self._filter_branch_type = None
         self._filter_branches = None
         self._event_type_id = None
+        self._coalescing_refine_by = None
         self._filter_branch_operator = None
         self._filters = None
         self._operator = None
@@ -72,6 +83,8 @@ class PublicUnifiedEventsFilterBranch(object):
         self.filter_branch_type = filter_branch_type
         self.filter_branches = filter_branches
         self.event_type_id = event_type_id
+        if coalescing_refine_by is not None:
+            self.coalescing_refine_by = coalescing_refine_by
         self.filter_branch_operator = filter_branch_operator
         self.filters = filters
         self.operator = operator
@@ -147,6 +160,27 @@ class PublicUnifiedEventsFilterBranch(object):
             raise ValueError("Invalid value for `event_type_id`, must not be `None`")  # noqa: E501
 
         self._event_type_id = event_type_id
+
+    @property
+    def coalescing_refine_by(self):
+        """Gets the coalescing_refine_by of this PublicUnifiedEventsFilterBranch.  # noqa: E501
+
+
+        :return: The coalescing_refine_by of this PublicUnifiedEventsFilterBranch.  # noqa: E501
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
+        """
+        return self._coalescing_refine_by
+
+    @coalescing_refine_by.setter
+    def coalescing_refine_by(self, coalescing_refine_by):
+        """Sets the coalescing_refine_by of this PublicUnifiedEventsFilterBranch.
+
+
+        :param coalescing_refine_by: The coalescing_refine_by of this PublicUnifiedEventsFilterBranch.  # noqa: E501
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
+        """
+
+        self._coalescing_refine_by = coalescing_refine_by
 
     @property
     def filter_branch_operator(self):

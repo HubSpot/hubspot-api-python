@@ -40,6 +40,7 @@ class Styles(object):
         "flexbox_positioning": "str",
         "background_image": "BackgroundImage",
         "force_full_width_section": "bool",
+        "breakpoint_styles": "dict[str, BreakpointStyles]",
         "vertical_alignment": "str",
         "max_width_section_centering": "int",
         "background_gradient": "Gradient",
@@ -50,6 +51,7 @@ class Styles(object):
         "flexbox_positioning": "flexboxPositioning",
         "background_image": "backgroundImage",
         "force_full_width_section": "forceFullWidthSection",
+        "breakpoint_styles": "breakpointStyles",
         "vertical_alignment": "verticalAlignment",
         "max_width_section_centering": "maxWidthSectionCentering",
         "background_gradient": "backgroundGradient",
@@ -61,6 +63,7 @@ class Styles(object):
         flexbox_positioning=None,
         background_image=None,
         force_full_width_section=None,
+        breakpoint_styles=None,
         vertical_alignment=None,
         max_width_section_centering=None,
         background_gradient=None,
@@ -75,6 +78,7 @@ class Styles(object):
         self._flexbox_positioning = None
         self._background_image = None
         self._force_full_width_section = None
+        self._breakpoint_styles = None
         self._vertical_alignment = None
         self._max_width_section_centering = None
         self._background_gradient = None
@@ -84,6 +88,8 @@ class Styles(object):
         self.flexbox_positioning = flexbox_positioning
         self.background_image = background_image
         self.force_full_width_section = force_full_width_section
+        if breakpoint_styles is not None:
+            self.breakpoint_styles = breakpoint_styles
         self.vertical_alignment = vertical_alignment
         self.max_width_section_centering = max_width_section_centering
         self.background_gradient = background_gradient
@@ -179,6 +185,27 @@ class Styles(object):
             raise ValueError("Invalid value for `force_full_width_section`, must not be `None`")  # noqa: E501
 
         self._force_full_width_section = force_full_width_section
+
+    @property
+    def breakpoint_styles(self):
+        """Gets the breakpoint_styles of this Styles.  # noqa: E501
+
+
+        :return: The breakpoint_styles of this Styles.  # noqa: E501
+        :rtype: dict[str, BreakpointStyles]
+        """
+        return self._breakpoint_styles
+
+    @breakpoint_styles.setter
+    def breakpoint_styles(self, breakpoint_styles):
+        """Sets the breakpoint_styles of this Styles.
+
+
+        :param breakpoint_styles: The breakpoint_styles of this Styles.  # noqa: E501
+        :type breakpoint_styles: dict[str, BreakpointStyles]
+        """
+
+        self._breakpoint_styles = breakpoint_styles
 
     @property
     def vertical_alignment(self):

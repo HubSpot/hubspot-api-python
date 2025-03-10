@@ -8,3 +8,4 @@ venv
 ssl
 .env
 test.py
+.DS_Store

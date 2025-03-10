@@ -35,28 +35,70 @@ class ListSearchRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"offset": "int", "query": "str", "count": "int", "additional_properties": "list[str]"}
+    openapi_types = {"list_ids": "list[str]", "offset": "int", "query": "str", "count": "int", "processing_types": "list[str]", "additional_properties": "list[str]", "sort": "str"}
 
-    attribute_map = {"offset": "offset", "query": "query", "count": "count", "additional_properties": "additionalProperties"}
+    attribute_map = {
+        "list_ids": "listIds",
+        "offset": "offset",
+        "query": "query",
+        "count": "count",
+        "processing_types": "processingTypes",
+        "additional_properties": "additionalProperties",
+        "sort": "sort",
+    }
 
-    def __init__(self, offset=None, query=None, count=None, additional_properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, list_ids=None, offset=None, query=None, count=None, processing_types=None, additional_properties=None, sort=None, local_vars_configuration=None):  # noqa: E501
         """ListSearchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._list_ids = None
         self._offset = None
         self._query = None
         self._count = None
+        self._processing_types = None
         self._additional_properties = None
+        self._sort = None
         self.discriminator = None
 
-        self.offset = offset
+        if list_ids is not None:
+            self.list_ids = list_ids
+        if offset is not None:
+            self.offset = offset
         if query is not None:
             self.query = query
         if count is not None:
             self.count = count
-        self.additional_properties = additional_properties
+        if processing_types is not None:
+            self.processing_types = processing_types
+        if additional_properties is not None:
+            self.additional_properties = additional_properties
+        if sort is not None:
+            self.sort = sort
+
+    @property
+    def list_ids(self):
+        """Gets the list_ids of this ListSearchRequest.  # noqa: E501
+
+        The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.  If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.  # noqa: E501
+
+        :return: The list_ids of this ListSearchRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._list_ids
+
+    @list_ids.setter
+    def list_ids(self, list_ids):
+        """Sets the list_ids of this ListSearchRequest.
+
+        The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.  If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.  # noqa: E501
+
+        :param list_ids: The list_ids of this ListSearchRequest.  # noqa: E501
+        :type list_ids: list[str]
+        """
+
+        self._list_ids = list_ids
 
     @property
     def offset(self):
@@ -78,8 +120,6 @@ class ListSearchRequest(object):
         :param offset: The offset of this ListSearchRequest.  # noqa: E501
         :type offset: int
         """
-        if self.local_vars_configuration.client_side_validation and offset is None:  # noqa: E501
-            raise ValueError("Invalid value for `offset`, must not be `None`")  # noqa: E501
 
         self._offset = offset
 
@@ -130,6 +170,29 @@ class ListSearchRequest(object):
         self._count = count
 
     @property
+    def processing_types(self):
+        """Gets the processing_types of this ListSearchRequest.  # noqa: E501
+
+        The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.  If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.  Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.  # noqa: E501
+
+        :return: The processing_types of this ListSearchRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._processing_types
+
+    @processing_types.setter
+    def processing_types(self, processing_types):
+        """Sets the processing_types of this ListSearchRequest.
+
+        The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.  If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.  Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.  # noqa: E501
+
+        :param processing_types: The processing_types of this ListSearchRequest.  # noqa: E501
+        :type processing_types: list[str]
+        """
+
+        self._processing_types = processing_types
+
+    @property
     def additional_properties(self):
         """Gets the additional_properties of this ListSearchRequest.  # noqa: E501
 
@@ -149,10 +212,29 @@ class ListSearchRequest(object):
         :param additional_properties: The additional_properties of this ListSearchRequest.  # noqa: E501
         :type additional_properties: list[str]
         """
-        if self.local_vars_configuration.client_side_validation and additional_properties is None:  # noqa: E501
-            raise ValueError("Invalid value for `additional_properties`, must not be `None`")  # noqa: E501
 
         self._additional_properties = additional_properties
+
+    @property
+    def sort(self):
+        """Gets the sort of this ListSearchRequest.  # noqa: E501
+
+
+        :return: The sort of this ListSearchRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._sort
+
+    @sort.setter
+    def sort(self, sort):
+        """Sets the sort of this ListSearchRequest.
+
+
+        :param sort: The sort of this ListSearchRequest.  # noqa: E501
+        :type sort: str
+        """
+
+        self._sort = sort
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

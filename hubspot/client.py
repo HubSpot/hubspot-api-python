@@ -1,5 +1,6 @@
 from urllib3.util.retry import Retry
 
+
 class Client:
     def __init__(
         self,
@@ -33,9 +34,9 @@ class Client:
         self.config["api_key"] = value
 
     @property
-    def auth(self):
-        from .discovery.auth.discovery import Discovery as AuthDiscovery
-        return AuthDiscovery(self.config)
+    def oauth(self):
+        from .discovery.oauth.discovery import Discovery as OauthDiscovery
+        return OauthDiscovery(self.config)
 
     @property
     def automation(self):
@@ -86,3 +87,8 @@ class Client:
     def webhooks(self):
         from .discovery.webhooks.discovery import Discovery as WebhooksDiscovery
         return WebhooksDiscovery(self.config)
+
+    def api_request(self, options):
+        from .utils.requests.http_request_builder import Request
+        request = Request(self.config, options)
+        return request.send()
