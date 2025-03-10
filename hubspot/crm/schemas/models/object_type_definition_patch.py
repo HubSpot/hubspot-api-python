@@ -39,6 +39,7 @@ class ObjectTypeDefinitionPatch(object):
         "secondary_display_properties": "list[str]",
         "required_properties": "list[str]",
         "searchable_properties": "list[str]",
+        "clear_description": "bool",
         "primary_display_property": "str",
         "description": "str",
         "restorable": "bool",
@@ -49,6 +50,7 @@ class ObjectTypeDefinitionPatch(object):
         "secondary_display_properties": "secondaryDisplayProperties",
         "required_properties": "requiredProperties",
         "searchable_properties": "searchableProperties",
+        "clear_description": "clearDescription",
         "primary_display_property": "primaryDisplayProperty",
         "description": "description",
         "restorable": "restorable",
@@ -60,6 +62,7 @@ class ObjectTypeDefinitionPatch(object):
         secondary_display_properties=None,
         required_properties=None,
         searchable_properties=None,
+        clear_description=None,
         primary_display_property=None,
         description=None,
         restorable=None,
@@ -74,6 +77,7 @@ class ObjectTypeDefinitionPatch(object):
         self._secondary_display_properties = None
         self._required_properties = None
         self._searchable_properties = None
+        self._clear_description = None
         self._primary_display_property = None
         self._description = None
         self._restorable = None
@@ -86,6 +90,8 @@ class ObjectTypeDefinitionPatch(object):
             self.required_properties = required_properties
         if searchable_properties is not None:
             self.searchable_properties = searchable_properties
+        if clear_description is not None:
+            self.clear_description = clear_description
         if primary_display_property is not None:
             self.primary_display_property = primary_display_property
         if description is not None:
@@ -163,6 +169,27 @@ class ObjectTypeDefinitionPatch(object):
         """
 
         self._searchable_properties = searchable_properties
+
+    @property
+    def clear_description(self):
+        """Gets the clear_description of this ObjectTypeDefinitionPatch.  # noqa: E501
+
+
+        :return: The clear_description of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :rtype: bool
+        """
+        return self._clear_description
+
+    @clear_description.setter
+    def clear_description(self, clear_description):
+        """Sets the clear_description of this ObjectTypeDefinitionPatch.
+
+
+        :param clear_description: The clear_description of this ObjectTypeDefinitionPatch.  # noqa: E501
+        :type clear_description: bool
+        """
+
+        self._clear_description = clear_description
 
     @property
     def primary_display_property(self):

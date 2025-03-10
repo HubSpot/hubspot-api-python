@@ -36,9 +36,9 @@ class PublicPageViewAnalyticsFilter(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "coalescing_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "coalescing_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "enable_tracking": "bool",
-        "pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy",
+        "pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy",
         "page_url": "str",
         "filter_type": "str",
         "operator": "str",
@@ -83,7 +83,7 @@ class PublicPageViewAnalyticsFilter(object):
 
 
         :return: The coalescing_refine_by of this PublicPageViewAnalyticsFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._coalescing_refine_by
 
@@ -93,7 +93,7 @@ class PublicPageViewAnalyticsFilter(object):
 
 
         :param coalescing_refine_by: The coalescing_refine_by of this PublicPageViewAnalyticsFilter.  # noqa: E501
-        :type coalescing_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type coalescing_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._coalescing_refine_by = coalescing_refine_by
@@ -125,7 +125,7 @@ class PublicPageViewAnalyticsFilter(object):
 
 
         :return: The pruning_refine_by of this PublicPageViewAnalyticsFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -135,7 +135,7 @@ class PublicPageViewAnalyticsFilter(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicPageViewAnalyticsFilter.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
 
         self._pruning_refine_by = pruning_refine_by

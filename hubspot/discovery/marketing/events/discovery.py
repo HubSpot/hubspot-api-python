@@ -12,16 +12,12 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BasicApi")
 
     @property
-    def batch_api(self) -> api_client.BatchApi:
-        return self._configure_api_client(api_client, "BatchApi")
+    def list_associations_api(self) -> api_client.ListAssociationsApi:
+        return self._configure_api_client(api_client, "ListAssociationsApi")
 
     @property
-    def marketing_events_external_api(self) -> api_client.MarketingEventsExternalApi:
-        return self._configure_api_client(api_client, "MarketingEventsExternalApi")
-
-    @property
-    def search_api(self) -> api_client.SearchApi:
-        return self._configure_api_client(api_client, "SearchApi")
+    def participant_state_api(self) -> api_client.ParticipantStateApi:
+        return self._configure_api_client(api_client, "ParticipantStateApi")
 
     @property
     def settings_api(self) -> api_client.SettingsApi:

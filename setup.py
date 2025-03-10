@@ -24,10 +24,11 @@ NAME = "hubspot-api-client"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-    "urllib3 >= 1.15",
-    "six >= 1.10",
-    "certifi",
-    "python-dateutil",
+    "requests >= 2.31.0",
+    "urllib3 >= 1.15, < 3.0",
+    "six >= 1.10, < 2.0",
+    "certifi >= 2023.1.1",
+    "python-dateutil >= 2.8.2",
     "importlib-metadata<5; python_version<'3.8'"
 ]
 DEV_REQUIRES = ["pytest", "black"]

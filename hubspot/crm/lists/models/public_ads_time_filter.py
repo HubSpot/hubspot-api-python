@@ -35,7 +35,7 @@ class PublicAdsTimeFilter(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"pruning_refine_by": "PublicEventAnalyticsFilterCoalescingRefineBy", "filter_type": "str"}
+    openapi_types = {"pruning_refine_by": "PublicFormSubmissionFilterCoalescingRefineBy", "filter_type": "str"}
 
     attribute_map = {"pruning_refine_by": "pruningRefineBy", "filter_type": "filterType"}
 
@@ -58,7 +58,7 @@ class PublicAdsTimeFilter(object):
 
 
         :return: The pruning_refine_by of this PublicAdsTimeFilter.  # noqa: E501
-        :rtype: PublicEventAnalyticsFilterCoalescingRefineBy
+        :rtype: PublicFormSubmissionFilterCoalescingRefineBy
         """
         return self._pruning_refine_by
 
@@ -68,7 +68,7 @@ class PublicAdsTimeFilter(object):
 
 
         :param pruning_refine_by: The pruning_refine_by of this PublicAdsTimeFilter.  # noqa: E501
-        :type pruning_refine_by: PublicEventAnalyticsFilterCoalescingRefineBy
+        :type pruning_refine_by: PublicFormSubmissionFilterCoalescingRefineBy
         """
         if self.local_vars_configuration.client_side_validation and pruning_refine_by is None:  # noqa: E501
             raise ValueError("Invalid value for `pruning_refine_by`, must not be `None`")  # noqa: E501

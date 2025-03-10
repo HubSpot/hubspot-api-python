@@ -45,6 +45,7 @@ class PublicObjectList(object):
         "processing_status": "str",
         "deleted_at": "datetime",
         "list_version": "int",
+        "size": "int",
         "name": "str",
         "created_by_id": "str",
         "filter_branch": "PublicPropertyAssociationFilterBranchFilterBranchesInner",
@@ -61,6 +62,7 @@ class PublicObjectList(object):
         "processing_status": "processingStatus",
         "deleted_at": "deletedAt",
         "list_version": "listVersion",
+        "size": "size",
         "name": "name",
         "created_by_id": "createdById",
         "filter_branch": "filterBranch",
@@ -78,6 +80,7 @@ class PublicObjectList(object):
         processing_status=None,
         deleted_at=None,
         list_version=None,
+        size=None,
         name=None,
         created_by_id=None,
         filter_branch=None,
@@ -98,6 +101,7 @@ class PublicObjectList(object):
         self._processing_status = None
         self._deleted_at = None
         self._list_version = None
+        self._size = None
         self._name = None
         self._created_by_id = None
         self._filter_branch = None
@@ -117,6 +121,8 @@ class PublicObjectList(object):
         if deleted_at is not None:
             self.deleted_at = deleted_at
         self.list_version = list_version
+        if size is not None:
+            self.size = size
         self.name = name
         if created_by_id is not None:
             self.created_by_id = created_by_id
@@ -341,6 +347,27 @@ class PublicObjectList(object):
             raise ValueError("Invalid value for `list_version`, must not be `None`")  # noqa: E501
 
         self._list_version = list_version
+
+    @property
+    def size(self):
+        """Gets the size of this PublicObjectList.  # noqa: E501
+
+
+        :return: The size of this PublicObjectList.  # noqa: E501
+        :rtype: int
+        """
+        return self._size
+
+    @size.setter
+    def size(self, size):
+        """Sets the size of this PublicObjectList.
+
+
+        :param size: The size of this PublicObjectList.  # noqa: E501
+        :type size: int
+        """
+
+        self._size = size
 
     @property
     def name(self):

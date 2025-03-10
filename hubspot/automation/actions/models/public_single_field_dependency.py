@@ -35,24 +35,24 @@ class PublicSingleFieldDependency(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"dependency_type": "str", "dependent_field_names": "list[str]", "controlling_field_name": "str"}
+    openapi_types = {"dependency_type": "str", "controlling_field_name": "str", "dependent_field_names": "list[str]"}
 
-    attribute_map = {"dependency_type": "dependencyType", "dependent_field_names": "dependentFieldNames", "controlling_field_name": "controllingFieldName"}
+    attribute_map = {"dependency_type": "dependencyType", "controlling_field_name": "controllingFieldName", "dependent_field_names": "dependentFieldNames"}
 
-    def __init__(self, dependency_type="SINGLE_FIELD", dependent_field_names=None, controlling_field_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, dependency_type="SINGLE_FIELD", controlling_field_name=None, dependent_field_names=None, local_vars_configuration=None):  # noqa: E501
         """PublicSingleFieldDependency - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._dependency_type = None
-        self._dependent_field_names = None
         self._controlling_field_name = None
+        self._dependent_field_names = None
         self.discriminator = None
 
         self.dependency_type = dependency_type
-        self.dependent_field_names = dependent_field_names
         self.controlling_field_name = controlling_field_name
+        self.dependent_field_names = dependent_field_names
 
     @property
     def dependency_type(self):
@@ -81,29 +81,6 @@ class PublicSingleFieldDependency(object):
         self._dependency_type = dependency_type
 
     @property
-    def dependent_field_names(self):
-        """Gets the dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
-
-
-        :return: The dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._dependent_field_names
-
-    @dependent_field_names.setter
-    def dependent_field_names(self, dependent_field_names):
-        """Sets the dependent_field_names of this PublicSingleFieldDependency.
-
-
-        :param dependent_field_names: The dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
-        :type dependent_field_names: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and dependent_field_names is None:  # noqa: E501
-            raise ValueError("Invalid value for `dependent_field_names`, must not be `None`")  # noqa: E501
-
-        self._dependent_field_names = dependent_field_names
-
-    @property
     def controlling_field_name(self):
         """Gets the controlling_field_name of this PublicSingleFieldDependency.  # noqa: E501
 
@@ -125,6 +102,29 @@ class PublicSingleFieldDependency(object):
             raise ValueError("Invalid value for `controlling_field_name`, must not be `None`")  # noqa: E501
 
         self._controlling_field_name = controlling_field_name
+
+    @property
+    def dependent_field_names(self):
+        """Gets the dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
+
+
+        :return: The dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._dependent_field_names
+
+    @dependent_field_names.setter
+    def dependent_field_names(self, dependent_field_names):
+        """Sets the dependent_field_names of this PublicSingleFieldDependency.
+
+
+        :param dependent_field_names: The dependent_field_names of this PublicSingleFieldDependency.  # noqa: E501
+        :type dependent_field_names: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and dependent_field_names is None:  # noqa: E501
+            raise ValueError("Invalid value for `dependent_field_names`, must not be `None`")  # noqa: E501
+
+        self._dependent_field_names = dependent_field_names
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

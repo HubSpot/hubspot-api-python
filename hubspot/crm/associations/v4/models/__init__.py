@@ -26,6 +26,7 @@ from hubspot.crm.associations.v4.models.batch_response_public_association_multi_
 from hubspot.crm.associations.v4.models.batch_response_public_association_multi_with_label_with_errors import BatchResponsePublicAssociationMultiWithLabelWithErrors
 from hubspot.crm.associations.v4.models.batch_response_public_default_association import BatchResponsePublicDefaultAssociation
 from hubspot.crm.associations.v4.models.collection_response_multi_associated_object_with_label_forward_paging import CollectionResponseMultiAssociatedObjectWithLabelForwardPaging
+from hubspot.crm.associations.v4.models.date_time import DateTime
 from hubspot.crm.associations.v4.models.error import Error
 from hubspot.crm.associations.v4.models.error_detail import ErrorDetail
 from hubspot.crm.associations.v4.models.forward_paging import ForwardPaging
@@ -41,4 +42,5 @@ from hubspot.crm.associations.v4.models.public_default_association import Public
 from hubspot.crm.associations.v4.models.public_default_association_multi_post import PublicDefaultAssociationMultiPost
 from hubspot.crm.associations.v4.models.public_fetch_associations_batch_request import PublicFetchAssociationsBatchRequest
 from hubspot.crm.associations.v4.models.public_object_id import PublicObjectId
+from hubspot.crm.associations.v4.models.report_creation_response import ReportCreationResponse
 from hubspot.crm.associations.v4.models.standard_error import StandardError

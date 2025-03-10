@@ -19,8 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.crm.deals.api.basic_api import BasicApi
 from hubspot.crm.deals.api.batch_api import BatchApi
-from hubspot.crm.deals.api.gdpr_api import GDPRApi
-from hubspot.crm.deals.api.public_object_api import PublicObjectApi
+from hubspot.crm.deals.api.merge_api import MergeApi
 from hubspot.crm.deals.api.search_api import SearchApi
 
 # import ApiClient
@@ -37,11 +36,14 @@ from hubspot.crm.deals.exceptions import ApiException
 from hubspot.crm.deals.models.associated_id import AssociatedId
 from hubspot.crm.deals.models.association_spec import AssociationSpec
 from hubspot.crm.deals.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
+from hubspot.crm.deals.models.batch_input_simple_public_object_batch_input_upsert import BatchInputSimplePublicObjectBatchInputUpsert
 from hubspot.crm.deals.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
 from hubspot.crm.deals.models.batch_input_simple_public_object_input_for_create import BatchInputSimplePublicObjectInputForCreate
 from hubspot.crm.deals.models.batch_read_input_simple_public_object_id import BatchReadInputSimplePublicObjectId
 from hubspot.crm.deals.models.batch_response_simple_public_object import BatchResponseSimplePublicObject
 from hubspot.crm.deals.models.batch_response_simple_public_object_with_errors import BatchResponseSimplePublicObjectWithErrors
+from hubspot.crm.deals.models.batch_response_simple_public_upsert_object import BatchResponseSimplePublicUpsertObject
+from hubspot.crm.deals.models.batch_response_simple_public_upsert_object_with_errors import BatchResponseSimplePublicUpsertObjectWithErrors
 from hubspot.crm.deals.models.collection_response_associated_id import CollectionResponseAssociatedId
 from hubspot.crm.deals.models.collection_response_simple_public_object_with_associations_forward_paging import CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
 from hubspot.crm.deals.models.collection_response_with_total_simple_public_object_forward_paging import CollectionResponseWithTotalSimplePublicObjectForwardPaging
@@ -54,15 +56,16 @@ from hubspot.crm.deals.models.next_page import NextPage
 from hubspot.crm.deals.models.paging import Paging
 from hubspot.crm.deals.models.previous_page import PreviousPage
 from hubspot.crm.deals.models.public_associations_for_object import PublicAssociationsForObject
-from hubspot.crm.deals.models.public_gdpr_delete_input import PublicGdprDeleteInput
 from hubspot.crm.deals.models.public_merge_input import PublicMergeInput
 from hubspot.crm.deals.models.public_object_id import PublicObjectId
 from hubspot.crm.deals.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.deals.models.simple_public_object import SimplePublicObject
 from hubspot.crm.deals.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
+from hubspot.crm.deals.models.simple_public_object_batch_input_upsert import SimplePublicObjectBatchInputUpsert
 from hubspot.crm.deals.models.simple_public_object_id import SimplePublicObjectId
 from hubspot.crm.deals.models.simple_public_object_input import SimplePublicObjectInput
 from hubspot.crm.deals.models.simple_public_object_input_for_create import SimplePublicObjectInputForCreate
 from hubspot.crm.deals.models.simple_public_object_with_associations import SimplePublicObjectWithAssociations
+from hubspot.crm.deals.models.simple_public_upsert_object import SimplePublicUpsertObject
 from hubspot.crm.deals.models.standard_error import StandardError
 from hubspot.crm.deals.models.value_with_timestamp import ValueWithTimestamp

@@ -12,6 +12,10 @@ class Discovery(DiscoveryBase):
         return self._configure_api_client(api_client, "BatchApi")
 
     @property
+    def report_api(self) -> api_client.ReportApi:
+        return self._configure_api_client(api_client, "ReportApi")
+
+    @property
     def schema(self):
         from .schema.discovery import Discovery as schemaDiscovery
         return schemaDiscovery(self.config)

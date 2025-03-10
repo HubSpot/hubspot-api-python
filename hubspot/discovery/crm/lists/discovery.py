@@ -4,9 +4,17 @@ from ...discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
-    def list_app_api(self) -> api_client.ListAppApi:
-        return self._configure_api_client(api_client, "ListAppApi")
+    def folders_api(self) -> api_client.FoldersApi:
+        return self._configure_api_client(api_client, "FoldersApi")
 
     @property
-    def list_app_membership_api(self) -> api_client.ListAppMembershipApi:
-        return self._configure_api_client(api_client, "ListAppMembershipApi")
+    def lists_api(self) -> api_client.ListsApi:
+        return self._configure_api_client(api_client, "ListsApi")
+
+    @property
+    def mapping_api(self) -> api_client.MappingApi:
+        return self._configure_api_client(api_client, "MappingApi")
+
+    @property
+    def memberships_api(self) -> api_client.MembershipsApi:
+        return self._configure_api_client(api_client, "MembershipsApi")

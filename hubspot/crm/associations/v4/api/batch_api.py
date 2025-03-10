@@ -617,7 +617,7 @@ class BatchApi(object):
     def get_page(self, from_object_type, to_object_type, batch_input_public_fetch_associations_batch_request, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored.   # noqa: E501
+        Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -651,7 +651,7 @@ class BatchApi(object):
     def get_page_with_http_info(self, from_object_type, to_object_type, batch_input_public_fetch_associations_batch_request, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
-        Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored.   # noqa: E501
+        Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

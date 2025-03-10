@@ -143,7 +143,7 @@ class GenerateApi(object):
         }
 
         return self.api_client.call_api(
-            "/conversations/v3/visitor-identification/tokens/create",
+            "/visitor-identification/v3/tokens/create",
             "POST",
             path_params,
             query_params,
