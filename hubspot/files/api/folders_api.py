@@ -114,7 +114,7 @@ class FoldersApi(object):
             raise ApiValueError("Missing the required parameter `folder_id` when calling `archive`")  # noqa: E501
 
         if self.api_client.client_side_validation and "folder_id" in local_var_params and not re.search(r"\d+", local_var_params["folder_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `folder_id` when calling `archive`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `folder_id` when calling `archive`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -837,7 +837,7 @@ class FoldersApi(object):
             raise ApiValueError("Missing the required parameter `folder_id` when calling `get_by_id`")  # noqa: E501
 
         if self.api_client.client_side_validation and "folder_id" in local_var_params and not re.search(r"\d+", local_var_params["folder_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `folder_id` when calling `get_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `folder_id` when calling `get_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
