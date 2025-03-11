@@ -114,7 +114,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_id` when calling `archive`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `archive`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `archive`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -237,7 +237,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_id` when calling `archive_gdpr`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `archive_gdpr`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `archive_gdpr`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -772,7 +772,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_id` when calling `get_by_id`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `get_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `get_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1042,7 +1042,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_id` when calling `get_signed_url`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `get_signed_url`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `get_signed_url`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1313,7 +1313,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_id` when calling `replace`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `replace`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `replace`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1456,7 +1456,7 @@ class FilesApi(object):
             raise ApiValueError("Missing the required parameter `file_update_input` when calling `update_properties`")  # noqa: E501
 
         if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `update_properties`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `file_id` when calling `update_properties`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

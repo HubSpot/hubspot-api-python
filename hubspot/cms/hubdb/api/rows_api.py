@@ -125,7 +125,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `row_id` when calling `clone_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `clone_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `clone_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -402,7 +402,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `row_id` when calling `get_draft_table_row_by_id`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `get_draft_table_row_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `get_draft_table_row_by_id`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -542,7 +542,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `row_id` when calling `get_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `get_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `get_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -839,7 +839,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `row_id` when calling `purge_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `purge_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `purge_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1139,7 +1139,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `hub_db_table_row_v3_request` when calling `replace_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `replace_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `replace_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1287,7 +1287,7 @@ class RowsApi(object):
             raise ApiValueError("Missing the required parameter `hub_db_table_row_v3_request` when calling `update_draft_table_row`")  # noqa: E501
 
         if self.api_client.client_side_validation and "row_id" in local_var_params and not re.search(r"\d+", local_var_params["row_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `row_id` when calling `update_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
+            raise ApiValueError(r"Invalid value for parameter `row_id` when calling `update_draft_table_row`, must conform to the pattern `/\d+/`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
