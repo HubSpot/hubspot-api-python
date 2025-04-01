@@ -35,28 +35,54 @@ class SettingsPatchRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"supports_custom_objects": "bool", "is_ready": "bool", "name": "str", "width": "int", "supports_inbound_calling": "bool", "url": "str", "height": "int"}
+    openapi_types = {
+        "supports_custom_objects": "bool",
+        "uses_remote": "bool",
+        "is_ready": "bool",
+        "name": "str",
+        "width": "int",
+        "uses_calling_window": "bool",
+        "supports_inbound_calling": "bool",
+        "url": "str",
+        "height": "int",
+    }
 
     attribute_map = {
         "supports_custom_objects": "supportsCustomObjects",
+        "uses_remote": "usesRemote",
         "is_ready": "isReady",
         "name": "name",
         "width": "width",
+        "uses_calling_window": "usesCallingWindow",
         "supports_inbound_calling": "supportsInboundCalling",
         "url": "url",
         "height": "height",
     }
 
-    def __init__(self, supports_custom_objects=None, is_ready=None, name=None, width=None, supports_inbound_calling=None, url=None, height=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        supports_custom_objects=None,
+        uses_remote=None,
+        is_ready=None,
+        name=None,
+        width=None,
+        uses_calling_window=None,
+        supports_inbound_calling=None,
+        url=None,
+        height=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """SettingsPatchRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._supports_custom_objects = None
+        self._uses_remote = None
         self._is_ready = None
         self._name = None
         self._width = None
+        self._uses_calling_window = None
         self._supports_inbound_calling = None
         self._url = None
         self._height = None
@@ -64,12 +90,16 @@ class SettingsPatchRequest(object):
 
         if supports_custom_objects is not None:
             self.supports_custom_objects = supports_custom_objects
+        if uses_remote is not None:
+            self.uses_remote = uses_remote
         if is_ready is not None:
             self.is_ready = is_ready
         if name is not None:
             self.name = name
         if width is not None:
             self.width = width
+        if uses_calling_window is not None:
+            self.uses_calling_window = uses_calling_window
         if supports_inbound_calling is not None:
             self.supports_inbound_calling = supports_inbound_calling
         if url is not None:
@@ -81,7 +111,7 @@ class SettingsPatchRequest(object):
     def supports_custom_objects(self):
         """Gets the supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
 
-        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+        When true, users will be able to click to dial from custom objects.  # noqa: E501
 
         :return: The supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
         :rtype: bool
@@ -92,7 +122,7 @@ class SettingsPatchRequest(object):
     def supports_custom_objects(self, supports_custom_objects):
         """Sets the supports_custom_objects of this SettingsPatchRequest.
 
-        When true, you are indicating that your service is compatible with engagement v2 service and can be used with custom objects.  # noqa: E501
+        When true, users will be able to click to dial from custom objects.  # noqa: E501
 
         :param supports_custom_objects: The supports_custom_objects of this SettingsPatchRequest.  # noqa: E501
         :type supports_custom_objects: bool
@@ -101,10 +131,33 @@ class SettingsPatchRequest(object):
         self._supports_custom_objects = supports_custom_objects
 
     @property
+    def uses_remote(self):
+        """Gets the uses_remote of this SettingsPatchRequest.  # noqa: E501
+
+        When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.   # noqa: E501
+
+        :return: The uses_remote of this SettingsPatchRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._uses_remote
+
+    @uses_remote.setter
+    def uses_remote(self, uses_remote):
+        """Sets the uses_remote of this SettingsPatchRequest.
+
+        When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.   # noqa: E501
+
+        :param uses_remote: The uses_remote of this SettingsPatchRequest.  # noqa: E501
+        :type uses_remote: bool
+        """
+
+        self._uses_remote = uses_remote
+
+    @property
     def is_ready(self):
         """Gets the is_ready of this SettingsPatchRequest.  # noqa: E501
 
-        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
+        When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.  # noqa: E501
 
         :return: The is_ready of this SettingsPatchRequest.  # noqa: E501
         :rtype: bool
@@ -115,7 +168,7 @@ class SettingsPatchRequest(object):
     def is_ready(self, is_ready):
         """Sets the is_ready of this SettingsPatchRequest.
 
-        When true, your service will appear as an option under the *Call* action in contact records of connected accounts.  # noqa: E501
+        When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.  # noqa: E501
 
         :param is_ready: The is_ready of this SettingsPatchRequest.  # noqa: E501
         :type is_ready: bool
@@ -170,9 +223,33 @@ class SettingsPatchRequest(object):
         self._width = width
 
     @property
+    def uses_calling_window(self):
+        """Gets the uses_calling_window of this SettingsPatchRequest.  # noqa: E501
+
+        When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.   # noqa: E501
+
+        :return: The uses_calling_window of this SettingsPatchRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._uses_calling_window
+
+    @uses_calling_window.setter
+    def uses_calling_window(self, uses_calling_window):
+        """Sets the uses_calling_window of this SettingsPatchRequest.
+
+        When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.   # noqa: E501
+
+        :param uses_calling_window: The uses_calling_window of this SettingsPatchRequest.  # noqa: E501
+        :type uses_calling_window: bool
+        """
+
+        self._uses_calling_window = uses_calling_window
+
+    @property
     def supports_inbound_calling(self):
         """Gets the supports_inbound_calling of this SettingsPatchRequest.  # noqa: E501
 
+        When true, this indicates that your calling app supports inbound calling within HubSpot.  # noqa: E501
 
         :return: The supports_inbound_calling of this SettingsPatchRequest.  # noqa: E501
         :rtype: bool
@@ -183,6 +260,7 @@ class SettingsPatchRequest(object):
     def supports_inbound_calling(self, supports_inbound_calling):
         """Sets the supports_inbound_calling of this SettingsPatchRequest.
 
+        When true, this indicates that your calling app supports inbound calling within HubSpot.  # noqa: E501
 
         :param supports_inbound_calling: The supports_inbound_calling of this SettingsPatchRequest.  # noqa: E501
         :type supports_inbound_calling: bool
