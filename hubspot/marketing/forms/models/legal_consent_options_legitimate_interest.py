@@ -35,57 +35,32 @@ class LegalConsentOptionsLegitimateInterest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"type": "str", "subscription_type_ids": "list[int]", "lawful_basis": "str", "privacy_text": "str"}
+    openapi_types = {"subscription_type_ids": "list[int]", "lawful_basis": "str", "type": "str", "privacy_text": "str"}
 
-    attribute_map = {"type": "type", "subscription_type_ids": "subscriptionTypeIds", "lawful_basis": "lawfulBasis", "privacy_text": "privacyText"}
+    attribute_map = {"subscription_type_ids": "subscriptionTypeIds", "lawful_basis": "lawfulBasis", "type": "type", "privacy_text": "privacyText"}
 
-    def __init__(self, type="legitimate_interest", subscription_type_ids=None, lawful_basis=None, privacy_text=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, subscription_type_ids=None, lawful_basis=None, type="legitimate_interest", privacy_text=None, local_vars_configuration=None):  # noqa: E501
         """LegalConsentOptionsLegitimateInterest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._type = None
         self._subscription_type_ids = None
         self._lawful_basis = None
+        self._type = None
         self._privacy_text = None
         self.discriminator = None
 
-        self.type = type
         self.subscription_type_ids = subscription_type_ids
         self.lawful_basis = lawful_basis
+        self.type = type
         self.privacy_text = privacy_text
-
-    @property
-    def type(self):
-        """Gets the type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-
-
-        :return: The type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :rtype: str
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this LegalConsentOptionsLegitimateInterest.
-
-
-        :param type: The type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
-        :type type: str
-        """
-        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["legitimate_interest"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
-
-        self._type = type
 
     @property
     def subscription_type_ids(self):
         """Gets the subscription_type_ids of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
 
+          # noqa: E501
 
         :return: The subscription_type_ids of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :rtype: list[int]
@@ -96,6 +71,7 @@ class LegalConsentOptionsLegitimateInterest(object):
     def subscription_type_ids(self, subscription_type_ids):
         """Sets the subscription_type_ids of this LegalConsentOptionsLegitimateInterest.
 
+          # noqa: E501
 
         :param subscription_type_ids: The subscription_type_ids of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :type subscription_type_ids: list[int]
@@ -109,6 +85,7 @@ class LegalConsentOptionsLegitimateInterest(object):
     def lawful_basis(self):
         """Gets the lawful_basis of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
 
+          # noqa: E501
 
         :return: The lawful_basis of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :rtype: str
@@ -119,6 +96,7 @@ class LegalConsentOptionsLegitimateInterest(object):
     def lawful_basis(self, lawful_basis):
         """Sets the lawful_basis of this LegalConsentOptionsLegitimateInterest.
 
+          # noqa: E501
 
         :param lawful_basis: The lawful_basis of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :type lawful_basis: str
@@ -132,9 +110,38 @@ class LegalConsentOptionsLegitimateInterest(object):
         self._lawful_basis = lawful_basis
 
     @property
+    def type(self):
+        """Gets the type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this LegalConsentOptionsLegitimateInterest.
+
+          # noqa: E501
+
+        :param type: The type of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
+        :type type: str
+        """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["legitimate_interest"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
+
+        self._type = type
+
+    @property
     def privacy_text(self):
         """Gets the privacy_text of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
 
+          # noqa: E501
 
         :return: The privacy_text of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :rtype: str
@@ -145,6 +152,7 @@ class LegalConsentOptionsLegitimateInterest(object):
     def privacy_text(self, privacy_text):
         """Sets the privacy_text of this LegalConsentOptionsLegitimateInterest.
 
+          # noqa: E501
 
         :param privacy_text: The privacy_text of this LegalConsentOptionsLegitimateInterest.  # noqa: E501
         :type privacy_text: str

@@ -36,34 +36,34 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "type": "str",
-        "communication_consent_text": "str",
         "communications_checkboxes": "list[LegalConsentCheckbox]",
-        "consent_to_process_text": "str",
+        "communication_consent_text": "str",
         "consent_to_process_checkbox_label": "str",
         "consent_to_process_footer_text": "str",
+        "type": "str",
         "privacy_text": "str",
+        "consent_to_process_text": "str",
     }
 
     attribute_map = {
-        "type": "type",
-        "communication_consent_text": "communicationConsentText",
         "communications_checkboxes": "communicationsCheckboxes",
-        "consent_to_process_text": "consentToProcessText",
+        "communication_consent_text": "communicationConsentText",
         "consent_to_process_checkbox_label": "consentToProcessCheckboxLabel",
         "consent_to_process_footer_text": "consentToProcessFooterText",
+        "type": "type",
         "privacy_text": "privacyText",
+        "consent_to_process_text": "consentToProcessText",
     }
 
     def __init__(
         self,
-        type="explicit_consent_to_process",
-        communication_consent_text=None,
         communications_checkboxes=None,
-        consent_to_process_text=None,
+        communication_consent_text=None,
         consent_to_process_checkbox_label=None,
         consent_to_process_footer_text=None,
+        type="explicit_consent_to_process",
         privacy_text=None,
+        consent_to_process_text=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """LegalConsentOptionsExplicitConsentToProcess - a model defined in OpenAPI"""  # noqa: E501
@@ -71,31 +71,126 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._type = None
-        self._communication_consent_text = None
         self._communications_checkboxes = None
-        self._consent_to_process_text = None
+        self._communication_consent_text = None
         self._consent_to_process_checkbox_label = None
         self._consent_to_process_footer_text = None
+        self._type = None
         self._privacy_text = None
+        self._consent_to_process_text = None
         self.discriminator = None
 
-        self.type = type
+        self.communications_checkboxes = communications_checkboxes
         if communication_consent_text is not None:
             self.communication_consent_text = communication_consent_text
-        self.communications_checkboxes = communications_checkboxes
-        if consent_to_process_text is not None:
-            self.consent_to_process_text = consent_to_process_text
         if consent_to_process_checkbox_label is not None:
             self.consent_to_process_checkbox_label = consent_to_process_checkbox_label
         if consent_to_process_footer_text is not None:
             self.consent_to_process_footer_text = consent_to_process_footer_text
+        self.type = type
         self.privacy_text = privacy_text
+        if consent_to_process_text is not None:
+            self.consent_to_process_text = consent_to_process_text
+
+    @property
+    def communications_checkboxes(self):
+        """Gets the communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :rtype: list[LegalConsentCheckbox]
+        """
+        return self._communications_checkboxes
+
+    @communications_checkboxes.setter
+    def communications_checkboxes(self, communications_checkboxes):
+        """Sets the communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.
+
+          # noqa: E501
+
+        :param communications_checkboxes: The communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :type communications_checkboxes: list[LegalConsentCheckbox]
+        """
+        if self.local_vars_configuration.client_side_validation and communications_checkboxes is None:  # noqa: E501
+            raise ValueError("Invalid value for `communications_checkboxes`, must not be `None`")  # noqa: E501
+
+        self._communications_checkboxes = communications_checkboxes
+
+    @property
+    def communication_consent_text(self):
+        """Gets the communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :rtype: str
+        """
+        return self._communication_consent_text
+
+    @communication_consent_text.setter
+    def communication_consent_text(self, communication_consent_text):
+        """Sets the communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.
+
+          # noqa: E501
+
+        :param communication_consent_text: The communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :type communication_consent_text: str
+        """
+
+        self._communication_consent_text = communication_consent_text
+
+    @property
+    def consent_to_process_checkbox_label(self):
+        """Gets the consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :rtype: str
+        """
+        return self._consent_to_process_checkbox_label
+
+    @consent_to_process_checkbox_label.setter
+    def consent_to_process_checkbox_label(self, consent_to_process_checkbox_label):
+        """Sets the consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.
+
+          # noqa: E501
+
+        :param consent_to_process_checkbox_label: The consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :type consent_to_process_checkbox_label: str
+        """
+
+        self._consent_to_process_checkbox_label = consent_to_process_checkbox_label
+
+    @property
+    def consent_to_process_footer_text(self):
+        """Gets the consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :rtype: str
+        """
+        return self._consent_to_process_footer_text
+
+    @consent_to_process_footer_text.setter
+    def consent_to_process_footer_text(self, consent_to_process_footer_text):
+        """Sets the consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.
+
+          # noqa: E501
+
+        :param consent_to_process_footer_text: The consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :type consent_to_process_footer_text: str
+        """
+
+        self._consent_to_process_footer_text = consent_to_process_footer_text
 
     @property
     def type(self):
         """Gets the type of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
 
+          # noqa: E501
 
         :return: The type of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
         :rtype: str
@@ -106,6 +201,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
     def type(self, type):
         """Sets the type of this LegalConsentOptionsExplicitConsentToProcess.
 
+          # noqa: E501
 
         :param type: The type of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
         :type type: str
@@ -119,116 +215,10 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
         self._type = type
 
     @property
-    def communication_consent_text(self):
-        """Gets the communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-
-
-        :return: The communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :rtype: str
-        """
-        return self._communication_consent_text
-
-    @communication_consent_text.setter
-    def communication_consent_text(self, communication_consent_text):
-        """Sets the communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.
-
-
-        :param communication_consent_text: The communication_consent_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type communication_consent_text: str
-        """
-
-        self._communication_consent_text = communication_consent_text
-
-    @property
-    def communications_checkboxes(self):
-        """Gets the communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-
-
-        :return: The communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :rtype: list[LegalConsentCheckbox]
-        """
-        return self._communications_checkboxes
-
-    @communications_checkboxes.setter
-    def communications_checkboxes(self, communications_checkboxes):
-        """Sets the communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.
-
-
-        :param communications_checkboxes: The communications_checkboxes of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type communications_checkboxes: list[LegalConsentCheckbox]
-        """
-        if self.local_vars_configuration.client_side_validation and communications_checkboxes is None:  # noqa: E501
-            raise ValueError("Invalid value for `communications_checkboxes`, must not be `None`")  # noqa: E501
-
-        self._communications_checkboxes = communications_checkboxes
-
-    @property
-    def consent_to_process_text(self):
-        """Gets the consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-
-
-        :return: The consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :rtype: str
-        """
-        return self._consent_to_process_text
-
-    @consent_to_process_text.setter
-    def consent_to_process_text(self, consent_to_process_text):
-        """Sets the consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.
-
-
-        :param consent_to_process_text: The consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type consent_to_process_text: str
-        """
-
-        self._consent_to_process_text = consent_to_process_text
-
-    @property
-    def consent_to_process_checkbox_label(self):
-        """Gets the consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-
-
-        :return: The consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :rtype: str
-        """
-        return self._consent_to_process_checkbox_label
-
-    @consent_to_process_checkbox_label.setter
-    def consent_to_process_checkbox_label(self, consent_to_process_checkbox_label):
-        """Sets the consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.
-
-
-        :param consent_to_process_checkbox_label: The consent_to_process_checkbox_label of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type consent_to_process_checkbox_label: str
-        """
-
-        self._consent_to_process_checkbox_label = consent_to_process_checkbox_label
-
-    @property
-    def consent_to_process_footer_text(self):
-        """Gets the consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-
-
-        :return: The consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :rtype: str
-        """
-        return self._consent_to_process_footer_text
-
-    @consent_to_process_footer_text.setter
-    def consent_to_process_footer_text(self, consent_to_process_footer_text):
-        """Sets the consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.
-
-
-        :param consent_to_process_footer_text: The consent_to_process_footer_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
-        :type consent_to_process_footer_text: str
-        """
-
-        self._consent_to_process_footer_text = consent_to_process_footer_text
-
-    @property
     def privacy_text(self):
         """Gets the privacy_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
 
+          # noqa: E501
 
         :return: The privacy_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
         :rtype: str
@@ -239,6 +229,7 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
     def privacy_text(self, privacy_text):
         """Sets the privacy_text of this LegalConsentOptionsExplicitConsentToProcess.
 
+          # noqa: E501
 
         :param privacy_text: The privacy_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
         :type privacy_text: str
@@ -247,6 +238,29 @@ class LegalConsentOptionsExplicitConsentToProcess(object):
             raise ValueError("Invalid value for `privacy_text`, must not be `None`")  # noqa: E501
 
         self._privacy_text = privacy_text
+
+    @property
+    def consent_to_process_text(self):
+        """Gets the consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :rtype: str
+        """
+        return self._consent_to_process_text
+
+    @consent_to_process_text.setter
+    def consent_to_process_text(self, consent_to_process_text):
+        """Sets the consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.
+
+          # noqa: E501
+
+        :param consent_to_process_text: The consent_to_process_text of this LegalConsentOptionsExplicitConsentToProcess.  # noqa: E501
+        :type consent_to_process_text: str
+        """
+
+        self._consent_to_process_text = consent_to_process_text
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

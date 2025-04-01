@@ -35,54 +35,30 @@ class LegalConsentCheckbox(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"required": "bool", "subscription_type_id": "int", "label": "str"}
+    openapi_types = {"subscription_type_id": "int", "label": "str", "required": "bool"}
 
-    attribute_map = {"required": "required", "subscription_type_id": "subscriptionTypeId", "label": "label"}
+    attribute_map = {"subscription_type_id": "subscriptionTypeId", "label": "label", "required": "required"}
 
-    def __init__(self, required=None, subscription_type_id=None, label=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, subscription_type_id=None, label=None, required=None, local_vars_configuration=None):  # noqa: E501
         """LegalConsentCheckbox - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._required = None
         self._subscription_type_id = None
         self._label = None
+        self._required = None
         self.discriminator = None
 
-        self.required = required
         self.subscription_type_id = subscription_type_id
         self.label = label
-
-    @property
-    def required(self):
-        """Gets the required of this LegalConsentCheckbox.  # noqa: E501
-
-        Whether this checkbox is required when submitting the form.  # noqa: E501
-
-        :return: The required of this LegalConsentCheckbox.  # noqa: E501
-        :rtype: bool
-        """
-        return self._required
-
-    @required.setter
-    def required(self, required):
-        """Sets the required of this LegalConsentCheckbox.
-
-        Whether this checkbox is required when submitting the form.  # noqa: E501
-
-        :param required: The required of this LegalConsentCheckbox.  # noqa: E501
-        :type required: bool
-        """
-        if self.local_vars_configuration.client_side_validation and required is None:  # noqa: E501
-            raise ValueError("Invalid value for `required`, must not be `None`")  # noqa: E501
-
-        self._required = required
+        self.required = required
 
     @property
     def subscription_type_id(self):
         """Gets the subscription_type_id of this LegalConsentCheckbox.  # noqa: E501
 
+          # noqa: E501
 
         :return: The subscription_type_id of this LegalConsentCheckbox.  # noqa: E501
         :rtype: int
@@ -93,6 +69,7 @@ class LegalConsentCheckbox(object):
     def subscription_type_id(self, subscription_type_id):
         """Sets the subscription_type_id of this LegalConsentCheckbox.
 
+          # noqa: E501
 
         :param subscription_type_id: The subscription_type_id of this LegalConsentCheckbox.  # noqa: E501
         :type subscription_type_id: int
@@ -126,6 +103,31 @@ class LegalConsentCheckbox(object):
             raise ValueError("Invalid value for `label`, must not be `None`")  # noqa: E501
 
         self._label = label
+
+    @property
+    def required(self):
+        """Gets the required of this LegalConsentCheckbox.  # noqa: E501
+
+        Whether this checkbox is required when submitting the form.  # noqa: E501
+
+        :return: The required of this LegalConsentCheckbox.  # noqa: E501
+        :rtype: bool
+        """
+        return self._required
+
+    @required.setter
+    def required(self, required):
+        """Sets the required of this LegalConsentCheckbox.
+
+        Whether this checkbox is required when submitting the form.  # noqa: E501
+
+        :param required: The required of this LegalConsentCheckbox.  # noqa: E501
+        :type required: bool
+        """
+        if self.local_vars_configuration.client_side_validation and required is None:  # noqa: E501
+            raise ValueError("Invalid value for `required`, must not be `None`")  # noqa: E501
+
+        self._required = required
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
