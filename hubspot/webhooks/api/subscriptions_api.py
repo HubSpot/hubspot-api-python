@@ -34,17 +34,18 @@ class SubscriptionsApi(object):
         self.api_client = api_client
 
     def archive(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+        """Delete event subscription  # noqa: E501
 
+        Delete an existing event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -65,17 +66,18 @@ class SubscriptionsApi(object):
         return self.archive_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+        """Delete event subscription  # noqa: E501
 
+        Delete an existing event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -162,15 +164,16 @@ class SubscriptionsApi(object):
         )
 
     def create(self, app_id, subscription_create_request, **kwargs):  # noqa: E501
-        """create  # noqa: E501
+        """Create an event subscription  # noqa: E501
 
+        Create new event subscription for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create(app_id, subscription_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param subscription_create_request: (required)
         :type subscription_create_request: SubscriptionCreateRequest
@@ -193,15 +196,16 @@ class SubscriptionsApi(object):
         return self.create_with_http_info(app_id, subscription_create_request, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, app_id, subscription_create_request, **kwargs):  # noqa: E501
-        """create  # noqa: E501
+        """Create an event subscription  # noqa: E501
 
+        Create new event subscription for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_with_http_info(app_id, subscription_create_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param subscription_create_request: (required)
         :type subscription_create_request: SubscriptionCreateRequest
@@ -297,15 +301,16 @@ class SubscriptionsApi(object):
         )
 
     def get_all(self, app_id, **kwargs):  # noqa: E501
-        """get_all  # noqa: E501
+        """Read event subscriptions  # noqa: E501
 
+        Retrieve event subscriptions for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -326,15 +331,16 @@ class SubscriptionsApi(object):
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """get_all  # noqa: E501
+        """Read event subscriptions  # noqa: E501
 
+        Retrieve event subscriptions for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -418,17 +424,18 @@ class SubscriptionsApi(object):
         )
 
     def get_by_id(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """get_by_id  # noqa: E501
+        """Read an event subscription  # noqa: E501
 
+        Retrieve a specific event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -449,17 +456,18 @@ class SubscriptionsApi(object):
         return self.get_by_id_with_http_info(subscription_id, app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, subscription_id, app_id, **kwargs):  # noqa: E501
-        """get_by_id  # noqa: E501
+        """Read an event subscription  # noqa: E501
 
+        Retrieve a specific event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id_with_http_info(subscription_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -548,17 +556,18 @@ class SubscriptionsApi(object):
         )
 
     def update(self, subscription_id, app_id, subscription_patch_request, **kwargs):  # noqa: E501
-        """update  # noqa: E501
+        """Update an event subscription  # noqa: E501
 
+        Update an existing event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update(subscription_id, app_id, subscription_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param subscription_patch_request: (required)
         :type subscription_patch_request: SubscriptionPatchRequest
@@ -581,17 +590,18 @@ class SubscriptionsApi(object):
         return self.update_with_http_info(subscription_id, app_id, subscription_patch_request, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, subscription_id, app_id, subscription_patch_request, **kwargs):  # noqa: E501
-        """update  # noqa: E501
+        """Update an event subscription  # noqa: E501
 
+        Update an existing event subscription by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_with_http_info(subscription_id, app_id, subscription_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param subscription_id: (required)
+        :param subscription_id: The ID of the event subscription. (required)
         :type subscription_id: int
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param subscription_patch_request: (required)
         :type subscription_patch_request: SubscriptionPatchRequest
@@ -692,15 +702,16 @@ class SubscriptionsApi(object):
         )
 
     def update_batch(self, app_id, batch_input_subscription_batch_update_request, **kwargs):  # noqa: E501
-        """update_batch  # noqa: E501
+        """Batch create event subscriptions  # noqa: E501
 
+        Batch create event subscriptions for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_batch(app_id, batch_input_subscription_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param batch_input_subscription_batch_update_request: (required)
         :type batch_input_subscription_batch_update_request: BatchInputSubscriptionBatchUpdateRequest
@@ -723,15 +734,16 @@ class SubscriptionsApi(object):
         return self.update_batch_with_http_info(app_id, batch_input_subscription_batch_update_request, **kwargs)  # noqa: E501
 
     def update_batch_with_http_info(self, app_id, batch_input_subscription_batch_update_request, **kwargs):  # noqa: E501
-        """update_batch  # noqa: E501
+        """Batch create event subscriptions  # noqa: E501
 
+        Batch create event subscriptions for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_batch_with_http_info(app_id, batch_input_subscription_batch_update_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param batch_input_subscription_batch_update_request: (required)
         :type batch_input_subscription_batch_update_request: BatchInputSubscriptionBatchUpdateRequest

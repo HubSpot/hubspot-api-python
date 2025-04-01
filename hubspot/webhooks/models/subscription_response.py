@@ -35,17 +35,18 @@ class SubscriptionResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"created_at": "datetime", "property_name": "str", "active": "bool", "event_type": "str", "id": "str", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "object_type_id": "str", "property_name": "str", "active": "bool", "event_type": "str", "id": "str", "updated_at": "datetime"}
 
-    attribute_map = {"created_at": "createdAt", "property_name": "propertyName", "active": "active", "event_type": "eventType", "id": "id", "updated_at": "updatedAt"}
+    attribute_map = {"created_at": "createdAt", "object_type_id": "objectTypeId", "property_name": "propertyName", "active": "active", "event_type": "eventType", "id": "id", "updated_at": "updatedAt"}
 
-    def __init__(self, created_at=None, property_name=None, active=None, event_type=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, object_type_id=None, property_name=None, active=None, event_type=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._created_at = None
+        self._object_type_id = None
         self._property_name = None
         self._active = None
         self._event_type = None
@@ -54,6 +55,8 @@ class SubscriptionResponse(object):
         self.discriminator = None
 
         self.created_at = created_at
+        if object_type_id is not None:
+            self.object_type_id = object_type_id
         if property_name is not None:
             self.property_name = property_name
         self.active = active
@@ -86,6 +89,27 @@ class SubscriptionResponse(object):
             raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
         self._created_at = created_at
+
+    @property
+    def object_type_id(self):
+        """Gets the object_type_id of this SubscriptionResponse.  # noqa: E501
+
+
+        :return: The object_type_id of this SubscriptionResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_type_id
+
+    @object_type_id.setter
+    def object_type_id(self, object_type_id):
+        """Sets the object_type_id of this SubscriptionResponse.
+
+
+        :param object_type_id: The object_type_id of this SubscriptionResponse.  # noqa: E501
+        :type object_type_id: str
+        """
+
+        self._object_type_id = object_type_id
 
     @property
     def property_name(self):
@@ -199,6 +223,12 @@ class SubscriptionResponse(object):
             "deal.associationChange",
             "ticket.associationChange",
             "line_item.associationChange",
+            "object.propertyChange",
+            "object.creation",
+            "object.deletion",
+            "object.merge",
+            "object.restore",
+            "object.associationChange",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501
