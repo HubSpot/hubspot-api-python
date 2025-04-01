@@ -387,7 +387,7 @@ class BlogPost(object):
     def language(self):
         """Gets the language of this BlogPost.  # noqa: E501
 
-        The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.  # noqa: E501
+        The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.  # noqa: E501
 
         :return: The language of this BlogPost.  # noqa: E501
         :rtype: str
@@ -398,7 +398,7 @@ class BlogPost(object):
     def language(self, language):
         """Sets the language of this BlogPost.
 
-        The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.  # noqa: E501
+        The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.  # noqa: E501
 
         :param language: The language of this BlogPost.  # noqa: E501
         :type language: str
@@ -1272,7 +1272,7 @@ class BlogPost(object):
     def html_title(self):
         """Gets the html_title of this BlogPost.  # noqa: E501
 
-        The html title of this Blog Post.  # noqa: E501
+        The HTML title of the post.  # noqa: E501
 
         :return: The html_title of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1283,7 +1283,7 @@ class BlogPost(object):
     def html_title(self, html_title):
         """Sets the html_title of this BlogPost.
 
-        The html title of this Blog Post.  # noqa: E501
+        The HTML title of the post.  # noqa: E501
 
         :param html_title: The html_title of this BlogPost.  # noqa: E501
         :type html_title: str
@@ -1345,7 +1345,7 @@ class BlogPost(object):
     def id(self):
         """Gets the id of this BlogPost.  # noqa: E501
 
-        The unique ID of the Blog Post.  # noqa: E501
+        The unique ID of the blog post.  # noqa: E501
 
         :return: The id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1356,7 +1356,7 @@ class BlogPost(object):
     def id(self, id):
         """Sets the id of this BlogPost.
 
-        The unique ID of the Blog Post.  # noqa: E501
+        The unique ID of the blog post.  # noqa: E501
 
         :param id: The id of this BlogPost.  # noqa: E501
         :type id: str
@@ -1370,7 +1370,7 @@ class BlogPost(object):
     def state(self):
         """Gets the state of this BlogPost.  # noqa: E501
 
-        An ENUM descibing the current state of this Blog Post.  # noqa: E501
+        An enumeration describing the current publish state of the post.  # noqa: E501
 
         :return: The state of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1381,7 +1381,7 @@ class BlogPost(object):
     def state(self, state):
         """Sets the state of this BlogPost.
 
-        An ENUM descibing the current state of this Blog Post.  # noqa: E501
+        An enumeration describing the current publish state of the post.  # noqa: E501
 
         :param state: The state of this BlogPost.  # noqa: E501
         :type state: str
@@ -1397,7 +1397,7 @@ class BlogPost(object):
     def slug(self):
         """Gets the slug of this BlogPost.  # noqa: E501
 
-        The path of the this blog post. This field is appended to the domain to construct the url of this post.  # noqa: E501
+        The URL slug of the blog post. This field is appended to the domain to construct the url of this post.  # noqa: E501
 
         :return: The slug of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1408,7 +1408,7 @@ class BlogPost(object):
     def slug(self, slug):
         """Sets the slug of this BlogPost.
 
-        The path of the this blog post. This field is appended to the domain to construct the url of this post.  # noqa: E501
+        The URL slug of the blog post. This field is appended to the domain to construct the url of this post.  # noqa: E501
 
         :param slug: The slug of this BlogPost.  # noqa: E501
         :type slug: str
@@ -1422,7 +1422,7 @@ class BlogPost(object):
     def created_by_id(self):
         """Gets the created_by_id of this BlogPost.  # noqa: E501
 
-        The ID of the user that created this Blog Post.  # noqa: E501
+        The ID of the user that created the post.  # noqa: E501
 
         :return: The created_by_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1433,7 +1433,7 @@ class BlogPost(object):
     def created_by_id(self, created_by_id):
         """Sets the created_by_id of this BlogPost.
 
-        The ID of the user that created this Blog Post.  # noqa: E501
+        The ID of the user that created the post.  # noqa: E501
 
         :param created_by_id: The created_by_id of this BlogPost.  # noqa: E501
         :type created_by_id: str
@@ -1596,7 +1596,7 @@ class BlogPost(object):
     def updated_by_id(self):
         """Gets the updated_by_id of this BlogPost.  # noqa: E501
 
-        The ID of the user that updated this Blog Post.  # noqa: E501
+        The ID of the user that updated the post.  # noqa: E501
 
         :return: The updated_by_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1607,7 +1607,7 @@ class BlogPost(object):
     def updated_by_id(self, updated_by_id):
         """Sets the updated_by_id of this BlogPost.
 
-        The ID of the user that updated this Blog Post.  # noqa: E501
+        The ID of the user that updated the post.  # noqa: E501
 
         :param updated_by_id: The updated_by_id of this BlogPost.  # noqa: E501
         :type updated_by_id: str
@@ -1621,7 +1621,7 @@ class BlogPost(object):
     def translated_from_id(self):
         """Gets the translated_from_id of this BlogPost.  # noqa: E501
 
-        ID of the primary blog post this object was translated from.  # noqa: E501
+        ID of the primary blog post that this post was translated from.  # noqa: E501
 
         :return: The translated_from_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1632,7 +1632,7 @@ class BlogPost(object):
     def translated_from_id(self, translated_from_id):
         """Sets the translated_from_id of this BlogPost.
 
-        ID of the primary blog post this object was translated from.  # noqa: E501
+        ID of the primary blog post that this post was translated from.  # noqa: E501
 
         :param translated_from_id: The translated_from_id of this BlogPost.  # noqa: E501
         :type translated_from_id: str
@@ -1769,7 +1769,7 @@ class BlogPost(object):
     def author_name(self):
         """Gets the author_name of this BlogPost.  # noqa: E501
 
-        The name of the user that updated this Blog Post.  # noqa: E501
+        The name of the blog author associated with the post.  # noqa: E501
 
         :return: The author_name of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1780,7 +1780,7 @@ class BlogPost(object):
     def author_name(self, author_name):
         """Sets the author_name of this BlogPost.
 
-        The name of the user that updated this Blog Post.  # noqa: E501
+        The name of the blog author associated with the post.  # noqa: E501
 
         :param author_name: The author_name of this BlogPost.  # noqa: E501
         :type author_name: str
@@ -1794,7 +1794,7 @@ class BlogPost(object):
     def domain(self):
         """Gets the domain of this BlogPost.  # noqa: E501
 
-        The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.  # noqa: E501
+        The domain that the post lives on. If null, the post will default to the domain of the parent blog.  # noqa: E501
 
         :return: The domain of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1805,7 +1805,7 @@ class BlogPost(object):
     def domain(self, domain):
         """Sets the domain of this BlogPost.
 
-        The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.  # noqa: E501
+        The domain that the post lives on. If null, the post will default to the domain of the parent blog.  # noqa: E501
 
         :param domain: The domain of this BlogPost.  # noqa: E501
         :type domain: str
@@ -1819,7 +1819,7 @@ class BlogPost(object):
     def name(self):
         """Gets the name of this BlogPost.  # noqa: E501
 
-        The internal name of the Blog Post.  # noqa: E501
+        The internal name of the post.  # noqa: E501
 
         :return: The name of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1830,7 +1830,7 @@ class BlogPost(object):
     def name(self, name):
         """Sets the name of this BlogPost.
 
-        The internal name of the Blog Post.  # noqa: E501
+        The internal name of the post.  # noqa: E501
 
         :param name: The name of this BlogPost.  # noqa: E501
         :type name: str
@@ -1844,7 +1844,7 @@ class BlogPost(object):
     def dynamic_page_hub_db_table_id(self):
         """Gets the dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
 
-        The ID of the HubDB table this Blog Post references, if applicable  # noqa: E501
+        For dynamic HubDB pages,  the ID of the HubDB table this post references.  # noqa: E501
 
         :return: The dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1855,7 +1855,7 @@ class BlogPost(object):
     def dynamic_page_hub_db_table_id(self, dynamic_page_hub_db_table_id):
         """Sets the dynamic_page_hub_db_table_id of this BlogPost.
 
-        The ID of the HubDB table this Blog Post references, if applicable  # noqa: E501
+        For dynamic HubDB pages,  the ID of the HubDB table this post references.  # noqa: E501
 
         :param dynamic_page_hub_db_table_id: The dynamic_page_hub_db_table_id of this BlogPost.  # noqa: E501
         :type dynamic_page_hub_db_table_id: str
@@ -1869,7 +1869,7 @@ class BlogPost(object):
     def campaign(self):
         """Gets the campaign of this BlogPost.  # noqa: E501
 
-        The GUID of the marketing campaign this Blog Post is a part of.  # noqa: E501
+        The GUID of the marketing campaign the post is associated with.  # noqa: E501
 
         :return: The campaign of this BlogPost.  # noqa: E501
         :rtype: str
@@ -1880,7 +1880,7 @@ class BlogPost(object):
     def campaign(self, campaign):
         """Sets the campaign of this BlogPost.
 
-        The GUID of the marketing campaign this Blog Post is a part of.  # noqa: E501
+        The GUID of the marketing campaign the post is associated with.  # noqa: E501
 
         :param campaign: The campaign of this BlogPost.  # noqa: E501
         :type campaign: str
@@ -2040,7 +2040,7 @@ class BlogPost(object):
     def tag_ids(self):
         """Gets the tag_ids of this BlogPost.  # noqa: E501
 
-        List of IDs for the tags associated with this Blog Post.  # noqa: E501
+        The IDs of the tags associated with this post.  # noqa: E501
 
         :return: The tag_ids of this BlogPost.  # noqa: E501
         :rtype: list[int]
@@ -2051,7 +2051,7 @@ class BlogPost(object):
     def tag_ids(self, tag_ids):
         """Sets the tag_ids of this BlogPost.
 
-        List of IDs for the tags associated with this Blog Post.  # noqa: E501
+        The IDs of the tags associated with this post.  # noqa: E501
 
         :param tag_ids: The tag_ids of this BlogPost.  # noqa: E501
         :type tag_ids: list[int]
@@ -2193,7 +2193,7 @@ class BlogPost(object):
     def use_featured_image(self):
         """Gets the use_featured_image of this BlogPost.  # noqa: E501
 
-        Boolean to determine if this post should use a featuredImage.  # noqa: E501
+        Boolean to determine if this post should use a featured image.  # noqa: E501
 
         :return: The use_featured_image of this BlogPost.  # noqa: E501
         :rtype: bool
@@ -2204,7 +2204,7 @@ class BlogPost(object):
     def use_featured_image(self, use_featured_image):
         """Sets the use_featured_image of this BlogPost.
 
-        Boolean to determine if this post should use a featuredImage.  # noqa: E501
+        Boolean to determine if this post should use a featured image.  # noqa: E501
 
         :param use_featured_image: The use_featured_image of this BlogPost.  # noqa: E501
         :type use_featured_image: bool
@@ -2268,7 +2268,7 @@ class BlogPost(object):
     def blog_author_id(self):
         """Gets the blog_author_id of this BlogPost.  # noqa: E501
 
-        The ID of the Blog Author associated with this Blog Post.  # noqa: E501
+        The ID of the blog author associated with this post.  # noqa: E501
 
         :return: The blog_author_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -2279,7 +2279,7 @@ class BlogPost(object):
     def blog_author_id(self, blog_author_id):
         """Sets the blog_author_id of this BlogPost.
 
-        The ID of the Blog Author associated with this Blog Post.  # noqa: E501
+        The ID of the blog author associated with this post.  # noqa: E501
 
         :param blog_author_id: The blog_author_id of this BlogPost.  # noqa: E501
         :type blog_author_id: str
@@ -2293,7 +2293,7 @@ class BlogPost(object):
     def content_group_id(self):
         """Gets the content_group_id of this BlogPost.  # noqa: E501
 
-        The ID of the parent Blog this Blog Post is associated with.  # noqa: E501
+        The ID of the post's parent blog.  # noqa: E501
 
         :return: The content_group_id of this BlogPost.  # noqa: E501
         :rtype: str
@@ -2304,7 +2304,7 @@ class BlogPost(object):
     def content_group_id(self, content_group_id):
         """Sets the content_group_id of this BlogPost.
 
-        The ID of the parent Blog this Blog Post is associated with.  # noqa: E501
+        The ID of the post's parent blog.  # noqa: E501
 
         :param content_group_id: The content_group_id of this BlogPost.  # noqa: E501
         :type content_group_id: str
@@ -2628,7 +2628,7 @@ class BlogPost(object):
     def category_id(self):
         """Gets the category_id of this BlogPost.  # noqa: E501
 
-        ID of the type of object this is.   # noqa: E501
+        ID of the object type.  # noqa: E501
 
         :return: The category_id of this BlogPost.  # noqa: E501
         :rtype: int
@@ -2639,7 +2639,7 @@ class BlogPost(object):
     def category_id(self, category_id):
         """Sets the category_id of this BlogPost.
 
-        ID of the type of object this is.   # noqa: E501
+        ID of the object type.  # noqa: E501
 
         :param category_id: The category_id of this BlogPost.  # noqa: E501
         :type category_id: int
