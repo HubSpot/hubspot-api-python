@@ -46,6 +46,7 @@ class MarketingEventDefaultResponse(object):
         "event_type": "str",
         "event_completed": "bool",
         "end_date_time": "datetime",
+        "object_id": "str",
     }
 
     attribute_map = {
@@ -59,6 +60,7 @@ class MarketingEventDefaultResponse(object):
         "event_type": "eventType",
         "event_completed": "eventCompleted",
         "end_date_time": "endDateTime",
+        "object_id": "objectId",
     }
 
     def __init__(
@@ -73,6 +75,7 @@ class MarketingEventDefaultResponse(object):
         event_type=None,
         event_completed=None,
         end_date_time=None,
+        object_id=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """MarketingEventDefaultResponse - a model defined in OpenAPI"""  # noqa: E501
@@ -90,6 +93,7 @@ class MarketingEventDefaultResponse(object):
         self._event_type = None
         self._event_completed = None
         self._end_date_time = None
+        self._object_id = None
         self.discriminator = None
 
         if start_date_time is not None:
@@ -110,6 +114,8 @@ class MarketingEventDefaultResponse(object):
             self.event_completed = event_completed
         if end_date_time is not None:
             self.end_date_time = end_date_time
+        if object_id is not None:
+            self.object_id = object_id
 
     @property
     def start_date_time(self):
@@ -342,6 +348,27 @@ class MarketingEventDefaultResponse(object):
         """
 
         self._end_date_time = end_date_time
+
+    @property
+    def object_id(self):
+        """Gets the object_id of this MarketingEventDefaultResponse.  # noqa: E501
+
+
+        :return: The object_id of this MarketingEventDefaultResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_id
+
+    @object_id.setter
+    def object_id(self, object_id):
+        """Sets the object_id of this MarketingEventDefaultResponse.
+
+
+        :param object_id: The object_id of this MarketingEventDefaultResponse.  # noqa: E501
+        :type object_id: str
+        """
+
+        self._object_id = object_id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

@@ -581,7 +581,7 @@ class ListAssociationsApi(object):
         >>> thread = api.get_all_by_external_account_and_event_ids(external_account_id, external_event_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_account_id: The accountId that is associated with this marketing event in the external event application. (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param external_event_id: The id of the marketing event in the external event application. (required)
         :type external_event_id: str
@@ -613,7 +613,7 @@ class ListAssociationsApi(object):
         >>> thread = api.get_all_by_external_account_and_event_ids_with_http_info(external_account_id, external_event_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_account_id: The accountId that is associated with this marketing event in the external event application. (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param external_event_id: The id of the marketing event in the external event application. (required)
         :type external_event_id: str

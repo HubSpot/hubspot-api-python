@@ -43,11 +43,11 @@ class SubscriberStateChangesApi(object):
         >>> thread = api.upsert_by_contact_email(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
         :type subscriber_state: str
-        :param external_account_id: The account ID associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param batch_input_marketing_event_email_subscriber: (required)
         :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
@@ -79,11 +79,11 @@ class SubscriberStateChangesApi(object):
         >>> thread = api.upsert_by_contact_email_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_email_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
         :type subscriber_state: str
-        :param external_account_id: The account ID associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param batch_input_marketing_event_email_subscriber: (required)
         :type batch_input_marketing_event_email_subscriber: BatchInputMarketingEventEmailSubscriber
@@ -196,11 +196,11 @@ class SubscriberStateChangesApi(object):
         >>> thread = api.upsert_by_contact_id(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
         :type subscriber_state: str
-        :param external_account_id: The account ID associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param batch_input_marketing_event_subscriber: (required)
         :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
@@ -232,11 +232,11 @@ class SubscriberStateChangesApi(object):
         >>> thread = api.upsert_by_contact_id_with_http_info(external_event_id, subscriber_state, external_account_id, batch_input_marketing_event_subscriber, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param subscriber_state: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'. (required)
         :type subscriber_state: str
-        :param external_account_id: The account ID associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param batch_input_marketing_event_subscriber: (required)
         :type batch_input_marketing_event_subscriber: BatchInputMarketingEventSubscriber
