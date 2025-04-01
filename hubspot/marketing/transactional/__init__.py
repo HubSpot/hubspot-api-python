@@ -17,7 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.marketing.transactional.api.public_smtp_tokens_api import PublicSmtpTokensApi
+from hubspot.marketing.transactional.api.public_smtp_tokens_api import PublicSMTPTokensApi
 from hubspot.marketing.transactional.api.single_send_api import SingleSendApi
 
 # import ApiClient
