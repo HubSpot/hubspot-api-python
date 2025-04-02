@@ -14,6 +14,7 @@
 from __future__ import absolute_import
 
 # import models into model package
+from hubspot.events.send.models.batched_behavioral_event_http_completion_request import BatchedBehavioralEventHttpCompletionRequest
 from hubspot.events.send.models.behavioral_event_http_completion_request import BehavioralEventHttpCompletionRequest
 from hubspot.events.send.models.error import Error
 from hubspot.events.send.models.error_detail import ErrorDetail

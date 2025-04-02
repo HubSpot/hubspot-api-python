@@ -72,7 +72,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def occurred_at(self):
         """Gets the occurred_at of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        The time when this event occurred (if any). If this isn't set, the current time will be used  # noqa: E501
+        The time when this event occurred. If this isn't set, the current time will be used.  # noqa: E501
 
         :return: The occurred_at of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: datetime
@@ -83,7 +83,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def occurred_at(self, occurred_at):
         """Sets the occurred_at of this BehavioralEventHttpCompletionRequest.
 
-        The time when this event occurred (if any). If this isn't set, the current time will be used  # noqa: E501
+        The time when this event occurred. If this isn't set, the current time will be used.  # noqa: E501
 
         :param occurred_at: The occurred_at of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type occurred_at: datetime
@@ -95,7 +95,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def event_name(self):
         """Gets the event_name of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        Internal name of the event-type to trigger  # noqa: E501
+        The internal name of the event (`pe<portalID>_eventName`). Can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).   # noqa: E501
 
         :return: The event_name of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: str
@@ -106,7 +106,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def event_name(self, event_name):
         """Sets the event_name of this BehavioralEventHttpCompletionRequest.
 
-        Internal name of the event-type to trigger  # noqa: E501
+        The internal name of the event (`pe<portalID>_eventName`). Can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).   # noqa: E501
 
         :param event_name: The event_name of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type event_name: str
@@ -120,7 +120,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def utk(self):
         """Gets the utk of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        User token  # noqa: E501
+        The visitor's usertoken. Used for associating the event data with a CRM record.  # noqa: E501
 
         :return: The utk of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: str
@@ -131,7 +131,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def utk(self, utk):
         """Sets the utk of this BehavioralEventHttpCompletionRequest.
 
-        User token  # noqa: E501
+        The visitor's usertoken. Used for associating the event data with a CRM record.  # noqa: E501
 
         :param utk: The utk of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type utk: str
@@ -143,6 +143,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def uuid(self):
         """Gets the uuid of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
+        Include a universally unique identifier to assign a unique ID to the event completion. Can be useful for matching data between HubSpot and other external systems.  # noqa: E501
 
         :return: The uuid of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: str
@@ -153,6 +154,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def uuid(self, uuid):
         """Sets the uuid of this BehavioralEventHttpCompletionRequest.
 
+        Include a universally unique identifier to assign a unique ID to the event completion. Can be useful for matching data between HubSpot and other external systems.  # noqa: E501
 
         :param uuid: The uuid of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type uuid: str
@@ -164,7 +166,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def email(self):
         """Gets the email of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        Email of visitor  # noqa: E501
+        The visitor's email address. Used for associating the event data with a CRM record.  # noqa: E501
 
         :return: The email of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: str
@@ -175,7 +177,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def email(self, email):
         """Sets the email of this BehavioralEventHttpCompletionRequest.
 
-        Email of visitor  # noqa: E501
+        The visitor's email address. Used for associating the event data with a CRM record.  # noqa: E501
 
         :param email: The email of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type email: str
@@ -187,7 +189,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def properties(self):
         """Gets the properties of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        Map of properties for the event in the format property internal name - property value  # noqa: E501
+        The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).  # noqa: E501
 
         :return: The properties of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: dict[str, str]
@@ -198,7 +200,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def properties(self, properties):
         """Sets the properties of this BehavioralEventHttpCompletionRequest.
 
-        Map of properties for the event in the format property internal name - property value  # noqa: E501
+        The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).  # noqa: E501
 
         :param properties: The properties of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type properties: dict[str, str]
@@ -210,7 +212,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def object_id(self):
         """Gets the object_id of this BehavioralEventHttpCompletionRequest.  # noqa: E501
 
-        The object id that this event occurred on. Could be a contact id or a visitor id.  # noqa: E501
+        The ID of the object that completed the event (e.g., contact ID or visitor ID).  # noqa: E501
 
         :return: The object_id of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :rtype: str
@@ -221,7 +223,7 @@ class BehavioralEventHttpCompletionRequest(object):
     def object_id(self, object_id):
         """Sets the object_id of this BehavioralEventHttpCompletionRequest.
 
-        The object id that this event occurred on. Could be a contact id or a visitor id.  # noqa: E501
+        The ID of the object that completed the event (e.g., contact ID or visitor ID).  # noqa: E501
 
         :param object_id: The object_id of this BehavioralEventHttpCompletionRequest.  # noqa: E501
         :type object_id: str
