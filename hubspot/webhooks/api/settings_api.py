@@ -34,15 +34,16 @@ class SettingsApi(object):
         self.api_client = api_client
 
     def clear(self, app_id, **kwargs):  # noqa: E501
-        """clear  # noqa: E501
+        """Delete webhook settings  # noqa: E501
 
+        Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.clear(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -63,15 +64,16 @@ class SettingsApi(object):
         return self.clear_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def clear_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """clear  # noqa: E501
+        """Delete webhook settings  # noqa: E501
 
+        Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.clear_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -153,15 +155,16 @@ class SettingsApi(object):
         )
 
     def configure(self, app_id, settings_change_request, **kwargs):  # noqa: E501
-        """configure  # noqa: E501
+        """Update webhook settings  # noqa: E501
 
+        Update webhook settings for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.configure(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param settings_change_request: (required)
         :type settings_change_request: SettingsChangeRequest
@@ -184,15 +187,16 @@ class SettingsApi(object):
         return self.configure_with_http_info(app_id, settings_change_request, **kwargs)  # noqa: E501
 
     def configure_with_http_info(self, app_id, settings_change_request, **kwargs):  # noqa: E501
-        """configure  # noqa: E501
+        """Update webhook settings  # noqa: E501
 
+        Update webhook settings for the specified app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.configure_with_http_info(app_id, settings_change_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param settings_change_request: (required)
         :type settings_change_request: SettingsChangeRequest
@@ -288,15 +292,16 @@ class SettingsApi(object):
         )
 
     def get_all(self, app_id, **kwargs):  # noqa: E501
-        """get_all  # noqa: E501
+        """Read webhook settings  # noqa: E501
 
+        Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_all(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -317,15 +322,16 @@ class SettingsApi(object):
         return self.get_all_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """get_all  # noqa: E501
+        """Read webhook settings  # noqa: E501
 
+        Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_all_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

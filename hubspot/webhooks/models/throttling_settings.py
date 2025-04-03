@@ -35,50 +35,20 @@ class ThrottlingSettings(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"period": "str", "max_concurrent_requests": "int"}
+    openapi_types = {"max_concurrent_requests": "int"}
 
-    attribute_map = {"period": "period", "max_concurrent_requests": "maxConcurrentRequests"}
+    attribute_map = {"max_concurrent_requests": "maxConcurrentRequests"}
 
-    def __init__(self, period=None, max_concurrent_requests=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, max_concurrent_requests=None, local_vars_configuration=None):  # noqa: E501
         """ThrottlingSettings - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._period = None
         self._max_concurrent_requests = None
         self.discriminator = None
 
-        self.period = period
         self.max_concurrent_requests = max_concurrent_requests
-
-    @property
-    def period(self):
-        """Gets the period of this ThrottlingSettings.  # noqa: E501
-
-        Time scale for this setting. Can be either `SECONDLY` (per second) or `ROLLING_MINUTE` (per minute).  # noqa: E501
-
-        :return: The period of this ThrottlingSettings.  # noqa: E501
-        :rtype: str
-        """
-        return self._period
-
-    @period.setter
-    def period(self, period):
-        """Sets the period of this ThrottlingSettings.
-
-        Time scale for this setting. Can be either `SECONDLY` (per second) or `ROLLING_MINUTE` (per minute).  # noqa: E501
-
-        :param period: The period of this ThrottlingSettings.  # noqa: E501
-        :type period: str
-        """
-        if self.local_vars_configuration.client_side_validation and period is None:  # noqa: E501
-            raise ValueError("Invalid value for `period`, must not be `None`")  # noqa: E501
-        allowed_values = ["SECONDLY", "ROLLING_MINUTE"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and period not in allowed_values:  # noqa: E501
-            raise ValueError("Invalid value for `period` ({0}), must be one of {1}".format(period, allowed_values))  # noqa: E501
-
-        self._period = period
 
     @property
     def max_concurrent_requests(self):

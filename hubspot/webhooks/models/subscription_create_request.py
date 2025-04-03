@@ -35,26 +35,50 @@ class SubscriptionCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"property_name": "str", "active": "bool", "event_type": "str"}
+    openapi_types = {"object_type_id": "str", "property_name": "str", "active": "bool", "event_type": "str"}
 
-    attribute_map = {"property_name": "propertyName", "active": "active", "event_type": "eventType"}
+    attribute_map = {"object_type_id": "objectTypeId", "property_name": "propertyName", "active": "active", "event_type": "eventType"}
 
-    def __init__(self, property_name=None, active=None, event_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, object_type_id=None, property_name=None, active=None, event_type=None, local_vars_configuration=None):  # noqa: E501
         """SubscriptionCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._object_type_id = None
         self._property_name = None
         self._active = None
         self._event_type = None
         self.discriminator = None
 
+        if object_type_id is not None:
+            self.object_type_id = object_type_id
         if property_name is not None:
             self.property_name = property_name
         if active is not None:
             self.active = active
         self.event_type = event_type
+
+    @property
+    def object_type_id(self):
+        """Gets the object_type_id of this SubscriptionCreateRequest.  # noqa: E501
+
+
+        :return: The object_type_id of this SubscriptionCreateRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_type_id
+
+    @object_type_id.setter
+    def object_type_id(self, object_type_id):
+        """Sets the object_type_id of this SubscriptionCreateRequest.
+
+
+        :param object_type_id: The object_type_id of this SubscriptionCreateRequest.  # noqa: E501
+        :type object_type_id: str
+        """
+
+        self._object_type_id = object_type_id
 
     @property
     def property_name(self):
@@ -166,6 +190,12 @@ class SubscriptionCreateRequest(object):
             "deal.associationChange",
             "ticket.associationChange",
             "line_item.associationChange",
+            "object.propertyChange",
+            "object.creation",
+            "object.deletion",
+            "object.merge",
+            "object.restore",
+            "object.associationChange",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and event_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `event_type` ({0}), must be one of {1}".format(event_type, allowed_values))  # noqa: E501
