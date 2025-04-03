@@ -34,18 +34,18 @@ class BasicApi(object):
         self.api_client = api_client
 
     def archive(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Delete a marketing event  # noqa: E501
+        """Delete Marketing Event by External Ids  # noqa: E501
 
-        Deletes an existing Marketing Event with the specified id, if one exists.  # noqa: E501
+        Deletes the existing Marketing Event with the specified externalAccountId, externalEventId, if it exists.  Only Marketing Events created by the same app can be deleted.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to delete (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -66,18 +66,18 @@ class BasicApi(object):
         return self.archive_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Delete a marketing event  # noqa: E501
+        """Delete Marketing Event by External Ids  # noqa: E501
 
-        Deletes an existing Marketing Event with the specified id, if one exists.  # noqa: E501
+        Deletes the existing Marketing Event with the specified externalAccountId, externalEventId, if it exists.  Only Marketing Events created by the same app can be deleted.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to delete (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -163,18 +163,18 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def batch_archive(self, batch_input_marketing_event_external_unique_identifier, **kwargs):  # noqa: E501
-        """Delete multiple marketing events  # noqa: E501
+    def archive_by_object_id(self, object_id, **kwargs):  # noqa: E501
+        """Delete Marketing Event by objectId  # noqa: E501
 
-        Bulk delete a number of marketing events in HubSpot  # noqa: E501
+        Deletes the existing Marketing Event with the specified objectId, if it exists.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.batch_archive(batch_input_marketing_event_external_unique_identifier, async_req=True)
+        >>> thread = api.archive_by_object_id(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param batch_input_marketing_event_external_unique_identifier: (required)
-        :type batch_input_marketing_event_external_unique_identifier: BatchInputMarketingEventExternalUniqueIdentifier
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -188,23 +188,23 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: Error
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
-        return self.batch_archive_with_http_info(batch_input_marketing_event_external_unique_identifier, **kwargs)  # noqa: E501
+        return self.archive_by_object_id_with_http_info(object_id, **kwargs)  # noqa: E501
 
-    def batch_archive_with_http_info(self, batch_input_marketing_event_external_unique_identifier, **kwargs):  # noqa: E501
-        """Delete multiple marketing events  # noqa: E501
+    def archive_by_object_id_with_http_info(self, object_id, **kwargs):  # noqa: E501
+        """Delete Marketing Event by objectId  # noqa: E501
 
-        Bulk delete a number of marketing events in HubSpot  # noqa: E501
+        Deletes the existing Marketing Event with the specified objectId, if it exists.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.batch_archive_with_http_info(batch_input_marketing_event_external_unique_identifier, async_req=True)
+        >>> thread = api.archive_by_object_id_with_http_info(object_id, async_req=True)
         >>> result = thread.get()
 
-        :param batch_input_marketing_event_external_unique_identifier: (required)
-        :type batch_input_marketing_event_external_unique_identifier: BatchInputMarketingEventExternalUniqueIdentifier
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -226,26 +226,28 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()
 
-        all_params = ["batch_input_marketing_event_external_unique_identifier"]
+        all_params = ["object_id"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method batch_archive" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive_by_object_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'batch_input_marketing_event_external_unique_identifier' is set
-        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_external_unique_identifier") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_external_unique_identifier` when calling `batch_archive`")  # noqa: E501
+        # verify the required parameter 'object_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_id` when calling `archive_by_object_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
+        if "object_id" in local_var_params:
+            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
 
         query_params = []
 
@@ -255,15 +257,8 @@ class BasicApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_marketing_event_external_unique_identifier" in local_var_params:
-            body_params = local_var_params["batch_input_marketing_event_external_unique_identifier"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
-        if content_types_list:
-            header_params["Content-Type"] = content_types_list
 
         # Authentication setting
         auth_settings = ["oauth2"]  # noqa: E501
@@ -271,414 +266,8 @@ class BasicApi(object):
         response_types_map = {}
 
         return self.api_client.call_api(
-            "/marketing/v3/marketing-events/events/delete",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get("_request_auth"),
-        )
-
-    def batch_upsert(self, batch_input_marketing_event_create_request_params, **kwargs):  # noqa: E501
-        """Create or update multiple marketing events  # noqa: E501
-
-        Upsert multiple marketing events. If there is an existing Marketing event with the specified ID, it will be updated; otherwise a new event will be created.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.batch_upsert(batch_input_marketing_event_create_request_params, async_req=True)
-        >>> result = thread.get()
-
-        :param batch_input_marketing_event_create_request_params: (required)
-        :type batch_input_marketing_event_create_request_params: BatchInputMarketingEventCreateRequestParams
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: BatchResponseMarketingEventPublicDefaultResponse
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.batch_upsert_with_http_info(batch_input_marketing_event_create_request_params, **kwargs)  # noqa: E501
-
-    def batch_upsert_with_http_info(self, batch_input_marketing_event_create_request_params, **kwargs):  # noqa: E501
-        """Create or update multiple marketing events  # noqa: E501
-
-        Upsert multiple marketing events. If there is an existing Marketing event with the specified ID, it will be updated; otherwise a new event will be created.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.batch_upsert_with_http_info(batch_input_marketing_event_create_request_params, async_req=True)
-        >>> result = thread.get()
-
-        :param batch_input_marketing_event_create_request_params: (required)
-        :type batch_input_marketing_event_create_request_params: BatchInputMarketingEventCreateRequestParams
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(BatchResponseMarketingEventPublicDefaultResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = ["batch_input_marketing_event_create_request_params"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method batch_upsert" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'batch_input_marketing_event_create_request_params' is set
-        if self.api_client.client_side_validation and local_var_params.get("batch_input_marketing_event_create_request_params") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_marketing_event_create_request_params` when calling `batch_upsert`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = dict(local_var_params.get("_headers", {}))
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "batch_input_marketing_event_create_request_params" in local_var_params:
-            body_params = local_var_params["batch_input_marketing_event_create_request_params"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
-        if content_types_list:
-            header_params["Content-Type"] = content_types_list
-
-        # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
-
-        response_types_map = {
-            200: "BatchResponseMarketingEventPublicDefaultResponse",
-        }
-
-        return self.api_client.call_api(
-            "/marketing/v3/marketing-events/events/upsert",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get("_request_auth"),
-        )
-
-    def cancel(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Mark a marketing event as cancelled  # noqa: E501
-
-        Mark a marketing event as cancelled.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.cancel(external_event_id, external_account_id, async_req=True)
-        >>> result = thread.get()
-
-        :param external_event_id: The id of the marketing event to mark as cancelled (required)
-        :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
-        :type external_account_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: MarketingEventDefaultResponse
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.cancel_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
-
-    def cancel_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Mark a marketing event as cancelled  # noqa: E501
-
-        Mark a marketing event as cancelled.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.cancel_with_http_info(external_event_id, external_account_id, async_req=True)
-        >>> result = thread.get()
-
-        :param external_event_id: The id of the marketing event to mark as cancelled (required)
-        :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
-        :type external_account_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = ["external_event_id", "external_account_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method cancel" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `cancel`")  # noqa: E501
-        # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `cancel`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if "external_event_id" in local_var_params:
-            path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
-
-        query_params = []
-        if local_var_params.get("external_account_id") is not None:  # noqa: E501
-            query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
-
-        header_params = dict(local_var_params.get("_headers", {}))
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
-
-        response_types_map = {
-            200: "MarketingEventDefaultResponse",
-        }
-
-        return self.api_client.call_api(
-            "/marketing/v3/marketing-events/events/{externalEventId}/cancel",
-            "POST",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get("_request_auth"),
-        )
-
-    def complete(self, external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs):  # noqa: E501
-        """Mark a marketing event as completed  # noqa: E501
-
-        Mark a marketing event as completed  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.complete(external_event_id, external_account_id, marketing_event_complete_request_params, async_req=True)
-        >>> result = thread.get()
-
-        :param external_event_id: The id of the marketing event in the external event application. (required)
-        :type external_event_id: str
-        :param external_account_id: The accountId that is associated with this marketing event in the external event application. (required)
-        :type external_account_id: str
-        :param marketing_event_complete_request_params: (required)
-        :type marketing_event_complete_request_params: MarketingEventCompleteRequestParams
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: MarketingEventDefaultResponse
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.complete_with_http_info(external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs)  # noqa: E501
-
-    def complete_with_http_info(self, external_event_id, external_account_id, marketing_event_complete_request_params, **kwargs):  # noqa: E501
-        """Mark a marketing event as completed  # noqa: E501
-
-        Mark a marketing event as completed  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.complete_with_http_info(external_event_id, external_account_id, marketing_event_complete_request_params, async_req=True)
-        >>> result = thread.get()
-
-        :param external_event_id: The id of the marketing event in the external event application. (required)
-        :type external_event_id: str
-        :param external_account_id: The accountId that is associated with this marketing event in the external event application. (required)
-        :type external_account_id: str
-        :param marketing_event_complete_request_params: (required)
-        :type marketing_event_complete_request_params: MarketingEventCompleteRequestParams
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(MarketingEventDefaultResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        local_var_params = locals()
-
-        all_params = ["external_event_id", "external_account_id", "marketing_event_complete_request_params"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method complete" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'external_event_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("external_event_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_event_id` when calling `complete`")  # noqa: E501
-        # verify the required parameter 'external_account_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("external_account_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `external_account_id` when calling `complete`")  # noqa: E501
-        # verify the required parameter 'marketing_event_complete_request_params' is set
-        if self.api_client.client_side_validation and local_var_params.get("marketing_event_complete_request_params") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `marketing_event_complete_request_params` when calling `complete`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if "external_event_id" in local_var_params:
-            path_params["externalEventId"] = local_var_params["external_event_id"]  # noqa: E501
-
-        query_params = []
-        if local_var_params.get("external_account_id") is not None:  # noqa: E501
-            query_params.append(("externalAccountId", local_var_params["external_account_id"]))  # noqa: E501
-
-        header_params = dict(local_var_params.get("_headers", {}))
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if "marketing_event_complete_request_params" in local_var_params:
-            body_params = local_var_params["marketing_event_complete_request_params"]
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
-        if content_types_list:
-            header_params["Content-Type"] = content_types_list
-
-        # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
-
-        response_types_map = {
-            200: "MarketingEventDefaultResponse",
-        }
-
-        return self.api_client.call_api(
-            "/marketing/v3/marketing-events/events/{externalEventId}/complete",
-            "POST",
+            "/marketing/v3/marketing-events/{objectId}",
+            "DELETE",
             path_params,
             query_params,
             header_params,
@@ -823,18 +412,20 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def do_search(self, q, **kwargs):  # noqa: E501
-        """Search for marketing events  # noqa: E501
+    def get_all(self, **kwargs):  # noqa: E501
+        """Get all marketing event  # noqa: E501
 
-        Search for marketing events that have an event id that starts with the query string  # noqa: E501
+        Returns all Marketing Events available on the portal, along with their properties, regardless of whether they were created manually or through the application.  The marketing events returned by this endpoint are sorted by objectId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.do_search(q, async_req=True)
+        >>> thread = api.get_all(async_req=True)
         >>> result = thread.get()
 
-        :param q: The id of the marketing event in the external event application (required)
-        :type q: str
+        :param after: The cursor indicating the position of the last retrieved item.
+        :type after: str
+        :param limit: The limit for response size. The default value is 10, the max number is 100
+        :type limit: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -848,23 +439,25 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging
+        :rtype: CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging
         """
         kwargs["_return_http_data_only"] = True
-        return self.do_search_with_http_info(q, **kwargs)  # noqa: E501
+        return self.get_all_with_http_info(**kwargs)  # noqa: E501
 
-    def do_search_with_http_info(self, q, **kwargs):  # noqa: E501
-        """Search for marketing events  # noqa: E501
+    def get_all_with_http_info(self, **kwargs):  # noqa: E501
+        """Get all marketing event  # noqa: E501
 
-        Search for marketing events that have an event id that starts with the query string  # noqa: E501
+        Returns all Marketing Events available on the portal, along with their properties, regardless of whether they were created manually or through the application.  The marketing events returned by this endpoint are sorted by objectId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.do_search_with_http_info(q, async_req=True)
+        >>> thread = api.get_all_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param q: The id of the marketing event in the external event application (required)
-        :type q: str
+        :param after: The cursor indicating the position of the last retrieved item.
+        :type after: str
+        :param limit: The limit for response size. The default value is 10, the max number is 100
+        :type limit: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -886,30 +479,29 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["q"]
+        all_params = ["after", "limit"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method do_search" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_all" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'q' is set
-        if self.api_client.client_side_validation and local_var_params.get("q") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `q` when calling `do_search`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if local_var_params.get("q") is not None:  # noqa: E501
-            query_params.append(("q", local_var_params["q"]))  # noqa: E501
+        if local_var_params.get("after") is not None:  # noqa: E501
+            query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -924,11 +516,134 @@ class BasicApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            200: "CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging",
+            200: "CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging",
         }
 
         return self.api_client.call_api(
-            "/marketing/v3/marketing-events/events/search",
+            "/marketing/v3/marketing-events/",
+            "GET",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def get_by_object_id(self, object_id, **kwargs):  # noqa: E501
+        """Get Marketing Event by objectId  # noqa: E501
+
+        Returns the details of a Marketing Event with the specified objectId, if it exists.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_by_object_id(object_id, async_req=True)
+        >>> result = thread.get()
+
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: MarketingEventPublicReadResponseV2
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.get_by_object_id_with_http_info(object_id, **kwargs)  # noqa: E501
+
+    def get_by_object_id_with_http_info(self, object_id, **kwargs):  # noqa: E501
+        """Get Marketing Event by objectId  # noqa: E501
+
+        Returns the details of a Marketing Event with the specified objectId, if it exists.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_by_object_id_with_http_info(object_id, async_req=True)
+        >>> result = thread.get()
+
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(MarketingEventPublicReadResponseV2, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = ["object_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_object_id" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'object_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_id` when calling `get_by_object_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "object_id" in local_var_params:
+            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventPublicReadResponseV2",
+        }
+
+        return self.api_client.call_api(
+            "/marketing/v3/marketing-events/{objectId}",
             "GET",
             path_params,
             query_params,
@@ -947,18 +662,18 @@ class BasicApi(object):
         )
 
     def get_details(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Get a marketing event  # noqa: E501
+        """Get Marketing Event by External IDs  # noqa: E501
 
-        Returns the details of the Marketing Event with the specified id, if one exists.  # noqa: E501
+        Returns the details of a Marketing Event with the specified externalAccountId, externalEventId, if it exists.  Only Marketing Events created by the same app making the request can be retrieved.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_details(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to return (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -979,18 +694,18 @@ class BasicApi(object):
         return self.get_details_with_http_info(external_event_id, external_account_id, **kwargs)  # noqa: E501
 
     def get_details_with_http_info(self, external_event_id, external_account_id, **kwargs):  # noqa: E501
-        """Get a marketing event  # noqa: E501
+        """Get Marketing Event by External IDs  # noqa: E501
 
-        Returns the details of the Marketing Event with the specified id, if one exists.  # noqa: E501
+        Returns the details of a Marketing Event with the specified externalAccountId, externalEventId, if it exists.  Only Marketing Events created by the same app making the request can be retrieved.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_details_with_http_info(external_event_id, external_account_id, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to return (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1079,18 +794,18 @@ class BasicApi(object):
         )
 
     def update(self, external_event_id, external_account_id, marketing_event_update_request_params, **kwargs):  # noqa: E501
-        """Update a marketing event  # noqa: E501
+        """Update Marketing Event by External IDs  # noqa: E501
 
-        Updates an existing Marketing Event with the specified id, if one exists.  # noqa: E501
+        Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.  Only Marketing Events created by the same app can be updated.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update(external_event_id, external_account_id, marketing_event_update_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to update (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param marketing_event_update_request_params: (required)
         :type marketing_event_update_request_params: MarketingEventUpdateRequestParams
@@ -1113,18 +828,18 @@ class BasicApi(object):
         return self.update_with_http_info(external_event_id, external_account_id, marketing_event_update_request_params, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, external_event_id, external_account_id, marketing_event_update_request_params, **kwargs):  # noqa: E501
-        """Update a marketing event  # noqa: E501
+        """Update Marketing Event by External IDs  # noqa: E501
 
-        Updates an existing Marketing Event with the specified id, if one exists.  # noqa: E501
+        Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.  Only Marketing Events created by the same app can be updated.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_with_http_info(external_event_id, external_account_id, marketing_event_update_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The id of the marketing event to update (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
-        :param external_account_id: The account id associated with the marketing event (required)
+        :param external_account_id: The accountId that is associated with this marketing event in the external event application (required)
         :type external_account_id: str
         :param marketing_event_update_request_params: (required)
         :type marketing_event_update_request_params: MarketingEventUpdateRequestParams
@@ -1224,6 +939,143 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
+    def update_by_object_id(self, object_id, marketing_event_public_update_request_v2, **kwargs):  # noqa: E501
+        """Update Marketing Event by objectId  # noqa: E501
+
+        Updates the details of an existing Marketing Event identified by its objectId, if it exists.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_by_object_id(object_id, marketing_event_public_update_request_v2, async_req=True)
+        >>> result = thread.get()
+
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
+        :param marketing_event_public_update_request_v2: (required)
+        :type marketing_event_public_update_request_v2: MarketingEventPublicUpdateRequestV2
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: MarketingEventPublicDefaultResponseV2
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.update_by_object_id_with_http_info(object_id, marketing_event_public_update_request_v2, **kwargs)  # noqa: E501
+
+    def update_by_object_id_with_http_info(self, object_id, marketing_event_public_update_request_v2, **kwargs):  # noqa: E501
+        """Update Marketing Event by objectId  # noqa: E501
+
+        Updates the details of an existing Marketing Event identified by its objectId, if it exists.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_by_object_id_with_http_info(object_id, marketing_event_public_update_request_v2, async_req=True)
+        >>> result = thread.get()
+
+        :param object_id: The internal ID of the marketing event in HubSpot (required)
+        :type object_id: str
+        :param marketing_event_public_update_request_v2: (required)
+        :type marketing_event_public_update_request_v2: MarketingEventPublicUpdateRequestV2
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(MarketingEventPublicDefaultResponseV2, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = ["object_id", "marketing_event_public_update_request_v2"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_by_object_id" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'object_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_id` when calling `update_by_object_id`")  # noqa: E501
+        # verify the required parameter 'marketing_event_public_update_request_v2' is set
+        if self.api_client.client_side_validation and local_var_params.get("marketing_event_public_update_request_v2") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `marketing_event_public_update_request_v2` when calling `update_by_object_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "object_id" in local_var_params:
+            path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "marketing_event_public_update_request_v2" in local_var_params:
+            body_params = local_var_params["marketing_event_public_update_request_v2"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "MarketingEventPublicDefaultResponseV2",
+        }
+
+        return self.api_client.call_api(
+            "/marketing/v3/marketing-events/{objectId}",
+            "PATCH",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
     def upsert(self, external_event_id, marketing_event_create_request_params, **kwargs):  # noqa: E501
         """Create or update a marketing event  # noqa: E501
 
@@ -1234,7 +1086,7 @@ class BasicApi(object):
         >>> thread = api.upsert(external_event_id, marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event to upsert (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param marketing_event_create_request_params: (required)
         :type marketing_event_create_request_params: MarketingEventCreateRequestParams
@@ -1266,7 +1118,7 @@ class BasicApi(object):
         >>> thread = api.upsert_with_http_info(external_event_id, marketing_event_create_request_params, async_req=True)
         >>> result = thread.get()
 
-        :param external_event_id: The ID of the marketing event to upsert (required)
+        :param external_event_id: The id of the marketing event in the external event application (required)
         :type external_event_id: str
         :param marketing_event_create_request_params: (required)
         :type marketing_event_create_request_params: MarketingEventCreateRequestParams

@@ -129,7 +129,7 @@ class MarketingEventEmailSubscriber(object):
     def interaction_date_time(self):
         """Gets the interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
 
-        The date and time at which the contact subscribed to the event.  # noqa: E501
+        Timestamp in milliseconds at which the contact subscribed to the event.  # noqa: E501
 
         :return: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
         :rtype: int
@@ -140,7 +140,7 @@ class MarketingEventEmailSubscriber(object):
     def interaction_date_time(self, interaction_date_time):
         """Sets the interaction_date_time of this MarketingEventEmailSubscriber.
 
-        The date and time at which the contact subscribed to the event.  # noqa: E501
+        Timestamp in milliseconds at which the contact subscribed to the event.  # noqa: E501
 
         :param interaction_date_time: The interaction_date_time of this MarketingEventEmailSubscriber.  # noqa: E501
         :type interaction_date_time: int
