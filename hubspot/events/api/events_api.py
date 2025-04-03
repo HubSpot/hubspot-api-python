@@ -34,18 +34,18 @@ class EventsApi(object):
         self.api_client = api_client
 
     def get_page(self, **kwargs):  # noqa: E501
-        """Event Instance Query  # noqa: E501
+        """Retrieve event data  # noqa: E501
 
-        This endpoint allows you to query for event instances using filter criteria.   # noqa: E501
+        Retrieve instances of event completion data. For example, retrieve all event completions associated with a specific contact.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page(async_req=True)
         >>> result = thread.get()
 
-        :param object_type: The CRM Object type name to filter event instances on. Optionally, you can also provide an objectId in another param to filter to a specific CRM Object instance.
+        :param object_type: The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
         :type object_type: str
-        :param event_type: The event type name. A list of available event type names can be obtained from another API call.
+        :param event_type: The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
         :type event_type: str
         :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
@@ -53,19 +53,19 @@ class EventsApi(object):
         :type before: str
         :param limit: The maximum number of results to display per page.
         :type limit: int
-        :param sort: Sort direction based on the timestamp of the event instance, ASCENDING or DESCENDING.
+        :param sort: Sort direction based on the timestamp of the event instance, `ASCENDING` or `DESCENDING`.
         :type sort: list[str]
-        :param occurred_after:
+        :param occurred_after: Filter for event data that occurred after a specific datetime.
         :type occurred_after: datetime
-        :param occurred_before:
+        :param occurred_before: Filter for event data that occurred before a specific datetime.
         :type occurred_before: datetime
-        :param object_id: The ID of the CRM Object to filter event instances on. If filtering on objectId, you must also provide an objectType.
+        :param object_id: The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
         :type object_id: int
-        :param object_property_propname:
+        :param object_property_propname: Instead of retrieving event data for a specific object by its ID, you can specify a unique identifier property. For contacts, you can use the `email` property. (e.g., `objectProperty.email=name@domain.com`).
         :type object_property_propname: object
-        :param property_propname:
+        :param property_propname: Filter for event completions that contain a specific value for an event property (e.g., `property.hs_city=portland`). For properties values with spaces, replaces spaces with `%20` or `+` (e.g., `property.hs_city=new+york`).
         :type property_propname: object
-        :param id: ID of an event instance. IDs are 1:1 with event instances. If you. provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
+        :param id: ID of an event instance. IDs are 1:1 with event instances. If you provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
         :type id: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -86,18 +86,18 @@ class EventsApi(object):
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
-        """Event Instance Query  # noqa: E501
+        """Retrieve event data  # noqa: E501
 
-        This endpoint allows you to query for event instances using filter criteria.   # noqa: E501
+        Retrieve instances of event completion data. For example, retrieve all event completions associated with a specific contact.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param object_type: The CRM Object type name to filter event instances on. Optionally, you can also provide an objectId in another param to filter to a specific CRM Object instance.
+        :param object_type: The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
         :type object_type: str
-        :param event_type: The event type name. A list of available event type names can be obtained from another API call.
+        :param event_type: The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
         :type event_type: str
         :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
@@ -105,19 +105,19 @@ class EventsApi(object):
         :type before: str
         :param limit: The maximum number of results to display per page.
         :type limit: int
-        :param sort: Sort direction based on the timestamp of the event instance, ASCENDING or DESCENDING.
+        :param sort: Sort direction based on the timestamp of the event instance, `ASCENDING` or `DESCENDING`.
         :type sort: list[str]
-        :param occurred_after:
+        :param occurred_after: Filter for event data that occurred after a specific datetime.
         :type occurred_after: datetime
-        :param occurred_before:
+        :param occurred_before: Filter for event data that occurred before a specific datetime.
         :type occurred_before: datetime
-        :param object_id: The ID of the CRM Object to filter event instances on. If filtering on objectId, you must also provide an objectType.
+        :param object_id: The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
         :type object_id: int
-        :param object_property_propname:
+        :param object_property_propname: Instead of retrieving event data for a specific object by its ID, you can specify a unique identifier property. For contacts, you can use the `email` property. (e.g., `objectProperty.email=name@domain.com`).
         :type object_property_propname: object
-        :param property_propname:
+        :param property_propname: Filter for event completions that contain a specific value for an event property (e.g., `property.hs_city=portland`). For properties values with spaces, replaces spaces with `%20` or `+` (e.g., `property.hs_city=new+york`).
         :type property_propname: object
-        :param id: ID of an event instance. IDs are 1:1 with event instances. If you. provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
+        :param id: ID of an event instance. IDs are 1:1 with event instances. If you provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
         :type id: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -204,6 +204,120 @@ class EventsApi(object):
 
         return self.api_client.call_api(
             "/events/v3/events/",
+            "GET",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def get_types(self, **kwargs):  # noqa: E501
+        """Event Types  # noqa: E501
+
+        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_types(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: VisibleExternalEventTypeNames
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.get_types_with_http_info(**kwargs)  # noqa: E501
+
+    def get_types_with_http_info(self, **kwargs):  # noqa: E501
+        """Event Types  # noqa: E501
+
+        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_types_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(VisibleExternalEventTypeNames, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = []
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_types" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "VisibleExternalEventTypeNames",
+        }
+
+        return self.api_client.call_api(
+            "/events/v3/events/event-types",
             "GET",
             path_params,
             query_params,

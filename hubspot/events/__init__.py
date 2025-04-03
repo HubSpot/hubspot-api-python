@@ -18,7 +18,6 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from hubspot.events.api.events_api import EventsApi
-from hubspot.events.api.default_api import DefaultApi
 
 # import ApiClient
 from hubspot.events.api_client import ApiClient

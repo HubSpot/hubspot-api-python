@@ -17,7 +17,8 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from hubspot.events.send.api.custom_event_data_api import CustomEventDataApi
+from hubspot.events.send.api.basic_api import BasicApi
+from hubspot.events.send.api.batch_api import BatchApi
 
 # import ApiClient
 from hubspot.events.send.api_client import ApiClient
@@ -30,6 +31,7 @@ from hubspot.events.send.exceptions import ApiAttributeError
 from hubspot.events.send.exceptions import ApiException
 
 # import models into sdk package
+from hubspot.events.send.models.batched_behavioral_event_http_completion_request import BatchedBehavioralEventHttpCompletionRequest
 from hubspot.events.send.models.behavioral_event_http_completion_request import BehavioralEventHttpCompletionRequest
 from hubspot.events.send.models.error import Error
 from hubspot.events.send.models.error_detail import ErrorDetail
