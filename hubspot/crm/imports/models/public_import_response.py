@@ -45,6 +45,7 @@ class PublicImportResponse(object):
         "state": "str",
         "id": "str",
         "opt_out_import": "bool",
+        "mapped_object_type_ids": "list[str]",
         "updated_at": "datetime",
     }
 
@@ -58,6 +59,7 @@ class PublicImportResponse(object):
         "state": "state",
         "id": "id",
         "opt_out_import": "optOutImport",
+        "mapped_object_type_ids": "mappedObjectTypeIds",
         "updated_at": "updatedAt",
     }
 
@@ -72,6 +74,7 @@ class PublicImportResponse(object):
         state=None,
         id=None,
         opt_out_import=None,
+        mapped_object_type_ids=None,
         updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -89,6 +92,7 @@ class PublicImportResponse(object):
         self._state = None
         self._id = None
         self._opt_out_import = None
+        self._mapped_object_type_ids = None
         self._updated_at = None
         self.discriminator = None
 
@@ -105,6 +109,7 @@ class PublicImportResponse(object):
         self.state = state
         self.id = id
         self.opt_out_import = opt_out_import
+        self.mapped_object_type_ids = mapped_object_type_ids
         self.updated_at = updated_at
 
     @property
@@ -315,6 +320,29 @@ class PublicImportResponse(object):
             raise ValueError("Invalid value for `opt_out_import`, must not be `None`")  # noqa: E501
 
         self._opt_out_import = opt_out_import
+
+    @property
+    def mapped_object_type_ids(self):
+        """Gets the mapped_object_type_ids of this PublicImportResponse.  # noqa: E501
+
+
+        :return: The mapped_object_type_ids of this PublicImportResponse.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._mapped_object_type_ids
+
+    @mapped_object_type_ids.setter
+    def mapped_object_type_ids(self, mapped_object_type_ids):
+        """Sets the mapped_object_type_ids of this PublicImportResponse.
+
+
+        :param mapped_object_type_ids: The mapped_object_type_ids of this PublicImportResponse.  # noqa: E501
+        :type mapped_object_type_ids: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and mapped_object_type_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `mapped_object_type_ids`, must not be `None`")  # noqa: E501
+
+        self._mapped_object_type_ids = mapped_object_type_ids
 
     @property
     def updated_at(self):

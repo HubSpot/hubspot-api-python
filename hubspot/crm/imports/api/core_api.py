@@ -166,9 +166,9 @@ class CoreApi(object):
         >>> thread = api.create(async_req=True)
         >>> result = thread.get()
 
-        :param files: A list of files containing the data to import
+        :param files:
         :type files: file
-        :param import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format.
+        :param import_request:
         :type import_request: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -198,9 +198,9 @@ class CoreApi(object):
         >>> thread = api.create_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param files: A list of files containing the data to import
+        :param files:
         :type files: file
-        :param import_request: JSON formatted metadata about the import. This includes a name for the import and the column mappings for each file. See the overview tab for more on the required format.
+        :param import_request:
         :type import_request: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
