@@ -17,6 +17,7 @@ from __future__ import absolute_import
 __version__ = "1.0.0"
 
 # import apis into sdk package
+from hubspot.crm.extensions.calling.api.channel_connection_settings_api import ChannelConnectionSettingsApi
 from hubspot.crm.extensions.calling.api.recording_settings_api import RecordingSettingsApi
 from hubspot.crm.extensions.calling.api.settings_api import SettingsApi
 
@@ -31,6 +32,9 @@ from hubspot.crm.extensions.calling.exceptions import ApiAttributeError
 from hubspot.crm.extensions.calling.exceptions import ApiException
 
 # import models into sdk package
+from hubspot.crm.extensions.calling.models.channel_connection_settings_patch_request import ChannelConnectionSettingsPatchRequest
+from hubspot.crm.extensions.calling.models.channel_connection_settings_request import ChannelConnectionSettingsRequest
+from hubspot.crm.extensions.calling.models.channel_connection_settings_response import ChannelConnectionSettingsResponse
 from hubspot.crm.extensions.calling.models.error import Error
 from hubspot.crm.extensions.calling.models.error_detail import ErrorDetail
 from hubspot.crm.extensions.calling.models.mark_recording_as_ready_request import MarkRecordingAsReadyRequest
