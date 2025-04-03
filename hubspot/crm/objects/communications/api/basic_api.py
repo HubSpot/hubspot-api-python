@@ -43,7 +43,7 @@ class BasicApi(object):
         >>> thread = api.archive(communication_id, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the message to update. (required)
         :type communication_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -73,7 +73,7 @@ class BasicApi(object):
         >>> thread = api.archive_with_http_info(communication_id, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the message to update. (required)
         :type communication_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -292,7 +292,7 @@ class BasicApi(object):
         >>> thread = api.get_by_id(communication_id, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the message to retrieve. (required)
         :type communication_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
@@ -332,7 +332,7 @@ class BasicApi(object):
         >>> thread = api.get_by_id_with_http_info(communication_id, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the message to retrieve. (required)
         :type communication_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
@@ -601,7 +601,7 @@ class BasicApi(object):
         >>> thread = api.update(communication_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the communication to update. (required)
         :type communication_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
@@ -635,7 +635,7 @@ class BasicApi(object):
         >>> thread = api.update_with_http_info(communication_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param communication_id: (required)
+        :param communication_id: The ID of the communication to update. (required)
         :type communication_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
