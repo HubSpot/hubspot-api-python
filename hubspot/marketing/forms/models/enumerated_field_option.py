@@ -35,27 +35,75 @@ class EnumeratedFieldOption(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"label": "str", "value": "str", "description": "str", "display_order": "int"}
+    openapi_types = {"display_order": "int", "description": "str", "label": "str", "value": "str"}
 
-    attribute_map = {"label": "label", "value": "value", "description": "description", "display_order": "displayOrder"}
+    attribute_map = {"display_order": "displayOrder", "description": "description", "label": "label", "value": "value"}
 
-    def __init__(self, label=None, value=None, description=None, display_order=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, display_order=None, description=None, label=None, value=None, local_vars_configuration=None):  # noqa: E501
         """EnumeratedFieldOption - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
+        self._display_order = None
+        self._description = None
         self._label = None
         self._value = None
-        self._description = None
-        self._display_order = None
         self.discriminator = None
 
-        self.label = label
-        self.value = value
+        self.display_order = display_order
         if description is not None:
             self.description = description
-        self.display_order = display_order
+        self.label = label
+        self.value = value
+
+    @property
+    def display_order(self):
+        """Gets the display_order of this EnumeratedFieldOption.  # noqa: E501
+
+        The order the choices will be displayed in.  # noqa: E501
+
+        :return: The display_order of this EnumeratedFieldOption.  # noqa: E501
+        :rtype: int
+        """
+        return self._display_order
+
+    @display_order.setter
+    def display_order(self, display_order):
+        """Sets the display_order of this EnumeratedFieldOption.
+
+        The order the choices will be displayed in.  # noqa: E501
+
+        :param display_order: The display_order of this EnumeratedFieldOption.  # noqa: E501
+        :type display_order: int
+        """
+        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
+            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
+
+        self._display_order = display_order
+
+    @property
+    def description(self):
+        """Gets the description of this EnumeratedFieldOption.  # noqa: E501
+
+          # noqa: E501
+
+        :return: The description of this EnumeratedFieldOption.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this EnumeratedFieldOption.
+
+          # noqa: E501
+
+        :param description: The description of this EnumeratedFieldOption.  # noqa: E501
+        :type description: str
+        """
+
+        self._description = description
 
     @property
     def label(self):
@@ -106,52 +154,6 @@ class EnumeratedFieldOption(object):
             raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
 
         self._value = value
-
-    @property
-    def description(self):
-        """Gets the description of this EnumeratedFieldOption.  # noqa: E501
-
-
-        :return: The description of this EnumeratedFieldOption.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this EnumeratedFieldOption.
-
-
-        :param description: The description of this EnumeratedFieldOption.  # noqa: E501
-        :type description: str
-        """
-
-        self._description = description
-
-    @property
-    def display_order(self):
-        """Gets the display_order of this EnumeratedFieldOption.  # noqa: E501
-
-        The order the choices will be displayed in.  # noqa: E501
-
-        :return: The display_order of this EnumeratedFieldOption.  # noqa: E501
-        :rtype: int
-        """
-        return self._display_order
-
-    @display_order.setter
-    def display_order(self, display_order):
-        """Sets the display_order of this EnumeratedFieldOption.
-
-        The order the choices will be displayed in.  # noqa: E501
-
-        :param display_order: The display_order of this EnumeratedFieldOption.  # noqa: E501
-        :type display_order: int
-        """
-        if self.local_vars_configuration.client_side_validation and display_order is None:  # noqa: E501
-            raise ValueError("Invalid value for `display_order`, must not be `None`")  # noqa: E501
-
-        self._display_order = display_order
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
