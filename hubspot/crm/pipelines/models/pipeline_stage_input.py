@@ -50,7 +50,8 @@ class PipelineStageInput(object):
         self._label = None
         self.discriminator = None
 
-        self.metadata = metadata
+        if metadata is not None:
+            self.metadata = metadata
         self.display_order = display_order
         self.label = label
 
@@ -74,8 +75,6 @@ class PipelineStageInput(object):
         :param metadata: The metadata of this PipelineStageInput.  # noqa: E501
         :type metadata: dict[str, str]
         """
-        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
-            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 
