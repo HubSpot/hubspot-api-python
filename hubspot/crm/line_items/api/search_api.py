@@ -34,8 +34,9 @@ class SearchApi(object):
         self.api_client = api_client
 
     def do_search(self, public_object_search_request, **kwargs):  # noqa: E501
-        """do_search  # noqa: E501
+        """Search for line items  # noqa: E501
 
+        Search for line items by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -63,8 +64,9 @@ class SearchApi(object):
         return self.do_search_with_http_info(public_object_search_request, **kwargs)  # noqa: E501
 
     def do_search_with_http_info(self, public_object_search_request, **kwargs):  # noqa: E501
-        """do_search  # noqa: E501
+        """Search for line items  # noqa: E501
 
+        Search for line items by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
