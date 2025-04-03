@@ -48,6 +48,10 @@ class PublicImportsApi(object):
         :type after: str
         :param limit: The maximum number of results to display per page.
         :type limit: int
+        :param include_error_message: Set to True to receive a message explaining the error.
+        :type include_error_message: bool
+        :param include_row_data: Set to True to receive the data values for the errored row.
+        :type include_row_data: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -81,6 +85,10 @@ class PublicImportsApi(object):
         :type after: str
         :param limit: The maximum number of results to display per page.
         :type limit: int
+        :param include_error_message: Set to True to receive a message explaining the error.
+        :type include_error_message: bool
+        :param include_row_data: Set to True to receive the data values for the errored row.
+        :type include_row_data: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -107,7 +115,7 @@ class PublicImportsApi(object):
 
         local_var_params = locals()
 
-        all_params = ["import_id", "after", "limit"]
+        all_params = ["import_id", "after", "limit", "include_error_message", "include_row_data"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -130,6 +138,10 @@ class PublicImportsApi(object):
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
         if local_var_params.get("limit") is not None:  # noqa: E501
             query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
+        if local_var_params.get("include_error_message") is not None:  # noqa: E501
+            query_params.append(("includeErrorMessage", local_var_params["include_error_message"]))  # noqa: E501
+        if local_var_params.get("include_row_data") is not None:  # noqa: E501
+            query_params.append(("includeRowData", local_var_params["include_row_data"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 

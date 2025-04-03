@@ -35,23 +35,25 @@ class ImportRowCore(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"row_data": "list[str]", "line_number": "int", "page_name": "str", "file_id": "int"}
+    openapi_types = {"row_data": "list[str]", "contains_encrypted_properties": "bool", "line_number": "int", "page_name": "str", "file_id": "int"}
 
-    attribute_map = {"row_data": "rowData", "line_number": "lineNumber", "page_name": "pageName", "file_id": "fileId"}
+    attribute_map = {"row_data": "rowData", "contains_encrypted_properties": "containsEncryptedProperties", "line_number": "lineNumber", "page_name": "pageName", "file_id": "fileId"}
 
-    def __init__(self, row_data=None, line_number=None, page_name=None, file_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, row_data=None, contains_encrypted_properties=None, line_number=None, page_name=None, file_id=None, local_vars_configuration=None):  # noqa: E501
         """ImportRowCore - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._row_data = None
+        self._contains_encrypted_properties = None
         self._line_number = None
         self._page_name = None
         self._file_id = None
         self.discriminator = None
 
         self.row_data = row_data
+        self.contains_encrypted_properties = contains_encrypted_properties
         self.line_number = line_number
         if page_name is not None:
             self.page_name = page_name
@@ -79,6 +81,29 @@ class ImportRowCore(object):
             raise ValueError("Invalid value for `row_data`, must not be `None`")  # noqa: E501
 
         self._row_data = row_data
+
+    @property
+    def contains_encrypted_properties(self):
+        """Gets the contains_encrypted_properties of this ImportRowCore.  # noqa: E501
+
+
+        :return: The contains_encrypted_properties of this ImportRowCore.  # noqa: E501
+        :rtype: bool
+        """
+        return self._contains_encrypted_properties
+
+    @contains_encrypted_properties.setter
+    def contains_encrypted_properties(self, contains_encrypted_properties):
+        """Sets the contains_encrypted_properties of this ImportRowCore.
+
+
+        :param contains_encrypted_properties: The contains_encrypted_properties of this ImportRowCore.  # noqa: E501
+        :type contains_encrypted_properties: bool
+        """
+        if self.local_vars_configuration.client_side_validation and contains_encrypted_properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `contains_encrypted_properties`, must not be `None`")  # noqa: E501
+
+        self._contains_encrypted_properties = contains_encrypted_properties
 
     @property
     def line_number(self):
