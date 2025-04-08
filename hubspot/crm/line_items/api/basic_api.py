@@ -302,7 +302,7 @@ class BasicApi(object):
         :type associations: list[str]
         :param archived: Whether to return only results that have been archived.
         :type archived: bool
-        :param id_property: The name of a property whose values are unique for this object type
+        :param id_property: The name of a property whose values are unique for this object
         :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -342,7 +342,7 @@ class BasicApi(object):
         :type associations: list[str]
         :param archived: Whether to return only results that have been archived.
         :type archived: bool
-        :param id_property: The name of a property whose values are unique for this object type
+        :param id_property: The name of a property whose values are unique for this object
         :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -594,7 +594,7 @@ class BasicApi(object):
     def update(self, line_item_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{lineItemId}`. `{lineItemId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{lineItemId}`or optionally a unique property value as specified by the `idProperty` query param. `{lineItemId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -605,7 +605,7 @@ class BasicApi(object):
         :type line_item_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
-        :param id_property: The name of a property whose values are unique for this object type
+        :param id_property: The name of a property whose values are unique for this object
         :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -628,7 +628,7 @@ class BasicApi(object):
     def update_with_http_info(self, line_item_id, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
-        Perform a partial update of an Object identified by `{lineItemId}`. `{lineItemId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Perform a partial update of an Object identified by `{lineItemId}`or optionally a unique property value as specified by the `idProperty` query param. `{lineItemId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -639,7 +639,7 @@ class BasicApi(object):
         :type line_item_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
-        :param id_property: The name of a property whose values are unique for this object type
+        :param id_property: The name of a property whose values are unique for this object
         :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
