@@ -57,6 +57,7 @@ class PublicGdprDeleteInput(object):
     def id_property(self):
         """Gets the id_property of this PublicGdprDeleteInput.  # noqa: E501
 
+        The name of a property whose values are unique for this object. An alternative to identifying a contact by ID.  # noqa: E501
 
         :return: The id_property of this PublicGdprDeleteInput.  # noqa: E501
         :rtype: str
@@ -67,6 +68,7 @@ class PublicGdprDeleteInput(object):
     def id_property(self, id_property):
         """Sets the id_property of this PublicGdprDeleteInput.
 
+        The name of a property whose values are unique for this object. An alternative to identifying a contact by ID.  # noqa: E501
 
         :param id_property: The id_property of this PublicGdprDeleteInput.  # noqa: E501
         :type id_property: str
@@ -78,6 +80,7 @@ class PublicGdprDeleteInput(object):
     def object_id(self):
         """Gets the object_id of this PublicGdprDeleteInput.  # noqa: E501
 
+        The ID of the contact to permanently delete.  # noqa: E501
 
         :return: The object_id of this PublicGdprDeleteInput.  # noqa: E501
         :rtype: str
@@ -88,6 +91,7 @@ class PublicGdprDeleteInput(object):
     def object_id(self, object_id):
         """Sets the object_id of this PublicGdprDeleteInput.
 
+        The ID of the contact to permanently delete.  # noqa: E501
 
         :param object_id: The object_id of this PublicGdprDeleteInput.  # noqa: E501
         :type object_id: str

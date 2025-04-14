@@ -19,8 +19,6 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.crm.contacts.api.basic_api import BasicApi
 from hubspot.crm.contacts.api.batch_api import BatchApi
-from hubspot.crm.contacts.api.gdpr_api import GDPRApi
-from hubspot.crm.contacts.api.merge_api import MergeApi
 from hubspot.crm.contacts.api.search_api import SearchApi
 
 # import ApiClient
@@ -37,9 +35,9 @@ from hubspot.crm.contacts.exceptions import ApiException
 from hubspot.crm.contacts.models.associated_id import AssociatedId
 from hubspot.crm.contacts.models.association_spec import AssociationSpec
 from hubspot.crm.contacts.models.batch_input_simple_public_object_batch_input import BatchInputSimplePublicObjectBatchInput
+from hubspot.crm.contacts.models.batch_input_simple_public_object_batch_input_for_create import BatchInputSimplePublicObjectBatchInputForCreate
 from hubspot.crm.contacts.models.batch_input_simple_public_object_batch_input_upsert import BatchInputSimplePublicObjectBatchInputUpsert
 from hubspot.crm.contacts.models.batch_input_simple_public_object_id import BatchInputSimplePublicObjectId
-from hubspot.crm.contacts.models.batch_input_simple_public_object_input_for_create import BatchInputSimplePublicObjectInputForCreate
 from hubspot.crm.contacts.models.batch_read_input_simple_public_object_id import BatchReadInputSimplePublicObjectId
 from hubspot.crm.contacts.models.batch_response_simple_public_object import BatchResponseSimplePublicObject
 from hubspot.crm.contacts.models.batch_response_simple_public_object_with_errors import BatchResponseSimplePublicObjectWithErrors
@@ -63,6 +61,7 @@ from hubspot.crm.contacts.models.public_object_id import PublicObjectId
 from hubspot.crm.contacts.models.public_object_search_request import PublicObjectSearchRequest
 from hubspot.crm.contacts.models.simple_public_object import SimplePublicObject
 from hubspot.crm.contacts.models.simple_public_object_batch_input import SimplePublicObjectBatchInput
+from hubspot.crm.contacts.models.simple_public_object_batch_input_for_create import SimplePublicObjectBatchInputForCreate
 from hubspot.crm.contacts.models.simple_public_object_batch_input_upsert import SimplePublicObjectBatchInputUpsert
 from hubspot.crm.contacts.models.simple_public_object_id import SimplePublicObjectId
 from hubspot.crm.contacts.models.simple_public_object_input import SimplePublicObjectInput
