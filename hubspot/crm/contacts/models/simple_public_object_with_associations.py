@@ -42,6 +42,7 @@ class SimplePublicObjectWithAssociations(object):
         "archived_at": "datetime",
         "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
         "id": "str",
+        "object_write_trace_id": "str",
         "properties": "dict[str, str]",
         "updated_at": "datetime",
     }
@@ -53,12 +54,23 @@ class SimplePublicObjectWithAssociations(object):
         "archived_at": "archivedAt",
         "properties_with_history": "propertiesWithHistory",
         "id": "id",
+        "object_write_trace_id": "objectWriteTraceId",
         "properties": "properties",
         "updated_at": "updatedAt",
     }
 
     def __init__(
-        self, associations=None, created_at=None, archived=None, archived_at=None, properties_with_history=None, id=None, properties=None, updated_at=None, local_vars_configuration=None
+        self,
+        associations=None,
+        created_at=None,
+        archived=None,
+        archived_at=None,
+        properties_with_history=None,
+        id=None,
+        object_write_trace_id=None,
+        properties=None,
+        updated_at=None,
+        local_vars_configuration=None,
     ):  # noqa: E501
         """SimplePublicObjectWithAssociations - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
@@ -71,6 +83,7 @@ class SimplePublicObjectWithAssociations(object):
         self._archived_at = None
         self._properties_with_history = None
         self._id = None
+        self._object_write_trace_id = None
         self._properties = None
         self._updated_at = None
         self.discriminator = None
@@ -85,6 +98,8 @@ class SimplePublicObjectWithAssociations(object):
         if properties_with_history is not None:
             self.properties_with_history = properties_with_history
         self.id = id
+        if object_write_trace_id is not None:
+            self.object_write_trace_id = object_write_trace_id
         self.properties = properties
         self.updated_at = updated_at
 
@@ -136,6 +151,7 @@ class SimplePublicObjectWithAssociations(object):
     def archived(self):
         """Gets the archived of this SimplePublicObjectWithAssociations.  # noqa: E501
 
+          # noqa: E501
 
         :return: The archived of this SimplePublicObjectWithAssociations.  # noqa: E501
         :rtype: bool
@@ -146,6 +162,7 @@ class SimplePublicObjectWithAssociations(object):
     def archived(self, archived):
         """Sets the archived of this SimplePublicObjectWithAssociations.
 
+          # noqa: E501
 
         :param archived: The archived of this SimplePublicObjectWithAssociations.  # noqa: E501
         :type archived: bool
@@ -157,6 +174,7 @@ class SimplePublicObjectWithAssociations(object):
     def archived_at(self):
         """Gets the archived_at of this SimplePublicObjectWithAssociations.  # noqa: E501
 
+          # noqa: E501
 
         :return: The archived_at of this SimplePublicObjectWithAssociations.  # noqa: E501
         :rtype: datetime
@@ -167,6 +185,7 @@ class SimplePublicObjectWithAssociations(object):
     def archived_at(self, archived_at):
         """Sets the archived_at of this SimplePublicObjectWithAssociations.
 
+          # noqa: E501
 
         :param archived_at: The archived_at of this SimplePublicObjectWithAssociations.  # noqa: E501
         :type archived_at: datetime
@@ -219,9 +238,31 @@ class SimplePublicObjectWithAssociations(object):
         self._id = id
 
     @property
+    def object_write_trace_id(self):
+        """Gets the object_write_trace_id of this SimplePublicObjectWithAssociations.  # noqa: E501
+
+
+        :return: The object_write_trace_id of this SimplePublicObjectWithAssociations.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_write_trace_id
+
+    @object_write_trace_id.setter
+    def object_write_trace_id(self, object_write_trace_id):
+        """Sets the object_write_trace_id of this SimplePublicObjectWithAssociations.
+
+
+        :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectWithAssociations.  # noqa: E501
+        :type object_write_trace_id: str
+        """
+
+        self._object_write_trace_id = object_write_trace_id
+
+    @property
     def properties(self):
         """Gets the properties of this SimplePublicObjectWithAssociations.  # noqa: E501
 
+          # noqa: E501
 
         :return: The properties of this SimplePublicObjectWithAssociations.  # noqa: E501
         :rtype: dict[str, str]
@@ -232,6 +273,7 @@ class SimplePublicObjectWithAssociations(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObjectWithAssociations.
 
+          # noqa: E501
 
         :param properties: The properties of this SimplePublicObjectWithAssociations.  # noqa: E501
         :type properties: dict[str, str]

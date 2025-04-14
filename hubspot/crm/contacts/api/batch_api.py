@@ -34,8 +34,9 @@ class BatchApi(object):
         self.api_client = api_client
 
     def archive(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Archive a batch of contacts by ID  # noqa: E501
+        """Archive a batch of contacts  # noqa: E501
 
+        Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -63,8 +64,9 @@ class BatchApi(object):
         return self.archive_with_http_info(batch_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, batch_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Archive a batch of contacts by ID  # noqa: E501
+        """Archive a batch of contacts  # noqa: E501
 
+        Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -157,17 +159,18 @@ class BatchApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def create(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
+    def create(self, batch_input_simple_public_object_batch_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of contacts  # noqa: E501
 
+        Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create(batch_input_simple_public_object_input_for_create, async_req=True)
+        >>> thread = api.create(batch_input_simple_public_object_batch_input_for_create, async_req=True)
         >>> result = thread.get()
 
-        :param batch_input_simple_public_object_input_for_create: (required)
-        :type batch_input_simple_public_object_input_for_create: BatchInputSimplePublicObjectInputForCreate
+        :param batch_input_simple_public_object_batch_input_for_create: (required)
+        :type batch_input_simple_public_object_batch_input_for_create: BatchInputSimplePublicObjectBatchInputForCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -184,19 +187,20 @@ class BatchApi(object):
         :rtype: BatchResponseSimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(batch_input_simple_public_object_input_for_create, **kwargs)  # noqa: E501
+        return self.create_with_http_info(batch_input_simple_public_object_batch_input_for_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
+    def create_with_http_info(self, batch_input_simple_public_object_batch_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of contacts  # noqa: E501
 
+        Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_with_http_info(batch_input_simple_public_object_input_for_create, async_req=True)
+        >>> thread = api.create_with_http_info(batch_input_simple_public_object_batch_input_for_create, async_req=True)
         >>> result = thread.get()
 
-        :param batch_input_simple_public_object_input_for_create: (required)
-        :type batch_input_simple_public_object_input_for_create: BatchInputSimplePublicObjectInputForCreate
+        :param batch_input_simple_public_object_batch_input_for_create: (required)
+        :type batch_input_simple_public_object_batch_input_for_create: BatchInputSimplePublicObjectBatchInputForCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -223,7 +227,7 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["batch_input_simple_public_object_input_for_create"]
+        all_params = ["batch_input_simple_public_object_batch_input_for_create"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -231,9 +235,9 @@ class BatchApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method create" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
-        if self.api_client.client_side_validation and local_var_params.get("batch_input_simple_public_object_input_for_create") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input_for_create` when calling `create`")  # noqa: E501
+        # verify the required parameter 'batch_input_simple_public_object_batch_input_for_create' is set
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_simple_public_object_batch_input_for_create") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_batch_input_for_create` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -247,8 +251,8 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_input_for_create" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_input_for_create"]
+        if "batch_input_simple_public_object_batch_input_for_create" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_batch_input_for_create"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
@@ -285,8 +289,9 @@ class BatchApi(object):
         )
 
     def read(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of contacts by internal ID, or unique property values  # noqa: E501
+        """Retrieve a batch of contacts  # noqa: E501
 
+        Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -316,8 +321,9 @@ class BatchApi(object):
         return self.read_with_http_info(batch_read_input_simple_public_object_id, **kwargs)  # noqa: E501
 
     def read_with_http_info(self, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of contacts by internal ID, or unique property values  # noqa: E501
+        """Retrieve a batch of contacts  # noqa: E501
 
+        Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -418,8 +424,9 @@ class BatchApi(object):
         )
 
     def update(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of contacts by internal ID, or unique property values  # noqa: E501
+        """Update a batch of contacts  # noqa: E501
 
+        Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -447,8 +454,9 @@ class BatchApi(object):
         return self.update_with_http_info(batch_input_simple_public_object_batch_input, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, batch_input_simple_public_object_batch_input, **kwargs):  # noqa: E501
-        """Update a batch of contacts by internal ID, or unique property values  # noqa: E501
+        """Update a batch of contacts  # noqa: E501
 
+        Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -545,9 +553,9 @@ class BatchApi(object):
         )
 
     def upsert(self, batch_input_simple_public_object_batch_input_upsert, **kwargs):  # noqa: E501
-        """Create or update a batch of contacts by unique property values  # noqa: E501
+        """Create or update a batch of contacts  # noqa: E501
 
-        Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.  # noqa: E501
+        Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -575,9 +583,9 @@ class BatchApi(object):
         return self.upsert_with_http_info(batch_input_simple_public_object_batch_input_upsert, **kwargs)  # noqa: E501
 
     def upsert_with_http_info(self, batch_input_simple_public_object_batch_input_upsert, **kwargs):  # noqa: E501
-        """Create or update a batch of contacts by unique property values  # noqa: E501
+        """Create or update a batch of contacts  # noqa: E501
 
-        Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.  # noqa: E501
+        Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

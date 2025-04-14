@@ -49,10 +49,8 @@ class AssociationSpec(object):
         self._association_type_id = None
         self.discriminator = None
 
-        if association_category is not None:
-            self.association_category = association_category
-        if association_type_id is not None:
-            self.association_type_id = association_type_id
+        self.association_category = association_category
+        self.association_type_id = association_type_id
 
     @property
     def association_category(self):
@@ -72,6 +70,8 @@ class AssociationSpec(object):
         :param association_category: The association_category of this AssociationSpec.  # noqa: E501
         :type association_category: str
         """
+        if self.local_vars_configuration.client_side_validation and association_category is None:  # noqa: E501
+            raise ValueError("Invalid value for `association_category`, must not be `None`")  # noqa: E501
         allowed_values = ["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and association_category not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `association_category` ({0}), must be one of {1}".format(association_category, allowed_values))  # noqa: E501
@@ -96,6 +96,8 @@ class AssociationSpec(object):
         :param association_type_id: The association_type_id of this AssociationSpec.  # noqa: E501
         :type association_type_id: int
         """
+        if self.local_vars_configuration.client_side_validation and association_type_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `association_type_id`, must not be `None`")  # noqa: E501
 
         self._association_type_id = association_type_id
 
