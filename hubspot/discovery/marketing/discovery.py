@@ -2,6 +2,11 @@ from ..discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
+    def emails(self):
+        from .emails.discovery import Discovery as EmailsDiscovery
+        return EmailsDiscovery(self.config)
+
+    @property
     def events(self):
         from .events.discovery import Discovery as EventsDiscovery
         return EventsDiscovery(self.config)
