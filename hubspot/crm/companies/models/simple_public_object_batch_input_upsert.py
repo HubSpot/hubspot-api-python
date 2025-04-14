@@ -62,6 +62,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id_property(self):
         """Gets the id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :return: The id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :rtype: str
@@ -72,6 +73,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id_property(self, id_property):
         """Sets the id_property of this SimplePublicObjectBatchInputUpsert.
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :param id_property: The id_property of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :type id_property: str
@@ -83,6 +85,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def object_write_trace_id(self):
         """Gets the object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
 
+        In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).  # noqa: E501
 
         :return: The object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :rtype: str
@@ -93,6 +96,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def object_write_trace_id(self, object_write_trace_id):
         """Sets the object_write_trace_id of this SimplePublicObjectBatchInputUpsert.
 
+        In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).  # noqa: E501
 
         :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :type object_write_trace_id: str
@@ -104,6 +108,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id(self):
         """Gets the id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
 
+        The ID of the company to update.  # noqa: E501
 
         :return: The id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :rtype: str
@@ -114,6 +119,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def id(self, id):
         """Sets the id of this SimplePublicObjectBatchInputUpsert.
 
+        The ID of the company to update.  # noqa: E501
 
         :param id: The id of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :type id: str
@@ -127,6 +133,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def properties(self):
         """Gets the properties of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
 
+        The company property values to set.  # noqa: E501
 
         :return: The properties of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :rtype: dict[str, str]
@@ -137,6 +144,7 @@ class SimplePublicObjectBatchInputUpsert(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObjectBatchInputUpsert.
 
+        The company property values to set.  # noqa: E501
 
         :param properties: The properties of this SimplePublicObjectBatchInputUpsert.  # noqa: E501
         :type properties: dict[str, str]

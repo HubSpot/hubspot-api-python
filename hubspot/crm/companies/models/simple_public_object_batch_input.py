@@ -62,6 +62,7 @@ class SimplePublicObjectBatchInput(object):
     def id_property(self):
         """Gets the id_property of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :return: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: str
@@ -72,6 +73,7 @@ class SimplePublicObjectBatchInput(object):
     def id_property(self, id_property):
         """Sets the id_property of this SimplePublicObjectBatchInput.
 
+        The name of a property whose values are unique for this object  # noqa: E501
 
         :param id_property: The id_property of this SimplePublicObjectBatchInput.  # noqa: E501
         :type id_property: str
@@ -83,6 +85,7 @@ class SimplePublicObjectBatchInput(object):
     def object_write_trace_id(self):
         """Gets the object_write_trace_id of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).  # noqa: E501
 
         :return: The object_write_trace_id of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: str
@@ -93,6 +96,7 @@ class SimplePublicObjectBatchInput(object):
     def object_write_trace_id(self, object_write_trace_id):
         """Sets the object_write_trace_id of this SimplePublicObjectBatchInput.
 
+        In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).  # noqa: E501
 
         :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectBatchInput.  # noqa: E501
         :type object_write_trace_id: str
@@ -104,6 +108,7 @@ class SimplePublicObjectBatchInput(object):
     def id(self):
         """Gets the id of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        The ID to be updated. This can be the object ID, or the unique property value of the `idProperty` property.  # noqa: E501
 
         :return: The id of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: str
@@ -114,6 +119,7 @@ class SimplePublicObjectBatchInput(object):
     def id(self, id):
         """Sets the id of this SimplePublicObjectBatchInput.
 
+        The ID to be updated. This can be the object ID, or the unique property value of the `idProperty` property.  # noqa: E501
 
         :param id: The id of this SimplePublicObjectBatchInput.  # noqa: E501
         :type id: str
@@ -127,6 +133,7 @@ class SimplePublicObjectBatchInput(object):
     def properties(self):
         """Gets the properties of this SimplePublicObjectBatchInput.  # noqa: E501
 
+        The company property values to set.  # noqa: E501
 
         :return: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
         :rtype: dict[str, str]
@@ -137,6 +144,7 @@ class SimplePublicObjectBatchInput(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObjectBatchInput.
 
+        The company property values to set.  # noqa: E501
 
         :param properties: The properties of this SimplePublicObjectBatchInput.  # noqa: E501
         :type properties: dict[str, str]
