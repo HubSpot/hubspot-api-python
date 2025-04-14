@@ -48,13 +48,13 @@ class PublicObjectId(object):
         self._id = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
+        self.id = id
 
     @property
     def id(self):
         """Gets the id of this PublicObjectId.  # noqa: E501
 
+        The ID of the target record to associate.  # noqa: E501
 
         :return: The id of this PublicObjectId.  # noqa: E501
         :rtype: str
@@ -65,10 +65,13 @@ class PublicObjectId(object):
     def id(self, id):
         """Sets the id of this PublicObjectId.
 
+        The ID of the target record to associate.  # noqa: E501
 
         :param id: The id of this PublicObjectId.  # noqa: E501
         :type id: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 

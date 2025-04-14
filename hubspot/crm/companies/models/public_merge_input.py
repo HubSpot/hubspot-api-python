@@ -56,6 +56,7 @@ class PublicMergeInput(object):
     def object_id_to_merge(self):
         """Gets the object_id_to_merge of this PublicMergeInput.  # noqa: E501
 
+        The ID of the company to merge into the primary.  # noqa: E501
 
         :return: The object_id_to_merge of this PublicMergeInput.  # noqa: E501
         :rtype: str
@@ -66,6 +67,7 @@ class PublicMergeInput(object):
     def object_id_to_merge(self, object_id_to_merge):
         """Sets the object_id_to_merge of this PublicMergeInput.
 
+        The ID of the company to merge into the primary.  # noqa: E501
 
         :param object_id_to_merge: The object_id_to_merge of this PublicMergeInput.  # noqa: E501
         :type object_id_to_merge: str
@@ -79,6 +81,7 @@ class PublicMergeInput(object):
     def primary_object_id(self):
         """Gets the primary_object_id of this PublicMergeInput.  # noqa: E501
 
+        The ID of the primary company, which the other will merge into.  # noqa: E501
 
         :return: The primary_object_id of this PublicMergeInput.  # noqa: E501
         :rtype: str
@@ -89,6 +92,7 @@ class PublicMergeInput(object):
     def primary_object_id(self, primary_object_id):
         """Sets the primary_object_id of this PublicMergeInput.
 
+        The ID of the primary company, which the other will merge into.  # noqa: E501
 
         :param primary_object_id: The primary_object_id of this PublicMergeInput.  # noqa: E501
         :type primary_object_id: str
