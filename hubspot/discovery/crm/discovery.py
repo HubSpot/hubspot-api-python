@@ -22,6 +22,11 @@ class Discovery(DiscoveryBase):
         return DealsDiscovery(self.config)
 
     @property
+    def exports(self):
+        from .exports.discovery import Discovery as ExportsDiscovery
+        return ExportsDiscovery(self.config)
+
+    @property
     def extensions(self):
         from .extensions.discovery import Discovery as ExtensionsDiscovery
         return ExtensionsDiscovery(self.config)
