@@ -7,6 +7,11 @@ class Discovery(DiscoveryBase):
         return AssociationsDiscovery(self.config)
 
     @property
+    def commerce(self):
+        from .commerce.discovery import Discovery as CommerceDiscovery
+        return CommerceDiscovery(self.config)
+
+    @property
     def contacts(self):
         from .contacts.discovery import Discovery as ContactsDiscovery
         return ContactsDiscovery(self.config)
