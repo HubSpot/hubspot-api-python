@@ -77,13 +77,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Exports` client.
 - `Deal Splits` client.
 
-## Updated
+## Other updates
 
-- README.
-
-## Fix
-
-- Urlencoding `query_string` for `api_request`.
+- Updated `README`.
+- Fixed urlencoding `query_string` for `api_request`.
 
 ## [11.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v11.0.0...v11.1.0) - 2024-12-23
 
