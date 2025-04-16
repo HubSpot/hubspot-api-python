@@ -5,7 +5,87 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v11.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...HEAD)
+
+## [12.0.0-beta.1](https://github.com/HubSpot/hubspot-api-python/compare/v11.1.0...v12.0.0-beta.1) - 2025-05-16
+
+## CRM Objects
+
+- Renamed `BatchInputSimplePublicObjectInputForCreate` to `BatchInputSimplePublicObjectBatchInputForCreate` for `crm.contacts`, `crm.companies`, `crm.deals`, `crm.objects`, `crm.objects.taxes`, `crm.objects.tasks`, `crm.objects.postal_mail`, `crm.objects.notes`, `crm.objects.meetings`, `crm.objects.leads`, `crm.objects.emails`, `crm.objects.communications`, `crm.objects.line_items`, `crm.objects.quotes`, `crm.objects.calls`.
+- Removed methods `archive()`, `create()` and `update()` from `crm.objects.feedback_submissions.basic_api`.
+- Removed methods `archive()`, `create()` and `update()` from `crm.objects.feedback_submissions.batch_api`.
+- Added parameters `uses_remote` and `uses_calling_window` to `crm.extensions.calling.models.settings_patch_request`, `crm.extensions.calling.models.settings_request` and `crm.extensions.calling.models.settings_response`.
+- Added parameter `object_write_trace_id` to models: `simple_public_object`, `simple_public_object_with_associations`, `simple_public_upsert_object` for `crm.contacts`, `crm.companies`, `crm.deals`, `crm.objects`, `crm.objects.taxes`, `crm.objects.tasks`, `crm.objects.postal_mail`, `crm.objects.notes`, `crm.objects.meetings`, `crm.objects.leads`, `crm.objects.emails`, `crm.objects.communications`, `crm.objects.line_items`, `crm.objects.quotes`, `crm.objects.calls`.
+- Removed parameter `object_write_trace_id` from models: `simple_public_object_input`, `simple_public_object_input_for_create` for `crm.contacts`, `crm.companies`, `crm.deals`, `crm.objects`, `crm.objects.taxes`, `crm.objects.tasks`, `crm.objects.postal_mail`, `crm.objects.notes`, `crm.objects.meetings`, `crm.objects.leads`, `crm.objects.emails`, `crm.objects.communications`, `crm.objects.line_items`, `crm.objects.quotes`, `crm.objects.calls`.
+
+## CRM Extensions, Imports and Owners
+
+- Added parameters `uses_remote` and `uses_calling_window` to `crm.extensions.calling.models.settings_patch_request`, `crm.extensions.calling.models.settings_request` and `crm.extensions.calling.models.settings_response`.
+- Added parameters `include_error_message` and `include_row_data` to `crm.imports.public_imports_api`.
+- Added parameter `contains_encrypted_properties` to `crm.imports.models.import_row_core`.
+- Added parameters `invalid_property_value`, `error_message` and `invalid_value_to_display` to `crm.imports.models.public_import_error`.
+- Added parameter `mapped_object_type_ids` to `crm.imports.models.public_import_response`.
+- Added parameter `user_id_including_inactive` and `type` to `crm.owners.models.public_owner`.
+
+## Marketing
+
+- Added parameter `object_id` to `marketing.events.models.marketing_event_default_response`, `marketing.events.models.marketing_event_default_response` and `marketing.events.models.marketing_event_public_read_response`.
+- Added methods `archive_by_object_id()`, `get_all()`, `get_by_object_id()` and `update_by_object_id()` to `marketing.events.basic_api`.
+- Renamed from `marketing.transactional.api.PublicSmtpTokensApi` to `marketing.transactional.api.PublicSMTPTokensApi`.
+- Renamed from `marketing.events.participant_state_api` to `marketing.events.retrieve_participant_state_api`.
+- Renamed from `CollectionResponseMarketingEventExternalUniqueIdentifierNoPaging` to `CollectionResponseSearchPublicResponseWrapperNoPaging`.
+- Moved and renamed methods from `basic_api.batch_archive()` and `basic_api.batch_upsert()` to `batch_api.archive()` and `batch_api.upsert()`.
+- Moved methods from `basic_api.compelte()` and `basic_api.cancel()` to `change_property_api.compelte()` and `change_property_api.cancel()`.
+- Moved method from `basic_api.do_search()` to `identifiers_api.do_search()`.
+
+## Webhooks
+
+- Added parameter `object_type_id` to `webhooks.models.subscription_create_request` and `webhooks.models.subscription_response`.
+- Removed parameter `period` from `webhooks.models.throttling_settings`.
+
+## Added new Client APIs
+
+- `crm.companies.api.merge_api` Api.
+- `crm.extensions.calling.channel_connection_settings_api` Api.
+- `marketing.events.add_event_attendees_api` Api.
+- `marketing.events.batch_api` Api.
+- `marketing.events.change_property_api` Api.
+- `marketing.events.identifiers_api` Api.
+- `cms.blogs.blog_posts.basic_api` Api.
+- `cms.blogs.blog_posts.batch_api` Api.
+- `cms.blogs.blog_posts.multi_language_api` Api.
+- `events.send.basic_api` Api.
+- `events.send.batch_api` Api.
+
+## Removed Client APIs
+
+- `cms.blogs.blog_posts.blog_posts_api` Api.
+- `marketing.events.attendance_subscriber_state_changes_api` Api.
+- `crm.objects.feedback_submissions.gdpr_api` Api.
+- `crm.objects.feedback_submissions.public_object_api` Api.
+- `crm.companies.api.merge_api` Api.
+- `crm.contacts.api.merge_api` Api.
+- `crm.deals.api.merge_api` Api.
+- `crm.contacts.api.gdpr_api` Api.
+- `events.send.custom_event_data_api` Api.
+- `events.send.default_api` Api.
+
+## Added new Clients
+
+- `Marketing Emails` client.
+- `Invoices` client.
+- `Exports` client.
+- `Deal Splits` client.
+
+## Added
+
+- Example how upload files.
+
+## Fix
+
+- Urlencoding `query_string` for `api_request`.
+- Broken Contacts example in `README`.
+- Oauth example.
 
 ## [11.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v11.0.0...v11.1.0) - 2024-12-23
 
