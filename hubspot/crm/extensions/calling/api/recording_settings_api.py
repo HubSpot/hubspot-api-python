@@ -34,9 +34,9 @@ class RecordingSettingsApi(object):
         self.api_client = api_client
 
     def get_url_format(self, app_id, **kwargs):  # noqa: E501
-        """Read calling app recording settings  # noqa: E501
+        """Retrieve recording settings  # noqa: E501
 
-        Retrieve the recording endpoint configured for a calling extension app.  # noqa: E501
+        Retrieve the URL that is registered for [call recording](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -64,9 +64,9 @@ class RecordingSettingsApi(object):
         return self.get_url_format_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_url_format_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Read calling app recording settings  # noqa: E501
+        """Retrieve recording settings  # noqa: E501
 
-        Retrieve the recording endpoint configured for a calling extension app.  # noqa: E501
+        Retrieve the URL that is registered for [call recording](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -283,9 +283,9 @@ class RecordingSettingsApi(object):
         )
 
     def register_url_format(self, app_id, recording_settings_request, **kwargs):  # noqa: E501
-        """Register calling app for recording  # noqa: E501
+        """Enable the app for call recording  # noqa: E501
 
-        Configure a calling extension app with an external URL that HubSpot will use to retrieve call recordings.  # noqa: E501
+        Register an external URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -315,9 +315,9 @@ class RecordingSettingsApi(object):
         return self.register_url_format_with_http_info(app_id, recording_settings_request, **kwargs)  # noqa: E501
 
     def register_url_format_with_http_info(self, app_id, recording_settings_request, **kwargs):  # noqa: E501
-        """Register calling app for recording  # noqa: E501
+        """Enable the app for call recording  # noqa: E501
 
-        Configure a calling extension app with an external URL that HubSpot will use to retrieve call recordings.  # noqa: E501
+        Register an external URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -420,9 +420,9 @@ class RecordingSettingsApi(object):
         )
 
     def update_url_format(self, app_id, recording_settings_patch_request, **kwargs):  # noqa: E501
-        """Update calling app's recording settings  # noqa: E501
+        """Update recording settings  # noqa: E501
 
-        Update the URL that HubSpot will use to retrieve call recordings for a calling extension app.  # noqa: E501
+        Update the URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -452,9 +452,9 @@ class RecordingSettingsApi(object):
         return self.update_url_format_with_http_info(app_id, recording_settings_patch_request, **kwargs)  # noqa: E501
 
     def update_url_format_with_http_info(self, app_id, recording_settings_patch_request, **kwargs):  # noqa: E501
-        """Update calling app's recording settings  # noqa: E501
+        """Update recording settings  # noqa: E501
 
-        Update the URL that HubSpot will use to retrieve call recordings for a calling extension app.  # noqa: E501
+        Update the URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

@@ -42,6 +42,8 @@ class PublicOwner(object):
         "archived": "bool",
         "teams": "list[PublicTeam]",
         "id": "str",
+        "user_id_including_inactive": "int",
+        "type": "str",
         "user_id": "int",
         "email": "str",
         "updated_at": "datetime",
@@ -54,12 +56,28 @@ class PublicOwner(object):
         "archived": "archived",
         "teams": "teams",
         "id": "id",
+        "user_id_including_inactive": "userIdIncludingInactive",
+        "type": "type",
         "user_id": "userId",
         "email": "email",
         "updated_at": "updatedAt",
     }
 
-    def __init__(self, first_name=None, last_name=None, created_at=None, archived=None, teams=None, id=None, user_id=None, email=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self,
+        first_name=None,
+        last_name=None,
+        created_at=None,
+        archived=None,
+        teams=None,
+        id=None,
+        user_id_including_inactive=None,
+        type=None,
+        user_id=None,
+        email=None,
+        updated_at=None,
+        local_vars_configuration=None,
+    ):  # noqa: E501
         """PublicOwner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -71,6 +89,8 @@ class PublicOwner(object):
         self._archived = None
         self._teams = None
         self._id = None
+        self._user_id_including_inactive = None
+        self._type = None
         self._user_id = None
         self._email = None
         self._updated_at = None
@@ -85,6 +105,9 @@ class PublicOwner(object):
         if teams is not None:
             self.teams = teams
         self.id = id
+        if user_id_including_inactive is not None:
+            self.user_id_including_inactive = user_id_including_inactive
+        self.type = type
         if user_id is not None:
             self.user_id = user_id
         if email is not None:
@@ -222,6 +245,53 @@ class PublicOwner(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def user_id_including_inactive(self):
+        """Gets the user_id_including_inactive of this PublicOwner.  # noqa: E501
+
+
+        :return: The user_id_including_inactive of this PublicOwner.  # noqa: E501
+        :rtype: int
+        """
+        return self._user_id_including_inactive
+
+    @user_id_including_inactive.setter
+    def user_id_including_inactive(self, user_id_including_inactive):
+        """Sets the user_id_including_inactive of this PublicOwner.
+
+
+        :param user_id_including_inactive: The user_id_including_inactive of this PublicOwner.  # noqa: E501
+        :type user_id_including_inactive: int
+        """
+
+        self._user_id_including_inactive = user_id_including_inactive
+
+    @property
+    def type(self):
+        """Gets the type of this PublicOwner.  # noqa: E501
+
+
+        :return: The type of this PublicOwner.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this PublicOwner.
+
+
+        :param type: The type of this PublicOwner.  # noqa: E501
+        :type type: str
+        """
+        if self.local_vars_configuration.client_side_validation and type is None:  # noqa: E501
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
+        allowed_values = ["PERSON", "QUEUE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and type not in allowed_values:  # noqa: E501
+            raise ValueError("Invalid value for `type` ({0}), must be one of {1}".format(type, allowed_values))  # noqa: E501
+
+        self._type = type
 
     @property
     def user_id(self):

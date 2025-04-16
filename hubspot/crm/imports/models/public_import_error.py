@@ -40,7 +40,10 @@ class PublicImportError(object):
         "extra_context": "str",
         "object_type_id": "str",
         "error_type": "str",
+        "invalid_property_value": "PropertyValue",
+        "error_message": "str",
         "known_column_number": "int",
+        "invalid_value_to_display": "str",
         "id": "str",
         "source_data": "ImportRowCore",
         "object_type": "str",
@@ -52,7 +55,10 @@ class PublicImportError(object):
         "extra_context": "extraContext",
         "object_type_id": "objectTypeId",
         "error_type": "errorType",
+        "invalid_property_value": "invalidPropertyValue",
+        "error_message": "errorMessage",
         "known_column_number": "knownColumnNumber",
+        "invalid_value_to_display": "invalidValueToDisplay",
         "id": "id",
         "source_data": "sourceData",
         "object_type": "objectType",
@@ -65,7 +71,10 @@ class PublicImportError(object):
         extra_context=None,
         object_type_id=None,
         error_type=None,
+        invalid_property_value=None,
+        error_message=None,
         known_column_number=None,
+        invalid_value_to_display=None,
         id=None,
         source_data=None,
         object_type=None,
@@ -81,7 +90,10 @@ class PublicImportError(object):
         self._extra_context = None
         self._object_type_id = None
         self._error_type = None
+        self._invalid_property_value = None
+        self._error_message = None
         self._known_column_number = None
+        self._invalid_value_to_display = None
         self._id = None
         self._source_data = None
         self._object_type = None
@@ -94,8 +106,14 @@ class PublicImportError(object):
         if object_type_id is not None:
             self.object_type_id = object_type_id
         self.error_type = error_type
+        if invalid_property_value is not None:
+            self.invalid_property_value = invalid_property_value
+        if error_message is not None:
+            self.error_message = error_message
         if known_column_number is not None:
             self.known_column_number = known_column_number
+        if invalid_value_to_display is not None:
+            self.invalid_value_to_display = invalid_value_to_display
         self.id = id
         self.source_data = source_data
         if object_type is not None:
@@ -209,6 +227,7 @@ class PublicImportError(object):
             "AMBIGUOUS_ENUMERATION_OPTION",
             "FAILED_VALIDATION",
             "FAILED_TO_CREATE_ASSOCIATION",
+            "ASSOCIATION_LIMIT_EXCEEDED",
             "FILE_NOT_FOUND",
             "INVALID_COLUMN_CONFIGURATION",
             "INVALID_FILE_TYPE",
@@ -222,6 +241,7 @@ class PublicImportError(object):
             "PORTAL_WIDE_CUSTOM_OBJECT_LIMIT_EXCEEDED",
             "INVALID_ALTERNATE_ID",
             "INVALID_EMAIL",
+            "SECONDARY_EMAIL_WRITE_FAILURE",
             "INVALID_DOMAIN",
             "DUPLICATE_ROW_CONTENT",
             "INVALID_NUMBER_SIZE",
@@ -232,7 +252,6 @@ class PublicImportError(object):
             "DUPLICATE_ALTERNATE_ID",
             "DUPLICATE_OBJECT_ID",
             "DUPLICATE_UNIQUE_PROPERTY_VALUE",
-            "BLANK_VALUE_PROVIDED",
             "UNKNOWN_ASSOCIATION_RECORD_ID",
             "INVALID_RECORD_ID",
             "DUPLICATE_RECORD_ID",
@@ -241,15 +260,63 @@ class PublicImportError(object):
             "UPDATE_ONLY_IMPORT",
             "COLUMN_TOO_LARGE",
             "ROW_DATA_TOO_LARGE",
+            "MISSING_EVENT_TIMESTAMP",
             "INVALID_EVENT_TIMESTAMP",
             "INVALID_EVENT",
             "DUPLICATE_EVENT",
             "MISSING_EVENT_DEFINITION",
+            "INVALID_ASSOCIATION_KEY",
+            "ASSOCIATION_RECORD_NOT_FOUND",
+            "MISSING_OBJECT_DEFINITION",
+            "ASSOCIATION_LABEL_NOT_FOUND",
+            "MANY_ERRORS_IN_ROW",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and error_type not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `error_type` ({0}), must be one of {1}".format(error_type, allowed_values))  # noqa: E501
 
         self._error_type = error_type
+
+    @property
+    def invalid_property_value(self):
+        """Gets the invalid_property_value of this PublicImportError.  # noqa: E501
+
+
+        :return: The invalid_property_value of this PublicImportError.  # noqa: E501
+        :rtype: PropertyValue
+        """
+        return self._invalid_property_value
+
+    @invalid_property_value.setter
+    def invalid_property_value(self, invalid_property_value):
+        """Sets the invalid_property_value of this PublicImportError.
+
+
+        :param invalid_property_value: The invalid_property_value of this PublicImportError.  # noqa: E501
+        :type invalid_property_value: PropertyValue
+        """
+
+        self._invalid_property_value = invalid_property_value
+
+    @property
+    def error_message(self):
+        """Gets the error_message of this PublicImportError.  # noqa: E501
+
+
+        :return: The error_message of this PublicImportError.  # noqa: E501
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this PublicImportError.
+
+
+        :param error_message: The error_message of this PublicImportError.  # noqa: E501
+        :type error_message: str
+        """
+
+        self._error_message = error_message
 
     @property
     def known_column_number(self):
@@ -271,6 +338,27 @@ class PublicImportError(object):
         """
 
         self._known_column_number = known_column_number
+
+    @property
+    def invalid_value_to_display(self):
+        """Gets the invalid_value_to_display of this PublicImportError.  # noqa: E501
+
+
+        :return: The invalid_value_to_display of this PublicImportError.  # noqa: E501
+        :rtype: str
+        """
+        return self._invalid_value_to_display
+
+    @invalid_value_to_display.setter
+    def invalid_value_to_display(self, invalid_value_to_display):
+        """Sets the invalid_value_to_display of this PublicImportError.
+
+
+        :param invalid_value_to_display: The invalid_value_to_display of this PublicImportError.  # noqa: E501
+        :type invalid_value_to_display: str
+        """
+
+        self._invalid_value_to_display = invalid_value_to_display
 
     @property
     def id(self):
@@ -482,6 +570,21 @@ class PublicImportError(object):
             "ALL_PAGES",
             "AI_FORECAST",
             "CRM_PIPELINES_DUMMY_TYPE",
+            "KNOWLEDGE_ARTICLE",
+            "PROPERTY_INFO",
+            "DATA_PRIVACY_CONSENT",
+            "GOAL_TEMPLATE",
+            "SCORE_CONFIGURATION",
+            "AUDIENCE",
+            "PARTNER_CLIENT_REVENUE",
+            "AUTOMATION_JOURNEY",
+            "COMBO_EVENT_CONFIGURATION",
+            "CRM_OBJECTS_DUMMY_TYPE",
+            "CASE_STUDY",
+            "SERVICE",
+            "PODCAST_EPISODE",
+            "PARTNER_SERVICE",
+            "PROSPECTING_AGENT_CONTACT_ASSIGNMENT",
             "UNKNOWN",
         ]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and object_type not in allowed_values:  # noqa: E501

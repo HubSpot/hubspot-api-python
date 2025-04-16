@@ -4,5 +4,11 @@ from ....discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
-    def blog_post_api(self) -> api_client.BlogPostsApi:
-        return self._configure_api_client(api_client, "BlogPostsApi")
+    def basic_api(self) -> api_client.BasicApi:
+        return self._configure_api_client(api_client, "BasicApi")
+    @property
+    def batch_api(self) -> api_client.BatchApi:
+        return self._configure_api_client(api_client, "BatchApi")
+    @property
+    def multi_language_api(self) -> api_client.MultiLanguageApi:
+        return self._configure_api_client(api_client, "MultiLanguageApi")

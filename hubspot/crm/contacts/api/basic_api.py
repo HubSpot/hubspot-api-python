@@ -34,16 +34,16 @@ class BasicApi(object):
         self.api_client = api_client
 
     def archive(self, contact_id, **kwargs):  # noqa: E501
-        """Archive  # noqa: E501
+        """Archive a contact  # noqa: E501
 
-        Move an Object identified by `{contactId}` to the recycling bin.  # noqa: E501
+        Delete a contact by ID. Deleted contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(contact_id, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to delete. (required)
         :type contact_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -64,16 +64,16 @@ class BasicApi(object):
         return self.archive_with_http_info(contact_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, contact_id, **kwargs):  # noqa: E501
-        """Archive  # noqa: E501
+        """Archive a contact  # noqa: E501
 
-        Move an Object identified by `{contactId}` to the recycling bin.  # noqa: E501
+        Delete a contact by ID. Deleted contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(contact_id, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to delete. (required)
         :type contact_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -155,9 +155,9 @@ class BasicApi(object):
         )
 
     def create(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
-        """Create  # noqa: E501
+        """Create a contact  # noqa: E501
 
-        Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contacts is provided.  # noqa: E501
+        Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -185,9 +185,9 @@ class BasicApi(object):
         return self.create_with_http_info(simple_public_object_input_for_create, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, simple_public_object_input_for_create, **kwargs):  # noqa: E501
-        """Create  # noqa: E501
+        """Create a contact  # noqa: E501
 
-        Create a contact with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contacts is provided.  # noqa: E501
+        Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -283,16 +283,16 @@ class BasicApi(object):
         )
 
     def get_by_id(self, contact_id, **kwargs):  # noqa: E501
-        """Read  # noqa: E501
+        """Retrieve a contact  # noqa: E501
 
-        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID.  Control what is returned via the `properties` query param.  # noqa: E501
+        Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id(contact_id, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to retrieve. (required)
         :type contact_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
@@ -323,16 +323,16 @@ class BasicApi(object):
         return self.get_by_id_with_http_info(contact_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, contact_id, **kwargs):  # noqa: E501
-        """Read  # noqa: E501
+        """Retrieve a contact  # noqa: E501
 
-        Read an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID.  Control what is returned via the `properties` query param.  # noqa: E501
+        Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id_with_http_info(contact_id, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to retrieve. (required)
         :type contact_id: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
@@ -439,9 +439,9 @@ class BasicApi(object):
         )
 
     def get_page(self, **kwargs):  # noqa: E501
-        """List  # noqa: E501
+        """Retrieve contacts  # noqa: E501
 
-        Read a page of contacts. Control what is returned via the `properties` query param.  # noqa: E501
+        Retrieve all contacts, using query parameters to specify the information that gets returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -479,9 +479,9 @@ class BasicApi(object):
         return self.get_page_with_http_info(**kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, **kwargs):  # noqa: E501
-        """List  # noqa: E501
+        """Retrieve contacts  # noqa: E501
 
-        Read a page of contacts. Control what is returned via the `properties` query param.  # noqa: E501
+        Retrieve all contacts, using query parameters to specify the information that gets returned.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -591,17 +591,271 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
-        """Update  # noqa: E501
+    def merge(self, public_merge_input, **kwargs):  # noqa: E501
+        """Merge two contacts  # noqa: E501
 
-        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID. Provided property values will be overwritten. Read-only and non-existent properties result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.merge(public_merge_input, async_req=True)
+        >>> result = thread.get()
+
+        :param public_merge_input: (required)
+        :type public_merge_input: PublicMergeInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SimplePublicObject
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.merge_with_http_info(public_merge_input, **kwargs)  # noqa: E501
+
+    def merge_with_http_info(self, public_merge_input, **kwargs):  # noqa: E501
+        """Merge two contacts  # noqa: E501
+
+        Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.merge_with_http_info(public_merge_input, async_req=True)
+        >>> result = thread.get()
+
+        :param public_merge_input: (required)
+        :type public_merge_input: PublicMergeInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SimplePublicObject, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = ["public_merge_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method merge" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'public_merge_input' is set
+        if self.api_client.client_side_validation and local_var_params.get("public_merge_input") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_merge_input` when calling `merge`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "public_merge_input" in local_var_params:
+            body_params = local_var_params["public_merge_input"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "SimplePublicObject",
+        }
+
+        return self.api_client.call_api(
+            "/crm/v3/objects/contacts/merge",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def purge(self, public_gdpr_delete_input, **kwargs):  # noqa: E501
+        """Permanently delete a contact (GDPR-compliant)  # noqa: E501
+
+        Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.purge(public_gdpr_delete_input, async_req=True)
+        >>> result = thread.get()
+
+        :param public_gdpr_delete_input: (required)
+        :type public_gdpr_delete_input: PublicGdprDeleteInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.purge_with_http_info(public_gdpr_delete_input, **kwargs)  # noqa: E501
+
+    def purge_with_http_info(self, public_gdpr_delete_input, **kwargs):  # noqa: E501
+        """Permanently delete a contact (GDPR-compliant)  # noqa: E501
+
+        Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.purge_with_http_info(public_gdpr_delete_input, async_req=True)
+        >>> result = thread.get()
+
+        :param public_gdpr_delete_input: (required)
+        :type public_gdpr_delete_input: PublicGdprDeleteInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = ["public_gdpr_delete_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method purge" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'public_gdpr_delete_input' is set
+        if self.api_client.client_side_validation and local_var_params.get("public_gdpr_delete_input") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `public_gdpr_delete_input` when calling `purge`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "public_gdpr_delete_input" in local_var_params:
+            body_params = local_var_params["public_gdpr_delete_input"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "POST", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            "/crm/v3/objects/contacts/gdpr-delete",
+            "POST",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def update(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
+        """Update a contact  # noqa: E501
+
+        Update a contact by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update(contact_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to update. (required)
         :type contact_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
@@ -626,16 +880,16 @@ class BasicApi(object):
         return self.update_with_http_info(contact_id, simple_public_object_input, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, contact_id, simple_public_object_input, **kwargs):  # noqa: E501
-        """Update  # noqa: E501
+        """Update a contact  # noqa: E501
 
-        Perform a partial update of an Object identified by `{contactId}`. `{contactId}` refers to the internal object ID. Provided property values will be overwritten. Read-only and non-existent properties result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
+        Update a contact by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_with_http_info(contact_id, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param contact_id: (required)
+        :param contact_id: The ID of the contact to update. (required)
         :type contact_id: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput

@@ -35,47 +35,22 @@ class EmailFieldValidation(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"blocked_email_domains": "list[str]", "use_default_block_list": "bool"}
+    openapi_types = {"use_default_block_list": "bool", "blocked_email_domains": "list[str]"}
 
-    attribute_map = {"blocked_email_domains": "blockedEmailDomains", "use_default_block_list": "useDefaultBlockList"}
+    attribute_map = {"use_default_block_list": "useDefaultBlockList", "blocked_email_domains": "blockedEmailDomains"}
 
-    def __init__(self, blocked_email_domains=None, use_default_block_list=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, use_default_block_list=None, blocked_email_domains=None, local_vars_configuration=None):  # noqa: E501
         """EmailFieldValidation - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._blocked_email_domains = None
         self._use_default_block_list = None
+        self._blocked_email_domains = None
         self.discriminator = None
 
-        self.blocked_email_domains = blocked_email_domains
         self.use_default_block_list = use_default_block_list
-
-    @property
-    def blocked_email_domains(self):
-        """Gets the blocked_email_domains of this EmailFieldValidation.  # noqa: E501
-
-        A list of email domains to block.  # noqa: E501
-
-        :return: The blocked_email_domains of this EmailFieldValidation.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._blocked_email_domains
-
-    @blocked_email_domains.setter
-    def blocked_email_domains(self, blocked_email_domains):
-        """Sets the blocked_email_domains of this EmailFieldValidation.
-
-        A list of email domains to block.  # noqa: E501
-
-        :param blocked_email_domains: The blocked_email_domains of this EmailFieldValidation.  # noqa: E501
-        :type blocked_email_domains: list[str]
-        """
-        if self.local_vars_configuration.client_side_validation and blocked_email_domains is None:  # noqa: E501
-            raise ValueError("Invalid value for `blocked_email_domains`, must not be `None`")  # noqa: E501
-
-        self._blocked_email_domains = blocked_email_domains
+        self.blocked_email_domains = blocked_email_domains
 
     @property
     def use_default_block_list(self):
@@ -101,6 +76,31 @@ class EmailFieldValidation(object):
             raise ValueError("Invalid value for `use_default_block_list`, must not be `None`")  # noqa: E501
 
         self._use_default_block_list = use_default_block_list
+
+    @property
+    def blocked_email_domains(self):
+        """Gets the blocked_email_domains of this EmailFieldValidation.  # noqa: E501
+
+        A list of email domains to block.  # noqa: E501
+
+        :return: The blocked_email_domains of this EmailFieldValidation.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._blocked_email_domains
+
+    @blocked_email_domains.setter
+    def blocked_email_domains(self, blocked_email_domains):
+        """Sets the blocked_email_domains of this EmailFieldValidation.
+
+        A list of email domains to block.  # noqa: E501
+
+        :param blocked_email_domains: The blocked_email_domains of this EmailFieldValidation.  # noqa: E501
+        :type blocked_email_domains: list[str]
+        """
+        if self.local_vars_configuration.client_side_validation and blocked_email_domains is None:  # noqa: E501
+            raise ValueError("Invalid value for `blocked_email_domains`, must not be `None`")  # noqa: E501
+
+        self._blocked_email_domains = blocked_email_domains
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

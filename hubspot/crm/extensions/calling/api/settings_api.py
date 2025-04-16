@@ -36,7 +36,7 @@ class SettingsApi(object):
     def archive(self, app_id, **kwargs):  # noqa: E501
         """Delete calling settings  # noqa: E501
 
-        Deletes this calling extension. This will remove your service as an option for all connected accounts.  # noqa: E501
+        Delete a calling extension. This will remove your service as an option for all connected accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -66,7 +66,7 @@ class SettingsApi(object):
     def archive_with_http_info(self, app_id, **kwargs):  # noqa: E501
         """Delete calling settings  # noqa: E501
 
-        Deletes this calling extension. This will remove your service as an option for all connected accounts.  # noqa: E501
+        Delete a calling extension. This will remove your service as an option for all connected accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -157,7 +157,7 @@ class SettingsApi(object):
     def create(self, app_id, settings_request, **kwargs):  # noqa: E501
         """Configure a calling extension  # noqa: E501
 
-        Used to set the menu label, target iframe URL, and dimensions for your calling extension.  # noqa: E501
+        Set the menu label, target iframe URL, and dimensions for your calling extension.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -189,7 +189,7 @@ class SettingsApi(object):
     def create_with_http_info(self, app_id, settings_request, **kwargs):  # noqa: E501
         """Configure a calling extension  # noqa: E501
 
-        Used to set the menu label, target iframe URL, and dimensions for your calling extension.  # noqa: E501
+        Set the menu label, target iframe URL, and dimensions for your calling extension.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -292,9 +292,9 @@ class SettingsApi(object):
         )
 
     def get_by_id(self, app_id, **kwargs):  # noqa: E501
-        """Get calling settings  # noqa: E501
+        """Retrieve settings  # noqa: E501
 
-        Returns the calling extension settings configured for your app.  # noqa: E501
+        Retrieve the settings configured for the app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -322,9 +322,9 @@ class SettingsApi(object):
         return self.get_by_id_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Get calling settings  # noqa: E501
+        """Retrieve settings  # noqa: E501
 
-        Returns the calling extension settings configured for your app.  # noqa: E501
+        Retrieve the settings configured for the app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -417,7 +417,7 @@ class SettingsApi(object):
     def update(self, app_id, settings_patch_request, **kwargs):  # noqa: E501
         """Update settings  # noqa: E501
 
-        Updates existing calling extension settings.  # noqa: E501
+        Update existing calling extension settings.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -449,7 +449,7 @@ class SettingsApi(object):
     def update_with_http_info(self, app_id, settings_patch_request, **kwargs):  # noqa: E501
         """Update settings  # noqa: E501
 
-        Updates existing calling extension settings.  # noqa: E501
+        Update existing calling extension settings.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

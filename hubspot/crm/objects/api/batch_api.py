@@ -166,19 +166,19 @@ class BatchApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def create(self, object_type, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
+    def create(self, object_type, batch_input_simple_public_object_batch_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of objects  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create(object_type, batch_input_simple_public_object_input_for_create, async_req=True)
+        >>> thread = api.create(object_type, batch_input_simple_public_object_batch_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param object_type: (required)
         :type object_type: str
-        :param batch_input_simple_public_object_input_for_create: (required)
-        :type batch_input_simple_public_object_input_for_create: BatchInputSimplePublicObjectInputForCreate
+        :param batch_input_simple_public_object_batch_input_for_create: (required)
+        :type batch_input_simple_public_object_batch_input_for_create: BatchInputSimplePublicObjectBatchInputForCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -195,21 +195,21 @@ class BatchApi(object):
         :rtype: BatchResponseSimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
-        return self.create_with_http_info(object_type, batch_input_simple_public_object_input_for_create, **kwargs)  # noqa: E501
+        return self.create_with_http_info(object_type, batch_input_simple_public_object_batch_input_for_create, **kwargs)  # noqa: E501
 
-    def create_with_http_info(self, object_type, batch_input_simple_public_object_input_for_create, **kwargs):  # noqa: E501
+    def create_with_http_info(self, object_type, batch_input_simple_public_object_batch_input_for_create, **kwargs):  # noqa: E501
         """Create a batch of objects  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_with_http_info(object_type, batch_input_simple_public_object_input_for_create, async_req=True)
+        >>> thread = api.create_with_http_info(object_type, batch_input_simple_public_object_batch_input_for_create, async_req=True)
         >>> result = thread.get()
 
         :param object_type: (required)
         :type object_type: str
-        :param batch_input_simple_public_object_input_for_create: (required)
-        :type batch_input_simple_public_object_input_for_create: BatchInputSimplePublicObjectInputForCreate
+        :param batch_input_simple_public_object_batch_input_for_create: (required)
+        :type batch_input_simple_public_object_batch_input_for_create: BatchInputSimplePublicObjectBatchInputForCreate
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -236,7 +236,7 @@ class BatchApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "batch_input_simple_public_object_input_for_create"]
+        all_params = ["object_type", "batch_input_simple_public_object_batch_input_for_create"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -247,9 +247,9 @@ class BatchApi(object):
         # verify the required parameter 'object_type' is set
         if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `create`")  # noqa: E501
-        # verify the required parameter 'batch_input_simple_public_object_input_for_create' is set
-        if self.api_client.client_side_validation and local_var_params.get("batch_input_simple_public_object_input_for_create") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_input_for_create` when calling `create`")  # noqa: E501
+        # verify the required parameter 'batch_input_simple_public_object_batch_input_for_create' is set
+        if self.api_client.client_side_validation and local_var_params.get("batch_input_simple_public_object_batch_input_for_create") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `batch_input_simple_public_object_batch_input_for_create` when calling `create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -265,8 +265,8 @@ class BatchApi(object):
         local_var_files = {}
 
         body_params = None
-        if "batch_input_simple_public_object_input_for_create" in local_var_params:
-            body_params = local_var_params["batch_input_simple_public_object_input_for_create"]
+        if "batch_input_simple_public_object_batch_input_for_create" in local_var_params:
+            body_params = local_var_params["batch_input_simple_public_object_batch_input_for_create"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
@@ -305,6 +305,7 @@ class BatchApi(object):
     def read(self, object_type, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of objects by internal ID, or unique property values  # noqa: E501
 
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -338,6 +339,7 @@ class BatchApi(object):
     def read_with_http_info(self, object_type, batch_read_input_simple_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of objects by internal ID, or unique property values  # noqa: E501
 
+        Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

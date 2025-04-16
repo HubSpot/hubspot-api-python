@@ -56,6 +56,7 @@ class PhoneFieldValidation(object):
     def min_allowed_digits(self):
         """Gets the min_allowed_digits of this PhoneFieldValidation.  # noqa: E501
 
+          # noqa: E501
 
         :return: The min_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :rtype: int
@@ -66,6 +67,7 @@ class PhoneFieldValidation(object):
     def min_allowed_digits(self, min_allowed_digits):
         """Sets the min_allowed_digits of this PhoneFieldValidation.
 
+          # noqa: E501
 
         :param min_allowed_digits: The min_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :type min_allowed_digits: int
@@ -79,6 +81,7 @@ class PhoneFieldValidation(object):
     def max_allowed_digits(self):
         """Gets the max_allowed_digits of this PhoneFieldValidation.  # noqa: E501
 
+          # noqa: E501
 
         :return: The max_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :rtype: int
@@ -89,6 +92,7 @@ class PhoneFieldValidation(object):
     def max_allowed_digits(self, max_allowed_digits):
         """Sets the max_allowed_digits of this PhoneFieldValidation.
 
+          # noqa: E501
 
         :param max_allowed_digits: The max_allowed_digits of this PhoneFieldValidation.  # noqa: E501
         :type max_allowed_digits: int

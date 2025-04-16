@@ -14,6 +14,9 @@
 from __future__ import absolute_import
 
 # import models into model package
+from hubspot.crm.extensions.calling.models.channel_connection_settings_patch_request import ChannelConnectionSettingsPatchRequest
+from hubspot.crm.extensions.calling.models.channel_connection_settings_request import ChannelConnectionSettingsRequest
+from hubspot.crm.extensions.calling.models.channel_connection_settings_response import ChannelConnectionSettingsResponse
 from hubspot.crm.extensions.calling.models.error import Error
 from hubspot.crm.extensions.calling.models.error_detail import ErrorDetail
 from hubspot.crm.extensions.calling.models.mark_recording_as_ready_request import MarkRecordingAsReadyRequest

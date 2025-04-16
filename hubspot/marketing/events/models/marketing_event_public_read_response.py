@@ -53,6 +53,7 @@ class MarketingEventPublicReadResponse(object):
         "event_description": "str",
         "event_name": "str",
         "id": "str",
+        "object_id": "str",
         "updated_at": "datetime",
     }
 
@@ -74,6 +75,7 @@ class MarketingEventPublicReadResponse(object):
         "event_description": "eventDescription",
         "event_name": "eventName",
         "id": "id",
+        "object_id": "objectId",
         "updated_at": "updatedAt",
     }
 
@@ -96,6 +98,7 @@ class MarketingEventPublicReadResponse(object):
         event_description=None,
         event_name=None,
         id=None,
+        object_id=None,
         updated_at=None,
         local_vars_configuration=None,
     ):  # noqa: E501
@@ -121,6 +124,7 @@ class MarketingEventPublicReadResponse(object):
         self._event_description = None
         self._event_name = None
         self._id = None
+        self._object_id = None
         self._updated_at = None
         self.discriminator = None
 
@@ -149,6 +153,8 @@ class MarketingEventPublicReadResponse(object):
             self.event_description = event_description
         self.event_name = event_name
         self.id = id
+        if object_id is not None:
+            self.object_id = object_id
         self.updated_at = updated_at
 
     @property
@@ -557,6 +563,27 @@ class MarketingEventPublicReadResponse(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def object_id(self):
+        """Gets the object_id of this MarketingEventPublicReadResponse.  # noqa: E501
+
+
+        :return: The object_id of this MarketingEventPublicReadResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_id
+
+    @object_id.setter
+    def object_id(self, object_id):
+        """Sets the object_id of this MarketingEventPublicReadResponse.
+
+
+        :param object_id: The object_id of this MarketingEventPublicReadResponse.  # noqa: E501
+        :type object_id: str
+        """
+
+        self._object_id = object_id
 
     @property
     def updated_at(self):

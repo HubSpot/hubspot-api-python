@@ -42,6 +42,7 @@ from hubspot.crm.imports.models.import_template import ImportTemplate
 from hubspot.crm.imports.models.next_page import NextPage
 from hubspot.crm.imports.models.paging import Paging
 from hubspot.crm.imports.models.previous_page import PreviousPage
+from hubspot.crm.imports.models.property_value import PropertyValue
 from hubspot.crm.imports.models.public_import_error import PublicImportError
 from hubspot.crm.imports.models.public_import_metadata import PublicImportMetadata
 from hubspot.crm.imports.models.public_import_response import PublicImportResponse

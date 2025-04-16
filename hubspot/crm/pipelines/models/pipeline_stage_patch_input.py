@@ -53,7 +53,8 @@ class PipelineStagePatchInput(object):
 
         if archived is not None:
             self.archived = archived
-        self.metadata = metadata
+        if metadata is not None:
+            self.metadata = metadata
         if display_order is not None:
             self.display_order = display_order
         if label is not None:
@@ -102,8 +103,6 @@ class PipelineStagePatchInput(object):
         :param metadata: The metadata of this PipelineStagePatchInput.  # noqa: E501
         :type metadata: dict[str, str]
         """
-        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
-            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 

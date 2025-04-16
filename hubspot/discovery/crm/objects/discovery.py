@@ -26,6 +26,11 @@ class Discovery(DiscoveryBase):
         return CommunicationsDiscovery(self.config)
 
     @property
+    def deal_splits(self):
+        from .deal_splits.discovery import Discovery as DealSplitsDiscovery
+        return DealSplitsDiscovery(self.config)
+
+    @property
     def emails(self):
         from .emails.discovery import Discovery as EmailsDiscovery
         return EmailsDiscovery(self.config)

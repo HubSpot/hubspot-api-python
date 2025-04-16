@@ -82,7 +82,8 @@ class PipelineStage(object):
         if archived_at is not None:
             self.archived_at = archived_at
         self.archived = archived
-        self.metadata = metadata
+        if metadata is not None:
+            self.metadata = metadata
         self.display_order = display_order
         if write_permissions is not None:
             self.write_permissions = write_permissions
@@ -183,8 +184,6 @@ class PipelineStage(object):
         :param metadata: The metadata of this PipelineStage.  # noqa: E501
         :type metadata: dict[str, str]
         """
-        if self.local_vars_configuration.client_side_validation and metadata is None:  # noqa: E501
-            raise ValueError("Invalid value for `metadata`, must not be `None`")  # noqa: E501
 
         self._metadata = metadata
 
