@@ -77,15 +77,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Exports` client.
 - `Deal Splits` client.
 
-## Added
+## Updated
 
-- Example how upload files.
+- README.
 
 ## Fix
 
 - Urlencoding `query_string` for `api_request`.
-- Broken Contacts example in `README`.
-- Oauth example.
 
 ## [11.1.0](https://github.com/HubSpot/hubspot-api-python/compare/v11.0.0...v11.1.0) - 2024-12-23
 
