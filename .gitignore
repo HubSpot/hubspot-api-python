@@ -5,3 +5,7 @@ __pycache__
 build
 dist
 venv
+ssl
+.env
+test.py
+.DS_Store
