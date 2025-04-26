@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -39,6 +39,8 @@ class File(object):
         "extension": "str",
         "access": "str",
         "parent_folder_id": "str",
+        "source_group": "str",
+        "file_md5": "str",
         "encoding": "str",
         "type": "str",
         "is_usable_in_content": "bool",
@@ -46,8 +48,8 @@ class File(object):
         "expires_at": "int",
         "created_at": "datetime",
         "archived_at": "datetime",
-        "archived": "bool",
         "path": "str",
+        "archived": "bool",
         "size": "int",
         "name": "str",
         "width": "int",
@@ -61,6 +63,8 @@ class File(object):
         "extension": "extension",
         "access": "access",
         "parent_folder_id": "parentFolderId",
+        "source_group": "sourceGroup",
+        "file_md5": "fileMd5",
         "encoding": "encoding",
         "type": "type",
         "is_usable_in_content": "isUsableInContent",
@@ -68,8 +72,8 @@ class File(object):
         "expires_at": "expiresAt",
         "created_at": "createdAt",
         "archived_at": "archivedAt",
-        "archived": "archived",
         "path": "path",
+        "archived": "archived",
         "size": "size",
         "name": "name",
         "width": "width",
@@ -84,6 +88,8 @@ class File(object):
         extension=None,
         access=None,
         parent_folder_id=None,
+        source_group=None,
+        file_md5=None,
         encoding=None,
         type=None,
         is_usable_in_content=None,
@@ -91,8 +97,8 @@ class File(object):
         expires_at=None,
         created_at=None,
         archived_at=None,
-        archived=None,
         path=None,
+        archived=None,
         size=None,
         name=None,
         width=None,
@@ -110,6 +116,8 @@ class File(object):
         self._extension = None
         self._access = None
         self._parent_folder_id = None
+        self._source_group = None
+        self._file_md5 = None
         self._encoding = None
         self._type = None
         self._is_usable_in_content = None
@@ -117,8 +125,8 @@ class File(object):
         self._expires_at = None
         self._created_at = None
         self._archived_at = None
-        self._archived = None
         self._path = None
+        self._archived = None
         self._size = None
         self._name = None
         self._width = None
@@ -133,6 +141,10 @@ class File(object):
         self.access = access
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
+        if source_group is not None:
+            self.source_group = source_group
+        if file_md5 is not None:
+            self.file_md5 = file_md5
         if encoding is not None:
             self.encoding = encoding
         if type is not None:
@@ -146,9 +158,9 @@ class File(object):
         self.created_at = created_at
         if archived_at is not None:
             self.archived_at = archived_at
-        self.archived = archived
         if path is not None:
             self.path = path
+        self.archived = archived
         if size is not None:
             self.size = size
         if name is not None:
@@ -207,7 +219,7 @@ class File(object):
         """
         if self.local_vars_configuration.client_side_validation and access is None:  # noqa: E501
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
-        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
+        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE", "HIDDEN_SENSITIVE", "SENSITIVE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
 
@@ -235,6 +247,48 @@ class File(object):
         """
 
         self._parent_folder_id = parent_folder_id
+
+    @property
+    def source_group(self):
+        """Gets the source_group of this File.  # noqa: E501
+
+
+        :return: The source_group of this File.  # noqa: E501
+        :rtype: str
+        """
+        return self._source_group
+
+    @source_group.setter
+    def source_group(self, source_group):
+        """Sets the source_group of this File.
+
+
+        :param source_group: The source_group of this File.  # noqa: E501
+        :type source_group: str
+        """
+
+        self._source_group = source_group
+
+    @property
+    def file_md5(self):
+        """Gets the file_md5 of this File.  # noqa: E501
+
+
+        :return: The file_md5 of this File.  # noqa: E501
+        :rtype: str
+        """
+        return self._file_md5
+
+    @file_md5.setter
+    def file_md5(self, file_md5):
+        """Sets the file_md5 of this File.
+
+
+        :param file_md5: The file_md5 of this File.  # noqa: E501
+        :type file_md5: str
+        """
+
+        self._file_md5 = file_md5
 
     @property
     def encoding(self):
@@ -398,6 +452,29 @@ class File(object):
         self._archived_at = archived_at
 
     @property
+    def path(self):
+        """Gets the path of this File.  # noqa: E501
+
+        Path of the file in the file manager.  # noqa: E501
+
+        :return: The path of this File.  # noqa: E501
+        :rtype: str
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        """Sets the path of this File.
+
+        Path of the file in the file manager.  # noqa: E501
+
+        :param path: The path of this File.  # noqa: E501
+        :type path: str
+        """
+
+        self._path = path
+
+    @property
     def archived(self):
         """Gets the archived of this File.  # noqa: E501
 
@@ -421,29 +498,6 @@ class File(object):
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
-
-    @property
-    def path(self):
-        """Gets the path of this File.  # noqa: E501
-
-        Path of the file in the file manager.  # noqa: E501
-
-        :return: The path of this File.  # noqa: E501
-        :rtype: str
-        """
-        return self._path
-
-    @path.setter
-    def path(self, path):
-        """Sets the path of this File.
-
-        Path of the file in the file manager.  # noqa: E501
-
-        :param path: The path of this File.  # noqa: E501
-        :type path: str
-        """
-
-        self._path = path
 
     @property
     def size(self):

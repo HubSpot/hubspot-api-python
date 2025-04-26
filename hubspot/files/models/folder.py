@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -35,20 +35,20 @@ class Folder(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"created_at": "datetime", "archived_at": "datetime", "archived": "bool", "path": "str", "parent_folder_id": "str", "name": "str", "id": "str", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "archived_at": "datetime", "path": "str", "archived": "bool", "parent_folder_id": "str", "name": "str", "id": "str", "updated_at": "datetime"}
 
     attribute_map = {
         "created_at": "createdAt",
         "archived_at": "archivedAt",
-        "archived": "archived",
         "path": "path",
+        "archived": "archived",
         "parent_folder_id": "parentFolderId",
         "name": "name",
         "id": "id",
         "updated_at": "updatedAt",
     }
 
-    def __init__(self, created_at=None, archived_at=None, archived=None, path=None, parent_folder_id=None, name=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, archived_at=None, path=None, archived=None, parent_folder_id=None, name=None, id=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """Folder - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,8 +56,8 @@ class Folder(object):
 
         self._created_at = None
         self._archived_at = None
-        self._archived = None
         self._path = None
+        self._archived = None
         self._parent_folder_id = None
         self._name = None
         self._id = None
@@ -67,9 +67,9 @@ class Folder(object):
         self.created_at = created_at
         if archived_at is not None:
             self.archived_at = archived_at
-        self.archived = archived
         if path is not None:
             self.path = path
+        self.archived = archived
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
         if name is not None:
@@ -126,6 +126,29 @@ class Folder(object):
         self._archived_at = archived_at
 
     @property
+    def path(self):
+        """Gets the path of this Folder.  # noqa: E501
+
+        Path of the folder in the file manager.  # noqa: E501
+
+        :return: The path of this Folder.  # noqa: E501
+        :rtype: str
+        """
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        """Sets the path of this Folder.
+
+        Path of the folder in the file manager.  # noqa: E501
+
+        :param path: The path of this Folder.  # noqa: E501
+        :type path: str
+        """
+
+        self._path = path
+
+    @property
     def archived(self):
         """Gets the archived of this Folder.  # noqa: E501
 
@@ -149,29 +172,6 @@ class Folder(object):
             raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
-
-    @property
-    def path(self):
-        """Gets the path of this Folder.  # noqa: E501
-
-        Path of the folder in the file manager.  # noqa: E501
-
-        :return: The path of this Folder.  # noqa: E501
-        :rtype: str
-        """
-        return self._path
-
-    @path.setter
-    def path(self, path):
-        """Sets the path of this Folder.
-
-        Path of the folder in the file manager.  # noqa: E501
-
-        :param path: The path of this Folder.  # noqa: E501
-        :type path: str
-        """
-
-        self._path = path
 
     @property
     def parent_folder_id(self):

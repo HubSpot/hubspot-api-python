@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -34,9 +34,9 @@ class FilesApi(object):
         self.api_client = api_client
 
     def archive(self, file_id, **kwargs):  # noqa: E501
-        """Delete file  # noqa: E501
+        """Delete file by ID  # noqa: E501
 
-        Delete file by ID  # noqa: E501
+        Delete a file by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -64,9 +64,9 @@ class FilesApi(object):
         return self.archive_with_http_info(file_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, file_id, **kwargs):  # noqa: E501
-        """Delete file  # noqa: E501
+        """Delete file by ID  # noqa: E501
 
-        Delete file by ID  # noqa: E501
+        Delete a file by ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -156,131 +156,8 @@ class FilesApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def archive_gdpr(self, file_id, **kwargs):  # noqa: E501
-        """GDPR delete  # noqa: E501
-
-        GDRP delete file  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.archive_gdpr(file_id, async_req=True)
-        >>> result = thread.get()
-
-        :param file_id: ID of file to GDPR delete (required)
-        :type file_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.archive_gdpr_with_http_info(file_id, **kwargs)  # noqa: E501
-
-    def archive_gdpr_with_http_info(self, file_id, **kwargs):  # noqa: E501
-        """GDPR delete  # noqa: E501
-
-        GDRP delete file  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.archive_gdpr_with_http_info(file_id, async_req=True)
-        >>> result = thread.get()
-
-        :param file_id: ID of file to GDPR delete (required)
-        :type file_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-
-        local_var_params = locals()
-
-        all_params = ["file_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive_gdpr" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'file_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `file_id` when calling `archive_gdpr`")  # noqa: E501
-
-        if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
-            raise ApiValueError("Invalid value for parameter `file_id` when calling `archive_gdpr`, must conform to the pattern `/\d+/`")  # noqa: E501
-        collection_formats = {}
-
-        path_params = {}
-        if "file_id" in local_var_params:
-            path_params["fileId"] = local_var_params["file_id"]  # noqa: E501
-
-        query_params = []
-
-        header_params = dict(local_var_params.get("_headers", {}))
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["oauth2"]  # noqa: E501
-
-        response_types_map = {}
-
-        return self.api_client.call_api(
-            "/files/v3/files/{fileId}/gdpr-delete",
-            "DELETE",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get("_request_auth"),
-        )
-
     def check_import(self, task_id, **kwargs):  # noqa: E501
-        """Check import status.  # noqa: E501
+        """Check import status  # noqa: E501
 
         Check the status of requested import.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -310,7 +187,7 @@ class FilesApi(object):
         return self.check_import_with_http_info(task_id, **kwargs)  # noqa: E501
 
     def check_import_with_http_info(self, task_id, **kwargs):  # noqa: E501
-        """Check import status.  # noqa: E501
+        """Check import status  # noqa: E501
 
         Check the status of requested import.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -402,6 +279,129 @@ class FilesApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
+    def delete(self, file_id, **kwargs):  # noqa: E501
+        """GDPR-delete file  # noqa: E501
+
+        Delete a file in accordance with GDPR regulations.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete(file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param file_id: ID of file to GDPR delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.delete_with_http_info(file_id, **kwargs)  # noqa: E501
+
+    def delete_with_http_info(self, file_id, **kwargs):  # noqa: E501
+        """GDPR-delete file  # noqa: E501
+
+        Delete a file in accordance with GDPR regulations.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_with_http_info(file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param file_id: ID of file to GDPR delete (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = ["file_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method delete" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'file_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("file_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `file_id` when calling `delete`")  # noqa: E501
+
+        if self.api_client.client_side_validation and "file_id" in local_var_params and not re.search(r"\d+", local_var_params["file_id"]):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `file_id` when calling `delete`, must conform to the pattern `/\d+/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if "file_id" in local_var_params:
+            path_params["fileId"] = local_var_params["file_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            "/files/v3/files/{fileId}/gdpr-delete",
+            "DELETE",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
     def do_search(self, **kwargs):  # noqa: E501
         """Search files  # noqa: E501
 
@@ -412,54 +412,78 @@ class FilesApi(object):
         >>> thread = api.do_search(async_req=True)
         >>> result = thread.get()
 
-        :param properties: Desired file properties in the return object.
+        :param properties: A list of file properties to return.
         :type properties: list[str]
-        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :param after: Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
         :type after: str
         :param before:
         :type before: str
-        :param limit: Number of items to return. Maximum limit is 100.
+        :param limit: Number of items to return. Default limit is 10, maximum limit is 100.
         :type limit: int
         :param sort: Sort files by a given field.
         :type sort: list[str]
-        :param id: Search files by given ID.
-        :type id: str
+        :param ids: Search by a list of file IDs.
+        :type ids: list[int]
+        :param id_lte:
+        :type id_lte: int
+        :param id_gte:
+        :type id_gte: int
         :param created_at: Search files by time of creation.
         :type created_at: datetime
-        :param created_at_lte:
+        :param created_at_lte: Search files by less than or equal to time of creation. Can be used with `createdAtGte` to create a range.
         :type created_at_lte: datetime
-        :param created_at_gte:
+        :param created_at_gte: Search files by greater than or equal to time of creation. Can be used with `createdAtLte` to create a range.
         :type created_at_gte: datetime
         :param updated_at: Search files by time of latest updated.
         :type updated_at: datetime
-        :param updated_at_lte:
+        :param updated_at_lte: Search files by less than or equal to time of latest update. Can be used with `updatedAtGte` to create a range.
         :type updated_at_lte: datetime
-        :param updated_at_gte:
+        :param updated_at_gte: Search files by greater than or equal to time of latest update. Can be used with `updatedAtLte` to create a range.
         :type updated_at_gte: datetime
         :param name: Search for files containing the given name.
         :type name: str
         :param path: Search files by path.
         :type path: str
-        :param parent_folder_id: Search files within given folderId.
-        :type parent_folder_id: int
-        :param size: Query by file size.
+        :param parent_folder_ids: Search files within given `folderId`.
+        :type parent_folder_ids: list[int]
+        :param size: Search files by exact file size in bytes.
         :type size: int
+        :param size_lte: Search files by less than or equal to file size. Can be used with `sizeGte` to create a range.
+        :type size_lte: int
+        :param size_gte: Search files by greater than or equal to file size. Can be used with `sizeLte` to create a range.
+        :type size_gte: int
         :param height: Search files by height of image or video.
         :type height: int
+        :param height_lte: Search files by less than or equal to height of image or video. Can be used with `heightGte` to create a range.
+        :type height_lte: int
+        :param height_gte: Search files by greater than or equal to height of image or video. Can be used with `heightLte` to create a range.
+        :type height_gte: int
         :param width: Search files by width of image or video.
         :type width: int
-        :param encoding: Search files with specified encoding.
+        :param width_lte: Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
+        :type width_lte: int
+        :param width_gte: Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
+        :type width_gte: int
+        :param encoding: Search files by specified encoding.
         :type encoding: str
         :param type: Filter by provided file type.
         :type type: str
         :param extension: Search files by given extension.
         :type extension: str
-        :param url: Search for given URL
+        :param url: Search by file URL.
         :type url: str
-        :param is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
+        :param is_usable_in_content: If `true`, shows files that have been marked to be used in new content. If `false`, shows files that should not be used in new content.
         :type is_usable_in_content: bool
-        :param allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :param allows_anonymous_access: Search files by access. If `true`, will show only public files. If `false`, will show only private files.
         :type allows_anonymous_access: bool
+        :param file_md5: Search files by a specific md5 hash.
+        :type file_md5: str
+        :param expires_at: Search files by exact expires time. Time must be epoch time in milliseconds.
+        :type expires_at: datetime
+        :param expires_at_lte: Search files by less than or equal to expires time. Can be used with `expiresAtGte` to create a range.
+        :type expires_at_lte: datetime
+        :param expires_at_gte: Search files by greater than or equal to expires time. Can be used with `expiresAtLte` to create a range.
+        :type expires_at_gte: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -488,54 +512,78 @@ class FilesApi(object):
         >>> thread = api.do_search_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param properties: Desired file properties in the return object.
+        :param properties: A list of file properties to return.
         :type properties: list[str]
-        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :param after: Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
         :type after: str
         :param before:
         :type before: str
-        :param limit: Number of items to return. Maximum limit is 100.
+        :param limit: Number of items to return. Default limit is 10, maximum limit is 100.
         :type limit: int
         :param sort: Sort files by a given field.
         :type sort: list[str]
-        :param id: Search files by given ID.
-        :type id: str
+        :param ids: Search by a list of file IDs.
+        :type ids: list[int]
+        :param id_lte:
+        :type id_lte: int
+        :param id_gte:
+        :type id_gte: int
         :param created_at: Search files by time of creation.
         :type created_at: datetime
-        :param created_at_lte:
+        :param created_at_lte: Search files by less than or equal to time of creation. Can be used with `createdAtGte` to create a range.
         :type created_at_lte: datetime
-        :param created_at_gte:
+        :param created_at_gte: Search files by greater than or equal to time of creation. Can be used with `createdAtLte` to create a range.
         :type created_at_gte: datetime
         :param updated_at: Search files by time of latest updated.
         :type updated_at: datetime
-        :param updated_at_lte:
+        :param updated_at_lte: Search files by less than or equal to time of latest update. Can be used with `updatedAtGte` to create a range.
         :type updated_at_lte: datetime
-        :param updated_at_gte:
+        :param updated_at_gte: Search files by greater than or equal to time of latest update. Can be used with `updatedAtLte` to create a range.
         :type updated_at_gte: datetime
         :param name: Search for files containing the given name.
         :type name: str
         :param path: Search files by path.
         :type path: str
-        :param parent_folder_id: Search files within given folderId.
-        :type parent_folder_id: int
-        :param size: Query by file size.
+        :param parent_folder_ids: Search files within given `folderId`.
+        :type parent_folder_ids: list[int]
+        :param size: Search files by exact file size in bytes.
         :type size: int
+        :param size_lte: Search files by less than or equal to file size. Can be used with `sizeGte` to create a range.
+        :type size_lte: int
+        :param size_gte: Search files by greater than or equal to file size. Can be used with `sizeLte` to create a range.
+        :type size_gte: int
         :param height: Search files by height of image or video.
         :type height: int
+        :param height_lte: Search files by less than or equal to height of image or video. Can be used with `heightGte` to create a range.
+        :type height_lte: int
+        :param height_gte: Search files by greater than or equal to height of image or video. Can be used with `heightLte` to create a range.
+        :type height_gte: int
         :param width: Search files by width of image or video.
         :type width: int
-        :param encoding: Search files with specified encoding.
+        :param width_lte: Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
+        :type width_lte: int
+        :param width_gte: Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
+        :type width_gte: int
+        :param encoding: Search files by specified encoding.
         :type encoding: str
         :param type: Filter by provided file type.
         :type type: str
         :param extension: Search files by given extension.
         :type extension: str
-        :param url: Search for given URL
+        :param url: Search by file URL.
         :type url: str
-        :param is_usable_in_content: If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
+        :param is_usable_in_content: If `true`, shows files that have been marked to be used in new content. If `false`, shows files that should not be used in new content.
         :type is_usable_in_content: bool
-        :param allows_anonymous_access: If 'true' will show private files; if 'false' will show public files
+        :param allows_anonymous_access: Search files by access. If `true`, will show only public files. If `false`, will show only private files.
         :type allows_anonymous_access: bool
+        :param file_md5: Search files by a specific md5 hash.
+        :type file_md5: str
+        :param expires_at: Search files by exact expires time. Time must be epoch time in milliseconds.
+        :type expires_at: datetime
+        :param expires_at_lte: Search files by less than or equal to expires time. Can be used with `expiresAtGte` to create a range.
+        :type expires_at_lte: datetime
+        :param expires_at_gte: Search files by greater than or equal to expires time. Can be used with `expiresAtLte` to create a range.
+        :type expires_at_gte: datetime
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -568,7 +616,9 @@ class FilesApi(object):
             "before",
             "limit",
             "sort",
-            "id",
+            "ids",
+            "id_lte",
+            "id_gte",
             "created_at",
             "created_at_lte",
             "created_at_gte",
@@ -577,16 +627,26 @@ class FilesApi(object):
             "updated_at_gte",
             "name",
             "path",
-            "parent_folder_id",
+            "parent_folder_ids",
             "size",
+            "size_lte",
+            "size_gte",
             "height",
+            "height_lte",
+            "height_gte",
             "width",
+            "width_lte",
+            "width_gte",
             "encoding",
             "type",
             "extension",
             "url",
             "is_usable_in_content",
             "allows_anonymous_access",
+            "file_md5",
+            "expires_at",
+            "expires_at_lte",
+            "expires_at_gte",
         ]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
@@ -613,8 +673,13 @@ class FilesApi(object):
         if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if local_var_params.get("id") is not None:  # noqa: E501
-            query_params.append(("id", local_var_params["id"]))  # noqa: E501
+        if local_var_params.get("ids") is not None:  # noqa: E501
+            query_params.append(("ids", local_var_params["ids"]))  # noqa: E501
+            collection_formats["ids"] = "multi"  # noqa: E501
+        if local_var_params.get("id_lte") is not None:  # noqa: E501
+            query_params.append(("idLte", local_var_params["id_lte"]))  # noqa: E501
+        if local_var_params.get("id_gte") is not None:  # noqa: E501
+            query_params.append(("idGte", local_var_params["id_gte"]))  # noqa: E501
         if local_var_params.get("created_at") is not None:  # noqa: E501
             query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
         if local_var_params.get("created_at_lte") is not None:  # noqa: E501
@@ -631,14 +696,27 @@ class FilesApi(object):
             query_params.append(("name", local_var_params["name"]))  # noqa: E501
         if local_var_params.get("path") is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if local_var_params.get("parent_folder_id") is not None:  # noqa: E501
-            query_params.append(("parentFolderId", local_var_params["parent_folder_id"]))  # noqa: E501
+        if local_var_params.get("parent_folder_ids") is not None:  # noqa: E501
+            query_params.append(("parentFolderIds", local_var_params["parent_folder_ids"]))  # noqa: E501
+            collection_formats["parentFolderIds"] = "multi"  # noqa: E501
         if local_var_params.get("size") is not None:  # noqa: E501
             query_params.append(("size", local_var_params["size"]))  # noqa: E501
+        if local_var_params.get("size_lte") is not None:  # noqa: E501
+            query_params.append(("sizeLte", local_var_params["size_lte"]))  # noqa: E501
+        if local_var_params.get("size_gte") is not None:  # noqa: E501
+            query_params.append(("sizeGte", local_var_params["size_gte"]))  # noqa: E501
         if local_var_params.get("height") is not None:  # noqa: E501
             query_params.append(("height", local_var_params["height"]))  # noqa: E501
+        if local_var_params.get("height_lte") is not None:  # noqa: E501
+            query_params.append(("heightLte", local_var_params["height_lte"]))  # noqa: E501
+        if local_var_params.get("height_gte") is not None:  # noqa: E501
+            query_params.append(("heightGte", local_var_params["height_gte"]))  # noqa: E501
         if local_var_params.get("width") is not None:  # noqa: E501
             query_params.append(("width", local_var_params["width"]))  # noqa: E501
+        if local_var_params.get("width_lte") is not None:  # noqa: E501
+            query_params.append(("widthLte", local_var_params["width_lte"]))  # noqa: E501
+        if local_var_params.get("width_gte") is not None:  # noqa: E501
+            query_params.append(("widthGte", local_var_params["width_gte"]))  # noqa: E501
         if local_var_params.get("encoding") is not None:  # noqa: E501
             query_params.append(("encoding", local_var_params["encoding"]))  # noqa: E501
         if local_var_params.get("type") is not None:  # noqa: E501
@@ -651,6 +729,14 @@ class FilesApi(object):
             query_params.append(("isUsableInContent", local_var_params["is_usable_in_content"]))  # noqa: E501
         if local_var_params.get("allows_anonymous_access") is not None:  # noqa: E501
             query_params.append(("allowsAnonymousAccess", local_var_params["allows_anonymous_access"]))  # noqa: E501
+        if local_var_params.get("file_md5") is not None:  # noqa: E501
+            query_params.append(("fileMd5", local_var_params["file_md5"]))  # noqa: E501
+        if local_var_params.get("expires_at") is not None:  # noqa: E501
+            query_params.append(("expiresAt", local_var_params["expires_at"]))  # noqa: E501
+        if local_var_params.get("expires_at_lte") is not None:  # noqa: E501
+            query_params.append(("expiresAtLte", local_var_params["expires_at_lte"]))  # noqa: E501
+        if local_var_params.get("expires_at_gte") is not None:  # noqa: E501
+            query_params.append(("expiresAtGte", local_var_params["expires_at_gte"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -688,9 +774,9 @@ class FilesApi(object):
         )
 
     def get_by_id(self, file_id, **kwargs):  # noqa: E501
-        """Get file.  # noqa: E501
+        """Retrieve file by ID  # noqa: E501
 
-        Get file by ID.  # noqa: E501
+        Retrieve a file by its ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -699,7 +785,7 @@ class FilesApi(object):
 
         :param file_id: ID of the desired file. (required)
         :type file_id: str
-        :param properties:
+        :param properties: null
         :type properties: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -720,9 +806,9 @@ class FilesApi(object):
         return self.get_by_id_with_http_info(file_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, file_id, **kwargs):  # noqa: E501
-        """Get file.  # noqa: E501
+        """Retrieve file by ID  # noqa: E501
 
-        Get file by ID.  # noqa: E501
+        Retrieve a file by its ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -731,7 +817,7 @@ class FilesApi(object):
 
         :param file_id: ID of the desired file. (required)
         :type file_id: str
-        :param properties:
+        :param properties: null
         :type properties: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -820,17 +906,18 @@ class FilesApi(object):
         )
 
     def get_metadata(self, path, **kwargs):  # noqa: E501
-        """get_metadata  # noqa: E501
+        """Retrieve file by path  # noqa: E501
 
+        Retrieve a file by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_metadata(path, async_req=True)
         >>> result = thread.get()
 
-        :param path: (required)
+        :param path: The path of the file.  (required)
         :type path: str
-        :param properties:
+        :param properties: Properties to return in the response.
         :type properties: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -851,17 +938,18 @@ class FilesApi(object):
         return self.get_metadata_with_http_info(path, **kwargs)  # noqa: E501
 
     def get_metadata_with_http_info(self, path, **kwargs):  # noqa: E501
-        """get_metadata  # noqa: E501
+        """Retrieve file by path  # noqa: E501
 
+        Retrieve a file by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_metadata_with_http_info(path, async_req=True)
         >>> result = thread.get()
 
-        :param path: (required)
+        :param path: The path of the file.  (required)
         :type path: str
-        :param properties:
+        :param properties: Properties to return in the response.
         :type properties: list[str]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -950,7 +1038,7 @@ class FilesApi(object):
         )
 
     def get_signed_url(self, file_id, **kwargs):  # noqa: E501
-        """Get signed URL to access private file.  # noqa: E501
+        """Get signed URL to access private file  # noqa: E501
 
         Generates signed URL that allows temporary access to a private file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -986,7 +1074,7 @@ class FilesApi(object):
         return self.get_signed_url_with_http_info(file_id, **kwargs)  # noqa: E501
 
     def get_signed_url_with_http_info(self, file_id, **kwargs):  # noqa: E501
-        """Get signed URL to access private file.  # noqa: E501
+        """Get signed URL to access private file  # noqa: E501
 
         Generates signed URL that allows temporary access to a private file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1093,7 +1181,7 @@ class FilesApi(object):
         )
 
     def import_from_url(self, import_from_url_input, **kwargs):  # noqa: E501
-        """Import a file from a URL into the file manager.  # noqa: E501
+        """Import file from URL  # noqa: E501
 
         Asynchronously imports the file at the given URL into the file manager.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1123,7 +1211,7 @@ class FilesApi(object):
         return self.import_from_url_with_http_info(import_from_url_input, **kwargs)  # noqa: E501
 
     def import_from_url_with_http_info(self, import_from_url_input, **kwargs):  # noqa: E501
-        """Import a file from a URL into the file manager.  # noqa: E501
+        """Import file from URL  # noqa: E501
 
         Asynchronously imports the file at the given URL into the file manager.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1221,7 +1309,7 @@ class FilesApi(object):
         )
 
     def replace(self, file_id, **kwargs):  # noqa: E501
-        """Replace file.  # noqa: E501
+        """Replace file  # noqa: E501
 
         Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1236,7 +1324,7 @@ class FilesApi(object):
         :type file: file
         :param charset_hunch: Character set of given file data.
         :type charset_hunch: str
-        :param options: JSON String representing FileReplaceOptions
+        :param options: JSON string representing FileReplaceOptions. Includes options to set the access and expiresAt properties, which will automatically update when the file is replaced.
         :type options: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1257,7 +1345,7 @@ class FilesApi(object):
         return self.replace_with_http_info(file_id, **kwargs)  # noqa: E501
 
     def replace_with_http_info(self, file_id, **kwargs):  # noqa: E501
-        """Replace file.  # noqa: E501
+        """Replace file  # noqa: E501
 
         Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1272,7 +1360,7 @@ class FilesApi(object):
         :type file: file
         :param charset_hunch: Character set of given file data.
         :type charset_hunch: str
-        :param options: JSON String representing FileReplaceOptions
+        :param options: JSON string representing FileReplaceOptions. Includes options to set the access and expiresAt properties, which will automatically update when the file is replaced.
         :type options: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1369,7 +1457,7 @@ class FilesApi(object):
         )
 
     def update_properties(self, file_id, file_update_input, **kwargs):  # noqa: E501
-        """update file properties  # noqa: E501
+        """Update file properties  # noqa: E501
 
         Update properties of file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1380,7 +1468,7 @@ class FilesApi(object):
 
         :param file_id: ID of file to update (required)
         :type file_id: str
-        :param file_update_input: Options to update. (required)
+        :param file_update_input: (required)
         :type file_update_input: FileUpdateInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1401,7 +1489,7 @@ class FilesApi(object):
         return self.update_properties_with_http_info(file_id, file_update_input, **kwargs)  # noqa: E501
 
     def update_properties_with_http_info(self, file_id, file_update_input, **kwargs):  # noqa: E501
-        """update file properties  # noqa: E501
+        """Update file properties  # noqa: E501
 
         Update properties of file by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -1412,7 +1500,7 @@ class FilesApi(object):
 
         :param file_id: ID of file to update (required)
         :type file_id: str
-        :param file_update_input: Options to update. (required)
+        :param file_update_input: (required)
         :type file_update_input: FileUpdateInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

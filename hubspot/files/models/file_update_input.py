@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -35,18 +35,21 @@ class FileUpdateInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"access": "str", "parent_folder_id": "str", "name": "str", "parent_folder_path": "str", "is_usable_in_content": "bool", "expires_at": "int"}
+    openapi_types = {"access": "str", "parent_folder_id": "str", "name": "str", "parent_folder_path": "str", "clear_expires": "bool", "is_usable_in_content": "bool", "expires_at": "datetime"}
 
     attribute_map = {
         "access": "access",
         "parent_folder_id": "parentFolderId",
         "name": "name",
         "parent_folder_path": "parentFolderPath",
+        "clear_expires": "clearExpires",
         "is_usable_in_content": "isUsableInContent",
         "expires_at": "expiresAt",
     }
 
-    def __init__(self, access=None, parent_folder_id=None, name=None, parent_folder_path=None, is_usable_in_content=None, expires_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(
+        self, access=None, parent_folder_id=None, name=None, parent_folder_path=None, clear_expires=None, is_usable_in_content=None, expires_at=None, local_vars_configuration=None
+    ):  # noqa: E501
         """FileUpdateInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -56,6 +59,7 @@ class FileUpdateInput(object):
         self._parent_folder_id = None
         self._name = None
         self._parent_folder_path = None
+        self._clear_expires = None
         self._is_usable_in_content = None
         self._expires_at = None
         self.discriminator = None
@@ -68,6 +72,8 @@ class FileUpdateInput(object):
             self.name = name
         if parent_folder_path is not None:
             self.parent_folder_path = parent_folder_path
+        if clear_expires is not None:
+            self.clear_expires = clear_expires
         if is_usable_in_content is not None:
             self.is_usable_in_content = is_usable_in_content
         if expires_at is not None:
@@ -93,7 +99,7 @@ class FileUpdateInput(object):
         :param access: The access of this FileUpdateInput.  # noqa: E501
         :type access: str
         """
-        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
+        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE", "HIDDEN_SENSITIVE", "SENSITIVE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
 
@@ -169,6 +175,27 @@ class FileUpdateInput(object):
         self._parent_folder_path = parent_folder_path
 
     @property
+    def clear_expires(self):
+        """Gets the clear_expires of this FileUpdateInput.  # noqa: E501
+
+
+        :return: The clear_expires of this FileUpdateInput.  # noqa: E501
+        :rtype: bool
+        """
+        return self._clear_expires
+
+    @clear_expires.setter
+    def clear_expires(self, clear_expires):
+        """Sets the clear_expires of this FileUpdateInput.
+
+
+        :param clear_expires: The clear_expires of this FileUpdateInput.  # noqa: E501
+        :type clear_expires: bool
+        """
+
+        self._clear_expires = clear_expires
+
+    @property
     def is_usable_in_content(self):
         """Gets the is_usable_in_content of this FileUpdateInput.  # noqa: E501
 
@@ -197,7 +224,7 @@ class FileUpdateInput(object):
 
 
         :return: The expires_at of this FileUpdateInput.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._expires_at
 
@@ -207,7 +234,7 @@ class FileUpdateInput(object):
 
 
         :param expires_at: The expires_at of this FileUpdateInput.  # noqa: E501
-        :type expires_at: int
+        :type expires_at: datetime
         """
 
         self._expires_at = expires_at
