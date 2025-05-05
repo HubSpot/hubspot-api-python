@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -35,11 +35,11 @@ class FolderUpdateInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"parent_folder_id": "int", "name": "str", "id": "str"}
+    openapi_types = {"parent_folder_id": "int", "name": "str"}
 
-    attribute_map = {"parent_folder_id": "parentFolderId", "name": "name", "id": "id"}
+    attribute_map = {"parent_folder_id": "parentFolderId", "name": "name"}
 
-    def __init__(self, parent_folder_id=None, name=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, parent_folder_id=None, name=None, local_vars_configuration=None):  # noqa: E501
         """FolderUpdateInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -47,14 +47,12 @@ class FolderUpdateInput(object):
 
         self._parent_folder_id = None
         self._name = None
-        self._id = None
         self.discriminator = None
 
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
         if name is not None:
             self.name = name
-        self.id = id
 
     @property
     def parent_folder_id(self):
@@ -101,31 +99,6 @@ class FolderUpdateInput(object):
         """
 
         self._name = name
-
-    @property
-    def id(self):
-        """Gets the id of this FolderUpdateInput.  # noqa: E501
-
-        ID of the folder to change.  # noqa: E501
-
-        :return: The id of this FolderUpdateInput.  # noqa: E501
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this FolderUpdateInput.
-
-        ID of the folder to change.  # noqa: E501
-
-        :param id: The id of this FolderUpdateInput.  # noqa: E501
-        :type id: str
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

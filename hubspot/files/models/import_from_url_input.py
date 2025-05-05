@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -43,6 +43,7 @@ class ImportFromUrlInput(object):
         "duplicate_validation_strategy": "str",
         "ttl": "str",
         "overwrite": "bool",
+        "expires_at": "datetime",
         "url": "str",
         "folder_id": "str",
     }
@@ -55,6 +56,7 @@ class ImportFromUrlInput(object):
         "duplicate_validation_strategy": "duplicateValidationStrategy",
         "ttl": "ttl",
         "overwrite": "overwrite",
+        "expires_at": "expiresAt",
         "url": "url",
         "folder_id": "folderId",
     }
@@ -68,6 +70,7 @@ class ImportFromUrlInput(object):
         duplicate_validation_strategy=None,
         ttl=None,
         overwrite=None,
+        expires_at=None,
         url=None,
         folder_id=None,
         local_vars_configuration=None,
@@ -84,6 +87,7 @@ class ImportFromUrlInput(object):
         self._duplicate_validation_strategy = None
         self._ttl = None
         self._overwrite = None
+        self._expires_at = None
         self._url = None
         self._folder_id = None
         self.discriminator = None
@@ -101,6 +105,8 @@ class ImportFromUrlInput(object):
             self.ttl = ttl
         if overwrite is not None:
             self.overwrite = overwrite
+        if expires_at is not None:
+            self.expires_at = expires_at
         self.url = url
         if folder_id is not None:
             self.folder_id = folder_id
@@ -150,7 +156,7 @@ class ImportFromUrlInput(object):
         """
         if self.local_vars_configuration.client_side_validation and access is None:  # noqa: E501
             raise ValueError("Invalid value for `access`, must not be `None`")  # noqa: E501
-        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE"]  # noqa: E501
+        allowed_values = ["PUBLIC_INDEXABLE", "PUBLIC_NOT_INDEXABLE", "HIDDEN_INDEXABLE", "HIDDEN_NOT_INDEXABLE", "HIDDEN_PRIVATE", "PRIVATE", "HIDDEN_SENSITIVE", "SENSITIVE"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and access not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `access` ({0}), must be one of {1}".format(access, allowed_values))  # noqa: E501
 
@@ -276,6 +282,27 @@ class ImportFromUrlInput(object):
         """
 
         self._overwrite = overwrite
+
+    @property
+    def expires_at(self):
+        """Gets the expires_at of this ImportFromUrlInput.  # noqa: E501
+
+
+        :return: The expires_at of this ImportFromUrlInput.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._expires_at
+
+    @expires_at.setter
+    def expires_at(self, expires_at):
+        """Sets the expires_at of this ImportFromUrlInput.
+
+
+        :param expires_at: The expires_at of this ImportFromUrlInput.  # noqa: E501
+        :type expires_at: datetime
+        """
+
+        self._expires_at = expires_at
 
     @property
     def url(self):

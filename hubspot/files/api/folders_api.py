@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -34,7 +34,7 @@ class FoldersApi(object):
         self.api_client = api_client
 
     def archive(self, folder_id, **kwargs):  # noqa: E501
-        """Delete folder.  # noqa: E501
+        """Delete folder by ID  # noqa: E501
 
         Delete folder by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -64,7 +64,7 @@ class FoldersApi(object):
         return self.archive_with_http_info(folder_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, folder_id, **kwargs):  # noqa: E501
-        """Delete folder.  # noqa: E501
+        """Delete folder by ID  # noqa: E501
 
         Delete folder by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -157,9 +157,9 @@ class FoldersApi(object):
         )
 
     def archive_by_path(self, folder_path, **kwargs):  # noqa: E501
-        """Delete folder.  # noqa: E501
+        """Delete folder by path  # noqa: E501
 
-        Delete folder by path.  # noqa: E501
+        Delete a folder, identified by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -187,9 +187,9 @@ class FoldersApi(object):
         return self.archive_by_path_with_http_info(folder_path, **kwargs)  # noqa: E501
 
     def archive_by_path_with_http_info(self, folder_path, **kwargs):  # noqa: E501
-        """Delete folder.  # noqa: E501
+        """Delete folder by path  # noqa: E501
 
-        Delete folder by path.  # noqa: E501
+        Delete a folder, identified by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -280,7 +280,7 @@ class FoldersApi(object):
         )
 
     def check_update_status(self, task_id, **kwargs):  # noqa: E501
-        """Check folder update status.  # noqa: E501
+        """Check folder update status  # noqa: E501
 
         Check status of folder update. Folder updates happen asynchronously.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -289,7 +289,7 @@ class FoldersApi(object):
         >>> thread = api.check_update_status(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param task_id: TaskId of folder update (required)
+        :param task_id: The ID of the folder update task. (required)
         :type task_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -310,7 +310,7 @@ class FoldersApi(object):
         return self.check_update_status_with_http_info(task_id, **kwargs)  # noqa: E501
 
     def check_update_status_with_http_info(self, task_id, **kwargs):  # noqa: E501
-        """Check folder update status.  # noqa: E501
+        """Check folder update status  # noqa: E501
 
         Check status of folder update. Folder updates happen asynchronously.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -319,7 +319,7 @@ class FoldersApi(object):
         >>> thread = api.check_update_status_with_http_info(task_id, async_req=True)
         >>> result = thread.get()
 
-        :param task_id: TaskId of folder update (required)
+        :param task_id: The ID of the folder update task. (required)
         :type task_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -403,7 +403,7 @@ class FoldersApi(object):
         )
 
     def create(self, folder_input, **kwargs):  # noqa: E501
-        """Create folder.  # noqa: E501
+        """Create folder  # noqa: E501
 
         Creates a folder.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -433,7 +433,7 @@ class FoldersApi(object):
         return self.create_with_http_info(folder_input, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, folder_input, **kwargs):  # noqa: E501
-        """Create folder.  # noqa: E501
+        """Create folder  # noqa: E501
 
         Creates a folder.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -542,34 +542,38 @@ class FoldersApi(object):
 
         :param properties: Properties that should be included in the returned folders.
         :type properties: list[str]
-        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :param after: Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
         :type after: str
         :param before:
         :type before: str
-        :param limit: Limit of results to return. Max limit is 100.
+        :param limit: Number of items to return. Default limit is 10, maximum limit is 100.
         :type limit: int
         :param sort: Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
         :type sort: list[str]
-        :param id: Search folder by given ID.
-        :type id: str
-        :param created_at: Search for folders with the given creation timestamp.
+        :param ids:
+        :type ids: list[int]
+        :param id_lte:
+        :type id_lte: int
+        :param id_gte:
+        :type id_gte: int
+        :param created_at: Search folders by exact time of creation. Time must be epoch time in milliseconds.
         :type created_at: datetime
-        :param created_at_lte:
+        :param created_at_lte: Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
         :type created_at_lte: datetime
-        :param created_at_gte:
+        :param created_at_gte: Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
         :type created_at_gte: datetime
-        :param updated_at: Search for folder at given update timestamp.
+        :param updated_at: Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
         :type updated_at: datetime
-        :param updated_at_lte:
+        :param updated_at_lte: Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
         :type updated_at_lte: datetime
-        :param updated_at_gte:
+        :param updated_at_gte: Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
         :type updated_at_gte: datetime
         :param name: Search for folders containing the specified name.
         :type name: str
-        :param path: Search for folders by path.
+        :param path: Search folders by path.
         :type path: str
-        :param parent_folder_id: Search for folders with the given parent folderId.
-        :type parent_folder_id: int
+        :param parent_folder_ids: Search folders with the given parent folderId.
+        :type parent_folder_ids: list[int]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -600,34 +604,38 @@ class FoldersApi(object):
 
         :param properties: Properties that should be included in the returned folders.
         :type properties: list[str]
-        :param after: The maximum offset of items for a given search is 10000. Narrow your search down if you are reaching this limit.
+        :param after: Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
         :type after: str
         :param before:
         :type before: str
-        :param limit: Limit of results to return. Max limit is 100.
+        :param limit: Number of items to return. Default limit is 10, maximum limit is 100.
         :type limit: int
         :param sort: Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
         :type sort: list[str]
-        :param id: Search folder by given ID.
-        :type id: str
-        :param created_at: Search for folders with the given creation timestamp.
+        :param ids:
+        :type ids: list[int]
+        :param id_lte:
+        :type id_lte: int
+        :param id_gte:
+        :type id_gte: int
+        :param created_at: Search folders by exact time of creation. Time must be epoch time in milliseconds.
         :type created_at: datetime
-        :param created_at_lte:
+        :param created_at_lte: Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
         :type created_at_lte: datetime
-        :param created_at_gte:
+        :param created_at_gte: Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
         :type created_at_gte: datetime
-        :param updated_at: Search for folder at given update timestamp.
+        :param updated_at: Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
         :type updated_at: datetime
-        :param updated_at_lte:
+        :param updated_at_lte: Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
         :type updated_at_lte: datetime
-        :param updated_at_gte:
+        :param updated_at_gte: Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
         :type updated_at_gte: datetime
         :param name: Search for folders containing the specified name.
         :type name: str
-        :param path: Search for folders by path.
+        :param path: Search folders by path.
         :type path: str
-        :param parent_folder_id: Search for folders with the given parent folderId.
-        :type parent_folder_id: int
+        :param parent_folder_ids: Search folders with the given parent folderId.
+        :type parent_folder_ids: list[int]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -660,7 +668,9 @@ class FoldersApi(object):
             "before",
             "limit",
             "sort",
-            "id",
+            "ids",
+            "id_lte",
+            "id_gte",
             "created_at",
             "created_at_lte",
             "created_at_gte",
@@ -669,7 +679,7 @@ class FoldersApi(object):
             "updated_at_gte",
             "name",
             "path",
-            "parent_folder_id",
+            "parent_folder_ids",
         ]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
@@ -696,8 +706,13 @@ class FoldersApi(object):
         if local_var_params.get("sort") is not None:  # noqa: E501
             query_params.append(("sort", local_var_params["sort"]))  # noqa: E501
             collection_formats["sort"] = "multi"  # noqa: E501
-        if local_var_params.get("id") is not None:  # noqa: E501
-            query_params.append(("id", local_var_params["id"]))  # noqa: E501
+        if local_var_params.get("ids") is not None:  # noqa: E501
+            query_params.append(("ids", local_var_params["ids"]))  # noqa: E501
+            collection_formats["ids"] = "multi"  # noqa: E501
+        if local_var_params.get("id_lte") is not None:  # noqa: E501
+            query_params.append(("idLte", local_var_params["id_lte"]))  # noqa: E501
+        if local_var_params.get("id_gte") is not None:  # noqa: E501
+            query_params.append(("idGte", local_var_params["id_gte"]))  # noqa: E501
         if local_var_params.get("created_at") is not None:  # noqa: E501
             query_params.append(("createdAt", local_var_params["created_at"]))  # noqa: E501
         if local_var_params.get("created_at_lte") is not None:  # noqa: E501
@@ -714,8 +729,9 @@ class FoldersApi(object):
             query_params.append(("name", local_var_params["name"]))  # noqa: E501
         if local_var_params.get("path") is not None:  # noqa: E501
             query_params.append(("path", local_var_params["path"]))  # noqa: E501
-        if local_var_params.get("parent_folder_id") is not None:  # noqa: E501
-            query_params.append(("parentFolderId", local_var_params["parent_folder_id"]))  # noqa: E501
+        if local_var_params.get("parent_folder_ids") is not None:  # noqa: E501
+            query_params.append(("parentFolderIds", local_var_params["parent_folder_ids"]))  # noqa: E501
+            collection_formats["parentFolderIds"] = "multi"  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -753,9 +769,9 @@ class FoldersApi(object):
         )
 
     def get_by_id(self, folder_id, **kwargs):  # noqa: E501
-        """Get folder  # noqa: E501
+        """Retrieve folder by ID  # noqa: E501
 
-        Get folder by ID  # noqa: E501
+        Retrieve a folder by its ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -785,9 +801,9 @@ class FoldersApi(object):
         return self.get_by_id_with_http_info(folder_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, folder_id, **kwargs):  # noqa: E501
-        """Get folder  # noqa: E501
+        """Retrieve folder by ID  # noqa: E501
 
-        Get folder by ID  # noqa: E501
+        Retrieve a folder by its ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -885,9 +901,9 @@ class FoldersApi(object):
         )
 
     def get_by_path(self, folder_path, **kwargs):  # noqa: E501
-        """Get folder.  # noqa: E501
+        """Retrieve folder by path  # noqa: E501
 
-        Get folder by path.  # noqa: E501
+        Retrieve a folder, identified by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -917,9 +933,9 @@ class FoldersApi(object):
         return self.get_by_path_with_http_info(folder_path, **kwargs)  # noqa: E501
 
     def get_by_path_with_http_info(self, folder_path, **kwargs):  # noqa: E501
-        """Get folder.  # noqa: E501
+        """Retrieve folder by path  # noqa: E501
 
-        Get folder by path.  # noqa: E501
+        Retrieve a folder, identified by its path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1016,18 +1032,157 @@ class FoldersApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update_properties(self, folder_update_input, **kwargs):  # noqa: E501
+    def update_properties(self, folder_id, folder_update_input, **kwargs):  # noqa: E501
+        """Update folder properties by folder ID  # noqa: E501
+
+        Update a folder's properties, identified by folder ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_properties(folder_id, folder_update_input, async_req=True)
+        >>> result = thread.get()
+
+        :param folder_id: ID of folder to update (required)
+        :type folder_id: str
+        :param folder_update_input: (required)
+        :type folder_update_input: FolderUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: Folder
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.update_properties_with_http_info(folder_id, folder_update_input, **kwargs)  # noqa: E501
+
+    def update_properties_with_http_info(self, folder_id, folder_update_input, **kwargs):  # noqa: E501
+        """Update folder properties by folder ID  # noqa: E501
+
+        Update a folder's properties, identified by folder ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_properties_with_http_info(folder_id, folder_update_input, async_req=True)
+        >>> result = thread.get()
+
+        :param folder_id: ID of folder to update (required)
+        :type folder_id: str
+        :param folder_update_input: (required)
+        :type folder_update_input: FolderUpdateInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(Folder, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        local_var_params = locals()
+
+        all_params = ["folder_id", "folder_update_input"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_properties" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'folder_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("folder_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `folder_id` when calling `update_properties`")  # noqa: E501
+        # verify the required parameter 'folder_update_input' is set
+        if self.api_client.client_side_validation and local_var_params.get("folder_update_input") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `folder_update_input` when calling `update_properties`")  # noqa: E501
+
+        if self.api_client.client_side_validation and "folder_id" in local_var_params and not re.search(r"\d+", local_var_params["folder_id"]):  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `folder_id` when calling `update_properties`, must conform to the pattern `/\d+/`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+        if "folder_id" in local_var_params:
+            path_params["folderId"] = local_var_params["folder_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if "folder_update_input" in local_var_params:
+            body_params = local_var_params["folder_update_input"]
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        content_types_list = local_var_params.get("_content_type", self.api_client.select_header_content_type(["application/json"], "PATCH", body_params))  # noqa: E501
+        if content_types_list:
+            header_params["Content-Type"] = content_types_list
+
+        # Authentication setting
+        auth_settings = ["oauth2"]  # noqa: E501
+
+        response_types_map = {
+            200: "Folder",
+        }
+
+        return self.api_client.call_api(
+            "/files/v3/folders/{folderId}",
+            "PATCH",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def update_properties_recursively(self, folder_update_input_with_id, **kwargs):  # noqa: E501
         """Update folder properties  # noqa: E501
 
         Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_properties(folder_update_input, async_req=True)
+        >>> thread = api.update_properties_recursively(folder_update_input_with_id, async_req=True)
         >>> result = thread.get()
 
-        :param folder_update_input: Properties to change in the folder (required)
-        :type folder_update_input: FolderUpdateInput
+        :param folder_update_input_with_id: (required)
+        :type folder_update_input_with_id: FolderUpdateInputWithId
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1044,20 +1199,20 @@ class FoldersApi(object):
         :rtype: FolderUpdateTaskLocator
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_properties_with_http_info(folder_update_input, **kwargs)  # noqa: E501
+        return self.update_properties_recursively_with_http_info(folder_update_input_with_id, **kwargs)  # noqa: E501
 
-    def update_properties_with_http_info(self, folder_update_input, **kwargs):  # noqa: E501
+    def update_properties_recursively_with_http_info(self, folder_update_input_with_id, **kwargs):  # noqa: E501
         """Update folder properties  # noqa: E501
 
         Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_properties_with_http_info(folder_update_input, async_req=True)
+        >>> thread = api.update_properties_recursively_with_http_info(folder_update_input_with_id, async_req=True)
         >>> result = thread.get()
 
-        :param folder_update_input: Properties to change in the folder (required)
-        :type folder_update_input: FolderUpdateInput
+        :param folder_update_input_with_id: (required)
+        :type folder_update_input_with_id: FolderUpdateInputWithId
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -1084,17 +1239,17 @@ class FoldersApi(object):
 
         local_var_params = locals()
 
-        all_params = ["folder_update_input"]
+        all_params = ["folder_update_input_with_id"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_properties" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update_properties_recursively" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'folder_update_input' is set
-        if self.api_client.client_side_validation and local_var_params.get("folder_update_input") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `folder_update_input` when calling `update_properties`")  # noqa: E501
+        # verify the required parameter 'folder_update_input_with_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("folder_update_input_with_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `folder_update_input_with_id` when calling `update_properties_recursively`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1108,8 +1263,8 @@ class FoldersApi(object):
         local_var_files = {}
 
         body_params = None
-        if "folder_update_input" in local_var_params:
-            body_params = local_var_params["folder_update_input"]
+        if "folder_update_input_with_id" in local_var_params:
+            body_params = local_var_params["folder_update_input_with_id"]
         # HTTP header `Accept`
         header_params["Accept"] = self.api_client.select_header_accept(["application/json", "*/*"])  # noqa: E501
 
