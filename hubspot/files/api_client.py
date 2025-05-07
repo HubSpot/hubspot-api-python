@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 

@@ -27,11 +27,6 @@ class Discovery(DiscoveryBase):
         return PagesDiscovery(self.config)
 
     @property
-    def performance(self):
-        from .performance.discovery import Discovery as PerformanceDiscovery
-        return PerformanceDiscovery(self.config)
-
-    @property
     def site_search(self):
         from .site_search.discovery import Discovery as SiteSearchDiscovery
         return SiteSearchDiscovery(self.config)

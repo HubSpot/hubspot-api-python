@@ -35,27 +35,23 @@ class SimplePublicObjectInputForCreate(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"associations": "list[PublicAssociationsForObject]", "object_write_trace_id": "str", "properties": "dict[str, str]"}
+    openapi_types = {"associations": "list[PublicAssociationsForObject]", "properties": "dict[str, str]"}
 
-    attribute_map = {"associations": "associations", "object_write_trace_id": "objectWriteTraceId", "properties": "properties"}
+    attribute_map = {"associations": "associations", "properties": "properties"}
 
-    def __init__(self, associations=None, object_write_trace_id=None, properties=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, associations=None, properties=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObjectInputForCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._associations = None
-        self._object_write_trace_id = None
         self._properties = None
         self.discriminator = None
 
         if associations is not None:
             self.associations = associations
-        if object_write_trace_id is not None:
-            self.object_write_trace_id = object_write_trace_id
-        if properties is not None:
-            self.properties = properties
+        self.properties = properties
 
     @property
     def associations(self):
@@ -79,27 +75,6 @@ class SimplePublicObjectInputForCreate(object):
         self._associations = associations
 
     @property
-    def object_write_trace_id(self):
-        """Gets the object_write_trace_id of this SimplePublicObjectInputForCreate.  # noqa: E501
-
-
-        :return: The object_write_trace_id of this SimplePublicObjectInputForCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._object_write_trace_id
-
-    @object_write_trace_id.setter
-    def object_write_trace_id(self, object_write_trace_id):
-        """Sets the object_write_trace_id of this SimplePublicObjectInputForCreate.
-
-
-        :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectInputForCreate.  # noqa: E501
-        :type object_write_trace_id: str
-        """
-
-        self._object_write_trace_id = object_write_trace_id
-
-    @property
     def properties(self):
         """Gets the properties of this SimplePublicObjectInputForCreate.  # noqa: E501
 
@@ -117,6 +92,8 @@ class SimplePublicObjectInputForCreate(object):
         :param properties: The properties of this SimplePublicObjectInputForCreate.  # noqa: E501
         :type properties: dict[str, str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 

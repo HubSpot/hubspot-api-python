@@ -3,7 +3,7 @@
 # flake8: noqa
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -43,6 +43,7 @@ from hubspot.files.models.folder import Folder
 from hubspot.files.models.folder_action_response import FolderActionResponse
 from hubspot.files.models.folder_input import FolderInput
 from hubspot.files.models.folder_update_input import FolderUpdateInput
+from hubspot.files.models.folder_update_input_with_id import FolderUpdateInputWithId
 from hubspot.files.models.folder_update_task_locator import FolderUpdateTaskLocator
 from hubspot.files.models.import_from_url_input import ImportFromUrlInput
 from hubspot.files.models.import_from_url_task_locator import ImportFromUrlTaskLocator

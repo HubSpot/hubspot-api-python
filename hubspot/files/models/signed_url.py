@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Files Files
+    Files
 
     Upload and manage files.  # noqa: E501
 
@@ -35,11 +35,11 @@ class SignedUrl(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"extension": "str", "size": "int", "name": "str", "width": "int", "type": "str", "expires_at": "datetime", "url": "str", "height": "int"}
+    openapi_types = {"extension": "str", "size": "int", "name": "str", "width": "int", "type": "str", "url": "str", "expires_at": "datetime", "height": "int"}
 
-    attribute_map = {"extension": "extension", "size": "size", "name": "name", "width": "width", "type": "type", "expires_at": "expiresAt", "url": "url", "height": "height"}
+    attribute_map = {"extension": "extension", "size": "size", "name": "name", "width": "width", "type": "type", "url": "url", "expires_at": "expiresAt", "height": "height"}
 
-    def __init__(self, extension=None, size=None, name=None, width=None, type=None, expires_at=None, url=None, height=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, extension=None, size=None, name=None, width=None, type=None, url=None, expires_at=None, height=None, local_vars_configuration=None):  # noqa: E501
         """SignedUrl - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -50,8 +50,8 @@ class SignedUrl(object):
         self._name = None
         self._width = None
         self._type = None
-        self._expires_at = None
         self._url = None
+        self._expires_at = None
         self._height = None
         self.discriminator = None
 
@@ -61,8 +61,8 @@ class SignedUrl(object):
         if width is not None:
             self.width = width
         self.type = type
-        self.expires_at = expires_at
         self.url = url
+        self.expires_at = expires_at
         if height is not None:
             self.height = height
 
@@ -190,31 +190,6 @@ class SignedUrl(object):
         self._type = type
 
     @property
-    def expires_at(self):
-        """Gets the expires_at of this SignedUrl.  # noqa: E501
-
-        Timestamp of when the URL will no longer grant access to the file.  # noqa: E501
-
-        :return: The expires_at of this SignedUrl.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._expires_at
-
-    @expires_at.setter
-    def expires_at(self, expires_at):
-        """Sets the expires_at of this SignedUrl.
-
-        Timestamp of when the URL will no longer grant access to the file.  # noqa: E501
-
-        :param expires_at: The expires_at of this SignedUrl.  # noqa: E501
-        :type expires_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and expires_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `expires_at`, must not be `None`")  # noqa: E501
-
-        self._expires_at = expires_at
-
-    @property
     def url(self):
         """Gets the url of this SignedUrl.  # noqa: E501
 
@@ -238,6 +213,31 @@ class SignedUrl(object):
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
+
+    @property
+    def expires_at(self):
+        """Gets the expires_at of this SignedUrl.  # noqa: E501
+
+        Timestamp of when the URL will no longer grant access to the file.  # noqa: E501
+
+        :return: The expires_at of this SignedUrl.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._expires_at
+
+    @expires_at.setter
+    def expires_at(self, expires_at):
+        """Sets the expires_at of this SignedUrl.
+
+        Timestamp of when the URL will no longer grant access to the file.  # noqa: E501
+
+        :param expires_at: The expires_at of this SignedUrl.  # noqa: E501
+        :type expires_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and expires_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `expires_at`, must not be `None`")  # noqa: E501
+
+        self._expires_at = expires_at
 
     @property
     def height(self):
