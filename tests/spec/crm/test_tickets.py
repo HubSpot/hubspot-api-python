@@ -1,5 +1,5 @@
 from hubspot import HubSpot
-from hubspot.crm.tickets import BasicApi, BatchApi, MergeApi, SearchApi
+from hubspot.crm.tickets import BasicApi, BatchApi, SearchApi
 
 
 def test_is_discoverable():
