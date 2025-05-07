@@ -5,9 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.2...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0...HEAD)
 
-## [12.0.0-beta.2](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...v12.0.0-beta.2) - 2025-05-07
+## [12.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...v12.0.0) - 2025-05-07
 
 ## Files
 
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed parameter `object_write_trace_id` from models: `simple_public_object_input`, `simple_public_object_input_for_create` for  `crm.products`, `crm.objects.goals`, `crm.tickets`.
 - Added method `merge()` to `crm.tickets.basic_api`.
 - Removed `crm.tickets.merge_api` Api.
-- Marked `CMS Performance` as deprecated.
+- Removed `CMS Performance` Client.
 
 ## [12.0.0-beta.1](https://github.com/HubSpot/hubspot-api-python/compare/v11.1.0...v12.0.0-beta.1) - 2025-04-16
 
