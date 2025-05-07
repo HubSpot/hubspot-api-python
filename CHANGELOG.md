@@ -5,9 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0...HEAD)
 
-## [12.0.0-beta.1](https://github.com/HubSpot/hubspot-api-python/compare/v11.1.0...v12.0.0-beta.1) - 2025-05-16
+## [12.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...v12.0.0) - 2025-05-07
+
+## Files
+
+- Changed incomining parameters list in `files.files_api.do_search()`.
+- Renamed method `archive_gdpr()` to `delete()` in `files.files_api`.
+- Renamed method `update_properties()` to `update_properties_recursively()` in `files.folders_api`.
+- Added new method `update_properties()` to `files.folders_api`.
+- Changed incomining parameters list in `files.folders_api.do_search()`.
+- Added properties `source_group` and `file_md5` to `File`.
+- Added property `clear_expires` to `FileUpdateInput`.
+- Changed property type from `"expires_at": "int"` to `"expires_at": "datetime"` in `FileUpdateInput`.
+- Added property `expires_at` to `ImportFromUrlInput`.
+- Removed property `id` from `FolderUpdateInput`.
+
+## Other changes
+
+- Added parameter `object_write_trace_id` to models: `simple_public_object`, `simple_public_object_with_associations`, `simple_public_upsert_object` for  `crm.products`, `crm.objects.goals`, `crm.tickets`.
+- Removed parameter `object_write_trace_id` from models: `simple_public_object_input`, `simple_public_object_input_for_create` for  `crm.products`, `crm.objects.goals`, `crm.tickets`.
+- Added method `merge()` to `crm.tickets.basic_api`.
+- Removed `crm.tickets.merge_api` Api.
+- Removed `CMS Performance` Client.
+
+## [12.0.0-beta.1](https://github.com/HubSpot/hubspot-api-python/compare/v11.1.0...v12.0.0-beta.1) - 2025-04-16
 
 ## CRM Objects
 
@@ -45,7 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added new Client APIs
 
-- `crm.companies.api.merge_api` Api.
+- `crm.companies.merge_api` Api.
 - `crm.extensions.calling.channel_connection_settings_api` Api.
 - `marketing.events.add_event_attendees_api` Api.
 - `marketing.events.batch_api` Api.
@@ -63,10 +86,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `marketing.events.attendance_subscriber_state_changes_api` Api.
 - `crm.objects.feedback_submissions.gdpr_api` Api.
 - `crm.objects.feedback_submissions.public_object_api` Api.
-- `crm.companies.api.merge_api` Api.
-- `crm.contacts.api.merge_api` Api.
-- `crm.deals.api.merge_api` Api.
-- `crm.contacts.api.gdpr_api` Api.
+- `crm.companies.merge_api` Api.
+- `crm.contacts.merge_api` Api.
+- `crm.deals.merge_api` Api.
+- `crm.contacts.gdpr_api` Api.
 - `events.send.custom_event_data_api` Api.
 - `events.send.default_api` Api.
 
