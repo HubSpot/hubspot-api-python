@@ -20,9 +20,7 @@ pip install --upgrade hubspot-api-client
 
 Make sure you have [Python 3.7+](https://docs.python.org/3/) and [pip](https://pypi.org/project/pip/) installed.
 
-
 ## Quickstart
-
 
 ### Configuring HubSpot client
 
@@ -36,15 +34,15 @@ api_client = HubSpot()
 api_client.access_token = 'your_access_token'
 ```
 
-You'll need to create a [private app](https://developers.hubspot.com/docs/api/private-apps) to get your access token or you can obtain OAuth2 access token.
+You'll need to create a [private app](https://developers.hubspot.com/docs/apps/legacy-apps/private-apps) to get your access token or you can obtain OAuth2 access token.
 
-#### Hapikey support:
+#### Hapikey support
 
 Please, note that hapikey is no longer supported after v5.1.0. You can get more info about hapikey sunset [here](https://developers.hubspot.com/changelog/upcoming-api-key-sunset). Also, plese, visit a [migration guide](https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app) if you need help with a migration process.
 
 ### OAuth API
 
-#### Obtain OAuth2 access token:
+#### Obtain OAuth2 access token
 
 ```python
 from hubspot.oauth import ApiException
@@ -63,8 +61,7 @@ except ApiException as e:
 
 ### CRM API
 
-
-#### Create contact:
+#### Create contact
 
 ```python
 from hubspot.crm.contacts import SimplePublicObjectInputForCreate
@@ -81,7 +78,7 @@ except ApiException as e:
     print("Exception when creating contact: %s\n" % e)
 ```
 
-#### Get contact by id:
+#### Get contact by id
 
 ```python
 from hubspot.crm.contacts import ApiException
@@ -92,7 +89,7 @@ except ApiException as e:
     print("Exception when requesting contact by id: %s\n" % e)
 ```
 
-#### Get custom objects page:
+#### Get custom objects page
 
 ```python
 from hubspot.crm.objects import ApiException
@@ -103,7 +100,7 @@ except ApiException as e:
     print("Exception when requesting custom objects: %s\n" % e)
 ```
 
-#### Get all:
+#### Get all
 
 `get_all` method is available for all objects (Companies, Contacts, Deals and etc).
 
@@ -113,11 +110,12 @@ all_contacts = api_client.crm.contacts.get_all()
 
 Please note that pagination is used under the hood to get all results.
 
-## Search:
+## Search
 
 `do_search` method is available for all objects (Companies, Contacts, Deals and etc).
 
-### Example Search by date:
+### Example Search by date
+
 ```python
 import hubspot
 
@@ -152,7 +150,7 @@ except ApiException as e:
 
 ### CMS API
 
-#### Get audit logs:
+#### Get audit logs
 
 ```python
 from hubspot.cms.audit_logs import ApiException
@@ -165,7 +163,8 @@ except ApiException as e:
 
 ### Files API
 
-#### Upload files:
+#### Upload files
+
 ```python
 import hubspot
 import json
@@ -252,9 +251,10 @@ try:
 except ApiException as e:
     print(e)
 ```
+
 ### Using utils
 
-#### Get OAuth url:
+#### Get OAuth url
 
 ```python
 from hubspot.utils.oauth import get_auth_url
@@ -301,6 +301,7 @@ retry = Retry(
 )
 api_client = HubSpot(retry=retry)
 ```
+
 Or with rate limit retry middleware:
 
 ```python
