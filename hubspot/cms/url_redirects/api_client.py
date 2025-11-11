@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    CMS Url Redirects
+    Url Redirects
 
     URL redirect operations  # noqa: E501
 

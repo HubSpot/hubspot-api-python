@@ -58,7 +58,6 @@ class BackgroundImage(object):
     def image_url(self):
         """Gets the image_url of this BackgroundImage.  # noqa: E501
 
-          # noqa: E501
 
         :return: The image_url of this BackgroundImage.  # noqa: E501
         :rtype: str
@@ -69,7 +68,6 @@ class BackgroundImage(object):
     def image_url(self, image_url):
         """Sets the image_url of this BackgroundImage.
 
-          # noqa: E501
 
         :param image_url: The image_url of this BackgroundImage.  # noqa: E501
         :type image_url: str
@@ -83,7 +81,6 @@ class BackgroundImage(object):
     def background_size(self):
         """Gets the background_size of this BackgroundImage.  # noqa: E501
 
-          # noqa: E501
 
         :return: The background_size of this BackgroundImage.  # noqa: E501
         :rtype: str
@@ -94,7 +91,6 @@ class BackgroundImage(object):
     def background_size(self, background_size):
         """Sets the background_size of this BackgroundImage.
 
-          # noqa: E501
 
         :param background_size: The background_size of this BackgroundImage.  # noqa: E501
         :type background_size: str
@@ -108,7 +104,6 @@ class BackgroundImage(object):
     def background_position(self):
         """Gets the background_position of this BackgroundImage.  # noqa: E501
 
-          # noqa: E501
 
         :return: The background_position of this BackgroundImage.  # noqa: E501
         :rtype: str
@@ -119,7 +114,6 @@ class BackgroundImage(object):
     def background_position(self, background_position):
         """Sets the background_position of this BackgroundImage.
 
-          # noqa: E501
 
         :param background_position: The background_position of this BackgroundImage.  # noqa: E501
         :type background_position: str

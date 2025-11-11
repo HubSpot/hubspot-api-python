@@ -104,7 +104,6 @@ class Gradient(object):
     def colors(self):
         """Gets the colors of this Gradient.  # noqa: E501
 
-          # noqa: E501
 
         :return: The colors of this Gradient.  # noqa: E501
         :rtype: list[ColorStop]
@@ -115,7 +114,6 @@ class Gradient(object):
     def colors(self, colors):
         """Sets the colors of this Gradient.
 
-          # noqa: E501
 
         :param colors: The colors of this Gradient.  # noqa: E501
         :type colors: list[ColorStop]

@@ -3,7 +3,7 @@
 # flake8: noqa
 
 """
-    CMS Site Search
+    Site Search
 
     Use these endpoints for searching content on your HubSpot hosted CMS website(s).  # noqa: E501
 

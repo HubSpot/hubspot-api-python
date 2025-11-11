@@ -122,7 +122,6 @@ class LayoutSection(object):
     def css_style(self):
         """Gets the css_style of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The css_style of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -133,7 +132,6 @@ class LayoutSection(object):
     def css_style(self, css_style):
         """Sets the css_style of this LayoutSection.
 
-          # noqa: E501
 
         :param css_style: The css_style of this LayoutSection.  # noqa: E501
         :type css_style: str
@@ -147,7 +145,6 @@ class LayoutSection(object):
     def label(self):
         """Gets the label of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The label of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -158,7 +155,6 @@ class LayoutSection(object):
     def label(self, label):
         """Sets the label of this LayoutSection.
 
-          # noqa: E501
 
         :param label: The label of this LayoutSection.  # noqa: E501
         :type label: str
@@ -172,7 +168,6 @@ class LayoutSection(object):
     def type(self):
         """Gets the type of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The type of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -183,7 +178,6 @@ class LayoutSection(object):
     def type(self, type):
         """Sets the type of this LayoutSection.
 
-          # noqa: E501
 
         :param type: The type of this LayoutSection.  # noqa: E501
         :type type: str
@@ -197,7 +191,6 @@ class LayoutSection(object):
     def params(self):
         """Gets the params of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The params of this LayoutSection.  # noqa: E501
         :rtype: dict[str, object]
@@ -208,7 +201,6 @@ class LayoutSection(object):
     def params(self, params):
         """Sets the params of this LayoutSection.
 
-          # noqa: E501
 
         :param params: The params of this LayoutSection.  # noqa: E501
         :type params: dict[str, object]
@@ -222,7 +214,6 @@ class LayoutSection(object):
     def rows(self):
         """Gets the rows of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The rows of this LayoutSection.  # noqa: E501
         :rtype: list[dict[str, LayoutSection]]
@@ -233,7 +224,6 @@ class LayoutSection(object):
     def rows(self, rows):
         """Sets the rows of this LayoutSection.
 
-          # noqa: E501
 
         :param rows: The rows of this LayoutSection.  # noqa: E501
         :type rows: list[dict[str, LayoutSection]]
@@ -247,7 +237,6 @@ class LayoutSection(object):
     def row_meta_data(self):
         """Gets the row_meta_data of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The row_meta_data of this LayoutSection.  # noqa: E501
         :rtype: list[RowMetaData]
@@ -258,7 +247,6 @@ class LayoutSection(object):
     def row_meta_data(self, row_meta_data):
         """Sets the row_meta_data of this LayoutSection.
 
-          # noqa: E501
 
         :param row_meta_data: The row_meta_data of this LayoutSection.  # noqa: E501
         :type row_meta_data: list[RowMetaData]
@@ -272,7 +260,6 @@ class LayoutSection(object):
     def cells(self):
         """Gets the cells of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The cells of this LayoutSection.  # noqa: E501
         :rtype: list[LayoutSection]
@@ -283,7 +270,6 @@ class LayoutSection(object):
     def cells(self, cells):
         """Sets the cells of this LayoutSection.
 
-          # noqa: E501
 
         :param cells: The cells of this LayoutSection.  # noqa: E501
         :type cells: list[LayoutSection]
@@ -297,7 +283,6 @@ class LayoutSection(object):
     def css_class(self):
         """Gets the css_class of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The css_class of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -308,7 +293,6 @@ class LayoutSection(object):
     def css_class(self, css_class):
         """Sets the css_class of this LayoutSection.
 
-          # noqa: E501
 
         :param css_class: The css_class of this LayoutSection.  # noqa: E501
         :type css_class: str
@@ -322,7 +306,6 @@ class LayoutSection(object):
     def w(self):
         """Gets the w of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The w of this LayoutSection.  # noqa: E501
         :rtype: int
@@ -333,7 +316,6 @@ class LayoutSection(object):
     def w(self, w):
         """Sets the w of this LayoutSection.
 
-          # noqa: E501
 
         :param w: The w of this LayoutSection.  # noqa: E501
         :type w: int
@@ -347,7 +329,6 @@ class LayoutSection(object):
     def css_id(self):
         """Gets the css_id of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The css_id of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -358,7 +339,6 @@ class LayoutSection(object):
     def css_id(self, css_id):
         """Sets the css_id of this LayoutSection.
 
-          # noqa: E501
 
         :param css_id: The css_id of this LayoutSection.  # noqa: E501
         :type css_id: str
@@ -372,7 +352,6 @@ class LayoutSection(object):
     def x(self):
         """Gets the x of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The x of this LayoutSection.  # noqa: E501
         :rtype: int
@@ -383,7 +362,6 @@ class LayoutSection(object):
     def x(self, x):
         """Sets the x of this LayoutSection.
 
-          # noqa: E501
 
         :param x: The x of this LayoutSection.  # noqa: E501
         :type x: int
@@ -397,7 +375,6 @@ class LayoutSection(object):
     def name(self):
         """Gets the name of this LayoutSection.  # noqa: E501
 
-          # noqa: E501
 
         :return: The name of this LayoutSection.  # noqa: E501
         :rtype: str
@@ -408,7 +385,6 @@ class LayoutSection(object):
     def name(self, name):
         """Sets the name of this LayoutSection.
 
-          # noqa: E501
 
         :param name: The name of this LayoutSection.  # noqa: E501
         :type name: str

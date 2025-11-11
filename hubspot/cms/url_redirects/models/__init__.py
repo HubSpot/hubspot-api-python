@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    CMS Url Redirects
+    Url Redirects
 
     URL redirect operations  # noqa: E501
 

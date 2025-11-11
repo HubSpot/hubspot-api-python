@@ -56,7 +56,6 @@ class SideOrCorner(object):
     def horizontal_side(self):
         """Gets the horizontal_side of this SideOrCorner.  # noqa: E501
 
-          # noqa: E501
 
         :return: The horizontal_side of this SideOrCorner.  # noqa: E501
         :rtype: str
@@ -67,7 +66,6 @@ class SideOrCorner(object):
     def horizontal_side(self, horizontal_side):
         """Sets the horizontal_side of this SideOrCorner.
 
-          # noqa: E501
 
         :param horizontal_side: The horizontal_side of this SideOrCorner.  # noqa: E501
         :type horizontal_side: str
@@ -81,7 +79,6 @@ class SideOrCorner(object):
     def vertical_side(self):
         """Gets the vertical_side of this SideOrCorner.  # noqa: E501
 
-          # noqa: E501
 
         :return: The vertical_side of this SideOrCorner.  # noqa: E501
         :rtype: str
@@ -92,7 +89,6 @@ class SideOrCorner(object):
     def vertical_side(self, vertical_side):
         """Sets the vertical_side of this SideOrCorner.
 
-          # noqa: E501
 
         :param vertical_side: The vertical_side of this SideOrCorner.  # noqa: E501
         :type vertical_side: str

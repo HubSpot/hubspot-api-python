@@ -56,7 +56,6 @@ class RowMetaData(object):
     def css_class(self):
         """Gets the css_class of this RowMetaData.  # noqa: E501
 
-          # noqa: E501
 
         :return: The css_class of this RowMetaData.  # noqa: E501
         :rtype: str
@@ -67,7 +66,6 @@ class RowMetaData(object):
     def css_class(self, css_class):
         """Sets the css_class of this RowMetaData.
 
-          # noqa: E501
 
         :param css_class: The css_class of this RowMetaData.  # noqa: E501
         :type css_class: str
