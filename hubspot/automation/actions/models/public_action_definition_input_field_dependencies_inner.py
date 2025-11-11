@@ -44,6 +44,8 @@ class PublicActionDefinitionInputFieldDependenciesInner(object):
         "controlling_field_value": "controllingFieldValue",
     }
 
+    discriminator_value_class_map = {}
+
     def __init__(self, dependency_type="CONDITIONAL_SINGLE_FIELD", controlling_field_name=None, dependent_field_names=None, controlling_field_value=None, local_vars_configuration=None):  # noqa: E501
         """PublicActionDefinitionInputFieldDependenciesInner - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
@@ -54,7 +56,7 @@ class PublicActionDefinitionInputFieldDependenciesInner(object):
         self._controlling_field_name = None
         self._dependent_field_names = None
         self._controlling_field_value = None
-        self.discriminator = None
+        self.discriminator = "dependency_type"
 
         self.dependency_type = dependency_type
         self.controlling_field_name = controlling_field_name
@@ -155,6 +157,12 @@ class PublicActionDefinitionInputFieldDependenciesInner(object):
             raise ValueError("Invalid value for `controlling_field_value`, must not be `None`")  # noqa: E501
 
         self._controlling_field_value = controlling_field_value
+
+    def get_real_child_model(self, data):
+        """Returns the real base class specified by the discriminator"""
+        discriminator_key = self.attribute_map[self.discriminator]
+        discriminator_value = data[discriminator_key]
+        return self.discriminator_value_class_map.get(discriminator_value)
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
