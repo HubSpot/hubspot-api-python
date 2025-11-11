@@ -57,7 +57,7 @@ class PreviousPage(object):
     def before(self):
         """Gets the before of this PreviousPage.  # noqa: E501
 
-          # noqa: E501
+        A paging cursor token for retrieving previous pages.  # noqa: E501
 
         :return: The before of this PreviousPage.  # noqa: E501
         :rtype: str
@@ -68,7 +68,7 @@ class PreviousPage(object):
     def before(self, before):
         """Sets the before of this PreviousPage.
 
-          # noqa: E501
+        A paging cursor token for retrieving previous pages.  # noqa: E501
 
         :param before: The before of this PreviousPage.  # noqa: E501
         :type before: str
@@ -82,7 +82,7 @@ class PreviousPage(object):
     def link(self):
         """Gets the link of this PreviousPage.  # noqa: E501
 
-          # noqa: E501
+        A URL that can be used to retrieve the previous pages' results.  # noqa: E501
 
         :return: The link of this PreviousPage.  # noqa: E501
         :rtype: str
@@ -93,7 +93,7 @@ class PreviousPage(object):
     def link(self, link):
         """Sets the link of this PreviousPage.
 
-          # noqa: E501
+        A URL that can be used to retrieve the previous pages' results.  # noqa: E501
 
         :param link: The link of this PreviousPage.  # noqa: E501
         :type link: str

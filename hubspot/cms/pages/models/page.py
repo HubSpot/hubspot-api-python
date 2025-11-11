@@ -1945,7 +1945,6 @@ class Page(object):
     def layout_sections(self):
         """Gets the layout_sections of this Page.  # noqa: E501
 
-          # noqa: E501
 
         :return: The layout_sections of this Page.  # noqa: E501
         :rtype: dict[str, LayoutSection]
@@ -1956,7 +1955,6 @@ class Page(object):
     def layout_sections(self, layout_sections):
         """Sets the layout_sections of this Page.
 
-          # noqa: E501
 
         :param layout_sections: The layout_sections of this Page.  # noqa: E501
         :type layout_sections: dict[str, LayoutSection]
@@ -2344,7 +2342,6 @@ class Page(object):
     def theme_settings_values(self):
         """Gets the theme_settings_values of this Page.  # noqa: E501
 
-          # noqa: E501
 
         :return: The theme_settings_values of this Page.  # noqa: E501
         :rtype: dict[str, object]
@@ -2355,7 +2352,6 @@ class Page(object):
     def theme_settings_values(self, theme_settings_values):
         """Sets the theme_settings_values of this Page.
 
-          # noqa: E501
 
         :param theme_settings_values: The theme_settings_values of this Page.  # noqa: E501
         :type theme_settings_values: dict[str, object]

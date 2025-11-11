@@ -56,7 +56,6 @@ class Angle(object):
     def units(self):
         """Gets the units of this Angle.  # noqa: E501
 
-          # noqa: E501
 
         :return: The units of this Angle.  # noqa: E501
         :rtype: str
@@ -67,7 +66,6 @@ class Angle(object):
     def units(self, units):
         """Sets the units of this Angle.
 
-          # noqa: E501
 
         :param units: The units of this Angle.  # noqa: E501
         :type units: str
@@ -81,7 +79,6 @@ class Angle(object):
     def value(self):
         """Gets the value of this Angle.  # noqa: E501
 
-          # noqa: E501
 
         :return: The value of this Angle.  # noqa: E501
         :rtype: float
@@ -92,7 +89,6 @@ class Angle(object):
     def value(self, value):
         """Sets the value of this Angle.
 
-          # noqa: E501
 
         :param value: The value of this Angle.  # noqa: E501
         :type value: float

@@ -115,7 +115,6 @@ class Styles(object):
     def flexbox_positioning(self):
         """Gets the flexbox_positioning of this Styles.  # noqa: E501
 
-          # noqa: E501
 
         :return: The flexbox_positioning of this Styles.  # noqa: E501
         :rtype: str
@@ -126,7 +125,6 @@ class Styles(object):
     def flexbox_positioning(self, flexbox_positioning):
         """Sets the flexbox_positioning of this Styles.
 
-          # noqa: E501
 
         :param flexbox_positioning: The flexbox_positioning of this Styles.  # noqa: E501
         :type flexbox_positioning: str
@@ -163,7 +161,6 @@ class Styles(object):
     def force_full_width_section(self):
         """Gets the force_full_width_section of this Styles.  # noqa: E501
 
-          # noqa: E501
 
         :return: The force_full_width_section of this Styles.  # noqa: E501
         :rtype: bool
@@ -174,7 +171,6 @@ class Styles(object):
     def force_full_width_section(self, force_full_width_section):
         """Sets the force_full_width_section of this Styles.
 
-          # noqa: E501
 
         :param force_full_width_section: The force_full_width_section of this Styles.  # noqa: E501
         :type force_full_width_section: bool
@@ -188,7 +184,6 @@ class Styles(object):
     def vertical_alignment(self):
         """Gets the vertical_alignment of this Styles.  # noqa: E501
 
-          # noqa: E501
 
         :return: The vertical_alignment of this Styles.  # noqa: E501
         :rtype: str
@@ -199,7 +194,6 @@ class Styles(object):
     def vertical_alignment(self, vertical_alignment):
         """Sets the vertical_alignment of this Styles.
 
-          # noqa: E501
 
         :param vertical_alignment: The vertical_alignment of this Styles.  # noqa: E501
         :type vertical_alignment: str
@@ -213,7 +207,6 @@ class Styles(object):
     def max_width_section_centering(self):
         """Gets the max_width_section_centering of this Styles.  # noqa: E501
 
-          # noqa: E501
 
         :return: The max_width_section_centering of this Styles.  # noqa: E501
         :rtype: int
@@ -224,7 +217,6 @@ class Styles(object):
     def max_width_section_centering(self, max_width_section_centering):
         """Sets the max_width_section_centering of this Styles.
 
-          # noqa: E501
 
         :param max_width_section_centering: The max_width_section_centering of this Styles.  # noqa: E501
         :type max_width_section_centering: int
