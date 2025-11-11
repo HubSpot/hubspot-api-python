@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    CMS Url Redirects
+    Url Redirects
 
     URL redirect operations  # noqa: E501
 
@@ -57,6 +57,7 @@ class NextPage(object):
     def link(self):
         """Gets the link of this NextPage.  # noqa: E501
 
+        A URL that can be used to retrieve the next page results.  # noqa: E501
 
         :return: The link of this NextPage.  # noqa: E501
         :rtype: str
@@ -67,6 +68,7 @@ class NextPage(object):
     def link(self, link):
         """Sets the link of this NextPage.
 
+        A URL that can be used to retrieve the next page results.  # noqa: E501
 
         :param link: The link of this NextPage.  # noqa: E501
         :type link: str
@@ -78,6 +80,7 @@ class NextPage(object):
     def after(self):
         """Gets the after of this NextPage.  # noqa: E501
 
+        A paging cursor token for retrieving subsequent pages.  # noqa: E501
 
         :return: The after of this NextPage.  # noqa: E501
         :rtype: str
@@ -88,6 +91,7 @@ class NextPage(object):
     def after(self, after):
         """Sets the after of this NextPage.
 
+        A paging cursor token for retrieving subsequent pages.  # noqa: E501
 
         :param after: The after of this NextPage.  # noqa: E501
         :type after: str
