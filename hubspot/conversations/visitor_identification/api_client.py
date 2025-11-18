@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Visitor Identification
+    Conversations Visitor Identification
 
     The Visitor Identification API allows you to pass identification information to the HubSpot chat widget for otherwise unknown visitors that were verified by your own authentication system.  # noqa: E501
 
