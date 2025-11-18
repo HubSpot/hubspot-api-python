@@ -57,8 +57,7 @@ class ExternalUnifiedEvent(object):
         self.event_type = event_type
         self.id = id
         self.object_id = object_id
-        if properties is not None:
-            self.properties = properties
+        self.properties = properties
         self.object_type = object_type
 
     @property
@@ -165,6 +164,7 @@ class ExternalUnifiedEvent(object):
     def properties(self):
         """Gets the properties of this ExternalUnifiedEvent.  # noqa: E501
 
+        A key-value map of event-specific properties. The available properties depend on the event type definition.  # noqa: E501
 
         :return: The properties of this ExternalUnifiedEvent.  # noqa: E501
         :rtype: dict[str, str]
@@ -175,10 +175,13 @@ class ExternalUnifiedEvent(object):
     def properties(self, properties):
         """Sets the properties of this ExternalUnifiedEvent.
 
+        A key-value map of event-specific properties. The available properties depend on the event type definition.  # noqa: E501
 
         :param properties: The properties of this ExternalUnifiedEvent.  # noqa: E501
         :type properties: dict[str, str]
         """
+        if self.local_vars_configuration.client_side_validation and properties is None:  # noqa: E501
+            raise ValueError("Invalid value for `properties`, must not be `None`")  # noqa: E501
 
         self._properties = properties
 

@@ -224,7 +224,7 @@ class EventsApi(object):
     def get_types(self, **kwargs):  # noqa: E501
         """Event Types  # noqa: E501
 
-        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  # noqa: E501
+        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  Note: the `get_types` method is only supported in the Python SDK version `12.0.0-beta.1` or later.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -252,7 +252,7 @@ class EventsApi(object):
     def get_types_with_http_info(self, **kwargs):  # noqa: E501
         """Event Types  # noqa: E501
 
-        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  # noqa: E501
+        This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.  Note: the `get_types` method is only supported in the Python SDK version `12.0.0-beta.1` or later.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
