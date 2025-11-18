@@ -63,7 +63,6 @@ class TokenResponseIF(object):
     def access_token(self):
         """Gets the access_token of this TokenResponseIF.  # noqa: E501
 
-          # noqa: E501
 
         :return: The access_token of this TokenResponseIF.  # noqa: E501
         :rtype: str
@@ -74,7 +73,6 @@ class TokenResponseIF(object):
     def access_token(self, access_token):
         """Sets the access_token of this TokenResponseIF.
 
-          # noqa: E501
 
         :param access_token: The access_token of this TokenResponseIF.  # noqa: E501
         :type access_token: str
@@ -88,7 +86,6 @@ class TokenResponseIF(object):
     def refresh_token(self):
         """Gets the refresh_token of this TokenResponseIF.  # noqa: E501
 
-          # noqa: E501
 
         :return: The refresh_token of this TokenResponseIF.  # noqa: E501
         :rtype: str
@@ -99,7 +96,6 @@ class TokenResponseIF(object):
     def refresh_token(self, refresh_token):
         """Sets the refresh_token of this TokenResponseIF.
 
-          # noqa: E501
 
         :param refresh_token: The refresh_token of this TokenResponseIF.  # noqa: E501
         :type refresh_token: str
@@ -113,7 +109,6 @@ class TokenResponseIF(object):
     def id_token(self):
         """Gets the id_token of this TokenResponseIF.  # noqa: E501
 
-          # noqa: E501
 
         :return: The id_token of this TokenResponseIF.  # noqa: E501
         :rtype: str
@@ -124,7 +119,6 @@ class TokenResponseIF(object):
     def id_token(self, id_token):
         """Sets the id_token of this TokenResponseIF.
 
-          # noqa: E501
 
         :param id_token: The id_token of this TokenResponseIF.  # noqa: E501
         :type id_token: str
@@ -136,7 +130,6 @@ class TokenResponseIF(object):
     def token_type(self):
         """Gets the token_type of this TokenResponseIF.  # noqa: E501
 
-          # noqa: E501
 
         :return: The token_type of this TokenResponseIF.  # noqa: E501
         :rtype: str
@@ -147,7 +140,6 @@ class TokenResponseIF(object):
     def token_type(self, token_type):
         """Sets the token_type of this TokenResponseIF.
 
-          # noqa: E501
 
         :param token_type: The token_type of this TokenResponseIF.  # noqa: E501
         :type token_type: str
@@ -161,7 +153,6 @@ class TokenResponseIF(object):
     def expires_in(self):
         """Gets the expires_in of this TokenResponseIF.  # noqa: E501
 
-          # noqa: E501
 
         :return: The expires_in of this TokenResponseIF.  # noqa: E501
         :rtype: int
@@ -172,7 +163,6 @@ class TokenResponseIF(object):
     def expires_in(self, expires_in):
         """Sets the expires_in of this TokenResponseIF.
 
-          # noqa: E501
 
         :param expires_in: The expires_in of this TokenResponseIF.  # noqa: E501
         :type expires_in: int

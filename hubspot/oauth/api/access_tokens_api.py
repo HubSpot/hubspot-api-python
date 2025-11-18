@@ -34,15 +34,16 @@ class AccessTokensApi(object):
         self.api_client = api_client
 
     def get(self, token, **kwargs):  # noqa: E501
-        """get  # noqa: E501
+        """Retrieve OAuth token metadata  # noqa: E501
 
+        Retrieve a token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with.  Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The access token that you want to retrieve information about. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -63,15 +64,16 @@ class AccessTokensApi(object):
         return self.get_with_http_info(token, **kwargs)  # noqa: E501
 
     def get_with_http_info(self, token, **kwargs):  # noqa: E501
-        """get  # noqa: E501
+        """Retrieve OAuth token metadata  # noqa: E501
 
+        Retrieve a token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with.  Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The access token that you want to retrieve information about. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
