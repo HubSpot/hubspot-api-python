@@ -66,6 +66,7 @@ class Option(object):
     def hidden(self):
         """Gets the hidden of this Option.  # noqa: E501
 
+        Whether the option is displayed in HubSpot's UI.  # noqa: E501
 
         :return: The hidden of this Option.  # noqa: E501
         :rtype: bool
@@ -76,6 +77,7 @@ class Option(object):
     def hidden(self, hidden):
         """Sets the hidden of this Option.
 
+        Whether the option is displayed in HubSpot's UI.  # noqa: E501
 
         :param hidden: The hidden of this Option.  # noqa: E501
         :type hidden: bool
@@ -89,6 +91,7 @@ class Option(object):
     def display_order(self):
         """Gets the display_order of this Option.  # noqa: E501
 
+        The position of the item relative to others in the list.  # noqa: E501
 
         :return: The display_order of this Option.  # noqa: E501
         :rtype: int
@@ -99,6 +102,7 @@ class Option(object):
     def display_order(self, display_order):
         """Sets the display_order of this Option.
 
+        The position of the item relative to others in the list.  # noqa: E501
 
         :param display_order: The display_order of this Option.  # noqa: E501
         :type display_order: int
@@ -135,6 +139,7 @@ class Option(object):
     def description(self):
         """Gets the description of this Option.  # noqa: E501
 
+        A description of the option.  # noqa: E501
 
         :return: The description of this Option.  # noqa: E501
         :rtype: str
@@ -145,6 +150,7 @@ class Option(object):
     def description(self, description):
         """Sets the description of this Option.
 
+        A description of the option.  # noqa: E501
 
         :param description: The description of this Option.  # noqa: E501
         :type description: str
@@ -158,6 +164,7 @@ class Option(object):
     def read_only(self):
         """Gets the read_only of this Option.  # noqa: E501
 
+        Whether the option is read-only.  # noqa: E501
 
         :return: The read_only of this Option.  # noqa: E501
         :rtype: bool
@@ -168,6 +175,7 @@ class Option(object):
     def read_only(self, read_only):
         """Sets the read_only of this Option.
 
+        Whether the option is read-only.  # noqa: E501
 
         :param read_only: The read_only of this Option.  # noqa: E501
         :type read_only: bool
@@ -181,6 +189,7 @@ class Option(object):
     def label(self):
         """Gets the label of this Option.  # noqa: E501
 
+        A user-friendly label that identifies the option.  # noqa: E501
 
         :return: The label of this Option.  # noqa: E501
         :rtype: str
@@ -191,6 +200,7 @@ class Option(object):
     def label(self, label):
         """Sets the label of this Option.
 
+        A user-friendly label that identifies the option.  # noqa: E501
 
         :param label: The label of this Option.  # noqa: E501
         :type label: str
@@ -204,6 +214,7 @@ class Option(object):
     def value(self):
         """Gets the value of this Option.  # noqa: E501
 
+        The actual value of the option.  # noqa: E501
 
         :return: The value of this Option.  # noqa: E501
         :rtype: str
@@ -214,6 +225,7 @@ class Option(object):
     def value(self, value):
         """Sets the value of this Option.
 
+        The actual value of the option.  # noqa: E501
 
         :param value: The value of this Option.  # noqa: E501
         :type value: str

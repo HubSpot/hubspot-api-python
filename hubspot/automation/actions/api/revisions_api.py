@@ -34,19 +34,20 @@ class RevisionsApi(object):
         self.api_client = api_client
 
     def get_by_id(self, definition_id, revision_id, app_id, **kwargs):  # noqa: E501
-        """Gets a revision for a given definition by revision id  # noqa: E501
+        """Retrieve a specific revision of a definition  # noqa: E501
 
+        Retrieve a specific revision of a definition by revision ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id(definition_id, revision_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param revision_id: (required)
+        :param revision_id: The ID of the revision. (required)
         :type revision_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -67,19 +68,20 @@ class RevisionsApi(object):
         return self.get_by_id_with_http_info(definition_id, revision_id, app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, definition_id, revision_id, app_id, **kwargs):  # noqa: E501
-        """Gets a revision for a given definition by revision id  # noqa: E501
+        """Retrieve a specific revision of a definition  # noqa: E501
 
+        Retrieve a specific revision of a definition by revision ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id_with_http_info(definition_id, revision_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param revision_id: (required)
+        :param revision_id: The ID of the revision. (required)
         :type revision_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -173,17 +175,18 @@ class RevisionsApi(object):
         )
 
     def get_page(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get all revisions for a given definition  # noqa: E501
+        """Retrieve revisions for a given definition  # noqa: E501
 
+        Retrieve the versions of a definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param limit: The maximum number of results to display per page.
         :type limit: int
@@ -208,17 +211,18 @@ class RevisionsApi(object):
         return self.get_page_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get all revisions for a given definition  # noqa: E501
+        """Retrieve revisions for a given definition  # noqa: E501
 
+        Retrieve the versions of a definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param limit: The maximum number of results to display per page.
         :type limit: int

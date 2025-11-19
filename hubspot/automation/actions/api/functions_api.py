@@ -36,6 +36,7 @@ class FunctionsApi(object):
     def archive(self, definition_id, function_type, function_id, app_id, **kwargs):  # noqa: E501
         """Archive a function for a definition  # noqa: E501
 
+        Archive a function for a specific definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -71,6 +72,7 @@ class FunctionsApi(object):
     def archive_with_http_info(self, definition_id, function_type, function_id, app_id, **kwargs):  # noqa: E501
         """Archive a function for a definition  # noqa: E501
 
+        Archive a function for a specific definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -182,17 +184,18 @@ class FunctionsApi(object):
     def archive_by_function_type(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
         """Delete a function for a definition  # noqa: E501
 
+        Delete a function within a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_by_function_type(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -215,17 +218,18 @@ class FunctionsApi(object):
     def archive_by_function_type_with_http_info(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
         """Delete a function for a definition  # noqa: E501
 
+        Delete a function within a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_by_function_type_with_http_info(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -317,21 +321,22 @@ class FunctionsApi(object):
         )
 
     def create_or_replace(self, definition_id, function_type, function_id, app_id, body, **kwargs):  # noqa: E501
-        """Insert a function for a definition  # noqa: E501
+        """Update a function for a definition  # noqa: E501
 
+        Update a function for a given definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_or_replace(definition_id, function_type, function_id, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param function_id: (required)
+        :param function_id: The ID of the function. (required)
         :type function_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param body: (required)
         :type body: str
@@ -354,21 +359,22 @@ class FunctionsApi(object):
         return self.create_or_replace_with_http_info(definition_id, function_type, function_id, app_id, body, **kwargs)  # noqa: E501
 
     def create_or_replace_with_http_info(self, definition_id, function_type, function_id, app_id, body, **kwargs):  # noqa: E501
-        """Insert a function for a definition  # noqa: E501
+        """Update a function for a definition  # noqa: E501
 
+        Update a function for a given definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_or_replace_with_http_info(definition_id, function_type, function_id, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param function_id: (required)
+        :param function_id: The ID of the function. (required)
         :type function_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param body: (required)
         :type body: str
@@ -481,17 +487,18 @@ class FunctionsApi(object):
     def create_or_replace_by_function_type(self, definition_id, function_type, app_id, body, **kwargs):  # noqa: E501
         """Insert a function for a definition  # noqa: E501
 
+        Add a function for a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_or_replace_by_function_type(definition_id, function_type, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param body: (required)
         :type body: str
@@ -516,17 +523,18 @@ class FunctionsApi(object):
     def create_or_replace_by_function_type_with_http_info(self, definition_id, function_type, app_id, body, **kwargs):  # noqa: E501
         """Insert a function for a definition  # noqa: E501
 
+        Add a function for a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_or_replace_by_function_type_with_http_info(definition_id, function_type, app_id, body, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param body: (required)
         :type body: str
@@ -632,19 +640,20 @@ class FunctionsApi(object):
         )
 
     def get_by_function_type(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
-        """Get all functions by a type for a given definition  # noqa: E501
+        """Retrieve functions by a type for a given definition  # noqa: E501
 
+        Retrieve functions of a specific type for a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_function_type(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -665,19 +674,20 @@ class FunctionsApi(object):
         return self.get_by_function_type_with_http_info(definition_id, function_type, app_id, **kwargs)  # noqa: E501
 
     def get_by_function_type_with_http_info(self, definition_id, function_type, app_id, **kwargs):  # noqa: E501
-        """Get all functions by a type for a given definition  # noqa: E501
+        """Retrieve functions by a type for a given definition  # noqa: E501
 
+        Retrieve functions of a specific type for a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_function_type_with_http_info(definition_id, function_type, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -771,21 +781,22 @@ class FunctionsApi(object):
         )
 
     def get_by_id(self, definition_id, function_type, function_id, app_id, **kwargs):  # noqa: E501
-        """Get a function for a given definition  # noqa: E501
+        """Retrieve a function from a given definition  # noqa: E501
 
+        Retrieve a specific function from a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param function_id: (required)
+        :param function_id: The ID of the function. (required)
         :type function_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -806,21 +817,22 @@ class FunctionsApi(object):
         return self.get_by_id_with_http_info(definition_id, function_type, function_id, app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, definition_id, function_type, function_id, app_id, **kwargs):  # noqa: E501
-        """Get a function for a given definition  # noqa: E501
+        """Retrieve a function from a given definition  # noqa: E501
 
+        Retrieve a specific function from a given definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id_with_http_info(definition_id, function_type, function_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param function_type: (required)
+        :param function_type: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`. (required)
         :type function_type: str
-        :param function_id: (required)
+        :param function_id: The ID of the function. (required)
         :type function_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -919,17 +931,18 @@ class FunctionsApi(object):
         )
 
     def get_page(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get all functions for a given definition  # noqa: E501
+        """Retrieve functions for a given definition  # noqa: E501
 
+        Retrieve all functions included in a definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -950,17 +963,18 @@ class FunctionsApi(object):
         return self.get_page_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get all functions for a given definition  # noqa: E501
+        """Retrieve functions for a given definition  # noqa: E501
 
+        Retrieve all functions included in a definition.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

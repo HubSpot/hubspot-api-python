@@ -34,15 +34,16 @@ class CallbacksApi(object):
         self.api_client = api_client
 
     def complete(self, callback_id, callback_completion_request, **kwargs):  # noqa: E501
-        """Completes a single callback  # noqa: E501
+        """Completes a callback  # noqa: E501
 
+        Complete a specific blocked action execution by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.complete(callback_id, callback_completion_request, async_req=True)
         >>> result = thread.get()
 
-        :param callback_id: (required)
+        :param callback_id: The ID of the action execution. (required)
         :type callback_id: str
         :param callback_completion_request: (required)
         :type callback_completion_request: CallbackCompletionRequest
@@ -65,15 +66,16 @@ class CallbacksApi(object):
         return self.complete_with_http_info(callback_id, callback_completion_request, **kwargs)  # noqa: E501
 
     def complete_with_http_info(self, callback_id, callback_completion_request, **kwargs):  # noqa: E501
-        """Completes a single callback  # noqa: E501
+        """Completes a callback  # noqa: E501
 
+        Complete a specific blocked action execution by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.complete_with_http_info(callback_id, callback_completion_request, async_req=True)
         >>> result = thread.get()
 
-        :param callback_id: (required)
+        :param callback_id: The ID of the action execution. (required)
         :type callback_id: str
         :param callback_completion_request: (required)
         :type callback_completion_request: CallbackCompletionRequest
@@ -167,8 +169,9 @@ class CallbacksApi(object):
         )
 
     def complete_batch(self, batch_input_callback_completion_batch_request, **kwargs):  # noqa: E501
-        """Completes a batch of callbacks  # noqa: E501
+        """Complete a batch of callbacks  # noqa: E501
 
+        Complete a batch of blocked action executions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -196,8 +199,9 @@ class CallbacksApi(object):
         return self.complete_batch_with_http_info(batch_input_callback_completion_batch_request, **kwargs)  # noqa: E501
 
     def complete_batch_with_http_info(self, batch_input_callback_completion_batch_request, **kwargs):  # noqa: E501
-        """Completes a batch of callbacks  # noqa: E501
+        """Complete a batch of callbacks  # noqa: E501
 
+        Complete a batch of blocked action executions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

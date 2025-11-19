@@ -34,17 +34,18 @@ class DefinitionsApi(object):
         self.api_client = api_client
 
     def archive(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Archive an extension definition  # noqa: E501
+        """Delete an action definition  # noqa: E501
 
+        Delete an action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -65,17 +66,18 @@ class DefinitionsApi(object):
         return self.archive_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Archive an extension definition  # noqa: E501
+        """Delete an action definition  # noqa: E501
 
+        Delete an action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -162,15 +164,16 @@ class DefinitionsApi(object):
         )
 
     def create(self, app_id, public_action_definition_egg, **kwargs):  # noqa: E501
-        """Create a new extension definition  # noqa: E501
+        """Create a new custom action definition  # noqa: E501
 
+        Create a new custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create(app_id, public_action_definition_egg, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param public_action_definition_egg: (required)
         :type public_action_definition_egg: PublicActionDefinitionEgg
@@ -193,15 +196,16 @@ class DefinitionsApi(object):
         return self.create_with_http_info(app_id, public_action_definition_egg, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, app_id, public_action_definition_egg, **kwargs):  # noqa: E501
-        """Create a new extension definition  # noqa: E501
+        """Create a new custom action definition  # noqa: E501
 
+        Create a new custom workflow action.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_with_http_info(app_id, public_action_definition_egg, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param public_action_definition_egg: (required)
         :type public_action_definition_egg: PublicActionDefinitionEgg
@@ -297,17 +301,18 @@ class DefinitionsApi(object):
         )
 
     def get_by_id(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get extension definition by Id  # noqa: E501
+        """Retrieve a custom action definition  # noqa: E501
 
+        Retrieve a custom workflow action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param archived: Whether to return only results that have been archived.
         :type archived: bool
@@ -330,17 +335,18 @@ class DefinitionsApi(object):
         return self.get_by_id_with_http_info(definition_id, app_id, **kwargs)  # noqa: E501
 
     def get_by_id_with_http_info(self, definition_id, app_id, **kwargs):  # noqa: E501
-        """Get extension definition by Id  # noqa: E501
+        """Retrieve a custom action definition  # noqa: E501
 
+        Retrieve a custom workflow action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_by_id_with_http_info(definition_id, app_id, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param archived: Whether to return only results that have been archived.
         :type archived: bool
@@ -433,15 +439,16 @@ class DefinitionsApi(object):
         )
 
     def get_page(self, app_id, **kwargs):  # noqa: E501
-        """Get paged extension definitions  # noqa: E501
+        """Retrieve custom action definitions  # noqa: E501
 
+        Retrieve custom workflow action definitions by app ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param limit: The maximum number of results to display per page.
         :type limit: int
@@ -468,15 +475,16 @@ class DefinitionsApi(object):
         return self.get_page_with_http_info(app_id, **kwargs)  # noqa: E501
 
     def get_page_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Get paged extension definitions  # noqa: E501
+        """Retrieve custom action definitions  # noqa: E501
 
+        Retrieve custom workflow action definitions by app ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_page_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param limit: The maximum number of results to display per page.
         :type limit: int
@@ -572,17 +580,18 @@ class DefinitionsApi(object):
         )
 
     def update(self, definition_id, app_id, public_action_definition_patch, **kwargs):  # noqa: E501
-        """Patch an existing extension definition  # noqa: E501
+        """Update an existing action definition  # noqa: E501
 
+        Update an existing action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update(definition_id, app_id, public_action_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param public_action_definition_patch: (required)
         :type public_action_definition_patch: PublicActionDefinitionPatch
@@ -605,17 +614,18 @@ class DefinitionsApi(object):
         return self.update_with_http_info(definition_id, app_id, public_action_definition_patch, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, definition_id, app_id, public_action_definition_patch, **kwargs):  # noqa: E501
-        """Patch an existing extension definition  # noqa: E501
+        """Update an existing action definition  # noqa: E501
 
+        Update an existing action definition by ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_with_http_info(definition_id, app_id, public_action_definition_patch, async_req=True)
         >>> result = thread.get()
 
-        :param definition_id: (required)
+        :param definition_id: The ID of the custom action definition. (required)
         :type definition_id: str
-        :param app_id: (required)
+        :param app_id: The ID of the app. (required)
         :type app_id: int
         :param public_action_definition_patch: (required)
         :type public_action_definition_patch: PublicActionDefinitionPatch
