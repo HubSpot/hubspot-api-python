@@ -70,7 +70,6 @@ class RefreshTokenInfoResponse(object):
     def hub_id(self):
         """Gets the hub_id of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The hub_id of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: int
@@ -81,7 +80,6 @@ class RefreshTokenInfoResponse(object):
     def hub_id(self, hub_id):
         """Sets the hub_id of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param hub_id: The hub_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type hub_id: int
@@ -95,7 +93,6 @@ class RefreshTokenInfoResponse(object):
     def user_id(self):
         """Gets the user_id of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The user_id of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: int
@@ -106,7 +103,6 @@ class RefreshTokenInfoResponse(object):
     def user_id(self, user_id):
         """Sets the user_id of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param user_id: The user_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type user_id: int
@@ -120,7 +116,6 @@ class RefreshTokenInfoResponse(object):
     def scopes(self):
         """Gets the scopes of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The scopes of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: list[str]
@@ -131,7 +126,6 @@ class RefreshTokenInfoResponse(object):
     def scopes(self, scopes):
         """Sets the scopes of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param scopes: The scopes of this RefreshTokenInfoResponse.  # noqa: E501
         :type scopes: list[str]
@@ -145,7 +139,6 @@ class RefreshTokenInfoResponse(object):
     def token_type(self):
         """Gets the token_type of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The token_type of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: str
@@ -156,7 +149,6 @@ class RefreshTokenInfoResponse(object):
     def token_type(self, token_type):
         """Sets the token_type of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param token_type: The token_type of this RefreshTokenInfoResponse.  # noqa: E501
         :type token_type: str
@@ -170,7 +162,6 @@ class RefreshTokenInfoResponse(object):
     def user(self):
         """Gets the user of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The user of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: str
@@ -181,7 +172,6 @@ class RefreshTokenInfoResponse(object):
     def user(self, user):
         """Sets the user of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param user: The user of this RefreshTokenInfoResponse.  # noqa: E501
         :type user: str
@@ -193,7 +183,6 @@ class RefreshTokenInfoResponse(object):
     def hub_domain(self):
         """Gets the hub_domain of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The hub_domain of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: str
@@ -204,7 +193,6 @@ class RefreshTokenInfoResponse(object):
     def hub_domain(self, hub_domain):
         """Sets the hub_domain of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param hub_domain: The hub_domain of this RefreshTokenInfoResponse.  # noqa: E501
         :type hub_domain: str
@@ -216,7 +204,6 @@ class RefreshTokenInfoResponse(object):
     def client_id(self):
         """Gets the client_id of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The client_id of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: str
@@ -227,7 +214,6 @@ class RefreshTokenInfoResponse(object):
     def client_id(self, client_id):
         """Sets the client_id of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param client_id: The client_id of this RefreshTokenInfoResponse.  # noqa: E501
         :type client_id: str
@@ -241,7 +227,6 @@ class RefreshTokenInfoResponse(object):
     def token(self):
         """Gets the token of this RefreshTokenInfoResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The token of this RefreshTokenInfoResponse.  # noqa: E501
         :rtype: str
@@ -252,7 +237,6 @@ class RefreshTokenInfoResponse(object):
     def token(self, token):
         """Sets the token of this RefreshTokenInfoResponse.
 
-          # noqa: E501
 
         :param token: The token of this RefreshTokenInfoResponse.  # noqa: E501
         :type token: str

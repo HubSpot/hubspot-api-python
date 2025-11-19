@@ -34,15 +34,16 @@ class RefreshTokensApi(object):
         self.api_client = api_client
 
     def archive(self, token, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+        """Delete a refresh token  # noqa: E501
 
+        Delete a refresh token, typically after a user uninstalls your app. Access tokens generated with the refresh token will not be affected.  This will not uninstall the application from HubSpot or inhibit data syncing between an account and the app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The refresh token to delete. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -63,15 +64,16 @@ class RefreshTokensApi(object):
         return self.archive_with_http_info(token, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, token, **kwargs):  # noqa: E501
-        """archive  # noqa: E501
+        """Delete a refresh token  # noqa: E501
 
+        Delete a refresh token, typically after a user uninstalls your app. Access tokens generated with the refresh token will not be affected.  This will not uninstall the application from HubSpot or inhibit data syncing between an account and the app.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The refresh token to delete. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -153,15 +155,16 @@ class RefreshTokensApi(object):
         )
 
     def get(self, token, **kwargs):  # noqa: E501
-        """get  # noqa: E501
+        """Retrieve refresh token metadata  # noqa: E501
 
+        Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The refresh token to retrieve information about. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -182,15 +185,16 @@ class RefreshTokensApi(object):
         return self.get_with_http_info(token, **kwargs)  # noqa: E501
 
     def get_with_http_info(self, token, **kwargs):  # noqa: E501
-        """get  # noqa: E501
+        """Retrieve refresh token metadata  # noqa: E501
 
+        Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.get_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
-        :param token: (required)
+        :param token: The refresh token to retrieve information about. (required)
         :type token: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
