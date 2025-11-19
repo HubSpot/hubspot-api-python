@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Visitor Identification
+    Conversations Visitor Identification
 
     The Visitor Identification API allows you to pass identification information to the HubSpot chat widget for otherwise unknown visitors that were verified by your own authentication system.  # noqa: E501
 
@@ -34,9 +34,8 @@ class GenerateApi(object):
         self.api_client = api_client
 
     def generate_token(self, identification_token_generation_request, **kwargs):  # noqa: E501
-        """Generate a token  # noqa: E501
+        """generate_token  # noqa: E501
 
-        Generates a new visitor identification token. This token will be unique every time this endpoint is called, even if called with the same email address. This token is temporary and will expire after 12 hours  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -64,9 +63,8 @@ class GenerateApi(object):
         return self.generate_token_with_http_info(identification_token_generation_request, **kwargs)  # noqa: E501
 
     def generate_token_with_http_info(self, identification_token_generation_request, **kwargs):  # noqa: E501
-        """Generate a token  # noqa: E501
+        """generate_token  # noqa: E501
 
-        Generates a new visitor identification token. This token will be unique every time this endpoint is called, even if called with the same email address. This token is temporary and will expire after 12 hours  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

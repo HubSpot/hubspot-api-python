@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Visitor Identification
+    Conversations Visitor Identification
 
     The Visitor Identification API allows you to pass identification information to the HubSpot chat widget for otherwise unknown visitors that were verified by your own authentication system.  # noqa: E501
 
@@ -54,7 +54,6 @@ class IdentificationTokenResponse(object):
     def token(self):
         """Gets the token of this IdentificationTokenResponse.  # noqa: E501
 
-          # noqa: E501
 
         :return: The token of this IdentificationTokenResponse.  # noqa: E501
         :rtype: str
@@ -65,7 +64,6 @@ class IdentificationTokenResponse(object):
     def token(self, token):
         """Sets the token of this IdentificationTokenResponse.
 
-          # noqa: E501
 
         :param token: The token of this IdentificationTokenResponse.  # noqa: E501
         :type token: str
