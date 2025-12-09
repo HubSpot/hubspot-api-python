@@ -36,40 +36,40 @@ class SettingsRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "supports_custom_objects": "bool",
-        "uses_remote": "bool",
+        "height": "int",
         "is_ready": "bool",
         "name": "str",
-        "width": "int",
-        "uses_calling_window": "bool",
+        "supports_custom_objects": "bool",
         "supports_inbound_calling": "bool",
         "url": "str",
-        "height": "int",
+        "uses_calling_window": "bool",
+        "uses_remote": "bool",
+        "width": "int",
     }
 
     attribute_map = {
-        "supports_custom_objects": "supportsCustomObjects",
-        "uses_remote": "usesRemote",
+        "height": "height",
         "is_ready": "isReady",
         "name": "name",
-        "width": "width",
-        "uses_calling_window": "usesCallingWindow",
+        "supports_custom_objects": "supportsCustomObjects",
         "supports_inbound_calling": "supportsInboundCalling",
         "url": "url",
-        "height": "height",
+        "uses_calling_window": "usesCallingWindow",
+        "uses_remote": "usesRemote",
+        "width": "width",
     }
 
     def __init__(
         self,
-        supports_custom_objects=None,
-        uses_remote=None,
+        height=None,
         is_ready=None,
         name=None,
-        width=None,
-        uses_calling_window=None,
+        supports_custom_objects=None,
         supports_inbound_calling=None,
         url=None,
-        height=None,
+        uses_calling_window=None,
+        uses_remote=None,
+        width=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """SettingsRequest - a model defined in OpenAPI"""  # noqa: E501
@@ -77,227 +77,31 @@ class SettingsRequest(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._supports_custom_objects = None
-        self._uses_remote = None
+        self._height = None
         self._is_ready = None
         self._name = None
-        self._width = None
-        self._uses_calling_window = None
+        self._supports_custom_objects = None
         self._supports_inbound_calling = None
         self._url = None
-        self._height = None
+        self._uses_calling_window = None
+        self._uses_remote = None
+        self._width = None
         self.discriminator = None
 
-        if supports_custom_objects is not None:
-            self.supports_custom_objects = supports_custom_objects
-        if uses_remote is not None:
-            self.uses_remote = uses_remote
-        if is_ready is not None:
-            self.is_ready = is_ready
+        self.height = height
+        self.is_ready = is_ready
         self.name = name
-        if width is not None:
-            self.width = width
-        if uses_calling_window is not None:
-            self.uses_calling_window = uses_calling_window
-        if supports_inbound_calling is not None:
-            self.supports_inbound_calling = supports_inbound_calling
+        self.supports_custom_objects = supports_custom_objects
+        self.supports_inbound_calling = supports_inbound_calling
         self.url = url
-        if height is not None:
-            self.height = height
-
-    @property
-    def supports_custom_objects(self):
-        """Gets the supports_custom_objects of this SettingsRequest.  # noqa: E501
-
-        When true, users will be able to click to dial from custom objects.  # noqa: E501
-
-        :return: The supports_custom_objects of this SettingsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._supports_custom_objects
-
-    @supports_custom_objects.setter
-    def supports_custom_objects(self, supports_custom_objects):
-        """Sets the supports_custom_objects of this SettingsRequest.
-
-        When true, users will be able to click to dial from custom objects.  # noqa: E501
-
-        :param supports_custom_objects: The supports_custom_objects of this SettingsRequest.  # noqa: E501
-        :type supports_custom_objects: bool
-        """
-
-        self._supports_custom_objects = supports_custom_objects
-
-    @property
-    def uses_remote(self):
-        """Gets the uses_remote of this SettingsRequest.  # noqa: E501
-
-        When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.   # noqa: E501
-
-        :return: The uses_remote of this SettingsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._uses_remote
-
-    @uses_remote.setter
-    def uses_remote(self, uses_remote):
-        """Sets the uses_remote of this SettingsRequest.
-
-        When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.   # noqa: E501
-
-        :param uses_remote: The uses_remote of this SettingsRequest.  # noqa: E501
-        :type uses_remote: bool
-        """
-
-        self._uses_remote = uses_remote
-
-    @property
-    def is_ready(self):
-        """Gets the is_ready of this SettingsRequest.  # noqa: E501
-
-        When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.  # noqa: E501
-
-        :return: The is_ready of this SettingsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._is_ready
-
-    @is_ready.setter
-    def is_ready(self, is_ready):
-        """Sets the is_ready of this SettingsRequest.
-
-        When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.  # noqa: E501
-
-        :param is_ready: The is_ready of this SettingsRequest.  # noqa: E501
-        :type is_ready: bool
-        """
-
-        self._is_ready = is_ready
-
-    @property
-    def name(self):
-        """Gets the name of this SettingsRequest.  # noqa: E501
-
-        The name of your calling service to display to users.  # noqa: E501
-
-        :return: The name of this SettingsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SettingsRequest.
-
-        The name of your calling service to display to users.  # noqa: E501
-
-        :param name: The name of this SettingsRequest.  # noqa: E501
-        :type name: str
-        """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def width(self):
-        """Gets the width of this SettingsRequest.  # noqa: E501
-
-        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
-
-        :return: The width of this SettingsRequest.  # noqa: E501
-        :rtype: int
-        """
-        return self._width
-
-    @width.setter
-    def width(self, width):
-        """Sets the width of this SettingsRequest.
-
-        The target width of the iframe that will contain your phone/calling UI.  # noqa: E501
-
-        :param width: The width of this SettingsRequest.  # noqa: E501
-        :type width: int
-        """
-
-        self._width = width
-
-    @property
-    def uses_calling_window(self):
-        """Gets the uses_calling_window of this SettingsRequest.  # noqa: E501
-
-        When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.   # noqa: E501
-
-        :return: The uses_calling_window of this SettingsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._uses_calling_window
-
-    @uses_calling_window.setter
-    def uses_calling_window(self, uses_calling_window):
-        """Sets the uses_calling_window of this SettingsRequest.
-
-        When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.   # noqa: E501
-
-        :param uses_calling_window: The uses_calling_window of this SettingsRequest.  # noqa: E501
-        :type uses_calling_window: bool
-        """
-
-        self._uses_calling_window = uses_calling_window
-
-    @property
-    def supports_inbound_calling(self):
-        """Gets the supports_inbound_calling of this SettingsRequest.  # noqa: E501
-
-        When true, this indicates that your calling app supports inbound calling within HubSpot.  # noqa: E501
-
-        :return: The supports_inbound_calling of this SettingsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._supports_inbound_calling
-
-    @supports_inbound_calling.setter
-    def supports_inbound_calling(self, supports_inbound_calling):
-        """Sets the supports_inbound_calling of this SettingsRequest.
-
-        When true, this indicates that your calling app supports inbound calling within HubSpot.  # noqa: E501
-
-        :param supports_inbound_calling: The supports_inbound_calling of this SettingsRequest.  # noqa: E501
-        :type supports_inbound_calling: bool
-        """
-
-        self._supports_inbound_calling = supports_inbound_calling
-
-    @property
-    def url(self):
-        """Gets the url of this SettingsRequest.  # noqa: E501
-
-        The URL to your phone/calling UI, built with the [Calling SDK](#).  # noqa: E501
-
-        :return: The url of this SettingsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this SettingsRequest.
-
-        The URL to your phone/calling UI, built with the [Calling SDK](#).  # noqa: E501
-
-        :param url: The url of this SettingsRequest.  # noqa: E501
-        :type url: str
-        """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-
-        self._url = url
+        self.uses_calling_window = uses_calling_window
+        self.uses_remote = uses_remote
+        self.width = width
 
     @property
     def height(self):
         """Gets the height of this SettingsRequest.  # noqa: E501
 
-        The target height of the iframe that will contain your phone/calling UI.  # noqa: E501
 
         :return: The height of this SettingsRequest.  # noqa: E501
         :rtype: int
@@ -308,13 +112,198 @@ class SettingsRequest(object):
     def height(self, height):
         """Sets the height of this SettingsRequest.
 
-        The target height of the iframe that will contain your phone/calling UI.  # noqa: E501
 
         :param height: The height of this SettingsRequest.  # noqa: E501
         :type height: int
         """
+        if self.local_vars_configuration.client_side_validation and height is None:  # noqa: E501
+            raise ValueError("Invalid value for `height`, must not be `None`")  # noqa: E501
 
         self._height = height
+
+    @property
+    def is_ready(self):
+        """Gets the is_ready of this SettingsRequest.  # noqa: E501
+
+
+        :return: The is_ready of this SettingsRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_ready
+
+    @is_ready.setter
+    def is_ready(self, is_ready):
+        """Sets the is_ready of this SettingsRequest.
+
+
+        :param is_ready: The is_ready of this SettingsRequest.  # noqa: E501
+        :type is_ready: bool
+        """
+        if self.local_vars_configuration.client_side_validation and is_ready is None:  # noqa: E501
+            raise ValueError("Invalid value for `is_ready`, must not be `None`")  # noqa: E501
+
+        self._is_ready = is_ready
+
+    @property
+    def name(self):
+        """Gets the name of this SettingsRequest.  # noqa: E501
+
+
+        :return: The name of this SettingsRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this SettingsRequest.
+
+
+        :param name: The name of this SettingsRequest.  # noqa: E501
+        :type name: str
+        """
+        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
+
+    @property
+    def supports_custom_objects(self):
+        """Gets the supports_custom_objects of this SettingsRequest.  # noqa: E501
+
+
+        :return: The supports_custom_objects of this SettingsRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._supports_custom_objects
+
+    @supports_custom_objects.setter
+    def supports_custom_objects(self, supports_custom_objects):
+        """Sets the supports_custom_objects of this SettingsRequest.
+
+
+        :param supports_custom_objects: The supports_custom_objects of this SettingsRequest.  # noqa: E501
+        :type supports_custom_objects: bool
+        """
+        if self.local_vars_configuration.client_side_validation and supports_custom_objects is None:  # noqa: E501
+            raise ValueError("Invalid value for `supports_custom_objects`, must not be `None`")  # noqa: E501
+
+        self._supports_custom_objects = supports_custom_objects
+
+    @property
+    def supports_inbound_calling(self):
+        """Gets the supports_inbound_calling of this SettingsRequest.  # noqa: E501
+
+
+        :return: The supports_inbound_calling of this SettingsRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._supports_inbound_calling
+
+    @supports_inbound_calling.setter
+    def supports_inbound_calling(self, supports_inbound_calling):
+        """Sets the supports_inbound_calling of this SettingsRequest.
+
+
+        :param supports_inbound_calling: The supports_inbound_calling of this SettingsRequest.  # noqa: E501
+        :type supports_inbound_calling: bool
+        """
+        if self.local_vars_configuration.client_side_validation and supports_inbound_calling is None:  # noqa: E501
+            raise ValueError("Invalid value for `supports_inbound_calling`, must not be `None`")  # noqa: E501
+
+        self._supports_inbound_calling = supports_inbound_calling
+
+    @property
+    def url(self):
+        """Gets the url of this SettingsRequest.  # noqa: E501
+
+
+        :return: The url of this SettingsRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this SettingsRequest.
+
+
+        :param url: The url of this SettingsRequest.  # noqa: E501
+        :type url: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
+
+    @property
+    def uses_calling_window(self):
+        """Gets the uses_calling_window of this SettingsRequest.  # noqa: E501
+
+
+        :return: The uses_calling_window of this SettingsRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._uses_calling_window
+
+    @uses_calling_window.setter
+    def uses_calling_window(self, uses_calling_window):
+        """Sets the uses_calling_window of this SettingsRequest.
+
+
+        :param uses_calling_window: The uses_calling_window of this SettingsRequest.  # noqa: E501
+        :type uses_calling_window: bool
+        """
+        if self.local_vars_configuration.client_side_validation and uses_calling_window is None:  # noqa: E501
+            raise ValueError("Invalid value for `uses_calling_window`, must not be `None`")  # noqa: E501
+
+        self._uses_calling_window = uses_calling_window
+
+    @property
+    def uses_remote(self):
+        """Gets the uses_remote of this SettingsRequest.  # noqa: E501
+
+
+        :return: The uses_remote of this SettingsRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._uses_remote
+
+    @uses_remote.setter
+    def uses_remote(self, uses_remote):
+        """Sets the uses_remote of this SettingsRequest.
+
+
+        :param uses_remote: The uses_remote of this SettingsRequest.  # noqa: E501
+        :type uses_remote: bool
+        """
+        if self.local_vars_configuration.client_side_validation and uses_remote is None:  # noqa: E501
+            raise ValueError("Invalid value for `uses_remote`, must not be `None`")  # noqa: E501
+
+        self._uses_remote = uses_remote
+
+    @property
+    def width(self):
+        """Gets the width of this SettingsRequest.  # noqa: E501
+
+
+        :return: The width of this SettingsRequest.  # noqa: E501
+        :rtype: int
+        """
+        return self._width
+
+    @width.setter
+    def width(self, width):
+        """Sets the width of this SettingsRequest.
+
+
+        :param width: The width of this SettingsRequest.  # noqa: E501
+        :type width: int
+        """
+        if self.local_vars_configuration.client_side_validation and width is None:  # noqa: E501
+            raise ValueError("Invalid value for `width`, must not be `None`")  # noqa: E501
+
+        self._width = width
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

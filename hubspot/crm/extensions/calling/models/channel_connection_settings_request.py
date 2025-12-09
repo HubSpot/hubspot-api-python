@@ -56,7 +56,6 @@ class ChannelConnectionSettingsRequest(object):
     def is_ready(self):
         """Gets the is_ready of this ChannelConnectionSettingsRequest.  # noqa: E501
 
-        If true, this app will be considered to support channel connection  # noqa: E501
 
         :return: The is_ready of this ChannelConnectionSettingsRequest.  # noqa: E501
         :rtype: bool
@@ -67,7 +66,6 @@ class ChannelConnectionSettingsRequest(object):
     def is_ready(self, is_ready):
         """Sets the is_ready of this ChannelConnectionSettingsRequest.
 
-        If true, this app will be considered to support channel connection  # noqa: E501
 
         :param is_ready: The is_ready of this ChannelConnectionSettingsRequest.  # noqa: E501
         :type is_ready: bool
@@ -81,7 +79,6 @@ class ChannelConnectionSettingsRequest(object):
     def url(self):
         """Gets the url of this ChannelConnectionSettingsRequest.  # noqa: E501
 
-        The URL to fetch phone numbers available for channel connection  # noqa: E501
 
         :return: The url of this ChannelConnectionSettingsRequest.  # noqa: E501
         :rtype: str
@@ -92,7 +89,6 @@ class ChannelConnectionSettingsRequest(object):
     def url(self, url):
         """Sets the url of this ChannelConnectionSettingsRequest.
 
-        The URL to fetch phone numbers available for channel connection  # noqa: E501
 
         :param url: The url of this ChannelConnectionSettingsRequest.  # noqa: E501
         :type url: str

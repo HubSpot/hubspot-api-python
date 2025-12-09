@@ -33,138 +33,17 @@ class ChannelConnectionSettingsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def archive(self, app_id, **kwargs):  # noqa: E501
-        """Delete channel connection settings  # noqa: E501
-
-        Delete the [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#delete-existing-channel-connection-settings) for the app.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.archive(app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param app_id: The ID of the app. (required)
-        :type app_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-        kwargs["_return_http_data_only"] = True
-        return self.archive_with_http_info(app_id, **kwargs)  # noqa: E501
-
-    def archive_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Delete channel connection settings  # noqa: E501
-
-        Delete the [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#delete-existing-channel-connection-settings) for the app.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.archive_with_http_info(app_id, async_req=True)
-        >>> result = thread.get()
-
-        :param app_id: The ID of the app. (required)
-        :type app_id: int
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :type _return_http_data_only: bool, optional
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :type _preload_content: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-
-        local_var_params = locals()
-
-        all_params = ["app_id"]
-        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
-
-        for key, val in six.iteritems(local_var_params["kwargs"]):
-            if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method archive" % key)
-            local_var_params[key] = val
-        del local_var_params["kwargs"]
-        # verify the required parameter 'app_id' is set
-        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `archive`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if "app_id" in local_var_params:
-            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
-
-        query_params = []
-
-        header_params = dict(local_var_params.get("_headers", {}))
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ["developer_hapikey"]  # noqa: E501
-
-        response_types_map = {}
-
-        return self.api_client.call_api(
-            "/crm/v3/extensions/calling/{appId}/settings/channel-connection",
-            "DELETE",
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_types_map=response_types_map,
-            auth_settings=auth_settings,
-            async_req=local_var_params.get("async_req"),
-            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
-            _preload_content=local_var_params.get("_preload_content", True),
-            _request_timeout=local_var_params.get("_request_timeout"),
-            collection_formats=collection_formats,
-            _request_auth=local_var_params.get("_request_auth"),
-        )
-
     def create(self, app_id, channel_connection_settings_request, **kwargs):  # noqa: E501
-        """Configure channel connection settings  # noqa: E501
+        """# noqa: E501
 
-        Configure [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings) for the app.   # noqa: E501
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create(app_id, channel_connection_settings_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param channel_connection_settings_request: (required)
         :type channel_connection_settings_request: ChannelConnectionSettingsRequest
@@ -187,16 +66,16 @@ class ChannelConnectionSettingsApi(object):
         return self.create_with_http_info(app_id, channel_connection_settings_request, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, app_id, channel_connection_settings_request, **kwargs):  # noqa: E501
-        """Configure channel connection settings  # noqa: E501
+        """# noqa: E501
 
-        Configure [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings) for the app.   # noqa: E501
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_with_http_info(app_id, channel_connection_settings_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param channel_connection_settings_request: (required)
         :type channel_connection_settings_request: ChannelConnectionSettingsRequest
@@ -291,17 +170,17 @@ class ChannelConnectionSettingsApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def get_by_id(self, app_id, **kwargs):  # noqa: E501
-        """Retrieve channel connection settings  # noqa: E501
+    def get(self, app_id, **kwargs):  # noqa: E501
+        """# noqa: E501
 
-        Retrieve the settings related to the app's [channel connection](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#fetch-existing-channel-connection-settings).  # noqa: E501
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id(app_id, async_req=True)
+        >>> thread = api.get(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -319,19 +198,19 @@ class ChannelConnectionSettingsApi(object):
         :rtype: ChannelConnectionSettingsResponse
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(app_id, **kwargs)  # noqa: E501
+        return self.get_with_http_info(app_id, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(self, app_id, **kwargs):  # noqa: E501
-        """Retrieve channel connection settings  # noqa: E501
+    def get_with_http_info(self, app_id, **kwargs):  # noqa: E501
+        """# noqa: E501
 
-        Retrieve the settings related to the app's [channel connection](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#fetch-existing-channel-connection-settings).  # noqa: E501
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id_with_http_info(app_id, async_req=True)
+        >>> thread = api.get_with_http_info(app_id, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -364,12 +243,12 @@ class ChannelConnectionSettingsApi(object):
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
             if key not in all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
         # verify the required parameter 'app_id' is set
         if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `app_id` when calling `get_by_id`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -414,17 +293,138 @@ class ChannelConnectionSettingsApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update(self, app_id, channel_connection_settings_patch_request, **kwargs):  # noqa: E501
-        """Update channel connection settings  # noqa: E501
+    def remove(self, app_id, **kwargs):  # noqa: E501
+        """# noqa: E501
 
-        Update existing [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection) for your app.  # noqa: E501
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove(app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs["_return_http_data_only"] = True
+        return self.remove_with_http_info(app_id, **kwargs)  # noqa: E501
+
+    def remove_with_http_info(self, app_id, **kwargs):  # noqa: E501
+        """# noqa: E501
+
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_with_http_info(app_id, async_req=True)
+        >>> result = thread.get()
+
+        :param app_id: (required)
+        :type app_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :type _return_http_data_only: bool, optional
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :type _preload_content: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        local_var_params = locals()
+
+        all_params = ["app_id"]
+        all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
+
+        for key, val in six.iteritems(local_var_params["kwargs"]):
+            if key not in all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method remove" % key)
+            local_var_params[key] = val
+        del local_var_params["kwargs"]
+        # verify the required parameter 'app_id' is set
+        if self.api_client.client_side_validation and local_var_params.get("app_id") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `app_id` when calling `remove`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if "app_id" in local_var_params:
+            path_params["appId"] = local_var_params["app_id"]  # noqa: E501
+
+        query_params = []
+
+        header_params = dict(local_var_params.get("_headers", {}))
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params["Accept"] = self.api_client.select_header_accept(["*/*"])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ["developer_hapikey"]  # noqa: E501
+
+        response_types_map = {}
+
+        return self.api_client.call_api(
+            "/crm/v3/extensions/calling/{appId}/settings/channel-connection",
+            "DELETE",
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_types_map=response_types_map,
+            auth_settings=auth_settings,
+            async_req=local_var_params.get("async_req"),
+            _return_http_data_only=local_var_params.get("_return_http_data_only"),  # noqa: E501
+            _preload_content=local_var_params.get("_preload_content", True),
+            _request_timeout=local_var_params.get("_request_timeout"),
+            collection_formats=collection_formats,
+            _request_auth=local_var_params.get("_request_auth"),
+        )
+
+    def update(self, app_id, channel_connection_settings_patch_request, **kwargs):  # noqa: E501
+        """# noqa: E501
+
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update(app_id, channel_connection_settings_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param channel_connection_settings_patch_request: (required)
         :type channel_connection_settings_patch_request: ChannelConnectionSettingsPatchRequest
@@ -447,16 +447,16 @@ class ChannelConnectionSettingsApi(object):
         return self.update_with_http_info(app_id, channel_connection_settings_patch_request, **kwargs)  # noqa: E501
 
     def update_with_http_info(self, app_id, channel_connection_settings_patch_request, **kwargs):  # noqa: E501
-        """Update channel connection settings  # noqa: E501
+        """# noqa: E501
 
-        Update existing [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection) for your app.  # noqa: E501
+          # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.update_with_http_info(app_id, channel_connection_settings_patch_request, async_req=True)
         >>> result = thread.get()
 
-        :param app_id: The ID of the app. (required)
+        :param app_id: (required)
         :type app_id: int
         :param channel_connection_settings_patch_request: (required)
         :type channel_connection_settings_patch_request: ChannelConnectionSettingsPatchRequest

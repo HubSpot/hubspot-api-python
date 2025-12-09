@@ -54,7 +54,7 @@ class RecordingSettingsResponse(object):
     def url_to_retrieve_authed_recording(self):
         """Gets the url_to_retrieve_authed_recording of this RecordingSettingsResponse.  # noqa: E501
 
-          # noqa: E501
+        The URL used to retrieve authenticated call recordings.  # noqa: E501
 
         :return: The url_to_retrieve_authed_recording of this RecordingSettingsResponse.  # noqa: E501
         :rtype: str
@@ -65,7 +65,7 @@ class RecordingSettingsResponse(object):
     def url_to_retrieve_authed_recording(self, url_to_retrieve_authed_recording):
         """Sets the url_to_retrieve_authed_recording of this RecordingSettingsResponse.
 
-          # noqa: E501
+        The URL used to retrieve authenticated call recordings.  # noqa: E501
 
         :param url_to_retrieve_authed_recording: The url_to_retrieve_authed_recording of this RecordingSettingsResponse.  # noqa: E501
         :type url_to_retrieve_authed_recording: str

@@ -35,11 +35,11 @@ class ChannelConnectionSettingsResponse(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"created_at": "datetime", "is_ready": "bool", "url": "str", "updated_at": "datetime"}
+    openapi_types = {"created_at": "datetime", "is_ready": "bool", "updated_at": "datetime", "url": "str"}
 
-    attribute_map = {"created_at": "createdAt", "is_ready": "isReady", "url": "url", "updated_at": "updatedAt"}
+    attribute_map = {"created_at": "createdAt", "is_ready": "isReady", "updated_at": "updatedAt", "url": "url"}
 
-    def __init__(self, created_at=None, is_ready=None, url=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, created_at=None, is_ready=None, updated_at=None, url=None, local_vars_configuration=None):  # noqa: E501
         """ChannelConnectionSettingsResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
@@ -47,20 +47,19 @@ class ChannelConnectionSettingsResponse(object):
 
         self._created_at = None
         self._is_ready = None
-        self._url = None
         self._updated_at = None
+        self._url = None
         self.discriminator = None
 
         self.created_at = created_at
         self.is_ready = is_ready
-        self.url = url
         self.updated_at = updated_at
+        self.url = url
 
     @property
     def created_at(self):
         """Gets the created_at of this ChannelConnectionSettingsResponse.  # noqa: E501
 
-        The timestamp this setting was created  # noqa: E501
 
         :return: The created_at of this ChannelConnectionSettingsResponse.  # noqa: E501
         :rtype: datetime
@@ -71,7 +70,6 @@ class ChannelConnectionSettingsResponse(object):
     def created_at(self, created_at):
         """Sets the created_at of this ChannelConnectionSettingsResponse.
 
-        The timestamp this setting was created  # noqa: E501
 
         :param created_at: The created_at of this ChannelConnectionSettingsResponse.  # noqa: E501
         :type created_at: datetime
@@ -85,7 +83,6 @@ class ChannelConnectionSettingsResponse(object):
     def is_ready(self):
         """Gets the is_ready of this ChannelConnectionSettingsResponse.  # noqa: E501
 
-        If true, this app will be considered to support channel connection  # noqa: E501
 
         :return: The is_ready of this ChannelConnectionSettingsResponse.  # noqa: E501
         :rtype: bool
@@ -96,7 +93,6 @@ class ChannelConnectionSettingsResponse(object):
     def is_ready(self, is_ready):
         """Sets the is_ready of this ChannelConnectionSettingsResponse.
 
-        If true, this app will be considered to support channel connection  # noqa: E501
 
         :param is_ready: The is_ready of this ChannelConnectionSettingsResponse.  # noqa: E501
         :type is_ready: bool
@@ -107,35 +103,9 @@ class ChannelConnectionSettingsResponse(object):
         self._is_ready = is_ready
 
     @property
-    def url(self):
-        """Gets the url of this ChannelConnectionSettingsResponse.  # noqa: E501
-
-        The URL to fetch phone numbers available for channel connection  # noqa: E501
-
-        :return: The url of this ChannelConnectionSettingsResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this ChannelConnectionSettingsResponse.
-
-        The URL to fetch phone numbers available for channel connection  # noqa: E501
-
-        :param url: The url of this ChannelConnectionSettingsResponse.  # noqa: E501
-        :type url: str
-        """
-        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-
-        self._url = url
-
-    @property
     def updated_at(self):
         """Gets the updated_at of this ChannelConnectionSettingsResponse.  # noqa: E501
 
-        The timestamp this setting was last updated  # noqa: E501
 
         :return: The updated_at of this ChannelConnectionSettingsResponse.  # noqa: E501
         :rtype: datetime
@@ -146,7 +116,6 @@ class ChannelConnectionSettingsResponse(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this ChannelConnectionSettingsResponse.
 
-        The timestamp this setting was last updated  # noqa: E501
 
         :param updated_at: The updated_at of this ChannelConnectionSettingsResponse.  # noqa: E501
         :type updated_at: datetime
@@ -155,6 +124,29 @@ class ChannelConnectionSettingsResponse(object):
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
         self._updated_at = updated_at
+
+    @property
+    def url(self):
+        """Gets the url of this ChannelConnectionSettingsResponse.  # noqa: E501
+
+
+        :return: The url of this ChannelConnectionSettingsResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this ChannelConnectionSettingsResponse.
+
+
+        :param url: The url of this ChannelConnectionSettingsResponse.  # noqa: E501
+        :type url: str
+        """
+        if self.local_vars_configuration.client_side_validation and url is None:  # noqa: E501
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

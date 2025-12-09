@@ -19,6 +19,7 @@ __version__ = "1.0.0"
 # import apis into sdk package
 from hubspot.crm.extensions.calling.api.channel_connection_settings_api import ChannelConnectionSettingsApi
 from hubspot.crm.extensions.calling.api.recording_settings_api import RecordingSettingsApi
+from hubspot.crm.extensions.calling.api.recording_settings_api import RecordingSettingsApi
 from hubspot.crm.extensions.calling.api.settings_api import SettingsApi
 
 # import ApiClient
