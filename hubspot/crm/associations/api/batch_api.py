@@ -34,18 +34,18 @@ class BatchApi(object):
         self.api_client = api_client
 
     def archive(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
-        """Archive a batch of associations  # noqa: E501
+        """Archive multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Remove the associations between all pairs of objects identified in the request body.  # noqa: E501
+        This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_association: (required)
         :type batch_input_public_association: BatchInputPublicAssociation
@@ -68,18 +68,18 @@ class BatchApi(object):
         return self.archive_with_http_info(from_object_type, to_object_type, batch_input_public_association, **kwargs)  # noqa: E501
 
     def archive_with_http_info(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
-        """Archive a batch of associations  # noqa: E501
+        """Archive multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Remove the associations between all pairs of objects identified in the request body.  # noqa: E501
+        This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.archive_with_http_info(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_association: (required)
         :type batch_input_public_association: BatchInputPublicAssociation
@@ -178,18 +178,18 @@ class BatchApi(object):
         )
 
     def create(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
-        """Create a batch of associations  # noqa: E501
+        """Create multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Associate all pairs of objects identified in the request body.  # noqa: E501
+        This endpoint allows you to create multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_association: (required)
         :type batch_input_public_association: BatchInputPublicAssociation
@@ -212,18 +212,18 @@ class BatchApi(object):
         return self.create_with_http_info(from_object_type, to_object_type, batch_input_public_association, **kwargs)  # noqa: E501
 
     def create_with_http_info(self, from_object_type, to_object_type, batch_input_public_association, **kwargs):  # noqa: E501
-        """Create a batch of associations  # noqa: E501
+        """Create multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Associate all pairs of objects identified in the request body.  # noqa: E501
+        This endpoint allows you to create multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.create_with_http_info(from_object_type, to_object_type, batch_input_public_association, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_association: (required)
         :type batch_input_public_association: BatchInputPublicAssociation
@@ -301,8 +301,7 @@ class BatchApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            201: "BatchResponsePublicAssociation",
-            207: "BatchResponsePublicAssociationWithErrors",
+            200: "BatchResponsePublicAssociation",
         }
 
         return self.api_client.call_api(
@@ -325,18 +324,18 @@ class BatchApi(object):
         )
 
     def read(self, from_object_type, to_object_type, batch_input_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of associations  # noqa: E501
+        """Retrieve multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.  # noqa: E501
+        This endpoint allows you to retrieve multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.read(from_object_type, to_object_type, batch_input_public_object_id, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_object_id: (required)
         :type batch_input_public_object_id: BatchInputPublicObjectId
@@ -359,18 +358,18 @@ class BatchApi(object):
         return self.read_with_http_info(from_object_type, to_object_type, batch_input_public_object_id, **kwargs)  # noqa: E501
 
     def read_with_http_info(self, from_object_type, to_object_type, batch_input_public_object_id, **kwargs):  # noqa: E501
-        """Read a batch of associations  # noqa: E501
+        """Retrieve multiple associations between specified object types in a batch operation.  # noqa: E501
 
-        Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.  # noqa: E501
+        This endpoint allows you to retrieve multiple associations between specified 'from' and 'to' object types in a single batch request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
         >>> thread = api.read_with_http_info(from_object_type, to_object_type, batch_input_public_object_id, async_req=True)
         >>> result = thread.get()
 
-        :param from_object_type: (required)
+        :param from_object_type: The type of the source object in the association. (required)
         :type from_object_type: str
-        :param to_object_type: (required)
+        :param to_object_type: The type of the target object in the association. (required)
         :type to_object_type: str
         :param batch_input_public_object_id: (required)
         :type batch_input_public_object_id: BatchInputPublicObjectId
@@ -449,7 +448,6 @@ class BatchApi(object):
 
         response_types_map = {
             200: "BatchResponsePublicAssociationMulti",
-            207: "BatchResponsePublicAssociationMultiWithErrors",
         }
 
         return self.api_client.call_api(
