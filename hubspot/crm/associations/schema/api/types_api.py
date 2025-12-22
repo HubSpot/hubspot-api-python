@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Associations Schema
+    CRM Associations Schema
 
     Associations define the relationships between objects in HubSpot. These endpoints allow you to create, read, and remove associations.  # noqa: E501
 
@@ -34,9 +34,8 @@ class TypesApi(object):
         self.api_client = api_client
 
     def get_all(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
-        """List association types  # noqa: E501
+        """get_all  # noqa: E501
 
-        List all the valid association types available between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -66,9 +65,8 @@ class TypesApi(object):
         return self.get_all_with_http_info(from_object_type, to_object_type, **kwargs)  # noqa: E501
 
     def get_all_with_http_info(self, from_object_type, to_object_type, **kwargs):  # noqa: E501
-        """List association types  # noqa: E501
+        """get_all  # noqa: E501
 
-        List all the valid association types available between two object types  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

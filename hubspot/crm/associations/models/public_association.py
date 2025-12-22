@@ -104,6 +104,7 @@ class PublicAssociation(object):
     def type(self):
         """Gets the type of this PublicAssociation.  # noqa: E501
 
+        The type of association between the 'from' and 'to' objects.  # noqa: E501
 
         :return: The type of this PublicAssociation.  # noqa: E501
         :rtype: str
@@ -114,6 +115,7 @@ class PublicAssociation(object):
     def type(self, type):
         """Sets the type of this PublicAssociation.
 
+        The type of association between the 'from' and 'to' objects.  # noqa: E501
 
         :param type: The type of this PublicAssociation.  # noqa: E501
         :type type: str

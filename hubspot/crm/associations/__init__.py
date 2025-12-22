@@ -35,8 +35,6 @@ from hubspot.crm.associations.models.batch_input_public_association import Batch
 from hubspot.crm.associations.models.batch_input_public_object_id import BatchInputPublicObjectId
 from hubspot.crm.associations.models.batch_response_public_association import BatchResponsePublicAssociation
 from hubspot.crm.associations.models.batch_response_public_association_multi import BatchResponsePublicAssociationMulti
-from hubspot.crm.associations.models.batch_response_public_association_multi_with_errors import BatchResponsePublicAssociationMultiWithErrors
-from hubspot.crm.associations.models.batch_response_public_association_with_errors import BatchResponsePublicAssociationWithErrors
 from hubspot.crm.associations.models.error import Error
 from hubspot.crm.associations.models.error_detail import ErrorDetail
 from hubspot.crm.associations.models.next_page import NextPage
