@@ -35,50 +35,28 @@ class PublicDealSplitInput(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"percentage": "float", "owner_id": "int"}
+    openapi_types = {"owner_id": "int", "percentage": "float"}
 
-    attribute_map = {"percentage": "percentage", "owner_id": "ownerId"}
+    attribute_map = {"owner_id": "ownerId", "percentage": "percentage"}
 
-    def __init__(self, percentage=None, owner_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, owner_id=None, percentage=None, local_vars_configuration=None):  # noqa: E501
         """PublicDealSplitInput - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._percentage = None
         self._owner_id = None
+        self._percentage = None
         self.discriminator = None
 
-        self.percentage = percentage
         self.owner_id = owner_id
-
-    @property
-    def percentage(self):
-        """Gets the percentage of this PublicDealSplitInput.  # noqa: E501
-
-
-        :return: The percentage of this PublicDealSplitInput.  # noqa: E501
-        :rtype: float
-        """
-        return self._percentage
-
-    @percentage.setter
-    def percentage(self, percentage):
-        """Sets the percentage of this PublicDealSplitInput.
-
-
-        :param percentage: The percentage of this PublicDealSplitInput.  # noqa: E501
-        :type percentage: float
-        """
-        if self.local_vars_configuration.client_side_validation and percentage is None:  # noqa: E501
-            raise ValueError("Invalid value for `percentage`, must not be `None`")  # noqa: E501
-
-        self._percentage = percentage
+        self.percentage = percentage
 
     @property
     def owner_id(self):
         """Gets the owner_id of this PublicDealSplitInput.  # noqa: E501
 
+        The unique identifier of the owner receiving the deal split.  # noqa: E501
 
         :return: The owner_id of this PublicDealSplitInput.  # noqa: E501
         :rtype: int
@@ -89,6 +67,7 @@ class PublicDealSplitInput(object):
     def owner_id(self, owner_id):
         """Sets the owner_id of this PublicDealSplitInput.
 
+        The unique identifier of the owner receiving the deal split.  # noqa: E501
 
         :param owner_id: The owner_id of this PublicDealSplitInput.  # noqa: E501
         :type owner_id: int
@@ -97,6 +76,31 @@ class PublicDealSplitInput(object):
             raise ValueError("Invalid value for `owner_id`, must not be `None`")  # noqa: E501
 
         self._owner_id = owner_id
+
+    @property
+    def percentage(self):
+        """Gets the percentage of this PublicDealSplitInput.  # noqa: E501
+
+        The portion of the deal assigned to the owner, expressed as a percentage. The total percentage for all splits in a deal must sum up to 1.0 (100%) and can have up to 8 decimal places.  # noqa: E501
+
+        :return: The percentage of this PublicDealSplitInput.  # noqa: E501
+        :rtype: float
+        """
+        return self._percentage
+
+    @percentage.setter
+    def percentage(self, percentage):
+        """Sets the percentage of this PublicDealSplitInput.
+
+        The portion of the deal assigned to the owner, expressed as a percentage. The total percentage for all splits in a deal must sum up to 1.0 (100%) and can have up to 8 decimal places.  # noqa: E501
+
+        :param percentage: The percentage of this PublicDealSplitInput.  # noqa: E501
+        :type percentage: float
+        """
+        if self.local_vars_configuration.client_side_validation and percentage is None:  # noqa: E501
+            raise ValueError("Invalid value for `percentage`, must not be `None`")  # noqa: E501
+
+        self._percentage = percentage
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

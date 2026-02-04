@@ -35,50 +35,28 @@ class PublicDealSplitsCreateRequest(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"splits": "list[PublicDealSplitInput]", "id": "int"}
+    openapi_types = {"id": "int", "splits": "list[PublicDealSplitInput]"}
 
-    attribute_map = {"splits": "splits", "id": "id"}
+    attribute_map = {"id": "id", "splits": "splits"}
 
-    def __init__(self, splits=None, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, splits=None, local_vars_configuration=None):  # noqa: E501
         """PublicDealSplitsCreateRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._splits = None
         self._id = None
+        self._splits = None
         self.discriminator = None
 
-        self.splits = splits
         self.id = id
-
-    @property
-    def splits(self):
-        """Gets the splits of this PublicDealSplitsCreateRequest.  # noqa: E501
-
-
-        :return: The splits of this PublicDealSplitsCreateRequest.  # noqa: E501
-        :rtype: list[PublicDealSplitInput]
-        """
-        return self._splits
-
-    @splits.setter
-    def splits(self, splits):
-        """Sets the splits of this PublicDealSplitsCreateRequest.
-
-
-        :param splits: The splits of this PublicDealSplitsCreateRequest.  # noqa: E501
-        :type splits: list[PublicDealSplitInput]
-        """
-        if self.local_vars_configuration.client_side_validation and splits is None:  # noqa: E501
-            raise ValueError("Invalid value for `splits`, must not be `None`")  # noqa: E501
-
-        self._splits = splits
+        self.splits = splits
 
     @property
     def id(self):
         """Gets the id of this PublicDealSplitsCreateRequest.  # noqa: E501
 
+        The unique identifier for the deal.  # noqa: E501
 
         :return: The id of this PublicDealSplitsCreateRequest.  # noqa: E501
         :rtype: int
@@ -89,6 +67,7 @@ class PublicDealSplitsCreateRequest(object):
     def id(self, id):
         """Sets the id of this PublicDealSplitsCreateRequest.
 
+        The unique identifier for the deal.  # noqa: E501
 
         :param id: The id of this PublicDealSplitsCreateRequest.  # noqa: E501
         :type id: int
@@ -97,6 +76,31 @@ class PublicDealSplitsCreateRequest(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def splits(self):
+        """Gets the splits of this PublicDealSplitsCreateRequest.  # noqa: E501
+
+        An array of deal split inputs, each containing an owner ID and a percentage of the deal split.  # noqa: E501
+
+        :return: The splits of this PublicDealSplitsCreateRequest.  # noqa: E501
+        :rtype: list[PublicDealSplitInput]
+        """
+        return self._splits
+
+    @splits.setter
+    def splits(self, splits):
+        """Sets the splits of this PublicDealSplitsCreateRequest.
+
+        An array of deal split inputs, each containing an owner ID and a percentage of the deal split.  # noqa: E501
+
+        :param splits: The splits of this PublicDealSplitsCreateRequest.  # noqa: E501
+        :type splits: list[PublicDealSplitInput]
+        """
+        if self.local_vars_configuration.client_side_validation and splits is None:  # noqa: E501
+            raise ValueError("Invalid value for `splits`, must not be `None`")  # noqa: E501
+
+        self._splits = splits
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

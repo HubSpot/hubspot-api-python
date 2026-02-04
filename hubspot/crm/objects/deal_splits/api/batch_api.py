@@ -36,6 +36,7 @@ class BatchApi(object):
     def read(self, batch_input_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of deal split objects by their associated deal object internal ID  # noqa: E501
 
+        Read a batch of deal split objects by their associated deal object internal ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -65,6 +66,7 @@ class BatchApi(object):
     def read_with_http_info(self, batch_input_public_object_id, **kwargs):  # noqa: E501
         """Read a batch of deal split objects by their associated deal object internal ID  # noqa: E501
 
+        Read a batch of deal split objects by their associated deal object internal ID  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -163,6 +165,7 @@ class BatchApi(object):
     def upsert(self, public_deal_splits_batch_create_request, **kwargs):  # noqa: E501
         """Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places  # noqa: E501
 
+        Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -192,6 +195,7 @@ class BatchApi(object):
     def upsert_with_http_info(self, public_deal_splits_batch_create_request, **kwargs):  # noqa: E501
         """Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places  # noqa: E501
 
+        Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

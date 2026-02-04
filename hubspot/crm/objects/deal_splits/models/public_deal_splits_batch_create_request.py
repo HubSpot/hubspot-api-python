@@ -54,6 +54,7 @@ class PublicDealSplitsBatchCreateRequest(object):
     def inputs(self):
         """Gets the inputs of this PublicDealSplitsBatchCreateRequest.  # noqa: E501
 
+        An array of deal split inputs  # noqa: E501
 
         :return: The inputs of this PublicDealSplitsBatchCreateRequest.  # noqa: E501
         :rtype: list[PublicDealSplitsCreateRequest]
@@ -64,6 +65,7 @@ class PublicDealSplitsBatchCreateRequest(object):
     def inputs(self, inputs):
         """Sets the inputs of this PublicDealSplitsBatchCreateRequest.
 
+        An array of deal split inputs  # noqa: E501
 
         :param inputs: The inputs of this PublicDealSplitsBatchCreateRequest.  # noqa: E501
         :type inputs: list[PublicDealSplitsCreateRequest]

@@ -35,37 +35,38 @@ class BatchResponseDealToDealSplits(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"completed_at": "datetime", "requested_at": "datetime", "started_at": "datetime", "links": "dict[str, str]", "results": "list[DealToDealSplits]", "status": "str"}
+    openapi_types = {"completed_at": "datetime", "links": "dict[str, str]", "requested_at": "datetime", "results": "list[DealToDealSplits]", "started_at": "datetime", "status": "str"}
 
-    attribute_map = {"completed_at": "completedAt", "requested_at": "requestedAt", "started_at": "startedAt", "links": "links", "results": "results", "status": "status"}
+    attribute_map = {"completed_at": "completedAt", "links": "links", "requested_at": "requestedAt", "results": "results", "started_at": "startedAt", "status": "status"}
 
-    def __init__(self, completed_at=None, requested_at=None, started_at=None, links=None, results=None, status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, completed_at=None, links=None, requested_at=None, results=None, started_at=None, status=None, local_vars_configuration=None):  # noqa: E501
         """BatchResponseDealToDealSplits - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
         self._completed_at = None
-        self._requested_at = None
-        self._started_at = None
         self._links = None
+        self._requested_at = None
         self._results = None
+        self._started_at = None
         self._status = None
         self.discriminator = None
 
         self.completed_at = completed_at
-        if requested_at is not None:
-            self.requested_at = requested_at
-        self.started_at = started_at
         if links is not None:
             self.links = links
+        if requested_at is not None:
+            self.requested_at = requested_at
         self.results = results
+        self.started_at = started_at
         self.status = status
 
     @property
     def completed_at(self):
         """Gets the completed_at of this BatchResponseDealToDealSplits.  # noqa: E501
 
+        The timestamp indicating when the batch operation was completed, in date-time format.  # noqa: E501
 
         :return: The completed_at of this BatchResponseDealToDealSplits.  # noqa: E501
         :rtype: datetime
@@ -76,6 +77,7 @@ class BatchResponseDealToDealSplits(object):
     def completed_at(self, completed_at):
         """Sets the completed_at of this BatchResponseDealToDealSplits.
 
+        The timestamp indicating when the batch operation was completed, in date-time format.  # noqa: E501
 
         :param completed_at: The completed_at of this BatchResponseDealToDealSplits.  # noqa: E501
         :type completed_at: datetime
@@ -86,53 +88,10 @@ class BatchResponseDealToDealSplits(object):
         self._completed_at = completed_at
 
     @property
-    def requested_at(self):
-        """Gets the requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
-
-
-        :return: The requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._requested_at
-
-    @requested_at.setter
-    def requested_at(self, requested_at):
-        """Sets the requested_at of this BatchResponseDealToDealSplits.
-
-
-        :param requested_at: The requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
-        :type requested_at: datetime
-        """
-
-        self._requested_at = requested_at
-
-    @property
-    def started_at(self):
-        """Gets the started_at of this BatchResponseDealToDealSplits.  # noqa: E501
-
-
-        :return: The started_at of this BatchResponseDealToDealSplits.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._started_at
-
-    @started_at.setter
-    def started_at(self, started_at):
-        """Sets the started_at of this BatchResponseDealToDealSplits.
-
-
-        :param started_at: The started_at of this BatchResponseDealToDealSplits.  # noqa: E501
-        :type started_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
-
-        self._started_at = started_at
-
-    @property
     def links(self):
         """Gets the links of this BatchResponseDealToDealSplits.  # noqa: E501
 
+        A map of link names to associated URIs for additional resources or documentation.  # noqa: E501
 
         :return: The links of this BatchResponseDealToDealSplits.  # noqa: E501
         :rtype: dict[str, str]
@@ -143,6 +102,7 @@ class BatchResponseDealToDealSplits(object):
     def links(self, links):
         """Sets the links of this BatchResponseDealToDealSplits.
 
+        A map of link names to associated URIs for additional resources or documentation.  # noqa: E501
 
         :param links: The links of this BatchResponseDealToDealSplits.  # noqa: E501
         :type links: dict[str, str]
@@ -151,9 +111,33 @@ class BatchResponseDealToDealSplits(object):
         self._links = links
 
     @property
+    def requested_at(self):
+        """Gets the requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
+
+        The timestamp indicating when the batch operation was requested, in date-time format.  # noqa: E501
+
+        :return: The requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._requested_at
+
+    @requested_at.setter
+    def requested_at(self, requested_at):
+        """Sets the requested_at of this BatchResponseDealToDealSplits.
+
+        The timestamp indicating when the batch operation was requested, in date-time format.  # noqa: E501
+
+        :param requested_at: The requested_at of this BatchResponseDealToDealSplits.  # noqa: E501
+        :type requested_at: datetime
+        """
+
+        self._requested_at = requested_at
+
+    @property
     def results(self):
         """Gets the results of this BatchResponseDealToDealSplits.  # noqa: E501
 
+        An array of deal-to-deal split objects representing the results of the batch operation.  # noqa: E501
 
         :return: The results of this BatchResponseDealToDealSplits.  # noqa: E501
         :rtype: list[DealToDealSplits]
@@ -164,6 +148,7 @@ class BatchResponseDealToDealSplits(object):
     def results(self, results):
         """Sets the results of this BatchResponseDealToDealSplits.
 
+        An array of deal-to-deal split objects representing the results of the batch operation.  # noqa: E501
 
         :param results: The results of this BatchResponseDealToDealSplits.  # noqa: E501
         :type results: list[DealToDealSplits]
@@ -174,9 +159,35 @@ class BatchResponseDealToDealSplits(object):
         self._results = results
 
     @property
+    def started_at(self):
+        """Gets the started_at of this BatchResponseDealToDealSplits.  # noqa: E501
+
+        The timestamp indicating when the batch operation started, in date-time format.  # noqa: E501
+
+        :return: The started_at of this BatchResponseDealToDealSplits.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._started_at
+
+    @started_at.setter
+    def started_at(self, started_at):
+        """Sets the started_at of this BatchResponseDealToDealSplits.
+
+        The timestamp indicating when the batch operation started, in date-time format.  # noqa: E501
+
+        :param started_at: The started_at of this BatchResponseDealToDealSplits.  # noqa: E501
+        :type started_at: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and started_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `started_at`, must not be `None`")  # noqa: E501
+
+        self._started_at = started_at
+
+    @property
     def status(self):
         """Gets the status of this BatchResponseDealToDealSplits.  # noqa: E501
 
+        The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.  # noqa: E501
 
         :return: The status of this BatchResponseDealToDealSplits.  # noqa: E501
         :rtype: str
@@ -187,13 +198,14 @@ class BatchResponseDealToDealSplits(object):
     def status(self, status):
         """Sets the status of this BatchResponseDealToDealSplits.
 
+        The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.  # noqa: E501
 
         :param status: The status of this BatchResponseDealToDealSplits.  # noqa: E501
         :type status: str
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-        allowed_values = ["PENDING", "PROCESSING", "CANCELED", "COMPLETE"]  # noqa: E501
+        allowed_values = ["CANCELED", "COMPLETE", "PENDING", "PROCESSING"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `status` ({0}), must be one of {1}".format(status, allowed_values))  # noqa: E501
 
