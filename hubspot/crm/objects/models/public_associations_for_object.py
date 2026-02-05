@@ -35,45 +35,22 @@ class PublicAssociationsForObject(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"types": "list[AssociationSpec]", "to": "PublicObjectId"}
+    openapi_types = {"to": "PublicObjectId", "types": "list[AssociationSpec]"}
 
-    attribute_map = {"types": "types", "to": "to"}
+    attribute_map = {"to": "to", "types": "types"}
 
-    def __init__(self, types=None, to=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, to=None, types=None, local_vars_configuration=None):  # noqa: E501
         """PublicAssociationsForObject - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._types = None
         self._to = None
+        self._types = None
         self.discriminator = None
 
-        self.types = types
         self.to = to
-
-    @property
-    def types(self):
-        """Gets the types of this PublicAssociationsForObject.  # noqa: E501
-
-
-        :return: The types of this PublicAssociationsForObject.  # noqa: E501
-        :rtype: list[AssociationSpec]
-        """
-        return self._types
-
-    @types.setter
-    def types(self, types):
-        """Sets the types of this PublicAssociationsForObject.
-
-
-        :param types: The types of this PublicAssociationsForObject.  # noqa: E501
-        :type types: list[AssociationSpec]
-        """
-        if self.local_vars_configuration.client_side_validation and types is None:  # noqa: E501
-            raise ValueError("Invalid value for `types`, must not be `None`")  # noqa: E501
-
-        self._types = types
+        self.types = types
 
     @property
     def to(self):
@@ -97,6 +74,29 @@ class PublicAssociationsForObject(object):
             raise ValueError("Invalid value for `to`, must not be `None`")  # noqa: E501
 
         self._to = to
+
+    @property
+    def types(self):
+        """Gets the types of this PublicAssociationsForObject.  # noqa: E501
+
+
+        :return: The types of this PublicAssociationsForObject.  # noqa: E501
+        :rtype: list[AssociationSpec]
+        """
+        return self._types
+
+    @types.setter
+    def types(self, types):
+        """Sets the types of this PublicAssociationsForObject.
+
+
+        :param types: The types of this PublicAssociationsForObject.  # noqa: E501
+        :type types: list[AssociationSpec]
+        """
+        if self.local_vars_configuration.client_side_validation and types is None:  # noqa: E501
+            raise ValueError("Invalid value for `types`, must not be `None`")  # noqa: E501
+
+        self._types = types
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

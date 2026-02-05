@@ -36,40 +36,43 @@ class SimplePublicUpsertObject(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "created_at": "datetime",
         "archived": "bool",
         "archived_at": "datetime",
-        "new": "bool",
-        "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
+        "created_at": "datetime",
         "id": "str",
+        "new": "bool",
         "object_write_trace_id": "str",
         "properties": "dict[str, str]",
+        "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
         "updated_at": "datetime",
+        "url": "str",
     }
 
     attribute_map = {
-        "created_at": "createdAt",
         "archived": "archived",
         "archived_at": "archivedAt",
-        "new": "new",
-        "properties_with_history": "propertiesWithHistory",
+        "created_at": "createdAt",
         "id": "id",
+        "new": "new",
         "object_write_trace_id": "objectWriteTraceId",
         "properties": "properties",
+        "properties_with_history": "propertiesWithHistory",
         "updated_at": "updatedAt",
+        "url": "url",
     }
 
     def __init__(
         self,
-        created_at=None,
         archived=None,
         archived_at=None,
-        new=None,
-        properties_with_history=None,
+        created_at=None,
         id=None,
+        new=None,
         object_write_trace_id=None,
         properties=None,
+        properties_with_history=None,
         updated_at=None,
+        url=None,
         local_vars_configuration=None,
     ):  # noqa: E501
         """SimplePublicUpsertObject - a model defined in OpenAPI"""  # noqa: E501
@@ -77,58 +80,38 @@ class SimplePublicUpsertObject(object):
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._created_at = None
         self._archived = None
         self._archived_at = None
-        self._new = None
-        self._properties_with_history = None
+        self._created_at = None
         self._id = None
+        self._new = None
         self._object_write_trace_id = None
         self._properties = None
+        self._properties_with_history = None
         self._updated_at = None
+        self._url = None
         self.discriminator = None
 
-        self.created_at = created_at
-        if archived is not None:
-            self.archived = archived
+        self.archived = archived
         if archived_at is not None:
             self.archived_at = archived_at
-        self.new = new
-        if properties_with_history is not None:
-            self.properties_with_history = properties_with_history
+        self.created_at = created_at
         self.id = id
+        self.new = new
         if object_write_trace_id is not None:
             self.object_write_trace_id = object_write_trace_id
         self.properties = properties
+        if properties_with_history is not None:
+            self.properties_with_history = properties_with_history
         self.updated_at = updated_at
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SimplePublicUpsertObject.  # noqa: E501
-
-
-        :return: The created_at of this SimplePublicUpsertObject.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SimplePublicUpsertObject.
-
-
-        :param created_at: The created_at of this SimplePublicUpsertObject.  # noqa: E501
-        :type created_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
+        if url is not None:
+            self.url = url
 
     @property
     def archived(self):
         """Gets the archived of this SimplePublicUpsertObject.  # noqa: E501
 
+        Whether the object is archived.  # noqa: E501
 
         :return: The archived of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: bool
@@ -139,10 +122,13 @@ class SimplePublicUpsertObject(object):
     def archived(self, archived):
         """Sets the archived of this SimplePublicUpsertObject.
 
+        Whether the object is archived.  # noqa: E501
 
         :param archived: The archived of this SimplePublicUpsertObject.  # noqa: E501
         :type archived: bool
         """
+        if self.local_vars_configuration.client_side_validation and archived is None:  # noqa: E501
+            raise ValueError("Invalid value for `archived`, must not be `None`")  # noqa: E501
 
         self._archived = archived
 
@@ -150,6 +136,7 @@ class SimplePublicUpsertObject(object):
     def archived_at(self):
         """Gets the archived_at of this SimplePublicUpsertObject.  # noqa: E501
 
+        The timestamp when the object was archived, in ISO 8601 format.  # noqa: E501
 
         :return: The archived_at of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: datetime
@@ -160,6 +147,7 @@ class SimplePublicUpsertObject(object):
     def archived_at(self, archived_at):
         """Sets the archived_at of this SimplePublicUpsertObject.
 
+        The timestamp when the object was archived, in ISO 8601 format.  # noqa: E501
 
         :param archived_at: The archived_at of this SimplePublicUpsertObject.  # noqa: E501
         :type archived_at: datetime
@@ -168,53 +156,35 @@ class SimplePublicUpsertObject(object):
         self._archived_at = archived_at
 
     @property
-    def new(self):
-        """Gets the new of this SimplePublicUpsertObject.  # noqa: E501
+    def created_at(self):
+        """Gets the created_at of this SimplePublicUpsertObject.  # noqa: E501
 
+        The timestamp when the object was created, in ISO 8601 format.  # noqa: E501
 
-        :return: The new of this SimplePublicUpsertObject.  # noqa: E501
-        :rtype: bool
+        :return: The created_at of this SimplePublicUpsertObject.  # noqa: E501
+        :rtype: datetime
         """
-        return self._new
+        return self._created_at
 
-    @new.setter
-    def new(self, new):
-        """Sets the new of this SimplePublicUpsertObject.
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SimplePublicUpsertObject.
 
+        The timestamp when the object was created, in ISO 8601 format.  # noqa: E501
 
-        :param new: The new of this SimplePublicUpsertObject.  # noqa: E501
-        :type new: bool
+        :param created_at: The created_at of this SimplePublicUpsertObject.  # noqa: E501
+        :type created_at: datetime
         """
-        if self.local_vars_configuration.client_side_validation and new is None:  # noqa: E501
-            raise ValueError("Invalid value for `new`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
-        self._new = new
-
-    @property
-    def properties_with_history(self):
-        """Gets the properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
-
-
-        :return: The properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
-        :rtype: dict[str, list[ValueWithTimestamp]]
-        """
-        return self._properties_with_history
-
-    @properties_with_history.setter
-    def properties_with_history(self, properties_with_history):
-        """Sets the properties_with_history of this SimplePublicUpsertObject.
-
-
-        :param properties_with_history: The properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
-        :type properties_with_history: dict[str, list[ValueWithTimestamp]]
-        """
-
-        self._properties_with_history = properties_with_history
+        self._created_at = created_at
 
     @property
     def id(self):
         """Gets the id of this SimplePublicUpsertObject.  # noqa: E501
 
+        The unique ID of the object.  # noqa: E501
 
         :return: The id of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: str
@@ -225,6 +195,7 @@ class SimplePublicUpsertObject(object):
     def id(self, id):
         """Sets the id of this SimplePublicUpsertObject.
 
+        The unique ID of the object.  # noqa: E501
 
         :param id: The id of this SimplePublicUpsertObject.  # noqa: E501
         :type id: str
@@ -235,9 +206,35 @@ class SimplePublicUpsertObject(object):
         self._id = id
 
     @property
+    def new(self):
+        """Gets the new of this SimplePublicUpsertObject.  # noqa: E501
+
+        Whether the property is new.  # noqa: E501
+
+        :return: The new of this SimplePublicUpsertObject.  # noqa: E501
+        :rtype: bool
+        """
+        return self._new
+
+    @new.setter
+    def new(self, new):
+        """Sets the new of this SimplePublicUpsertObject.
+
+        Whether the property is new.  # noqa: E501
+
+        :param new: The new of this SimplePublicUpsertObject.  # noqa: E501
+        :type new: bool
+        """
+        if self.local_vars_configuration.client_side_validation and new is None:  # noqa: E501
+            raise ValueError("Invalid value for `new`, must not be `None`")  # noqa: E501
+
+        self._new = new
+
+    @property
     def object_write_trace_id(self):
         """Gets the object_write_trace_id of this SimplePublicUpsertObject.  # noqa: E501
 
+        An identifier used for tracing the write request for the object.  # noqa: E501
 
         :return: The object_write_trace_id of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: str
@@ -248,6 +245,7 @@ class SimplePublicUpsertObject(object):
     def object_write_trace_id(self, object_write_trace_id):
         """Sets the object_write_trace_id of this SimplePublicUpsertObject.
 
+        An identifier used for tracing the write request for the object.  # noqa: E501
 
         :param object_write_trace_id: The object_write_trace_id of this SimplePublicUpsertObject.  # noqa: E501
         :type object_write_trace_id: str
@@ -259,6 +257,7 @@ class SimplePublicUpsertObject(object):
     def properties(self):
         """Gets the properties of this SimplePublicUpsertObject.  # noqa: E501
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :return: The properties of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: dict[str, str]
@@ -269,6 +268,7 @@ class SimplePublicUpsertObject(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicUpsertObject.
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :param properties: The properties of this SimplePublicUpsertObject.  # noqa: E501
         :type properties: dict[str, str]
@@ -279,9 +279,33 @@ class SimplePublicUpsertObject(object):
         self._properties = properties
 
     @property
+    def properties_with_history(self):
+        """Gets the properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
+
+        Key-value pairs representing the properties of the object along with their history.  # noqa: E501
+
+        :return: The properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
+        :rtype: dict[str, list[ValueWithTimestamp]]
+        """
+        return self._properties_with_history
+
+    @properties_with_history.setter
+    def properties_with_history(self, properties_with_history):
+        """Sets the properties_with_history of this SimplePublicUpsertObject.
+
+        Key-value pairs representing the properties of the object along with their history.  # noqa: E501
+
+        :param properties_with_history: The properties_with_history of this SimplePublicUpsertObject.  # noqa: E501
+        :type properties_with_history: dict[str, list[ValueWithTimestamp]]
+        """
+
+        self._properties_with_history = properties_with_history
+
+    @property
     def updated_at(self):
         """Gets the updated_at of this SimplePublicUpsertObject.  # noqa: E501
 
+        The timestamp when the object was last updated, in ISO 8601 format.  # noqa: E501
 
         :return: The updated_at of this SimplePublicUpsertObject.  # noqa: E501
         :rtype: datetime
@@ -292,6 +316,7 @@ class SimplePublicUpsertObject(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this SimplePublicUpsertObject.
 
+        The timestamp when the object was last updated, in ISO 8601 format.  # noqa: E501
 
         :param updated_at: The updated_at of this SimplePublicUpsertObject.  # noqa: E501
         :type updated_at: datetime
@@ -300,6 +325,29 @@ class SimplePublicUpsertObject(object):
             raise ValueError("Invalid value for `updated_at`, must not be `None`")  # noqa: E501
 
         self._updated_at = updated_at
+
+    @property
+    def url(self):
+        """Gets the url of this SimplePublicUpsertObject.  # noqa: E501
+
+        Direct URL for this object in HubSpot  # noqa: E501
+
+        :return: The url of this SimplePublicUpsertObject.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this SimplePublicUpsertObject.
+
+        Direct URL for this object in HubSpot  # noqa: E501
+
+        :param url: The url of this SimplePublicUpsertObject.  # noqa: E501
+        :type url: str
+        """
+
+        self._url = url
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""
