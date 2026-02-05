@@ -50,8 +50,7 @@ class SimplePublicObjectBatchInputForCreate(object):
         self._properties = None
         self.discriminator = None
 
-        if associations is not None:
-            self.associations = associations
+        self.associations = associations
         if object_write_trace_id is not None:
             self.object_write_trace_id = object_write_trace_id
         self.properties = properties
@@ -74,6 +73,8 @@ class SimplePublicObjectBatchInputForCreate(object):
         :param associations: The associations of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
         :type associations: list[PublicAssociationsForObject]
         """
+        if self.local_vars_configuration.client_side_validation and associations is None:  # noqa: E501
+            raise ValueError("Invalid value for `associations`, must not be `None`")  # noqa: E501
 
         self._associations = associations
 
@@ -81,6 +82,7 @@ class SimplePublicObjectBatchInputForCreate(object):
     def object_write_trace_id(self):
         """Gets the object_write_trace_id of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
 
+        An identifier used for tracing the creation or update request of the object.  # noqa: E501
 
         :return: The object_write_trace_id of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
         :rtype: str
@@ -91,6 +93,7 @@ class SimplePublicObjectBatchInputForCreate(object):
     def object_write_trace_id(self, object_write_trace_id):
         """Sets the object_write_trace_id of this SimplePublicObjectBatchInputForCreate.
 
+        An identifier used for tracing the creation or update request of the object.  # noqa: E501
 
         :param object_write_trace_id: The object_write_trace_id of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
         :type object_write_trace_id: str
@@ -102,6 +105,7 @@ class SimplePublicObjectBatchInputForCreate(object):
     def properties(self):
         """Gets the properties of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :return: The properties of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
         :rtype: dict[str, str]
@@ -112,6 +116,7 @@ class SimplePublicObjectBatchInputForCreate(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObjectBatchInputForCreate.
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :param properties: The properties of this SimplePublicObjectBatchInputForCreate.  # noqa: E501
         :type properties: dict[str, str]

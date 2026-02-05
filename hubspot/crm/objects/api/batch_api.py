@@ -279,8 +279,7 @@ class BatchApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            201: "BatchResponseSimplePublicObject",
-            207: "BatchResponseSimplePublicObjectWithErrors",
+            200: "BatchResponseSimplePublicObject",
         }
 
         return self.api_client.call_api(
@@ -424,7 +423,6 @@ class BatchApi(object):
 
         response_types_map = {
             200: "BatchResponseSimplePublicObject",
-            207: "BatchResponseSimplePublicObjectWithErrors",
         }
 
         return self.api_client.call_api(
@@ -560,7 +558,6 @@ class BatchApi(object):
 
         response_types_map = {
             200: "BatchResponseSimplePublicObject",
-            207: "BatchResponseSimplePublicObjectWithErrors",
         }
 
         return self.api_client.call_api(
@@ -698,7 +695,6 @@ class BatchApi(object):
 
         response_types_map = {
             200: "BatchResponseSimplePublicUpsertObject",
-            207: "BatchResponseSimplePublicUpsertObjectWithErrors",
         }
 
         return self.api_client.call_api(

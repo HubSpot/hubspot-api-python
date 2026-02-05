@@ -56,6 +56,7 @@ class AssociationSpec(object):
     def association_category(self):
         """Gets the association_category of this AssociationSpec.  # noqa: E501
 
+        The category of the association, such as \"HUBSPOT_DEFINED\".  # noqa: E501
 
         :return: The association_category of this AssociationSpec.  # noqa: E501
         :rtype: str
@@ -66,13 +67,14 @@ class AssociationSpec(object):
     def association_category(self, association_category):
         """Sets the association_category of this AssociationSpec.
 
+        The category of the association, such as \"HUBSPOT_DEFINED\".  # noqa: E501
 
         :param association_category: The association_category of this AssociationSpec.  # noqa: E501
         :type association_category: str
         """
         if self.local_vars_configuration.client_side_validation and association_category is None:  # noqa: E501
             raise ValueError("Invalid value for `association_category`, must not be `None`")  # noqa: E501
-        allowed_values = ["HUBSPOT_DEFINED", "USER_DEFINED", "INTEGRATOR_DEFINED"]  # noqa: E501
+        allowed_values = ["HUBSPOT_DEFINED", "INTEGRATOR_DEFINED", "USER_DEFINED", "WORK"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and association_category not in allowed_values:  # noqa: E501
             raise ValueError("Invalid value for `association_category` ({0}), must be one of {1}".format(association_category, allowed_values))  # noqa: E501
 
@@ -82,6 +84,7 @@ class AssociationSpec(object):
     def association_type_id(self):
         """Gets the association_type_id of this AssociationSpec.  # noqa: E501
 
+        The ID representing the specific type of association.  # noqa: E501
 
         :return: The association_type_id of this AssociationSpec.  # noqa: E501
         :rtype: int
@@ -92,6 +95,7 @@ class AssociationSpec(object):
     def association_type_id(self, association_type_id):
         """Sets the association_type_id of this AssociationSpec.
 
+        The ID representing the specific type of association.  # noqa: E501
 
         :param association_type_id: The association_type_id of this AssociationSpec.  # noqa: E501
         :type association_type_id: int

@@ -54,6 +54,7 @@ class SimplePublicObjectInput(object):
     def properties(self):
         """Gets the properties of this SimplePublicObjectInput.  # noqa: E501
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :return: The properties of this SimplePublicObjectInput.  # noqa: E501
         :rtype: dict[str, str]
@@ -64,6 +65,7 @@ class SimplePublicObjectInput(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObjectInput.
 
+        Key value pairs representing the properties of the object.  # noqa: E501
 
         :param properties: The properties of this SimplePublicObjectInput.  # noqa: E501
         :type properties: dict[str, str]

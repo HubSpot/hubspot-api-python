@@ -35,55 +35,32 @@ class ErrorDetail(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"sub_category": "str", "code": "str", "_in": "str", "context": "dict[str, list[str]]", "message": "str"}
+    openapi_types = {"code": "str", "context": "dict[str, list[str]]", "_in": "str", "message": "str", "sub_category": "str"}
 
-    attribute_map = {"sub_category": "subCategory", "code": "code", "_in": "in", "context": "context", "message": "message"}
+    attribute_map = {"code": "code", "context": "context", "_in": "in", "message": "message", "sub_category": "subCategory"}
 
-    def __init__(self, sub_category=None, code=None, _in=None, context=None, message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, code=None, context=None, _in=None, message=None, sub_category=None, local_vars_configuration=None):  # noqa: E501
         """ErrorDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._sub_category = None
         self._code = None
-        self.__in = None
         self._context = None
+        self.__in = None
         self._message = None
+        self._sub_category = None
         self.discriminator = None
 
-        if sub_category is not None:
-            self.sub_category = sub_category
         if code is not None:
             self.code = code
-        if _in is not None:
-            self._in = _in
         if context is not None:
             self.context = context
+        if _in is not None:
+            self._in = _in
         self.message = message
-
-    @property
-    def sub_category(self):
-        """Gets the sub_category of this ErrorDetail.  # noqa: E501
-
-        A specific category that contains more specific detail about the error  # noqa: E501
-
-        :return: The sub_category of this ErrorDetail.  # noqa: E501
-        :rtype: str
-        """
-        return self._sub_category
-
-    @sub_category.setter
-    def sub_category(self, sub_category):
-        """Sets the sub_category of this ErrorDetail.
-
-        A specific category that contains more specific detail about the error  # noqa: E501
-
-        :param sub_category: The sub_category of this ErrorDetail.  # noqa: E501
-        :type sub_category: str
-        """
-
-        self._sub_category = sub_category
+        if sub_category is not None:
+            self.sub_category = sub_category
 
     @property
     def code(self):
@@ -109,6 +86,29 @@ class ErrorDetail(object):
         self._code = code
 
     @property
+    def context(self):
+        """Gets the context of this ErrorDetail.  # noqa: E501
+
+        The context for the error.  # noqa: E501
+
+        :return: The context of this ErrorDetail.  # noqa: E501
+        :rtype: dict[str, list[str]]
+        """
+        return self._context
+
+    @context.setter
+    def context(self, context):
+        """Sets the context of this ErrorDetail.
+
+        The context for the error.  # noqa: E501
+
+        :param context: The context of this ErrorDetail.  # noqa: E501
+        :type context: dict[str, list[str]]
+        """
+
+        self._context = context
+
+    @property
     def _in(self):
         """Gets the _in of this ErrorDetail.  # noqa: E501
 
@@ -130,29 +130,6 @@ class ErrorDetail(object):
         """
 
         self.__in = _in
-
-    @property
-    def context(self):
-        """Gets the context of this ErrorDetail.  # noqa: E501
-
-        Context about the error condition  # noqa: E501
-
-        :return: The context of this ErrorDetail.  # noqa: E501
-        :rtype: dict[str, list[str]]
-        """
-        return self._context
-
-    @context.setter
-    def context(self, context):
-        """Sets the context of this ErrorDetail.
-
-        Context about the error condition  # noqa: E501
-
-        :param context: The context of this ErrorDetail.  # noqa: E501
-        :type context: dict[str, list[str]]
-        """
-
-        self._context = context
 
     @property
     def message(self):
@@ -178,6 +155,29 @@ class ErrorDetail(object):
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501
 
         self._message = message
+
+    @property
+    def sub_category(self):
+        """Gets the sub_category of this ErrorDetail.  # noqa: E501
+
+        A specific category that contains more specific detail about the error  # noqa: E501
+
+        :return: The sub_category of this ErrorDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._sub_category
+
+    @sub_category.setter
+    def sub_category(self, sub_category):
+        """Sets the sub_category of this ErrorDetail.
+
+        A specific category that contains more specific detail about the error  # noqa: E501
+
+        :param sub_category: The sub_category of this ErrorDetail.  # noqa: E501
+        :type sub_category: str
+        """
+
+        self._sub_category = sub_category
 
     def to_dict(self, serialize=False):
         """Returns the model properties as a dict"""

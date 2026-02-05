@@ -56,6 +56,7 @@ class AssociatedId(object):
     def id(self):
         """Gets the id of this AssociatedId.  # noqa: E501
 
+        The ID for the association type.  # noqa: E501
 
         :return: The id of this AssociatedId.  # noqa: E501
         :rtype: str
@@ -66,6 +67,7 @@ class AssociatedId(object):
     def id(self, id):
         """Sets the id of this AssociatedId.
 
+        The ID for the association type.  # noqa: E501
 
         :param id: The id of this AssociatedId.  # noqa: E501
         :type id: str
@@ -79,6 +81,7 @@ class AssociatedId(object):
     def type(self):
         """Gets the type of this AssociatedId.  # noqa: E501
 
+        The type of association.  # noqa: E501
 
         :return: The type of this AssociatedId.  # noqa: E501
         :rtype: str
@@ -89,6 +92,7 @@ class AssociatedId(object):
     def type(self, type):
         """Sets the type of this AssociatedId.
 
+        The type of association.  # noqa: E501
 
         :param type: The type of this AssociatedId.  # noqa: E501
         :type type: str

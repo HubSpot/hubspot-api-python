@@ -190,7 +190,7 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SimplePublicObject
+        :rtype: CreatedResponseSimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
         return self.create_with_http_info(object_type, simple_public_object_input_for_create, **kwargs)  # noqa: E501
@@ -230,7 +230,7 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SimplePublicObject, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CreatedResponseSimplePublicObject, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -278,7 +278,7 @@ class BasicApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            201: "SimplePublicObject",
+            200: "CreatedResponseSimplePublicObject",
         }
 
         return self.api_client.call_api(
@@ -300,30 +300,30 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def get_by_id(self, object_type, object_id, **kwargs):  # noqa: E501
+    def get_by_id(self, object_id, object_type, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
         Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id(object_type, object_id, async_req=True)
+        >>> thread = api.get_by_id(object_id, object_type, async_req=True)
         >>> result = thread.get()
 
-        :param object_type: (required)
-        :type object_type: str
         :param object_id: (required)
         :type object_id: str
+        :param object_type: (required)
+        :type object_type: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :type associations: list[str]
+        :param id_property: The name of a property whose values are unique for this object
+        :type id_property: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties_with_history: list[str]
-        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-        :type associations: list[str]
-        :param archived: Whether to return only results that have been archived.
-        :type archived: bool
-        :param id_property: The name of a property whose values are unique for this object
-        :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -340,32 +340,32 @@ class BasicApi(object):
         :rtype: SimplePublicObjectWithAssociations
         """
         kwargs["_return_http_data_only"] = True
-        return self.get_by_id_with_http_info(object_type, object_id, **kwargs)  # noqa: E501
+        return self.get_by_id_with_http_info(object_id, object_type, **kwargs)  # noqa: E501
 
-    def get_by_id_with_http_info(self, object_type, object_id, **kwargs):  # noqa: E501
+    def get_by_id_with_http_info(self, object_id, object_type, **kwargs):  # noqa: E501
         """Read  # noqa: E501
 
         Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_by_id_with_http_info(object_type, object_id, async_req=True)
+        >>> thread = api.get_by_id_with_http_info(object_id, object_type, async_req=True)
         >>> result = thread.get()
 
-        :param object_type: (required)
-        :type object_type: str
         :param object_id: (required)
         :type object_id: str
+        :param object_type: (required)
+        :type object_type: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :type associations: list[str]
+        :param id_property: The name of a property whose values are unique for this object
+        :type id_property: str
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties_with_history: list[str]
-        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-        :type associations: list[str]
-        :param archived: Whether to return only results that have been archived.
-        :type archived: bool
-        :param id_property: The name of a property whose values are unique for this object
-        :type id_property: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -392,7 +392,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "properties", "properties_with_history", "associations", "archived", "id_property"]
+        all_params = ["object_id", "object_type", "archived", "associations", "id_property", "properties", "properties_with_history"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -400,35 +400,35 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method get_by_id" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_id`")  # noqa: E501
         # verify the required parameter 'object_id' is set
         if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `get_by_id`")  # noqa: E501
+        # verify the required parameter 'object_type' is set
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `get_by_id`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
         if "object_id" in local_var_params:
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
+        if local_var_params.get("archived") is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if local_var_params.get("associations") is not None:  # noqa: E501
+            query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
+            collection_formats["associations"] = "multi"  # noqa: E501
+        if local_var_params.get("id_property") is not None:  # noqa: E501
+            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
         if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
         if local_var_params.get("properties_with_history") is not None:  # noqa: E501
             query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
             collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
-        if local_var_params.get("associations") is not None:  # noqa: E501
-            query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
-            collection_formats["associations"] = "multi"  # noqa: E501
-        if local_var_params.get("archived") is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
-        if local_var_params.get("id_property") is not None:  # noqa: E501
-            query_params.append(("idProperty", local_var_params["id_property"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -477,18 +477,18 @@ class BasicApi(object):
 
         :param object_type: (required)
         :type object_type: str
-        :param limit: The maximum number of results to display per page.
-        :type limit: int
         :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :type associations: list[str]
+        :param limit: The maximum number of results to display per page.
+        :type limit: int
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :type properties_with_history: list[str]
-        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-        :type associations: list[str]
-        :param archived: Whether to return only results that have been archived.
-        :type archived: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -502,7 +502,7 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
+        :rtype: CollectionResponseSimplePublicObjectWithAssociations
         """
         kwargs["_return_http_data_only"] = True
         return self.get_page_with_http_info(object_type, **kwargs)  # noqa: E501
@@ -519,18 +519,18 @@ class BasicApi(object):
 
         :param object_type: (required)
         :type object_type: str
-        :param limit: The maximum number of results to display per page.
-        :type limit: int
         :param after: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
         :type after: str
+        :param archived: Whether to return only results that have been archived.
+        :type archived: bool
+        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+        :type associations: list[str]
+        :param limit: The maximum number of results to display per page.
+        :type limit: int
         :param properties: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
         :type properties: list[str]
         :param properties_with_history: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
         :type properties_with_history: list[str]
-        :param associations: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-        :type associations: list[str]
-        :param archived: Whether to return only results that have been archived.
-        :type archived: bool
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _return_http_data_only: response data without head status code
@@ -552,12 +552,12 @@ class BasicApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionResponseSimplePublicObjectWithAssociationsForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CollectionResponseSimplePublicObjectWithAssociations, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
 
-        all_params = ["object_type", "limit", "after", "properties", "properties_with_history", "associations", "archived"]
+        all_params = ["object_type", "after", "archived", "associations", "limit", "properties", "properties_with_history"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -576,21 +576,21 @@ class BasicApi(object):
             path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
-        if local_var_params.get("limit") is not None:  # noqa: E501
-            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
         if local_var_params.get("after") is not None:  # noqa: E501
             query_params.append(("after", local_var_params["after"]))  # noqa: E501
+        if local_var_params.get("archived") is not None:  # noqa: E501
+            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
+        if local_var_params.get("associations") is not None:  # noqa: E501
+            query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
+            collection_formats["associations"] = "multi"  # noqa: E501
+        if local_var_params.get("limit") is not None:  # noqa: E501
+            query_params.append(("limit", local_var_params["limit"]))  # noqa: E501
         if local_var_params.get("properties") is not None:  # noqa: E501
             query_params.append(("properties", local_var_params["properties"]))  # noqa: E501
             collection_formats["properties"] = "multi"  # noqa: E501
         if local_var_params.get("properties_with_history") is not None:  # noqa: E501
             query_params.append(("propertiesWithHistory", local_var_params["properties_with_history"]))  # noqa: E501
             collection_formats["propertiesWithHistory"] = "multi"  # noqa: E501
-        if local_var_params.get("associations") is not None:  # noqa: E501
-            query_params.append(("associations", local_var_params["associations"]))  # noqa: E501
-            collection_formats["associations"] = "multi"  # noqa: E501
-        if local_var_params.get("archived") is not None:  # noqa: E501
-            query_params.append(("archived", local_var_params["archived"]))  # noqa: E501
 
         header_params = dict(local_var_params.get("_headers", {}))
 
@@ -605,7 +605,7 @@ class BasicApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            200: "CollectionResponseSimplePublicObjectWithAssociationsForwardPaging",
+            200: "CollectionResponseSimplePublicObjectWithAssociations",
         }
 
         return self.api_client.call_api(
@@ -627,20 +627,20 @@ class BasicApi(object):
             _request_auth=local_var_params.get("_request_auth"),
         )
 
-    def update(self, object_type, object_id, simple_public_object_input, **kwargs):  # noqa: E501
+    def update(self, object_id, object_type, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
         Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update(object_type, object_id, simple_public_object_input, async_req=True)
+        >>> thread = api.update(object_id, object_type, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param object_type: (required)
-        :type object_type: str
         :param object_id: (required)
         :type object_id: str
+        :param object_type: (required)
+        :type object_type: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
         :param id_property: The name of a property whose values are unique for this object
@@ -661,22 +661,22 @@ class BasicApi(object):
         :rtype: SimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
-        return self.update_with_http_info(object_type, object_id, simple_public_object_input, **kwargs)  # noqa: E501
+        return self.update_with_http_info(object_id, object_type, simple_public_object_input, **kwargs)  # noqa: E501
 
-    def update_with_http_info(self, object_type, object_id, simple_public_object_input, **kwargs):  # noqa: E501
+    def update_with_http_info(self, object_id, object_type, simple_public_object_input, **kwargs):  # noqa: E501
         """Update  # noqa: E501
 
         Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_with_http_info(object_type, object_id, simple_public_object_input, async_req=True)
+        >>> thread = api.update_with_http_info(object_id, object_type, simple_public_object_input, async_req=True)
         >>> result = thread.get()
 
-        :param object_type: (required)
-        :type object_type: str
         :param object_id: (required)
         :type object_id: str
+        :param object_type: (required)
+        :type object_type: str
         :param simple_public_object_input: (required)
         :type simple_public_object_input: SimplePublicObjectInput
         :param id_property: The name of a property whose values are unique for this object
@@ -707,7 +707,7 @@ class BasicApi(object):
 
         local_var_params = locals()
 
-        all_params = ["object_type", "object_id", "simple_public_object_input", "id_property"]
+        all_params = ["object_id", "object_type", "simple_public_object_input", "id_property"]
         all_params.extend(["async_req", "_return_http_data_only", "_preload_content", "_request_timeout", "_request_auth", "_content_type", "_headers"])
 
         for key, val in six.iteritems(local_var_params["kwargs"]):
@@ -715,12 +715,12 @@ class BasicApi(object):
                 raise ApiTypeError("Got an unexpected keyword argument '%s'" " to method update" % key)
             local_var_params[key] = val
         del local_var_params["kwargs"]
-        # verify the required parameter 'object_type' is set
-        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
-            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'object_id' is set
         if self.api_client.client_side_validation and local_var_params.get("object_id") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_id` when calling `update`")  # noqa: E501
+        # verify the required parameter 'object_type' is set
+        if self.api_client.client_side_validation and local_var_params.get("object_type") is None:  # noqa: E501
+            raise ApiValueError("Missing the required parameter `object_type` when calling `update`")  # noqa: E501
         # verify the required parameter 'simple_public_object_input' is set
         if self.api_client.client_side_validation and local_var_params.get("simple_public_object_input") is None:  # noqa: E501
             raise ApiValueError("Missing the required parameter `simple_public_object_input` when calling `update`")  # noqa: E501
@@ -728,10 +728,10 @@ class BasicApi(object):
         collection_formats = {}
 
         path_params = {}
-        if "object_type" in local_var_params:
-            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
         if "object_id" in local_var_params:
             path_params["objectId"] = local_var_params["object_id"]  # noqa: E501
+        if "object_type" in local_var_params:
+            path_params["objectType"] = local_var_params["object_type"]  # noqa: E501
 
         query_params = []
         if local_var_params.get("id_property") is not None:  # noqa: E501

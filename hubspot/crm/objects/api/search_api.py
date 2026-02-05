@@ -59,7 +59,7 @@ class SearchApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: CollectionResponseWithTotalSimplePublicObjectForwardPaging
+        :rtype: CollectionResponseWithTotalSimplePublicObject
         """
         kwargs["_return_http_data_only"] = True
         return self.do_search_with_http_info(object_type, public_object_search_request, **kwargs)  # noqa: E501
@@ -98,7 +98,7 @@ class SearchApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(CollectionResponseWithTotalSimplePublicObjectForwardPaging, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CollectionResponseWithTotalSimplePublicObject, status_code(int), headers(HTTPHeaderDict))
         """
 
         local_var_params = locals()
@@ -146,7 +146,7 @@ class SearchApi(object):
         auth_settings = ["oauth2"]  # noqa: E501
 
         response_types_map = {
-            200: "CollectionResponseWithTotalSimplePublicObjectForwardPaging",
+            200: "CollectionResponseWithTotalSimplePublicObject",
         }
 
         return self.api_client.call_api(
