@@ -36,78 +36,56 @@ class SimplePublicObject(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        "created_at": "datetime",
         "archived": "bool",
         "archived_at": "datetime",
-        "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
+        "created_at": "datetime",
         "id": "str",
         "properties": "dict[str, str]",
+        "properties_with_history": "dict[str, list[ValueWithTimestamp]]",
         "updated_at": "datetime",
     }
 
     attribute_map = {
-        "created_at": "createdAt",
         "archived": "archived",
         "archived_at": "archivedAt",
-        "properties_with_history": "propertiesWithHistory",
+        "created_at": "createdAt",
         "id": "id",
         "properties": "properties",
+        "properties_with_history": "propertiesWithHistory",
         "updated_at": "updatedAt",
     }
 
-    def __init__(self, created_at=None, archived=None, archived_at=None, properties_with_history=None, id=None, properties=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, archived=None, archived_at=None, created_at=None, id=None, properties=None, properties_with_history=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SimplePublicObject - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration.get_default_copy()
         self.local_vars_configuration = local_vars_configuration
 
-        self._created_at = None
         self._archived = None
         self._archived_at = None
-        self._properties_with_history = None
+        self._created_at = None
         self._id = None
         self._properties = None
+        self._properties_with_history = None
         self._updated_at = None
         self.discriminator = None
 
-        self.created_at = created_at
         if archived is not None:
             self.archived = archived
         if archived_at is not None:
             self.archived_at = archived_at
-        if properties_with_history is not None:
-            self.properties_with_history = properties_with_history
+        self.created_at = created_at
         self.id = id
         self.properties = properties
+        if properties_with_history is not None:
+            self.properties_with_history = properties_with_history
         self.updated_at = updated_at
-
-    @property
-    def created_at(self):
-        """Gets the created_at of this SimplePublicObject.  # noqa: E501
-
-
-        :return: The created_at of this SimplePublicObject.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._created_at
-
-    @created_at.setter
-    def created_at(self, created_at):
-        """Sets the created_at of this SimplePublicObject.
-
-
-        :param created_at: The created_at of this SimplePublicObject.  # noqa: E501
-        :type created_at: datetime
-        """
-        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
-            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
-
-        self._created_at = created_at
 
     @property
     def archived(self):
         """Gets the archived of this SimplePublicObject.  # noqa: E501
 
+        Whether the object is archived.  # noqa: E501
 
         :return: The archived of this SimplePublicObject.  # noqa: E501
         :rtype: bool
@@ -118,6 +96,7 @@ class SimplePublicObject(object):
     def archived(self, archived):
         """Sets the archived of this SimplePublicObject.
 
+        Whether the object is archived.  # noqa: E501
 
         :param archived: The archived of this SimplePublicObject.  # noqa: E501
         :type archived: bool
@@ -129,6 +108,7 @@ class SimplePublicObject(object):
     def archived_at(self):
         """Gets the archived_at of this SimplePublicObject.  # noqa: E501
 
+        The timestamp when the object was archived, in ISO 8601 format.  # noqa: E501
 
         :return: The archived_at of this SimplePublicObject.  # noqa: E501
         :rtype: datetime
@@ -139,6 +119,7 @@ class SimplePublicObject(object):
     def archived_at(self, archived_at):
         """Sets the archived_at of this SimplePublicObject.
 
+        The timestamp when the object was archived, in ISO 8601 format.  # noqa: E501
 
         :param archived_at: The archived_at of this SimplePublicObject.  # noqa: E501
         :type archived_at: datetime
@@ -147,30 +128,35 @@ class SimplePublicObject(object):
         self._archived_at = archived_at
 
     @property
-    def properties_with_history(self):
-        """Gets the properties_with_history of this SimplePublicObject.  # noqa: E501
+    def created_at(self):
+        """Gets the created_at of this SimplePublicObject.  # noqa: E501
 
+        The timestamp when the object was created, in ISO 8601 format.  # noqa: E501
 
-        :return: The properties_with_history of this SimplePublicObject.  # noqa: E501
-        :rtype: dict[str, list[ValueWithTimestamp]]
+        :return: The created_at of this SimplePublicObject.  # noqa: E501
+        :rtype: datetime
         """
-        return self._properties_with_history
+        return self._created_at
 
-    @properties_with_history.setter
-    def properties_with_history(self, properties_with_history):
-        """Sets the properties_with_history of this SimplePublicObject.
+    @created_at.setter
+    def created_at(self, created_at):
+        """Sets the created_at of this SimplePublicObject.
 
+        The timestamp when the object was created, in ISO 8601 format.  # noqa: E501
 
-        :param properties_with_history: The properties_with_history of this SimplePublicObject.  # noqa: E501
-        :type properties_with_history: dict[str, list[ValueWithTimestamp]]
+        :param created_at: The created_at of this SimplePublicObject.  # noqa: E501
+        :type created_at: datetime
         """
+        if self.local_vars_configuration.client_side_validation and created_at is None:  # noqa: E501
+            raise ValueError("Invalid value for `created_at`, must not be `None`")  # noqa: E501
 
-        self._properties_with_history = properties_with_history
+        self._created_at = created_at
 
     @property
     def id(self):
         """Gets the id of this SimplePublicObject.  # noqa: E501
 
+        The unique ID of the object.  # noqa: E501
 
         :return: The id of this SimplePublicObject.  # noqa: E501
         :rtype: str
@@ -181,6 +167,7 @@ class SimplePublicObject(object):
     def id(self, id):
         """Sets the id of this SimplePublicObject.
 
+        The unique ID of the object.  # noqa: E501
 
         :param id: The id of this SimplePublicObject.  # noqa: E501
         :type id: str
@@ -194,6 +181,7 @@ class SimplePublicObject(object):
     def properties(self):
         """Gets the properties of this SimplePublicObject.  # noqa: E501
 
+        Key-value pairs representing the properties of the object.  # noqa: E501
 
         :return: The properties of this SimplePublicObject.  # noqa: E501
         :rtype: dict[str, str]
@@ -204,6 +192,7 @@ class SimplePublicObject(object):
     def properties(self, properties):
         """Sets the properties of this SimplePublicObject.
 
+        Key-value pairs representing the properties of the object.  # noqa: E501
 
         :param properties: The properties of this SimplePublicObject.  # noqa: E501
         :type properties: dict[str, str]
@@ -214,9 +203,33 @@ class SimplePublicObject(object):
         self._properties = properties
 
     @property
+    def properties_with_history(self):
+        """Gets the properties_with_history of this SimplePublicObject.  # noqa: E501
+
+        Key-value pairs representing the properties of the object along with their history.  # noqa: E501
+
+        :return: The properties_with_history of this SimplePublicObject.  # noqa: E501
+        :rtype: dict[str, list[ValueWithTimestamp]]
+        """
+        return self._properties_with_history
+
+    @properties_with_history.setter
+    def properties_with_history(self, properties_with_history):
+        """Sets the properties_with_history of this SimplePublicObject.
+
+        Key-value pairs representing the properties of the object along with their history.  # noqa: E501
+
+        :param properties_with_history: The properties_with_history of this SimplePublicObject.  # noqa: E501
+        :type properties_with_history: dict[str, list[ValueWithTimestamp]]
+        """
+
+        self._properties_with_history = properties_with_history
+
+    @property
     def updated_at(self):
         """Gets the updated_at of this SimplePublicObject.  # noqa: E501
 
+        The timestamp when the object was last updated, in ISO 8601 format.  # noqa: E501
 
         :return: The updated_at of this SimplePublicObject.  # noqa: E501
         :rtype: datetime
@@ -227,6 +240,7 @@ class SimplePublicObject(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this SimplePublicObject.
 
+        The timestamp when the object was last updated, in ISO 8601 format.  # noqa: E501
 
         :param updated_at: The updated_at of this SimplePublicObject.  # noqa: E501
         :type updated_at: datetime
