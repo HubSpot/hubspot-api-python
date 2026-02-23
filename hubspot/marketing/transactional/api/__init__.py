@@ -3,5 +3,5 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis into api package
-from hubspot.marketing.transactional.api.public_smtp_tokens_api import PublicSMTPTokensApi
-from hubspot.marketing.transactional.api.single_send_api import SingleSendApi
+from hubspot.marketing.transactional.api.smtp_tokens_api import SMTPTokensApi
+from hubspot.marketing.transactional.api.send_transactional_email_api import SendTransactionalEmailApi
