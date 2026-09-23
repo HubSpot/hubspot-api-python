@@ -478,11 +478,19 @@ class ApiClient(object):
                     continue
                 file_names = v if type(v) is list else [v]
                 for n in file_names:
-                    with open(n, "rb") as f:
-                        filename = os.path.basename(f.name)
-                        filedata = f.read()
-                        mimetype = mimetypes.guess_type(filename)[0] or "application/octet-stream"
-                        params.append(tuple([k, tuple([filename, filedata, mimetype])]))
+                    if hasattr(n, "read"):
+                        filedata = n.read()
+                        raw_name = getattr(n, "name", None) or "upload"
+                        filename = os.path.basename(str(raw_name)) or "upload"
+                    elif isinstance(n, (bytes, bytearray)):
+                        filedata = bytes(n)
+                        filename = "upload"
+                    else:
+                        with open(n, "rb") as f:
+                            filename = os.path.basename(f.name)
+                            filedata = f.read()
+                    mimetype = mimetypes.guess_type(filename)[0] or "application/octet-stream"
+                    params.append(tuple([k, tuple([filename, filedata, mimetype])]))
 
         return params
 
