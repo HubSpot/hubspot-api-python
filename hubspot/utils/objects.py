@@ -8,6 +8,11 @@ def fetch_all(get_page_api_client, **kwargs):
 
     max_page_size = PROPERTY_HISTORY_MAX_SIZE if "properties_with_history" in kwargs else PAGE_MAX_SIZE
     limit = kwargs.pop("limit", None)
+    if limit is not None:
+        if limit < 0:
+            raise ValueError("limit must be non-negative")
+        if limit == 0:
+            return results
     total_fetched = 0
 
     while True:
