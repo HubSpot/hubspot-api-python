@@ -4,6 +4,11 @@ from ..discovery_base import DiscoveryBase
 
 class Discovery(DiscoveryBase):
     @property
+    def v3(self):
+        from .v3.discovery import Discovery as v3Discovery
+        return v3Discovery(self.config)
+
+    @property
     def access_tokens_api(self) -> api_client.AccessTokensApi:
         return self._configure_api_client(api_client, "AccessTokensApi")
 
