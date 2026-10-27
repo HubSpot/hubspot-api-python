@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-python/compare/v13.0.0...HEAD)
+
+## [13.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0...v13.0.0) - 2026-10-27
+
+## OAuth
+
+- Added `oauth.v3` client with methods `get_token()`, `introspect_token()` and `revoke_token()` in `oauth.v3.advanced_api`.
+
+## CRM
+
+- Changed `crm.AssociationType` from a plain class to an `Enum`. Use `AssociationType.<NAME>.value` where an integer association type ID is expected.
+- Added association types to `crm.AssociationType`, including parent/child company, communication, invoice and conversation associations.
 
 ## [12.0.0](https://github.com/HubSpot/hubspot-api-python/compare/v12.0.0-beta.1...v12.0.0) - 2025-05-07
 
