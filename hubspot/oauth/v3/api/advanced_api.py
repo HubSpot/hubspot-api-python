@@ -392,7 +392,7 @@ class AdvancedApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: Error
+        :rtype: None
         """
         kwargs["_return_http_data_only"] = True
         return self.revoke_token_with_http_info(**kwargs)  # noqa: E501
@@ -436,7 +436,7 @@ class AdvancedApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(Error, status_code(int), headers(HTTPHeaderDict))
+        :rtype: None
         """
 
         local_var_params = locals()
