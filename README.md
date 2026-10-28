@@ -110,6 +110,10 @@ all_contacts = api_client.crm.contacts.get_all()
 
 Please note that pagination is used under the hood to get all results.
 
+Pass `limit` to cap the total number of results, for example `get_all(limit=100)`.
+Omitting it fetches all results. A limit of zero returns an empty list without an API
+request; negative limits raise `ValueError`.
+
 ## Search
 
 `do_search` method is available for all objects (Companies, Contacts, Deals and etc).
