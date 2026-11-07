@@ -169,7 +169,7 @@ except ApiException as e:
 import hubspot
 import json
 from pprint import pprint
-from hubspot.crm.contacts import ApiException
+from hubspot.files import ApiException
 
 client = hubspot.Client.create(access_token="your_access_token")
 
@@ -188,14 +188,19 @@ try:
     pprint(response)
 
 except ApiException as e:
-    print("Exception when calling basic_api->get_page: %s\n" % e)
+    print("Exception when calling files_api->upload: %s\n" % e)
 ```
 
 ## Not wrapped endpoint(s)
 
 It is possible to access the hubspot request method directly,
 it could be handy if client doesn't have implementation for some endpoint yet.
-Exposed request method benefits by having all configured client params.
+The request method uses the configured authentication and base URL.
+
+`api_request` returns a `requests.Response`. Call `raise_for_status()` to raise
+for HTTP error responses, and catch `requests.exceptions.RequestException` for
+HTTP and transport errors. Generated API methods instead raise the `ApiException`
+from their own package, as in the Files example above.
 
 ```python
 client.api_request({
@@ -210,7 +215,7 @@ client.api_request({
 ```python
 import hubspot
 from pprint import pprint
-from hubspot.crm.contacts import ApiException
+from requests.exceptions import RequestException
 
 client = hubspot.Client.create(access_token="your_access_token")
 
@@ -218,8 +223,9 @@ try:
     response = client.api_request(
         {"path": "/crm/v3/objects/contacts"}
     )
-    pprint(response)
-except ApiException as e:
+    response.raise_for_status()
+    pprint(response.json())
+except RequestException as e:
     print(e)
 ```
 
@@ -228,7 +234,7 @@ except ApiException as e:
 ```python
 import hubspot
 from pprint import pprint
-from hubspot.crm.contacts import ApiException
+from requests.exceptions import RequestException
 
 client = hubspot.Client.create(access_token="your_access_token")
 
@@ -247,8 +253,9 @@ try:
         }
 
     )
+    response.raise_for_status()
     pprint(response.json())
-except ApiException as e:
+except RequestException as e:
     print(e)
 ```
 
